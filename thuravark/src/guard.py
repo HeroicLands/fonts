@@ -20,7 +20,7 @@ read from the font source:
 
 Fixtures cover the fillers, the numerals, the full stop and the empty keys. A
 geometry section asserts the stave design: 28 distinct staves, no horizontal
-stroke but the full stop, only the two branch slopes, and every pair of staves
+edge in any stave, numerals taller than the staves, and every pair of staves
 visibly apart at reading size.
 """
 
@@ -31,14 +31,48 @@ import sys
 from pathlib import Path
 
 import yaml
+from fontTools.pens.recordingPen import RecordingPen
+from fontTools.ttLib import TTFont
 from PIL import Image
 
-sys.path.insert(0, str(Path(__file__).resolve().parent))
-import staves as G  # noqa: E402
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent / "src"))
 from render import Renderer  # noqa: E402
 
 HERE = Path(__file__).resolve().parent.parent
 NOTE = "assets/content/Skills/Languages/Nordmal.md"
+
+# Each stave's branches, by the design: the side a branch leaves the stem on (F forward,
+# B back), the level it leaves from and the level it ends at (T top, M middle, 0 foot).
+BRANCHES = {
+    'a': 'F0T',
+    'e': 'FTM BTM',
+    'i': '',
+    'o': 'FTM F0M BTM B0M',
+    'u': 'B0T',
+    'p': 'FT0 BT0',
+    'b': 'FT0 BT0 B0M',
+    'f': 'FT0 BT0 FMT',
+    'v': 'FT0 BT0 B0M FMT',
+    't': 'F0T B0T',
+    'd': 'F0T B0T BTM',
+    'th': 'F0T B0T FMT',
+    'dh': 'F0T B0T BTM FMT',
+    'k': 'FTM F0M',
+    'g': 'FTM F0M BM0',
+    'kh': 'FTM F0M FMT',
+    'gh': 'FTM F0M BM0 FMT',
+    's': 'FTM BM0',
+    'z': 'FT0 B0T',
+    'h': 'BM0 FMT',
+    'l': 'FM0',
+    'r': 'BTM B0M',
+    'hl': 'FM0 FMT',
+    'm': 'FT0 BM0',
+    'n': 'F0T BMT',
+    'ng': 'FTM F0M FMT FM0',
+    'j': 'FMT',
+    'w': 'BMT',
+}
 
 # The 28 staves, by the glyph name the font gives each.
 STAVES = ("a e i o u p b f v t d th dh k g kh gh s z h l r hl m n ng j w").split()
@@ -193,41 +227,53 @@ def shaping(font: Path, forms: list[str]) -> list[str]:
 # --- the design -------------------------------------------------------------
 
 
-def geometry(font: Path) -> list[str]:
+def edges(font: TTFont, name: str):
+    """The straight edges of a glyph's outline, as (x1, y1, x2, y2)."""
+    pen = RecordingPen()
+    font.getGlyphSet()[name].draw(pen)
+    out = []
+    for op, args in pen.value:
+        if op == "moveTo":
+            start = cur = args[0]
+        elif op == "lineTo":
+            out.append((*cur, *args[0]))
+            cur = args[0]
+        elif op == "closePath" and cur != start:
+            out.append((*cur, *start))
+    return out
+
+
+def geometry(path: Path) -> list[str]:
     problems = []
-    rows = G.STAVE_TABLE
-    if len(rows) != 28 or [row[0] for row in rows] != STAVES:
-        problems.append(f"the staves are {[row[0] for row in rows]}, expected the 28 of the inventory")
+    if list(BRANCHES) != STAVES:
+        problems.append(f"the staves are {list(BRANCHES)}, expected the 28 of the inventory")
     sets = {}
-    for row in rows:
-        key = frozenset(row[4].split())
+    for name, spec in BRANCHES.items():
+        key = frozenset(spec.split())
         if key in sets:
-            problems.append(f"{row[0]} and {sets[key]} have the same branches")
-        sets[key] = row[0]
-        for b in row[4].split():
-            x1, y1, x2, y2 = G.branch(b)
-            if y1 == y2:
-                problems.append(f"{row[0]}: branch {b} is horizontal")
-            slope = round(abs((y2 - y1) / (x2 - x1)), 2)
-            if slope not in (G.LONG_SLOPE, G.HALF_SLOPE):
-                problems.append(f"{row[0]}: branch {b} has slope {slope}")
-        if len(row[4].split()) > 4:
-            problems.append(f"{row[0]} has more than four branches")
-    for g in G.STAVES:
-        for c in g.cuts:
-            if abs(c.y2 - c.y1) < 1 and g.name != "period":
-                problems.append(f"{g.name}: a horizontal cut")
-    if G.NUM_H <= G.STEM_H:
+            problems.append(f"{name} and {sets[key]} have the same branches")
+        sets[key] = name
+        for b in spec.split():
+            if b[1] == b[2]:
+                problems.append(f"{name}: branch {b} is horizontal")
+        if len(spec.split()) > 4:
+            problems.append(f"{name} has more than four branches")
+    font = TTFont(str(path))
+    # No stave runs along the line of text.
+    for name in STAVES + ["y"]:
+        for e in edges(font, name):
+            if e[1] == e[3]:
+                problems.append(f"{name}: a horizontal edge")
+    glyf = font["glyf"]
+    stave_top = max(glyf[n].yMax for n in STAVES)
+    numeral_bottom = min(glyf[f"num.{i}"].yMax for i in range(10))
+    if numeral_bottom <= stave_top:
         problems.append("the numerals are not taller than the staves")
-    slopes = {round(abs((c.y2 - c.y1) / (c.x2 - c.x1)), 2)
-              for n in G.NUMERALS for c in n.cuts[1:]}
-    if slopes & {G.LONG_SLOPE, G.HALF_SLOPE}:
-        problems.append(f"a numeral limb has a stave slope: {slopes}")
     # Every pair of staves, and nought against i, differs at reading size.
-    r = Renderer(font)
+    r = Renderer(path)
     size = 36
     masks = {}
-    for name in G.STAVE_NAMES + ["num.0"]:
+    for name in STAVES + ["num.0"]:
         masks[name] = ink(r, name, size)
     worst = []
     for a, b in itertools.combinations(masks, 2):
@@ -237,7 +283,7 @@ def geometry(font: Path) -> list[str]:
     for diff, a, b in worst:
         if diff < MIN_DIFFERENCE:
             problems.append(f"{a} and {b} differ by only {diff} pixels at {size} px")
-    print(f"{font}: {len(masks)} forms, closest pairs at {size} px: "
+    print(f"{path}: {len(masks)} forms, closest pairs at {size} px: "
           + ", ".join(f"{a}/{b} {d}" for d, a, b in worst[:6]))
     return problems
 
@@ -245,13 +291,32 @@ def geometry(font: Path) -> list[str]:
 MIN_DIFFERENCE = 20
 
 
+STEM_H = 740  # every stave stands this tall
+STEM_W = 84  # stroke weight of stems and branches
+BEARING = 66  # room between the ink of one stave and the next
+LONG_RUN = STEM_H / 2.73  # horizontal run of a branch that spans the whole stem
+HALF_RUN = (STEM_H / 2) / 0.86  # horizontal run of a branch that spans half of it
+NUMERAL_LIMB_RUN = 220  # the limb of nought runs this far to each side of its stem
+
+
+def stem_x(name: str) -> float:
+    """The column of a glyph's stem, from the design's bearing and its longest back branch."""
+    if name == "num.0":
+        return BEARING + NUMERAL_LIMB_RUN
+    back = [
+        LONG_RUN if {b[1], b[2]} == {"T", "0"} else HALF_RUN
+        for b in BRANCHES.get(name, BRANCHES["j"] if name == "y" else "").split()
+        if b[0] == "B"
+    ]
+    return BEARING + max(back + [STEM_W / 2])
+
+
 def ink(r: Renderer, name: str, size: int):
     """The glyph's ink at `size`, with its stem on a fixed column."""
     key = "0" if name == "num.0" else name
-    shaped = r.shape(key if name != "j" else "j")
-    stem_x = G.GLYPHS[name].cuts[0].x1 * size / r.upem
+    shaped = r.shape(key)
     img = Image.new("RGB", (160, 100), "white")
-    r.draw(img, 60 - stem_x, 80, shaped, size, "black")
+    r.draw(img, 60 - stem_x(name) * size / r.upem, 80, shaped, size, "black")
     return img.convert("L").point(lambda v: 1 if v < 128 else 0)
 
 

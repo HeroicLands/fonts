@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="blank" format="2">
+  <unicode hex="0021"/>
+  <unicode hex="0022"/>
+  <unicode hex="0023"/>
+  <unicode hex="0024"/>
+  <unicode hex="0025"/>
+  <unicode hex="0026"/>
+  <unicode hex="0027"/>
+  <unicode hex="0028"/>
+  <unicode hex="0029"/>
+  <unicode hex="002A"/>
+  <unicode hex="002B"/>
+  <unicode hex="002C"/>
+  <unicode hex="002F"/>
+  <unicode hex="003A"/>
+  <unicode hex="003B"/>
+  <unicode hex="003C"/>
+  <unicode hex="003D"/>
+  <unicode hex="003E"/>
+  <unicode hex="003F"/>
+  <unicode hex="0040"/>
+  <unicode hex="005B"/>
+  <unicode hex="005C"/>
+  <unicode hex="005D"/>
+  <unicode hex="005E"/>
+  <unicode hex="005F"/>
+  <unicode hex="0060"/>
+  <unicode hex="007B"/>
+  <unicode hex="007C"/>
+  <unicode hex="007D"/>
+  <unicode hex="007E"/>
+  <unicode hex="00A1"/>
+  <unicode hex="00AB"/>
+  <unicode hex="00B7"/>
+  <unicode hex="00BB"/>
+  <unicode hex="2018"/>
+  <unicode hex="2019"/>
+  <unicode hex="201C"/>
+  <unicode hex="201D"/>
+  <unicode hex="201E"/>
+  <unicode hex="2026"/>
+  <outline>
+  </outline>
+</glyph>

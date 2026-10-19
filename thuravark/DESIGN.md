@@ -3,6 +3,13 @@
 The rune-row of the Nordmen of thalorna, the reduced daughter of Pirzath
 Carved. Twenty-eight staves, ten numerals and one mark, all straight.
 
+## Source
+
+The source of the font is the UFO `sources/ThuravarkRunic.ufo`: the outlines,
+the character map, the metrics and `features.fea`. The design is settled. The UFO
+is edited in a font editor and built with `fontmake`; `./build.sh` at the
+repository root builds both fonts.
+
 ## The staves
 
 Every stave is one upright stem, 740 units tall, with up to four straight
@@ -12,7 +19,7 @@ branch spans the whole stem over a short run at slope 2.73, the angle of
 Pirzath's tent and trough arms. A half branch spans half the stem over a longer
 run at slope 0.86, the angle of Pirzath's point arms. No branch has another
 slope and none is horizontal. The strokes are Pirzath's graver grooves, united
-into one outline; the build imports them from `src/` and copies nothing.
+into one outline.
 
 A tent or trough arm passes 135 units from the stem at the middle level, so a
 half branch leaving there on the arm's side has no daylight against it. The
@@ -23,8 +30,9 @@ and one half branch leaving at the middle on the other side: m falls, n rises.
 No stave has more than two branches meeting at one point.
 
 Each stave carries its own room, so the font has no kerning and no mark
-positioning. The branch tables are in `src/staves.py` and follow the inventory
-table row for row; the typed input of each stave is in that table too.
+positioning. The branch of each stave is in the guard's table, `src/guard.py`, which
+follows the inventory table row for row; the typed input of each stave is in the
+specimen table in `src/specimens.py`.
 
 | Typed | Draws |
 | --- | --- |
@@ -53,12 +61,12 @@ a cup no value makes and no stave has.
 
 `src/guard.py` shapes every Nordmal form on thalorna `origin/main` (words,
 affixes, elements, given and clan names) and a set of fixtures, and asserts the
-stave design: 28 distinct branch sets, only the two stave slopes, no horizontal
-cut but the full stop, numerals taller than staves and off the stave slopes, and
-every pair of staves at least 20 pixels apart at 36 px. `src/check_font.py`
+stave design: 28 distinct branch sets, no horizontal edge in any stave,
+numerals taller than staves, and every pair of staves at least 20 pixels apart
+at 36 px. `src/check_font.py`
 checks the cmap, the empty glyphs, the name table and the `.woff2`.
-`src/build_font.py --broken` builds a font without ligatures or decomposition,
-and the guard must fail on it.
+`src/prove_guards.py` in the Pirzath tree removes the GSUB table from the built
+font, which drops the ligatures and decomposition, and the guard must fail on it.
 
 ## The visual loop
 

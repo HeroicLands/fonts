@@ -293,16 +293,25 @@ after a space and closes anywhere else. A single `<` or `>` draws as
   lost letters initial, medial and final where each can occur, with _zangh_,
   _huzangh_, `ay`, `ey` and `oy`, `y` before a vowel and between consonants,
   both apostrophes, the pairs with an acute on either vowel and the doubled lost
-  consonants. `src/build.py --broken` builds a font without the ligature,
-  decomposition, quotation and lost-letter features, and the guard fails on it.
+  consonants. `src/prove_guards.py` removes the GSUB table from the built font,
+  which drops the ligature, decomposition, quotation and lost-letter features,
+  and the guard fails on it.
+
+## Source
+
+The source of the font is the UFO `sources/PirzathCarved.ufo`: the outlines,
+the character map, the metrics and `features.fea` with every OpenType feature.
+The design is settled. The UFO is edited in a font editor and built with
+`fontmake`.
 
 ## Building
 
 ```sh
 python3 -m venv .venv && .venv/bin/pip install -r requirements.txt
-.venv/bin/python src/build.py        # fonts/PirzathCarved-Regular.ttf and .woff2
+PATH=.venv/bin:$PATH ./build.sh      # fonts/PirzathCarved-Regular.ttf and .woff2
 .venv/bin/python src/specimens.py    # specimens/pirzath/*.png
 .venv/bin/python src/check_font.py
+.venv/bin/python src/prove_guards.py
 .venv/bin/python src/guard.py        # needs ~/dev/HeroicLands/thalorna, or --note FILE
 ```
 

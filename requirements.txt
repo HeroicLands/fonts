@@ -1,6 +1,8 @@
-fonttools
-brotli
-uharfbuzz
-Pillow
-PyYAML
-skia-pathops
+fonttools==4.67.0
+brotli==1.2.0
+uharfbuzz==0.56.3
+Pillow==13.0.0
+PyYAML==6.0.3
+skia-pathops==0.9.2
+fontmake==3.12.2
+ufoLib2==0.19.1

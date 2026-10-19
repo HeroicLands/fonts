@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="space" format="2">
+  <unicode hex="0020"/>
+  <unicode hex="00A0"/>
+  <unicode hex="2009"/>
+  <unicode hex="202F"/>
+  <outline>
+  </outline>
+</glyph>

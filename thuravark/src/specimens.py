@@ -17,8 +17,7 @@ from pathlib import Path
 
 from PIL import Image, ImageDraw
 
-sys.path.insert(0, str(Path(__file__).resolve().parent))
-import staves as G  # noqa: E402
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent / "src"))
 from render import Renderer, label_font  # noqa: E402
 
 HERE = Path(__file__).resolve().parent.parent
@@ -28,6 +27,38 @@ INK = (28, 24, 20)
 GREY = (120, 112, 104)
 RULE = (205, 198, 186)
 RED = (150, 40, 30)
+
+# Each stave: glyph name, sound, the Latin that types it, and the Pirzath letter it descends from.
+STAVE_TABLE = [
+    ('a', 'a', 'a', 'a'),
+    ('e', 'e', 'e', 'e'),
+    ('i', 'i', 'i, y not before a vowel', 'i'),
+    ('o', 'o', 'o', 'o'),
+    ('u', 'u', 'u', 'u'),
+    ('p', 'p', 'p', 'p'),
+    ('b', 'b', 'b', 'b'),
+    ('f', 'f', 'f', 'f'),
+    ('v', 'v', 'v', 'v'),
+    ('t', 't', 't', 't'),
+    ('d', 'd', 'd', 'd'),
+    ('th', 'th', 'th', 'th'),
+    ('dh', 'dh', 'dh', 'dh'),
+    ('k', 'k', 'k', 'k'),
+    ('g', 'g', 'g', 'g'),
+    ('kh', 'kh', 'kh', 'kh'),
+    ('gh', 'gh', 'gh', 'gh'),
+    ('s', 's', 's', 's'),
+    ('z', 'z', 'z', 'z'),
+    ('h', 'h', 'h', 'h'),
+    ('l', 'l', 'l', 'l'),
+    ('r', 'r', 'r', 'r'),
+    ('hl', 'hl', 'hl', 'hl'),
+    ('m', 'm', 'm', 'm'),
+    ('n', 'n', 'n', 'n'),
+    ('ng', 'ng', 'ng', 'ng'),
+    ('j', 'y (glide)', 'j, y before a vowel', 'y'),
+    ('w', 'w', 'w', 'w'),
+]
 
 # The fillers are staves Nordmal does not write.
 FILLERS = {"dh", "kh", "gh", "z", "w"}
@@ -74,7 +105,7 @@ def centred(r, img, cx, baseline, text, size, color=INK, first_only=False):
 
 def glyph_chart(r: Renderer, out: Path):
     cols, cell_w, cell_h = 7, 210, 330
-    cells = [(row[0], row[2], row[1]) for row in G.STAVE_TABLE]
+    cells = [(row[0], row[2], row[1]) for row in STAVE_TABLE]
     extras = [
         (".", ". sentence end", ""), ("aa", "aa long vowel", "a twice"),
         ("á", "á long vowel", "a twice"), ("nn", "nn doubled", "n twice"),
@@ -151,7 +182,7 @@ def numerals(r: Renderer, out: Path):
 
 def descent(r: Renderer, p: Renderer, out: Path):
     cols, cell_w, cell_h = 7, 230, 330
-    rows = (len(G.STAVE_TABLE) + cols - 1) // cols
+    rows = (len(STAVE_TABLE) + cols - 1) // cols
     margin = 40
     word_h = 150
     img, d = page(margin * 2 + cols * cell_w,
@@ -159,7 +190,7 @@ def descent(r: Renderer, p: Renderer, out: Path):
     d.text((margin, 18), "Each stave beside the Pirzath Carved letter it descends from",
            fill=GREY, font=label_font(22))
     lab = label_font(19)
-    for i, row in enumerate(G.STAVE_TABLE):
+    for i, row in enumerate(STAVE_TABLE):
         name, sound, typed, parent = row[0], row[1], row[2], row[3]
         cx = margin + (i % cols) * cell_w
         cy = margin + 60 + (i // cols) * cell_h

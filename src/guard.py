@@ -25,15 +25,30 @@ from pathlib import Path
 import yaml
 
 sys.path.insert(0, str(Path(__file__).parent))
-import glyphs as G  # noqa: E402
 from render import Renderer  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
 NOTE = "assets/content/Skills/Languages/Khazari.md"
 
 NUMS = [f"num.{i}" for i in range(16)]
-CONSONANT_NAMES = {c.name for c in G.CONSONANTS}
-DOUBLED_DIGRAPHS = {k[0] + k: v for k, v in G.DIGRAPHS.items()}  # tth, ddh, kkh, ggh
+
+# What the owner's rulings say types each letter. The guard owns these tables;
+# the font under test is only ever read.
+DIGRAPHS = {"th": "t_h", "dh": "d_h", "gh": "g_h", "kh": "k_h"}
+ACUTES = {"á": "aacute", "é": "eacute", "í": "iacute", "ó": "oacute", "ú": "uacute"}
+LETTERS = {c: c for c in "bdgkptvfzshmnlrcaeiou"}
+PUNCT_MAP = {
+    "-": "hyphen", ".": "period", ",": "comma", "!": "exclam", "¡": "exclam",
+    " ": "space", "\u00a0": "space", "\u2010": "hyphen", "\u2011": "hyphen",
+    '"': "quotedbl", "\u201c": "quote.open", "\u201d": "quote.close",
+    "«": "quote.open", "»": "quote.close", "[": "quote.open", "]": "quote.close",
+    "<": "less", ">": "greater",
+}
+CONSONANT_NAMES = {
+    "p", "b", "f", "v", "m", "t", "d", "t_h", "d_h", "n", "k", "g", "k_h", "g_h", "s", "z", "h",
+    "l", "r", "sh", "zh", "ts", "ch", "j", "q", "ng", "ny", "catch", "w", "y", "hl",
+}
+DOUBLED_DIGRAPHS = {k[0] + k: v for k, v in DIGRAPHS.items()}  # tth, ddh, kkh, ggh
 
 # What the owner's rulings on numerals and quotation marks must shape to.
 FIXTURES = [
@@ -66,7 +81,7 @@ FIXTURES = [
     ("!ves durám.", ["exclam", "v", "e", "s", "space", "d", "u", "r", "a", "lengthmark", "m", "period"]),
     # Doubling: every consonant and every digraph, then the lexicon's own.
     *[(f"a{c}{c}a", ["a", c, "doubling", "a"]) for c in "bdgkptvfzshmnlr"],
-    *[(f"a{d[0]}{d}a", ["a", G.DIGRAPHS[d], "doubling", "a"]) for d in G.DIGRAPHS],
+    *[(f"a{d[0]}{d}a", ["a", DIGRAPHS[d], "doubling", "a"]) for d in DIGRAPHS],
     ("dullák", ["d", "u", "l", "doubling", "a", "lengthmark", "k"]),
     ("putthák", ["p", "u", "t_h", "doubling", "a", "lengthmark", "k"]),
     ("gummáth", ["g", "u", "m", "doubling", "a", "lengthmark", "t_h"]),
@@ -158,17 +173,17 @@ def expected_glyphs(form: str) -> list[str]:
             i += 3
             continue
         two = s[i : i + 2]
-        if two in G.DIGRAPHS:
-            out.append(G.DIGRAPHS[two])
+        if two in DIGRAPHS:
+            out.append(DIGRAPHS[two])
             i += 2
             continue
         ch = s[i]
-        if ch in G.ACUTES:
-            out += [G.ACUTES[ch][0], "lengthmark"]
-        elif ch in G.LETTERS:
-            out.append(G.LETTERS[ch])
-        elif ch in G.PUNCT_MAP:
-            out.append(G.PUNCT_MAP[ch])
+        if ch in ACUTES:
+            out += [ACUTES[ch][0], "lengthmark"]
+        elif ch in LETTERS:
+            out.append(LETTERS[ch])
+        elif ch in PUNCT_MAP:
+            out.append(PUNCT_MAP[ch])
         else:
             out.append(".notdef")
         i += 1
@@ -191,7 +206,7 @@ def run(font: Path, forms: list[str]) -> list[str]:
             failures.append(f"{form}: .notdef in {got}")
         elif got != want:
             failures.append(f"{form}: shaped {got}, expected {want}")
-        digraphs += sum(1 for g in want if g in G.DIGRAPHS.values())
+        digraphs += sum(1 for g in want if g in DIGRAPHS.values())
         acutes += want.count("lengthmark")
     for text, want in FIXTURES + LOST_FIXTURES:
         got = r.glyph_names(text)

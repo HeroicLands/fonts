@@ -1,0 +1,58 @@
+
+languagesystem DFLT dflt;
+languagesystem latn dflt;
+
+# The vowels a glide y stands before.
+@VOWEL = [a e i o u];
+
+# An acute vowel is the stave twice, and so is a vowel followed by U+0301. The
+# first letter of a doubled digraph (tth, ddh, kkh, ggh, hhl, nng) becomes the
+# digraph itself, so the ligatures below see two digraphs; ngh is n and gh.
+feature ccmp {
+lookup ccmp_comb {
+  sub a acutecomb by aacute;
+  sub e acutecomb by eacute;
+  sub i acutecomb by iacute;
+  sub o acutecomb by oacute;
+  sub u acutecomb by uacute;
+} ccmp_comb;
+lookup ccmp_long {
+  sub aacute by a a;
+  sub eacute by e e;
+  sub iacute by i i;
+  sub oacute by o o;
+  sub uacute by u u;
+} ccmp_long;
+lookup ccmp_doubled {
+  sub t' t h by th;
+  sub d' d h by dh;
+  sub k' k h by kh;
+  sub g' g h by gh;
+  sub h' h l by hl;
+  ignore sub n' n g h;
+  sub n' n g by ng;
+} ccmp_doubled;
+} ccmp;
+
+# The lookups run in order, so the longest spelling wins: th dh kh gh first,
+# which makes ngh the letter n and gh, then ng and hl. A y not before a vowel
+# is the vowel i; any other y is the glide.
+feature liga {
+lookup liga_digraphs {
+  sub t h by th;
+  sub d h by dh;
+  sub k h by kh;
+  sub g h by gh;
+} liga_digraphs;
+lookup liga_other {
+  sub n g by ng;
+  sub h l by hl;
+} liga_other;
+lookup liga_y {
+  ignore sub y' @VOWEL;
+  sub y' by i;
+} liga_y;
+lookup liga_glide {
+  sub y by j;
+} liga_glide;
+} liga;

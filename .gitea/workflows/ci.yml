@@ -2,12 +2,12 @@ name: CI
 
 # What the repository asserts on every change: the canonical git hooks are
 # present, no TODO or FIXME marker is committed, and the fonts rebuild from the
-# source and pass the font check.
+# UFO sources and pass the font check.
 #
 # The build is reproducible (a fixed head timestamp), so the committed fonts
 # must match a fresh build byte for byte: a font left unrebuilt fails here.
 #
-# src/guard.py is not run here. It reads the Khazari lexicon from a local
+# The lexicon guards are not run here. They read the lexicon from a local
 # thalorna checkout, and thalorna is private to this CI.
 
 on:
@@ -47,9 +47,7 @@ jobs:
                   python3 -m venv .venv
                   .venv/bin/pip install -r requirements.txt
             - name: Build the fonts
-              run: |
-                  .venv/bin/python src/build.py
-                  .venv/bin/python thuravark/src/build_font.py
+              run: PATH="$PWD/.venv/bin:$PATH" ./build.sh
             - name: Check the fonts
               run: |
                   .venv/bin/python src/check_font.py

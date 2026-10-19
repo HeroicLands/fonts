@@ -153,8 +153,9 @@ half-finished diagnosis.
 
 "Done" is what the build and its checks assert:
 
-- `python src/build.py` — builds the fonts into `fonts/`
+- `./build.sh` — builds both fonts from their UFOs under `sources/`
 - `python src/check_font.py` — checks the built font
+- `python thuravark/src/check_font.py` — checks the built Thuravark font
 - `python src/guard.py` — shapes every lexicon form against a local thalorna checkout
 
 A change to a font commits the rebuilt files in `fonts/` with it, and a change to

@@ -1,0 +1,26 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="ts" format="2">
+  <advance width="660"/>
+  <outline>
+    <contour>
+      <point x="252.0" y="72.80000305175781" type="line"/>
+      <point x="252.0" y="233.463623046875" type="line"/>
+      <point x="501.0878601074219" y="9.923230171203613" type="line"/>
+      <point x="590.0" y="0.0" type="line"/>
+      <point x="570.5504760742188" y="87.32442474365234" type="line"/>
+      <point x="288.9121398925781" y="340.0767822265625" type="line"/>
+      <point x="252.0" y="344.1964416503906" type="line"/>
+      <point x="252.0" y="355.8035583496094" type="line"/>
+      <point x="288.9121398925781" y="359.9232177734375" type="line"/>
+      <point x="570.5504760742188" y="612.6755981445312" type="line"/>
+      <point x="590.0" y="700.0" type="line"/>
+      <point x="501.0878601074219" y="690.0767822265625" type="line"/>
+      <point x="252.0" y="466.536376953125" type="line"/>
+      <point x="252.0" y="627.2000122070312" type="line"/>
+      <point x="200.0" y="700.0" type="line"/>
+      <point x="148.0" y="627.2000122070312" type="line"/>
+      <point x="148.0" y="72.80000305175781" type="line"/>
+      <point x="200.0" y="0.0" type="line"/>
+    </contour>
+  </outline>
+</glyph>

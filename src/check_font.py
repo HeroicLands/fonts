@@ -14,8 +14,6 @@ from pathlib import Path
 
 from fontTools.ttLib import TTFont
 
-sys.path.insert(0, str(Path(__file__).parent))
-import glyphs as G  # noqa: E402
 
 EMPTY_BY_DESIGN = set()
 
@@ -61,6 +59,15 @@ RULED = {
     "\u2019": "catch",
 }
 
+# Letters typed in both cases, the long vowels, the length mark and the lost keys.
+TYPED = {}
+for _ch in "bdgkptvfzshmnlrcaeiouyjqw":
+    TYPED[_ch] = TYPED[_ch.upper()] = _ch
+for _ch, _name in zip("áéíóú", ["aacute", "eacute", "iacute", "oacute", "uacute"]):
+    TYPED[_ch] = TYPED[_ch.upper()] = _name
+TYPED["\u0301"] = "lengthmark"
+TYPED["\u2019"] = TYPED["'"] = "catch"
+
 # The seventeen lost letters, each of which must be in the font with an outline.
 LOST_LETTERS = [
     "sh", "zh", "ch", "j", "ts", "q", "ng", "ny", "hl", "w", "catch", "y",
@@ -81,9 +88,9 @@ def check(path: Path) -> list[str]:
             problems.append(f"U+{cp:04X} maps to {name}, which is not in the font")
         elif name not in EMPTY_BY_DESIGN and glyf[name].numberOfContours == 0:
             problems.append(f"U+{cp:04X} maps to {name}, which has no outline")
-    for cp, name in G.cmap().items():
-        if cmap.get(cp) != name:
-            problems.append(f"U+{cp:04X} should map to {name}, maps to {cmap.get(cp)}")
+    for ch, name in TYPED.items():
+        if cmap.get(ord(ch)) != name:
+            problems.append(f"{ch!r} should type {name}, types {cmap.get(ord(ch))}")
     for ch, name in RULED.items():
         if cmap.get(ord(ch)) != name:
             problems.append(f"{ch!r} should type {name}, types {cmap.get(ord(ch))}")

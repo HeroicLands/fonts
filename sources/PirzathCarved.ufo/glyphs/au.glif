@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="au" format="2">
+  <advance width="440"/>
+  <outline>
+    <contour>
+      <point x="49.71456527709961" y="372.440673828125" type="line"/>
+      <point x="162.67160034179688" y="41.10005187988281" type="line"/>
+      <point x="220.0" y="0.0" type="line"/>
+      <point x="277.3283996582031" y="41.10005187988281" type="line"/>
+      <point x="390.2854309082031" y="372.440673828125" type="line"/>
+      <point x="370.0" y="440.0" type="line"/>
+      <point x="312.6716003417969" y="398.8999328613281" type="line"/>
+      <point x="220.0" y="127.06324768066406" type="line"/>
+      <point x="127.32839965820312" y="398.8999328613281" type="line"/>
+      <point x="70.0" y="440.0" type="line"/>
+    </contour>
+  </outline>
+</glyph>
