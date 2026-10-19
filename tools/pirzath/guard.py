@@ -2,8 +2,8 @@
 # SPDX-License-Identifier: OFL-1.1
 """Shape every Khazari lexicon form and assert the font renders it rightly.
 
-    .venv/bin/python src/guard.py [--font fonts/PirzathCarved-Regular.ttf]
-                                  [--thalorna ~/dev/HeroicLands/thalorna | --note FILE]
+    .venv/bin/python tools/pirzath/guard.py [--font fonts/PirzathCarved-Regular.ttf]
+                                         [--thalorna ~/dev/HeroicLands/thalorna | --note FILE]
 
 The forms come from the ``words`` list in the frontmatter of
 ``assets/content/Skills/Languages/Khazari.md`` on the thalorna repository's
@@ -24,10 +24,10 @@ from pathlib import Path
 
 import yaml
 
-sys.path.insert(0, str(Path(__file__).parent))
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from render import Renderer  # noqa: E402
 
-ROOT = Path(__file__).resolve().parent.parent
+ROOT = Path(__file__).resolve().parent.parent.parent
 NOTE = "assets/content/Skills/Languages/Khazari.md"
 
 NUMS = [f"num.{i}" for i in range(16)]

@@ -154,12 +154,12 @@ half-finished diagnosis.
 "Done" is what the build and its checks assert:
 
 - `./build.sh` — builds both fonts from their UFOs under `sources/`
-- `python src/check_font.py` — checks the built font
-- `python thuravark/src/check_font.py` — checks the built Thuravark font
-- `python src/guard.py` — shapes every lexicon form against a local thalorna checkout
+- `python tools/pirzath/check_font.py` — checks the built font
+- `python tools/thuravark/check_font.py` — checks the built Thuravark font
+- `python tools/pirzath/guard.py` and `python tools/thuravark/guard.py` — shape every lexicon form against a local thalorna checkout
 
 A change to a font commits the rebuilt files in `fonts/` with it, and a change to
-the design updates `DESIGN.md`.
+the design updates `design/pirzath.md` or `design/thuravark.md`.
 
 ## 7. Which repository does an issue belong in?
 

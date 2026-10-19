@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: OFL-1.1
 """Shape every Nordmal form and assert Thuravark Runic renders it rightly.
 
-    .venv/bin/python thuravark/src/guard.py [--font thuravark/fonts/ThuravarkRunic-Regular.ttf]
+    .venv/bin/python tools/thuravark/guard.py [--font fonts/ThuravarkRunic-Regular.ttf]
                                             [--thalorna ~/dev/HeroicLands/thalorna | --note FILE]
 
 The forms come from the frontmatter of ``assets/content/Skills/Languages/Nordmal.md``
@@ -35,10 +35,10 @@ from fontTools.pens.recordingPen import RecordingPen
 from fontTools.ttLib import TTFont
 from PIL import Image
 
-sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent / "src"))
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from render import Renderer  # noqa: E402
 
-HERE = Path(__file__).resolve().parent.parent
+ROOT = Path(__file__).resolve().parent.parent.parent
 NOTE = "assets/content/Skills/Languages/Nordmal.md"
 
 # Each stave's branches, by the design: the side a branch leaves the stem on (F forward,
@@ -328,7 +328,7 @@ def pixel_difference(a, b):
 
 def main():
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
-    ap.add_argument("--font", default=str(HERE / "fonts" / "ThuravarkRunic-Regular.ttf"))
+    ap.add_argument("--font", default=str(ROOT / "fonts" / "ThuravarkRunic-Regular.ttf"))
     ap.add_argument("--thalorna", default=str(Path.home() / "dev/HeroicLands/thalorna"))
     ap.add_argument("--note", help="read the language note from this file instead of git")
     args = ap.parse_args()

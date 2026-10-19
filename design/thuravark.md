@@ -30,9 +30,9 @@ and one half branch leaving at the middle on the other side: m falls, n rises.
 No stave has more than two branches meeting at one point.
 
 Each stave carries its own room, so the font has no kerning and no mark
-positioning. The branch of each stave is in the guard's table, `src/guard.py`, which
+positioning. The branch of each stave is in the guard's table, `tools/thuravark/guard.py`, which
 follows the inventory table row for row; the typed input of each stave is in the
-specimen table in `src/specimens.py`.
+specimen table in `tools/thuravark/specimens.py`.
 
 | Typed | Draws |
 | --- | --- |
@@ -59,13 +59,13 @@ a cup no value makes and no stave has.
 
 ## Checks
 
-`src/guard.py` shapes every Nordmal form on thalorna `origin/main` (words,
+`tools/thuravark/guard.py` shapes every Nordmal form on thalorna `origin/main` (words,
 affixes, elements, given and clan names) and a set of fixtures, and asserts the
 stave design: 28 distinct branch sets, no horizontal edge in any stave,
 numerals taller than staves, and every pair of staves at least 20 pixels apart
-at 36 px. `src/check_font.py`
+at 36 px. `tools/thuravark/check_font.py`
 checks the cmap, the empty glyphs, the name table and the `.woff2`.
-`src/prove_guards.py` in the Pirzath tree removes the GSUB table from the built
+`tools/prove_guards.py` removes the GSUB table from the built
 font, which drops the ligatures and decomposition, and the guard must fail on it.
 
 ## The visual loop

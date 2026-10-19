@@ -1,5 +1,5 @@
 #!/bin/sh
-# Build both fonts from their UFO sources into fonts/ and thuravark/fonts/.
+# Build both fonts from their UFO sources into fonts/.
 # The timestamp is fixed, so a build is byte-for-byte reproducible.
 #
 #     .venv/bin/... on PATH, or run:  PATH=.venv/bin:$PATH ./build.sh
@@ -15,4 +15,4 @@ build() {
 }
 
 build sources/PirzathCarved.ufo fonts/PirzathCarved-Regular.ttf
-build sources/ThuravarkRunic.ufo thuravark/fonts/ThuravarkRunic-Regular.ttf
+build sources/ThuravarkRunic.ufo fonts/ThuravarkRunic-Regular.ttf

@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: OFL-1.1
 """Render the specimen sheets to PNG.
 
-    .venv/bin/python src/specimens.py [--font fonts/PirzathCarved-Regular.ttf] [--out specimens/pirzath]
+    .venv/bin/python tools/pirzath/specimens.py [--font fonts/PirzathCarved-Regular.ttf] [--out specimens/pirzath]
 
 Six sheets: the glyph chart, the Khazari texts over their Latin at reading and
 display size, the numerals, a paragraph of lexicon words, and the seventeen
@@ -15,10 +15,10 @@ from pathlib import Path
 
 from PIL import Image, ImageDraw
 
-sys.path.insert(0, str(Path(__file__).parent))
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from render import Renderer, label_font  # noqa: E402
 
-ROOT = Path(__file__).resolve().parent.parent
+ROOT = Path(__file__).resolve().parent.parent.parent
 PAPER = (248, 244, 236)
 INK = (28, 24, 20)
 GREY = (120, 112, 104)

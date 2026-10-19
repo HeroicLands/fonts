@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: OFL-1.1
 """Render the Thuravark Runic specimen sheets to PNG.
 
-    .venv/bin/python thuravark/src/specimens.py [--font thuravark/fonts/ThuravarkRunic-Regular.ttf]
+    .venv/bin/python tools/thuravark/specimens.py [--font fonts/ThuravarkRunic-Regular.ttf]
                                                 [--pirzath fonts/PirzathCarved-Regular.ttf]
                                                 [--out specimens/thuravark]
 
@@ -17,11 +17,10 @@ from pathlib import Path
 
 from PIL import Image, ImageDraw
 
-sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent / "src"))
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from render import Renderer, label_font  # noqa: E402
 
-HERE = Path(__file__).resolve().parent.parent
-ROOT = HERE.parent
+ROOT = Path(__file__).resolve().parent.parent.parent
 PAPER = (248, 244, 236)
 INK = (28, 24, 20)
 GREY = (120, 112, 104)
@@ -219,7 +218,7 @@ def descent(r: Renderer, p: Renderer, out: Path):
 
 def main():
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
-    ap.add_argument("--font", default=str(HERE / "fonts" / "ThuravarkRunic-Regular.ttf"))
+    ap.add_argument("--font", default=str(ROOT / "fonts" / "ThuravarkRunic-Regular.ttf"))
     ap.add_argument("--pirzath", default=str(ROOT / "fonts" / "PirzathCarved-Regular.ttf"))
     ap.add_argument("--out", default=str(ROOT / "specimens" / "thuravark"))
     args = ap.parse_args()

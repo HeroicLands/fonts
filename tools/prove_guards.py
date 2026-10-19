@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: OFL-1.1
 """Prove that each guard passes a built font and fails the same font without its layout.
 
-    .venv/bin/python src/prove_guards.py
+    .venv/bin/python tools/prove_guards.py
 
 The broken font is the built .ttf with its GSUB table removed, so no ligature,
 decomposition or contextual rule applies. The guards run on their fixtures
@@ -17,7 +17,7 @@ from pathlib import Path
 from fontTools.ttLib import TTFont
 
 ROOT = Path(__file__).resolve().parent.parent
-sys.path.insert(0, str(ROOT / "src"))
+sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 
 def load(name: str, path: Path):
@@ -35,13 +35,13 @@ def stripped(font: Path, out: Path) -> Path:
 
 
 def main():
-    pirzath = load("pirzath_guard", ROOT / "src" / "guard.py")
-    thuravark = load("thuravark_guard", ROOT / "thuravark" / "src" / "guard.py")
+    pirzath = load("pirzath_guard", ROOT / "tools" / "pirzath" / "guard.py")
+    thuravark = load("thuravark_guard", ROOT / "tools" / "thuravark" / "guard.py")
     cases = [
         ("Pirzath Carved", ROOT / "fonts" / "PirzathCarved-Regular.ttf", lambda p: pirzath.run(p, [])),
         (
             "Thuravark Runic",
-            ROOT / "thuravark" / "fonts" / "ThuravarkRunic-Regular.ttf",
+            ROOT / "fonts" / "ThuravarkRunic-Regular.ttf",
             lambda p: thuravark.shaping(p, []),
         ),
     ]

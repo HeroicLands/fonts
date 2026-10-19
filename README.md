@@ -25,7 +25,7 @@ python3 -m venv .venv
 
 The source of each font is a UFO under `sources/`: `PirzathCarved.ufo` and `ThuravarkRunic.ufo`. Open one in FontForge, Glyphs or RoboFont to edit it. The UFO carries the outlines, the character map, the metrics and `features.fea`, which holds every OpenType feature.
 
-Build both fonts into `fonts/` and `thuravark/fonts/`. The build is reproducible, so the committed fonts match a fresh build byte for byte:
+Build both fonts into `fonts/`. The build is reproducible, so the committed fonts match a fresh build byte for byte:
 
 ```sh
 PATH=.venv/bin:$PATH ./build.sh
@@ -43,16 +43,16 @@ fonttools ttLib.woff2 compress -o fonts/PirzathCarved-Regular.woff2 fonts/Pirzat
 Check the built fonts, render the specimens, and prove that each guard fails a font without its layout:
 
 ```sh
-.venv/bin/python src/check_font.py
-.venv/bin/python thuravark/src/check_font.py
-.venv/bin/python src/specimens.py            # specimens/pirzath/
-.venv/bin/python thuravark/src/specimens.py  # specimens/thuravark/
-.venv/bin/python src/prove_guards.py
+.venv/bin/python tools/pirzath/check_font.py
+.venv/bin/python tools/thuravark/check_font.py
+.venv/bin/python tools/pirzath/specimens.py    # specimens/pirzath/
+.venv/bin/python tools/thuravark/specimens.py  # specimens/thuravark/
+.venv/bin/python tools/prove_guards.py
 ```
 
 The guard shapes every form of the Khazari lexicon and asserts the font renders it rightly. It reads the lexicon from the `origin/main` of a local thalorna checkout, `~/dev/HeroicLands/thalorna` by default:
 
 ```sh
-.venv/bin/python src/guard.py --thalorna /path/to/thalorna
-.venv/bin/python thuravark/src/guard.py --thalorna /path/to/thalorna
+.venv/bin/python tools/pirzath/guard.py --thalorna /path/to/thalorna
+.venv/bin/python tools/thuravark/guard.py --thalorna /path/to/thalorna
 ```

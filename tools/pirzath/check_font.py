@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: OFL-1.1
 """Load the built font and confirm every mapped character has a glyph.
 
-    .venv/bin/python src/check_font.py [fonts/PirzathCarved-Regular.ttf]
+    .venv/bin/python tools/pirzath/check_font.py [fonts/PirzathCarved-Regular.ttf]
 
 Every code point in the cmap must name a glyph in the glyph order, and the
 glyph must carry an outline unless it is one of the few that draw nothing by
@@ -144,7 +144,7 @@ def check(path: Path) -> list[str]:
 
 def main():
     path = Path(sys.argv[1]) if len(sys.argv) > 1 else (
-        Path(__file__).resolve().parent.parent / "fonts" / "PirzathCarved-Regular.ttf"
+        Path(__file__).resolve().parent.parent.parent / "fonts" / "PirzathCarved-Regular.ttf"
     )
     problems = check(path)
     for p in problems:

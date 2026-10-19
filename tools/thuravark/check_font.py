@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: OFL-1.1
 """Load the built font and confirm every mapped character has a glyph.
 
-    .venv/bin/python thuravark/src/check_font.py [thuravark/fonts/ThuravarkRunic-Regular.ttf]
+    .venv/bin/python tools/thuravark/check_font.py [fonts/ThuravarkRunic-Regular.ttf]
 
 Every code point in the cmap must name a glyph in the glyph order, and the glyph
 must carry an outline unless it is one of the few that draw nothing by design.
@@ -15,7 +15,7 @@ from pathlib import Path
 
 from fontTools.ttLib import TTFont
 
-HERE = Path(__file__).resolve().parent.parent
+ROOT = Path(__file__).resolve().parent.parent.parent
 EMPTY_BY_DESIGN = {"space", "hyphen", "blank", "acutecomb"}
 
 # What the owner's rulings say these keys type, independent of the glyph source.
@@ -84,7 +84,7 @@ def check(path: Path) -> list[str]:
     for nid, value in expect.items():
         if names.get(nid) != value:
             problems.append(f"name {nid} is {names.get(nid)!r}, expected {value!r}")
-    copyright_line = (HERE.parent / "LICENSE").read_text(encoding="utf-8").splitlines()[0].strip()
+    copyright_line = (ROOT / "LICENSE").read_text(encoding="utf-8").splitlines()[0].strip()
     if names.get(0) != copyright_line:
         problems.append(f"name 0 is {names.get(0)!r}, expected {copyright_line!r}")
     if 7 in names:
@@ -103,7 +103,7 @@ def check(path: Path) -> list[str]:
 
 
 def main():
-    path = Path(sys.argv[1]) if len(sys.argv) > 1 else HERE / "fonts" / "ThuravarkRunic-Regular.ttf"
+    path = Path(sys.argv[1]) if len(sys.argv) > 1 else ROOT / "fonts" / "ThuravarkRunic-Regular.ttf"
     problems = check(path)
     for p in problems:
         print(f"{path}: error: {p}")

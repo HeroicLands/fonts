@@ -34,7 +34,7 @@ jobs:
             - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
             - uses: HeroicLands/.github/actions/todos@f8139e8a0f414a349cd760b4c0bfbd80ab58722a # main
               with:
-                  paths: src
+                  paths: tools
                   extensions: .py
 
     fonts:
@@ -50,7 +50,7 @@ jobs:
               run: PATH="$PWD/.venv/bin:$PATH" ./build.sh
             - name: Check the fonts
               run: |
-                  .venv/bin/python src/check_font.py
-                  .venv/bin/python thuravark/src/check_font.py
+                  .venv/bin/python tools/pirzath/check_font.py
+                  .venv/bin/python tools/thuravark/check_font.py
             - name: Committed fonts match the build
-              run: git diff --exit-code -- fonts/ thuravark/fonts/
+              run: git diff --exit-code -- fonts/

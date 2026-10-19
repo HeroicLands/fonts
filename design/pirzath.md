@@ -275,12 +275,12 @@ after a space and closes anywhere else. A single `<` or `>` draws as
 
 ## Checks
 
-- `src/check_font.py` loads the built font, confirms every mapped code point
+- `tools/pirzath/check_font.py` loads the built font, confirms every mapped code point
   names a glyph with an outline, checks that `?`, `;` and `:` are unmapped so
   they fall to `.notdef`, checks that the digits, `@ # $ % ^ &`,
   the quotation inputs (`"`, `“ ”`, `« »`, `[ ]` and `<<` `>>`), the space, `.`, `!`, `,`, `-` and a to f type
   what the rulings say, checks the name table and opens the `.woff2`.
-- `src/guard.py` shapes every form in the `words` list of the Khazari language
+- `tools/pirzath/guard.py` shapes every form in the `words` list of the Khazari language
   note on thalorna's `origin/main` and asserts the shaped glyph sequence is the
   one the spelling demands: no `.notdef`, each digraph one glyph, each acute
   vowel its vowel followed by the length mark, each doubled consonant or
@@ -293,7 +293,7 @@ after a space and closes anywhere else. A single `<` or `>` draws as
   lost letters initial, medial and final where each can occur, with _zangh_,
   _huzangh_, `ay`, `ey` and `oy`, `y` before a vowel and between consonants,
   both apostrophes, the pairs with an acute on either vowel and the doubled lost
-  consonants. `src/prove_guards.py` removes the GSUB table from the built font,
+  consonants. `tools/prove_guards.py` removes the GSUB table from the built font,
   which drops the ligature, decomposition, quotation and lost-letter features,
   and the guard fails on it.
 
@@ -309,10 +309,10 @@ The design is settled. The UFO is edited in a font editor and built with
 ```sh
 python3 -m venv .venv && .venv/bin/pip install -r requirements.txt
 PATH=.venv/bin:$PATH ./build.sh      # fonts/PirzathCarved-Regular.ttf and .woff2
-.venv/bin/python src/specimens.py    # specimens/pirzath/*.png
-.venv/bin/python src/check_font.py
-.venv/bin/python src/prove_guards.py
-.venv/bin/python src/guard.py        # needs ~/dev/HeroicLands/thalorna, or --note FILE
+.venv/bin/python tools/pirzath/specimens.py    # specimens/pirzath/*.png
+.venv/bin/python tools/pirzath/check_font.py
+.venv/bin/python tools/prove_guards.py
+.venv/bin/python tools/pirzath/guard.py        # needs ~/dev/HeroicLands/thalorna, or --note FILE
 ```
 
 ## Showing the script
