@@ -1,0 +1,54 @@
+name: CI
+
+# What the repository asserts on every change: the canonical git hooks are
+# present, no TODO or FIXME marker is committed, and the fonts rebuild from the
+# source and pass the font check.
+#
+# The build is reproducible (a fixed head timestamp), so the committed fonts
+# must match a fresh build byte for byte: a font left unrebuilt fails here.
+#
+# src/guard.py is not run here. It reads the Khazari lexicon from a local
+# thalorna checkout, and thalorna is private to this CI.
+
+on:
+    push:
+        branches: [main]
+    pull_request:
+    workflow_dispatch:
+
+permissions:
+    contents: read
+
+jobs:
+    githooks:
+        name: Canonical git hooks
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+            - uses: HeroicLands/.github/actions/githooks@f8139e8a0f414a349cd760b4c0bfbd80ab58722a # main
+
+    todos:
+        name: No TODO or FIXME markers
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+            - uses: HeroicLands/.github/actions/todos@f8139e8a0f414a349cd760b4c0bfbd80ab58722a # main
+              with:
+                  paths: src
+                  extensions: .py
+
+    fonts:
+        name: Fonts build and pass the font check
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+            - name: Create the virtual environment
+              run: |
+                  python3 -m venv .venv
+                  .venv/bin/pip install -r requirements.txt
+            - name: Build the fonts
+              run: .venv/bin/python src/build.py
+            - name: Check the fonts
+              run: .venv/bin/python src/check_font.py
+            - name: Committed fonts match the build
+              run: git diff --exit-code -- fonts/

@@ -16,12 +16,14 @@ profiles.
 
 import argparse
 import math
+import os
 import sys
 from pathlib import Path
 
 import pathops
 from fontTools.feaLib.builder import addOpenTypeFeaturesFromString
 from fontTools.fontBuilder import FontBuilder
+from fontTools.misc.timeTools import epoch_diff
 from fontTools.pens.ttGlyphPen import TTGlyphPen
 
 sys.path.insert(0, str(Path(__file__).parent))
@@ -331,6 +333,11 @@ def build(out_dir: Path, break_it: bool = False):
     fb.font["head"].fontRevision = VERSION
     # Overlapping-free outlines; the flag says a renderer need not expect them.
     fb.font["head"].flags |= 0x0008
+    # A fixed timestamp makes the build reproducible, so CI can check that the
+    # committed fonts match their source. SOURCE_DATE_EPOCH overrides it.
+    stamp = int(os.environ.get("SOURCE_DATE_EPOCH", "1767225600")) - epoch_diff
+    fb.font["head"].created = fb.font["head"].modified = stamp
+    fb.font.recalcTimestamp = False
 
     # The word-dividing dot keeps its fixed room and is not kerned.
     ink = [g.name for g in G.ALL_GLYPHS if g.cuts and g.kind != "mark" and g.name != "space"]
