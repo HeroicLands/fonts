@@ -1,0 +1,7 @@
+.claude/
+CLAUDE.md
+AI.md
+nogit/
+.venv/
+build/
+__pycache__/
