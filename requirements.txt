@@ -1,0 +1,6 @@
+fonttools
+brotli
+uharfbuzz
+Pillow
+PyYAML
+skia-pathops
