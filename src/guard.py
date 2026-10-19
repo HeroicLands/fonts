@@ -62,6 +62,8 @@ FIXTURES = [
     ("«thurágh»", ["quote.open", "t_h", "u", "r", "a", "lengthmark", "g_h", "quote.close"]),
     ("<<thurágh>>", ["quote.open", "t_h", "u", "r", "a", "lengthmark", "g_h", "quote.close"]),
     ("?;:", [".notdef", ".notdef", ".notdef"]),
+    ("¡ves durám.", ["exclam", "v", "e", "s", "space", "d", "u", "r", "a", "lengthmark", "m", "period"]),
+    ("!ves durám.", ["exclam", "v", "e", "s", "space", "d", "u", "r", "a", "lengthmark", "m", "period"]),
     # Doubling: every consonant and every digraph, then the lexicon's own.
     *[(f"a{c}{c}a", ["a", c, "doubling", "a"]) for c in "bdgkptvfzshmnlr"],
     *[(f"a{d[0]}{d}a", ["a", G.DIGRAPHS[d], "doubling", "a"]) for d in G.DIGRAPHS],

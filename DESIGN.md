@@ -301,7 +301,13 @@ after a space and closes anywhere else. A single `<` or `>` draws as
 ```sh
 python3 -m venv .venv && .venv/bin/pip install -r requirements.txt
 .venv/bin/python src/build.py        # fonts/PirzathCarved-Regular.ttf and .woff2
-.venv/bin/python src/specimens.py    # specimens/*.png
+.venv/bin/python src/specimens.py    # specimens/pirzath/*.png
 .venv/bin/python src/check_font.py
 .venv/bin/python src/guard.py        # needs ~/dev/HeroicLands/thalorna, or --note FILE
 ```
+
+## Showing the script
+
+A handout, a shield device, a banner or a logo shows a whole word or a name in this script, never a single letter standing alone. Several letters, seen on their own, share their shape with runes that are used as hate symbols; inside a word they read as letters.
+
+The sentence end is always the last mark of a sentence, outside a closing quotation mark or any other mark: _Galdan bunát, "Dalík bant, maríg bant"._ The imperative mark (`!` or `¡`) stands at the start of what it governs: before the first word of the sentence, or just inside the opening quotation mark when it governs only the quotation. It is not a sentence end, and the sentence still closes with the sentence-end cut.

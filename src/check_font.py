@@ -40,6 +40,7 @@ RULED = {
     " ": "space",
     ".": "period",
     "!": "exclam",
+    "¡": "exclam",
     ",": "comma",
     "-": "hyphen",
     "a": "a",

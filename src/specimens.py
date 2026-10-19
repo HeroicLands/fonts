@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: OFL-1.1
 """Render the specimen sheets to PNG.
 
-    .venv/bin/python src/specimens.py [--font fonts/PirzathCarved-Regular.ttf] [--out specimens]
+    .venv/bin/python src/specimens.py [--font fonts/PirzathCarved-Regular.ttf] [--out specimens/pirzath]
 
 Six sheets: the glyph chart, the Khazari texts over their Latin at reading and
 display size, the numerals, a paragraph of lexicon words, and the seventeen
@@ -60,8 +60,8 @@ CHART = [
 TEXTS = [
     ("The gate-cry", [
         "Thiz durákh tanv.",
-        "Gazn! Gazn durákh tanv!",
-        "Dalk! Bant! Tanv-guráz!",
+        "Gazn. Gazn durákh tanv.",
+        "Dalk. Bant. Tanv-guráz.",
     ]),
     ("The epitaph", [
         "Tanvan Ramk-sumád",
@@ -81,9 +81,9 @@ TEXTS = [
         "Gaz bumár, gaz fuvád",
     ]),
     ("The toast", [
-        "Bamr bamír!",
-        "Gatharir tamík!",
-        "Gazn gulák nuv gatharir!",
+        "Bamr bamír.",
+        "Gatharir tamík.",
+        "Gazn gulák nuv gatharir.",
     ]),
     ("The mastery frame, doubled", [
         "Vog dalkir, vog rummák ramk.",
@@ -91,10 +91,11 @@ TEXTS = [
         "Dulkun putthák, Rinit dullák.",
     ]),
     ("A record quoting an oath", [
-        'Galdan bunát, "Dalík bant, maríg bant."',
-        "Lukum, “Narv zuvák, vog dubáz.”",
+        'Galdan bunát, "Dalík bant, maríg bant".',
+        "Lukum, “Narv zuvák, vog dubáz”.",
         "Guruz, «Gaz thurágh» gaz munád.",
-        "Rinit, <<Bamr bamír!>>",
+        "Rinit, <<¡Ves durám>>.",
+        "!Ves durám bep gunádh nuv gaz.",
     ]),
     ("Phrasebook", [
         "Dalk tasím.",
@@ -285,7 +286,7 @@ def paragraph(r: Renderer, out: Path, size: int = 40):
 def main():
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     ap.add_argument("--font", default=str(ROOT / "fonts" / "PirzathCarved-Regular.ttf"))
-    ap.add_argument("--out", default=str(ROOT / "specimens"))
+    ap.add_argument("--out", default=str(ROOT / "specimens" / "pirzath"))
     args = ap.parse_args()
     out = Path(args.out)
     out.mkdir(parents=True, exist_ok=True)

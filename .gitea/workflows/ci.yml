@@ -47,8 +47,12 @@ jobs:
                   python3 -m venv .venv
                   .venv/bin/pip install -r requirements.txt
             - name: Build the fonts
-              run: .venv/bin/python src/build.py
+              run: |
+                  .venv/bin/python src/build.py
+                  .venv/bin/python thuravark/src/build_font.py
             - name: Check the fonts
-              run: .venv/bin/python src/check_font.py
+              run: |
+                  .venv/bin/python src/check_font.py
+                  .venv/bin/python thuravark/src/check_font.py
             - name: Committed fonts match the build
-              run: git diff --exit-code -- fonts/
+              run: git diff --exit-code -- fonts/ thuravark/fonts/

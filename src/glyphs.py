@@ -473,6 +473,7 @@ PUNCT_MAP = {
     ".": "period",
     ",": "comma",
     "!": "exclam",
+    "¡": "exclam",
     " ": "space",
     " ": "space",
     "‐": "hyphen",
