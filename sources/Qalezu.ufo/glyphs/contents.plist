@@ -70,6 +70,8 @@
     <string>n.dbl.glif</string>
     <key>nine</key>
     <string>nine.glif</string>
+    <key>notdef.box</key>
+    <string>notdef.box.glif</string>
     <key>one</key>
     <string>one.glif</string>
     <key>p</key>

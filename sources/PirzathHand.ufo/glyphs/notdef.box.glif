@@ -1,0 +1,505 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="notdef.box" format="2">
+  <advance width="388"/>
+  <unicode hex="0028"/>
+  <unicode hex="0029"/>
+  <unicode hex="002A"/>
+  <unicode hex="002B"/>
+  <unicode hex="002F"/>
+  <unicode hex="003A"/>
+  <unicode hex="003B"/>
+  <unicode hex="003D"/>
+  <unicode hex="003F"/>
+  <unicode hex="0058"/>
+  <unicode hex="005C"/>
+  <unicode hex="005F"/>
+  <unicode hex="0060"/>
+  <unicode hex="0078"/>
+  <unicode hex="007B"/>
+  <unicode hex="007C"/>
+  <unicode hex="007D"/>
+  <unicode hex="007E"/>
+  <unicode hex="00A2"/>
+  <unicode hex="00A3"/>
+  <unicode hex="00A4"/>
+  <unicode hex="00A5"/>
+  <unicode hex="00A6"/>
+  <unicode hex="00A7"/>
+  <unicode hex="00A8"/>
+  <unicode hex="00A9"/>
+  <unicode hex="00AA"/>
+  <unicode hex="00AC"/>
+  <unicode hex="00AD"/>
+  <unicode hex="00AE"/>
+  <unicode hex="00AF"/>
+  <unicode hex="00B0"/>
+  <unicode hex="00B1"/>
+  <unicode hex="00B2"/>
+  <unicode hex="00B3"/>
+  <unicode hex="00B4"/>
+  <unicode hex="00B5"/>
+  <unicode hex="00B6"/>
+  <unicode hex="00B7"/>
+  <unicode hex="00B8"/>
+  <unicode hex="00B9"/>
+  <unicode hex="00BA"/>
+  <unicode hex="00BC"/>
+  <unicode hex="00BD"/>
+  <unicode hex="00BE"/>
+  <unicode hex="00BF"/>
+  <unicode hex="00C0"/>
+  <unicode hex="00C2"/>
+  <unicode hex="00C3"/>
+  <unicode hex="00C4"/>
+  <unicode hex="00C5"/>
+  <unicode hex="00C6"/>
+  <unicode hex="00C7"/>
+  <unicode hex="00C8"/>
+  <unicode hex="00CA"/>
+  <unicode hex="00CB"/>
+  <unicode hex="00CC"/>
+  <unicode hex="00CE"/>
+  <unicode hex="00CF"/>
+  <unicode hex="00D0"/>
+  <unicode hex="00D1"/>
+  <unicode hex="00D2"/>
+  <unicode hex="00D4"/>
+  <unicode hex="00D5"/>
+  <unicode hex="00D6"/>
+  <unicode hex="00D7"/>
+  <unicode hex="00D8"/>
+  <unicode hex="00D9"/>
+  <unicode hex="00DB"/>
+  <unicode hex="00DC"/>
+  <unicode hex="00DD"/>
+  <unicode hex="00DE"/>
+  <unicode hex="00DF"/>
+  <unicode hex="00E0"/>
+  <unicode hex="00E2"/>
+  <unicode hex="00E3"/>
+  <unicode hex="00E4"/>
+  <unicode hex="00E5"/>
+  <unicode hex="00E6"/>
+  <unicode hex="00E7"/>
+  <unicode hex="00E8"/>
+  <unicode hex="00EA"/>
+  <unicode hex="00EB"/>
+  <unicode hex="00EC"/>
+  <unicode hex="00EE"/>
+  <unicode hex="00EF"/>
+  <unicode hex="00F0"/>
+  <unicode hex="00F1"/>
+  <unicode hex="00F2"/>
+  <unicode hex="00F4"/>
+  <unicode hex="00F5"/>
+  <unicode hex="00F6"/>
+  <unicode hex="00F7"/>
+  <unicode hex="00F8"/>
+  <unicode hex="00F9"/>
+  <unicode hex="00FB"/>
+  <unicode hex="00FC"/>
+  <unicode hex="00FD"/>
+  <unicode hex="00FE"/>
+  <unicode hex="00FF"/>
+  <unicode hex="0100"/>
+  <unicode hex="0101"/>
+  <unicode hex="0102"/>
+  <unicode hex="0103"/>
+  <unicode hex="0104"/>
+  <unicode hex="0105"/>
+  <unicode hex="0106"/>
+  <unicode hex="0107"/>
+  <unicode hex="0108"/>
+  <unicode hex="0109"/>
+  <unicode hex="010A"/>
+  <unicode hex="010B"/>
+  <unicode hex="010C"/>
+  <unicode hex="010D"/>
+  <unicode hex="010E"/>
+  <unicode hex="010F"/>
+  <unicode hex="0110"/>
+  <unicode hex="0111"/>
+  <unicode hex="0112"/>
+  <unicode hex="0113"/>
+  <unicode hex="0114"/>
+  <unicode hex="0115"/>
+  <unicode hex="0116"/>
+  <unicode hex="0117"/>
+  <unicode hex="0118"/>
+  <unicode hex="0119"/>
+  <unicode hex="011A"/>
+  <unicode hex="011B"/>
+  <unicode hex="011C"/>
+  <unicode hex="011D"/>
+  <unicode hex="011E"/>
+  <unicode hex="011F"/>
+  <unicode hex="0120"/>
+  <unicode hex="0121"/>
+  <unicode hex="0122"/>
+  <unicode hex="0123"/>
+  <unicode hex="0124"/>
+  <unicode hex="0125"/>
+  <unicode hex="0126"/>
+  <unicode hex="0127"/>
+  <unicode hex="0128"/>
+  <unicode hex="0129"/>
+  <unicode hex="012A"/>
+  <unicode hex="012B"/>
+  <unicode hex="012C"/>
+  <unicode hex="012D"/>
+  <unicode hex="012E"/>
+  <unicode hex="012F"/>
+  <unicode hex="0130"/>
+  <unicode hex="0131"/>
+  <unicode hex="0132"/>
+  <unicode hex="0133"/>
+  <unicode hex="0134"/>
+  <unicode hex="0135"/>
+  <unicode hex="0136"/>
+  <unicode hex="0137"/>
+  <unicode hex="0138"/>
+  <unicode hex="0139"/>
+  <unicode hex="013A"/>
+  <unicode hex="013B"/>
+  <unicode hex="013C"/>
+  <unicode hex="013D"/>
+  <unicode hex="013E"/>
+  <unicode hex="013F"/>
+  <unicode hex="0140"/>
+  <unicode hex="0141"/>
+  <unicode hex="0142"/>
+  <unicode hex="0143"/>
+  <unicode hex="0144"/>
+  <unicode hex="0145"/>
+  <unicode hex="0146"/>
+  <unicode hex="0147"/>
+  <unicode hex="0148"/>
+  <unicode hex="0149"/>
+  <unicode hex="014A"/>
+  <unicode hex="014B"/>
+  <unicode hex="014C"/>
+  <unicode hex="014D"/>
+  <unicode hex="014E"/>
+  <unicode hex="014F"/>
+  <unicode hex="0150"/>
+  <unicode hex="0151"/>
+  <unicode hex="0152"/>
+  <unicode hex="0153"/>
+  <unicode hex="0154"/>
+  <unicode hex="0155"/>
+  <unicode hex="0156"/>
+  <unicode hex="0157"/>
+  <unicode hex="0158"/>
+  <unicode hex="0159"/>
+  <unicode hex="015A"/>
+  <unicode hex="015B"/>
+  <unicode hex="015C"/>
+  <unicode hex="015D"/>
+  <unicode hex="015E"/>
+  <unicode hex="015F"/>
+  <unicode hex="0160"/>
+  <unicode hex="0161"/>
+  <unicode hex="0162"/>
+  <unicode hex="0163"/>
+  <unicode hex="0164"/>
+  <unicode hex="0165"/>
+  <unicode hex="0166"/>
+  <unicode hex="0167"/>
+  <unicode hex="0168"/>
+  <unicode hex="0169"/>
+  <unicode hex="016A"/>
+  <unicode hex="016B"/>
+  <unicode hex="016C"/>
+  <unicode hex="016D"/>
+  <unicode hex="016E"/>
+  <unicode hex="016F"/>
+  <unicode hex="0170"/>
+  <unicode hex="0171"/>
+  <unicode hex="0172"/>
+  <unicode hex="0173"/>
+  <unicode hex="0174"/>
+  <unicode hex="0175"/>
+  <unicode hex="0176"/>
+  <unicode hex="0177"/>
+  <unicode hex="0178"/>
+  <unicode hex="0179"/>
+  <unicode hex="017A"/>
+  <unicode hex="017B"/>
+  <unicode hex="017C"/>
+  <unicode hex="017D"/>
+  <unicode hex="017E"/>
+  <unicode hex="017F"/>
+  <unicode hex="2012"/>
+  <unicode hex="2013"/>
+  <unicode hex="2014"/>
+  <unicode hex="2015"/>
+  <unicode hex="2016"/>
+  <unicode hex="2017"/>
+  <unicode hex="2018"/>
+  <unicode hex="201A"/>
+  <unicode hex="201B"/>
+  <unicode hex="201E"/>
+  <unicode hex="201F"/>
+  <unicode hex="2020"/>
+  <unicode hex="2021"/>
+  <unicode hex="2022"/>
+  <unicode hex="2023"/>
+  <unicode hex="2024"/>
+  <unicode hex="2025"/>
+  <unicode hex="2026"/>
+  <unicode hex="2027"/>
+  <unicode hex="2028"/>
+  <unicode hex="2029"/>
+  <unicode hex="202F"/>
+  <unicode hex="2030"/>
+  <unicode hex="2031"/>
+  <unicode hex="2032"/>
+  <unicode hex="2033"/>
+  <unicode hex="2034"/>
+  <unicode hex="2035"/>
+  <unicode hex="2036"/>
+  <unicode hex="2037"/>
+  <unicode hex="2038"/>
+  <unicode hex="2039"/>
+  <unicode hex="203A"/>
+  <unicode hex="203B"/>
+  <unicode hex="203C"/>
+  <unicode hex="203D"/>
+  <unicode hex="203E"/>
+  <unicode hex="203F"/>
+  <unicode hex="2040"/>
+  <unicode hex="2041"/>
+  <unicode hex="2042"/>
+  <unicode hex="2043"/>
+  <unicode hex="2044"/>
+  <unicode hex="2045"/>
+  <unicode hex="2046"/>
+  <unicode hex="2047"/>
+  <unicode hex="2048"/>
+  <unicode hex="2049"/>
+  <unicode hex="204A"/>
+  <unicode hex="204B"/>
+  <unicode hex="204C"/>
+  <unicode hex="204D"/>
+  <unicode hex="204E"/>
+  <unicode hex="204F"/>
+  <unicode hex="2050"/>
+  <unicode hex="2051"/>
+  <unicode hex="2052"/>
+  <unicode hex="2053"/>
+  <unicode hex="2054"/>
+  <unicode hex="2055"/>
+  <unicode hex="2056"/>
+  <unicode hex="2057"/>
+  <unicode hex="2058"/>
+  <unicode hex="2059"/>
+  <unicode hex="205A"/>
+  <unicode hex="205B"/>
+  <unicode hex="205C"/>
+  <unicode hex="205D"/>
+  <unicode hex="205E"/>
+  <outline>
+    <contour>
+      <point x="79.0" y="147.0" type="qcurve"/>
+      <point x="78.0" y="146.0"/>
+      <point x="78.0" y="144.0"/>
+      <point x="77.0" y="144.0" type="qcurve"/>
+      <point x="77.0" y="143.0"/>
+      <point x="77.0" y="141.0"/>
+      <point x="77.0" y="140.0" type="qcurve"/>
+      <point x="77.0" y="139.0"/>
+      <point x="77.0" y="138.0"/>
+      <point x="77.0" y="137.0" type="qcurve"/>
+      <point x="78.0" y="136.0"/>
+      <point x="78.0" y="134.0" type="qcurve"/>
+      <point x="79.0" y="133.0"/>
+      <point x="80.0" y="132.0"/>
+      <point x="80.0" y="131.0" type="qcurve"/>
+      <point x="81.0" y="130.0"/>
+      <point x="82.0" y="129.0"/>
+      <point x="83.0" y="129.0" type="qcurve"/>
+      <point x="84.0" y="129.0"/>
+      <point x="85.0" y="128.0"/>
+      <point x="86.0" y="128.0" type="qcurve"/>
+      <point x="87.0" y="127.0"/>
+      <point x="89.0" y="127.0"/>
+      <point x="89.0" y="127.0" type="qcurve"/>
+      <point x="90.0" y="127.0"/>
+      <point x="92.0" y="127.0"/>
+      <point x="93.0" y="127.0" type="qcurve"/>
+      <point x="94.0" y="128.0"/>
+      <point x="95.0" y="128.0"/>
+      <point x="96.0" y="129.0" type="qcurve"/>
+      <point x="102.0" y="133.0"/>
+      <point x="113.0" y="144.0"/>
+      <point x="119.0" y="149.0" type="qcurve"/>
+      <point x="128.0" y="157.0"/>
+      <point x="146.0" y="171.0"/>
+      <point x="155.0" y="178.0" type="qcurve"/>
+      <point x="178.0" y="196.0" type="line"/>
+      <point x="187.0" y="203.0"/>
+      <point x="204.0" y="217.0"/>
+      <point x="213.0" y="224.0" type="qcurve"/>
+      <point x="178.0" y="59.0" type="line"/>
+      <point x="175.0" y="44.0"/>
+      <point x="180.0" y="19.0"/>
+      <point x="191.0" y="7.0" type="qcurve"/>
+      <point x="198.0" y="0.0"/>
+      <point x="217.0" y="-9.0"/>
+      <point x="228.0" y="-11.0" type="qcurve"/>
+      <point x="231.0" y="-11.0"/>
+      <point x="238.0" y="-13.0"/>
+      <point x="241.0" y="-13.0" type="qcurve"/>
+      <point x="254.0" y="-13.0"/>
+      <point x="278.0" y="-5.0"/>
+      <point x="301.0" y="7.0"/>
+      <point x="312.0" y="13.0" type="qcurve"/>
+      <point x="316.0" y="15.0"/>
+      <point x="327.0" y="21.0"/>
+      <point x="335.0" y="25.0"/>
+      <point x="342.0" y="28.0"/>
+      <point x="345.0" y="31.0" type="qcurve"/>
+      <point x="346.0" y="32.0"/>
+      <point x="347.0" y="33.0" type="qcurve"/>
+      <point x="348.0" y="34.0"/>
+      <point x="348.0" y="35.0"/>
+      <point x="349.0" y="36.0" type="qcurve"/>
+      <point x="349.0" y="37.0"/>
+      <point x="349.0" y="39.0"/>
+      <point x="349.0" y="40.0" type="qcurve"/>
+      <point x="349.0" y="40.0"/>
+      <point x="349.0" y="42.0"/>
+      <point x="349.0" y="43.0" type="qcurve"/>
+      <point x="349.0" y="44.0"/>
+      <point x="348.0" y="45.0"/>
+      <point x="348.0" y="46.0" type="qcurve"/>
+      <point x="347.0" y="48.0"/>
+      <point x="346.0" y="49.0" type="qcurve"/>
+      <point x="345.0" y="49.0"/>
+      <point x="344.0" y="51.0"/>
+      <point x="343.0" y="51.0" type="qcurve"/>
+      <point x="342.0" y="51.0"/>
+      <point x="341.0" y="52.0"/>
+      <point x="340.0" y="53.0" type="qcurve"/>
+      <point x="339.0" y="53.0"/>
+      <point x="338.0" y="53.0"/>
+      <point x="337.0" y="53.0" type="qcurve"/>
+      <point x="336.0" y="53.0"/>
+      <point x="334.0" y="53.0"/>
+      <point x="333.0" y="53.0" type="qcurve"/>
+      <point x="327.0" y="51.0"/>
+      <point x="316.0" y="44.0"/>
+      <point x="310.0" y="41.0" type="qcurve"/>
+      <point x="287.0" y="29.0" type="line"/>
+      <point x="275.0" y="23.0"/>
+      <point x="250.0" y="12.0"/>
+      <point x="236.0" y="14.0" type="qcurve"/>
+      <point x="223.0" y="20.0"/>
+      <point x="223.0" y="35.0" type="qcurve"/>
+      <point x="223.0" y="37.0"/>
+      <point x="223.0" y="40.0"/>
+      <point x="223.0" y="42.0" type="qcurve"/>
+      <point x="224.0" y="42.0"/>
+      <point x="224.0" y="42.0"/>
+      <point x="224.0" y="42.0" type="qcurve"/>
+      <point x="224.0" y="45.0"/>
+      <point x="225.0" y="49.0" type="qcurve"/>
+      <point x="270.0" y="262.0" type="line"/>
+      <point x="271.0" y="267.0"/>
+      <point x="273.0" y="276.0"/>
+      <point x="273.0" y="280.0" type="qcurve"/>
+      <point x="287.0" y="296.0"/>
+      <point x="308.0" y="329.0"/>
+      <point x="325.0" y="363.0"/>
+      <point x="334.0" y="383.0" type="qcurve"/>
+      <point x="338.0" y="392.0"/>
+      <point x="349.0" y="416.0"/>
+      <point x="356.0" y="442.0"/>
+      <point x="356.0" y="467.0"/>
+      <point x="345.0" y="486.0"/>
+      <point x="330.0" y="491.0" type="qcurve"/>
+      <point x="322.0" y="494.0"/>
+      <point x="305.0" y="496.0"/>
+      <point x="297.0" y="495.0" type="qcurve"/>
+      <point x="281.0" y="493.0"/>
+      <point x="249.0" y="480.0"/>
+      <point x="223.0" y="459.0"/>
+      <point x="206.0" y="431.0"/>
+      <point x="206.0" y="414.0" type="qcurve"/>
+      <point x="206.0" y="402.0"/>
+      <point x="213.0" y="379.0"/>
+      <point x="217.0" y="367.0" type="qcurve"/>
+      <point x="223.0" y="348.0"/>
+      <point x="229.0" y="306.0"/>
+      <point x="226.0" y="285.0" type="qcurve"/>
+      <point x="225.0" y="280.0"/>
+      <point x="223.0" y="270.0"/>
+      <point x="222.0" y="266.0" type="qcurve"/>
+      <point x="210.0" y="255.0"/>
+      <point x="186.0" y="235.0"/>
+      <point x="174.0" y="226.0" type="qcurve"/>
+      <point x="143.0" y="202.0" type="line"/>
+      <point x="142.0" y="213.0"/>
+      <point x="126.0" y="222.0"/>
+      <point x="119.0" y="221.0" type="qcurve"/>
+      <point x="110.0" y="219.0"/>
+      <point x="102.0" y="208.0"/>
+      <point x="101.0" y="195.0"/>
+      <point x="108.0" y="183.0"/>
+      <point x="116.0" y="180.0" type="qcurve"/>
+      <point x="111.0" y="176.0"/>
+      <point x="96.0" y="164.0"/>
+      <point x="83.0" y="152.0"/>
+    </contour>
+    <contour>
+      <point x="319.0" y="467.0" type="qcurve"/>
+      <point x="320.0" y="467.0"/>
+      <point x="321.0" y="466.0"/>
+      <point x="322.0" y="466.0" type="qcurve"/>
+      <point x="324.0" y="466.0"/>
+      <point x="328.0" y="464.0"/>
+      <point x="329.0" y="462.0" type="qcurve"/>
+      <point x="332.0" y="457.0"/>
+      <point x="329.0" y="439.0"/>
+      <point x="321.0" y="418.0"/>
+      <point x="313.0" y="401.0"/>
+      <point x="311.0" y="396.0" type="qcurve"/>
+      <point x="303.0" y="378.0"/>
+      <point x="285.0" y="340.0"/>
+      <point x="273.0" y="323.0" type="qcurve"/>
+      <point x="272.0" y="335.0"/>
+      <point x="267.0" y="358.0"/>
+      <point x="263.0" y="370.0" type="qcurve"/>
+      <point x="261.0" y="377.0"/>
+      <point x="255.0" y="392.0"/>
+      <point x="254.0" y="399.0" type="qcurve"/>
+      <point x="252.0" y="414.0"/>
+      <point x="263.0" y="438.0"/>
+      <point x="274.0" y="447.0" type="qcurve"/>
+      <point x="284.0" y="455.0"/>
+      <point x="307.0" y="465.0"/>
+    </contour>
+    <contour>
+      <point x="390.0" y="179.0" type="qcurve"/>
+      <point x="399.0" y="179.0"/>
+      <point x="409.0" y="187.0"/>
+      <point x="412.0" y="200.0"/>
+      <point x="409.0" y="213.0"/>
+      <point x="399.0" y="221.0"/>
+      <point x="382.0" y="221.0"/>
+      <point x="372.0" y="213.0"/>
+      <point x="369.0" y="200.0"/>
+      <point x="372.0" y="187.0"/>
+      <point x="382.0" y="179.0"/>
+    </contour>
+    <contour>
+      <point x="143.0" y="202.0" type="qcurve"/>
+      <point x="144.0" y="195.0"/>
+      <point x="136.0" y="183.0"/>
+      <point x="123.0" y="178.0"/>
+      <point x="116.0" y="180.0" type="qcurve"/>
+      <point x="123.0" y="186.0"/>
+      <point x="136.0" y="197.0"/>
+    </contour>
+  </outline>
+</glyph>

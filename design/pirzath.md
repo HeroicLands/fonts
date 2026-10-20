@@ -91,7 +91,7 @@ The closing mark differs from gh only by its second notch, so the pair stands
 on the apex half of the arm, well apart, cut lighter than the breath notch, and
 clear of the bar and the cap height. There is no interrogative mark, because a Khazari question ends in the
 particle _zef_, which marks it, and there is no semicolon and no colon: the
-`?`, `;` and `:` keys are left unmapped, so they draw `.notdef` and a stray mark shows on the page. `.notdef` is a blank stele: a stem with a
+`?`, `;` and `:` keys map to the box, so a stray mark shows on the page. Every character the typing does not use maps to the box, which is a copy of `.notdef`: a blank stele, a stem with a
 drill mark either side.
 
 ## The seventeen lost letters
@@ -180,11 +180,10 @@ the digraph's letter and the mark. Capitals draw the lowercase letter; the
 script has no case. The digits `0` to `9` draw the numerals nought
 to nine and `@ # $ % ^ &` draw ten to fifteen, so twenty-six is typed `1@` and
 three hundred and nine is `135`; the letters a to f are always letters. The
-letter c has no Pirzath form and draws as `.notdef`. A quotation is typed with
+letter c has no Pirzath form and draws the box. A quotation is typed with
 `“ ”` or `« »` directly, with `<<` and `>>`, which ligate to the marks, or with
 a straight `"`, which `calt` resolves: it opens at the start of the text or
-after a space and closes anywhere else. A single `<` or `>` draws as
-`.notdef`.
+after a space and closes anywhere else. A single `<` or `>` draws the box.
 
 ## The rounds
 
@@ -276,8 +275,7 @@ after a space and closes anywhere else. A single `<` or `>` draws as
 ## Checks
 
 - `tools/pirzath/check_font.py` loads the built font, confirms every mapped code point
-  names a glyph with an outline, checks that `?`, `;` and `:` are unmapped so
-  they fall to `.notdef`, checks that the digits, `@ # $ % ^ &`,
+  names a glyph with an outline, checks that `?`, `;` and `:` map to the box, checks that the digits, `@ # $ % ^ &`,
   the quotation inputs (`"`, `“ ”`, `« »`, `[ ]` and `<<` `>>`), the space, `.`, `!`, `,`, `-` and a to f type
   what the rulings say, checks the name table and opens the `.woff2`.
 - `tools/pirzath/guard.py` shapes every form in the `words` list of the Khazari language

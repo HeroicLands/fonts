@@ -4,7 +4,7 @@ languagesystem latn dflt;
 
 # Everything a closing quotation mark can follow: any glyph but a space or
 # another quotation mark.
-@AFTER = [.notdef p b f v m t d t_h d_h n k g k_h g_h s z h l r a u i e o sh zh ts ch j q ng ny catch w y hl ai au ei oi ou aacute uacute iacute eacute oacute lengthmark doubling num.0 num.1 num.2 num.3 num.4 num.5 num.6 num.7 num.8 num.9 num.10 num.11 num.12 num.13 num.14 num.15 hyphen period exclam comma less greater c];
+@AFTER = [.notdef notdef.box p b f v m t d t_h d_h n k g k_h g_h s z h l r a u i e o sh zh ts ch j q ng ny catch w y hl ai au ei oi ou aacute uacute iacute eacute oacute lengthmark doubling num.0 num.1 num.2 num.3 num.4 num.5 num.6 num.7 num.8 num.9 num.10 num.11 num.12 num.13 num.14 num.15 hyphen period exclam comma less greater c];
 
 # The vowels a glide y stands before.
 @VOWEL = [a u i e o];
@@ -21,6 +21,12 @@ feature calt {
 # hhl, cch) is the digraph itself, so that the ligature and the doubling rule
 # below see two of the same letter.
 feature ccmp {
+  # HarfBuzz replaces a default-ignorable character the font maps directly with
+  # the space glyph. A glyph that a lookup substitutes is left alone, so each
+  # ignorable is substituted once, to a second empty glyph.
+  lookup ccmp_ignorable {
+    sub ignorable by ignorable.sub;
+  } ccmp_ignorable;
 lookup ccmp_long {
   sub aacute by a lengthmark;
   sub eacute by e lengthmark;
@@ -117,7 +123,7 @@ feature rlig {
 } rlig;
 
 table GDEF {
-  GlyphClassDef [.notdef space p b f v m t d t_h d_h n k g k_h g_h s z h l r a u i e o sh zh ts ch j q ng ny catch w y hl ai au ei oi ou aacute uacute iacute eacute oacute num.0 num.1 num.2 num.3 num.4 num.5 num.6 num.7 num.8 num.9 num.10 num.11 num.12 num.13 num.14 num.15 hyphen period exclam comma quote.open quote.close quotedbl less greater c], , [lengthmark doubling], ;
+  GlyphClassDef [ignorable ignorable.sub .notdef notdef.box space p b f v m t d t_h d_h n k g k_h g_h s z h l r a u i e o sh zh ts ch j q ng ny catch w y hl ai au ei oi ou aacute uacute iacute eacute oacute num.0 num.1 num.2 num.3 num.4 num.5 num.6 num.7 num.8 num.9 num.10 num.11 num.12 num.13 num.14 num.15 hyphen period exclam comma quote.open quote.close quotedbl less greater c], , [lengthmark doubling], ;
 } GDEF;
 
 markClass lengthmark <anchor 0 0> @LEN;
@@ -169,79 +175,155 @@ feature mark {
 
 feature kern {
   pos .notdef .notdef -110;
+  pos notdef.box .notdef -110;
+  pos .notdef notdef.box -110;
+  pos notdef.box notdef.box -110;
   pos .notdef a -110;
+  pos notdef.box a -110;
   pos .notdef aacute -110;
+  pos notdef.box aacute -110;
   pos .notdef ai -110;
+  pos notdef.box ai -110;
   pos .notdef au -30;
+  pos notdef.box au -30;
   pos .notdef b -110;
+  pos notdef.box b -110;
   pos .notdef c -110;
+  pos notdef.box c -110;
   pos .notdef catch -110;
+  pos notdef.box catch -110;
   pos .notdef ch -110;
+  pos notdef.box ch -110;
   pos .notdef comma -70;
+  pos notdef.box comma -70;
   pos .notdef d -110;
+  pos notdef.box d -110;
   pos .notdef d_h -110;
+  pos notdef.box d_h -110;
   pos .notdef e -110;
+  pos notdef.box e -110;
   pos .notdef eacute -110;
+  pos notdef.box eacute -110;
   pos .notdef ei -110;
+  pos notdef.box ei -110;
   pos .notdef exclam -110;
+  pos notdef.box exclam -110;
   pos .notdef f -110;
+  pos notdef.box f -110;
   pos .notdef g -105;
+  pos notdef.box g -105;
   pos .notdef g_h -105;
+  pos notdef.box g_h -105;
   pos .notdef greater -110;
+  pos notdef.box greater -110;
   pos .notdef h -110;
+  pos notdef.box h -110;
   pos .notdef hl -110;
+  pos notdef.box hl -110;
   pos .notdef hyphen -80;
+  pos notdef.box hyphen -80;
   pos .notdef i -110;
+  pos notdef.box i -110;
   pos .notdef iacute -110;
+  pos notdef.box iacute -110;
   pos .notdef j -110;
+  pos notdef.box j -110;
   pos .notdef k -110;
+  pos notdef.box k -110;
   pos .notdef k_h -110;
+  pos notdef.box k_h -110;
   pos .notdef l -110;
+  pos notdef.box l -110;
   pos .notdef less -110;
+  pos notdef.box less -110;
   pos .notdef m -55;
+  pos notdef.box m -55;
   pos .notdef n -55;
+  pos notdef.box n -55;
   pos .notdef ng -110;
+  pos notdef.box ng -110;
   pos .notdef num.0 -110;
+  pos notdef.box num.0 -110;
   pos .notdef num.1 -110;
+  pos notdef.box num.1 -110;
   pos .notdef num.10 -110;
+  pos notdef.box num.10 -110;
   pos .notdef num.11 -110;
+  pos notdef.box num.11 -110;
   pos .notdef num.12 -110;
+  pos notdef.box num.12 -110;
   pos .notdef num.13 -110;
+  pos notdef.box num.13 -110;
   pos .notdef num.14 -110;
+  pos notdef.box num.14 -110;
   pos .notdef num.15 -110;
+  pos notdef.box num.15 -110;
   pos .notdef num.2 -110;
+  pos notdef.box num.2 -110;
   pos .notdef num.3 -110;
+  pos notdef.box num.3 -110;
   pos .notdef num.4 -110;
+  pos notdef.box num.4 -110;
   pos .notdef num.5 -110;
+  pos notdef.box num.5 -110;
   pos .notdef num.6 -110;
+  pos notdef.box num.6 -110;
   pos .notdef num.7 -110;
+  pos notdef.box num.7 -110;
   pos .notdef num.8 -110;
+  pos notdef.box num.8 -110;
   pos .notdef num.9 -110;
+  pos notdef.box num.9 -110;
   pos .notdef ny -55;
+  pos notdef.box ny -55;
   pos .notdef o -75;
+  pos notdef.box o -75;
   pos .notdef oacute -75;
+  pos notdef.box oacute -75;
   pos .notdef oi -30;
+  pos notdef.box oi -30;
   pos .notdef ou -75;
+  pos notdef.box ou -75;
   pos .notdef p -110;
+  pos notdef.box p -110;
   pos .notdef period -80;
+  pos notdef.box period -80;
   pos .notdef q -110;
+  pos notdef.box q -110;
   pos .notdef quote.close -105;
+  pos notdef.box quote.close -105;
   pos .notdef quote.open -105;
+  pos notdef.box quote.open -105;
   pos .notdef quotedbl -105;
+  pos notdef.box quotedbl -105;
   pos .notdef r -50;
+  pos notdef.box r -50;
   pos .notdef s -95;
+  pos notdef.box s -95;
   pos .notdef sh -95;
+  pos notdef.box sh -95;
   pos .notdef t -110;
+  pos notdef.box t -110;
   pos .notdef t_h -110;
+  pos notdef.box t_h -110;
   pos .notdef ts -110;
+  pos notdef.box ts -110;
   pos .notdef u -80;
+  pos notdef.box u -80;
   pos .notdef uacute -80;
+  pos notdef.box uacute -80;
   pos .notdef v -110;
+  pos notdef.box v -110;
   pos .notdef w -110;
+  pos notdef.box w -110;
   pos .notdef y -110;
+  pos notdef.box y -110;
   pos .notdef z -110;
+  pos notdef.box z -110;
   pos .notdef zh -110;
+  pos notdef.box zh -110;
   pos a .notdef -80;
+  pos a notdef.box -80;
   pos a a -110;
   pos a aacute -110;
   pos a ai -90;
@@ -315,6 +397,7 @@ feature kern {
   pos a z -110;
   pos a zh -110;
   pos aacute .notdef -80;
+  pos aacute notdef.box -80;
   pos aacute a -110;
   pos aacute aacute -110;
   pos aacute ai -90;
@@ -388,6 +471,7 @@ feature kern {
   pos aacute z -85;
   pos aacute zh -85;
   pos ai .notdef -110;
+  pos ai notdef.box -110;
   pos ai a -110;
   pos ai aacute -110;
   pos ai ai -65;
@@ -461,6 +545,7 @@ feature kern {
   pos ai z -85;
   pos ai zh -85;
   pos au .notdef -30;
+  pos au notdef.box -30;
   pos au a -90;
   pos au aacute -90;
   pos au ai -40;
@@ -529,6 +614,7 @@ feature kern {
   pos au z -55;
   pos au zh -55;
   pos b .notdef -110;
+  pos b notdef.box -110;
   pos b a 10;
   pos b aacute 10;
   pos b ai 40;
@@ -594,6 +680,7 @@ feature kern {
   pos b z 40;
   pos b zh 40;
   pos c .notdef -110;
+  pos c notdef.box -110;
   pos c a -110;
   pos c aacute -110;
   pos c ai -110;
@@ -667,6 +754,7 @@ feature kern {
   pos c z -110;
   pos c zh -110;
   pos catch .notdef -110;
+  pos catch notdef.box -110;
   pos catch a -110;
   pos catch aacute -110;
   pos catch ai -110;
@@ -740,6 +828,7 @@ feature kern {
   pos catch z -110;
   pos catch zh -110;
   pos ch .notdef -110;
+  pos ch notdef.box -110;
   pos ch a -90;
   pos ch aacute -90;
   pos ch ai -40;
@@ -813,6 +902,7 @@ feature kern {
   pos ch z -55;
   pos ch zh -55;
   pos comma .notdef -70;
+  pos comma notdef.box -70;
   pos comma a -110;
   pos comma aacute -110;
   pos comma ai -40;
@@ -882,6 +972,7 @@ feature kern {
   pos comma z -110;
   pos comma zh -110;
   pos d .notdef -110;
+  pos d notdef.box -110;
   pos d a -110;
   pos d aacute -60;
   pos d ai -110;
@@ -1007,6 +1098,7 @@ feature kern {
   pos d_h z 40;
   pos d_h zh 40;
   pos e .notdef -110;
+  pos e notdef.box -110;
   pos e a 15;
   pos e aacute 15;
   pos e ai 40;
@@ -1072,6 +1164,7 @@ feature kern {
   pos e z 40;
   pos e zh 40;
   pos eacute .notdef -110;
+  pos eacute notdef.box -110;
   pos eacute a 15;
   pos eacute aacute 15;
   pos eacute ai 40;
@@ -1137,6 +1230,7 @@ feature kern {
   pos eacute z 40;
   pos eacute zh 40;
   pos ei .notdef -110;
+  pos ei notdef.box -110;
   pos ei a 15;
   pos ei aacute 15;
   pos ei ai 40;
@@ -1202,6 +1296,7 @@ feature kern {
   pos ei z 40;
   pos ei zh 40;
   pos exclam .notdef -110;
+  pos exclam notdef.box -110;
   pos exclam a -110;
   pos exclam aacute -110;
   pos exclam ai -45;
@@ -1267,6 +1362,7 @@ feature kern {
   pos exclam z -110;
   pos exclam zh -110;
   pos f .notdef -65;
+  pos f notdef.box -65;
   pos f a 10;
   pos f aacute 10;
   pos f ai 40;
@@ -1327,6 +1423,7 @@ feature kern {
   pos f z 40;
   pos f zh 40;
   pos g .notdef -50;
+  pos g notdef.box -50;
   pos g a -110;
   pos g aacute -110;
   pos g ai -45;
@@ -1398,6 +1495,7 @@ feature kern {
   pos g z -110;
   pos g zh -110;
   pos g_h .notdef -50;
+  pos g_h notdef.box -50;
   pos g_h a -110;
   pos g_h aacute -110;
   pos g_h ai -45;
@@ -1469,6 +1567,7 @@ feature kern {
   pos g_h z -60;
   pos g_h zh -60;
   pos greater .notdef -110;
+  pos greater notdef.box -110;
   pos greater a -110;
   pos greater aacute -110;
   pos greater ai -110;
@@ -1542,6 +1641,7 @@ feature kern {
   pos greater z -110;
   pos greater zh -110;
   pos h .notdef -110;
+  pos h notdef.box -110;
   pos h a -110;
   pos h aacute -110;
   pos h ai -110;
@@ -1615,6 +1715,7 @@ feature kern {
   pos h z -110;
   pos h zh -110;
   pos hl .notdef -110;
+  pos hl notdef.box -110;
   pos hl a -70;
   pos hl aacute -70;
   pos hl ai -20;
@@ -1687,6 +1788,7 @@ feature kern {
   pos hl z -40;
   pos hl zh -40;
   pos hyphen .notdef -85;
+  pos hyphen notdef.box -85;
   pos hyphen a -110;
   pos hyphen aacute -110;
   pos hyphen ai -85;
@@ -1759,6 +1861,7 @@ feature kern {
   pos hyphen z -100;
   pos hyphen zh -100;
   pos i .notdef -110;
+  pos i notdef.box -110;
   pos i a -110;
   pos i aacute -110;
   pos i ai -65;
@@ -1832,6 +1935,7 @@ feature kern {
   pos i z -85;
   pos i zh -85;
   pos iacute .notdef -110;
+  pos iacute notdef.box -110;
   pos iacute a -110;
   pos iacute aacute -110;
   pos iacute ai -65;
@@ -1905,6 +2009,7 @@ feature kern {
   pos iacute z -85;
   pos iacute zh -85;
   pos j .notdef -110;
+  pos j notdef.box -110;
   pos j a -110;
   pos j aacute -85;
   pos j ai -110;
@@ -1978,6 +2083,7 @@ feature kern {
   pos j z 25;
   pos j zh 25;
   pos k .notdef -50;
+  pos k notdef.box -50;
   pos k a -110;
   pos k aacute -110;
   pos k ai -45;
@@ -2049,6 +2155,7 @@ feature kern {
   pos k z -110;
   pos k zh -110;
   pos k_h .notdef -50;
+  pos k_h notdef.box -50;
   pos k_h a -110;
   pos k_h aacute -110;
   pos k_h ai -45;
@@ -2120,6 +2227,7 @@ feature kern {
   pos k_h z -60;
   pos k_h zh -60;
   pos l .notdef -110;
+  pos l notdef.box -110;
   pos l a -70;
   pos l aacute -70;
   pos l ai -20;
@@ -2192,6 +2300,7 @@ feature kern {
   pos l z -40;
   pos l zh -40;
   pos less .notdef -110;
+  pos less notdef.box -110;
   pos less a -110;
   pos less aacute -110;
   pos less ai -110;
@@ -2265,6 +2374,7 @@ feature kern {
   pos less z -110;
   pos less zh -110;
   pos m .notdef -55;
+  pos m notdef.box -55;
   pos m a 25;
   pos m aacute 25;
   pos m ai 40;
@@ -2330,6 +2440,7 @@ feature kern {
   pos m z 40;
   pos m zh 40;
   pos n .notdef -55;
+  pos n notdef.box -55;
   pos n a -70;
   pos n aacute -45;
   pos n ai -20;
@@ -2393,6 +2504,7 @@ feature kern {
   pos n z 40;
   pos n zh 40;
   pos ng .notdef -110;
+  pos ng notdef.box -110;
   pos ng a -110;
   pos ng aacute -110;
   pos ng ai -110;
@@ -2466,6 +2578,7 @@ feature kern {
   pos ng z -110;
   pos ng zh -110;
   pos num.0 .notdef -110;
+  pos num.0 notdef.box -110;
   pos num.0 a -110;
   pos num.0 aacute -110;
   pos num.0 ai -110;
@@ -2539,6 +2652,7 @@ feature kern {
   pos num.0 z -110;
   pos num.0 zh -110;
   pos num.1 .notdef -110;
+  pos num.1 notdef.box -110;
   pos num.1 a -110;
   pos num.1 aacute -110;
   pos num.1 ai -110;
@@ -2612,6 +2726,7 @@ feature kern {
   pos num.1 z -110;
   pos num.1 zh -110;
   pos num.10 .notdef -110;
+  pos num.10 notdef.box -110;
   pos num.10 a -110;
   pos num.10 aacute -110;
   pos num.10 ai -110;
@@ -2685,6 +2800,7 @@ feature kern {
   pos num.10 z -60;
   pos num.10 zh -60;
   pos num.11 .notdef -110;
+  pos num.11 notdef.box -110;
   pos num.11 a -110;
   pos num.11 aacute -110;
   pos num.11 ai -110;
@@ -2758,6 +2874,7 @@ feature kern {
   pos num.11 z -60;
   pos num.11 zh -60;
   pos num.12 .notdef -100;
+  pos num.12 notdef.box -100;
   pos num.12 a -110;
   pos num.12 aacute -110;
   pos num.12 ai -35;
@@ -2828,6 +2945,7 @@ feature kern {
   pos num.12 z -60;
   pos num.12 zh -60;
   pos num.13 .notdef -100;
+  pos num.13 notdef.box -100;
   pos num.13 a -110;
   pos num.13 aacute -110;
   pos num.13 ai -35;
@@ -2898,6 +3016,7 @@ feature kern {
   pos num.13 z -60;
   pos num.13 zh -60;
   pos num.14 .notdef -100;
+  pos num.14 notdef.box -100;
   pos num.14 a -110;
   pos num.14 aacute -110;
   pos num.14 ai -35;
@@ -2968,6 +3087,7 @@ feature kern {
   pos num.14 z -60;
   pos num.14 zh -60;
   pos num.15 .notdef -100;
+  pos num.15 notdef.box -100;
   pos num.15 a -110;
   pos num.15 aacute -110;
   pos num.15 ai -35;
@@ -3038,6 +3158,7 @@ feature kern {
   pos num.15 z -60;
   pos num.15 zh -60;
   pos num.2 .notdef -110;
+  pos num.2 notdef.box -110;
   pos num.2 a -110;
   pos num.2 aacute -110;
   pos num.2 ai -110;
@@ -3111,6 +3232,7 @@ feature kern {
   pos num.2 z -110;
   pos num.2 zh -110;
   pos num.3 .notdef -110;
+  pos num.3 notdef.box -110;
   pos num.3 a -110;
   pos num.3 aacute -110;
   pos num.3 ai -110;
@@ -3184,6 +3306,7 @@ feature kern {
   pos num.3 z -110;
   pos num.3 zh -110;
   pos num.4 .notdef -100;
+  pos num.4 notdef.box -100;
   pos num.4 a -110;
   pos num.4 aacute -110;
   pos num.4 ai -35;
@@ -3254,6 +3377,7 @@ feature kern {
   pos num.4 z -100;
   pos num.4 zh -100;
   pos num.5 .notdef -100;
+  pos num.5 notdef.box -100;
   pos num.5 a -110;
   pos num.5 aacute -110;
   pos num.5 ai -35;
@@ -3324,6 +3448,7 @@ feature kern {
   pos num.5 z -100;
   pos num.5 zh -100;
   pos num.6 .notdef -100;
+  pos num.6 notdef.box -100;
   pos num.6 a -110;
   pos num.6 aacute -110;
   pos num.6 ai -35;
@@ -3394,6 +3519,7 @@ feature kern {
   pos num.6 z -100;
   pos num.6 zh -100;
   pos num.7 .notdef -100;
+  pos num.7 notdef.box -100;
   pos num.7 a -110;
   pos num.7 aacute -110;
   pos num.7 ai -35;
@@ -3464,6 +3590,7 @@ feature kern {
   pos num.7 z -100;
   pos num.7 zh -100;
   pos num.8 .notdef -110;
+  pos num.8 notdef.box -110;
   pos num.8 a -110;
   pos num.8 aacute -110;
   pos num.8 ai -110;
@@ -3537,6 +3664,7 @@ feature kern {
   pos num.8 z -60;
   pos num.8 zh -60;
   pos num.9 .notdef -110;
+  pos num.9 notdef.box -110;
   pos num.9 a -110;
   pos num.9 aacute -110;
   pos num.9 ai -110;
@@ -3610,6 +3738,7 @@ feature kern {
   pos num.9 z -60;
   pos num.9 zh -60;
   pos ny .notdef -55;
+  pos ny notdef.box -55;
   pos ny a -70;
   pos ny aacute -45;
   pos ny ai -20;
@@ -3673,6 +3802,7 @@ feature kern {
   pos ny z 40;
   pos ny zh 40;
   pos o .notdef -75;
+  pos o notdef.box -75;
   pos o a -45;
   pos o aacute -45;
   pos o ai 15;
@@ -3732,6 +3862,7 @@ feature kern {
   pos o z -15;
   pos o zh -15;
   pos oacute .notdef -75;
+  pos oacute notdef.box -75;
   pos oacute a -45;
   pos oacute aacute -45;
   pos oacute ai 15;
@@ -3791,6 +3922,7 @@ feature kern {
   pos oacute z -15;
   pos oacute zh -15;
   pos oi .notdef -30;
+  pos oi notdef.box -30;
   pos oi a -90;
   pos oi aacute -90;
   pos oi ai -40;
@@ -3859,6 +3991,7 @@ feature kern {
   pos oi z -55;
   pos oi zh -55;
   pos ou .notdef -75;
+  pos ou notdef.box -75;
   pos ou a -40;
   pos ou aacute -40;
   pos ou ai 15;
@@ -3918,6 +4051,7 @@ feature kern {
   pos ou z -10;
   pos ou zh -10;
   pos p .notdef -110;
+  pos p notdef.box -110;
   pos p a 10;
   pos p aacute 10;
   pos p ai 40;
@@ -3983,6 +4117,7 @@ feature kern {
   pos p z 40;
   pos p zh 40;
   pos period .notdef -80;
+  pos period notdef.box -80;
   pos period a -110;
   pos period aacute -110;
   pos period ai -85;
@@ -4054,6 +4189,7 @@ feature kern {
   pos period z -110;
   pos period zh -110;
   pos q .notdef -110;
+  pos q notdef.box -110;
   pos q ai 40;
   pos q au -55;
   pos q b 40;
@@ -4117,6 +4253,7 @@ feature kern {
   pos q z 25;
   pos q zh 25;
   pos quote.close .notdef -50;
+  pos quote.close notdef.box -50;
   pos quote.close a -110;
   pos quote.close aacute -110;
   pos quote.close ai -45;
@@ -4188,6 +4325,7 @@ feature kern {
   pos quote.close z -35;
   pos quote.close zh -35;
   pos quote.open .notdef -50;
+  pos quote.open notdef.box -50;
   pos quote.open a -55;
   pos quote.open aacute -55;
   pos quote.open ai 10;
@@ -4252,6 +4390,7 @@ feature kern {
   pos quote.open z -35;
   pos quote.open zh -35;
   pos quotedbl .notdef -50;
+  pos quotedbl notdef.box -50;
   pos quotedbl a -55;
   pos quotedbl aacute -55;
   pos quotedbl ai 10;
@@ -4316,6 +4455,7 @@ feature kern {
   pos quotedbl z -35;
   pos quotedbl zh -35;
   pos r .notdef -110;
+  pos r notdef.box -110;
   pos r a -110;
   pos r aacute -110;
   pos r ai -80;
@@ -4389,6 +4529,7 @@ feature kern {
   pos r z -90;
   pos r zh -90;
   pos s .notdef -95;
+  pos s notdef.box -95;
   pos s a -110;
   pos s aacute -110;
   pos s ai -65;
@@ -4460,6 +4601,7 @@ feature kern {
   pos s z -110;
   pos s zh -110;
   pos sh .notdef -95;
+  pos sh notdef.box -95;
   pos sh a -110;
   pos sh aacute -110;
   pos sh ai -65;
@@ -4527,6 +4669,7 @@ feature kern {
   pos sh z -25;
   pos sh zh -25;
   pos t .notdef -110;
+  pos t notdef.box -110;
   pos t a -110;
   pos t aacute -60;
   pos t ai -110;
@@ -4652,6 +4795,7 @@ feature kern {
   pos t_h z 40;
   pos t_h zh 40;
   pos ts .notdef -110;
+  pos ts notdef.box -110;
   pos ts a -15;
   pos ts aacute -15;
   pos ts ai 30;
@@ -4717,6 +4861,7 @@ feature kern {
   pos ts z 20;
   pos ts zh 20;
   pos u .notdef -110;
+  pos u notdef.box -110;
   pos u a -35;
   pos u aacute -35;
   pos u ai 15;
@@ -4785,6 +4930,7 @@ feature kern {
   pos u w -110;
   pos u y -15;
   pos uacute .notdef -110;
+  pos uacute notdef.box -110;
   pos uacute a -35;
   pos uacute aacute -35;
   pos uacute ai 15;
@@ -4853,6 +4999,7 @@ feature kern {
   pos uacute w -95;
   pos uacute y -15;
   pos v .notdef -65;
+  pos v notdef.box -65;
   pos v a 10;
   pos v aacute 10;
   pos v ai 40;
@@ -4913,6 +5060,7 @@ feature kern {
   pos v z 40;
   pos v zh 40;
   pos w .notdef -110;
+  pos w notdef.box -110;
   pos w a -15;
   pos w aacute -15;
   pos w ai 30;
@@ -4978,6 +5126,7 @@ feature kern {
   pos w z 25;
   pos w zh 25;
   pos y .notdef -110;
+  pos y notdef.box -110;
   pos y a -110;
   pos y aacute -95;
   pos y ai -110;
@@ -5051,6 +5200,7 @@ feature kern {
   pos y z 25;
   pos y zh 25;
   pos z .notdef -110;
+  pos z notdef.box -110;
   pos z ai 40;
   pos z au -55;
   pos z b 40;
@@ -5114,6 +5264,7 @@ feature kern {
   pos z z 25;
   pos z zh 25;
   pos zh .notdef -105;
+  pos zh notdef.box -105;
   pos zh ai 40;
   pos zh b 40;
   pos zh c -105;

@@ -7,8 +7,10 @@
 Three things follow from the encoding, and nothing else in the UFO is touched, so
 no drawn outline changes: each glyph's <unicode> lines; one composite ``<sign>.dbl``
 per doubled consonant, the sign with the ``doubling`` component set at the sign's
-``doubling`` anchor; and the two empty glyphs that default-ignorable characters
-map to with their ``ccmp`` substitution.
+``doubling`` anchor; the two empty glyphs that default-ignorable characters
+map to with their ``ccmp`` substitution; and the code points of ``notdef.box``,
+which are every code point of the ranges in tools/notdef_box.py that the encoding
+leaves free. The box glyph itself comes from tools/apply_notdef_box.py.
 
 --check reports a disagreement and writes nothing.
 """
@@ -20,6 +22,9 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent.parent
+sys.path.insert(0, str(ROOT / "tools"))
+import notdef_box  # noqa: E402
+
 UFO = ROOT / "sources" / "Qalezu.ufo"
 GLYPHS = UFO / "glyphs"
 ENCODING = Path(__file__).resolve().parent / "encoding.json"
@@ -46,6 +51,8 @@ def load():
     ign = enc["ignorables"]
     unicodes[ign["glyph"]] = [int(c[2:], 16) for c in ign["codepoints"]]
     unicodes[ign["substitute"]] = []
+    taken = {cp for cps in unicodes.values() for cp in cps}
+    unicodes[notdef_box.BOX] = [cp for cp in notdef_box.codepoints() if cp not in taken]
     doubled = {g["glyph"]: g["base"] for g in enc["glyphs"] if g["kind"] == "doubled"}
     return enc, unicodes, doubled
 

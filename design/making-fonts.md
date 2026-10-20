@@ -36,7 +36,7 @@ Fonts still to come are Helónika, Teng Chou, Vedyakshara and Ch'alish P'ilam. E
 | `specimens/<font>/` | The specimen sheets. |
 | `design/<font>.md` | The design note, present tense: the system, the letters, the typing, the rounds. |
 | `tools/<font>/` | `check_font.py`, `guard.py` and `specimens.py` for each font, plus any encoding table such as `encoding.json`. |
-| `tools/render.py`, `tools/prove_guards.py` | Shared tools. `render.py` sets shaped text in a font for specimens. `prove_guards.py` proves each guard fails a broken font. |
+| `tools/render.py`, `tools/prove_guards.py`, `tools/notdef_box.py`, `tools/apply_notdef_box.py` | Shared tools. `render.py` sets shaped text in a font for specimens. `prove_guards.py` proves each guard fails a broken font. `notdef_box.py` is the box guard, and `apply_notdef_box.py` writes the box into a UFO. |
 | `build.sh` | Builds every font, reproducibly. |
 | `nogit/` | Generators and scratch. Not committed. |
 
@@ -99,7 +99,7 @@ Generators live outside the tree because they are one-off drawing tools. The com
 3. **System-first pilot.** Draw a small set, the letters of one sample sentence, on a stated system (below), and set them in text. The owner reviews the pilot, usually on a published page, often with marked-up screenshots.
 4. **Iterate on the pilot.** Fix the system, not single letters, so every later letter inherits the fix.
 5. **The full set,** on the approved system.
-6. **Plumbing** into the UFO, build, checks, guard, specimens, CI and design note. Open the PR as a draft, read CI once, then mark it ready.
+6. **Plumbing** into the UFO, build, checks, guard, specimens, CI and design note. The UFO carries `notdef.box` and maps every unused character to it (below). Open the PR as a draft, read CI once, then mark it ready.
 7. **Encoding and typing** (below), if not already set.
 
 ## The hand: a written script
@@ -199,7 +199,7 @@ Notes write names in the setting's Latin spelling. A left-to-right script font d
 - an acute to the long-vowel mark;
 - doubled letters to the doubling mark;
 - `!` and `¡` to the imperative;
-- `?`, `;` and `:` to `.notdef`.
+- `?`, `;` and `:` to the box, as every other character the typing does not use (see [For every font](#for-every-font)).
 
 Passages switch to the script by font alone, and the text stays plain, searchable Latin.
 
@@ -227,6 +227,18 @@ Latin forced right to left with the bidi override characters works, but HarfBuzz
 
 ### For every font
 
+- **Every character the script does not use prints a visible box.** Stray characters in a text must be obvious. The box is the glyph `notdef.box`, a copy of `.notdef` with the same outline and advance, and every font maps to it every code point of these ranges that its typing does not use:
+  - U+0021–007E Basic Latin;
+  - U+00A1–00FF Latin-1 Supplement;
+  - U+0100–017F Latin Extended-A;
+  - U+2010–205E General Punctuation.
+
+  The space (U+0020) and the no-break space (U+00A0) stay spaces, and the default-ignorables stay empty. The apostrophe follows the rule in a script that has none.
+- **Why a glyph of its own.** A code point missing from the cmap makes a browser, Foundry or Typst fall back to the next font in the stack, so the stray character prints as an ordinary Latin glyph. A cmap entry that points at glyph 0 is treated as missing, and falls back the same way. So the box is a separate glyph that is never glyph 0, and a substitution that wants `.notdef` substitutes `notdef.box`.
+- **The box behaves as `.notdef` does.** It is in the contextual classes, the GDEF base class and the kerning that mention `.notdef`, and it has no joined forms.
+- **Where it is written.** `tools/apply_notdef_box.py` writes the glyph, the mappings and the feature entries into a UFO and does nothing on a second run. A generator calls it after it writes its UFO. A font that sets only its own code points, such as Qalezu, lists the box's code points in the script that derives its cmap.
+- **The guard.** `tools/notdef_box.py` walks the ranges on a built font and fails when a code point is unmapped, maps to glyph 0 or maps to anything but the box without being a used code point. A used code point is one whose cmap entry reaches another glyph that draws, or the glyph of the space, the hyphen-minus or the default-ignorables. Each `check_font.py` runs it.
+
 - **Default-ignorables draw nothing.** Map U+200B–200F, U+202A–202E, U+2066–2069 and U+FEFF to an empty glyph, and add a `ccmp` single substitution to a second empty glyph. A cmap entry alone fails, because HarfBuzz swaps an ignorable for the `space` glyph, and Pirzath's space is a visible dot.
 - **Keyboard layouts** give each glyph exactly one keystroke: the base letter on its key, the paired sound on Shift, and the extras on Option/AltGr or spare symbol keys. Each layout ships for macOS, Windows and Linux. A printable cheat sheet is generated from the same table.
 
@@ -234,9 +246,10 @@ Latin forced right to left with the bidi override characters works, but HarfBuzz
 
 | Check | What it proves |
 | --- | --- |
-| `tools/<font>/check_font.py` | The cmap matches the encoding; the name table carries the OFL; every glyph has outlines; marks have zero advance; features reach every variant. Runs in CI. |
-| `tools/<font>/guard.py` | Shapes every lexicon form, or every sample inscription, through the built font with uharfbuzz and asserts the right glyphs and no `.notdef`. It reads thalorna's lexicon from a local checkout, so it does not run in CI, where thalorna is private. |
-| `tools/prove_guards.py` | Each guard fails a deliberately broken font: a sign removed from the cmap, or GSUB stripped. A guard that cannot fail proves nothing. |
+| `tools/<font>/check_font.py` | The cmap matches the encoding; the name table carries the OFL; every glyph has outlines; marks have zero advance; features reach every variant; every unused character maps to the box. Runs in CI. |
+| `tools/notdef_box.py` | Every code point of the Latin and punctuation ranges is mapped, and every one the typing does not use is on `notdef.box`, never glyph 0. Runs in CI. |
+| `tools/<font>/guard.py` | Shapes every lexicon form, or every sample inscription, through the built font with uharfbuzz and asserts the right glyphs and neither `.notdef` nor the box. It reads thalorna's lexicon from a local checkout, so it does not run in CI, where thalorna is private. |
+| `tools/prove_guards.py` | Each guard fails a deliberately broken font: a sign removed from the cmap, GSUB stripped, or the box guard's question mark unmapped or put on glyph 0. A guard that cannot fail proves nothing. |
 | `tools/<font>/specimens.py` | Renders the sheets in `specimens/<font>/`. Look at every page. |
 | CI (`.gitea/workflows/ci.yml`) | Builds every font, runs each `check_font.py`, and fails if the committed fonts differ from the build. Also runs the hooks, the attribution check and the TODO check. |
 

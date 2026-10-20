@@ -196,8 +196,8 @@ def ignorable_failures(r: Renderer) -> list[str]:
             names = [r.order[g[0]] for g in shaped.glyphs]
             if any(g[3] for n, g in zip(names, shaped.glyphs) if n in EMPTY):
                 failures.append(f"{text!r}: an ignorable has an advance")
-            if "space" in names or ".notdef" in names:
-                failures.append(f"{text!r}: shaped {names}, which draws a space or .notdef")
+            if "space" in names or ".notdef" in names or "notdef.box" in names:
+                failures.append(f"{text!r}: shaped {names}, which draws a space, .notdef or the box")
             kept = [n for n in names if n not in EMPTY]
             bare = [r.order[g[0]] for g in r.shape(plain, feats).glyphs]
             if feats is None and kept != bare:
@@ -214,8 +214,8 @@ def run(font: Path, forms: list[str]) -> list[str]:
         want = collapse(carved)
         got = r.glyph_names(form)
         doubled += "doubling" in carved
-        if ".notdef" in got or "c" in got:
-            failures.append(f"{form}: .notdef in {got}")
+        if ".notdef" in got or "notdef.box" in got or "c" in got:
+            failures.append(f"{form}: .notdef or the box in {got}")
         elif got != want:
             failures.append(f"{form}: shaped {got}, expected {want}")
         got_j = [r.order[g[0]] for g in r.shape(form, SS01).glyphs]

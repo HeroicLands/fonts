@@ -8,6 +8,8 @@
     <string>ignorable.glif</string>
     <key>ignorable.sub</key>
     <string>ignorable.sub.glif</string>
+    <key>notdef.box</key>
+    <string>notdef.box.glif</string>
     <key>space</key>
     <string>space.glif</string>
     <key>z01_002.a</key>

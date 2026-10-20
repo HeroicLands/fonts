@@ -10,7 +10,7 @@ The forms come from the ``words`` list in the frontmatter of
 ``origin/main``. For each form the expected glyph sequence is derived from the
 spelling: a digraph is one ligature glyph, an acute vowel is its vowel followed
 by the length mark, a doubled consonant or digraph is the letter once with
-the doubling mark, and nothing is .notdef. The shaped sequence must match it
+the doubling mark, and nothing is .notdef or the box. The shaped sequence must match it
 exactly, so a lexicon form shapes with the same glyphs whether or not the font
 also types the lost letters. A set of fixtures covers the numerals, the
 quotation marks, the marks between words, every doubled letter, and the
@@ -76,7 +76,7 @@ FIXTURES = [
     ("“thurágh”", ["quote.open", "t_h", "u", "r", "a", "lengthmark", "g_h", "quote.close"]),
     ("«thurágh»", ["quote.open", "t_h", "u", "r", "a", "lengthmark", "g_h", "quote.close"]),
     ("<<thurágh>>", ["quote.open", "t_h", "u", "r", "a", "lengthmark", "g_h", "quote.close"]),
-    ("?;:", [".notdef", ".notdef", ".notdef"]),
+    ("?;:", ["notdef.box", "notdef.box", "notdef.box"]),
     ("¡ves durám.", ["exclam", "v", "e", "s", "space", "d", "u", "r", "a", "lengthmark", "m", "period"]),
     ("!ves durám.", ["exclam", "v", "e", "s", "space", "d", "u", "r", "a", "lengthmark", "m", "period"]),
     # Doubling: every consonant and every digraph, then the lexicon's own.
@@ -88,7 +88,7 @@ FIXTURES = [
     ("Khubbán", ["k_h", "u", "b", "doubling", "a", "lengthmark", "n"]),
     ("dalk.bant! ramk, tanv?", ["d", "a", "l", "k", "period", "b", "a", "n", "t",
                                   "exclam", "space", "r", "a", "m", "k", "comma", "space",
-                                  "t", "a", "n", "v", ".notdef"]),
+                                  "t", "a", "n", "v", "notdef.box"]),
 ]
 
 
@@ -185,7 +185,7 @@ def expected_glyphs(form: str) -> list[str]:
         elif ch in PUNCT_MAP:
             out.append(PUNCT_MAP[ch])
         else:
-            out.append(".notdef")
+            out.append("notdef.box")
         i += 1
     # A consonant written twice is the letter once with the doubling mark.
     for j in range(1, len(out)):
@@ -202,8 +202,8 @@ def run(font: Path, forms: list[str]) -> list[str]:
         got = r.glyph_names(form)
         want = expected_glyphs(form)
         doubled += "doubling" in want
-        if ".notdef" in got or "c" in got:  # c draws as .notdef
-            failures.append(f"{form}: .notdef in {got}")
+        if ".notdef" in got or "notdef.box" in got or "c" in got:  # c draws the box
+            failures.append(f"{form}: .notdef or the box in {got}")
         elif got != want:
             failures.append(f"{form}: shaped {got}, expected {want}")
         digraphs += sum(1 for g in want if g in DIGRAPHS.values())

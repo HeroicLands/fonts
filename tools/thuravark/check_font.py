@@ -6,6 +6,7 @@
 
 Every code point in the cmap must name a glyph in the glyph order, and the glyph
 must carry an outline unless it is one of the few that draw nothing by design.
+Every character the typing does not use must map to the box (tools/notdef_box.py).
 The name table must carry the family, version and licence, and the .woff2 beside
 the .ttf must open and carry the same glyphs.
 """
@@ -16,7 +17,11 @@ from pathlib import Path
 from fontTools.ttLib import TTFont
 
 ROOT = Path(__file__).resolve().parent.parent.parent
-EMPTY_BY_DESIGN = {"space", "hyphen", "blank", "acutecomb"}
+sys.path.insert(0, str(ROOT / "tools"))
+import notdef_box  # noqa: E402
+
+EMPTY_BY_DESIGN = {"space", "hyphen", "acutecomb", "ignorable", "ignorable.sub"}
+IGNORABLES = [*range(0x200B, 0x2010), *range(0x202A, 0x202F), *range(0x2066, 0x206A), 0xFEFF]
 
 # What the owner's rulings say these keys type, independent of the glyph source.
 RULED = {
@@ -24,15 +29,15 @@ RULED = {
     " ": "space",
     "-": "hyphen",
     ".": "period",
-    **{k: "blank" for k in ",!?;:\"'()<>[]@#$%^&"},
+    **{k: notdef_box.BOX for k in ",!?;:\"'()<>[]@#$%^&"},
     "j": "j",
     "y": "y",
     "J": "j",
     "Y": "y",
     "w": "w",
-    "c": "stele",
-    "q": "stele",
-    "x": "stele",
+    "c": notdef_box.BOX,
+    "q": notdef_box.BOX,
+    "x": notdef_box.BOX,
     "́": "acutecomb",
     **dict(zip("áéíóú", ["aacute", "eacute", "iacute", "oacute", "uacute"])),
 }
@@ -65,9 +70,13 @@ def check(path: Path) -> list[str]:
         elif glyf[name].numberOfContours != 0:
             problems.append(f"{name} draws something")
     hmtx = font["hmtx"]
-    for name in ("space", "hyphen", "blank"):
+    for name in ("space", "hyphen", "ignorable", "ignorable.sub"):
         if hmtx[name][0] != 0:
             problems.append(f"{name} has width {hmtx[name][0]}, expected 0")
+    for cp in IGNORABLES:
+        if cmap.get(cp) != "ignorable":
+            problems.append(f"U+{cp:04X} must map to the empty glyph 'ignorable'")
+    problems += [line.split(": error: ", 1)[1] for line in notdef_box.check(path)]
     for name in ("GSUB",):
         if name not in font:
             problems.append(f"no {name} table")

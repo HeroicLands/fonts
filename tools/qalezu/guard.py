@@ -24,7 +24,7 @@ A letter with no sign (``c`` outside ``ch``, ``j``, ``v``, ``x``, or any other
 character) is never invented a mapping: ``convert`` refuses it, and the guard
 lists the form with the letter. Every other form is shaped right to left, and
 the glyphs must be the signs the converter wrote, in reverse order for the
-visual run, with none ``.notdef``. Targets come from ``encoding.json``.
+visual run, with none ``.notdef`` or box. Targets come from ``encoding.json``.
 """
 
 import argparse
@@ -209,8 +209,8 @@ def run(font: Path, forms: list[str]) -> list[str]:
         got = r.glyph_names(text, direction="rtl")
         converted += 1
         signs += len(text)
-        if ".notdef" in got:
-            failures.append(f"{form}: .notdef in {got}")
+        if ".notdef" in got or "notdef.box" in got:
+            failures.append(f"{form}: .notdef or the box in {got}")
         elif len(got) != len(text):
             failures.append(f"{form}: {len(got)} glyphs for {len(text)} signs")
         elif got != want[::-1]:

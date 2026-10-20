@@ -12,8 +12,6 @@
     <string>acutecomb.glif</string>
     <key>b</key>
     <string>b.glif</string>
-    <key>blank</key>
-    <string>blank.glif</string>
     <key>d</key>
     <string>d.glif</string>
     <key>dh</key>
@@ -38,6 +36,10 @@
     <string>i.glif</string>
     <key>iacute</key>
     <string>iacute.glif</string>
+    <key>ignorable</key>
+    <string>ignorable.glif</string>
+    <key>ignorable.sub</key>
+    <string>ignorable.sub.glif</string>
     <key>j</key>
     <string>j.glif</string>
     <key>k</key>
@@ -52,6 +54,8 @@
     <string>n.glif</string>
     <key>ng</key>
     <string>ng.glif</string>
+    <key>notdef.box</key>
+    <string>notdef.box.glif</string>
     <key>num.0</key>
     <string>num.0.glif</string>
     <key>num.1</key>
@@ -86,8 +90,6 @@
     <string>s.glif</string>
     <key>space</key>
     <string>space.glif</string>
-    <key>stele</key>
-    <string>stele.glif</string>
     <key>t</key>
     <string>t.glif</string>
     <key>th</key>

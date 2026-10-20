@@ -366,6 +366,8 @@
     <string>ng_ng.init.glif</string>
     <key>ng_ng.medi</key>
     <string>ng_ng.medi.glif</string>
+    <key>notdef.box</key>
+    <string>notdef.box.glif</string>
     <key>num.0</key>
     <string>num.0.glif</string>
     <key>num.1</key>

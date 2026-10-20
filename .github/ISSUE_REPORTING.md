@@ -158,6 +158,7 @@ half-finished diagnosis.
 - `python tools/pirzath-hand/check_font.py` — checks the built Pirzath Hand font and its join line
 - `python tools/thuravark/check_font.py` — checks the built Thuravark font
 - `python tools/qalezu/check_font.py` — checks the built Qalezu font against `tools/qalezu/encoding.json`
+- `python tools/notdef_box.py` — checks that every character a font does not use maps to the box
 - `python tools/pirzath/guard.py`, `python tools/pirzath-hand/guard.py`, `python tools/thuravark/guard.py` and `python tools/qalezu/guard.py` — shape every lexicon form against a local thalorna checkout
 
 A change to a font commits the rebuilt files in `fonts/` with it, and a change to

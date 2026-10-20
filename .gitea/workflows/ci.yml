@@ -55,5 +55,6 @@ jobs:
                   .venv/bin/python tools/thuravark/check_font.py
                   .venv/bin/python tools/qalezu/check_font.py
                   .venv/bin/python tools/zethu/check_font.py
+                  .venv/bin/python tools/notdef_box.py
             - name: Committed fonts match the build
               run: git diff --exit-code -- fonts/

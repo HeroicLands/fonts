@@ -6,7 +6,8 @@
 
 The cmap is exactly the encoding: the signs, digits and marks on their
 right-to-left code points, the space, and the default-ignorable characters on
-one empty glyph, with no Latin letter mapped. Every drawn glyph has an outline,
+one empty glyph, and every code point of the Latin ranges on the box
+(tools/notdef_box.py), so a Latin letter prints the box. Every drawn glyph has an outline,
 the unencoded bar and dab components have zero advance, and every doubled
 consonant is its sign with the bar drawn in, at the sign's own advance, so no
 mark positioning is needed. The ignorables shape to nothing. The name table carries the licence, and the .woff2
@@ -21,6 +22,9 @@ import uharfbuzz as hb
 from fontTools.pens.recordingPen import DecomposingRecordingPen
 from fontTools.ttLib import TTFont
 
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+import notdef_box  # noqa: E402
+
 ENCODING = Path(__file__).resolve().parent / "encoding.json"
 COMPONENTS = {"doubling", "dab"}
 EMPTY_BY_DESIGN = {"space", "ignorable", "ignorable.sub"}
@@ -33,6 +37,8 @@ def expected_cmap() -> dict[int, str]:
     ign = enc["ignorables"]
     for cp in ign["codepoints"]:
         cmap[int(cp[2:], 16)] = ign["glyph"]
+    for cp in notdef_box.codepoints():
+        cmap.setdefault(cp, notdef_box.BOX)
     return cmap
 
 
@@ -57,15 +63,13 @@ def check(path: Path) -> list[str]:
     for cp in sorted(set(want) | set(cmap)):
         if cmap.get(cp) != want.get(cp):
             problems.append(f"U+{cp:04X} maps to {cmap.get(cp)}, expected {want.get(cp)}")
-    for cp in cmap:
-        ch = chr(cp)
-        if ch.isascii() and ch.isalpha():
-            problems.append(f"the Latin letter {ch!r} is mapped")
-    if ord("'") in cmap or ord("’") in cmap:
-        problems.append("an apostrophe is mapped; the converter writes the catch sign")
+    for ch in "AZaz'’":
+        if cmap.get(ord(ch)) != notdef_box.BOX:
+            problems.append(f"{ch!r} is {cmap.get(ord(ch))}; Latin text and the apostrophe must be {notdef_box.BOX}")
+    problems += [line.split(": error: ", 1)[1] for line in notdef_box.check(path)]
 
     for name in order:
-        if name == ".notdef" or name in EMPTY_BY_DESIGN:
+        if name in (".notdef", notdef_box.BOX) or name in EMPTY_BY_DESIGN:
             continue
         if glyf[name].numberOfContours == 0:
             problems.append(f"{name} has no outline")

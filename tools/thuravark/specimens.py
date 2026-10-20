@@ -108,7 +108,7 @@ def glyph_chart(r: Renderer, out: Path):
     extras = [
         (".", ". sentence end", ""), ("aa", "aa long vowel", "a twice"),
         ("á", "á long vowel", "a twice"), ("nn", "nn doubled", "n twice"),
-        ("th th", "tth doubled", "th twice"), ("c", "c, q, x no stave", "blank stele"),
+        ("th th", "tth doubled", "th twice"), ("c", "c, q, x no stave", "the box"),
         ("a-r", "- draws nothing", "breaks a ligature"),
     ]
     rows = (len(cells) + len(extras) + cols - 1) // cols

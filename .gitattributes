@@ -1,0 +1,4 @@
+# Generated files: Gitea collapses them on a pull request's Files tab.
+sources/**/*.glif linguist-generated
+fonts/* linguist-generated
+specimens/** linguist-generated

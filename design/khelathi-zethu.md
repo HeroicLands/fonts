@@ -88,7 +88,7 @@ nothing: HarfBuzz would otherwise replace each with the space glyph, so a
 `ccmp` substitution takes the one empty glyph to a second empty glyph, which is
 left alone.
 
-No Latin letter is mapped.
+Every Latin character maps to the box, so stray text prints boxes.
 
 ## Right to left, and columns
 

@@ -5,10 +5,11 @@
     .venv/bin/python tools/zethu/check_font.py [fonts/KhelathiZethu-Regular.ttf]
 
 - The cmap is exactly the encoding: each drawn sign's default form on its code point,
-  the space, and the default-ignorable characters on one empty glyph, with no Latin
-  letter mapped.
-- The glyph set is exactly the encoding's forms, the notdef, the space and the two
-  empty glyphs, and every glyph but the empty ones has an outline whose outer contour
+  the space, the default-ignorable characters on one empty glyph, and every code
+  point of the Latin ranges on the box (tools/notdef_box.py), so a Latin letter
+  prints the box.
+- The glyph set is exactly the encoding's forms, the notdef, the box, the space and
+  the two empty glyphs, and every glyph but the empty ones has an outline whose outer contour
   runs clockwise.
 - Each advance is min(1000, round(10 * box width) + 80), the font holds a full quadrat
   of 1000 units between its ascender and descender, and no ink leaves the win metrics.
@@ -26,6 +27,9 @@ from pathlib import Path
 
 import uharfbuzz as hb
 from fontTools.ttLib import TTFont
+
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+import notdef_box  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent.parent
 ENCODING = Path(__file__).resolve().parent / "encoding.json"
@@ -50,6 +54,8 @@ def expected_cmap(enc) -> dict[int, str]:
     out[cp(enc["space"]["codepoint"])] = enc["space"]["glyph"]
     for c in enc["ignorables"]["codepoints"]:
         out[cp(c)] = enc["ignorables"]["glyph"]
+    for c in notdef_box.codepoints():
+        out.setdefault(c, notdef_box.BOX)
     return out
 
 
@@ -114,16 +120,16 @@ def check(path: Path) -> list[str]:
     for c in sorted(set(want) | set(cmap)):
         if cmap.get(c) != want.get(c):
             problems.append(f"U+{c:04X} maps to {cmap.get(c)}, expected {want.get(c)}")
-    for c in cmap:
-        ch = chr(c)
-        if ch.isascii() and ch.isalpha():
-            problems.append(f"the Latin letter {ch!r} is mapped")
+    for ch in "AZaz'’":
+        if cmap.get(ord(ch)) != notdef_box.BOX:
+            problems.append(f"{ch!r} is {cmap.get(ord(ch))}; Latin text and the apostrophe must be {notdef_box.BOX}")
+    problems += [line.split(": error: ", 1)[1] for line in notdef_box.check(path)]
 
     forms = {}
     for e in enc["signs"]:
         for v in e["variants"]:
             forms[gname(e["id"], v)] = (e, v)
-    glyphs = {".notdef", enc["space"]["glyph"], *EMPTY, *forms}
+    glyphs = {".notdef", notdef_box.BOX, enc["space"]["glyph"], *EMPTY, *forms}
     if set(order) != glyphs:
         extra, missing = sorted(set(order) - glyphs), sorted(glyphs - set(order))
         problems.append(f"glyph set differs from the encoding: extra {extra[:5]}, missing {missing[:5]}")

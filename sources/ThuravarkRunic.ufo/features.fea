@@ -9,6 +9,12 @@ languagesystem latn dflt;
 # first letter of a doubled digraph (tth, ddh, kkh, ggh, hhl, nng) becomes the
 # digraph itself, so the ligatures below see two digraphs; ngh is n and gh.
 feature ccmp {
+  # HarfBuzz replaces a default-ignorable character the font maps directly with
+  # the space glyph. A glyph that a lookup substitutes is left alone, so each
+  # ignorable is substituted once, to a second empty glyph.
+  lookup ccmp_ignorable {
+    sub ignorable by ignorable.sub;
+  } ccmp_ignorable;
 lookup ccmp_comb {
   sub a acutecomb by aacute;
   sub e acutecomb by eacute;

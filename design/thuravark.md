@@ -45,8 +45,8 @@ specimen table in `tools/thuravark/specimens.py`.
 | a doubled consonant, `tth ddh kkh ggh hhl nng` | two staves, two digraph staves |
 | `0`-`9` | the numerals |
 | `.` | a short horizontal dash, the row's one horizontal |
-| space, `-` and every other punctuation key | nothing; the hyphen breaks a ligature |
-| `c q x` | the blank stele, as `.notdef` |
+| space and `-` | nothing; the hyphen breaks a ligature |
+| `c q x` and every other punctuation key | the box, a copy of `.notdef` |
 
 ## Numerals
 

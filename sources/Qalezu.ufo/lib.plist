@@ -5,6 +5,7 @@
     <key>public.glyphOrder</key>
     <array>
       <string>.notdef</string>
+      <string>notdef.box</string>
       <string>space</string>
       <string>l</string>
       <string>r</string>
@@ -138,6 +139,8 @@
       <key>n.dbl</key>
       <string>base</string>
       <key>nine</key>
+      <string>base</string>
+      <key>notdef.box</key>
       <string>base</string>
       <key>one</key>
       <string>base</string>

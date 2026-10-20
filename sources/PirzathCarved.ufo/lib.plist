@@ -5,7 +5,10 @@
     <key>public.glyphOrder</key>
     <array>
       <string>.notdef</string>
+      <string>notdef.box</string>
       <string>space</string>
+      <string>ignorable</string>
+      <string>ignorable.sub</string>
       <string>p</string>
       <string>b</string>
       <string>f</string>
@@ -135,6 +138,10 @@
       <string>base</string>
       <key>iacute</key>
       <string>base</string>
+      <key>ignorable</key>
+      <string>base</string>
+      <key>ignorable.sub</key>
+      <string>base</string>
       <key>j</key>
       <string>base</string>
       <key>k</key>
@@ -152,6 +159,8 @@
       <key>n</key>
       <string>base</string>
       <key>ng</key>
+      <string>base</string>
+      <key>notdef.box</key>
       <string>base</string>
       <key>num.0</key>
       <string>base</string>

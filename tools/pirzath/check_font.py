@@ -6,7 +6,9 @@
 
 Every code point in the cmap must name a glyph in the glyph order, and the
 glyph must carry an outline unless it is one of the few that draw nothing by
-design. The .woff2 beside the .ttf must open and carry the same glyphs.
+design. The default-ignorable characters map to an empty glyph with no advance, and
+every other character the typing does not use maps to the box (tools/notdef_box.py).
+The .woff2 beside the .ttf must open and carry the same glyphs.
 """
 
 import sys
@@ -14,8 +16,11 @@ from pathlib import Path
 
 from fontTools.ttLib import TTFont
 
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+import notdef_box  # noqa: E402
 
-EMPTY_BY_DESIGN = set()
+IGNORABLES = [*range(0x200B, 0x2010), *range(0x202A, 0x202F), *range(0x2066, 0x206A), 0xFEFF]
+EMPTY_BY_DESIGN = {"ignorable", "ignorable.sub"}
 
 # What the owner's rulings say these keys type, independent of the glyph source.
 RULED = {
@@ -105,8 +110,16 @@ def check(path: Path) -> list[str]:
             problems.append(f"{name} draws nothing")
     cmap = font.getBestCmap()
     for key in "?;:":
-        if ord(key) in cmap:
-            problems.append(f"{key!r} is mapped; it must fall to .notdef")
+        if cmap.get(ord(key)) != notdef_box.BOX:
+            problems.append(f"{key!r} is {cmap.get(ord(key))}; it must be {notdef_box.BOX}")
+    hmtx = font["hmtx"]
+    for cp in IGNORABLES:
+        if cmap.get(cp) != "ignorable":
+            problems.append(f"U+{cp:04X} must map to the empty glyph 'ignorable'")
+    for name in ("ignorable", "ignorable.sub"):
+        if name not in order or glyf[name].numberOfContours != 0 or hmtx[name][0] != 0:
+            problems.append(f"{name} must be in the font, empty and without advance")
+    problems += [line.split(": error: ", 1)[1] for line in notdef_box.check(path)]
     classes = font["GDEF"].table.GlyphClassDef.classDefs if "GDEF" in font else {}
     for name in ("lengthmark", "doubling"):
         if name not in order or glyf[name].numberOfContours == 0:

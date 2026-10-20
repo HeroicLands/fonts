@@ -15,7 +15,8 @@ read from the font source:
 - an acute vowel, and a doubled vowel letter, is the stave twice;
 - a doubled consonant is two staves, a doubled digraph two digraph staves;
 - j, and y before a vowel, is the glide; any other y is the vowel i;
-- the space, the hyphen and every punctuation key but the full stop draw nothing;
+- the space and the hyphen draw nothing, and the full stop draws the dash;
+- every other punctuation key, and c q x, draws the box;
 - nothing is .notdef.
 
 Fixtures cover the fillers, the numerals, the full stop and the empty keys. A
@@ -79,7 +80,7 @@ STAVES = ("a e i o u p b f v t d th dh k g kh gh s z h l r hl m n ng j w").split
 DIGRAPHS = ("th", "dh", "kh", "gh", "ng", "hl")
 VOWELS = "aeiou"
 ACUTE = {"á": "a", "é": "e", "í": "i", "ó": "o", "ú": "u"}
-NOTHING = {"space", "hyphen", "blank"}
+NOTHING = {"space", "hyphen"}
 
 FIXTURES = [
     # Every stave from its typed input.
@@ -115,18 +116,18 @@ FIXTURES = [
     ("0123456789", [f"num.{i}" for i in range(10)]),
     ("128", ["num.1", "num.2", "num.8"]),
     ("0i0", ["num.0", "i", "num.0"]),
-    # The full stop draws the dash; the space and other punctuation draw nothing.
+    # The full stop draws the dash, the space draws nothing, and other punctuation draws the box.
     ("rún.", ["r", "u", "u", "n", "period"]),
     ("a b", ["a", "space", "b"]),
     ("a b", ["a", "space", "b"]),
-    (",!?;:", ["blank"] * 5),
-    ('"\'()', ["blank"] * 4),
-    ("“a”", ["blank", "a", "blank"]),
-    ("a«b»", ["a", "blank", "b", "blank"]),
-    ("<>[]", ["blank"] * 4),
-    ("@#$%^&", ["blank"] * 6),
-    # No stave: the blank stele, never .notdef.
-    ("cqx", ["stele", "stele", "stele"]),
+    (",!?;:", ["notdef.box"] * 5),
+    ('"\'()', ["notdef.box"] * 4),
+    ("“a”", ["notdef.box", "a", "notdef.box"]),
+    ("a«b»", ["a", "notdef.box", "b", "notdef.box"]),
+    ("<>[]", ["notdef.box"] * 4),
+    ("@#$%^&", ["notdef.box"] * 6),
+    # No stave: the box, never .notdef.
+    ("cqx", ["notdef.box", "notdef.box", "notdef.box"]),
 ]
 
 
@@ -177,7 +178,7 @@ def expected_glyphs(form: str) -> list[str]:
         elif ch == ".":
             out.append("period")
         elif ch in "cqx":
-            out.append("stele")
+            out.append("notdef.box")
         elif s[i : i + 3] == "nng":
             out += ["ng", "ng"]
             i += 3
@@ -193,7 +194,7 @@ def expected_glyphs(form: str) -> list[str]:
         elif ch in "abdefghijklmnoprstuvwz":
             out.append(ch)
         else:
-            out.append("blank")
+            out.append("notdef.box")
         i += 1
     return out
 
@@ -208,8 +209,8 @@ def shaping(font: Path, forms: list[str]) -> list[str]:
         digraphs += sum(1 for g in want if g in DIGRAPHS)
         long_vowels += sum(1 for a, b in zip(want, want[1:]) if a == b and a in VOWELS)
         doubled += sum(1 for a, b in zip(want, want[1:]) if a == b and a not in VOWELS)
-        if ".notdef" in got or "stele" in got:
-            failures.append(f"{form}: .notdef or stele in {got}")
+        if ".notdef" in got or "notdef.box" in got:
+            failures.append(f"{form}: .notdef or the box in {got}")
         elif got != want:
             failures.append(f"{form}: shaped {got}, expected {want}")
     for text, want in FIXTURES:

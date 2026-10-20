@@ -5,9 +5,11 @@
     <key>public.glyphOrder</key>
     <array>
       <string>.notdef</string>
+      <string>notdef.box</string>
       <string>space</string>
+      <string>ignorable</string>
+      <string>ignorable.sub</string>
       <string>hyphen</string>
-      <string>blank</string>
       <string>acutecomb</string>
       <string>a</string>
       <string>e</string>
@@ -54,7 +56,6 @@
       <string>num.8</string>
       <string>num.9</string>
       <string>period</string>
-      <string>stele</string>
     </array>
   </dict>
 </plist>

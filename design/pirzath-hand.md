@@ -89,7 +89,7 @@ line gap and the window metrics clearing the ink of the dots and loops.
 - The numerals 0 to 15 are a stem standing off the line with tally ticks: 8 high
   on the fore side, 4 lower on the fore side, 2 on the back side and 1 at the
   back of the foot; the bare stem is nought.
-- `.notdef` is the cursive _l_ between two dots.
+- `.notdef`, and the box that every character the typing does not use maps to, is the cursive _l_ between two dots.
 
 ## The joined forms
 
@@ -112,7 +112,7 @@ the edge, so two neighbouring glyphs meet without a gap and without a bump. A
 joined line shaped by HarfBuzz matches the composed joined line of the drawing
 to within about one unit, with the whole-unit advances the only difference.
 Letters that stand off the line — the marks, the quotation marks, the numerals,
-the space and `.notdef` — have no joined forms and break the join.
+the space and the box — have no joined forms and break the join.
 
 ## The typing
 
@@ -131,8 +131,8 @@ The hand types as the carved face does, in the Latin spelling of the setting: _n
   _oy_ are the pairs _ai_, _ei_ and _oi_. `'` and `’` are the catch.
 - `"` opens after a space or at the start and closes elsewhere; `[`, `«`, `“` and
   `<<` open; `]`, `»`, `”` and `>>` close. `!` and `¡` are the imperative.
-- `0`–`9` and `@ # $ % ^ &` are the numerals 0–15. `?`, `;` and `:` fall to
-  `.notdef`.
+- `0`–`9` and `@ # $ % ^ &` are the numerals 0–15. `?`, `;` and `:` draw the
+  box, as does every other character the typing does not use.
 - The default-ignorable characters draw nothing: they map to an empty glyph,
   and a `ccmp` substitution turns that into a second empty glyph, so the
   shaper does not replace them with the visible space.

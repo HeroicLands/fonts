@@ -9,7 +9,9 @@ removed, so no ligature, decomposition or contextual rule applies. The broken
 Qalezu font has one sign, the th, removed from its cmap. Khelathi Zethu is broken
 twice: once with one sign, the crocodile-hunt house 11-001, removed from its cmap,
 and once with the GSUB table removed so that no second or third form is reachable.
-The guards run on their fixtures alone, so the proof needs no lexicon.
+The box guard (tools/notdef_box.py) is proved on every font twice: with the question
+mark removed from the cmap, and with it pointed at glyph 0. The guards run on their
+fixtures alone, so the proof needs no lexicon.
 """
 
 import importlib.util
@@ -56,6 +58,22 @@ def without_th(font: Path, out: Path) -> Path:
     return out
 
 
+def box_unmapped(font: Path, out: Path) -> Path:
+    f = TTFont(str(font))
+    for table in f["cmap"].tables:
+        table.cmap.pop(ord("?"), None)
+    f.save(str(out))
+    return out
+
+
+def box_glyph0(font: Path, out: Path) -> Path:
+    f = TTFont(str(font))
+    for table in f["cmap"].tables:
+        table.cmap[ord("?")] = ".notdef"
+    f.save(str(out))
+    return out
+
+
 def main():
     pirzath = load("pirzath_guard", ROOT / "tools" / "pirzath" / "guard.py")
     hand = load("pirzath_hand_guard", ROOT / "tools" / "pirzath-hand" / "guard.py")
@@ -95,6 +113,11 @@ def main():
         ("Khelathi Zethu", zethu_font, zethu.run, without_sign, "without the 11-001 sign"),
         ("Khelathi Zethu", zethu_font, zethu.run, stripped, "without GSUB"),
     ]
+    notdef = load("notdef_box", ROOT / "tools" / "notdef_box.py")
+    for font in sorted((ROOT / "fonts").glob("*-Regular.ttf")):
+        label = font.name.split("-")[0]
+        cases.append((label, font, notdef.check, box_unmapped, "with ? unmapped"))
+        cases.append((label, font, notdef.check, box_glyph0, "with ? on glyph 0"))
     status = 0
     with tempfile.TemporaryDirectory() as tmp:
         for label, font, guard, break_font, how in cases:

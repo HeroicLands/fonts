@@ -9,7 +9,7 @@ numbers beside them, each a list of sign ids. The guard writes each as the strin
 signs' code points, shapes it with HarfBuzz in a right-to-left run and asserts that:
 
 - every sign gives its own default glyph, in reverse order for the visual run, never
-  ``.notdef``;
+  ``.notdef`` or the box;
 - every form of every sign gives its glyph through the features: ``ss01`` and the first
   alternate of ``salt`` give the second form, ``ss02`` and the second alternate of ``salt``
   give the third, and a sign without that form keeps its default;
@@ -92,7 +92,7 @@ def run(path: Path, report=None) -> list[str]:
         want = [gname(i, "a") for i in ids][::-1]
         got = [g for g, _ in shaper.shape(text)]
         counts["signs"] += len(ids)
-        if ".notdef" in got or got != want:
+        if ".notdef" in got or "notdef.box" in got or got != want:
             failures.append(f"{label}: shaped {got}, expected {want}")
         # ignorables between the signs draw nothing and change nothing
         spaced = "‏".join(chr(code[i]) for i in ids)
@@ -113,7 +113,7 @@ def run(path: Path, report=None) -> list[str]:
         counts["variant shapings"] += 1
         got = [g for g, _ in shaper.shape(every, features)]
         want = [gname(i, pick(i)) for i in ids][::-1]
-        if ".notdef" in got or got != want:
+        if ".notdef" in got or "notdef.box" in got or got != want:
             bad = [(w, g) for w, g in zip(want, got) if w != g][:3]
             failures.append(f"features {features or 'none'}: forms differ, first {bad}")
     if report is not None:

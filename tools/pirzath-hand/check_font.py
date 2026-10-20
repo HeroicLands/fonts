@@ -6,8 +6,9 @@
 
 The hand types exactly as the carved face does, so the character map is
 checked against the same rulings. Every mapped glyph and every lost letter
-must carry an outline, the default-ignorable characters must draw nothing, and
-the .woff2 beside the .ttf must open and carry the same glyphs.
+must carry an outline, the default-ignorable characters must draw nothing, every
+other character the typing does not use must map to the box (tools/notdef_box.py),
+and the .woff2 beside the .ttf must open and carry the same glyphs.
 
 The joined forms are checked from the outlines. Every joining letter has three
 joined forms beside its plain one, with the same advance: .init with a long
@@ -36,6 +37,7 @@ def _carved_check():
 
 
 CARVED = _carved_check()
+notdef_box = CARVED.notdef_box
 
 CONSONANTS = [
     "p", "b", "f", "v", "m", "t", "d", "t_h", "d_h", "n", "k", "g", "k_h", "g_h", "h", "s", "z", "l", "r",
@@ -177,8 +179,9 @@ def check(path: Path) -> list[str]:
     if "space" not in order or glyf["space"].numberOfContours != 0:
         problems.append("the space must be in the font and draw nothing")
     for key in "?;:":
-        if ord(key) in cmap:
-            problems.append(f"{key!r} is mapped; it must fall to .notdef")
+        if cmap.get(ord(key)) != notdef_box.BOX:
+            problems.append(f"{key!r} is {cmap.get(ord(key))}; it must be {notdef_box.BOX}")
+    problems += [line.split(": error: ", 1)[1] for line in notdef_box.check(path)]
     hmtx = font["hmtx"]
     for cp in IGNORABLES:
         if cmap.get(cp) != "ignorable":
