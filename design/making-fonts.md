@@ -10,14 +10,14 @@ Each font's own design note in `design/` holds its letter-by-letter detail. This
 
 ## The fonts
 
-| Font | Script and setting | Direction | Drawn as | Glyphs | Encoding |
-| --- | --- | --- | --- | --- | --- |
-| **Pirzath Carved** | Pirzath, the Khazari carved row | left to right | graver cuts: straight tapered grooves and drilled dots, united into one outline per glyph | 76 | Latin spelling, through GSUB; private-use block U+F0000 planned |
-| **Thuravark Carved** | Thuravark, the Nordmen rune-row, the reduced daughter of Pirzath | left to right | 28 staves: one upright stem with up to four straight branches at two fixed slopes | 51 | Latin spelling; U+F0100 planned |
-| **Pirzath Hand** | the everyday written Pirzath | left to right | a pointed pen with a gentle swell, on a measured system (see [The hand](#the-hand-a-written-script)) | the full alphabet, lifted and joined | shares Pirzath Carved's encoding |
-| **Qalezu Hand** | the Khelathi everyday alphabet, consonants only | right to left | a broad reed nib at 30°, swept along centrelines | 109 | U+1EA00–U+1EA38 and U+1ECC0–U+1ECEB, natively right to left |
-| **Khelathi Zethu Glyphs** | the Khelathi temple hieroglyphs | right to left, or top-down columns | hairline silhouettes of pictures | 304 signs, 695 glyphs with variants | U+1EA40 + inventory row |
-| **Semaron Kuriale** (not built) | the Vylarian alphabet, majuscule and minuscule, first hand Kuriale | left to right | derived from Thuravark, rounded by reed and quill; its own system, not Pirzath Hand's look | in progress | U+F0200 planned |
+| Font                            | Script and setting                                                 | Direction                          | Drawn as                                                                                             | Glyphs                               | Encoding                                                        |
+| ------------------------------- | ------------------------------------------------------------------ | ---------------------------------- | ---------------------------------------------------------------------------------------------------- | ------------------------------------ | --------------------------------------------------------------- |
+| **Pirzath Carved**              | Pirzath, the Khazari carved row                                    | left to right                      | graver cuts: straight tapered grooves and drilled dots, united into one outline per glyph            | 76                                   | Latin spelling, through GSUB; private-use block U+F0000 planned |
+| **Thuravark Carved**            | Thuravark, the Nordmen rune-row, the reduced daughter of Pirzath   | left to right                      | 28 staves: one upright stem with up to four straight branches at two fixed slopes                    | 51                                   | Latin spelling; U+F0100 planned                                 |
+| **Pirzath Hand**                | the everyday written Pirzath                                       | left to right                      | a pointed pen with a gentle swell, on a measured system (see [The hand](#the-hand-a-written-script)) | the full alphabet, lifted and joined | shares Pirzath Carved's encoding                                |
+| **Qalezu Hand**                 | the Khelathi everyday alphabet, consonants only                    | right to left                      | a broad reed nib at 30°, swept along centrelines                                                     | 109                                  | U+1EA00–U+1EA38 and U+1ECC0–U+1ECEB, natively right to left     |
+| **Khelathi Zethu Glyphs**       | the Khelathi temple hieroglyphs                                    | right to left, or top-down columns | hairline silhouettes of pictures                                                                     | 304 signs, 695 glyphs with variants  | U+1EA40 + inventory row                                         |
+| **Semaron Kuriale** (not built) | the Vylarian alphabet, majuscule and minuscule, first hand Kuriale | left to right                      | derived from Thuravark, rounded by reed and quill; its own system, not Pirzath Hand's look           | in progress                          | U+F0200 planned                                                 |
 
 A font's family name is its script followed by how the script is made: **Carved**, **Hand** or **Glyphs**. A script with more than one canon hand uses the name of the hand instead, as Semaron Kuriale does. The file name is the family name without spaces, then `-Regular`, and the PostScript name is the same.
 
@@ -31,16 +31,16 @@ Fonts still to come are Helónika, Teng Chou, Vedyakshara and Ch'alish P'ilam. E
 
 ## The repository
 
-| Path | Holds |
-| --- | --- |
-| `sources/<Font>.ufo` | The source of each font: outlines, cmap, metrics, `features.fea`, GDEF categories and glyph order. The UFO is the source of truth. |
-| `fonts/<Font>-Regular.ttf` and `.woff2` | The built fonts, committed. CI rebuilds them and fails if they differ. |
-| `specimens/<font>/` | The specimen sheets. |
-| `design/<font>.md` | The design note, present tense: the system, the letters, the typing, the rounds. |
-| `tools/<font>/` | `check_font.py`, `guard.py` and `specimens.py` for each font, plus any encoding table such as `encoding.json`. |
+| Path                                                                                                                                            | Holds                                                                                                                                                                                                               |
+| ----------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `sources/<Font>.ufo`                                                                                                                            | The source of each font: outlines, cmap, metrics, `features.fea`, GDEF categories and glyph order. The UFO is the source of truth.                                                                                  |
+| `fonts/<Font>-Regular.ttf` and `.woff2`                                                                                                         | The built fonts, committed. CI rebuilds them and fails if they differ.                                                                                                                                              |
+| `specimens/<font>/`                                                                                                                             | The specimen sheets.                                                                                                                                                                                                |
+| `design/<font>.md`                                                                                                                              | The design note, present tense: the system, the letters, the typing, the rounds.                                                                                                                                    |
+| `tools/<font>/`                                                                                                                                 | `check_font.py`, `guard.py` and `specimens.py` for each font, plus any encoding table such as `encoding.json`.                                                                                                      |
 | `tools/render.py`, `tools/prove_guards.py`, `tools/notdef_box.py`, `tools/apply_notdef_box.py`, `tools/font_names.py`, `tools/add_mac_names.py` | Shared tools. `render.py` sets shaped text in a font for specimens. `prove_guards.py` proves each guard fails a broken font. `notdef_box.py` is the box guard, and `apply_notdef_box.py` writes the box into a UFO. |
-| `build.sh` | Builds every font, reproducibly. |
-| `nogit/` | Generators and scratch. Not committed. |
+| `build.sh`                                                                                                                                      | Builds every font, reproducibly.                                                                                                                                                                                    |
+| `nogit/`                                                                                                                                        | Generators and scratch. Not committed.                                                                                                                                                                              |
 
 ### The toolchain
 
@@ -73,12 +73,12 @@ Generators live outside the tree because they are one-off drawing tools. The com
 
 ## Who does what
 
-| Work | Who | Why |
-| --- | --- | --- |
-| Letter design: the system, the letterforms | Fable, which may look at its own renders | Its letter design is the strongest, and the owner prefers it. It is expensive, so give it drawing only. |
-| Figurative signs (hieroglyphs, picture-glyphs, icons) | Opus, looking at its own renders | Pictures must be judged by eye. Opus drawing with eyes produced the accepted hieroglyphs; Fable drawing blind produced crude sketches. |
-| Plumbing: UFO, `features.fea`, encoding, build, checks, guard, specimens, CI, design note | Sonnet | Mechanical, and checkable by the gates. |
-| Inventories (what a script writes) | Sonnet, report only | Derived from canon; the owner rules on it. |
+| Work                                                                                      | Who                                      | Why                                                                                                                                    |
+| ----------------------------------------------------------------------------------------- | ---------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
+| Letter design: the system, the letterforms                                                | Fable, which may look at its own renders | Its letter design is the strongest, and the owner prefers it. It is expensive, so give it drawing only.                                |
+| Figurative signs (hieroglyphs, picture-glyphs, icons)                                     | Opus, looking at its own renders         | Pictures must be judged by eye. Opus drawing with eyes produced the accepted hieroglyphs; Fable drawing blind produced crude sketches. |
+| Plumbing: UFO, `features.fea`, encoding, build, checks, guard, specimens, CI, design note | Sonnet                                   | Mechanical, and checkable by the gates.                                                                                                |
+| Inventories (what a script writes)                                                        | Sonnet, report only                      | Derived from canon; the owner rules on it.                                                                                             |
 
 **Viewing rune-like images can trip safety filters.** It flagged Fable twice. For any rune row or angular stave script:
 
@@ -98,6 +98,7 @@ Generators live outside the tree because they are one-off drawing tools. The com
    - every place canon and spelling disagree.
 
    The owner rules, and those rulings are recorded in the inventory.
+
 2. **The owner's sketches, if any.** The owner may draw a sheet. **A sketch fixes a letter's identity, not its finished form**: its topology, its strokes, its marks. Do not transcribe a quick sketch's proportions and wobbles. Where the owner's later written word and a sheet disagree, the later word wins. Note any conflict and ask.
 3. **System-first pilot.** Draw a small set, the letters of one sample sentence, on a stated system (below), and set them in text. The owner reviews the pilot, usually on a published page, often with marked-up screenshots.
 4. **Iterate on the pilot.** Fix the system, not single letters, so every later letter inherits the fix.
@@ -208,11 +209,11 @@ Passages switch to the script by font alone, and the text stays plain, searchabl
 
 Each script also has its own **private-use block** in plane 15, for typing script directly with a keyboard layout:
 
-| Block | Script |
-| --- | --- |
+| Block   | Script                             |
+| ------- | ---------------------------------- |
 | U+F0000 | Pirzath (Carved and Hand share it) |
-| U+F0100 | Thuravark |
-| U+F0200 | Semaron |
+| U+F0100 | Thuravark                          |
+| U+F0200 | Semaron                            |
 
 ### Right-to-left scripts
 
@@ -223,6 +224,7 @@ Latin forced right to left with the bidi override characters works, but HarfBuzz
   - Khelathi Zethu Glyphs: U+1EA40–U+1EC6F.
 
   Text in them runs right to left natively in Chrome, Foundry and Typst, mixed with English, digits included.
+
 - **The table.** One file per font, `tools/<font>/encoding.json`, holds glyph, code point, sound and Latin typing. The keyboard layout and package-build's converter read it too.
 - **Converting the notes.** The build converts a note's Latin spelling to these code points. The converter applies the script's rules: no vowels, a word-initial vowel becomes the catch, a catch before a consonant is written over that consonant as its catch-before form, digraphs become one sign, doubling marks a doubled consonant. `tools/qalezu-hand/guard.py` holds the reference converter.
 - **No marks on these code points.** Chrome shapes script-less right-to-left code points in reverse order, so a combining mark attaches to the wrong sign. Precompose instead: Qalezu gives each doubled consonant its own code point, with the bar drawn in, and each consonant a catch-before code point, with three dabs drawn over it.
@@ -237,6 +239,7 @@ Latin forced right to left with the bidi override characters works, but HarfBuzz
   - U+2010–205E General Punctuation.
 
   The space (U+0020) and the no-break space (U+00A0) stay spaces, and the default-ignorables stay empty. The apostrophe follows the rule in a script that has none.
+
 - **Why a glyph of its own.** A code point missing from the cmap makes a browser, Foundry or Typst fall back to the next font in the stack, so the stray character prints as an ordinary Latin glyph. A cmap entry that points at glyph 0 is treated as missing, and falls back the same way. So the box is a separate glyph that is never glyph 0, and a substitution that wants `.notdef` substitutes `notdef.box`.
 - **The box behaves as `.notdef` does.** It is in the contextual classes, the GDEF base class and the kerning that mention `.notdef`, and it has no joined forms.
 - **Where it is written.** `tools/apply_notdef_box.py` writes the glyph, the mappings and the feature entries into a UFO and does nothing on a second run. A generator calls it after it writes its UFO. A font that sets only its own code points, such as Qalezu, lists the box's code points in the script that derives its cmap.
@@ -247,15 +250,15 @@ Latin forced right to left with the bidi override characters works, but HarfBuzz
 
 ## Checks and gates
 
-| Check | What it proves |
-| --- | --- |
-| `tools/font_names.py` | Every font carries name IDs 1 to 6 on both the Windows and the Macintosh platform, the same on each; the family name is the one in its table; the PostScript name has no spaces; the OS/2 Unicode ranges and code pages name only the font's own script, never Latin. Runs in CI. |
-| `tools/<font>/check_font.py` | The cmap matches the encoding; the name table carries the OFL; every glyph has outlines; marks have zero advance; features reach every variant; every unused character maps to the box. Runs in CI. |
-| `tools/notdef_box.py` | Every code point of the Latin and punctuation ranges is mapped, and every one the typing does not use is on `notdef.box`, never glyph 0. Runs in CI. |
-| `tools/<font>/guard.py` | Shapes every lexicon form, or every sample inscription, through the built font with uharfbuzz and asserts the right glyphs and neither `.notdef` nor the box. It reads thalorna's lexicon from a local checkout, so it does not run in CI, where thalorna is private. |
-| `tools/prove_guards.py` | Each guard fails a deliberately broken font: a sign removed from the cmap, GSUB stripped, or the box guard's question mark unmapped or put on glyph 0. A guard that cannot fail proves nothing. |
-| `tools/<font>/specimens.py` | Renders the sheets in `specimens/<font>/`. Look at every page. |
-| CI (`.gitea/workflows/ci.yml`) | Builds every font, runs each `check_font.py`, and fails if the committed fonts differ from the build. Also runs the hooks, the attribution check and the TODO check. |
+| Check                          | What it proves                                                                                                                                                                                                                                                                    |
+| ------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `tools/font_names.py`          | Every font carries name IDs 1 to 6 on both the Windows and the Macintosh platform, the same on each; the family name is the one in its table; the PostScript name has no spaces; the OS/2 Unicode ranges and code pages name only the font's own script, never Latin. Runs in CI. |
+| `tools/<font>/check_font.py`   | The cmap matches the encoding; the name table carries the OFL; every glyph has outlines; marks have zero advance; features reach every variant; every unused character maps to the box. Runs in CI.                                                                               |
+| `tools/notdef_box.py`          | Every code point of the Latin and punctuation ranges is mapped, and every one the typing does not use is on `notdef.box`, never glyph 0. Runs in CI.                                                                                                                              |
+| `tools/<font>/guard.py`        | Shapes every lexicon form, or every sample inscription, through the built font with uharfbuzz and asserts the right glyphs and neither `.notdef` nor the box. It reads thalorna's lexicon from a local checkout, so it does not run in CI, where thalorna is private.             |
+| `tools/prove_guards.py`        | Each guard fails a deliberately broken font: a sign removed from the cmap, GSUB stripped, or the box guard's question mark unmapped or put on glyph 0. A guard that cannot fail proves nothing.                                                                                   |
+| `tools/<font>/specimens.py`    | Renders the sheets in `specimens/<font>/`. Look at every page.                                                                                                                                                                                                                    |
+| CI (`.gitea/workflows/ci.yml`) | Builds every font, runs each `check_font.py`, and fails if the committed fonts, `fonts.css` or `encoding/` differ from the build. Also checks the formatting and the npm package. Also runs the hooks, the attribution check and the TODO check.                                  |
 
 ## Delivering the fonts
 
@@ -270,6 +273,10 @@ Readers install nothing.
 - **Right-to-left blocks** use a right-to-left container (`dir="rtl"`) for alignment, in every target.
 - **Columns** (the temple hieroglyphs) use `writing-mode: vertical-rl` with `text-orientation: upright` in HTML. The royal-name oval is drawn by the build around a name's signs.
 - **One build rule for every target.** package-build marks text as a script, sets it in the script's font, converts right-to-left scripts to their code points, and lays out quadrats and columns.
+- **npm.** The fonts are published as `@heroiclands/fonts`: `fonts/*.woff2`, `fonts/*.ttf`, `fonts.css`, `encoding/*.json`, `LICENSE` and `README.md`, and nothing else (`npm run check:package` asserts it).
+  - `build.sh` writes `fonts.css` and `encoding/` after the fonts, and CI fails when any of them differs from a fresh build.
+  - A change a user of a font meets gets a changeset. Merging it to `main` opens the Version Packages pull request, and merging that tags `v<version>` on Gitea.
+  - The push mirror carries the tag to GitHub, where `.github/workflows/release.yml` publishes to npm under Trusted Publishing and cuts the GitHub Release.
 - **Licence.** The OFL lets a font be embedded in pages, documents and books, and bundled with software, without that work taking on the font's licence.
 
 ## Working with the owner

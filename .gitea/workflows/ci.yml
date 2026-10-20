@@ -2,10 +2,12 @@ name: CI
 
 # What the repository asserts on every change: the canonical git hooks are
 # present, no TODO or FIXME marker is committed, and the fonts rebuild from the
-# UFO sources and pass the font check.
+# UFO sources and pass the font check, and the npm package holds exactly the
+# fonts, their stylesheet and their code-point tables.
 #
-# The build is reproducible (a fixed head timestamp), so the committed fonts
-# must match a fresh build byte for byte: a font left unrebuilt fails here.
+# The build is reproducible (a fixed head timestamp), so the committed fonts,
+# fonts.css and encoding/ must match a fresh build byte for byte: a file left
+# unrebuilt fails here.
 #
 # The lexicon guards are not run here. They read the lexicon from a local
 # thalorna checkout, and thalorna is private to this CI.
@@ -37,6 +39,19 @@ jobs:
                   paths: tools
                   extensions: .py
 
+    package:
+        name: Formatting and the npm package
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+            - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7
+              with:
+                  node-version: 24
+                  cache: npm
+            - run: npm ci
+            - run: npm run format:check
+            - run: npm run check:package
+
     fonts:
         name: Fonts build and pass the font check
         runs-on: ubuntu-latest
@@ -57,5 +72,7 @@ jobs:
                   .venv/bin/python tools/khelathi-zethu-glyphs/check_font.py
                   .venv/bin/python tools/notdef_box.py
                   .venv/bin/python tools/font_names.py
-            - name: Committed fonts match the build
-              run: git diff --exit-code -- fonts/
+            - name: Committed fonts, stylesheet and encodings match the build
+              run: |
+                  git diff --exit-code -- fonts/ fonts.css encoding/
+                  test -z "$(git ls-files --others --exclude-standard -- fonts.css encoding/)"

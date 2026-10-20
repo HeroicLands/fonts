@@ -34,19 +34,19 @@ positioning. The branch of each stave is in the guard's table, `tools/thuravark-
 follows the inventory table row for row; the typed input of each stave is in the
 specimen table in `tools/thuravark-carved/specimens.py`.
 
-| Typed | Draws |
-| --- | --- |
-| the 22 single letters, and `th dh kh gh ng hl` | their stave; the six digraphs are ligatures |
-| `ngh` | n and gh |
-| `j`, and `y` before a vowel | the glide, a half branch rising from the middle |
-| `y` anywhere else | the stave i |
-| `á é í ó ú`, or a vowel then U+0301 | the vowel stave twice |
-| a doubled vowel letter | the stave twice |
-| a doubled consonant, `tth ddh kkh ggh hhl nng` | two staves, two digraph staves |
-| `0`-`9` | the numerals |
-| `.` | a short horizontal dash, the row's one horizontal |
-| space and `-` | nothing; the hyphen breaks a ligature |
-| `c q x` and every other punctuation key | the box, a copy of `.notdef` |
+| Typed                                          | Draws                                             |
+| ---------------------------------------------- | ------------------------------------------------- |
+| the 22 single letters, and `th dh kh gh ng hl` | their stave; the six digraphs are ligatures       |
+| `ngh`                                          | n and gh                                          |
+| `j`, and `y` before a vowel                    | the glide, a half branch rising from the middle   |
+| `y` anywhere else                              | the stave i                                       |
+| `á é í ó ú`, or a vowel then U+0301            | the vowel stave twice                             |
+| a doubled vowel letter                         | the stave twice                                   |
+| a doubled consonant, `tth ddh kkh ggh hhl nng` | two staves, two digraph staves                    |
+| `0`-`9`                                        | the numerals                                      |
+| `.`                                            | a short horizontal dash, the row's one horizontal |
+| space and `-`                                  | nothing; the hyphen breaks a ligature             |
+| `c q x` and every other punctuation key        | the box, a copy of `.notdef`                      |
 
 ## Numerals
 

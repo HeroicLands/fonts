@@ -1,0 +1,54 @@
+{
+    "name": "@heroiclands/fonts",
+    "version": "0.1.0",
+    "description": "Fonts for the HeroicLands settings' scripts, drawn from scratch and licensed under the SIL OFL 1.1.",
+    "license": "OFL-1.1",
+    "type": "module",
+    "exports": {
+        "./fonts.css": "./fonts.css",
+        "./fonts/*": "./fonts/*",
+        "./encoding/*": "./encoding/*",
+        "./package.json": "./package.json"
+    },
+    "files": [
+        "fonts/*.woff2",
+        "fonts/*.ttf",
+        "fonts.css",
+        "encoding/*.json",
+        "LICENSE",
+        "README.md"
+    ],
+    "devDependencies": {
+        "@changesets/cli": "^3.0.3",
+        "@heroiclands/package-build": "^23.12.6"
+    },
+    "scripts": {
+        "format": "package-build format --write",
+        "format:check": "package-build format",
+        "check:package": "node tools/package_check.mjs",
+        "changeset": "changeset",
+        "changeset:version": "changeset version && package-build changelog group && npm install --package-lock-only",
+        "prepare": "git config core.hooksPath .githooks || true"
+    },
+    "engines": {
+        "node": ">=24.0.0"
+    },
+    "publishConfig": {
+        "access": "public",
+        "provenance": true
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/HeroicLands/fonts.git"
+    },
+    "keywords": [
+        "fonts",
+        "heroiclands",
+        "ofl",
+        "woff2"
+    ],
+    "homepage": "https://github.com/HeroicLands/fonts#readme",
+    "bugs": {
+        "url": "https://github.com/HeroicLands/fonts/issues"
+    }
+}

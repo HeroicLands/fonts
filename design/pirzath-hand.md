@@ -17,20 +17,20 @@ marks — and the finished form follows the system below.
 Every letter is built from a few named constants, never freehand. Units are
 thousandths of the em; the font has 1000 units to the em.
 
-| Constant | Value | What it governs |
-| --- | --- | --- |
-| Body | 400 | The height of a consonant, the script's x-height. |
-| Vowel | 260 | The height of a vowel, 0.65 of the body. |
-| Ascender | 480 | The looped heads of _l_ and _r_: 1.2 of the body, the tallest any letter stands. |
-| Descender | −300 | The loops of _ng_ and _j_ below the line. |
-| Slant | 12° | One slant for every stroke. |
-| Pen | thin 26, thick 48 | A pointed pen with a gentle swell: thick on a stroke falling along the slant, thin on a rising or level one. |
-| Mark weight | 34 | One middle weight for every straight mark, so it survives reading size. |
-| Oval | width : height 0.70 | One proportion for every bowl; arches and bowls are its halves. |
-| Widths | round 280, trough 240, cup 180, narrow 150 | The standard widths from which every curve is cut at the oval's proportion. |
-| Join heights | exit 40, entry 140 | Where the connector leaves one letter and enters the next. |
-| Join headings | exit 30°, entry 50° | The angles of the join, upright. |
-| Space | 230 | The width of a space. |
+| Constant      | Value                                      | What it governs                                                                                              |
+| ------------- | ------------------------------------------ | ------------------------------------------------------------------------------------------------------------ |
+| Body          | 400                                        | The height of a consonant, the script's x-height.                                                            |
+| Vowel         | 260                                        | The height of a vowel, 0.65 of the body.                                                                     |
+| Ascender      | 480                                        | The looped heads of _l_ and _r_: 1.2 of the body, the tallest any letter stands.                             |
+| Descender     | −300                                       | The loops of _ng_ and _j_ below the line.                                                                    |
+| Slant         | 12°                                        | One slant for every stroke.                                                                                  |
+| Pen           | thin 26, thick 48                          | A pointed pen with a gentle swell: thick on a stroke falling along the slant, thin on a rising or level one. |
+| Mark weight   | 34                                         | One middle weight for every straight mark, so it survives reading size.                                      |
+| Oval          | width : height 0.70                        | One proportion for every bowl; arches and bowls are its halves.                                              |
+| Widths        | round 280, trough 240, cup 180, narrow 150 | The standard widths from which every curve is cut at the oval's proportion.                                  |
+| Join heights  | exit 40, entry 140                         | Where the connector leaves one letter and enters the next.                                                   |
+| Join headings | exit 30°, entry 50°                        | The angles of the join, upright.                                                                             |
+| Space         | 230                                        | The width of a space.                                                                                        |
 
 The vertical metrics follow the system: ascender 480, descender −300, with the
 line gap and the window metrics clearing the ink of the dots and loops.
@@ -100,12 +100,12 @@ letter to the entry of the next, and the same drawing carries on across it.
 The connector is cut at the advance edge that the two letters share. A joining
 letter has three joined forms beside its plain one, all with the same advance:
 
-| Form | Entry | Exit |
-| --- | --- | --- |
-| plain | short | short |
-| `.init` | short | long |
-| `.medi` | long | long |
-| `.fina` | long | short |
+| Form    | Entry | Exit  |
+| ------- | ----- | ----- |
+| plain   | short | short |
+| `.init` | short | long  |
+| `.medi` | long  | long  |
+| `.fina` | long  | short |
 
 A long end carries its half of the connector and runs a couple of units past
 the edge, so two neighbouring glyphs meet without a gap and without a bump. A

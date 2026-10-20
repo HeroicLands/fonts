@@ -1,5 +1,5 @@
 #!/bin/sh
-# Build every font from their UFO sources into fonts/.
+# Build every font from their UFO sources into fonts/, then write fonts.css and encoding/.
 # The timestamp is fixed, so a build is byte-for-byte reproducible. fontmake writes
 # the Windows name records only, so tools/add_mac_names.py adds the Macintosh ones.
 #
@@ -21,3 +21,5 @@ build sources/PirzathHand.ufo fonts/PirzathHand-Regular.ttf
 build sources/ThuravarkCarved.ufo fonts/ThuravarkCarved-Regular.ttf
 build sources/QalezuHand.ufo fonts/QalezuHand-Regular.ttf
 build sources/KhelathiZethuGlyphs.ufo fonts/KhelathiZethuGlyphs-Regular.ttf
+
+python tools/write_css.py

@@ -1,0 +1,34 @@
+@font-face {
+    font-family: "Khelathi Zethu Glyphs";
+    src: url("fonts/KhelathiZethuGlyphs-Regular.woff2") format("woff2"),
+        url("fonts/KhelathiZethuGlyphs-Regular.ttf") format("truetype");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Pirzath Carved";
+    src: url("fonts/PirzathCarved-Regular.woff2") format("woff2"),
+        url("fonts/PirzathCarved-Regular.ttf") format("truetype");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Pirzath Hand";
+    src: url("fonts/PirzathHand-Regular.woff2") format("woff2"),
+        url("fonts/PirzathHand-Regular.ttf") format("truetype");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Qalezu Hand";
+    src: url("fonts/QalezuHand-Regular.woff2") format("woff2"),
+        url("fonts/QalezuHand-Regular.ttf") format("truetype");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Thuravark Carved";
+    src: url("fonts/ThuravarkCarved-Regular.woff2") format("woff2"),
+        url("fonts/ThuravarkCarved-Regular.ttf") format("truetype");
+    font-display: swap;
+}

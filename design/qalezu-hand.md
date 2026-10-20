@@ -12,32 +12,32 @@ A sign stands on the line in a body 500 units tall, with the dab above it and th
 
 Each sign descends from the temple script's picture-sign for a word that begins with the sound; the scribes kept the picture's first consonant and reduced the picture to what a reed draws fast. The pictures are drawn from the setting's own river, harvest, tax and barge world.
 
-| Sign | Sound | Ancestor picture | Reduction |
-| --- | --- | --- | --- |
-| l | l | plumb-line with its bob | a vertical pull ending in a small hook |
-| r | r | punting pole with a forked foot | a slant pull ending in two prongs |
-| t | t | grain scoop | a shallow bowl and a short rising handle |
-| d | d | the scoop heaped | t plus a dab |
-| z | z | furled sail's tuck | s plus a dab |
-| s | s | sail on its spar | a long low pull with one diagonal tuck |
-| g | g | the sickle with its sheaf | k plus a dab |
-| k | k | sickle | a hooked crescent open to the left |
-| n | n | net float on its cord | a small loop on a low pull |
-| th | th | mooring post with a rope turn | an upright with one slanted wrap |
-| m | m | weigh-beam on its post | a broad shallow peak over a short upright |
-| q | q | surveyor's peg with its cord | a short upright, looped head, trailing cord to the right |
-| kh | kh | flood-gauge staff | an upright with three nicks on the left |
-| gh | gh | the gauge with its float | kh plus a dab |
-| h | h | smoke over a hearth | a rising wisp over a flat base |
-| sh | sh | papyrus umbel | a stem under a cap that curls both ways |
-| p | p | papyrus raft | a flat base with upturned ends |
-| b | b | the raft loaded | p plus a dab |
-| f | f | winnowing fan | a swelling arc with a short stem |
-| w | w | well bucket on its hook | a hanging bowl under a short cap |
-| y | y | fish leister with one barb | a stem with one barb on the right |
-| catch | the glottal stop | the cut of a reed pen | a short slanted nick above the line |
-| tj | tj, ch | the t scoop with the umbel's stem rising out of it | t and sh drawn as one sign |
-| doubling | gemination | the scribe's under-stroke | a short bar written under the sign and typed as one character with it |
+| Sign     | Sound            | Ancestor picture                                   | Reduction                                                             |
+| -------- | ---------------- | -------------------------------------------------- | --------------------------------------------------------------------- |
+| l        | l                | plumb-line with its bob                            | a vertical pull ending in a small hook                                |
+| r        | r                | punting pole with a forked foot                    | a slant pull ending in two prongs                                     |
+| t        | t                | grain scoop                                        | a shallow bowl and a short rising handle                              |
+| d        | d                | the scoop heaped                                   | t plus a dab                                                          |
+| z        | z                | furled sail's tuck                                 | s plus a dab                                                          |
+| s        | s                | sail on its spar                                   | a long low pull with one diagonal tuck                                |
+| g        | g                | the sickle with its sheaf                          | k plus a dab                                                          |
+| k        | k                | sickle                                             | a hooked crescent open to the left                                    |
+| n        | n                | net float on its cord                              | a small loop on a low pull                                            |
+| th       | th               | mooring post with a rope turn                      | an upright with one slanted wrap                                      |
+| m        | m                | weigh-beam on its post                             | a broad shallow peak over a short upright                             |
+| q        | q                | surveyor's peg with its cord                       | a short upright, looped head, trailing cord to the right              |
+| kh       | kh               | flood-gauge staff                                  | an upright with three nicks on the left                               |
+| gh       | gh               | the gauge with its float                           | kh plus a dab                                                         |
+| h        | h                | smoke over a hearth                                | a rising wisp over a flat base                                        |
+| sh       | sh               | papyrus umbel                                      | a stem under a cap that curls both ways                               |
+| p        | p                | papyrus raft                                       | a flat base with upturned ends                                        |
+| b        | b                | the raft loaded                                    | p plus a dab                                                          |
+| f        | f                | winnowing fan                                      | a swelling arc with a short stem                                      |
+| w        | w                | well bucket on its hook                            | a hanging bowl under a short cap                                      |
+| y        | y                | fish leister with one barb                         | a stem with one barb on the right                                     |
+| catch    | the glottal stop | the cut of a reed pen                              | a short slanted nick above the line                                   |
+| tj       | tj, ch           | the t scoop with the umbel's stem rising out of it | t and sh drawn as one sign                                            |
+| doubling | gemination       | the scribe's under-stroke                          | a short bar written under the sign and typed as one character with it |
 
 The doubling bar is the 24th sign of the alphabet, drawn as part of the doubled sign (below). `tj` is the one fused sign. `ch` and `tj` are two spellings of it.
 
@@ -61,15 +61,15 @@ Qalezu records no vowel. A vowel at the start of a word, which in Khelathi is ma
 
 Examples, each in reading order:
 
-| Latin | Written |
-| --- | --- |
-| _Uqa'a_ | the triangle over q, then the standalone catch |
+| Latin         | Written                                                                                      |
+| ------------- | -------------------------------------------------------------------------------------------- |
+| _Uqa'a_       | the triangle over q, then the standalone catch                                               |
 | _Au'Khelathu_ | the standalone catch (the first catch meets another catch), the triangle over kh, then l, th |
-| _Qe'aret_ | q, the triangle over r, t |
-| _Anlagh_ | the triangle over n, then l, gh |
-| _Lem'_ | l, m, the standalone catch |
-| _Au_ | the standalone catch |
-| _'nna_ | the triangle over the doubled n |
+| _Qe'aret_     | q, the triangle over r, t                                                                    |
+| _Anlagh_      | the triangle over n, then l, gh                                                              |
+| _Lem'_        | l, m, the standalone catch                                                                   |
+| _Au_          | the standalone catch                                                                         |
+| _'nna_        | the triangle over the doubled n                                                              |
 
 A doubled consonant keeps its doubling bar under the sign; a catch before it puts the triangle over the doubled sign, whose bar stays below.
 
@@ -103,11 +103,11 @@ Base ten, place order, ten independent signs from the counting-house tradition, 
 
 ## The punctuation
 
-| Mark | Role | Shape |
-| --- | --- | --- |
-| `.` | sentence end | a short stroke on the line, hooking down at its end |
-| `,` | pause | a short low dash |
-| space | word division | a gap wider than the gap between signs |
+| Mark  | Role          | Shape                                               |
+| ----- | ------------- | --------------------------------------------------- |
+| `.`   | sentence end  | a short stroke on the line, hooking down at its end |
+| `,`   | pause         | a short low dash                                    |
+| space | word division | a gap wider than the gap between signs              |
 
 There is no hyphen, exclamation mark, question mark, semicolon, colon or quotation mark. A hyphen between the parts of a name is written as the space between two words.
 

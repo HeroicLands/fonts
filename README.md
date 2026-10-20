@@ -10,12 +10,51 @@ Qalezu, the Khelathi alphabet, is written right to left on code points of its ow
 
 The fonts are licensed under the SIL Open Font License 1.1; see `LICENSE`. Under it they may be embedded in web pages, documents and books, and bundled with software, without that work taking on the font's licence.
 
-## Setting up
+## Installing and using the fonts
 
-Activate the repository's git hooks once per clone:
+The fonts are published to npm as `@heroiclands/fonts`. The package holds each font as WOFF2 and TrueType, `fonts.css` with one `@font-face` rule per family, and `encoding/`, the code-point tables of the right-to-left fonts.
 
 ```sh
-git config core.hooksPath .githooks
+npm install @heroiclands/fonts
+```
+
+**Web.** Import the stylesheet from a bundler or a stylesheet, or link it:
+
+```css
+@import "@heroiclands/fonts/fonts.css";
+```
+
+```html
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@heroiclands/fonts@0/fonts.css" />
+```
+
+The jsDelivr form is `https://cdn.jsdelivr.net/npm/@heroiclands/fonts@<version>/<file>`. `@0` follows the newest 0.x release, and a full version pins one. A rule's URLs are relative, so every file resolves beside the stylesheet. A family is named by its font-family, such as `font-family: "Pirzath Carved"`.
+
+**Foundry VTT.** A module ships the files it needs from its own folder, then registers each family either by importing `fonts.css` from its stylesheet or through `CONFIG.fontDefinitions`, so every client loads it:
+
+```js
+CONFIG.fontDefinitions["Pirzath Carved"] = {
+  editor: true,
+  fonts: [{ urls: ["modules/<module id>/fonts/PirzathCarved-Regular.woff2"] }],
+};
+```
+
+**Typst.** Point the compiler's font path at the package's `fonts/` folder, and name the family in `#set text(font: "Qalezu Hand")`:
+
+```sh
+typst compile --font-path node_modules/@heroiclands/fonts/fonts book.typ
+```
+
+The right-to-left fonts take their text as code points of their own; `encoding/<font>.json` is the table of what each code point is.
+
+The fonts are licensed under the SIL Open Font License 1.1, which `LICENSE` carries in the package.
+
+## Setting up
+
+Install the dependencies, which also activates the repository's git hooks:
+
+```sh
+npm ci
 ```
 
 Create the virtual environment:
@@ -33,13 +72,20 @@ Build the fonts into `fonts/`. The build is reproducible, so the committed fonts
 PATH=.venv/bin:$PATH ./build.sh
 ```
 
-`build.sh` runs `fontmake` and compresses the `.woff2`, once per font (`PirzathCarved` shown):
+`build.sh` runs `fontmake` and compresses the `.woff2`, once per font (`PirzathCarved` shown), then runs `tools/write_css.py`, which writes `fonts.css` from the built fonts' name tables and copies the right-to-left fonts' `encoding.json` into `encoding/`:
 
 ```sh
 export SOURCE_DATE_EPOCH=1767225600
 fontmake -u sources/PirzathCarved.ufo -o ttf --keep-overlaps --no-production-names \
     --output-path fonts/PirzathCarved-Regular.ttf
 fonttools ttLib.woff2 compress -o fonts/PirzathCarved-Regular.woff2 fonts/PirzathCarved-Regular.ttf
+```
+
+Check the package holds exactly what it should, and that the formatting is clean:
+
+```sh
+npm run check:package
+npm run format:check
 ```
 
 Check the built fonts, render the specimens, and prove that each guard fails a broken font:

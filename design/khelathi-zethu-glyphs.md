@@ -30,24 +30,24 @@ feet. Every sign faces right.
 
 ## The groups
 
-| Group | Contents |
-| ----- | -------- |
-| 1 | Men |
-| 2 | Women |
-| 3 | Gods and their attributes |
-| 4 | The body |
-| 5 | Beasts |
-| 6 | Birds |
-| 7 | River creatures |
-| 8 | Plants and grain |
-| 9 | Sky, sun and stars |
-| 10 | Land, water and the river |
-| 11 | Buildings |
-| 12 | Boats |
-| 13 | Tools, weapons and measures |
-| 14 | Vessels and offerings |
-| 15 | Cloth, crowns and adornment |
-| 16 | Strokes and figures |
+| Group | Contents                    |
+| ----- | --------------------------- |
+| 1     | Men                         |
+| 2     | Women                       |
+| 3     | Gods and their attributes   |
+| 4     | The body                    |
+| 5     | Beasts                      |
+| 6     | Birds                       |
+| 7     | River creatures             |
+| 8     | Plants and grain            |
+| 9     | Sky, sun and stars          |
+| 10    | Land, water and the river   |
+| 11    | Buildings                   |
+| 12    | Boats                       |
+| 13    | Tools, weapons and measures |
+| 14    | Vessels and offerings       |
+| 15    | Cloth, crowns and adornment |
+| 16    | Strokes and figures         |
 
 A sign's id is its group and its number in the group, `01-002`. The id is the
 sign's name everywhere: in `tools/khelathi-zethu-glyphs/encoding.json`, in the glyph names, and in
@@ -60,11 +60,11 @@ for the same sign in a different hand: a quick cut with fewer interior lines, a
 different pose of the same figure, or a simpler outline. Only `.a` has a code
 point. The others are reached by substitution:
 
-| Feature | Effect |
-| ------- | ------ |
-| `ss01` | every sign that has a `.b` takes it |
-| `ss02` | every sign that has a `.c` takes it |
-| `salt` | the first alternate is the `.b`, the second the `.c`; `salt` with a value of 2 takes `.c` |
+| Feature | Effect                                                                                    |
+| ------- | ----------------------------------------------------------------------------------------- |
+| `ss01`  | every sign that has a `.b` takes it                                                       |
+| `ss02`  | every sign that has a `.c` takes it                                                       |
+| `salt`  | the first alternate is the `.b`, the second the `.c`; `salt` with a value of 2 takes `.c` |
 
 In CSS, `font-feature-settings: "ss01"` or `"salt" 2`. The substitutions are
 single and context-free: no rule looks at a neighbour, because renderers do not
@@ -163,13 +163,13 @@ name.
 
 Shebazet, formally, is four sound signs and her cobra, read from the right:
 
-| Reading order | Sign | Writes |
-| ------------- | ---- | ------ |
-| 1 | 08-001, the drooping papyrus umbel | `sh` |
-| 2 | 12-004, the raft with a load | `b` |
-| 3 | 12-006, the furled sail | `z` |
-| 4 | 13-005, the grain scoop | `t` |
-| 5 | 07-009, the coiled cobra | her sign |
+| Reading order | Sign                               | Writes   |
+| ------------- | ---------------------------------- | -------- |
+| 1             | 08-001, the drooping papyrus umbel | `sh`     |
+| 2             | 12-004, the raft with a load       | `b`      |
+| 3             | 12-006, the furled sail            | `z`      |
+| 4             | 13-005, the grain scoop            | `t`      |
+| 5             | 07-009, the coiled cobra           | her sign |
 
 The two vowels of _Shebazet_ are not written. In everyday writing she is the
 cobra, 07-009, alone.

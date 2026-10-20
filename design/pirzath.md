@@ -42,11 +42,11 @@ modifiers recur: the **voiced** letter adds a pole, a short upright cut inside
 the frame, and the **breathed** letter adds a notch, a short cut scored across
 one arm.
 
-| Frame                 | plain | voiced (pole) | breathed (notch) | voiced and breathed |
-| --------------------- | ----- | ------------- | ---------------- | ------------------- |
-| the tent, apex up     | p     | b             | f                | v                   |
-| the trough, apex down | t     | d             | th               | dh                  |
-| the point, apex ahead | k     | g (closed by a bar) | kh         | gh                  |
+| Frame                 | plain | voiced (pole)       | breathed (notch) | voiced and breathed |
+| --------------------- | ----- | ------------------- | ---------------- | ------------------- |
+| the tent, apex up     | p     | b                   | f                | v                   |
+| the trough, apex down | t     | d                   | th               | dh                  |
+| the point, apex ahead | k     | g (closed by a bar) | kh               | gh                  |
 
 The nasals are the frame doubled: m is the tent twice (M), n the trough twice
 (W). The sibilants are the two closed or crossing shapes, s a tall lozenge and
@@ -101,23 +101,23 @@ Khazari has lost, which the Pelwar tongues kept. Each fills an empty cell of
 the system above, placed by its sound, in the same cuts, so it is a member of
 the row and not an addition to it.
 
-| Letter | Where it sits | The cut |
-| --- | --- | --- |
-| sh | beside s | the lozenge with the breath notch across its upper forward side |
-| zh | beside z | the cross with the breath notch across the lower half of its back arm |
-| ts | a stop released into s | the K: a stem with two arms meeting at its middle, forward |
-| ch | a stop released into sh | the mirrored K, its arms back |
-| j | the voiced ch | the Y: a stem from the baseline to mid height, with two arms rising from it to the corners of the cap, beside the K of ts and ch |
-| q | the deep stop | the Y upside down: a stem from mid height to the cap, with two arms falling from it to the corners of the baseline |
-| ng | with the nasals | the point doubled, as m doubles the tent and n the trough |
-| ny | with the nasals | the doubled trough with the hanging pole |
-| the catch | a throat letter | the stem with the breath notch low, where h carries it high |
-| w | a glide | the back cut of u at consonant size, with the pole through it |
-| y | a glide | the forward cut of a at consonant size, with the pole through it |
-| hl | with l | l with the breath notch across its long cut |
-| ai, ei | vowel pairs | the first vowel with i joined as an upright |
-| oi | a vowel pair | ei turned over: the small trough with i's upright rising from its apex |
-| au, ou | vowel pairs | a and u joined into the small trough; o with the back cut of u through it |
+| Letter    | Where it sits           | The cut                                                                                                                          |
+| --------- | ----------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
+| sh        | beside s                | the lozenge with the breath notch across its upper forward side                                                                  |
+| zh        | beside z                | the cross with the breath notch across the lower half of its back arm                                                            |
+| ts        | a stop released into s  | the K: a stem with two arms meeting at its middle, forward                                                                       |
+| ch        | a stop released into sh | the mirrored K, its arms back                                                                                                    |
+| j         | the voiced ch           | the Y: a stem from the baseline to mid height, with two arms rising from it to the corners of the cap, beside the K of ts and ch |
+| q         | the deep stop           | the Y upside down: a stem from mid height to the cap, with two arms falling from it to the corners of the baseline               |
+| ng        | with the nasals         | the point doubled, as m doubles the tent and n the trough                                                                        |
+| ny        | with the nasals         | the doubled trough with the hanging pole                                                                                         |
+| the catch | a throat letter         | the stem with the breath notch low, where h carries it high                                                                      |
+| w         | a glide                 | the back cut of u at consonant size, with the pole through it                                                                    |
+| y         | a glide                 | the forward cut of a at consonant size, with the pole through it                                                                 |
+| hl        | with l                  | l with the breath notch across its long cut                                                                                      |
+| ai, ei    | vowel pairs             | the first vowel with i joined as an upright                                                                                      |
+| oi        | a vowel pair            | ei turned over: the small trough with i's upright rising from its apex                                                           |
+| au, ou    | vowel pairs             | a and u joined into the small trough; o with the back cut of u through it                                                        |
 
 Typing them is set out in the next section. The remaining empty cells are a bar closing a frame other than the point, a
 notch on the other arm of a frame, and a pole from the opposite end.
@@ -126,13 +126,13 @@ notch on the other arm of a frame, and a pole from the opposite end.
 
 Each of the seventeen is typed by its spelling, and the longest spelling wins.
 
-| Glyph | Typed |
-| --- | --- |
+| Glyph                      | Typed                          |
+| -------------------------- | ------------------------------ |
 | sh, zh, ch, ts, ng, ny, hl | the two letters, as a ligature |
-| j, q, w | the letter |
-| the catch | `'` or `’` |
-| y (the glide) | `y` before a vowel |
-| ai, au, ei, oi, ou | the two vowels |
+| j, q, w                    | the letter                     |
+| the catch                  | `'` or `’`                     |
+| y (the glide)              | `y` before a vowel             |
+| ai, au, ei, oi, ou         | the two vowels                 |
 
 - **ngh is n and gh.** The four digraphs th, dh, kh and gh ligate before the
   lost ones, so _ngh_ shapes as `n` + `gh`, never `ng` + `h`; the lexicon's

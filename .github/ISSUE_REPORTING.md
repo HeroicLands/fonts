@@ -29,13 +29,13 @@ Issue types are **organization-level** in the `HeroicLands` org, so the same fiv
 types — and their definitions — are shared with every other repository in the
 project. They are not redefined here.
 
-| Type        | Use it when…                                                                                                                        | Do **not** use it for…                                                 |
-| ----------- | ----------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| Type        | Use it when…                                                                                                                             | Do **not** use it for…                                                 |
+| ----------- | ---------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------- |
 | **bug**     | A shipped font is wrong — a glyph is drawn badly, a ligature or mark does not form, spacing or kerning is off, the build or check fails. | A missing letter or script (a _feature_); a chore.                     |
-| **feature** | A new capability, such as a font for another script or a new specimen, deliverable as one shippable unit.                           | Anything broken (_bug_); work needing many sub-issues (_epic_).        |
-| **epic**    | A body of work that only makes sense decomposed into sub-issues.                                                                    | Anything shippable as a single issue. No sub-issues means not an epic. |
-| **task**    | Necessary work that is neither defect nor new capability: chores, refactors, CI, docs, releases.                                    | Exploratory work with an uncertain outcome (_spike_).                  |
-| **spike**   | A **timeboxed** investigation whose deliverable is a decision or recommendation — not shipped fonts.                                | Work whose steps are already known (a _task_).                         |
+| **feature** | A new capability, such as a font for another script or a new specimen, deliverable as one shippable unit.                                | Anything broken (_bug_); work needing many sub-issues (_epic_).        |
+| **epic**    | A body of work that only makes sense decomposed into sub-issues.                                                                         | Anything shippable as a single issue. No sub-issues means not an epic. |
+| **task**    | Necessary work that is neither defect nor new capability: chores, refactors, CI, docs, releases.                                         | Exploratory work with an uncertain outcome (_spike_).                  |
+| **spike**   | A **timeboxed** investigation whose deliverable is a decision or recommendation — not shipped fonts.                                     | Work whose steps are already known (a _task_).                         |
 
 **Type rules**
 
@@ -59,12 +59,12 @@ field, **not** a label. Set it in the issue sidebar; the issue list filters on i
 (`field.priority:high,medium`). One value per issue, from: **Urgent · High ·
 Medium · Low**.
 
-| Priority   | Means                                                                       |
-| ---------- | --------------------------------------------------------------------------- |
+| Priority   | Means                                                                         |
+| ---------- | ----------------------------------------------------------------------------- |
 | **Urgent** | A shipped font is unusable, or the build cannot produce one. Drop other work. |
-| **High**   | A common letter or word renders wrongly, with no reasonable workaround.     |
-| **Medium** | The default. Worth doing; nothing is on fire.                               |
-| **Low**    | Nice to have; polish, or a rare edge.                                       |
+| **High**   | A common letter or word renders wrongly, with no reasonable workaround.       |
+| **Medium** | The default. Worth doing; nothing is on fire.                                 |
+| **Low**    | Nice to have; polish, or a rare edge.                                         |
 
 ## 3. Labels — organization-level
 
@@ -72,14 +72,14 @@ Labels are defined once for the whole organization, in `labels.yml` of
 `HeroicLands/.github`. This repository keeps no registry of its own and never
 creates a label here; a gap in the set is raised in `HeroicLands/.github`.
 
-| Group         | Labels                                                                                     |
-| ------------- | ------------------------------------------------------------------------------------------ |
-| `type/`       | `type/bug`, `type/feature`, `type/epic`, `type/task`, `type/spike` (exactly one per issue) |
+| Group         | Labels                                                                                                                       |
+| ------------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| `type/`       | `type/bug`, `type/feature`, `type/epic`, `type/task`, `type/spike` (exactly one per issue)                                   |
 | `area/`       | `area/documentation`, `area/devops`, `area/tests`, `area/content`, `area/system`, `area/site`, `area/layout`, `area/styling` |
-| `flag/`       | `flag/breaking-change`, `flag/security`, `flag/regression`, `flag/tech-debt`               |
-| `status/`     | `status/blocked`, `status/question`                                                        |
-| `resolution/` | `resolution/duplicate`, `resolution/wontfix`                                               |
-| `ci/`         | `ci/e2e`                                                                                   |
+| `flag/`       | `flag/breaking-change`, `flag/security`, `flag/regression`, `flag/tech-debt`                                                 |
+| `status/`     | `status/blocked`, `status/question`                                                                                          |
+| `resolution/` | `resolution/duplicate`, `resolution/wontfix`                                                                                 |
+| `ci/`         | `ci/e2e`                                                                                                                     |
 
 **When to use them in this repository**
 
@@ -171,12 +171,12 @@ the design updates `design/pirzath.md`, `design/pirzath-hand.md`,
 
 File where the diff will land, not where the symptom shows.
 
-| The change is to…                                                                  | File it in                         |
-| ---------------------------------------------------------------------------------- | ---------------------------------- |
-| A glyph, ligature, mark, kerning, a specimen, the build or its checks               | **here**                           |
-| A script's letter inventory, its canon, or the text of a note                      | `HeroicLands/thalorna`             |
-| The shared build, the Hugo theme or the way a site loads a font                     | `HeroicLands/package-build`        |
-| System code, sheets, rules automation                                              | `Song-of-Heroic-Lands-FoundryVTT`  |
+| The change is to…                                                     | File it in                        |
+| --------------------------------------------------------------------- | --------------------------------- |
+| A glyph, ligature, mark, kerning, a specimen, the build or its checks | **here**                          |
+| A script's letter inventory, its canon, or the text of a note         | `HeroicLands/thalorna`            |
+| The shared build, the Hugo theme or the way a site loads a font       | `HeroicLands/package-build`       |
+| System code, sheets, rules automation                                 | `Song-of-Heroic-Lands-FoundryVTT` |
 
 A letter drawn wrongly is **here**; a letter that is missing from the script, or
 a word spelled wrongly, is thalorna.
