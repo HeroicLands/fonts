@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="p.dbl" format="2">
+  <advance width="642"/>
+  <unicode hex="1EA27"/>
+  <outline>
+    <component base="p"/>
+    <component base="doubling" xOffset="321" yOffset="-80"/>
+  </outline>
+</glyph>

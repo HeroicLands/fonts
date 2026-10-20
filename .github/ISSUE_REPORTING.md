@@ -157,11 +157,12 @@ half-finished diagnosis.
 - `python tools/pirzath/check_font.py` — checks the built Pirzath Carved font
 - `python tools/pirzath-hand/check_font.py` — checks the built Pirzath Hand font and its join line
 - `python tools/thuravark/check_font.py` — checks the built Thuravark font
-- `python tools/pirzath/guard.py`, `python tools/pirzath-hand/guard.py` and `python tools/thuravark/guard.py` — shape every lexicon form against a local thalorna checkout
+- `python tools/qalezu/check_font.py` — checks the built Qalezu font against `tools/qalezu/encoding.json`
+- `python tools/pirzath/guard.py`, `python tools/pirzath-hand/guard.py`, `python tools/thuravark/guard.py` and `python tools/qalezu/guard.py` — shape every lexicon form against a local thalorna checkout
 
 A change to a font commits the rebuilt files in `fonts/` with it, and a change to
-the design updates `design/pirzath.md`, `design/pirzath-hand.md` or
-`design/thuravark.md`.
+the design updates `design/pirzath.md`, `design/pirzath-hand.md`,
+`design/thuravark.md` or `design/qalezu.md`.
 
 ## 7. Which repository does an issue belong in?
 

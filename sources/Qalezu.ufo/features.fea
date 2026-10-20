@@ -1,0 +1,8 @@
+languagesystem DFLT dflt;
+
+# HarfBuzz replaces a default-ignorable character the font maps directly with
+# the space glyph. A glyph that a lookup substitutes is left alone, so each
+# ignorable is substituted once, to a second empty glyph.
+feature ccmp {
+  sub ignorable by ignorable.sub;
+} ccmp;

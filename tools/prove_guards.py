@@ -1,12 +1,13 @@
 # Copyright (c) 2026 Tom Rodriguez ("Toasty") — <toasty@heroiclands.org>
 # SPDX-License-Identifier: OFL-1.1
-"""Prove that each guard passes a built font and fails the same font without its layout.
+"""Prove that each guard passes a built font and fails the same font broken.
 
     .venv/bin/python tools/prove_guards.py
 
-The broken font is the built .ttf with its GSUB table removed, so no ligature,
-decomposition or contextual rule applies. The guards run on their fixtures
-alone, so the proof needs no lexicon.
+The broken Pirzath and Thuravark fonts are the built .ttf with the GSUB table
+removed, so no ligature, decomposition or contextual rule applies. The broken
+Qalezu font has one sign, the th, removed from its cmap. The guards run on their
+fixtures alone, so the proof needs no lexicon.
 """
 
 import importlib.util
@@ -34,28 +35,58 @@ def stripped(font: Path, out: Path) -> Path:
     return out
 
 
+def without_th(font: Path, out: Path) -> Path:
+    f = TTFont(str(font))
+    for table in f["cmap"].tables:
+        table.cmap.pop(0x1EA09, None)
+    f.save(str(out))
+    return out
+
+
 def main():
     pirzath = load("pirzath_guard", ROOT / "tools" / "pirzath" / "guard.py")
     hand = load("pirzath_hand_guard", ROOT / "tools" / "pirzath-hand" / "guard.py")
     thuravark = load("thuravark_guard", ROOT / "tools" / "thuravark" / "guard.py")
+    qalezu = load("qalezu_guard", ROOT / "tools" / "qalezu" / "guard.py")
     cases = [
-        ("Pirzath Carved", ROOT / "fonts" / "PirzathCarved-Regular.ttf", lambda p: pirzath.run(p, [])),
-        ("Pirzath Hand", ROOT / "fonts" / "PirzathHand-Regular.ttf", lambda p: hand.run(p, [])),
+        (
+            "Pirzath Carved",
+            ROOT / "fonts" / "PirzathCarved-Regular.ttf",
+            lambda p: pirzath.run(p, []),
+            stripped,
+            "without GSUB",
+        ),
+        (
+            "Pirzath Hand",
+            ROOT / "fonts" / "PirzathHand-Regular.ttf",
+            lambda p: hand.run(p, []),
+            stripped,
+            "without GSUB",
+        ),
         (
             "Thuravark Runic",
             ROOT / "fonts" / "ThuravarkRunic-Regular.ttf",
             lambda p: thuravark.shaping(p, []),
+            stripped,
+            "without GSUB",
+        ),
+        (
+            "Qalezu",
+            ROOT / "fonts" / "Qalezu-Regular.ttf",
+            lambda p: qalezu.run(p, []),
+            without_th,
+            "without the th sign",
         ),
     ]
     status = 0
     with tempfile.TemporaryDirectory() as tmp:
-        for label, font, guard in cases:
+        for label, font, guard, break_font, how in cases:
             good = guard(font)
-            bad = guard(stripped(font, Path(tmp) / font.name))
+            bad = guard(break_font(font, Path(tmp) / font.name))
             ok = not good and bad
-            print(f"{label}: {len(good)} failures on the font, {len(bad)} on the font without GSUB")
+            print(f"{label}: {len(good)} failures on the font, {len(bad)} on the font {how}")
             if not ok:
-                print(f"{font}: error: the guard must pass the font and fail the stripped font")
+                print(f"{font}: error: the guard must pass the font and fail the broken font")
                 status = 1
     sys.exit(status)
 

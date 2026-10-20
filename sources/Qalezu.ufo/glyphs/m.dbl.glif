@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="m.dbl" format="2">
+  <advance width="629"/>
+  <unicode hex="1EA21"/>
+  <outline>
+    <component base="m"/>
+    <component base="doubling" xOffset="315" yOffset="-110"/>
+  </outline>
+</glyph>

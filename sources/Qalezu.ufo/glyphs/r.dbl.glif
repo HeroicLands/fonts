@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="r.dbl" format="2">
+  <advance width="435"/>
+  <unicode hex="1EA18"/>
+  <outline>
+    <component base="r"/>
+    <component base="doubling" xOffset="217" yOffset="-91"/>
+  </outline>
+</glyph>

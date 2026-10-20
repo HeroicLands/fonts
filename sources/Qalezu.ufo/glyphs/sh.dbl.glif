@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="sh.dbl" format="2">
+  <advance width="520"/>
+  <unicode hex="1EA26"/>
+  <outline>
+    <component base="sh"/>
+    <component base="doubling" xOffset="260" yOffset="-110"/>
+  </outline>
+</glyph>

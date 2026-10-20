@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="d" format="2">
+  <advance width="571"/>
+  <unicode hex="1EA03"/>
+  <anchor x="285" y="-80" name="doubling"/>
+  <outline>
+    <component base="t"/>
+    <component base="dab" xOffset="285" yOffset="585"/>
+  </outline>
+</glyph>

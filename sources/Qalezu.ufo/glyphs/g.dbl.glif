@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="g.dbl" format="2">
+  <advance width="379"/>
+  <unicode hex="1EA1D"/>
+  <outline>
+    <component base="k"/>
+    <component base="dab" xOffset="189" yOffset="585"/>
+    <component base="doubling" xOffset="189" yOffset="-80"/>
+  </outline>
+</glyph>

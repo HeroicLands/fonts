@@ -9,7 +9,7 @@ carries, so a specimen shows the font as a page or a sheet shows it.
 from pathlib import Path
 
 import uharfbuzz as hb
-from fontTools.pens.recordingPen import RecordingPen
+from fontTools.pens.recordingPen import DecomposingRecordingPen
 from fontTools.ttLib import TTFont
 from PIL import Image, ImageDraw, ImageFont
 
@@ -35,9 +35,17 @@ class Renderer:
 
     # -- shaping ------------------------------------------------------------
 
-    def shape(self, text: str, features=None) -> Shaped:
+    def shape(self, text: str, features=None, direction=None, script="Zyyy") -> Shaped:
+        """Shape `text`; `direction` ("rtl" or "ltr") replaces the guessed direction.
+
+        An explicit direction also fixes the script (Common by default), so HarfBuzz
+        does not infer one from the characters. Glyphs come back in visual order.
+        """
         buf = hb.Buffer()
         buf.add_str(text)
+        if direction:
+            buf.direction = direction
+            buf.script = script
         buf.guess_segment_properties()
         hb.shape(self.hb_font, buf, features or {})
         glyphs = []
@@ -47,8 +55,8 @@ class Renderer:
             pen_x += pos.x_advance
         return Shaped(glyphs, pen_x)
 
-    def glyph_names(self, text: str):
-        return [self.order[g[0]] for g in self.shape(text).glyphs]
+    def glyph_names(self, text: str, direction=None):
+        return [self.order[g[0]] for g in self.shape(text, direction=direction).glyphs]
 
     # -- outlines -----------------------------------------------------------
 
@@ -57,8 +65,9 @@ class Renderer:
         if gid in self._contours:
             return self._contours[gid]
         name = self.order[gid]
-        pen = RecordingPen()
-        self.tt.getGlyphSet()[name].draw(pen)
+        glyphs = self.tt.getGlyphSet()
+        pen = DecomposingRecordingPen(glyphs)
+        glyphs[name].draw(pen)
         contours, current = [], []
         for op, args in pen.value:
             if op == "moveTo":
@@ -96,13 +105,14 @@ class Renderer:
         mask = layer.resize((w, h), Image.LANCZOS)
         img.paste(Image.new("RGB", (w, h), color), (0, 0), mask)
 
-    def text(self, img, x, baseline, text, size, color="black", features=None):
-        shaped = self.shape(text, features)
+    def text(self, img, x, baseline, text, size, color="black", features=None, direction=None,
+             script="Zyyy"):
+        shaped = self.shape(text, features, direction, script)
         self.draw(img, x, baseline, shaped, size, color)
         return shaped.advance * size / self.upem
 
-    def width(self, text, size, features=None):
-        return self.shape(text, features).advance * size / self.upem
+    def width(self, text, size, features=None, direction=None):
+        return self.shape(text, features, direction).advance * size / self.upem
 
 
 def flatten_quadratic(start, args, steps=32):

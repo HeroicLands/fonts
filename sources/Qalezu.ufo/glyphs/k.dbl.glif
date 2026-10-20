@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="k.dbl" format="2">
+  <advance width="379"/>
+  <unicode hex="1EA1E"/>
+  <outline>
+    <component base="k"/>
+    <component base="doubling" xOffset="189" yOffset="-80"/>
+  </outline>
+</glyph>
