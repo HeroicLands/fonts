@@ -15,7 +15,7 @@ Each font's own design note in `design/` holds its letter-by-letter detail. This
 | **Pirzath Carved** | Pirzath, the Khazari carved row | left to right | graver cuts: straight tapered grooves and drilled dots, united into one outline per glyph | 76 | Latin spelling, through GSUB; private-use block U+F0000 planned |
 | **Thuravark Runic** | Thuravark, the Nordmen rune-row, the reduced daughter of Pirzath | left to right | 28 staves: one upright stem with up to four straight branches at two fixed slopes | 51 | Latin spelling; U+F0100 planned |
 | **Pirzath Hand** | the everyday written Pirzath | left to right | a pointed pen with a gentle swell, on a measured system (see [The hand](#the-hand-a-written-script)) | the full alphabet, lifted and joined | shares Pirzath Carved's encoding |
-| **Qalezu** | the Khelathi everyday alphabet, consonants only | right to left | a broad reed nib at 30°, swept along centrelines | 64 | U+1EA00–U+1EA39, natively right to left |
+| **Qalezu** | the Khelathi everyday alphabet, consonants only | right to left | a broad reed nib at 30°, swept along centrelines | 109 | U+1EA00–U+1EA38 and U+1ECC0–U+1ECEB, natively right to left |
 | **Khelathi Zethu** | the Khelathi temple hieroglyphs | right to left, or top-down columns | hairline silhouettes of pictures | 304 signs, 695 glyphs with variants | U+1EA40 + inventory row |
 | **Semaron** | the Vylarian alphabet, majuscule and minuscule, first hand Kuriale | left to right | derived from Thuravark, rounded by reed and quill; its own system, not Pirzath Hand's look | in progress | U+F0200 planned |
 
@@ -216,13 +216,13 @@ Each script also has its own **private-use block** in plane 15, for typing scrip
 Latin forced right to left with the bidi override characters works, but HarfBuzz reverses a run whose direction opposes its script before GSUB runs. Every digraph rule then needs a reversed copy (`rtla`), which is fragile. So the right-to-left scripts use their own code points instead:
 
 - **The blocks.** They are **unassigned code points whose default bidi class is R**:
-  - Qalezu: U+1EA00–U+1EA3F;
+  - Qalezu: U+1EA00–U+1EA3F, and its catch-before forms U+1ECC0–U+1ECFF;
   - Khelathi Zethu: U+1EA40–U+1EC6F.
 
   Text in them runs right to left natively in Chrome, Foundry and Typst, mixed with English, digits included.
 - **The table.** One file per font, `tools/<font>/encoding.json`, holds glyph, code point, sound and Latin typing. The keyboard layout and package-build's converter read it too.
-- **Converting the notes.** The build converts a note's Latin spelling to these code points. The converter applies the script's rules: no vowels, a word-initial vowel becomes the catch, digraphs become one sign, doubling marks a doubled consonant. `tools/qalezu/guard.py` holds the reference converter.
-- **No marks on these code points.** Chrome shapes script-less right-to-left code points in reverse order, so a combining mark attaches to the wrong sign. Precompose instead: Qalezu gives each doubled consonant its own code point, with the bar drawn in.
+- **Converting the notes.** The build converts a note's Latin spelling to these code points. The converter applies the script's rules: no vowels, a word-initial vowel becomes the catch, a catch before a consonant is written over that consonant as its catch-before form, digraphs become one sign, doubling marks a doubled consonant. `tools/qalezu/guard.py` holds the reference converter.
+- **No marks on these code points.** Chrome shapes script-less right-to-left code points in reverse order, so a combining mark attaches to the wrong sign. Precompose instead: Qalezu gives each doubled consonant its own code point, with the bar drawn in, and each consonant a catch-before code point, with three dabs drawn over it.
 - **Variants** use only context-free substitutions: `ss01` and `ss02` single substitutions, and an alternate substitution in `salt`.
 
 ### For every font

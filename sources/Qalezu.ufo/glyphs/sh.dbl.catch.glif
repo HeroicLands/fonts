@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="sh.dbl.catch" format="2">
+  <advance width="520"/>
+  <unicode hex="1ECE5"/>
+  <outline>
+    <component base="sh"/>
+    <component base="doubling" xOffset="260" yOffset="-110"/>
+    <component base="catchdots" xOffset="260" yOffset="562"/>
+  </outline>
+</glyph>

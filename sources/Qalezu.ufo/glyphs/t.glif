@@ -4,6 +4,7 @@
   <unicode hex="1EA02"/>
   <anchor x="285" y="-80" name="doubling"/>
   <anchor x="285" y="585" name="dab"/>
+  <anchor x="285" y="645" name="catch"/>
   <outline>
     <contour>
       <point x="241.15" y="27.87" type="curve" smooth="yes"/>

@@ -7,7 +7,9 @@
 Three things follow from the encoding, and nothing else in the UFO is touched, so
 no drawn outline changes: each glyph's <unicode> lines; one composite ``<sign>.dbl``
 per doubled consonant, the sign with the ``doubling`` component set at the sign's
-``doubling`` anchor; the two empty glyphs that default-ignorable characters
+``doubling`` anchor; one composite ``<sign>.catch`` and ``<sign>.dbl.catch`` per
+consonant, the sign or doubled sign with the ``catchdots`` component set at the
+sign's ``catch`` anchor; the two empty glyphs that default-ignorable characters
 map to with their ``ccmp`` substitution; and the code points of ``notdef.box``,
 which are every code point of the ranges in tools/notdef_box.py that the encoding
 leaves free. The box glyph itself comes from tools/apply_notdef_box.py.
@@ -54,7 +56,8 @@ def load():
     taken = {cp for cps in unicodes.values() for cp in cps}
     unicodes[notdef_box.BOX] = [cp for cp in notdef_box.codepoints() if cp not in taken]
     doubled = {g["glyph"]: g["base"] for g in enc["glyphs"] if g["kind"] == "doubled"}
-    return enc, unicodes, doubled
+    before = {g["glyph"]: g["base"] for g in enc["glyphs"] if g["kind"] == "catchbefore"}
+    return enc, unicodes, doubled, before
 
 
 def with_unicodes(text: str, cps: list[int]) -> str:
@@ -74,23 +77,31 @@ def plist_text(value) -> str:
     return HEADER + body
 
 
-def anchor_and_width(name: str) -> tuple[tuple[str, str], str]:
+def anchor_and_width(name: str, anchor: str) -> tuple[tuple[str, str], str]:
     text = (GLYPHS / f"{name}.glif").read_text(encoding="utf-8")
-    a = re.search(r'<anchor x="([^"]+)" y="([^"]+)" name="doubling"/>', text)
+    a = re.search(rf'<anchor x="([^"]+)" y="([^"]+)" name="{anchor}"/>', text)
     w = re.search(r'<advance width="([^"]+)"/>', text)
     return (a.group(1), a.group(2)), w.group(1)
 
 
-def composite(name: str, base: str, cps: list[int]) -> str:
-    (ax, ay), width = anchor_and_width(base)
-    source = (GLYPHS / f"{base}.glif").read_text(encoding="utf-8")
-    parts = re.findall(r"    <component [^>]*/>\n", source) or [f'    <component base="{base}"/>\n']
+def composite(name: str, sign: str, marks: list[str], cps: list[int]) -> str:
+    """The sign with each mark component set at the anchor the sign carries for it.
+
+    The anchor of a mark component ``doubling`` is ``doubling``; of ``catchdots``,
+    ``catch``. The glyph has the sign's own advance.
+    """
+    anchor_of = {"doubling": "doubling", "catchdots": "catch"}
+    source = (GLYPHS / f"{sign}.glif").read_text(encoding="utf-8")
+    parts = re.findall(r"    <component [^>]*/>\n", source) or [f'    <component base="{sign}"/>\n']
+    for mark in marks:
+        (ax, ay), _ = anchor_and_width(sign, anchor_of[mark])
+        parts.append(f'    <component base="{mark}" xOffset="{ax}" yOffset="{ay}"/>\n')
+    _, width = anchor_and_width(sign, "doubling")
     return with_unicodes(f"""<?xml version='1.0' encoding='UTF-8'?>
 <glyph name="{name}" format="2">
   <advance width="{width}"/>
   <outline>
-{"".join(parts)}    <component base="doubling" xOffset="{ax}" yOffset="{ay}"/>
-  </outline>
+{"".join(parts)}  </outline>
 </glyph>
 """, cps)
 
@@ -107,14 +118,19 @@ def empty(name: str) -> str:
 
 def main():
     check = "--check" in sys.argv
-    enc, unicodes, doubled = load()
+    enc, unicodes, doubled, before = load()
     ign = enc["ignorables"]
     outputs: dict[Path, str] = {}
 
     empties = [ign["glyph"], ign["substitute"]]
-    dbl = list(doubled)
+    dbl = list(doubled) + list(before)
     for name, base in doubled.items():
-        outputs[GLYPHS / f"{name}.glif"] = composite(name, base, unicodes[name])
+        outputs[GLYPHS / f"{name}.glif"] = composite(name, base, ["doubling"], unicodes[name])
+    for name, base in before.items():
+        marks = ["doubling", "catchdots"] if base in doubled else ["catchdots"]
+        outputs[GLYPHS / f"{name}.glif"] = composite(
+            name, doubled.get(base, base), marks, unicodes[name]
+        )
     for name in empties:
         outputs[GLYPHS / f"{name}.glif"] = with_unicodes(empty(name), unicodes[name])
 

@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="kh.catch" format="2">
+  <advance width="375"/>
+  <unicode hex="1ECCC"/>
+  <outline>
+    <component base="kh"/>
+    <component base="catchdots" xOffset="187" yOffset="627"/>
+  </outline>
+</glyph>

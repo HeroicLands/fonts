@@ -4,7 +4,7 @@ Fonts for the scripts of the HeroicLands settings, drawn from scratch so that a 
 
 Pirzath Carved and Thuravark Runic draw their script over the setting's Latin spelling. Text stays plain, readable and searchable, and a passage switches to the script by its font alone. A letter pair that the spelling uses for one sound, such as _th_ or _kh_, draws the single letter for that sound.
 
-Qalezu, the Khelathi alphabet, is written right to left on code points of its own, U+1EA00 to U+1EA3F. A converter turns Latin Khelathi into those code points, and the font draws them; `tools/qalezu/encoding.json` is the one table of what each code point is, its sound and the Latin that types it.
+Qalezu, the Khelathi alphabet, is written right to left on code points of its own, U+1EA00 to U+1EA3F, with the catch-before forms in U+1ECC0 to U+1ECFF. A converter turns Latin Khelathi into those code points, and the font draws them; `tools/qalezu/encoding.json` is the one table of what each code point is, its sound and the Latin that types it.
 
 ## Licence
 

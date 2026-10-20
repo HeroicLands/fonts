@@ -47,15 +47,33 @@ A voiced sign is its voiceless partner plus one reed dab over it: p and b, t and
 
 ## The doubled signs
 
-A consonant written twice, as in _Lenni_ or _Gerra_, is one character: the doubled sign, the sign with the doubling bar drawn under it. Every consonant sign has a doubled form, `<sign>.dbl`, on a code point of its own; the catch has none. A doubled digraph (_tth_, _thth_) is the digraph's doubled sign.
+A consonant written twice, as in _Lenni_ or _Gerra_, is one character: the doubled sign, the sign with the doubling bar drawn under it. Every consonant sign has a doubled form, `<sign>.dbl`, on a code point of its own; the catch has none, and neither does it have a catch-before form. A doubled digraph (_tth_, _thth_) is the digraph's doubled sign.
 
-The doubled glyph is a composite of the sign and the unencoded `doubling` component, set at the sign's `doubling` anchor, a fixed distance below its lowest ink. The doubled glyph has the sign's advance. The bar has no code point, no positioning feature and no role in shaping, so every shaper draws a doubled sign the same way. `doubling` and `dab` are components only; neither can be typed.
+The doubled glyph is a composite of the sign and the unencoded `doubling` component, set at the sign's `doubling` anchor, a fixed distance below its lowest ink. The doubled glyph has the sign's advance. The bar has no code point, no positioning feature and no role in shaping, so every shaper draws a doubled sign the same way. `doubling`, `dab` and `catchdots` are components only; none can be typed.
 
 ## The catch and the vowel rule
 
-Qalezu records no vowel. A vowel at the start of a word, which in Khelathi is marked by the glottal stop, draws the catch; every other vowel draws nothing. A word starts at the beginning of the text and after a space, a hyphen or any mark; a vowel after a letter, another vowel or the apostrophe is silent. The apostrophe is the catch wherever it stands. So _Anlagh_ is the catch, n, l, gh; _Qe'aret_ is q, the catch, r, t; and _Au'Khelathu_ is two catches, kh, l, th.
+Qalezu records no vowel. A vowel at the start of a word, which in Khelathi is marked by the glottal stop, draws the catch; every other vowel draws nothing. A word starts at the beginning of the text and after a space, a hyphen or any mark. A hyphen in the Latin spelling is a word space, since Qalezu has no sign for it: _Gar-Qethar_ and _Khelathi-zethu_ are each two words, _Gar-Au_ is g, r, a space and the standalone catch, and a hyphen at the end of a prefix form (_Gar-_, _Lut-_) writes nothing. A vowel after a letter, another vowel or the apostrophe is silent. The apostrophe is the catch wherever it stands.
 
-The font draws the sign it is given. Which vowels vanish is the converter's rule, written once in `tools/qalezu/guard.py`.
+**A catch before a consonant is three reed dabs over that consonant.** The three dabs stand in a triangle, one on top and two below, apart from one another and never touching. The consonant is the next sign after the catch, with the silent vowels between them skipped. The catch and the consonant are one character, the consonant's catch-before form. On a voiced sign the triangle stands clearly above the voicing dab, so the plain sign (no dab), the voiced sign (one dab) and the catch-before form (three dabs) differ at body-text sizes.
+
+**A catch with no consonant after it is the standalone catch,** the sign of its own: at the end of a word, before a mark, before another catch, or in a word with no consonant. The standalone catch is never combined with a following catch.
+
+Examples, each in reading order:
+
+| Latin | Written |
+| --- | --- |
+| _Uqa'a_ | the triangle over q, then the standalone catch |
+| _Au'Khelathu_ | the standalone catch (the first catch meets another catch), the triangle over kh, then l, th |
+| _Qe'aret_ | q, the triangle over r, t |
+| _Anlagh_ | the triangle over n, then l, gh |
+| _Lem'_ | l, m, the standalone catch |
+| _Au_ | the standalone catch |
+| _'nna_ | the triangle over the doubled n |
+
+A doubled consonant keeps its doubling bar under the sign; a catch before it puts the triangle over the doubled sign, whose bar stays below.
+
+The font draws the sign it is given. Which vowels vanish, and which catches combine with the sign after them, is the converter's rule, written once in `tools/qalezu/guard.py`.
 
 ## Right to left
 
@@ -67,7 +85,13 @@ Nothing in the font depends on the order a shaper processes a run in, because no
 
 ## The encoding
 
-`tools/qalezu/encoding.json` is the one table: for each glyph its name, its code point in U+1EA00–U+1EA3F, its sound and the Latin that types it. The signs run from U+1EA00 (the catch is U+1EA15 and `tj` U+1EA16), their doubled forms from U+1EA17, the digits from U+1EA2D and the punctuation from U+1EA37, and the rest of the block is free. Each doubled entry names its sign in a `base` field. The space stays U+0020. Everything else reads the table: `tools/qalezu/apply_encoding.py` writes the UFO's character map from it, `check_font.py` compares the built cmap with it, and `guard.py` takes its conversion targets from it. Every Latin character, the apostrophe included, maps to the box, so stray text prints boxes.
+`tools/qalezu/encoding.json` is the one table: for each glyph its name, its code point in U+1EA00–U+1EA3F, its sound and the Latin that types it. The signs run from U+1EA00 (the catch is U+1EA15 and `tj` U+1EA16), their doubled forms from U+1EA17, the digits from U+1EA2D and the punctuation from U+1EA37, and the rest of the block is free. Each doubled entry names its sign in a `base` field.
+
+The catch-before forms are in U+1ECC0–U+1ECFF, a range of Unicode 17 that no character occupies and whose default bidirectional class is right-to-left, so they lay out right to left like the rest of the script. The 22 consonant signs' forms run from U+1ECC0 in sign order, and their doubled signs' forms follow; each entry's `base` names the sign or doubled sign it carries the triangle over. The range sits clear of Qalezu's own block and of Khelathi Zethu's. The space stays U+0020. Everything else reads the table: `tools/qalezu/apply_encoding.py` writes the UFO's character map from it, `check_font.py` compares the built cmap with it, and `guard.py` takes its conversion targets from it. Every Latin character, the apostrophe included, maps to the box, so stray text prints boxes.
+
+## The catch-before forms
+
+Each consonant sign and each doubled sign has a catch-before form, `<sign>.catch` or `<sign>.dbl.catch`: the sign (or doubled sign) plus the unencoded `catchdots` component, set at the sign's `catch` anchor. `catchdots` is three `dab` components in a triangle, and the `catch` anchor sits a fixed distance above the sign's highest ink, above the voicing dab on a voiced sign. The glyph has the sign's own advance. The font's ascender, descender and Windows ascent and descent enclose every glyph, so no catch-before form or doubling bar is clipped; the box guard checks it for every font. Like the doubled signs they are precomposed, because Chrome attaches a positioned mark to the wrong base on script-less right-to-left code points.
 
 ## The ignorables
 
@@ -83,14 +107,13 @@ Base ten, place order, ten independent signs from the counting-house tradition, 
 | --- | --- | --- |
 | `.` | sentence end | a short stroke on the line, hooking down at its end |
 | `,` | pause | a short low dash |
-| `-` | name-dash | a short bar at mid height, the one mark that joins two parts of a name |
 | space | word division | a gap wider than the gap between signs |
 
-There is no exclamation mark, question mark, semicolon, colon or quotation mark.
+There is no hyphen, exclamation mark, question mark, semicolon, colon or quotation mark. A hyphen between the parts of a name is written as the space between two words.
 
 ## Building and checking
 
-The UFO `sources/Qalezu.ufo` is the source. A generator outside this repository drew the outlines; the UFO is the source that is edited and built, and the generator is not part of the build.
+The UFO `sources/Qalezu.ufo` is the source. A generator outside this repository drew the outlines and wrote the `catchdots` component and the `catch` anchors; `apply_encoding.py` then derives the doubled and catch-before composites. The UFO is the source that is edited and built, and the generator is not part of the build.
 
 ```sh
 PATH=.venv/bin:$PATH ./build.sh                          # fonts/Qalezu-Regular.ttf and .woff2
@@ -101,6 +124,6 @@ PATH=.venv/bin:$PATH ./build.sh                          # fonts/Qalezu-Regular.
 .venv/bin/python tools/prove_guards.py
 ```
 
-- `check_font.py` confirms the cmap is `encoding.json` plus the box, which takes every code point of the Latin ranges that the encoding leaves free to the box, that every glyph has an outline, that the bar and dab components have zero advance, that every doubled glyph is its sign with the bar drawn in at the sign's advance and that the font carries no mark positioning, that the default-ignorables shape to zero advance and no ink, and that the name table carries the licence.
-- `guard.py` converts every form of the Khelathi lexicon, the `words` forms and the `names`, with the reference converter, shapes the result right to left and asserts no glyph is `.notdef` or the box and that each glyph is the sign the converter wrote. It reports every form that holds a letter Qalezu has no sign for (`c` outside `ch`, `j`, `v`, `x`), and invents no mapping for them. Fixtures cover the word-initial vowel, the apostrophe, each digraph, `ch` and `tj` giving one sign, doubled consonants and doubled digraphs, a number and a word-final vowel.
+- `check_font.py` confirms the cmap is `encoding.json` plus the box, which takes every code point of the Latin ranges that the encoding leaves free to the box, that every glyph has an outline, that the bar, dab and catchdots components have zero advance, that every doubled glyph is its sign with the bar drawn in at the sign's advance, that every catch-before glyph is its sign with three more dabs drawn above it at the sign's advance, and that the font carries no mark positioning, that the default-ignorables shape to zero advance and no ink, and that the name table carries the licence.
+- `guard.py` converts every form of the Khelathi lexicon, the `words` forms and the `names`, with the reference converter, shapes the result right to left and asserts no glyph is `.notdef` or the box and that each glyph is the sign the converter wrote. It reports every form that holds a letter Qalezu has no sign for (`c` outside `ch`, `j`, `v`, `x`), and invents no mapping for them. Fixtures cover the word-initial vowel, the apostrophe, each digraph, `ch` and `tj` giving one sign, doubled consonants and doubled digraphs, a number and a word-final vowel, and the catch before a consonant, before a doubled consonant, before another catch, at the end of a word and across a mark.
 - `prove_guards.py` removes the th sign from the built font's character map and the guard fails on it.

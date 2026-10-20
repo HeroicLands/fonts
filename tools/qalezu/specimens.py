@@ -5,9 +5,10 @@
     .venv/bin/python tools/qalezu/specimens.py [--font fonts/Qalezu-Regular.ttf] [--out specimens/qalezu]
                                             [--thalorna ~/dev/HeroicLands/thalorna | --note FILE]
 
-Three sheets: the glyph chart, a dozen Khelathi words and names converted and
-shaped right to left beside their Latin and gloss, and an English sentence with
-a Qalezu name followed by a right-aligned block of Qalezu lines.
+Four sheets: the glyph chart, a dozen Khelathi words and names converted and
+shaped right to left beside their Latin and gloss, an English sentence with
+a Qalezu name followed by a right-aligned block of Qalezu lines, and the
+plain, voiced and catch-before form of each sign at large and small sizes.
 
 Text is shaped with a right-to-left direction and no script hint.
 """
@@ -36,6 +37,10 @@ WORDS = [
 ]
 NAMES = {"Lenni": "a given name, with the n doubled"}
 BLOCK = ["Gar-Qethar", "Zel-Qar", "Lut-Psaqa"]
+# Each row: the sign, its voiced partner if it has one, and the Latin that types them.
+TRIPLES = [("t", "d"), ("s", "z"), ("k", "g"), ("kh", "gh"), ("p", "b"), ("l", None), ("r", None),
+           ("n", None), ("th", None), ("m", None), ("q", None), ("h", None), ("sh", None), ("f", None),
+           ("w", None), ("y", None), ("tj", None)]
 SENTENCE = ("The scribes of the delta write ", "Khelathu", " with a reed on papyrus.")
 
 
@@ -130,6 +135,30 @@ def mixed(r: Renderer, out: Path):
     img.save(out)
 
 
+def confusables(r: Renderer, out: Path):
+    """Each sign beside its voiced partner and its catch-before forms, at 130, 24 and 18 px."""
+    enc = json.loads(guard.ENCODING.read_text(encoding="utf-8"))
+    point = {g["glyph"]: chr(int(g["codepoint"][2:], 16)) for g in enc["glyphs"]}
+    margin, row_h, col_w = 40, 280, 740
+    rows = (len(TRIPLES) + 1) // 2
+    img, d = page(margin * 2 + 2 * col_w, margin * 2 + 40 + rows * row_h)
+    d.text((margin, 18), "Plain, voiced and catch-before forms, at 130, 24 and 18 px", fill=GREY, font=label_font(22))
+    lab = label_font(20)
+    for i, (plain, voiced) in enumerate(TRIPLES):
+        names = [plain] + ([voiced] if voiced else [])
+        y = margin + 40 + (i // 2) * row_h
+        x = margin + (i % 2) * col_w
+        d.line([x, y + 200, x + col_w - 40, y + 200], fill=RULE)
+        for name in names + [n + ".catch" for n in names]:
+            s_ = shaped(r, point[name])
+            r.draw(img, x, y + 185, s_, 130, INK)
+            d.text((x, y + 205), name, fill=GREY, font=lab)
+            for k, size in enumerate((24, 18)):
+                r.draw(img, x + 10 + k * 36, y + 262, s_, size, INK)
+            x += max(s_.advance * 130 / r.upem, 130) + 25
+    img.save(out)
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     ap.add_argument("--font", default=str(ROOT / "fonts" / "Qalezu-Regular.ttf"))
@@ -144,6 +173,7 @@ def main():
     glyph_chart(r, out / "01-glyph-chart.png")
     words(r, data, out / "02-words.png")
     mixed(r, out / "03-mixed.png")
+    confusables(r, out / "04-confusables.png")
 
 
 if __name__ == "__main__":

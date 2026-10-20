@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="gh.dbl.catch" format="2">
+  <advance width="375"/>
+  <unicode hex="1ECE3"/>
+  <outline>
+    <component base="kh"/>
+    <component base="dab" xOffset="187" yOffset="585"/>
+    <component base="doubling" xOffset="187" yOffset="-110"/>
+    <component base="catchdots" xOffset="187" yOffset="724"/>
+  </outline>
+</glyph>

@@ -3,6 +3,7 @@
   <advance width="547"/>
   <unicode hex="1EA08"/>
   <anchor x="274" y="-80" name="doubling"/>
+  <anchor x="274" y="513" name="catch"/>
   <outline>
     <contour>
       <point x="207.45" y="414.07" type="curve" smooth="yes"/>

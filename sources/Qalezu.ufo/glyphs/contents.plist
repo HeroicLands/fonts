@@ -6,16 +6,26 @@
     <string>_notdef.glif</string>
     <key>b</key>
     <string>b.glif</string>
+    <key>b.catch</key>
+    <string>b.catch.glif</string>
     <key>b.dbl</key>
     <string>b.dbl.glif</string>
+    <key>b.dbl.catch</key>
+    <string>b.dbl.catch.glif</string>
     <key>catch</key>
     <string>catch.glif</string>
+    <key>catchdots</key>
+    <string>catchdots.glif</string>
     <key>comma</key>
     <string>comma.glif</string>
     <key>d</key>
     <string>d.glif</string>
+    <key>d.catch</key>
+    <string>d.catch.glif</string>
     <key>d.dbl</key>
     <string>d.dbl.glif</string>
+    <key>d.dbl.catch</key>
+    <string>d.dbl.catch.glif</string>
     <key>dab</key>
     <string>dab.glif</string>
     <key>doubling</key>
@@ -24,50 +34,84 @@
     <string>eight.glif</string>
     <key>f</key>
     <string>f.glif</string>
+    <key>f.catch</key>
+    <string>f.catch.glif</string>
     <key>f.dbl</key>
     <string>f.dbl.glif</string>
+    <key>f.dbl.catch</key>
+    <string>f.dbl.catch.glif</string>
     <key>five</key>
     <string>five.glif</string>
     <key>four</key>
     <string>four.glif</string>
     <key>g</key>
     <string>g.glif</string>
+    <key>g.catch</key>
+    <string>g.catch.glif</string>
     <key>g.dbl</key>
     <string>g.dbl.glif</string>
+    <key>g.dbl.catch</key>
+    <string>g.dbl.catch.glif</string>
     <key>gh</key>
     <string>gh.glif</string>
+    <key>gh.catch</key>
+    <string>gh.catch.glif</string>
     <key>gh.dbl</key>
     <string>gh.dbl.glif</string>
+    <key>gh.dbl.catch</key>
+    <string>gh.dbl.catch.glif</string>
     <key>h</key>
     <string>h.glif</string>
+    <key>h.catch</key>
+    <string>h.catch.glif</string>
     <key>h.dbl</key>
     <string>h.dbl.glif</string>
-    <key>hyphen</key>
-    <string>hyphen.glif</string>
+    <key>h.dbl.catch</key>
+    <string>h.dbl.catch.glif</string>
     <key>ignorable</key>
     <string>ignorable.glif</string>
     <key>ignorable.sub</key>
     <string>ignorable.sub.glif</string>
     <key>k</key>
     <string>k.glif</string>
+    <key>k.catch</key>
+    <string>k.catch.glif</string>
     <key>k.dbl</key>
     <string>k.dbl.glif</string>
+    <key>k.dbl.catch</key>
+    <string>k.dbl.catch.glif</string>
     <key>kh</key>
     <string>kh.glif</string>
+    <key>kh.catch</key>
+    <string>kh.catch.glif</string>
     <key>kh.dbl</key>
     <string>kh.dbl.glif</string>
+    <key>kh.dbl.catch</key>
+    <string>kh.dbl.catch.glif</string>
     <key>l</key>
     <string>l.glif</string>
+    <key>l.catch</key>
+    <string>l.catch.glif</string>
     <key>l.dbl</key>
     <string>l.dbl.glif</string>
+    <key>l.dbl.catch</key>
+    <string>l.dbl.catch.glif</string>
     <key>m</key>
     <string>m.glif</string>
+    <key>m.catch</key>
+    <string>m.catch.glif</string>
     <key>m.dbl</key>
     <string>m.dbl.glif</string>
+    <key>m.dbl.catch</key>
+    <string>m.dbl.catch.glif</string>
     <key>n</key>
     <string>n.glif</string>
+    <key>n.catch</key>
+    <string>n.catch.glif</string>
     <key>n.dbl</key>
     <string>n.dbl.glif</string>
+    <key>n.dbl.catch</key>
+    <string>n.dbl.catch.glif</string>
     <key>nine</key>
     <string>nine.glif</string>
     <key>notdef.box</key>
@@ -76,60 +120,104 @@
     <string>one.glif</string>
     <key>p</key>
     <string>p.glif</string>
+    <key>p.catch</key>
+    <string>p.catch.glif</string>
     <key>p.dbl</key>
     <string>p.dbl.glif</string>
+    <key>p.dbl.catch</key>
+    <string>p.dbl.catch.glif</string>
     <key>period</key>
     <string>period.glif</string>
     <key>q</key>
     <string>q.glif</string>
+    <key>q.catch</key>
+    <string>q.catch.glif</string>
     <key>q.dbl</key>
     <string>q.dbl.glif</string>
+    <key>q.dbl.catch</key>
+    <string>q.dbl.catch.glif</string>
     <key>r</key>
     <string>r.glif</string>
+    <key>r.catch</key>
+    <string>r.catch.glif</string>
     <key>r.dbl</key>
     <string>r.dbl.glif</string>
+    <key>r.dbl.catch</key>
+    <string>r.dbl.catch.glif</string>
     <key>s</key>
     <string>s.glif</string>
+    <key>s.catch</key>
+    <string>s.catch.glif</string>
     <key>s.dbl</key>
     <string>s.dbl.glif</string>
+    <key>s.dbl.catch</key>
+    <string>s.dbl.catch.glif</string>
     <key>seven</key>
     <string>seven.glif</string>
     <key>sh</key>
     <string>sh.glif</string>
+    <key>sh.catch</key>
+    <string>sh.catch.glif</string>
     <key>sh.dbl</key>
     <string>sh.dbl.glif</string>
+    <key>sh.dbl.catch</key>
+    <string>sh.dbl.catch.glif</string>
     <key>six</key>
     <string>six.glif</string>
     <key>space</key>
     <string>space.glif</string>
     <key>t</key>
     <string>t.glif</string>
+    <key>t.catch</key>
+    <string>t.catch.glif</string>
     <key>t.dbl</key>
     <string>t.dbl.glif</string>
+    <key>t.dbl.catch</key>
+    <string>t.dbl.catch.glif</string>
     <key>th</key>
     <string>th.glif</string>
+    <key>th.catch</key>
+    <string>th.catch.glif</string>
     <key>th.dbl</key>
     <string>th.dbl.glif</string>
+    <key>th.dbl.catch</key>
+    <string>th.dbl.catch.glif</string>
     <key>three</key>
     <string>three.glif</string>
     <key>tj</key>
     <string>tj.glif</string>
+    <key>tj.catch</key>
+    <string>tj.catch.glif</string>
     <key>tj.dbl</key>
     <string>tj.dbl.glif</string>
+    <key>tj.dbl.catch</key>
+    <string>tj.dbl.catch.glif</string>
     <key>two</key>
     <string>two.glif</string>
     <key>w</key>
     <string>w.glif</string>
+    <key>w.catch</key>
+    <string>w.catch.glif</string>
     <key>w.dbl</key>
     <string>w.dbl.glif</string>
+    <key>w.dbl.catch</key>
+    <string>w.dbl.catch.glif</string>
     <key>y</key>
     <string>y.glif</string>
+    <key>y.catch</key>
+    <string>y.catch.glif</string>
     <key>y.dbl</key>
     <string>y.dbl.glif</string>
+    <key>y.dbl.catch</key>
+    <string>y.dbl.catch.glif</string>
     <key>z</key>
     <string>z.glif</string>
+    <key>z.catch</key>
+    <string>z.catch.glif</string>
     <key>z.dbl</key>
     <string>z.dbl.glif</string>
+    <key>z.dbl.catch</key>
+    <string>z.dbl.catch.glif</string>
     <key>zero</key>
     <string>zero.glif</string>
   </dict>

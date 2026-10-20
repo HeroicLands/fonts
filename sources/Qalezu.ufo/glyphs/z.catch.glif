@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="z.catch" format="2">
+  <advance width="468"/>
+  <unicode hex="1ECC4"/>
+  <outline>
+    <component base="s"/>
+    <component base="dab" xOffset="234" yOffset="585"/>
+    <component base="catchdots" xOffset="234" yOffset="724"/>
+  </outline>
+</glyph>

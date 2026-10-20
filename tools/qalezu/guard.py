@@ -13,12 +13,19 @@ word to the string of Qalezu code points, and the rules live here alone:
 - a consonant letter is its sign, and ``th``, ``sh``, ``kh``, ``gh`` and ``ch``
   or ``tj`` are one sign each, ``ch`` and ``tj`` the same sign;
 - ``'`` is the catch;
-- a vowel at the start of a word, or after a space, hyphen or other mark, is the
+- a vowel at the start of a word, or after a space, a hyphen or other mark, is the
   catch, and every other vowel draws nothing;
+- a catch whose next sign, with the silent vowels skipped, is a consonant sign or a
+  doubled sign is written with that sign as one character, its catch-before form
+  (``<sign>.catch``, three reed dabs in a triangle over the sign); any other catch
+  (at the end of a word, before a mark, before another catch, or in a word with
+  no consonant after it) is the standalone catch;
 - a consonant written twice with no vowel between is that sign's doubled form, one
   character, and so is a letter doubled before a digraph that begins with it
   (``tth``);
-- digits, ``.``, ``,`` and ``-`` are their own signs, and case is ignored.
+- a hyphen is a word space: ``Gar-Qethar`` is two words, and a hyphen with nothing after
+  it, as in the prefix forms ``Gar-`` and ``Lut-``, writes nothing;
+- digits, ``.`` and ``,`` are their own signs, and case is ignored.
 
 A letter with no sign (``c`` outside ``ch``, ``j``, ``v``, ``x``, or any other
 character) is never invented a mapping: ``convert`` refuses it, and the guard
@@ -53,23 +60,26 @@ class Unmappable(Exception):
 
 def load_encoding():
     enc = json.loads(ENCODING.read_text(encoding="utf-8"))
-    typing, point, name_of, double = {}, {}, {}, {}
+    typing, point, name_of, double, before = {}, {}, {}, {}, {}
     for g in enc["glyphs"]:
         if g["kind"] == "doubled":
             double[g["base"]] = g["glyph"]
+        if g["kind"] == "catchbefore":
+            before[g["base"]] = g["glyph"]
         cp = int(g["codepoint"][2:], 16)
         point[g["glyph"]] = chr(cp)
         name_of[chr(cp)] = g["glyph"]
-        if g["kind"] != "doubled":
+        if g["kind"] not in ("doubled", "catchbefore"):
             for t in g["typing"]:
                 typing[t] = g["glyph"]
-    return typing, point, name_of, double
+    return typing, point, name_of, double, before
 
 
-TYPING, POINT, NAME_OF, DOUBLE = load_encoding()
+TYPING, POINT, NAME_OF, DOUBLE, CATCH_BEFORE = load_encoding()
 DIGRAPHS = {t for t in TYPING if len(t) == 2 and t.isalpha()}
 CATCH = TYPING["'"]
 SPACE = " "
+HYPHEN = "-"  # a hyphen is a word space, and nothing at the end of the form
 # Typed characters that mark a word boundary: the next vowel is word-initial.
 BOUNDARY = set(" \t\n -.,") | set("0123456789")
 
@@ -94,7 +104,9 @@ def convert(word: str) -> str:
             initial, prev = False, None
             i += 1
         elif ch in BOUNDARY:
-            if ch == SPACE or ch == " ":
+            if ch == "-":
+                out.append(HYPHEN)
+            elif ch in " \t\n ":
                 out.append(SPACE)
             else:
                 out.append(TYPING[ch])
@@ -123,7 +135,18 @@ def convert(word: str) -> str:
             i += step
         else:
             raise Unmappable(ch)
-    return "".join(SPACE if g == SPACE else POINT[g] for g in out)
+    # A hyphen is a word space unless nothing follows it.
+    while out and out[-1] == HYPHEN:
+        out.pop()
+    out = [SPACE if g == HYPHEN else g for g in out]
+    # A catch followed by a consonant sign is that sign's catch-before form.
+    fused: list[str] = []
+    for g in out:
+        if fused and fused[-1] == CATCH and g in CATCH_BEFORE:
+            fused[-1] = CATCH_BEFORE[g]
+        else:
+            fused.append(g)
+    return "".join(SPACE if g == SPACE else POINT[g] for g in fused)
 
 
 def glyphs_of(text: str) -> list[str]:
@@ -132,11 +155,28 @@ def glyphs_of(text: str) -> list[str]:
 
 # Each fixture: the Latin and the signs it writes, in reading order.
 FIXTURES = [
-    ("Anlagh", ["catch", "n", "l", "gh"]),  # a word-initial vowel draws the catch, others nothing
-    ("Qe'aret", ["q", "catch", "r", "t"]),  # a vowel after the apostrophe draws nothing
-    ("Au'Khelathu", ["catch", "catch", "kh", "l", "th"]),
-    ("Gar-Anlagh", ["g", "r", "hyphen", "catch", "n", "l", "gh"]),  # the dash starts a word
-    ("Gith’el", ["g", "th", "catch", "l"]),  # the curly apostrophe is the catch
+    ("Anlagh", ["n.catch", "l", "gh"]),  # a word-initial vowel draws the catch, over the consonant after it
+    ("Qe'aret", ["q", "r.catch", "t"]),  # a vowel after the apostrophe draws nothing
+    ("Au'Khelathu", ["catch", "kh.catch", "l", "th"]),  # a catch before a catch stands alone
+    ("Uqa'a", ["q.catch", "catch"]),  # a catch ending the word stands alone
+    ("Lem'", ["l", "m", "catch"]),
+    ("Au", ["catch"]),  # a word with no consonant
+    ("a'nna", ["catch", "n.dbl.catch"]),  # a catch before a doubled consonant
+    ("'nna", ["n.dbl.catch"]),
+    ("Gar-Anlagh", ["g", "r", "space", "n.catch", "l", "gh"]),  # a hyphen is a word space and starts a word
+    ("Gith’el", ["g", "th", "l.catch"]),  # the curly apostrophe is the catch
+    ("a'", ["catch", "catch"]),  # a word-initial vowel then a catch with nothing after it
+    ("a b", ["catch", "space", "b"]),  # a catch does not reach over a space
+    ("'", ["catch"]),
+    ("''", ["catch", "catch"]),  # the catch is not doubled
+    ("a'tj", ["catch", "tj.catch"]),
+    ("a-b", ["catch", "space", "b"]),  # a catch does not reach over the hyphen
+    ("Gar-Qethar", ["g", "r", "space", "q", "th", "r"]),
+    ("Khelathi-zethu", ["kh", "l", "th", "space", "z", "th"]),
+    ("Gar-Au", ["g", "r", "space", "catch"]),  # a vowel after the break begins a word
+    ("Gar-", ["g", "r"]),  # a prefix form writes just the prefix
+    ("Lut-", ["l", "t"]),
+    ("a-", ["catch"]),
     ("kala", ["k", "l"]),  # a word-final vowel draws nothing
     ("ku", ["k"]),
     ("thal", ["th", "l"]),
@@ -159,8 +199,7 @@ FIXTURES = [
     ("ttj", ["tj.dbl"]),
     ("Linnuseret", ["l", "n.dbl", "s", "r", "t"]),
     ("lll", ["l.dbl", "l"]),
-    ("''", ["catch", "catch"]),  # the catch is not doubled
-    ("Zel ez Qar", ["z", "l", "space", "catch", "z", "space", "q", "r"]),
+    ("Zel ez Qar", ["z", "l", "space", "z.catch", "space", "q", "r"]),
     ("1234567890", ["one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "zero"]),
     ("zeret 305, 14.", ["z", "r", "t", "space", "three", "zero", "five", "comma", "space", "one", "four", "period"]),
 ]

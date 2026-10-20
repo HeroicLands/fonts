@@ -3,6 +3,7 @@
   <advance width="571"/>
   <unicode hex="1EA03"/>
   <anchor x="285" y="-80" name="doubling"/>
+  <anchor x="285" y="724" name="catch"/>
   <outline>
     <component base="t"/>
     <component base="dab" xOffset="285" yOffset="585"/>

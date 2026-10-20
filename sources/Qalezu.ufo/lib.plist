@@ -32,6 +32,7 @@
       <string>tj</string>
       <string>doubling</string>
       <string>dab</string>
+      <string>catchdots</string>
       <string>zero</string>
       <string>one</string>
       <string>two</string>
@@ -44,7 +45,6 @@
       <string>nine</string>
       <string>period</string>
       <string>comma</string>
-      <string>hyphen</string>
       <string>ignorable</string>
       <string>ignorable.sub</string>
       <string>l.dbl</string>
@@ -69,6 +69,50 @@
       <string>w.dbl</string>
       <string>y.dbl</string>
       <string>tj.dbl</string>
+      <string>l.catch</string>
+      <string>r.catch</string>
+      <string>t.catch</string>
+      <string>d.catch</string>
+      <string>z.catch</string>
+      <string>s.catch</string>
+      <string>g.catch</string>
+      <string>k.catch</string>
+      <string>n.catch</string>
+      <string>th.catch</string>
+      <string>m.catch</string>
+      <string>q.catch</string>
+      <string>kh.catch</string>
+      <string>gh.catch</string>
+      <string>h.catch</string>
+      <string>sh.catch</string>
+      <string>p.catch</string>
+      <string>b.catch</string>
+      <string>f.catch</string>
+      <string>w.catch</string>
+      <string>y.catch</string>
+      <string>tj.catch</string>
+      <string>l.dbl.catch</string>
+      <string>r.dbl.catch</string>
+      <string>t.dbl.catch</string>
+      <string>d.dbl.catch</string>
+      <string>z.dbl.catch</string>
+      <string>s.dbl.catch</string>
+      <string>g.dbl.catch</string>
+      <string>k.dbl.catch</string>
+      <string>n.dbl.catch</string>
+      <string>th.dbl.catch</string>
+      <string>m.dbl.catch</string>
+      <string>q.dbl.catch</string>
+      <string>kh.dbl.catch</string>
+      <string>gh.dbl.catch</string>
+      <string>h.dbl.catch</string>
+      <string>sh.dbl.catch</string>
+      <string>p.dbl.catch</string>
+      <string>b.dbl.catch</string>
+      <string>f.dbl.catch</string>
+      <string>w.dbl.catch</string>
+      <string>y.dbl.catch</string>
+      <string>tj.dbl.catch</string>
     </array>
     <key>public.openTypeCategories</key>
     <dict>
@@ -76,15 +120,25 @@
       <string>base</string>
       <key>b</key>
       <string>base</string>
+      <key>b.catch</key>
+      <string>base</string>
       <key>b.dbl</key>
+      <string>base</string>
+      <key>b.dbl.catch</key>
       <string>base</string>
       <key>catch</key>
       <string>base</string>
+      <key>catchdots</key>
+      <string>mark</string>
       <key>comma</key>
       <string>base</string>
       <key>d</key>
       <string>base</string>
+      <key>d.catch</key>
+      <string>base</string>
       <key>d.dbl</key>
+      <string>base</string>
+      <key>d.dbl.catch</key>
       <string>base</string>
       <key>dab</key>
       <string>mark</string>
@@ -94,7 +148,11 @@
       <string>base</string>
       <key>f</key>
       <string>base</string>
+      <key>f.catch</key>
+      <string>base</string>
       <key>f.dbl</key>
+      <string>base</string>
+      <key>f.dbl.catch</key>
       <string>base</string>
       <key>five</key>
       <string>base</string>
@@ -102,17 +160,27 @@
       <string>base</string>
       <key>g</key>
       <string>base</string>
+      <key>g.catch</key>
+      <string>base</string>
       <key>g.dbl</key>
+      <string>base</string>
+      <key>g.dbl.catch</key>
       <string>base</string>
       <key>gh</key>
       <string>base</string>
+      <key>gh.catch</key>
+      <string>base</string>
       <key>gh.dbl</key>
+      <string>base</string>
+      <key>gh.dbl.catch</key>
       <string>base</string>
       <key>h</key>
       <string>base</string>
+      <key>h.catch</key>
+      <string>base</string>
       <key>h.dbl</key>
       <string>base</string>
-      <key>hyphen</key>
+      <key>h.dbl.catch</key>
       <string>base</string>
       <key>ignorable</key>
       <string>base</string>
@@ -120,23 +188,43 @@
       <string>base</string>
       <key>k</key>
       <string>base</string>
+      <key>k.catch</key>
+      <string>base</string>
       <key>k.dbl</key>
+      <string>base</string>
+      <key>k.dbl.catch</key>
       <string>base</string>
       <key>kh</key>
       <string>base</string>
+      <key>kh.catch</key>
+      <string>base</string>
       <key>kh.dbl</key>
+      <string>base</string>
+      <key>kh.dbl.catch</key>
       <string>base</string>
       <key>l</key>
       <string>base</string>
+      <key>l.catch</key>
+      <string>base</string>
       <key>l.dbl</key>
+      <string>base</string>
+      <key>l.dbl.catch</key>
       <string>base</string>
       <key>m</key>
       <string>base</string>
+      <key>m.catch</key>
+      <string>base</string>
       <key>m.dbl</key>
+      <string>base</string>
+      <key>m.dbl.catch</key>
       <string>base</string>
       <key>n</key>
       <string>base</string>
+      <key>n.catch</key>
+      <string>base</string>
       <key>n.dbl</key>
+      <string>base</string>
+      <key>n.dbl.catch</key>
       <string>base</string>
       <key>nine</key>
       <string>base</string>
@@ -146,27 +234,47 @@
       <string>base</string>
       <key>p</key>
       <string>base</string>
+      <key>p.catch</key>
+      <string>base</string>
       <key>p.dbl</key>
+      <string>base</string>
+      <key>p.dbl.catch</key>
       <string>base</string>
       <key>period</key>
       <string>base</string>
       <key>q</key>
       <string>base</string>
+      <key>q.catch</key>
+      <string>base</string>
       <key>q.dbl</key>
+      <string>base</string>
+      <key>q.dbl.catch</key>
       <string>base</string>
       <key>r</key>
       <string>base</string>
+      <key>r.catch</key>
+      <string>base</string>
       <key>r.dbl</key>
+      <string>base</string>
+      <key>r.dbl.catch</key>
       <string>base</string>
       <key>s</key>
       <string>base</string>
+      <key>s.catch</key>
+      <string>base</string>
       <key>s.dbl</key>
+      <string>base</string>
+      <key>s.dbl.catch</key>
       <string>base</string>
       <key>seven</key>
       <string>base</string>
       <key>sh</key>
       <string>base</string>
+      <key>sh.catch</key>
+      <string>base</string>
       <key>sh.dbl</key>
+      <string>base</string>
+      <key>sh.dbl.catch</key>
       <string>base</string>
       <key>six</key>
       <string>base</string>
@@ -174,31 +282,55 @@
       <string>base</string>
       <key>t</key>
       <string>base</string>
+      <key>t.catch</key>
+      <string>base</string>
       <key>t.dbl</key>
+      <string>base</string>
+      <key>t.dbl.catch</key>
       <string>base</string>
       <key>th</key>
       <string>base</string>
+      <key>th.catch</key>
+      <string>base</string>
       <key>th.dbl</key>
+      <string>base</string>
+      <key>th.dbl.catch</key>
       <string>base</string>
       <key>three</key>
       <string>base</string>
       <key>tj</key>
       <string>base</string>
+      <key>tj.catch</key>
+      <string>base</string>
       <key>tj.dbl</key>
+      <string>base</string>
+      <key>tj.dbl.catch</key>
       <string>base</string>
       <key>two</key>
       <string>base</string>
       <key>w</key>
       <string>base</string>
+      <key>w.catch</key>
+      <string>base</string>
       <key>w.dbl</key>
+      <string>base</string>
+      <key>w.dbl.catch</key>
       <string>base</string>
       <key>y</key>
       <string>base</string>
+      <key>y.catch</key>
+      <string>base</string>
       <key>y.dbl</key>
+      <string>base</string>
+      <key>y.dbl.catch</key>
       <string>base</string>
       <key>z</key>
       <string>base</string>
+      <key>z.catch</key>
+      <string>base</string>
       <key>z.dbl</key>
+      <string>base</string>
+      <key>z.dbl.catch</key>
       <string>base</string>
       <key>zero</key>
       <string>base</string>

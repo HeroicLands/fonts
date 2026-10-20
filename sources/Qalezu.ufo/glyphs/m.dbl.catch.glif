@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="m.dbl.catch" format="2">
+  <advance width="629"/>
+  <unicode hex="1ECE0"/>
+  <outline>
+    <component base="m"/>
+    <component base="doubling" xOffset="315" yOffset="-110"/>
+    <component base="catchdots" xOffset="315" yOffset="533"/>
+  </outline>
+</glyph>

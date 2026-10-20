@@ -28,12 +28,15 @@ A font fails when
   advance;
 - a default-ignorable of the ranges (U+202A-202E) does not map to an empty glyph;
 - a used code point reaches a glyph that draws nothing and is none of the three
-  exceptions.
+  exceptions;
+- the OS/2 winAscent or winDescent is smaller than the highest or lowest ink of any
+  glyph, which Windows clips.
 """
 
 import sys
 from pathlib import Path
 
+from fontTools.pens.boundsPen import BoundsPen
 from fontTools.pens.recordingPen import DecomposingRecordingPen
 from fontTools.ttLib import TTFont
 
@@ -98,7 +101,30 @@ def check(path: Path) -> list[str]:
     ):
         for cp in found:
             problems.append(f"{path}: error: U+{cp:04X} {label}")
+    problems += metrics(path, font)
     return problems
+
+
+def metrics(path: Path, font: TTFont) -> list[str]:
+    """The glyphs whose ink lies outside the OS/2 win metrics, as ``path: error: ...`` lines."""
+    glyphs = font.getGlyphSet()
+    os2 = font["OS/2"]
+    top, bottom, high, low = None, None, os2.usWinAscent, os2.usWinDescent
+    for name in font.getGlyphOrder():
+        pen = BoundsPen(glyphs)
+        glyphs[name].draw(pen)
+        if pen.bounds is None:
+            continue
+        if top is None or pen.bounds[3] > top[1]:
+            top = (name, pen.bounds[3])
+        if bottom is None or pen.bounds[1] < bottom[1]:
+            bottom = (name, pen.bounds[1])
+    out = []
+    if top and top[1] > high:
+        out.append(f"{path}: error: {top[0]} reaches y {top[1]:g}, above winAscent {high}")
+    if bottom and -bottom[1] > low:
+        out.append(f"{path}: error: {bottom[0]} reaches y {bottom[1]:g}, below -winDescent {low}")
+    return out
 
 
 def summary(path: Path) -> str:

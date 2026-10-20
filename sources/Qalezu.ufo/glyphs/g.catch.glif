@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="g.catch" format="2">
+  <advance width="379"/>
+  <unicode hex="1ECC6"/>
+  <outline>
+    <component base="k"/>
+    <component base="dab" xOffset="189" yOffset="585"/>
+    <component base="catchdots" xOffset="189" yOffset="724"/>
+  </outline>
+</glyph>

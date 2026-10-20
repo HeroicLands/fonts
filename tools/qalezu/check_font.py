@@ -8,9 +8,11 @@ The cmap is exactly the encoding: the signs, digits and marks on their
 right-to-left code points, the space, and the default-ignorable characters on
 one empty glyph, and every code point of the Latin ranges on the box
 (tools/notdef_box.py), so a Latin letter prints the box. Every drawn glyph has an outline,
-the unencoded bar and dab components have zero advance, and every doubled
-consonant is its sign with the bar drawn in, at the sign's own advance, so no
-mark positioning is needed. The ignorables shape to nothing. The name table carries the licence, and the .woff2
+the unencoded bar, dab and catchdots components have zero advance, every doubled
+consonant is its sign with the bar drawn in, the win metrics enclose every glyph
+(the box guard checks it), and every catch-before form is its
+sign or doubled sign with three more dabs drawn above it, all at the sign's own
+advance, so no mark positioning is needed. The ignorables shape to nothing. The name table carries the licence, and the .woff2
 beside the .ttf carries the same glyphs.
 """
 
@@ -19,6 +21,7 @@ import sys
 from pathlib import Path
 
 import uharfbuzz as hb
+from fontTools.pens.boundsPen import BoundsPen
 from fontTools.pens.recordingPen import DecomposingRecordingPen
 from fontTools.ttLib import TTFont
 
@@ -26,7 +29,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 import notdef_box  # noqa: E402
 
 ENCODING = Path(__file__).resolve().parent / "encoding.json"
-COMPONENTS = {"doubling", "dab"}
+COMPONENTS = {"doubling", "dab", "catchdots"}
 EMPTY_BY_DESIGN = {"space", "ignorable", "ignorable.sub"}
 
 
@@ -87,6 +90,11 @@ def check(path: Path) -> list[str]:
     enc = json.loads(ENCODING.read_text(encoding="utf-8"))
     glyphs = font.getGlyphSet()
 
+    def bounds(name: str):
+        pen = BoundsPen(glyphs)
+        glyphs[name].draw(pen)
+        return pen.bounds
+
     def contours(name: str) -> int:
         pen = DecomposingRecordingPen(glyphs)
         glyphs[name].draw(pen)
@@ -103,6 +111,19 @@ def check(path: Path) -> list[str]:
             problems.append(f"{name} has advance {font['hmtx'][name][0]}, its sign {base} has {font['hmtx'][base][0]}")
         if contours(name) <= contours(base):
             problems.append(f"{name} draws no bar beyond {base}")
+    for g in enc["glyphs"]:
+        if g["kind"] != "catchbefore":
+            continue
+        name, base = g["glyph"], g["base"]
+        if name not in order:
+            problems.append(f"the catch-before form {name} is missing")
+            continue
+        if font["hmtx"][name][0] != font["hmtx"][base][0]:
+            problems.append(f"{name} has advance {font['hmtx'][name][0]}, its sign {base} has {font['hmtx'][base][0]}")
+        if contours(name) != contours(base) + 3:
+            problems.append(f"{name} draws {contours(name)} contours, expected the {contours(base)} of {base} and three dabs")
+        if bounds(name)[3] <= bounds(base)[3]:
+            problems.append(f"{name} draws nothing above {base}")
     if "GPOS" in font:
         problems.append("the font carries mark positioning; no sign should need it")
 

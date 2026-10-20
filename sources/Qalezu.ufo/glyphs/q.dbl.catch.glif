@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="q.dbl.catch" format="2">
+  <advance width="630"/>
+  <unicode hex="1ECE1"/>
+  <outline>
+    <component base="q"/>
+    <component base="doubling" xOffset="315" yOffset="-80"/>
+    <component base="catchdots" xOffset="315" yOffset="564"/>
+  </outline>
+</glyph>
