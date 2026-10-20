@@ -118,6 +118,7 @@ feature salt {
   sub z06_031.a from [z06_031.b z06_031.c];
   sub z07_001.a from [z07_001.b z07_001.c];
   sub z07_002.a from [z07_002.b];
+  sub z07_009.a from [z07_009.b z07_009.c];
   sub z08_001.a from [z08_001.b];
   sub z08_005.a from [z08_005.b];
   sub z08_006.a from [z08_006.b];
@@ -422,6 +423,7 @@ feature ss01 {
   sub z06_031.a by z06_031.b;
   sub z07_001.a by z07_001.b;
   sub z07_002.a by z07_002.b;
+  sub z07_009.a by z07_009.b;
   sub z08_001.a by z08_001.b;
   sub z08_005.a by z08_005.b;
   sub z08_006.a by z08_006.b;
@@ -696,6 +698,7 @@ feature ss02 {
   sub z06_027.a by z06_027.c;
   sub z06_031.a by z06_031.c;
   sub z07_001.a by z07_001.c;
+  sub z07_009.a by z07_009.c;
   sub z01_063.a by z01_063.c;
   sub z01_064.a by z01_064.c;
   sub z01_065.a by z01_065.c;

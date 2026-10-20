@@ -16,7 +16,7 @@ Each font's own design note in `design/` holds its letter-by-letter detail. This
 | **Thuravark Runic** | Thuravark, the Nordmen rune-row, the reduced daughter of Pirzath | left to right | 28 staves: one upright stem with up to four straight branches at two fixed slopes | 51 | Latin spelling; U+F0100 planned |
 | **Pirzath Hand** | the everyday written Pirzath | left to right | a pointed pen with a gentle swell, on a measured system (see [The hand](#the-hand-a-written-script)) | the full alphabet, lifted and joined | shares Pirzath Carved's encoding |
 | **Qalezu** | the Khelathi everyday alphabet, consonants only | right to left | a broad reed nib at 30°, swept along centrelines | 64 | U+1EA00–U+1EA39, natively right to left |
-| **Khelathi Zethu** | the Khelathi temple hieroglyphs | right to left, or top-down columns | hairline silhouettes of pictures | 303 signs, 692 glyphs with variants | U+1EA40 + inventory row |
+| **Khelathi Zethu** | the Khelathi temple hieroglyphs | right to left, or top-down columns | hairline silhouettes of pictures | 304 signs, 695 glyphs with variants | U+1EA40 + inventory row |
 | **Semaron** | the Vylarian alphabet, majuscule and minuscule, first hand Kuriale | left to right | derived from Thuravark, rounded by reed and quill; its own system, not Pirzath Hand's look | in progress | U+F0200 planned |
 
 Scripts that are not here are varieties of one of these fonts. They write with the same glyphs, perhaps with a few additions or different sound values, as many tongues share the Latin alphabet:

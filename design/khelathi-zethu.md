@@ -139,6 +139,44 @@ crescent, a seed-sheaf on a staff, an arrowhead in a ring. The `god` field of
 the same field where the god owns the thing drawn, as the crocodile belongs to
 Chelsur.
 
+Each god has one sign of their own. Where the god's attribute is a creature or a
+thing drawn in another group, that sign is theirs: Chelsur's is the crocodile
+seen from above (07-001), Uqa'a's the rayed disk on the horizon (09-002) and
+Shebazet's the coiled cobra (07-009).
+
+## Writing a name
+
+A name is spelled in the sound signs, the signs with a single consonant value, by
+the same rule as Qalezu:
+
+- only the consonants are written;
+- each apostrophe is the catch (16-001), and so is a vowel that begins a word;
+  every other vowel is left unwritten;
+- `th`, `sh`, `kh` and `gh` are one sign each, and `ch` and `tj` are one and the
+  same sign;
+- a doubled consonant writes its sign once: Zethu leaves doubling to the reader.
+
+A god's name ends with the god's sign, which closes it as a determinative closes a
+word. In everyday temple writing the god's sign stands alone for the name, and
+the spelled form is kept for the formal record: a dedication, a decree, a royal
+name.
+
+Shebazet, formally, is four sound signs and her cobra, read from the right:
+
+| Reading order | Sign | Writes |
+| ------------- | ---- | ------ |
+| 1 | 08-001, the drooping papyrus umbel | `sh` |
+| 2 | 12-004, the raft with a load | `b` |
+| 3 | 12-006, the furled sail | `z` |
+| 4 | 13-005, the grain scoop | `t` |
+| 5 | 07-009, the coiled cobra | her sign |
+
+The two vowels of _Shebazet_ are not written. In everyday writing she is the
+cobra, 07-009, alone.
+
+These are rules of writing, not of the font: the font sets whatever signs are
+typed, and the writer chooses the signs.
+
 ## Building and checking
 
 The drawing source lives outside the tree, in the author's local `nogit/zethu`:

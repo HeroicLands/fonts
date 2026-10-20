@@ -210,7 +210,7 @@
     {"id": "07-006", "codepoint": "U+1EB0E", "subject": "tadpole", "consonants": "", "god": "", "variants": [], "drawn": false},
     {"id": "07-007", "codepoint": "U+1EB0F", "subject": "lizard", "consonants": "", "god": "", "variants": [], "drawn": false},
     {"id": "07-008", "codepoint": "U+1EB10", "subject": "horned viper", "consonants": "", "god": "", "variants": [], "drawn": false},
-    {"id": "07-009", "codepoint": "U+1EB11", "subject": "cobra at rest, coiled", "consonants": "", "god": "Shebazet", "variants": [], "drawn": false},
+    {"id": "07-009", "codepoint": "U+1EB11", "subject": "cobra at rest, coiled", "consonants": "", "god": "Shebazet", "variants": ["a", "b", "c"], "drawn": true, "glyph": "z07_009.a", "box": {"a": [100, 72], "b": [100, 72], "c": [100, 72]}},
     {"id": "07-010", "codepoint": "U+1EB12", "subject": "coiled snake", "consonants": "", "god": "", "variants": [], "drawn": false},
     {"id": "07-011", "codepoint": "U+1EB13", "subject": "tilapia", "consonants": "", "god": "", "variants": [], "drawn": false},
     {"id": "07-012", "codepoint": "U+1EB14", "subject": "barbel", "consonants": "", "god": "", "variants": [], "drawn": false},
