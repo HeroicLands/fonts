@@ -13,11 +13,13 @@ Each font's own design note in `design/` holds its letter-by-letter detail. This
 | Font | Script and setting | Direction | Drawn as | Glyphs | Encoding |
 | --- | --- | --- | --- | --- | --- |
 | **Pirzath Carved** | Pirzath, the Khazari carved row | left to right | graver cuts: straight tapered grooves and drilled dots, united into one outline per glyph | 76 | Latin spelling, through GSUB; private-use block U+F0000 planned |
-| **Thuravark Runic** | Thuravark, the Nordmen rune-row, the reduced daughter of Pirzath | left to right | 28 staves: one upright stem with up to four straight branches at two fixed slopes | 51 | Latin spelling; U+F0100 planned |
+| **Thuravark Carved** | Thuravark, the Nordmen rune-row, the reduced daughter of Pirzath | left to right | 28 staves: one upright stem with up to four straight branches at two fixed slopes | 51 | Latin spelling; U+F0100 planned |
 | **Pirzath Hand** | the everyday written Pirzath | left to right | a pointed pen with a gentle swell, on a measured system (see [The hand](#the-hand-a-written-script)) | the full alphabet, lifted and joined | shares Pirzath Carved's encoding |
-| **Qalezu** | the Khelathi everyday alphabet, consonants only | right to left | a broad reed nib at 30°, swept along centrelines | 109 | U+1EA00–U+1EA38 and U+1ECC0–U+1ECEB, natively right to left |
-| **Khelathi Zethu** | the Khelathi temple hieroglyphs | right to left, or top-down columns | hairline silhouettes of pictures | 304 signs, 695 glyphs with variants | U+1EA40 + inventory row |
-| **Semaron** | the Vylarian alphabet, majuscule and minuscule, first hand Kuriale | left to right | derived from Thuravark, rounded by reed and quill; its own system, not Pirzath Hand's look | in progress | U+F0200 planned |
+| **Qalezu Hand** | the Khelathi everyday alphabet, consonants only | right to left | a broad reed nib at 30°, swept along centrelines | 109 | U+1EA00–U+1EA38 and U+1ECC0–U+1ECEB, natively right to left |
+| **Khelathi Zethu Glyphs** | the Khelathi temple hieroglyphs | right to left, or top-down columns | hairline silhouettes of pictures | 304 signs, 695 glyphs with variants | U+1EA40 + inventory row |
+| **Semaron Kuriale** (not built) | the Vylarian alphabet, majuscule and minuscule, first hand Kuriale | left to right | derived from Thuravark, rounded by reed and quill; its own system, not Pirzath Hand's look | in progress | U+F0200 planned |
+
+A font's family name is its script followed by how the script is made: **Carved**, **Hand** or **Glyphs**. A script with more than one canon hand uses the name of the hand instead, as Semaron Kuriale does. The file name is the family name without spaces, then `-Regular`, and the PostScript name is the same.
 
 Scripts that are not here are varieties of one of these fonts. They write with the same glyphs, perhaps with a few additions or different sound values, as many tongues share the Latin alphabet:
 
@@ -36,7 +38,7 @@ Fonts still to come are Helónika, Teng Chou, Vedyakshara and Ch'alish P'ilam. E
 | `specimens/<font>/` | The specimen sheets. |
 | `design/<font>.md` | The design note, present tense: the system, the letters, the typing, the rounds. |
 | `tools/<font>/` | `check_font.py`, `guard.py` and `specimens.py` for each font, plus any encoding table such as `encoding.json`. |
-| `tools/render.py`, `tools/prove_guards.py`, `tools/notdef_box.py`, `tools/apply_notdef_box.py` | Shared tools. `render.py` sets shaped text in a font for specimens. `prove_guards.py` proves each guard fails a broken font. `notdef_box.py` is the box guard, and `apply_notdef_box.py` writes the box into a UFO. |
+| `tools/render.py`, `tools/prove_guards.py`, `tools/notdef_box.py`, `tools/apply_notdef_box.py`, `tools/font_names.py`, `tools/add_mac_names.py` | Shared tools. `render.py` sets shaped text in a font for specimens. `prove_guards.py` proves each guard fails a broken font. `notdef_box.py` is the box guard, and `apply_notdef_box.py` writes the box into a UFO. |
 | `build.sh` | Builds every font, reproducibly. |
 | `nogit/` | Generators and scratch. Not committed. |
 
@@ -44,12 +46,13 @@ Fonts still to come are Helónika, Teng Chou, Vedyakshara and Ch'alish P'ilam. E
 
 Tool versions are pinned in `requirements.txt` (fontTools, fontmake, ufoLib2, skia-pathops, uharfbuzz, Pillow, brotli, PyYAML). Create `.venv` from it. Use `rsvg-convert` to render SVG sheets.
 
-`build.sh` runs fontmake on each UFO and compresses the WOFF2:
+`build.sh` runs fontmake on each UFO, adds the Macintosh copy of the name records with `tools/add_mac_names.py`, and compresses the WOFF2:
 
 ```sh
 export SOURCE_DATE_EPOCH=1767225600
 fontmake -u sources/<Font>.ufo -o ttf --keep-overlaps --no-production-names \
     --output-path fonts/<Font>-Regular.ttf
+python tools/add_mac_names.py fonts/<Font>-Regular.ttf
 fonttools ttLib.woff2 compress -o fonts/<Font>-Regular.woff2 fonts/<Font>-Regular.ttf
 ```
 
@@ -148,7 +151,7 @@ Run these on every glyph before a sheet goes to the owner:
 
 ## Carved and runic scripts
 
-Pirzath Carved and Thuravark Runic are drawn as tool marks, not pen strokes:
+Pirzath Carved and Thuravark Carved are drawn as tool marks, not pen strokes:
 
 - **Strokes.** A cut is a straight groove, full width in the middle and tapering to a point at each end, or a drilled octagonal dot. A glyph is the union of its cuts.
 - **Orientation.** No cut runs along the line, because the stone splits along the grain. The one exception is the sentence end. Arms follow a small set of fixed slopes; Thuravark has exactly two.
@@ -157,7 +160,7 @@ Pirzath Carved and Thuravark Runic are drawn as tool marks, not pen strokes:
 
 ## Figurative scripts: the hieroglyphs
 
-Khelathi Zethu was drawn by Opus, looking at its renders, in batches of 30–50 signs. The batches shared a drawing library: `lib.py` holds the parts model, the stroker, the figure canon and the kits. Each group of signs is a module under `signs/`.
+Khelathi Zethu Glyphs was drawn by Opus, looking at its renders, in batches of 30–50 signs. The batches shared a drawing library: `lib.py` holds the parts model, the stroker, the figure canon and the kits. Each group of signs is a module under `signs/`.
 
 - **Silhouettes, not stick figures.** Every sign is a closed silhouette traced by a hairline, 1.5% of the quadrat (stroked at 15 units on a 1000 em). Fine interior detail uses the same weight. Solid fill only where it means something. A skeleton drawn with a fat pen looks like a child's drawing.
 - **One proportion canon** for every figure: profile head, frontal eye and shoulders, legs in profile, and one head-to-body ratio. Shared kits (head, hands, feet, torso, garments, beasts, birds, props) keep the figures consistent. Never change a kit's output for signs already drawn without re-rendering and comparing them.
@@ -217,11 +220,11 @@ Latin forced right to left with the bidi override characters works, but HarfBuzz
 
 - **The blocks.** They are **unassigned code points whose default bidi class is R**:
   - Qalezu: U+1EA00–U+1EA3F, and its catch-before forms U+1ECC0–U+1ECFF;
-  - Khelathi Zethu: U+1EA40–U+1EC6F.
+  - Khelathi Zethu Glyphs: U+1EA40–U+1EC6F.
 
   Text in them runs right to left natively in Chrome, Foundry and Typst, mixed with English, digits included.
 - **The table.** One file per font, `tools/<font>/encoding.json`, holds glyph, code point, sound and Latin typing. The keyboard layout and package-build's converter read it too.
-- **Converting the notes.** The build converts a note's Latin spelling to these code points. The converter applies the script's rules: no vowels, a word-initial vowel becomes the catch, a catch before a consonant is written over that consonant as its catch-before form, digraphs become one sign, doubling marks a doubled consonant. `tools/qalezu/guard.py` holds the reference converter.
+- **Converting the notes.** The build converts a note's Latin spelling to these code points. The converter applies the script's rules: no vowels, a word-initial vowel becomes the catch, a catch before a consonant is written over that consonant as its catch-before form, digraphs become one sign, doubling marks a doubled consonant. `tools/qalezu-hand/guard.py` holds the reference converter.
 - **No marks on these code points.** Chrome shapes script-less right-to-left code points in reverse order, so a combining mark attaches to the wrong sign. Precompose instead: Qalezu gives each doubled consonant its own code point, with the bar drawn in, and each consonant a catch-before code point, with three dabs drawn over it.
 - **Variants** use only context-free substitutions: `ss01` and `ss02` single substitutions, and an alternate substitution in `salt`.
 
@@ -246,6 +249,7 @@ Latin forced right to left with the bidi override characters works, but HarfBuzz
 
 | Check | What it proves |
 | --- | --- |
+| `tools/font_names.py` | Every font carries name IDs 1 to 6 on both the Windows and the Macintosh platform, the same on each; the family name is the one in its table; the PostScript name has no spaces; the OS/2 Unicode ranges and code pages name only the font's own script, never Latin. Runs in CI. |
 | `tools/<font>/check_font.py` | The cmap matches the encoding; the name table carries the OFL; every glyph has outlines; marks have zero advance; features reach every variant; every unused character maps to the box. Runs in CI. |
 | `tools/notdef_box.py` | Every code point of the Latin and punctuation ranges is mapped, and every one the typing does not use is on `notdef.box`, never glyph 0. Runs in CI. |
 | `tools/<font>/guard.py` | Shapes every lexicon form, or every sample inscription, through the built font with uharfbuzz and asserts the right glyphs and neither `.notdef` nor the box. It reads thalorna's lexicon from a local checkout, so it does not run in CI, where thalorna is private. |

@@ -43,6 +43,8 @@
     <string>PirzathHand-Regular;0.2</string>
     <key>openTypeNameVersion</key>
     <string>Version 0.2</string>
+    <key>openTypeOS2CodePageRanges</key>
+    <array/>
     <key>openTypeOS2Type</key>
     <array/>
     <key>openTypeOS2TypoAscender</key>
@@ -51,6 +53,8 @@
     <integer>-360</integer>
     <key>openTypeOS2TypoLineGap</key>
     <integer>0</integer>
+    <key>openTypeOS2UnicodeRanges</key>
+    <array/>
     <key>openTypeOS2VendorID</key>
     <string>HRLD</string>
     <key>openTypeOS2WinAscent</key>

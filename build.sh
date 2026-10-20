@@ -1,6 +1,7 @@
 #!/bin/sh
 # Build every font from their UFO sources into fonts/.
-# The timestamp is fixed, so a build is byte-for-byte reproducible.
+# The timestamp is fixed, so a build is byte-for-byte reproducible. fontmake writes
+# the Windows name records only, so tools/add_mac_names.py adds the Macintosh ones.
 #
 #     .venv/bin/... on PATH, or run:  PATH=.venv/bin:$PATH ./build.sh
 set -eu
@@ -11,11 +12,12 @@ build() {
     ufo="$1"
     out="$2"
     fontmake -u "$ufo" -o ttf --keep-overlaps --no-production-names --output-path "$out"
+    python tools/add_mac_names.py "$out"
     fonttools ttLib.woff2 compress -o "${out%.ttf}.woff2" "$out"
 }
 
 build sources/PirzathCarved.ufo fonts/PirzathCarved-Regular.ttf
 build sources/PirzathHand.ufo fonts/PirzathHand-Regular.ttf
-build sources/ThuravarkRunic.ufo fonts/ThuravarkRunic-Regular.ttf
-build sources/Qalezu.ufo fonts/Qalezu-Regular.ttf
-build sources/KhelathiZethu.ufo fonts/KhelathiZethu-Regular.ttf
+build sources/ThuravarkCarved.ufo fonts/ThuravarkCarved-Regular.ttf
+build sources/QalezuHand.ufo fonts/QalezuHand-Regular.ttf
+build sources/KhelathiZethuGlyphs.ufo fonts/KhelathiZethuGlyphs-Regular.ttf

@@ -37,6 +37,7 @@ def _carved_check():
 
 
 CARVED = _carved_check()
+font_names = CARVED.font_names
 notdef_box = CARVED.notdef_box
 
 CONSONANTS = [
@@ -182,6 +183,7 @@ def check(path: Path) -> list[str]:
         if cmap.get(ord(key)) != notdef_box.BOX:
             problems.append(f"{key!r} is {cmap.get(ord(key))}; it must be {notdef_box.BOX}")
     problems += [line.split(": error: ", 1)[1] for line in notdef_box.check(path)]
+    problems += [line.split(": error: ", 1)[1] for line in font_names.check(path)]
     hmtx = font["hmtx"]
     for cp in IGNORABLES:
         if cmap.get(cp) != "ignorable":

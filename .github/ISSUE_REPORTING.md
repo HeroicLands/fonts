@@ -156,14 +156,16 @@ half-finished diagnosis.
 - `./build.sh` — builds every font from its UFO under `sources/`
 - `python tools/pirzath/check_font.py` — checks the built Pirzath Carved font
 - `python tools/pirzath-hand/check_font.py` — checks the built Pirzath Hand font and its join line
-- `python tools/thuravark/check_font.py` — checks the built Thuravark font
-- `python tools/qalezu/check_font.py` — checks the built Qalezu font against `tools/qalezu/encoding.json`
+- `python tools/thuravark-carved/check_font.py` — checks the built Thuravark Carved font
+- `python tools/khelathi-zethu-glyphs/check_font.py` — checks the built Khelathi Zethu Glyphs font against `tools/khelathi-zethu-glyphs/encoding.json`
+- `python tools/qalezu-hand/check_font.py` — checks the built Qalezu Hand font against `tools/qalezu-hand/encoding.json`
 - `python tools/notdef_box.py` — checks that every character a font does not use maps to the box
-- `python tools/pirzath/guard.py`, `python tools/pirzath-hand/guard.py`, `python tools/thuravark/guard.py` and `python tools/qalezu/guard.py` — shape every lexicon form against a local thalorna checkout
+- `python tools/font_names.py` — checks that every font carries its family name on both name platforms and declares no Latin support
+- `python tools/pirzath/guard.py`, `python tools/pirzath-hand/guard.py`, `python tools/thuravark-carved/guard.py` and `python tools/qalezu-hand/guard.py` — shape every lexicon form against a local thalorna checkout
 
 A change to a font commits the rebuilt files in `fonts/` with it, and a change to
 the design updates `design/pirzath.md`, `design/pirzath-hand.md`,
-`design/thuravark.md` or `design/qalezu.md`.
+`design/thuravark-carved.md` or `design/qalezu-hand.md`.
 
 ## 7. Which repository does an issue belong in?
 

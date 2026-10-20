@@ -17,6 +17,7 @@ from pathlib import Path
 from fontTools.ttLib import TTFont
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+import font_names  # noqa: E402
 import notdef_box  # noqa: E402
 
 IGNORABLES = [*range(0x200B, 0x2010), *range(0x202A, 0x202F), *range(0x2066, 0x206A), 0xFEFF]
@@ -120,6 +121,7 @@ def check(path: Path) -> list[str]:
         if name not in order or glyf[name].numberOfContours != 0 or hmtx[name][0] != 0:
             problems.append(f"{name} must be in the font, empty and without advance")
     problems += [line.split(": error: ", 1)[1] for line in notdef_box.check(path)]
+    problems += [line.split(": error: ", 1)[1] for line in font_names.check(path)]
     classes = font["GDEF"].table.GlyphClassDef.classDefs if "GDEF" in font else {}
     for name in ("lengthmark", "doubling"):
         if name not in order or glyf[name].numberOfContours == 0:
