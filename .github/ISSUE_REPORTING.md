@@ -1,7 +1,7 @@
-# Issue Reporting — heroiclands-fonts
+# Issue Reporting — fonts
 
 This document defines how issues are created and classified in the
-**`heroiclands-fonts`** repository, which ships the fonts for the scripts of the
+**`fonts`** repository, which ships the fonts for the scripts of the
 HeroicLands settings, their specimens and the build that makes them.
 
 **This repository is its own tracker.** File font, specimen and build work here,

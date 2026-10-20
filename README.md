@@ -1,4 +1,4 @@
-# heroiclands-fonts
+# fonts
 
 Fonts for the scripts of the HeroicLands settings, drawn from scratch so that a setting's inscriptions can be shown in their own letters on the sites, in the books and in Foundry.
 
