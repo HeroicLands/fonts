@@ -66,7 +66,7 @@ class Renderer:
             elif op == "lineTo":
                 current.append(args[0])
             elif op == "qCurveTo":
-                current.append(args[-1])
+                current.extend(flatten_quadratic(current[-1], args))
             elif op == "closePath" and current:
                 contours.append(current)
                 current = []
@@ -103,6 +103,26 @@ class Renderer:
 
     def width(self, text, size, features=None):
         return self.shape(text, features).advance * size / self.upem
+
+
+def flatten_quadratic(start, args, steps=32):
+    """The points along a TrueType quadratic run: off-curve points, then the on-curve end.
+
+    Consecutive off-curve points imply an on-curve point midway between them.
+    """
+    offs, end = list(args[:-1]), args[-1]
+    ons = [((a[0] + b[0]) / 2, (a[1] + b[1]) / 2) for a, b in zip(offs, offs[1:])] + [end]
+    out, p0 = [], start
+    for c, p1 in zip(offs, ons):
+        for s in range(1, steps + 1):
+            t = s / steps
+            u = 1 - t
+            out.append((u * u * p0[0] + 2 * u * t * c[0] + t * t * p1[0],
+                        u * u * p0[1] + 2 * u * t * c[1] + t * t * p1[1]))
+        p0 = p1
+    if not offs:
+        out.append(end)
+    return out
 
 
 def signed_area(pts):

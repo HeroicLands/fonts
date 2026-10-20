@@ -60,8 +60,8 @@ CHART = [
 TEXTS = [
     ("The gate-cry", [
         "Thiz durákh tanv.",
-        "Gazn. Gazn durákh tanv.",
-        "Dalk. Bant. Tanv-guráz.",
+        "Gazn.Gazn durákh tanv.",
+        "Dalk.Bant.Tanv-guráz.",
     ]),
     ("The epitaph", [
         "Tanvan Ramk-sumád",

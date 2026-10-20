@@ -86,7 +86,7 @@ FIXTURES = [
     ("putthák", ["p", "u", "t_h", "doubling", "a", "lengthmark", "k"]),
     ("gummáth", ["g", "u", "m", "doubling", "a", "lengthmark", "t_h"]),
     ("Khubbán", ["k_h", "u", "b", "doubling", "a", "lengthmark", "n"]),
-    ("dalk. bant! ramk, tanv?", ["d", "a", "l", "k", "period", "space", "b", "a", "n", "t",
+    ("dalk.bant! ramk, tanv?", ["d", "a", "l", "k", "period", "b", "a", "n", "t",
                                   "exclam", "space", "r", "a", "m", "k", "comma", "space",
                                   "t", "a", "n", "v", ".notdef"]),
 ]

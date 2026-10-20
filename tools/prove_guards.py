@@ -36,9 +36,11 @@ def stripped(font: Path, out: Path) -> Path:
 
 def main():
     pirzath = load("pirzath_guard", ROOT / "tools" / "pirzath" / "guard.py")
+    hand = load("pirzath_hand_guard", ROOT / "tools" / "pirzath-hand" / "guard.py")
     thuravark = load("thuravark_guard", ROOT / "tools" / "thuravark" / "guard.py")
     cases = [
         ("Pirzath Carved", ROOT / "fonts" / "PirzathCarved-Regular.ttf", lambda p: pirzath.run(p, [])),
+        ("Pirzath Hand", ROOT / "fonts" / "PirzathHand-Regular.ttf", lambda p: hand.run(p, [])),
         (
             "Thuravark Runic",
             ROOT / "fonts" / "ThuravarkRunic-Regular.ttf",

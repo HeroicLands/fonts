@@ -51,6 +51,7 @@ jobs:
             - name: Check the fonts
               run: |
                   .venv/bin/python tools/pirzath/check_font.py
+                  .venv/bin/python tools/pirzath-hand/check_font.py
                   .venv/bin/python tools/thuravark/check_font.py
             - name: Committed fonts match the build
               run: git diff --exit-code -- fonts/
