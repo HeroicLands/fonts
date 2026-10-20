@@ -18,7 +18,8 @@ the seam an inscription follows, and a cut along it splits the stone, so every
 stroke of a letter is vertical or diagonal, and the breath notch (below) is
 scored across the arm it marks at a steep angle for the same reason. The one
 deliberate exception is the sentence end: a short cut made along the grain,
-the cut that closes a thought. The imperative doubles it.
+270 units long, the cut that closes a thought and stands beside the dividing
+dot at reading size. The imperative doubles it.
 
 Consonants stand in a box 541 wide by 728 tall at a stroke weight of 108 units
 on a 1000-unit em; the cuts of the skeleton are the deep ones. Vowels are
@@ -50,10 +51,13 @@ one arm.
 
 The nasals are the frame doubled: m is the tent twice (M), n the trough twice
 (W). The sibilants are the two closed or crossing shapes, s a tall lozenge and
-z a cross. The liquids are l, a long forward cut with a branch falling from its
+z a cross; two parallel cuts for s would read beside the vowel a's single cut
+as an ambiguous row of slashes. The liquids are l, a long forward cut with a branch falling from its
 middle, and r, the point turned to open forward, the one letter of the row that
 does. h is the breath on its own: the notch that marks it on a consonant,
-scored across a bare stem, the one letter that stands on a stave.
+scored across a bare stem, the one letter that stands on a stave; a single
+back cut for h would put three back cuts in a row at the start of _hu-_. The
+notch on h is diagonal, like every notch.
 
 The vowels are scored lines: a is a forward cut, u a back cut, i an upright.
 The two rare vowels are built, e a small tent and o a small lozenge. A long
@@ -61,7 +65,8 @@ vowel is the vowel with the drilled dot above it; the dot is a mark, not a
 letter, and the vowel is never doubled.
 
 A doubled consonant is the letter once with the **doubling mark**: a short
-forward cut hung under the letter's centre, below the baseline. Below is where
+forward cut hung under the letter's centre, below the baseline, 156 units
+tall so that it stays legible at reading size. Below is where
 nothing else of the script sits, so the mark cannot be taken for the length dot
 over a vowel, the pole or the notch inside a letter, the dividing dot at mid
 height or the sentence end along the grain; and a mark under the letter leaves
@@ -101,25 +106,30 @@ Khazari has lost, which the Pelwar tongues kept. Each fills an empty cell of
 the system above, placed by its sound, in the same cuts, so it is a member of
 the row and not an addition to it.
 
-| Letter    | Where it sits           | The cut                                                                                                                          |
-| --------- | ----------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
-| sh        | beside s                | the lozenge with the breath notch across its upper forward side                                                                  |
-| zh        | beside z                | the cross with the breath notch across the lower half of its back arm                                                            |
-| ts        | a stop released into s  | the K: a stem with two arms meeting at its middle, forward                                                                       |
-| ch        | a stop released into sh | the mirrored K, its arms back                                                                                                    |
-| j         | the voiced ch           | the Y: a stem from the baseline to mid height, with two arms rising from it to the corners of the cap, beside the K of ts and ch |
-| q         | the deep stop           | the Y upside down: a stem from mid height to the cap, with two arms falling from it to the corners of the baseline               |
-| ng        | with the nasals         | the point doubled, as m doubles the tent and n the trough                                                                        |
-| ny        | with the nasals         | the doubled trough with the hanging pole                                                                                         |
-| the catch | a throat letter         | the stem with the breath notch low, where h carries it high                                                                      |
-| w         | a glide                 | the back cut of u at consonant size, with the pole through it                                                                    |
-| y         | a glide                 | the forward cut of a at consonant size, with the pole through it                                                                 |
-| hl        | with l                  | l with the breath notch across its long cut                                                                                      |
-| ai, ei    | vowel pairs             | the first vowel with i joined as an upright                                                                                      |
-| oi        | a vowel pair            | ei turned over: the small trough with i's upright rising from its apex                                                           |
-| au, ou    | vowel pairs             | a and u joined into the small trough; o with the back cut of u through it                                                        |
+| Letter    | Where it sits           | The cut                                                                                                                                                                                                |
+| --------- | ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| sh        | beside s                | the lozenge with the breath notch across its upper forward side                                                                                                                                        |
+| zh        | beside z                | the cross with the breath notch across the lower half of its back arm                                                                                                                                  |
+| ts        | a stop released into s  | the K: a stem with two arms meeting at its middle, forward                                                                                                                                             |
+| ch        | a stop released into sh | the mirrored K, its arms back                                                                                                                                                                          |
+| j         | the voiced ch           | the Y: a stem from the baseline to mid height, with two arms rising from it to the corners of the cap, beside the K of ts and ch                                                                       |
+| q         | the deep stop           | the Y upside down: a stem from mid height to the cap, with two arms falling from it to the corners of the baseline                                                                                     |
+| ng        | with the nasals         | the point doubled, as m doubles the tent and n the trough                                                                                                                                              |
+| ny        | with the nasals         | the doubled trough with the hanging pole                                                                                                                                                               |
+| the catch | a throat letter         | the stem with the breath notch low, where h carries it high                                                                                                                                            |
+| w         | a glide                 | the back cut of u at consonant size, with the pole through it; the box is 749 wide, the cut runs corner to corner and the pole from baseline to cap, so the pole stands clear of the cut at either end |
+| y         | a glide                 | the forward cut of a at consonant size, with the pole through it, as w; a tall a or u told from the vowel by height alone fails at reading size                                                        |
+| hl        | with l                  | l with the breath notch across its long cut                                                                                                                                                            |
+| ai, ei    | vowel pairs             | the first vowel with i joined as an upright                                                                                                                                                            |
+| oi        | a vowel pair            | ei turned over: the small trough with i's upright rising from its apex, because an upright inside the small lozenge is lost at vowel height                                                            |
+| au, ou    | vowel pairs             | a and u joined into the small trough; o with the back cut of u through it                                                                                                                              |
 
-Typing them is set out in the next section. The remaining empty cells are a bar closing a frame other than the point, a
+The arms of j and q meet the stem exactly at mid height and run to the corners
+of the box, so neither is a numeral, whose full stem the limbs fall away from,
+and q is not the tent, whose apex is at the cap. The three cuts of each are
+driven past their junction, so their tapers are buried in one another's ink and
+the letter reads as one Y with a solid join. The cuts of w and y take the
+vowels' own slant. Typing them is set out in the next section. The remaining empty cells are a bar closing a frame other than the point, a
 notch on the other arm of a frame, and a pole from the opposite end.
 
 ## Typing the lost letters
@@ -184,93 +194,6 @@ letter c has no Pirzath form and draws the box. A quotation is typed with
 `“ ”` or `« »` directly, with `<<` and `>>`, which ligate to the marks, or with
 a straight `"`, which `calt` resolves: it opens at the start of the text or
 after a space and closes anywhere else. A single `<` or `>` draws the box.
-
-## The rounds
-
-1. First build. The pipeline runs end to end. The texture is coherent and
-   angular, but chevron-heavy because a and u are small chevrons; the long
-   pointed tapers read as thorns at reading size; the nested-chevron breathed
-   letters clog into a wedge at 36 px; h as one bare back cut is weak and
-   rhymes with z; r's short zigzag reads as a curly S; the kerning tucks too
-   far and the word space is too small, so words run together; the numeral
-   notches crossing the stem are hard to count; headings overlap the display
-   lines.
-2. Vowels become scored lines (a forward, u back, i upright); strokes heavier
-   with a shorter taper; the breath becomes a notch scored across one arm
-   instead of a nested chevron; z becomes the cross, h a long back cut with a
-   short one beside it, r three staggered cuts; numerals get one-sided tally
-   limbs at four fixed places; kerning tightens less and the word gap widens;
-   the specimen layout bugs are fixed.
-3. The breath notch is lengthened to 395 units so th, dh, kh, gh, f and v
-   read as themselves at reading size; r becomes the forward-open point; s
-   becomes the tall lozenge, because two parallel cuts beside the vowel a's
-   single cut made an ambiguous row of slashes; `.notdef` becomes the blank
-   stele.
-4. h becomes a stem with the breath notch scored across it, because h followed
-   by u gave the place-frame prefix _hu-_ three back cuts in a row.
-5. The notch on h is made diagonal; a notch scored perpendicular to a vertical
-   stem is horizontal, and the script makes no horizontal cut.
-6. The owner's rulings: numerals are typed directly, the digits for nought to
-   nine and `@ # $ % ^ &` for ten to fifteen, with no markers and no hex
-   letters, so a to f are always letters; quotation marks are added as two
-   pairs of cuts leaning in toward the quoted words, with `calt` choosing the
-   form of a straight quote by context. The texts specimen gains a record
-   quoting an oath, typed once with straight quotes and once with curly ones.
-7. The display sheet is sized to its longest line; it clipped the forge oath's
-   third line and both quoted lines on the right.
-8. The owner's rulings on the marks between words: the `?` key draws nothing,
-   the sentence end is a short cut along the grain at mid height, and word
-   division is a drilled dot at mid height; with the coordinator's imperative
-   (two such cuts stacked) and pause (a short slanted cut), and `;` and `:`
-   drawing nothing. The pause slants back, because a forward cut at mid height
-   is already the dash of a built name.
-9. The sentence end and the imperative lengthen from 208 to 270 units; at
-   36 px a 208-unit cut is seven pixels and too slight beside the dividing
-   dot.
-10. The owner's ruling on doubling: a consonant written twice is the letter
-    once with a doubling mark, and a doubled digraph the digraph's letter with
-    the mark. The mark is a short forward cut hung under the letter, seated by
-    mark positioning; the descender deepens to 260 to hold it. The texts
-    specimen gains the mastery frame, and the paragraph four doubled words.
-11. The doubling mark lengthens from 135 to 156 units, within the descender;
-    at 36 px it was under five pixels tall.
-12. The owner's ruling on quotation: the marks are g with two notches across
-    the forward arm (opening) or the back arm (closing), typed `"`, `“ ”`,
-    `« »`, `<<` and `>>`. Notches at 0.3 and 0.7 of the arm poke past the cap
-    height and into the bar, so both marks read as a cluttered g.
-13. The notches move to the apex half of the arm, 0.4 of its length apart,
-    shorten to 291 units and thin to 87, so each clears the bar and the cap
-    and the two resolve as a pair at 36 px beside gh's one centred notch. The
-    texts specimen puts gh right before a closing quote from « » and shows
-    `<<` `>>`; the chart shows gh beside a closing quote.
-14. The owner's ruling on the lost seventeen: twelve consonants and five vowel
-    pairs drawn into the empty cells by their sounds, shown on the chart by
-    glyph name. The stop pole of ts and ch rises from the bottom vertex, since
-    hanging from the top it crowded the hush notch.
-15. ts and ch become the K and its mirror, a stem with two arms meeting at
-    its middle; y and w take the pole through their middle, because a tall
-    a or u told from the vowel by height alone fails at 36 px.
-
-16. The lost seventeen are typed: ligatures for the two-letter spellings, the
-    glide `y` before a vowel and the vowel `i` elsewhere, the vowel pairs read
-    through a length mark, and doubling extended to every new consonant. A
-    sixth specimen sheet shows them over their spellings.
-17. The owner's rulings on j and q: j is the Y and q the Y upside down, with
-    ts and ch the stem-and-arm family; their arms meet the stem exactly at mid
-    height and run to the corners of the box, so neither is a numeral, whose
-    full stem the limbs fall away from, and q is not the tent, whose apex is at
-    the cap. The poles of w and y run from baseline to cap and the cuts take
-    the vowels' own slant, because a pole stopped inside the cut vanished at
-    36 px. oi becomes ei turned over, the small trough with the upright rising
-    from its apex, because the upright inside the small lozenge was lost at
-    vowel height.
-18. The three cuts of j and q are driven past their junction, so their tapers
-    are buried in one another's ink and each letter reads as one Y with a
-    solid join and three free ends, where three cuts meeting point to point
-    left a gap at mid height. w and y widen to a box 749 wide with the cut
-    corner to corner, so the pole stands about 166 units clear of the cut at
-    either end, where in the consonant box the two overlapped for most of
-    their length and read as one mass.
 
 ## Checks
 

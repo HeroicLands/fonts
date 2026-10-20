@@ -292,9 +292,9 @@ def geometry(path: Path) -> list[str]:
 MIN_DIFFERENCE = 20
 
 
-STEM_H = 740  # every stave stands this tall
+STEM_H = 733  # every stave stands this tall
 STEM_W = 84  # stroke weight of stems and branches
-BEARING = 66  # room between the ink of one stave and the next
+BEARING = 65  # room between the ink of one stave and the next
 LONG_RUN = STEM_H / 2.73  # horizontal run of a branch that spans the whole stem
 HALF_RUN = (STEM_H / 2) / 0.86  # horizontal run of a branch that spans half of it
 NUMERAL_LIMB_RUN = 220  # the limb of nought runs this far to each side of its stem
