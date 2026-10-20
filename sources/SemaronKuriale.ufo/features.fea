@@ -1,0 +1,126 @@
+languagesystem DFLT dflt;
+languagesystem latn dflt;
+
+# The glyphs a catch can stand on.
+@BASE = [a b d e f g h i j k l m n o p r s t th u v w y z A B D E F G H I J K L M N O P R S T TH U V W Y Z a.long e.long i.long o.long u.long A.long E.long I.long O.long U.long];
+
+# The vowels a glide y stands before.
+@VOWEL = [a e i o u A E I O U a.long e.long i.long o.long u.long A.long E.long I.long O.long U.long];
+
+# ch is the letters t, s and h: the script has no c.
+lookup ch_split {
+  sub c by t s;
+  sub C by T s;
+} ch_split;
+
+lookup ch_aspirate {
+  sub H by h;
+} ch_aspirate;
+
+# Everything here runs in one feature, in order: the longest spelling first. ch becomes t, s, h;
+# th is one letter; a doubled a, i or u is the long vowel; a y not before a vowel is the vowel i;
+# a catch with no letter before it is the box. HarfBuzz replaces a default-ignorable character the
+# font maps directly with the space glyph, so each ignorable is substituted once, to a second empty
+# glyph.
+feature ccmp {
+lookup ccmp_ignorable {
+  sub ignorable by ignorable.sub;
+} ccmp_ignorable;
+lookup ccmp_ch_aspirate {
+  sub [c C] H' lookup ch_aspirate;
+} ccmp_ch_aspirate;
+lookup ccmp_ch {
+  sub [c C]' lookup ch_split h;
+} ccmp_ch;
+lookup ccmp_th {
+  sub t [h H] by th;
+  sub T [h H] by TH;
+} ccmp_th;
+lookup ccmp_long {
+  sub a [a A] by a.long;
+  sub A [a A] by A.long;
+  sub i [i I] by i.long;
+  sub I [i I] by I.long;
+  sub u [u U] by u.long;
+  sub U [u U] by U.long;
+} ccmp_long;
+lookup ccmp_y {
+  ignore sub y' @VOWEL;
+  sub y' by i;
+  ignore sub Y' @VOWEL;
+  sub Y' by I;
+} ccmp_y;
+lookup ccmp_catch {
+  ignore sub @BASE grave';
+  sub grave' by notdef.box;
+} ccmp_catch;
+} ccmp;
+
+table GDEF {
+  GlyphClassDef [.notdef space a A b B d D e E f F g G h H i I j J k K l L m M n N o O p P r R s S t T th TH u U v V w W y Y z Z a.long e.long i.long o.long u.long A.long E.long I.long O.long U.long num.0 num.1 num.2 num.3 num.4 num.5 num.6 num.7 num.8 num.9 point c C ignorable ignorable.sub notdef.box], , [grave], ;
+} GDEF;
+
+markClass grave <anchor 0 0> @CATCH;
+
+# The catch stands over an x-height letter, at the upper right of a tall stem and to the right of a
+# long vowel's curl.
+feature mark {
+  pos base a <anchor 191 577> mark @CATCH;
+  pos base A <anchor 303 524> mark @CATCH;
+  pos base b <anchor 314 577> mark @CATCH;
+  pos base B <anchor 532 596> mark @CATCH;
+  pos base d <anchor 304 583> mark @CATCH;
+  pos base D <anchor 505 596> mark @CATCH;
+  pos base e <anchor 221 577> mark @CATCH;
+  pos base E <anchor 505 596> mark @CATCH;
+  pos base f <anchor 319 577> mark @CATCH;
+  pos base F <anchor 532 596> mark @CATCH;
+  pos base g <anchor 428 577> mark @CATCH;
+  pos base G <anchor 566 596> mark @CATCH;
+  pos base h <anchor 406 500> mark @CATCH;
+  pos base H <anchor 551 566> mark @CATCH;
+  pos base i <anchor 84 577> mark @CATCH;
+  pos base I <anchor 288 524> mark @CATCH;
+  pos base j <anchor 261 577> mark @CATCH;
+  pos base J <anchor 429 566> mark @CATCH;
+  pos base k <anchor 193 577> mark @CATCH;
+  pos base K <anchor 318 596> mark @CATCH;
+  pos base l <anchor 278 480> mark @CATCH;
+  pos base L <anchor 288 524> mark @CATCH;
+  pos base m <anchor 325 577> mark @CATCH;
+  pos base M <anchor 566 596> mark @CATCH;
+  pos base n <anchor 252 577> mark @CATCH;
+  pos base N <anchor 429 524> mark @CATCH;
+  pos base o <anchor 243 577> mark @CATCH;
+  pos base O <anchor 505 596> mark @CATCH;
+  pos base p <anchor 314 577> mark @CATCH;
+  pos base P <anchor 532 596> mark @CATCH;
+  pos base r <anchor 187 577> mark @CATCH;
+  pos base R <anchor 505 596> mark @CATCH;
+  pos base s <anchor 321 577> mark @CATCH;
+  pos base S <anchor 566 596> mark @CATCH;
+  pos base t <anchor 485 480> mark @CATCH;
+  pos base T <anchor 395 524> mark @CATCH;
+  pos base th <anchor 485 506> mark @CATCH;
+  pos base TH <anchor 395 568> mark @CATCH;
+  pos base u <anchor 485 480> mark @CATCH;
+  pos base U <anchor 395 524> mark @CATCH;
+  pos base v <anchor 394 577> mark @CATCH;
+  pos base V <anchor 532 596> mark @CATCH;
+  pos base w <anchor 145 577> mark @CATCH;
+  pos base W <anchor 429 524> mark @CATCH;
+  pos base y <anchor 200 577> mark @CATCH;
+  pos base Y <anchor 288 566> mark @CATCH;
+  pos base z <anchor 300 577> mark @CATCH;
+  pos base Z <anchor 410 596> mark @CATCH;
+  pos base a.long <anchor 288 508> mark @CATCH;
+  pos base e.long <anchor 444 562> mark @CATCH;
+  pos base i.long <anchor 288 508> mark @CATCH;
+  pos base o.long <anchor 465 562> mark @CATCH;
+  pos base u.long <anchor 523 595> mark @CATCH;
+  pos base A.long <anchor 341 638> mark @CATCH;
+  pos base E.long <anchor 544 711> mark @CATCH;
+  pos base I.long <anchor 326 638> mark @CATCH;
+  pos base O.long <anchor 544 711> mark @CATCH;
+  pos base U.long <anchor 433 638> mark @CATCH;
+} mark;

@@ -42,6 +42,7 @@ FAMILIES = {
     "ThuravarkCarved-Regular.ttf": "Thuravark Carved",
     "QalezuHand-Regular.ttf": "Qalezu Hand",
     "KhelathiZethuGlyphs-Regular.ttf": "Khelathi Zethu Glyphs",
+    "SemaronKuriale-Regular.ttf": "Semaron Kuriale",
 }
 
 WINDOWS = (3, 1, 0x409)

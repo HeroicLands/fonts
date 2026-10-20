@@ -9,7 +9,9 @@ removed, so no ligature, decomposition or contextual rule applies. The broken
 Qalezu Hand font has one sign, the th, removed from its cmap. Khelathi Zethu Glyphs is broken
 twice: once with one sign, the crocodile-hunt house 11-001, removed from its cmap,
 and once with the GSUB table removed so that no second or third form is reachable.
-The box guard (tools/notdef_box.py) is proved on every font twice: with the question
+Semaron Kuriale is broken twice: with the GSUB table removed, so that no
+th, long vowel or spelled-out ch applies, and with the GPOS table removed, so that no catch stands on its
+base. The box guard (tools/notdef_box.py) is proved on every font twice: with the question
 mark removed from the cmap, and with it pointed at glyph 0. The name guard
 (tools/font_names.py) is proved on every font twice: with the Macintosh full name
 removed, and with the Basic Latin range declared. The guards run on their
@@ -38,6 +40,13 @@ def load(name: str, path: Path):
 def stripped(font: Path, out: Path) -> Path:
     f = TTFont(str(font))
     del f["GSUB"]
+    f.save(str(out))
+    return out
+
+
+def without_gpos(font: Path, out: Path) -> Path:
+    f = TTFont(str(font))
+    del f["GPOS"]
     f.save(str(out))
     return out
 
@@ -96,6 +105,7 @@ def main():
     thuravark = load("thuravark_guard", ROOT / "tools" / "thuravark-carved" / "guard.py")
     qalezu = load("qalezu_guard", ROOT / "tools" / "qalezu-hand" / "guard.py")
     zethu = load("zethu_guard", ROOT / "tools" / "khelathi-zethu-glyphs" / "guard.py")
+    semaron = load("semaron_guard", ROOT / "tools" / "semaron-kuriale" / "guard.py")
     zethu_font = ROOT / "fonts" / "KhelathiZethuGlyphs-Regular.ttf"
     cases = [
         (
@@ -125,6 +135,20 @@ def main():
             lambda p: qalezu.run(p, []),
             without_th,
             "without the th sign",
+        ),
+        (
+            "Semaron Kuriale",
+            ROOT / "fonts" / "SemaronKuriale-Regular.ttf",
+            lambda p: semaron.run(p, []),
+            stripped,
+            "without GSUB",
+        ),
+        (
+            "Semaron Kuriale",
+            ROOT / "fonts" / "SemaronKuriale-Regular.ttf",
+            lambda p: semaron.run(p, []),
+            without_gpos,
+            "without GPOS",
         ),
         ("Khelathi Zethu Glyphs", zethu_font, zethu.run, without_sign, "without the 11-001 sign"),
         ("Khelathi Zethu Glyphs", zethu_font, zethu.run, stripped, "without GSUB"),

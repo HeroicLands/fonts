@@ -27,6 +27,13 @@
 }
 
 @font-face {
+    font-family: "Semaron Kuriale";
+    src: url("fonts/SemaronKuriale-Regular.woff2") format("woff2"),
+        url("fonts/SemaronKuriale-Regular.ttf") format("truetype");
+    font-display: swap;
+}
+
+@font-face {
     font-family: "Thuravark Carved";
     src: url("fonts/ThuravarkCarved-Regular.woff2") format("woff2"),
         url("fonts/ThuravarkCarved-Regular.ttf") format("truetype");

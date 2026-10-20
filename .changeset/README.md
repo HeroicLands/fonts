@@ -20,11 +20,11 @@ code-point table carries no changeset at all.
 
 Read the bump from the point of view of someone who installs the package.
 
-| Bump      | What it means here                                                                                         |
-| --------- | ---------------------------------------------------------------------------------------------------------- |
-| **major** | Only on the owner's direct instruction.                                                                    |
-| **minor** | A change every user of a font meets: a glyph drawn differently, a font added or removed, a family renamed. |
-| **patch** | Everything else, including a new glyph nobody meets without looking for it.                                |
+| Bump      | What it means here                                                                                |
+| --------- | ------------------------------------------------------------------------------------------------- |
+| **major** | Only on the owner's direct instruction.                                                           |
+| **minor** | A change every user of a font meets: a glyph drawn differently, a font removed, a family renamed. |
+| **patch** | Everything else, including a font added and a new glyph: nobody meets either without choosing to. |
 
 ## Writing the summary
 

@@ -21,5 +21,6 @@ build sources/PirzathHand.ufo fonts/PirzathHand-Regular.ttf
 build sources/ThuravarkCarved.ufo fonts/ThuravarkCarved-Regular.ttf
 build sources/QalezuHand.ufo fonts/QalezuHand-Regular.ttf
 build sources/KhelathiZethuGlyphs.ufo fonts/KhelathiZethuGlyphs-Regular.ttf
+build sources/SemaronKuriale.ufo fonts/SemaronKuriale-Regular.ttf
 
 python tools/write_css.py
