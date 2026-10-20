@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="z09_020.a" format="2">
+  <advance width="480"/>
+  <unicode hex="1EB44"/>
+  <outline>
+    <contour>
+      <point x="368" y="690" type="qcurve" smooth="yes"/>
+      <point x="368" y="743"/>
+      <point x="293" y="818"/>
+      <point x="187" y="818"/>
+      <point x="113" y="743"/>
+      <point x="113" y="637"/>
+      <point x="187" y="563"/>
+      <point x="293" y="563"/>
+      <point x="368" y="637"/>
+    </contour>
+    <contour>
+      <point x="278" y="488" type="line"/>
+      <point x="203" y="488" type="line"/>
+      <point x="203" y="33" type="line"/>
+      <point x="278" y="33" type="line"/>
+    </contour>
+    <contour>
+      <point x="218" y="473" type="line"/>
+      <point x="263" y="473" type="line"/>
+      <point x="263" y="48" type="line"/>
+      <point x="218" y="48" type="line"/>
+    </contour>
+  </outline>
+</glyph>

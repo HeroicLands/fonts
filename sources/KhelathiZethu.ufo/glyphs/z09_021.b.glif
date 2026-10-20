@@ -1,0 +1,61 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="z09_021.b" format="2">
+  <advance width="780"/>
+  <outline>
+    <contour>
+      <point x="584" y="120" type="qcurve" smooth="yes"/>
+      <point x="584" y="150"/>
+      <point x="540" y="194"/>
+      <point x="480" y="194"/>
+      <point x="437" y="150"/>
+      <point x="437" y="90"/>
+      <point x="480" y="47"/>
+      <point x="540" y="47"/>
+      <point x="584" y="90"/>
+    </contour>
+    <contour>
+      <point x="344" y="120" type="qcurve" smooth="yes"/>
+      <point x="344" y="150"/>
+      <point x="300" y="194"/>
+      <point x="240" y="194"/>
+      <point x="197" y="150"/>
+      <point x="197" y="90"/>
+      <point x="240" y="47"/>
+      <point x="300" y="47"/>
+      <point x="344" y="90"/>
+    </contour>
+    <contour>
+      <point x="464" y="340" type="qcurve" smooth="yes"/>
+      <point x="464" y="370"/>
+      <point x="420" y="414"/>
+      <point x="360" y="414"/>
+      <point x="317" y="370"/>
+      <point x="317" y="310"/>
+      <point x="360" y="267"/>
+      <point x="420" y="267"/>
+      <point x="464" y="310"/>
+    </contour>
+    <contour>
+      <point x="224" y="340" type="qcurve" smooth="yes"/>
+      <point x="224" y="370"/>
+      <point x="180" y="414"/>
+      <point x="120" y="414"/>
+      <point x="77" y="370"/>
+      <point x="77" y="310"/>
+      <point x="120" y="267"/>
+      <point x="180" y="267"/>
+      <point x="224" y="310"/>
+    </contour>
+    <contour>
+      <point x="704" y="340" type="qcurve" smooth="yes"/>
+      <point x="704" y="370"/>
+      <point x="660" y="414"/>
+      <point x="600" y="414"/>
+      <point x="557" y="370"/>
+      <point x="557" y="310"/>
+      <point x="600" y="267"/>
+      <point x="660" y="267"/>
+      <point x="704" y="310"/>
+    </contour>
+  </outline>
+</glyph>

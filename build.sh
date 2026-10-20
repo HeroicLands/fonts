@@ -18,3 +18,4 @@ build sources/PirzathCarved.ufo fonts/PirzathCarved-Regular.ttf
 build sources/PirzathHand.ufo fonts/PirzathHand-Regular.ttf
 build sources/ThuravarkRunic.ufo fonts/ThuravarkRunic-Regular.ttf
 build sources/Qalezu.ufo fonts/Qalezu-Regular.ttf
+build sources/KhelathiZethu.ufo fonts/KhelathiZethu-Regular.ttf

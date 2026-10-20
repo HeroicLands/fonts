@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="z09_009.b" format="2">
+  <advance width="840"/>
+  <outline>
+    <contour>
+      <point x="427" y="713" type="line"/>
+      <point x="420" y="732" type="line"/>
+      <point x="330" y="483" type="line"/>
+      <point x="66" y="475" type="line"/>
+      <point x="275" y="313" type="line"/>
+      <point x="201" y="59" type="line"/>
+      <point x="420" y="207" type="line"/>
+      <point x="639" y="59" type="line"/>
+      <point x="565" y="313" type="line"/>
+      <point x="774" y="475" type="line"/>
+      <point x="510" y="483" type="line"/>
+    </contour>
+    <contour>
+      <point x="420" y="688" type="line"/>
+      <point x="499" y="469" type="line"/>
+      <point x="732" y="461" type="line"/>
+      <point x="548" y="318" type="line"/>
+      <point x="613" y="95" type="line"/>
+      <point x="420" y="226" type="line"/>
+      <point x="227" y="95" type="line"/>
+      <point x="292" y="318" type="line"/>
+      <point x="108" y="461" type="line"/>
+      <point x="341" y="469" type="line"/>
+    </contour>
+  </outline>
+</glyph>

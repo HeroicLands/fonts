@@ -1,0 +1,558 @@
+{
+ "scenes": [
+  {
+   "scene": "3.1",
+   "title": "The sacred crocodile hunt",
+   "samples": [
+    {
+     "reading": "Gar-Au ezu Gar",
+     "gloss": "the Gar-Au in his house",
+     "ids": [
+      "11-001",
+      "11-002",
+      "10-016",
+      "11-001"
+     ]
+    },
+    {
+     "reading": "Wazu ez zeghet",
+     "gloss": "the Wazu of the hunt",
+     "ids": [
+      "01-006",
+      "10-016",
+      "01-024"
+     ]
+    },
+    {
+     "reading": "Lem'Nelgir ez Chelsur",
+     "gloss": "the servant of the god of Chelsur",
+     "ids": [
+      "01-002",
+      "03-001",
+      "10-016",
+      "07-001"
+     ]
+    },
+    {
+     "reading": "zeghet ez igelu",
+     "gloss": "the hunt upon the river",
+     "ids": [
+      "01-024",
+      "10-016",
+      "10-001"
+     ]
+    },
+    {
+     "reading": "Igelnaru",
+     "gloss": "the spirit commended to Igelnaru",
+     "ids": [
+      "03-027",
+      "03-020"
+     ]
+    }
+   ]
+  },
+  {
+   "scene": "3.2",
+   "title": "The flood read at the Measure",
+   "samples": [
+    {
+     "reading": "igelu ezu Azlet",
+     "gloss": "the river in the inundation",
+     "ids": [
+      "10-001",
+      "10-016",
+      "09-016"
+     ]
+    },
+    {
+     "reading": "thelqen ez Uqa'a",
+     "gloss": "the disk of Uqa'a",
+     "ids": [
+      "09-002"
+     ]
+    },
+    {
+     "reading": "gezan",
+     "gloss": "ten (cubits)",
+     "ids": [
+      "16-003"
+     ]
+    }
+   ]
+  },
+  {
+   "scene": "3.3",
+   "title": "The survey of the fields after the flood",
+   "samples": [
+    {
+     "reading": "zegaru ezu Gelet",
+     "gloss": "the field in the emergence",
+     "ids": [
+      "10-008",
+      "10-016",
+      "09-017"
+     ]
+    },
+    {
+     "reading": "gez",
+     "gloss": "enduring, the boundary",
+     "ids": [
+      "10-002"
+     ]
+    },
+    {
+     "reading": "Zabu",
+     "gloss": "the noble who holds the field",
+     "ids": [
+      "01-013"
+     ]
+    }
+   ]
+  },
+  {
+   "scene": "3.4",
+   "title": "Harvest, threshing and the grain tax",
+   "samples": [
+    {
+     "reading": "mazgar ez habtun",
+     "gloss": "a measure of grain to the storehouse",
+     "ids": [
+      "13-018",
+      "10-016",
+      "11-004"
+     ]
+    },
+    {
+     "reading": "degan",
+     "gloss": "the tax",
+     "ids": [
+      "13-035"
+     ]
+    },
+    {
+     "reading": "Shelu",
+     "gloss": "the season of low water",
+     "ids": [
+      "09-018"
+     ]
+    }
+   ]
+  },
+  {
+   "scene": "3.5",
+   "title": "Barge trade and the sealed manifest",
+   "samples": [
+    {
+     "reading": "zuwaret ez telqas",
+     "gloss": "trade at the quay",
+     "ids": [
+      "12-014",
+      "10-016",
+      "11-022"
+     ]
+    },
+    {
+     "reading": "qathur",
+     "gloss": "the seal and its warrant",
+     "ids": [
+      "13-032"
+     ]
+    },
+    {
+     "reading": "qenuwa",
+     "gloss": "gold",
+     "ids": [
+      "13-038"
+     ]
+    }
+   ]
+  },
+  {
+   "scene": "3.6",
+   "title": "The scribal school",
+   "samples": [
+    {
+     "reading": "rethet ez Reth'Sa'ar",
+     "gloss": "the instruction of Reth'Sa'ar",
+     "ids": [
+      "14-019",
+      "10-016",
+      "03-007"
+     ]
+    },
+    {
+     "reading": "zethu",
+     "gloss": "writing, the scribe",
+     "ids": [
+      "01-041"
+     ]
+    }
+   ]
+  },
+  {
+   "scene": "3.7",
+   "title": "An offering at a tomb, with its curse",
+   "samples": [
+    {
+     "reading": "lekhunet ezu qedlet",
+     "gloss": "a spell in an inscription",
+     "ids": [
+      "14-025",
+      "10-016",
+      "14-029"
+     ]
+    },
+    {
+     "reading": "reth ez Zabu",
+     "gloss": "the name of the noble",
+     "ids": [
+      "13-042",
+      "10-016",
+      "01-013"
+     ]
+    }
+   ]
+  },
+  {
+   "scene": "3.8",
+   "title": "A festival of Thuba'i",
+   "samples": [
+    {
+     "reading": "zamlet ez Thuba'i",
+     "gloss": "a hymn of Thuba'i",
+     "ids": [
+      "14-024",
+      "10-016",
+      "03-010"
+     ]
+    },
+    {
+     "reading": "anlagh",
+     "gloss": "life",
+     "ids": [
+      "08-005"
+     ]
+    }
+   ]
+  },
+  {
+   "scene": "3.9",
+   "title": "The observatory and the calendar",
+   "samples": [
+    {
+     "reading": "selqur ez Qet Telgu",
+     "gloss": "a year of the count from the First Occasion",
+     "ids": [
+      "09-019",
+      "10-016",
+      "09-022"
+     ]
+    },
+    {
+     "reading": "Gelet",
+     "gloss": "the emergence",
+     "ids": [
+      "09-017"
+     ]
+    }
+   ]
+  },
+  {
+   "scene": "3.10",
+   "title": "A royal decree and the king-list",
+   "samples": [
+    {
+     "reading": "Amqel-Anlagh",
+     "gloss": "a king's name in its cord oval",
+     "ids": [
+      "16-011",
+      "02-017",
+      "08-005"
+     ]
+    },
+    {
+     "reading": "Gar-Au ez Au'Khelathu",
+     "gloss": "the Gar-Au of Au'Khelathu",
+     "ids": [
+      "11-001",
+      "11-002",
+      "10-016",
+      "11-002",
+      "10-028"
+     ]
+    }
+   ]
+  },
+  {
+   "scene": "3.11",
+   "title": "A border garrison and a battle",
+   "samples": [
+    {
+     "reading": "Qeztu",
+     "gloss": "the war-god's house",
+     "ids": [
+      "03-016"
+     ]
+    },
+    {
+     "reading": "qezat",
+     "gloss": "a battle",
+     "ids": [
+      "01-066"
+     ]
+    },
+    {
+     "reading": "zelqezat",
+     "gloss": "a blood-field",
+     "ids": [
+      "10-029"
+     ]
+    }
+   ]
+  },
+  {
+   "scene": "3.12",
+   "title": "A funeral procession and embalming",
+   "samples": [
+    {
+     "reading": "Weth'ur ez Zulaten",
+     "gloss": "Weth'ur of the realm of the dead",
+     "ids": [
+      "06-003",
+      "10-016",
+      "10-014"
+     ]
+    },
+    {
+     "reading": "qelt",
+     "gloss": "the embalmed soul-part",
+     "ids": [
+      "04-021"
+     ]
+    }
+   ]
+  },
+  {
+   "scene": "3.13",
+   "title": "Building a temple",
+   "samples": [
+    {
+     "reading": "Gar ez Saq'aru",
+     "gloss": "the temple of Saq'aru",
+     "ids": [
+      "11-001",
+      "10-016",
+      "03-008"
+     ]
+    },
+    {
+     "reading": "qedlu",
+     "gloss": "the quarryman",
+     "ids": [
+      "01-034"
+     ]
+    }
+   ]
+  },
+  {
+   "scene": "3.14",
+   "title": "The Weighing of the heart",
+   "samples": [
+    {
+     "reading": "Halzunet ez halzi",
+     "gloss": "the noon denials, the heart's account",
+     "ids": [
+      "09-005",
+      "10-016",
+      "04-018"
+     ]
+    },
+    {
+     "reading": "Algit",
+     "gloss": "the Devourer of the Dead",
+     "ids": [
+      "03-021"
+     ]
+    }
+   ]
+  }
+ ],
+ "extra": [
+  {
+   "name": "sample-year3",
+   "title": "A date: Year 3 of Gar-Au Amqel'Uqa, the second month of Gelet",
+   "lines": [
+    "regnal year, 3 · Gar-Au · Amqel'Uqa in the cord oval · month, 2 · ez · Gelet",
+    "Year 3 of Gar-Au Amqel'Uqa, the second month of Gelet"
+   ],
+   "quadrats": [
+    {
+     "rows": [
+      [
+       "16-024"
+      ],
+      [
+       "16-006"
+      ]
+     ],
+     "frame": false
+    },
+    {
+     "rows": [
+      [
+       "11-001"
+      ],
+      [
+       "11-002"
+      ]
+     ],
+     "frame": false
+    },
+    {
+     "rows": [
+      [
+       "13-002"
+      ],
+      [
+       "13-003",
+       "13-001"
+      ]
+     ],
+     "frame": true
+    },
+    {
+     "rows": [
+      [
+       "16-001"
+      ],
+      [
+       "09-002"
+      ]
+     ],
+     "frame": true
+    },
+    {
+     "rows": [
+      [
+       "09-024"
+      ],
+      [
+       "16-005"
+      ]
+     ],
+     "frame": false
+    },
+    {
+     "rows": [
+      [
+       "10-016"
+      ]
+     ],
+     "frame": false
+    },
+    {
+     "rows": [
+      [
+       "09-017"
+      ]
+     ],
+     "frame": false
+    }
+   ]
+  },
+  {
+   "name": "sample-year14",
+   "title": "A two-digit number: Year 14",
+   "lines": [
+    "regnal year, 10 + 4",
+    "Year 14 (of a reign)"
+   ],
+   "quadrats": [
+    {
+     "rows": [
+      [
+       "16-024"
+      ]
+     ],
+     "frame": false
+    },
+    {
+     "rows": [
+      [
+       "16-003"
+      ],
+      [
+       "16-025"
+      ]
+     ],
+     "frame": false
+    }
+   ]
+  },
+  {
+   "name": "sample-128-qelu",
+   "title": "A three-digit number: 128 qelu",
+   "lines": [
+    "qelu, 100 + 10 + 10 + 8",
+    "128 qelu (the noun first, then its count)"
+   ],
+   "quadrats": [
+    {
+     "rows": [
+      [
+       "13-015"
+      ]
+     ],
+     "frame": false
+    },
+    {
+     "rows": [
+      [
+       "16-007"
+      ]
+     ],
+     "frame": false
+    },
+    {
+     "rows": [
+      [
+       "16-003",
+       "16-003"
+      ],
+      [
+       "16-028"
+      ]
+     ],
+     "frame": false
+    }
+   ]
+  },
+  {
+   "name": "sample-account-level",
+   "title": "The account is level: the tablets of Qe'aret beside the empty pan",
+   "lines": [
+    "Qe'aret's level tablets · the empty pan",
+    "the account is level; nothing remains"
+   ],
+   "quadrats": [
+    {
+     "rows": [
+      [
+       "03-006"
+      ]
+     ],
+     "frame": false
+    },
+    {
+     "rows": [
+      [
+       "16-030"
+      ]
+     ],
+     "frame": false
+    }
+   ]
+  }
+ ]
+}
