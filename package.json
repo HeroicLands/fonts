@@ -1,6 +1,6 @@
 {
     "name": "@heroiclands/fonts",
-    "version": "0.1.1",
+    "version": "0.1.2",
     "description": "Fonts for the HeroicLands settings' scripts, drawn from scratch and licensed under the SIL OFL 1.1.",
     "license": "OFL-1.1",
     "type": "module",
