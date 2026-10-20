@@ -25,11 +25,20 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from render import Renderer, label_font  # noqa: E402
 import guard  # noqa: E402
 
+
 ROOT = Path(__file__).resolve().parent.parent.parent
 PAPER = (248, 244, 236)
 INK = (28, 24, 20)
 GREY = (120, 112, 104)
 RULE = (205, 198, 186)
+
+
+def convert(text: str) -> str:
+    """The Qalezu code points of a Latin word, through the shared converter."""
+    (result,) = guard.convert_all([text])
+    if isinstance(result, guard.Unmappable):
+        raise SystemExit(f"{text!r}: Qalezu has no sign for {result.letter!r}")
+    return result
 
 WORDS = [
     "Au'Khelathu", "Khelathu", "Khelathi-zethu", "Qalezu", "Nelgir", "Halzi",
@@ -101,7 +110,7 @@ def words(r: Renderer, data: dict, out: Path):
     for i, word in enumerate(WORDS):
         y = margin + 60 + i * row_h
         d.line([margin, y + row_h - 8, width - margin, y + row_h - 8], fill=RULE)
-        s = shaped(r, guard.convert(word))
+        s = shaped(r, convert(word))
         right = width - margin - 520
         x = right - s.advance * big / r.upem
         r.draw(img, x, y + 125, s, big, INK)
@@ -122,13 +131,13 @@ def mixed(r: Renderer, out: Path):
     x = margin
     d.text((x, base - 52), before, fill=INK, font=text)
     x += d.textlength(before, font=text)
-    s = shaped(r, guard.convert(name))
+    s = shaped(r, convert(name))
     r.draw(img, x, base + 5, s, size, INK)
     x += s.advance * size / r.upem + 8
     d.text((x, base - 52), after, fill=INK, font=text)
     d.line([margin, 215, width - margin, 215], fill=RULE)
     for i, line in enumerate(BLOCK):
-        s = shaped(r, guard.convert(line))
+        s = shaped(r, convert(line))
         right = width - margin
         r.draw(img, right - s.advance * size / r.upem, 200 + i * line_h + 100, s, size, INK)
         d.text((margin, 200 + i * line_h + 60), line, fill=GREY, font=label_font(26))

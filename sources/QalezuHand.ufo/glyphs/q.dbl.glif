@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <glyph name="q.dbl" format="2">
-  <advance width="630"/>
+  <advance width="624"/>
   <unicode hex="1EA22"/>
   <outline>
     <component base="q"/>
-    <component base="doubling" xOffset="315" yOffset="-80"/>
+    <component base="doubling" xOffset="312" yOffset="-79"/>
   </outline>
 </glyph>

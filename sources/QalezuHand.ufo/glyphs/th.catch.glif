@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <glyph name="th.catch" format="2">
-  <advance width="415"/>
+  <advance width="411"/>
   <unicode hex="1ECC9"/>
   <outline>
     <component base="th"/>
-    <component base="catchdots" xOffset="208" yOffset="627"/>
+    <component base="catchdots" xOffset="206" yOffset="621"/>
   </outline>
 </glyph>

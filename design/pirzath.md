@@ -20,18 +20,18 @@ scored across the arm it marks at a steep angle for the same reason. The one
 deliberate exception is the sentence end: a short cut made along the grain,
 the cut that closes a thought. The imperative doubles it.
 
-Consonants stand in a box 520 wide by 700 tall at a stroke weight of 104 units
+Consonants stand in a box 541 wide by 728 tall at a stroke weight of 108 units
 on a 1000-unit em; the cuts of the skeleton are the deep ones. Vowels are
-scored small, 300 by 440 at a weight of 82, because carved Pirzath cuts the
+scored small, 312 by 458 at a weight of 85, because carved Pirzath cuts the
 three consonants of a skeleton larger than the vowels of the frame, and a
 worn inscription is read from its skeleton first. The length mark is a drilled
 dot in the headroom above the vowel it lengthens, so a long vowel is still
 shorter than the consonants around it.
 
 Each letter stands separate. Spacing is derived from the outlines: the build
-measures each glyph's left and right profile in 25-unit bands and sets a kern
+measures each glyph's left and right profile in 26-unit bands and sets a kern
 for every pair so that the closest approach of two inks is the same optical
-gap, tightening by at most 110 units and loosening by at most 40. A small vowel
+gap, tightening by at most 114 units and loosening by at most 42. A small vowel
 therefore tucks under the arm of a tall consonant without touching it, and a
 word reads as one interlocking carving with its letters still apart.
 
@@ -201,7 +201,7 @@ after a space and closes anywhere else. A single `<` or `>` draws the box.
    short one beside it, r three staggered cuts; numerals get one-sided tally
    limbs at four fixed places; kerning tightens less and the word gap widens;
    the specimen layout bugs are fixed.
-3. The breath notch is lengthened to 380 units so th, dh, kh, gh, f and v
+3. The breath notch is lengthened to 395 units so th, dh, kh, gh, f and v
    read as themselves at reading size; r becomes the forward-open point; s
    becomes the tall lozenge, because two parallel cuts beside the vowel a's
    single cut made an ambiguous row of slashes; `.notdef` becomes the blank
@@ -224,22 +224,22 @@ after a space and closes anywhere else. A single `<` or `>` draws the box.
    (two such cuts stacked) and pause (a short slanted cut), and `;` and `:`
    drawing nothing. The pause slants back, because a forward cut at mid height
    is already the dash of a built name.
-9. The sentence end and the imperative lengthen from 200 to 260 units; at
-   36 px a 200-unit cut is seven pixels and too slight beside the dividing
+9. The sentence end and the imperative lengthen from 208 to 270 units; at
+   36 px a 208-unit cut is seven pixels and too slight beside the dividing
    dot.
 10. The owner's ruling on doubling: a consonant written twice is the letter
     once with a doubling mark, and a doubled digraph the digraph's letter with
     the mark. The mark is a short forward cut hung under the letter, seated by
-    mark positioning; the descender deepens to 250 to hold it. The texts
+    mark positioning; the descender deepens to 260 to hold it. The texts
     specimen gains the mastery frame, and the paragraph four doubled words.
-11. The doubling mark lengthens from 130 to 150 units, within the descender;
+11. The doubling mark lengthens from 135 to 156 units, within the descender;
     at 36 px it was under five pixels tall.
 12. The owner's ruling on quotation: the marks are g with two notches across
     the forward arm (opening) or the back arm (closing), typed `"`, `“ ”`,
     `« »`, `<<` and `>>`. Notches at 0.3 and 0.7 of the arm poke past the cap
     height and into the bar, so both marks read as a cluttered g.
 13. The notches move to the apex half of the arm, 0.4 of its length apart,
-    shorten to 280 units and thin to 84, so each clears the bar and the cap
+    shorten to 291 units and thin to 87, so each clears the bar and the cap
     and the two resolve as a pair at 36 px beside gh's one centred notch. The
     texts specimen puts gh right before a closing quote from « » and shows
     `<<` `>>`; the chart shows gh beside a closing quote.
@@ -267,8 +267,8 @@ after a space and closes anywhere else. A single `<` or `>` draws the box.
 18. The three cuts of j and q are driven past their junction, so their tapers
     are buried in one another's ink and each letter reads as one Y with a
     solid join and three free ends, where three cuts meeting point to point
-    left a gap at mid height. w and y widen to a box 720 wide with the cut
-    corner to corner, so the pole stands about 160 units clear of the cut at
+    left a gap at mid height. w and y widen to a box 749 wide with the cut
+    corner to corner, so the pole stands about 166 units clear of the cut at
     either end, where in the consonant box the two overlapped for most of
     their length and read as one mass.
 

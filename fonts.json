@@ -1,0 +1,4338 @@
+{
+    "version": 1,
+    "families": [
+        {
+            "name": "Khelathi Zethu Glyphs",
+            "family": "Khelathi Zethu Glyphs",
+            "class": "hl-khelathi-zethu-glyphs",
+            "files": {
+                "woff2": "fonts/KhelathiZethuGlyphs-Regular.woff2",
+                "ttf": "fonts/KhelathiZethuGlyphs-Regular.ttf"
+            },
+            "direction": "rtl",
+            "features": [],
+            "codepoints": [
+                {
+                    "codepoint": "U+1EA41",
+                    "glyph": "z01_002.a",
+                    "kind": "sign",
+                    "key": "01-002"
+                },
+                {
+                    "codepoint": "U+1EA42",
+                    "glyph": "z01_003.a",
+                    "kind": "sign",
+                    "key": "01-003"
+                },
+                {
+                    "codepoint": "U+1EA44",
+                    "glyph": "z01_005.a",
+                    "kind": "sign",
+                    "key": "01-005"
+                },
+                {
+                    "codepoint": "U+1EA45",
+                    "glyph": "z01_006.a",
+                    "kind": "sign",
+                    "key": "01-006"
+                },
+                {
+                    "codepoint": "U+1EA46",
+                    "glyph": "z01_007.a",
+                    "kind": "sign",
+                    "key": "01-007"
+                },
+                {
+                    "codepoint": "U+1EA47",
+                    "glyph": "z01_008.a",
+                    "kind": "sign",
+                    "key": "01-008"
+                },
+                {
+                    "codepoint": "U+1EA48",
+                    "glyph": "z01_009.a",
+                    "kind": "sign",
+                    "key": "01-009"
+                },
+                {
+                    "codepoint": "U+1EA49",
+                    "glyph": "z01_010.a",
+                    "kind": "sign",
+                    "key": "01-010"
+                },
+                {
+                    "codepoint": "U+1EA4A",
+                    "glyph": "z01_011.a",
+                    "kind": "sign",
+                    "key": "01-011"
+                },
+                {
+                    "codepoint": "U+1EA4B",
+                    "glyph": "z01_012.a",
+                    "kind": "sign",
+                    "key": "01-012"
+                },
+                {
+                    "codepoint": "U+1EA4C",
+                    "glyph": "z01_013.a",
+                    "kind": "sign",
+                    "key": "01-013"
+                },
+                {
+                    "codepoint": "U+1EA4D",
+                    "glyph": "z01_014.a",
+                    "kind": "sign",
+                    "key": "01-014"
+                },
+                {
+                    "codepoint": "U+1EA4E",
+                    "glyph": "z01_015.a",
+                    "kind": "sign",
+                    "key": "01-015"
+                },
+                {
+                    "codepoint": "U+1EA4F",
+                    "glyph": "z01_016.a",
+                    "kind": "sign",
+                    "key": "01-016"
+                },
+                {
+                    "codepoint": "U+1EA50",
+                    "glyph": "z01_017.a",
+                    "kind": "sign",
+                    "key": "01-017"
+                },
+                {
+                    "codepoint": "U+1EA51",
+                    "glyph": "z01_018.a",
+                    "kind": "sign",
+                    "key": "01-018"
+                },
+                {
+                    "codepoint": "U+1EA53",
+                    "glyph": "z01_020.a",
+                    "kind": "sign",
+                    "key": "01-020"
+                },
+                {
+                    "codepoint": "U+1EA54",
+                    "glyph": "z01_021.a",
+                    "kind": "sign",
+                    "key": "01-021"
+                },
+                {
+                    "codepoint": "U+1EA56",
+                    "glyph": "z01_023.a",
+                    "kind": "sign",
+                    "key": "01-023"
+                },
+                {
+                    "codepoint": "U+1EA57",
+                    "glyph": "z01_024.a",
+                    "kind": "sign",
+                    "key": "01-024"
+                },
+                {
+                    "codepoint": "U+1EA58",
+                    "glyph": "z01_025.a",
+                    "kind": "sign",
+                    "key": "01-025"
+                },
+                {
+                    "codepoint": "U+1EA59",
+                    "glyph": "z01_026.a",
+                    "kind": "sign",
+                    "key": "01-026"
+                },
+                {
+                    "codepoint": "U+1EA5B",
+                    "glyph": "z01_028.a",
+                    "kind": "sign",
+                    "key": "01-028"
+                },
+                {
+                    "codepoint": "U+1EA5C",
+                    "glyph": "z01_029.a",
+                    "kind": "sign",
+                    "key": "01-029"
+                },
+                {
+                    "codepoint": "U+1EA5D",
+                    "glyph": "z01_030.a",
+                    "kind": "sign",
+                    "key": "01-030"
+                },
+                {
+                    "codepoint": "U+1EA5F",
+                    "glyph": "z01_032.a",
+                    "kind": "sign",
+                    "key": "01-032"
+                },
+                {
+                    "codepoint": "U+1EA60",
+                    "glyph": "z01_033.a",
+                    "kind": "sign",
+                    "key": "01-033"
+                },
+                {
+                    "codepoint": "U+1EA61",
+                    "glyph": "z01_034.a",
+                    "kind": "sign",
+                    "key": "01-034"
+                },
+                {
+                    "codepoint": "U+1EA62",
+                    "glyph": "z01_035.a",
+                    "kind": "sign",
+                    "key": "01-035"
+                },
+                {
+                    "codepoint": "U+1EA65",
+                    "glyph": "z01_038.a",
+                    "kind": "sign",
+                    "key": "01-038"
+                },
+                {
+                    "codepoint": "U+1EA66",
+                    "glyph": "z01_039.a",
+                    "kind": "sign",
+                    "key": "01-039"
+                },
+                {
+                    "codepoint": "U+1EA67",
+                    "glyph": "z01_040.a",
+                    "kind": "sign",
+                    "key": "01-040"
+                },
+                {
+                    "codepoint": "U+1EA68",
+                    "glyph": "z01_041.a",
+                    "kind": "sign",
+                    "key": "01-041"
+                },
+                {
+                    "codepoint": "U+1EA69",
+                    "glyph": "z01_042.a",
+                    "kind": "sign",
+                    "key": "01-042"
+                },
+                {
+                    "codepoint": "U+1EA6A",
+                    "glyph": "z01_043.a",
+                    "kind": "sign",
+                    "key": "01-043"
+                },
+                {
+                    "codepoint": "U+1EA6B",
+                    "glyph": "z01_044.a",
+                    "kind": "sign",
+                    "key": "01-044"
+                },
+                {
+                    "codepoint": "U+1EA6C",
+                    "glyph": "z01_045.a",
+                    "kind": "sign",
+                    "key": "01-045"
+                },
+                {
+                    "codepoint": "U+1EA6D",
+                    "glyph": "z01_046.a",
+                    "kind": "sign",
+                    "key": "01-046"
+                },
+                {
+                    "codepoint": "U+1EA6E",
+                    "glyph": "z01_047.a",
+                    "kind": "sign",
+                    "key": "01-047"
+                },
+                {
+                    "codepoint": "U+1EA70",
+                    "glyph": "z01_049.a",
+                    "kind": "sign",
+                    "key": "01-049"
+                },
+                {
+                    "codepoint": "U+1EA71",
+                    "glyph": "z01_050.a",
+                    "kind": "sign",
+                    "key": "01-050"
+                },
+                {
+                    "codepoint": "U+1EA72",
+                    "glyph": "z01_051.a",
+                    "kind": "sign",
+                    "key": "01-051"
+                },
+                {
+                    "codepoint": "U+1EA73",
+                    "glyph": "z01_052.a",
+                    "kind": "sign",
+                    "key": "01-052"
+                },
+                {
+                    "codepoint": "U+1EA74",
+                    "glyph": "z01_053.a",
+                    "kind": "sign",
+                    "key": "01-053"
+                },
+                {
+                    "codepoint": "U+1EA75",
+                    "glyph": "z01_054.a",
+                    "kind": "sign",
+                    "key": "01-054"
+                },
+                {
+                    "codepoint": "U+1EA77",
+                    "glyph": "z01_056.a",
+                    "kind": "sign",
+                    "key": "01-056"
+                },
+                {
+                    "codepoint": "U+1EA78",
+                    "glyph": "z01_057.a",
+                    "kind": "sign",
+                    "key": "01-057"
+                },
+                {
+                    "codepoint": "U+1EA79",
+                    "glyph": "z01_058.a",
+                    "kind": "sign",
+                    "key": "01-058"
+                },
+                {
+                    "codepoint": "U+1EA7A",
+                    "glyph": "z01_059.a",
+                    "kind": "sign",
+                    "key": "01-059"
+                },
+                {
+                    "codepoint": "U+1EA7B",
+                    "glyph": "z01_060.a",
+                    "kind": "sign",
+                    "key": "01-060"
+                },
+                {
+                    "codepoint": "U+1EA7C",
+                    "glyph": "z01_061.a",
+                    "kind": "sign",
+                    "key": "01-061"
+                },
+                {
+                    "codepoint": "U+1EA7D",
+                    "glyph": "z01_062.a",
+                    "kind": "sign",
+                    "key": "01-062"
+                },
+                {
+                    "codepoint": "U+1EA7F",
+                    "glyph": "z02_002.a",
+                    "kind": "sign",
+                    "key": "02-002"
+                },
+                {
+                    "codepoint": "U+1EA83",
+                    "glyph": "z02_006.a",
+                    "kind": "sign",
+                    "key": "02-006"
+                },
+                {
+                    "codepoint": "U+1EA84",
+                    "glyph": "z02_007.a",
+                    "kind": "sign",
+                    "key": "02-007"
+                },
+                {
+                    "codepoint": "U+1EA85",
+                    "glyph": "z02_008.a",
+                    "kind": "sign",
+                    "key": "02-008"
+                },
+                {
+                    "codepoint": "U+1EA86",
+                    "glyph": "z02_009.a",
+                    "kind": "sign",
+                    "key": "02-009"
+                },
+                {
+                    "codepoint": "U+1EA87",
+                    "glyph": "z02_010.a",
+                    "kind": "sign",
+                    "key": "02-010"
+                },
+                {
+                    "codepoint": "U+1EA88",
+                    "glyph": "z02_011.a",
+                    "kind": "sign",
+                    "key": "02-011"
+                },
+                {
+                    "codepoint": "U+1EA8C",
+                    "glyph": "z02_015.a",
+                    "kind": "sign",
+                    "key": "02-015"
+                },
+                {
+                    "codepoint": "U+1EA8E",
+                    "glyph": "z02_017.a",
+                    "kind": "sign",
+                    "key": "02-017"
+                },
+                {
+                    "codepoint": "U+1EA90",
+                    "glyph": "z02_019.a",
+                    "kind": "sign",
+                    "key": "02-019"
+                },
+                {
+                    "codepoint": "U+1EA91",
+                    "glyph": "z03_001.a",
+                    "kind": "sign",
+                    "key": "03-001"
+                },
+                {
+                    "codepoint": "U+1EA93",
+                    "glyph": "z03_003.a",
+                    "kind": "sign",
+                    "key": "03-003"
+                },
+                {
+                    "codepoint": "U+1EA94",
+                    "glyph": "z03_004.a",
+                    "kind": "sign",
+                    "key": "03-004"
+                },
+                {
+                    "codepoint": "U+1EA95",
+                    "glyph": "z03_005.a",
+                    "kind": "sign",
+                    "key": "03-005"
+                },
+                {
+                    "codepoint": "U+1EA96",
+                    "glyph": "z03_006.a",
+                    "kind": "sign",
+                    "key": "03-006"
+                },
+                {
+                    "codepoint": "U+1EA97",
+                    "glyph": "z03_007.a",
+                    "kind": "sign",
+                    "key": "03-007"
+                },
+                {
+                    "codepoint": "U+1EA98",
+                    "glyph": "z03_008.a",
+                    "kind": "sign",
+                    "key": "03-008"
+                },
+                {
+                    "codepoint": "U+1EA99",
+                    "glyph": "z03_009.a",
+                    "kind": "sign",
+                    "key": "03-009"
+                },
+                {
+                    "codepoint": "U+1EA9A",
+                    "glyph": "z03_010.a",
+                    "kind": "sign",
+                    "key": "03-010"
+                },
+                {
+                    "codepoint": "U+1EA9B",
+                    "glyph": "z03_011.a",
+                    "kind": "sign",
+                    "key": "03-011"
+                },
+                {
+                    "codepoint": "U+1EA9C",
+                    "glyph": "z03_012.a",
+                    "kind": "sign",
+                    "key": "03-012"
+                },
+                {
+                    "codepoint": "U+1EA9D",
+                    "glyph": "z03_013.a",
+                    "kind": "sign",
+                    "key": "03-013"
+                },
+                {
+                    "codepoint": "U+1EA9E",
+                    "glyph": "z03_014.a",
+                    "kind": "sign",
+                    "key": "03-014"
+                },
+                {
+                    "codepoint": "U+1EA9F",
+                    "glyph": "z03_015.a",
+                    "kind": "sign",
+                    "key": "03-015"
+                },
+                {
+                    "codepoint": "U+1EAA0",
+                    "glyph": "z03_016.a",
+                    "kind": "sign",
+                    "key": "03-016"
+                },
+                {
+                    "codepoint": "U+1EAA1",
+                    "glyph": "z03_017.a",
+                    "kind": "sign",
+                    "key": "03-017"
+                },
+                {
+                    "codepoint": "U+1EAA2",
+                    "glyph": "z03_018.a",
+                    "kind": "sign",
+                    "key": "03-018"
+                },
+                {
+                    "codepoint": "U+1EAA3",
+                    "glyph": "z03_019.a",
+                    "kind": "sign",
+                    "key": "03-019"
+                },
+                {
+                    "codepoint": "U+1EAA4",
+                    "glyph": "z03_020.a",
+                    "kind": "sign",
+                    "key": "03-020"
+                },
+                {
+                    "codepoint": "U+1EAA5",
+                    "glyph": "z03_021.a",
+                    "kind": "sign",
+                    "key": "03-021"
+                },
+                {
+                    "codepoint": "U+1EAA6",
+                    "glyph": "z03_022.a",
+                    "kind": "sign",
+                    "key": "03-022"
+                },
+                {
+                    "codepoint": "U+1EAA7",
+                    "glyph": "z03_023.a",
+                    "kind": "sign",
+                    "key": "03-023"
+                },
+                {
+                    "codepoint": "U+1EAA8",
+                    "glyph": "z03_024.a",
+                    "kind": "sign",
+                    "key": "03-024"
+                },
+                {
+                    "codepoint": "U+1EAAC",
+                    "glyph": "z04_003.a",
+                    "kind": "sign",
+                    "key": "04-003"
+                },
+                {
+                    "codepoint": "U+1EAAF",
+                    "glyph": "z04_006.a",
+                    "kind": "sign",
+                    "key": "04-006"
+                },
+                {
+                    "codepoint": "U+1EAB4",
+                    "glyph": "z04_011.a",
+                    "kind": "sign",
+                    "key": "04-011"
+                },
+                {
+                    "codepoint": "U+1EAB8",
+                    "glyph": "z04_015.a",
+                    "kind": "sign",
+                    "key": "04-015"
+                },
+                {
+                    "codepoint": "U+1EABA",
+                    "glyph": "z04_017.a",
+                    "kind": "sign",
+                    "key": "04-017"
+                },
+                {
+                    "codepoint": "U+1EABB",
+                    "glyph": "z04_018.a",
+                    "kind": "sign",
+                    "key": "04-018"
+                },
+                {
+                    "codepoint": "U+1EABD",
+                    "glyph": "z04_020.a",
+                    "kind": "sign",
+                    "key": "04-020"
+                },
+                {
+                    "codepoint": "U+1EABE",
+                    "glyph": "z04_021.a",
+                    "kind": "sign",
+                    "key": "04-021"
+                },
+                {
+                    "codepoint": "U+1EAC3",
+                    "glyph": "z05_004.a",
+                    "kind": "sign",
+                    "key": "05-004"
+                },
+                {
+                    "codepoint": "U+1EAC4",
+                    "glyph": "z05_005.a",
+                    "kind": "sign",
+                    "key": "05-005"
+                },
+                {
+                    "codepoint": "U+1EAC5",
+                    "glyph": "z05_006.a",
+                    "kind": "sign",
+                    "key": "05-006"
+                },
+                {
+                    "codepoint": "U+1EACD",
+                    "glyph": "z05_014.a",
+                    "kind": "sign",
+                    "key": "05-014"
+                },
+                {
+                    "codepoint": "U+1EAD1",
+                    "glyph": "z05_018.a",
+                    "kind": "sign",
+                    "key": "05-018"
+                },
+                {
+                    "codepoint": "U+1EAD7",
+                    "glyph": "z05_024.a",
+                    "kind": "sign",
+                    "key": "05-024"
+                },
+                {
+                    "codepoint": "U+1EAE2",
+                    "glyph": "z05_035.a",
+                    "kind": "sign",
+                    "key": "05-035"
+                },
+                {
+                    "codepoint": "U+1EAE9",
+                    "glyph": "z06_003.a",
+                    "kind": "sign",
+                    "key": "06-003"
+                },
+                {
+                    "codepoint": "U+1EAEB",
+                    "glyph": "z06_005.a",
+                    "kind": "sign",
+                    "key": "06-005"
+                },
+                {
+                    "codepoint": "U+1EAF0",
+                    "glyph": "z06_010.a",
+                    "kind": "sign",
+                    "key": "06-010"
+                },
+                {
+                    "codepoint": "U+1EAF4",
+                    "glyph": "z06_014.a",
+                    "kind": "sign",
+                    "key": "06-014"
+                },
+                {
+                    "codepoint": "U+1EAFA",
+                    "glyph": "z06_020.a",
+                    "kind": "sign",
+                    "key": "06-020"
+                },
+                {
+                    "codepoint": "U+1EAFC",
+                    "glyph": "z06_022.a",
+                    "kind": "sign",
+                    "key": "06-022"
+                },
+                {
+                    "codepoint": "U+1EB01",
+                    "glyph": "z06_027.a",
+                    "kind": "sign",
+                    "key": "06-027"
+                },
+                {
+                    "codepoint": "U+1EB03",
+                    "glyph": "z06_029.a",
+                    "kind": "sign",
+                    "key": "06-029"
+                },
+                {
+                    "codepoint": "U+1EB05",
+                    "glyph": "z06_031.a",
+                    "kind": "sign",
+                    "key": "06-031"
+                },
+                {
+                    "codepoint": "U+1EB09",
+                    "glyph": "z07_001.a",
+                    "kind": "sign",
+                    "key": "07-001"
+                },
+                {
+                    "codepoint": "U+1EB0A",
+                    "glyph": "z07_002.a",
+                    "kind": "sign",
+                    "key": "07-002"
+                },
+                {
+                    "codepoint": "U+1EB11",
+                    "glyph": "z07_009.a",
+                    "kind": "sign",
+                    "key": "07-009"
+                },
+                {
+                    "codepoint": "U+1EB1D",
+                    "glyph": "z08_001.a",
+                    "kind": "sign",
+                    "key": "08-001"
+                },
+                {
+                    "codepoint": "U+1EB21",
+                    "glyph": "z08_005.a",
+                    "kind": "sign",
+                    "key": "08-005"
+                },
+                {
+                    "codepoint": "U+1EB22",
+                    "glyph": "z08_006.a",
+                    "kind": "sign",
+                    "key": "08-006"
+                },
+                {
+                    "codepoint": "U+1EB23",
+                    "glyph": "z08_007.a",
+                    "kind": "sign",
+                    "key": "08-007"
+                },
+                {
+                    "codepoint": "U+1EB24",
+                    "glyph": "z08_008.a",
+                    "kind": "sign",
+                    "key": "08-008"
+                },
+                {
+                    "codepoint": "U+1EB2A",
+                    "glyph": "z08_014.a",
+                    "kind": "sign",
+                    "key": "08-014"
+                },
+                {
+                    "codepoint": "U+1EB2C",
+                    "glyph": "z08_016.a",
+                    "kind": "sign",
+                    "key": "08-016"
+                },
+                {
+                    "codepoint": "U+1EB31",
+                    "glyph": "z09_001.a",
+                    "kind": "sign",
+                    "key": "09-001"
+                },
+                {
+                    "codepoint": "U+1EB32",
+                    "glyph": "z09_002.a",
+                    "kind": "sign",
+                    "key": "09-002"
+                },
+                {
+                    "codepoint": "U+1EB35",
+                    "glyph": "z09_005.a",
+                    "kind": "sign",
+                    "key": "09-005"
+                },
+                {
+                    "codepoint": "U+1EB36",
+                    "glyph": "z09_006.a",
+                    "kind": "sign",
+                    "key": "09-006"
+                },
+                {
+                    "codepoint": "U+1EB37",
+                    "glyph": "z09_007.a",
+                    "kind": "sign",
+                    "key": "09-007"
+                },
+                {
+                    "codepoint": "U+1EB38",
+                    "glyph": "z09_008.a",
+                    "kind": "sign",
+                    "key": "09-008"
+                },
+                {
+                    "codepoint": "U+1EB39",
+                    "glyph": "z09_009.a",
+                    "kind": "sign",
+                    "key": "09-009"
+                },
+                {
+                    "codepoint": "U+1EB3A",
+                    "glyph": "z09_010.a",
+                    "kind": "sign",
+                    "key": "09-010"
+                },
+                {
+                    "codepoint": "U+1EB3F",
+                    "glyph": "z09_015.a",
+                    "kind": "sign",
+                    "key": "09-015"
+                },
+                {
+                    "codepoint": "U+1EB40",
+                    "glyph": "z09_016.a",
+                    "kind": "sign",
+                    "key": "09-016"
+                },
+                {
+                    "codepoint": "U+1EB41",
+                    "glyph": "z09_017.a",
+                    "kind": "sign",
+                    "key": "09-017"
+                },
+                {
+                    "codepoint": "U+1EB42",
+                    "glyph": "z09_018.a",
+                    "kind": "sign",
+                    "key": "09-018"
+                },
+                {
+                    "codepoint": "U+1EB43",
+                    "glyph": "z09_019.a",
+                    "kind": "sign",
+                    "key": "09-019"
+                },
+                {
+                    "codepoint": "U+1EB44",
+                    "glyph": "z09_020.a",
+                    "kind": "sign",
+                    "key": "09-020"
+                },
+                {
+                    "codepoint": "U+1EB45",
+                    "glyph": "z09_021.a",
+                    "kind": "sign",
+                    "key": "09-021"
+                },
+                {
+                    "codepoint": "U+1EB46",
+                    "glyph": "z09_022.a",
+                    "kind": "sign",
+                    "key": "09-022"
+                },
+                {
+                    "codepoint": "U+1EB48",
+                    "glyph": "z10_001.a",
+                    "kind": "sign",
+                    "key": "10-001"
+                },
+                {
+                    "codepoint": "U+1EB49",
+                    "glyph": "z10_002.a",
+                    "kind": "sign",
+                    "key": "10-002"
+                },
+                {
+                    "codepoint": "U+1EB4E",
+                    "glyph": "z10_007.a",
+                    "kind": "sign",
+                    "key": "10-007"
+                },
+                {
+                    "codepoint": "U+1EB4F",
+                    "glyph": "z10_008.a",
+                    "kind": "sign",
+                    "key": "10-008"
+                },
+                {
+                    "codepoint": "U+1EB50",
+                    "glyph": "z10_009.a",
+                    "kind": "sign",
+                    "key": "10-009"
+                },
+                {
+                    "codepoint": "U+1EB51",
+                    "glyph": "z10_010.a",
+                    "kind": "sign",
+                    "key": "10-010"
+                },
+                {
+                    "codepoint": "U+1EB52",
+                    "glyph": "z10_011.a",
+                    "kind": "sign",
+                    "key": "10-011"
+                },
+                {
+                    "codepoint": "U+1EB53",
+                    "glyph": "z10_012.a",
+                    "kind": "sign",
+                    "key": "10-012"
+                },
+                {
+                    "codepoint": "U+1EB54",
+                    "glyph": "z10_013.a",
+                    "kind": "sign",
+                    "key": "10-013"
+                },
+                {
+                    "codepoint": "U+1EB55",
+                    "glyph": "z10_014.a",
+                    "kind": "sign",
+                    "key": "10-014"
+                },
+                {
+                    "codepoint": "U+1EB56",
+                    "glyph": "z10_015.a",
+                    "kind": "sign",
+                    "key": "10-015"
+                },
+                {
+                    "codepoint": "U+1EB57",
+                    "glyph": "z10_016.a",
+                    "kind": "sign",
+                    "key": "10-016"
+                },
+                {
+                    "codepoint": "U+1EB58",
+                    "glyph": "z10_017.a",
+                    "kind": "sign",
+                    "key": "10-017"
+                },
+                {
+                    "codepoint": "U+1EB59",
+                    "glyph": "z10_018.a",
+                    "kind": "sign",
+                    "key": "10-018"
+                },
+                {
+                    "codepoint": "U+1EB5A",
+                    "glyph": "z10_019.a",
+                    "kind": "sign",
+                    "key": "10-019"
+                },
+                {
+                    "codepoint": "U+1EB5B",
+                    "glyph": "z10_020.a",
+                    "kind": "sign",
+                    "key": "10-020"
+                },
+                {
+                    "codepoint": "U+1EB5D",
+                    "glyph": "z10_022.a",
+                    "kind": "sign",
+                    "key": "10-022"
+                },
+                {
+                    "codepoint": "U+1EB5E",
+                    "glyph": "z10_023.a",
+                    "kind": "sign",
+                    "key": "10-023"
+                },
+                {
+                    "codepoint": "U+1EB5F",
+                    "glyph": "z10_024.a",
+                    "kind": "sign",
+                    "key": "10-024"
+                },
+                {
+                    "codepoint": "U+1EB61",
+                    "glyph": "z10_026.a",
+                    "kind": "sign",
+                    "key": "10-026"
+                },
+                {
+                    "codepoint": "U+1EB62",
+                    "glyph": "z10_027.a",
+                    "kind": "sign",
+                    "key": "10-027"
+                },
+                {
+                    "codepoint": "U+1EB63",
+                    "glyph": "z10_028.a",
+                    "kind": "sign",
+                    "key": "10-028"
+                },
+                {
+                    "codepoint": "U+1EB64",
+                    "glyph": "z11_001.a",
+                    "kind": "sign",
+                    "key": "11-001"
+                },
+                {
+                    "codepoint": "U+1EB65",
+                    "glyph": "z11_002.a",
+                    "kind": "sign",
+                    "key": "11-002"
+                },
+                {
+                    "codepoint": "U+1EB66",
+                    "glyph": "z11_003.a",
+                    "kind": "sign",
+                    "key": "11-003"
+                },
+                {
+                    "codepoint": "U+1EB67",
+                    "glyph": "z11_004.a",
+                    "kind": "sign",
+                    "key": "11-004"
+                },
+                {
+                    "codepoint": "U+1EB68",
+                    "glyph": "z11_005.a",
+                    "kind": "sign",
+                    "key": "11-005"
+                },
+                {
+                    "codepoint": "U+1EB69",
+                    "glyph": "z11_006.a",
+                    "kind": "sign",
+                    "key": "11-006"
+                },
+                {
+                    "codepoint": "U+1EB6A",
+                    "glyph": "z11_007.a",
+                    "kind": "sign",
+                    "key": "11-007"
+                },
+                {
+                    "codepoint": "U+1EB6B",
+                    "glyph": "z11_008.a",
+                    "kind": "sign",
+                    "key": "11-008"
+                },
+                {
+                    "codepoint": "U+1EB6C",
+                    "glyph": "z11_009.a",
+                    "kind": "sign",
+                    "key": "11-009"
+                },
+                {
+                    "codepoint": "U+1EB6E",
+                    "glyph": "z11_011.a",
+                    "kind": "sign",
+                    "key": "11-011"
+                },
+                {
+                    "codepoint": "U+1EB6F",
+                    "glyph": "z11_012.a",
+                    "kind": "sign",
+                    "key": "11-012"
+                },
+                {
+                    "codepoint": "U+1EB70",
+                    "glyph": "z11_013.a",
+                    "kind": "sign",
+                    "key": "11-013"
+                },
+                {
+                    "codepoint": "U+1EB71",
+                    "glyph": "z11_014.a",
+                    "kind": "sign",
+                    "key": "11-014"
+                },
+                {
+                    "codepoint": "U+1EB72",
+                    "glyph": "z11_015.a",
+                    "kind": "sign",
+                    "key": "11-015"
+                },
+                {
+                    "codepoint": "U+1EB73",
+                    "glyph": "z11_016.a",
+                    "kind": "sign",
+                    "key": "11-016"
+                },
+                {
+                    "codepoint": "U+1EB74",
+                    "glyph": "z11_017.a",
+                    "kind": "sign",
+                    "key": "11-017"
+                },
+                {
+                    "codepoint": "U+1EB75",
+                    "glyph": "z11_018.a",
+                    "kind": "sign",
+                    "key": "11-018"
+                },
+                {
+                    "codepoint": "U+1EB76",
+                    "glyph": "z11_019.a",
+                    "kind": "sign",
+                    "key": "11-019"
+                },
+                {
+                    "codepoint": "U+1EB77",
+                    "glyph": "z11_020.a",
+                    "kind": "sign",
+                    "key": "11-020"
+                },
+                {
+                    "codepoint": "U+1EB78",
+                    "glyph": "z11_021.a",
+                    "kind": "sign",
+                    "key": "11-021"
+                },
+                {
+                    "codepoint": "U+1EB79",
+                    "glyph": "z11_022.a",
+                    "kind": "sign",
+                    "key": "11-022"
+                },
+                {
+                    "codepoint": "U+1EB7B",
+                    "glyph": "z11_024.a",
+                    "kind": "sign",
+                    "key": "11-024"
+                },
+                {
+                    "codepoint": "U+1EB7C",
+                    "glyph": "z11_025.a",
+                    "kind": "sign",
+                    "key": "11-025"
+                },
+                {
+                    "codepoint": "U+1EB7D",
+                    "glyph": "z12_001.a",
+                    "kind": "sign",
+                    "key": "12-001"
+                },
+                {
+                    "codepoint": "U+1EB7E",
+                    "glyph": "z12_002.a",
+                    "kind": "sign",
+                    "key": "12-002"
+                },
+                {
+                    "codepoint": "U+1EB7F",
+                    "glyph": "z12_003.a",
+                    "kind": "sign",
+                    "key": "12-003"
+                },
+                {
+                    "codepoint": "U+1EB80",
+                    "glyph": "z12_004.a",
+                    "kind": "sign",
+                    "key": "12-004"
+                },
+                {
+                    "codepoint": "U+1EB81",
+                    "glyph": "z12_005.a",
+                    "kind": "sign",
+                    "key": "12-005"
+                },
+                {
+                    "codepoint": "U+1EB82",
+                    "glyph": "z12_006.a",
+                    "kind": "sign",
+                    "key": "12-006"
+                },
+                {
+                    "codepoint": "U+1EB83",
+                    "glyph": "z12_007.a",
+                    "kind": "sign",
+                    "key": "12-007"
+                },
+                {
+                    "codepoint": "U+1EB85",
+                    "glyph": "z12_009.a",
+                    "kind": "sign",
+                    "key": "12-009"
+                },
+                {
+                    "codepoint": "U+1EB87",
+                    "glyph": "z12_011.a",
+                    "kind": "sign",
+                    "key": "12-011"
+                },
+                {
+                    "codepoint": "U+1EB88",
+                    "glyph": "z12_012.a",
+                    "kind": "sign",
+                    "key": "12-012"
+                },
+                {
+                    "codepoint": "U+1EB8A",
+                    "glyph": "z12_014.a",
+                    "kind": "sign",
+                    "key": "12-014"
+                },
+                {
+                    "codepoint": "U+1EB8B",
+                    "glyph": "z13_001.a",
+                    "kind": "sign",
+                    "key": "13-001"
+                },
+                {
+                    "codepoint": "U+1EB8C",
+                    "glyph": "z13_002.a",
+                    "kind": "sign",
+                    "key": "13-002"
+                },
+                {
+                    "codepoint": "U+1EB8D",
+                    "glyph": "z13_003.a",
+                    "kind": "sign",
+                    "key": "13-003"
+                },
+                {
+                    "codepoint": "U+1EB8E",
+                    "glyph": "z13_004.a",
+                    "kind": "sign",
+                    "key": "13-004"
+                },
+                {
+                    "codepoint": "U+1EB8F",
+                    "glyph": "z13_005.a",
+                    "kind": "sign",
+                    "key": "13-005"
+                },
+                {
+                    "codepoint": "U+1EB90",
+                    "glyph": "z13_006.a",
+                    "kind": "sign",
+                    "key": "13-006"
+                },
+                {
+                    "codepoint": "U+1EB91",
+                    "glyph": "z13_007.a",
+                    "kind": "sign",
+                    "key": "13-007"
+                },
+                {
+                    "codepoint": "U+1EB92",
+                    "glyph": "z13_008.a",
+                    "kind": "sign",
+                    "key": "13-008"
+                },
+                {
+                    "codepoint": "U+1EB93",
+                    "glyph": "z13_009.a",
+                    "kind": "sign",
+                    "key": "13-009"
+                },
+                {
+                    "codepoint": "U+1EB94",
+                    "glyph": "z13_010.a",
+                    "kind": "sign",
+                    "key": "13-010"
+                },
+                {
+                    "codepoint": "U+1EB95",
+                    "glyph": "z13_011.a",
+                    "kind": "sign",
+                    "key": "13-011"
+                },
+                {
+                    "codepoint": "U+1EB96",
+                    "glyph": "z13_012.a",
+                    "kind": "sign",
+                    "key": "13-012"
+                },
+                {
+                    "codepoint": "U+1EB97",
+                    "glyph": "z13_013.a",
+                    "kind": "sign",
+                    "key": "13-013"
+                },
+                {
+                    "codepoint": "U+1EB98",
+                    "glyph": "z13_014.a",
+                    "kind": "sign",
+                    "key": "13-014"
+                },
+                {
+                    "codepoint": "U+1EB99",
+                    "glyph": "z13_015.a",
+                    "kind": "sign",
+                    "key": "13-015"
+                },
+                {
+                    "codepoint": "U+1EB9A",
+                    "glyph": "z13_016.a",
+                    "kind": "sign",
+                    "key": "13-016"
+                },
+                {
+                    "codepoint": "U+1EB9B",
+                    "glyph": "z13_017.a",
+                    "kind": "sign",
+                    "key": "13-017"
+                },
+                {
+                    "codepoint": "U+1EB9C",
+                    "glyph": "z13_018.a",
+                    "kind": "sign",
+                    "key": "13-018"
+                },
+                {
+                    "codepoint": "U+1EB9F",
+                    "glyph": "z13_021.a",
+                    "kind": "sign",
+                    "key": "13-021"
+                },
+                {
+                    "codepoint": "U+1EBA0",
+                    "glyph": "z13_022.a",
+                    "kind": "sign",
+                    "key": "13-022"
+                },
+                {
+                    "codepoint": "U+1EBA2",
+                    "glyph": "z13_024.a",
+                    "kind": "sign",
+                    "key": "13-024"
+                },
+                {
+                    "codepoint": "U+1EBA3",
+                    "glyph": "z13_025.a",
+                    "kind": "sign",
+                    "key": "13-025"
+                },
+                {
+                    "codepoint": "U+1EBA4",
+                    "glyph": "z13_026.a",
+                    "kind": "sign",
+                    "key": "13-026"
+                },
+                {
+                    "codepoint": "U+1EBA5",
+                    "glyph": "z13_027.a",
+                    "kind": "sign",
+                    "key": "13-027"
+                },
+                {
+                    "codepoint": "U+1EBA7",
+                    "glyph": "z13_029.a",
+                    "kind": "sign",
+                    "key": "13-029"
+                },
+                {
+                    "codepoint": "U+1EBA8",
+                    "glyph": "z13_030.a",
+                    "kind": "sign",
+                    "key": "13-030"
+                },
+                {
+                    "codepoint": "U+1EBAA",
+                    "glyph": "z13_032.a",
+                    "kind": "sign",
+                    "key": "13-032"
+                },
+                {
+                    "codepoint": "U+1EBAB",
+                    "glyph": "z13_033.a",
+                    "kind": "sign",
+                    "key": "13-033"
+                },
+                {
+                    "codepoint": "U+1EBAC",
+                    "glyph": "z13_034.a",
+                    "kind": "sign",
+                    "key": "13-034"
+                },
+                {
+                    "codepoint": "U+1EBAD",
+                    "glyph": "z13_035.a",
+                    "kind": "sign",
+                    "key": "13-035"
+                },
+                {
+                    "codepoint": "U+1EBAE",
+                    "glyph": "z13_036.a",
+                    "kind": "sign",
+                    "key": "13-036"
+                },
+                {
+                    "codepoint": "U+1EBAF",
+                    "glyph": "z13_037.a",
+                    "kind": "sign",
+                    "key": "13-037"
+                },
+                {
+                    "codepoint": "U+1EBB0",
+                    "glyph": "z13_038.a",
+                    "kind": "sign",
+                    "key": "13-038"
+                },
+                {
+                    "codepoint": "U+1EBB1",
+                    "glyph": "z13_039.a",
+                    "kind": "sign",
+                    "key": "13-039"
+                },
+                {
+                    "codepoint": "U+1EBB2",
+                    "glyph": "z13_040.a",
+                    "kind": "sign",
+                    "key": "13-040"
+                },
+                {
+                    "codepoint": "U+1EBB4",
+                    "glyph": "z14_001.a",
+                    "kind": "sign",
+                    "key": "14-001"
+                },
+                {
+                    "codepoint": "U+1EBB6",
+                    "glyph": "z14_003.a",
+                    "kind": "sign",
+                    "key": "14-003"
+                },
+                {
+                    "codepoint": "U+1EBB7",
+                    "glyph": "z14_004.a",
+                    "kind": "sign",
+                    "key": "14-004"
+                },
+                {
+                    "codepoint": "U+1EBB8",
+                    "glyph": "z14_005.a",
+                    "kind": "sign",
+                    "key": "14-005"
+                },
+                {
+                    "codepoint": "U+1EBB9",
+                    "glyph": "z14_006.a",
+                    "kind": "sign",
+                    "key": "14-006"
+                },
+                {
+                    "codepoint": "U+1EBBA",
+                    "glyph": "z14_007.a",
+                    "kind": "sign",
+                    "key": "14-007"
+                },
+                {
+                    "codepoint": "U+1EBBB",
+                    "glyph": "z14_008.a",
+                    "kind": "sign",
+                    "key": "14-008"
+                },
+                {
+                    "codepoint": "U+1EBBC",
+                    "glyph": "z14_009.a",
+                    "kind": "sign",
+                    "key": "14-009"
+                },
+                {
+                    "codepoint": "U+1EBBE",
+                    "glyph": "z14_011.a",
+                    "kind": "sign",
+                    "key": "14-011"
+                },
+                {
+                    "codepoint": "U+1EBBF",
+                    "glyph": "z14_012.a",
+                    "kind": "sign",
+                    "key": "14-012"
+                },
+                {
+                    "codepoint": "U+1EBC2",
+                    "glyph": "z14_015.a",
+                    "kind": "sign",
+                    "key": "14-015"
+                },
+                {
+                    "codepoint": "U+1EBC3",
+                    "glyph": "z14_016.a",
+                    "kind": "sign",
+                    "key": "14-016"
+                },
+                {
+                    "codepoint": "U+1EBC4",
+                    "glyph": "z14_017.a",
+                    "kind": "sign",
+                    "key": "14-017"
+                },
+                {
+                    "codepoint": "U+1EBC5",
+                    "glyph": "z14_018.a",
+                    "kind": "sign",
+                    "key": "14-018"
+                },
+                {
+                    "codepoint": "U+1EBC6",
+                    "glyph": "z14_019.a",
+                    "kind": "sign",
+                    "key": "14-019"
+                },
+                {
+                    "codepoint": "U+1EBC7",
+                    "glyph": "z14_020.a",
+                    "kind": "sign",
+                    "key": "14-020"
+                },
+                {
+                    "codepoint": "U+1EBC8",
+                    "glyph": "z14_021.a",
+                    "kind": "sign",
+                    "key": "14-021"
+                },
+                {
+                    "codepoint": "U+1EBC9",
+                    "glyph": "z14_022.a",
+                    "kind": "sign",
+                    "key": "14-022"
+                },
+                {
+                    "codepoint": "U+1EBCB",
+                    "glyph": "z15_001.a",
+                    "kind": "sign",
+                    "key": "15-001"
+                },
+                {
+                    "codepoint": "U+1EBCE",
+                    "glyph": "z15_004.a",
+                    "kind": "sign",
+                    "key": "15-004"
+                },
+                {
+                    "codepoint": "U+1EBD1",
+                    "glyph": "z15_007.a",
+                    "kind": "sign",
+                    "key": "15-007"
+                },
+                {
+                    "codepoint": "U+1EBD8",
+                    "glyph": "z15_014.a",
+                    "kind": "sign",
+                    "key": "15-014"
+                },
+                {
+                    "codepoint": "U+1EBD9",
+                    "glyph": "z15_015.a",
+                    "kind": "sign",
+                    "key": "15-015"
+                },
+                {
+                    "codepoint": "U+1EBDA",
+                    "glyph": "z15_016.a",
+                    "kind": "sign",
+                    "key": "15-016"
+                },
+                {
+                    "codepoint": "U+1EBDB",
+                    "glyph": "z15_017.a",
+                    "kind": "sign",
+                    "key": "15-017"
+                },
+                {
+                    "codepoint": "U+1EBDC",
+                    "glyph": "z16_001.a",
+                    "kind": "sign",
+                    "key": "16-001"
+                },
+                {
+                    "codepoint": "U+1EBDE",
+                    "glyph": "z16_003.a",
+                    "kind": "sign",
+                    "key": "16-003"
+                },
+                {
+                    "codepoint": "U+1EBDF",
+                    "glyph": "z16_004.a",
+                    "kind": "sign",
+                    "key": "16-004"
+                },
+                {
+                    "codepoint": "U+1EBE0",
+                    "glyph": "z16_005.a",
+                    "kind": "sign",
+                    "key": "16-005"
+                },
+                {
+                    "codepoint": "U+1EBE1",
+                    "glyph": "z16_006.a",
+                    "kind": "sign",
+                    "key": "16-006"
+                },
+                {
+                    "codepoint": "U+1EBE2",
+                    "glyph": "z16_007.a",
+                    "kind": "sign",
+                    "key": "16-007"
+                },
+                {
+                    "codepoint": "U+1EBE3",
+                    "glyph": "z16_008.a",
+                    "kind": "sign",
+                    "key": "16-008"
+                },
+                {
+                    "codepoint": "U+1EBE4",
+                    "glyph": "z16_009.a",
+                    "kind": "sign",
+                    "key": "16-009"
+                },
+                {
+                    "codepoint": "U+1EBE6",
+                    "glyph": "z16_011.a",
+                    "kind": "sign",
+                    "key": "16-011"
+                },
+                {
+                    "codepoint": "U+1EBE7",
+                    "glyph": "z16_012.a",
+                    "kind": "sign",
+                    "key": "16-012"
+                },
+                {
+                    "codepoint": "U+1EBE8",
+                    "glyph": "z16_013.a",
+                    "kind": "sign",
+                    "key": "16-013"
+                },
+                {
+                    "codepoint": "U+1EBE9",
+                    "glyph": "z16_014.a",
+                    "kind": "sign",
+                    "key": "16-014"
+                },
+                {
+                    "codepoint": "U+1EBEA",
+                    "glyph": "z16_015.a",
+                    "kind": "sign",
+                    "key": "16-015"
+                },
+                {
+                    "codepoint": "U+1EBEB",
+                    "glyph": "z16_016.a",
+                    "kind": "sign",
+                    "key": "16-016"
+                },
+                {
+                    "codepoint": "U+1EBED",
+                    "glyph": "z16_018.a",
+                    "kind": "sign",
+                    "key": "16-018"
+                },
+                {
+                    "codepoint": "U+1EBEE",
+                    "glyph": "z16_019.a",
+                    "kind": "sign",
+                    "key": "16-019"
+                },
+                {
+                    "codepoint": "U+1EBF0",
+                    "glyph": "z01_063.a",
+                    "kind": "sign",
+                    "key": "01-063"
+                },
+                {
+                    "codepoint": "U+1EBF1",
+                    "glyph": "z01_064.a",
+                    "kind": "sign",
+                    "key": "01-064"
+                },
+                {
+                    "codepoint": "U+1EBF2",
+                    "glyph": "z01_065.a",
+                    "kind": "sign",
+                    "key": "01-065"
+                },
+                {
+                    "codepoint": "U+1EBF3",
+                    "glyph": "z05_040.a",
+                    "kind": "sign",
+                    "key": "05-040"
+                },
+                {
+                    "codepoint": "U+1EBF4",
+                    "glyph": "z07_021.a",
+                    "kind": "sign",
+                    "key": "07-021"
+                },
+                {
+                    "codepoint": "U+1EBF5",
+                    "glyph": "z03_026.a",
+                    "kind": "sign",
+                    "key": "03-026"
+                },
+                {
+                    "codepoint": "U+1EBF6",
+                    "glyph": "z03_027.a",
+                    "kind": "sign",
+                    "key": "03-027"
+                },
+                {
+                    "codepoint": "U+1EBF7",
+                    "glyph": "z03_028.a",
+                    "kind": "sign",
+                    "key": "03-028"
+                },
+                {
+                    "codepoint": "U+1EBF8",
+                    "glyph": "z14_024.a",
+                    "kind": "sign",
+                    "key": "14-024"
+                },
+                {
+                    "codepoint": "U+1EBF9",
+                    "glyph": "z14_025.a",
+                    "kind": "sign",
+                    "key": "14-025"
+                },
+                {
+                    "codepoint": "U+1EBFD",
+                    "glyph": "z14_029.a",
+                    "kind": "sign",
+                    "key": "14-029"
+                },
+                {
+                    "codepoint": "U+1EBFE",
+                    "glyph": "z09_024.a",
+                    "kind": "sign",
+                    "key": "09-024"
+                },
+                {
+                    "codepoint": "U+1EBFF",
+                    "glyph": "z01_066.a",
+                    "kind": "sign",
+                    "key": "01-066"
+                },
+                {
+                    "codepoint": "U+1EC00",
+                    "glyph": "z10_029.a",
+                    "kind": "sign",
+                    "key": "10-029"
+                },
+                {
+                    "codepoint": "U+1EC01",
+                    "glyph": "z12_015.a",
+                    "kind": "sign",
+                    "key": "12-015"
+                },
+                {
+                    "codepoint": "U+1EC02",
+                    "glyph": "z04_023.a",
+                    "kind": "sign",
+                    "key": "04-023"
+                },
+                {
+                    "codepoint": "U+1EC03",
+                    "glyph": "z16_021.a",
+                    "kind": "sign",
+                    "key": "16-021"
+                },
+                {
+                    "codepoint": "U+1EC04",
+                    "glyph": "z14_030.a",
+                    "kind": "sign",
+                    "key": "14-030"
+                },
+                {
+                    "codepoint": "U+1EC05",
+                    "glyph": "z13_042.a",
+                    "kind": "sign",
+                    "key": "13-042"
+                },
+                {
+                    "codepoint": "U+1EC06",
+                    "glyph": "z12_016.a",
+                    "kind": "sign",
+                    "key": "12-016"
+                },
+                {
+                    "codepoint": "U+1EC07",
+                    "glyph": "z01_067.a",
+                    "kind": "sign",
+                    "key": "01-067"
+                },
+                {
+                    "codepoint": "U+1EC08",
+                    "glyph": "z01_068.a",
+                    "kind": "sign",
+                    "key": "01-068"
+                },
+                {
+                    "codepoint": "U+1EC09",
+                    "glyph": "z01_069.a",
+                    "kind": "sign",
+                    "key": "01-069"
+                },
+                {
+                    "codepoint": "U+1EC0A",
+                    "glyph": "z10_030.a",
+                    "kind": "sign",
+                    "key": "10-030"
+                },
+                {
+                    "codepoint": "U+1EC0B",
+                    "glyph": "z01_070.a",
+                    "kind": "sign",
+                    "key": "01-070"
+                },
+                {
+                    "codepoint": "U+1EC0C",
+                    "glyph": "z04_024.a",
+                    "kind": "sign",
+                    "key": "04-024"
+                },
+                {
+                    "codepoint": "U+1EC0D",
+                    "glyph": "z03_029.a",
+                    "kind": "sign",
+                    "key": "03-029"
+                },
+                {
+                    "codepoint": "U+1EC0F",
+                    "glyph": "z16_022.a",
+                    "kind": "sign",
+                    "key": "16-022"
+                },
+                {
+                    "codepoint": "U+1EC11",
+                    "glyph": "z01_072.a",
+                    "kind": "sign",
+                    "key": "01-072"
+                },
+                {
+                    "codepoint": "U+1EC14",
+                    "glyph": "z16_024.a",
+                    "kind": "sign",
+                    "key": "16-024"
+                },
+                {
+                    "codepoint": "U+1EC15",
+                    "glyph": "z16_025.a",
+                    "kind": "sign",
+                    "key": "16-025"
+                },
+                {
+                    "codepoint": "U+1EC16",
+                    "glyph": "z16_026.a",
+                    "kind": "sign",
+                    "key": "16-026"
+                },
+                {
+                    "codepoint": "U+1EC17",
+                    "glyph": "z16_027.a",
+                    "kind": "sign",
+                    "key": "16-027"
+                },
+                {
+                    "codepoint": "U+1EC18",
+                    "glyph": "z16_028.a",
+                    "kind": "sign",
+                    "key": "16-028"
+                },
+                {
+                    "codepoint": "U+1EC19",
+                    "glyph": "z16_029.a",
+                    "kind": "sign",
+                    "key": "16-029"
+                },
+                {
+                    "codepoint": "U+1EC1A",
+                    "glyph": "z16_030.a",
+                    "kind": "sign",
+                    "key": "16-030"
+                },
+                {
+                    "codepoint": "U+1EC1B",
+                    "glyph": "z03_030.a",
+                    "kind": "sign",
+                    "key": "03-030"
+                }
+            ]
+        },
+        {
+            "name": "Pirzath Carved",
+            "family": "Pirzath Carved",
+            "class": "hl-pirzath-carved",
+            "files": {
+                "woff2": "fonts/PirzathCarved-Regular.woff2",
+                "ttf": "fonts/PirzathCarved-Regular.ttf"
+            },
+            "direction": "ltr",
+            "features": [],
+            "codepoints": [
+                {
+                    "codepoint": "U+F0000",
+                    "glyph": "a",
+                    "kind": "letter",
+                    "key": "a"
+                },
+                {
+                    "codepoint": "U+F0001",
+                    "glyph": "e",
+                    "kind": "letter",
+                    "key": "e"
+                },
+                {
+                    "codepoint": "U+F0002",
+                    "glyph": "i",
+                    "kind": "letter",
+                    "key": "i"
+                },
+                {
+                    "codepoint": "U+F0003",
+                    "glyph": "o",
+                    "kind": "letter",
+                    "key": "o"
+                },
+                {
+                    "codepoint": "U+F0004",
+                    "glyph": "u",
+                    "kind": "letter",
+                    "key": "u"
+                },
+                {
+                    "codepoint": "U+F0005",
+                    "glyph": "p",
+                    "kind": "letter",
+                    "key": "p"
+                },
+                {
+                    "codepoint": "U+F0006",
+                    "glyph": "b",
+                    "kind": "letter",
+                    "key": "b"
+                },
+                {
+                    "codepoint": "U+F0007",
+                    "glyph": "f",
+                    "kind": "letter",
+                    "key": "f"
+                },
+                {
+                    "codepoint": "U+F0008",
+                    "glyph": "v",
+                    "kind": "letter",
+                    "key": "v"
+                },
+                {
+                    "codepoint": "U+F0009",
+                    "glyph": "m",
+                    "kind": "letter",
+                    "key": "m"
+                },
+                {
+                    "codepoint": "U+F000A",
+                    "glyph": "t",
+                    "kind": "letter",
+                    "key": "t"
+                },
+                {
+                    "codepoint": "U+F000B",
+                    "glyph": "d",
+                    "kind": "letter",
+                    "key": "d"
+                },
+                {
+                    "codepoint": "U+F000C",
+                    "glyph": "n",
+                    "kind": "letter",
+                    "key": "n"
+                },
+                {
+                    "codepoint": "U+F000D",
+                    "glyph": "k",
+                    "kind": "letter",
+                    "key": "k"
+                },
+                {
+                    "codepoint": "U+F000E",
+                    "glyph": "g",
+                    "kind": "letter",
+                    "key": "g"
+                },
+                {
+                    "codepoint": "U+F000F",
+                    "glyph": "s",
+                    "kind": "letter",
+                    "key": "s"
+                },
+                {
+                    "codepoint": "U+F0010",
+                    "glyph": "z",
+                    "kind": "letter",
+                    "key": "z"
+                },
+                {
+                    "codepoint": "U+F0011",
+                    "glyph": "h",
+                    "kind": "letter",
+                    "key": "h"
+                },
+                {
+                    "codepoint": "U+F0012",
+                    "glyph": "l",
+                    "kind": "letter",
+                    "key": "l"
+                },
+                {
+                    "codepoint": "U+F0013",
+                    "glyph": "r",
+                    "kind": "letter",
+                    "key": "r"
+                },
+                {
+                    "codepoint": "U+F0014",
+                    "glyph": "j",
+                    "kind": "letter",
+                    "key": "j"
+                },
+                {
+                    "codepoint": "U+F0015",
+                    "glyph": "q",
+                    "kind": "letter",
+                    "key": "q"
+                },
+                {
+                    "codepoint": "U+F0016",
+                    "glyph": "w",
+                    "kind": "letter",
+                    "key": "w"
+                },
+                {
+                    "codepoint": "U+F0017",
+                    "glyph": "y",
+                    "kind": "letter",
+                    "key": "y"
+                },
+                {
+                    "codepoint": "U+F0018",
+                    "glyph": "catch",
+                    "kind": "letter",
+                    "key": "'"
+                },
+                {
+                    "codepoint": "U+F0020",
+                    "glyph": "t_h",
+                    "kind": "digraph",
+                    "key": "shift+t"
+                },
+                {
+                    "codepoint": "U+F0021",
+                    "glyph": "d_h",
+                    "kind": "digraph",
+                    "key": "shift+d"
+                },
+                {
+                    "codepoint": "U+F0022",
+                    "glyph": "k_h",
+                    "kind": "digraph",
+                    "key": "shift+k"
+                },
+                {
+                    "codepoint": "U+F0023",
+                    "glyph": "g_h",
+                    "kind": "digraph",
+                    "key": "shift+g"
+                },
+                {
+                    "codepoint": "U+F0024",
+                    "glyph": "sh",
+                    "kind": "digraph",
+                    "key": "shift+s"
+                },
+                {
+                    "codepoint": "U+F0025",
+                    "glyph": "zh",
+                    "kind": "digraph",
+                    "key": "shift+z"
+                },
+                {
+                    "codepoint": "U+F0026",
+                    "glyph": "ts",
+                    "kind": "digraph",
+                    "key": "shift+x"
+                },
+                {
+                    "codepoint": "U+F0027",
+                    "glyph": "ch",
+                    "kind": "digraph",
+                    "key": "shift+c"
+                },
+                {
+                    "codepoint": "U+F0028",
+                    "glyph": "ng",
+                    "kind": "digraph",
+                    "key": "shift+n"
+                },
+                {
+                    "codepoint": "U+F0029",
+                    "glyph": "ny",
+                    "kind": "digraph",
+                    "key": "shift+y"
+                },
+                {
+                    "codepoint": "U+F002A",
+                    "glyph": "hl",
+                    "kind": "digraph",
+                    "key": "shift+h"
+                },
+                {
+                    "codepoint": "U+F0030",
+                    "glyph": "ai",
+                    "kind": "diphthong",
+                    "key": "shift+a"
+                },
+                {
+                    "codepoint": "U+F0031",
+                    "glyph": "au",
+                    "kind": "diphthong",
+                    "key": "shift+u"
+                },
+                {
+                    "codepoint": "U+F0032",
+                    "glyph": "ei",
+                    "kind": "diphthong",
+                    "key": "shift+e"
+                },
+                {
+                    "codepoint": "U+F0033",
+                    "glyph": "oi",
+                    "kind": "diphthong",
+                    "key": "shift+o"
+                },
+                {
+                    "codepoint": "U+F0034",
+                    "glyph": "ou",
+                    "kind": "diphthong",
+                    "key": "shift+w"
+                },
+                {
+                    "codepoint": "U+F0040",
+                    "glyph": "num.0",
+                    "kind": "numeral",
+                    "key": "0"
+                },
+                {
+                    "codepoint": "U+F0041",
+                    "glyph": "num.1",
+                    "kind": "numeral",
+                    "key": "1"
+                },
+                {
+                    "codepoint": "U+F0042",
+                    "glyph": "num.2",
+                    "kind": "numeral",
+                    "key": "2"
+                },
+                {
+                    "codepoint": "U+F0043",
+                    "glyph": "num.3",
+                    "kind": "numeral",
+                    "key": "3"
+                },
+                {
+                    "codepoint": "U+F0044",
+                    "glyph": "num.4",
+                    "kind": "numeral",
+                    "key": "4"
+                },
+                {
+                    "codepoint": "U+F0045",
+                    "glyph": "num.5",
+                    "kind": "numeral",
+                    "key": "5"
+                },
+                {
+                    "codepoint": "U+F0046",
+                    "glyph": "num.6",
+                    "kind": "numeral",
+                    "key": "6"
+                },
+                {
+                    "codepoint": "U+F0047",
+                    "glyph": "num.7",
+                    "kind": "numeral",
+                    "key": "7"
+                },
+                {
+                    "codepoint": "U+F0048",
+                    "glyph": "num.8",
+                    "kind": "numeral",
+                    "key": "8"
+                },
+                {
+                    "codepoint": "U+F0049",
+                    "glyph": "num.9",
+                    "kind": "numeral",
+                    "key": "9"
+                },
+                {
+                    "codepoint": "U+F004A",
+                    "glyph": "num.10",
+                    "kind": "numeral",
+                    "key": "option+0"
+                },
+                {
+                    "codepoint": "U+F004B",
+                    "glyph": "num.11",
+                    "kind": "numeral",
+                    "key": "option+1"
+                },
+                {
+                    "codepoint": "U+F004C",
+                    "glyph": "num.12",
+                    "kind": "numeral",
+                    "key": "option+2"
+                },
+                {
+                    "codepoint": "U+F004D",
+                    "glyph": "num.13",
+                    "kind": "numeral",
+                    "key": "option+3"
+                },
+                {
+                    "codepoint": "U+F004E",
+                    "glyph": "num.14",
+                    "kind": "numeral",
+                    "key": "option+4"
+                },
+                {
+                    "codepoint": "U+F004F",
+                    "glyph": "num.15",
+                    "kind": "numeral",
+                    "key": "option+5"
+                },
+                {
+                    "codepoint": "U+F0050",
+                    "glyph": "period",
+                    "kind": "point",
+                    "key": "."
+                },
+                {
+                    "codepoint": "U+F0051",
+                    "glyph": "comma",
+                    "kind": "point",
+                    "key": ","
+                },
+                {
+                    "codepoint": "U+F0052",
+                    "glyph": "exclam",
+                    "kind": "point",
+                    "key": "shift+1"
+                },
+                {
+                    "codepoint": "U+F0053",
+                    "glyph": "hyphen",
+                    "kind": "point",
+                    "key": "-"
+                },
+                {
+                    "codepoint": "U+F0054",
+                    "glyph": "quote.open",
+                    "kind": "point",
+                    "key": "shift+,"
+                },
+                {
+                    "codepoint": "U+F0055",
+                    "glyph": "quote.close",
+                    "kind": "point",
+                    "key": "shift+."
+                },
+                {
+                    "codepoint": "U+F0060",
+                    "glyph": "lengthmark",
+                    "kind": "mark",
+                    "key": "option+e"
+                }
+            ]
+        },
+        {
+            "name": "Pirzath Hand",
+            "family": "Pirzath Hand",
+            "class": "hl-pirzath-hand",
+            "files": {
+                "woff2": "fonts/PirzathHand-Regular.woff2",
+                "ttf": "fonts/PirzathHand-Regular.ttf"
+            },
+            "direction": "ltr",
+            "features": ["ss01"],
+            "codepoints": [
+                {
+                    "codepoint": "U+F0000",
+                    "glyph": "a",
+                    "kind": "letter",
+                    "key": "a"
+                },
+                {
+                    "codepoint": "U+F0001",
+                    "glyph": "e",
+                    "kind": "letter",
+                    "key": "e"
+                },
+                {
+                    "codepoint": "U+F0002",
+                    "glyph": "i",
+                    "kind": "letter",
+                    "key": "i"
+                },
+                {
+                    "codepoint": "U+F0003",
+                    "glyph": "o",
+                    "kind": "letter",
+                    "key": "o"
+                },
+                {
+                    "codepoint": "U+F0004",
+                    "glyph": "u",
+                    "kind": "letter",
+                    "key": "u"
+                },
+                {
+                    "codepoint": "U+F0005",
+                    "glyph": "p",
+                    "kind": "letter",
+                    "key": "p"
+                },
+                {
+                    "codepoint": "U+F0006",
+                    "glyph": "b",
+                    "kind": "letter",
+                    "key": "b"
+                },
+                {
+                    "codepoint": "U+F0007",
+                    "glyph": "f",
+                    "kind": "letter",
+                    "key": "f"
+                },
+                {
+                    "codepoint": "U+F0008",
+                    "glyph": "v",
+                    "kind": "letter",
+                    "key": "v"
+                },
+                {
+                    "codepoint": "U+F0009",
+                    "glyph": "m",
+                    "kind": "letter",
+                    "key": "m"
+                },
+                {
+                    "codepoint": "U+F000A",
+                    "glyph": "t",
+                    "kind": "letter",
+                    "key": "t"
+                },
+                {
+                    "codepoint": "U+F000B",
+                    "glyph": "d",
+                    "kind": "letter",
+                    "key": "d"
+                },
+                {
+                    "codepoint": "U+F000C",
+                    "glyph": "n",
+                    "kind": "letter",
+                    "key": "n"
+                },
+                {
+                    "codepoint": "U+F000D",
+                    "glyph": "k",
+                    "kind": "letter",
+                    "key": "k"
+                },
+                {
+                    "codepoint": "U+F000E",
+                    "glyph": "g",
+                    "kind": "letter",
+                    "key": "g"
+                },
+                {
+                    "codepoint": "U+F000F",
+                    "glyph": "s",
+                    "kind": "letter",
+                    "key": "s"
+                },
+                {
+                    "codepoint": "U+F0010",
+                    "glyph": "z",
+                    "kind": "letter",
+                    "key": "z"
+                },
+                {
+                    "codepoint": "U+F0011",
+                    "glyph": "h",
+                    "kind": "letter",
+                    "key": "h"
+                },
+                {
+                    "codepoint": "U+F0012",
+                    "glyph": "l",
+                    "kind": "letter",
+                    "key": "l"
+                },
+                {
+                    "codepoint": "U+F0013",
+                    "glyph": "r",
+                    "kind": "letter",
+                    "key": "r"
+                },
+                {
+                    "codepoint": "U+F0014",
+                    "glyph": "j",
+                    "kind": "letter",
+                    "key": "j"
+                },
+                {
+                    "codepoint": "U+F0015",
+                    "glyph": "q",
+                    "kind": "letter",
+                    "key": "q"
+                },
+                {
+                    "codepoint": "U+F0016",
+                    "glyph": "w",
+                    "kind": "letter",
+                    "key": "w"
+                },
+                {
+                    "codepoint": "U+F0017",
+                    "glyph": "y",
+                    "kind": "letter",
+                    "key": "y"
+                },
+                {
+                    "codepoint": "U+F0018",
+                    "glyph": "catch",
+                    "kind": "letter",
+                    "key": "'"
+                },
+                {
+                    "codepoint": "U+F0020",
+                    "glyph": "t_h",
+                    "kind": "digraph",
+                    "key": "shift+t"
+                },
+                {
+                    "codepoint": "U+F0021",
+                    "glyph": "d_h",
+                    "kind": "digraph",
+                    "key": "shift+d"
+                },
+                {
+                    "codepoint": "U+F0022",
+                    "glyph": "k_h",
+                    "kind": "digraph",
+                    "key": "shift+k"
+                },
+                {
+                    "codepoint": "U+F0023",
+                    "glyph": "g_h",
+                    "kind": "digraph",
+                    "key": "shift+g"
+                },
+                {
+                    "codepoint": "U+F0024",
+                    "glyph": "sh",
+                    "kind": "digraph",
+                    "key": "shift+s"
+                },
+                {
+                    "codepoint": "U+F0025",
+                    "glyph": "zh",
+                    "kind": "digraph",
+                    "key": "shift+z"
+                },
+                {
+                    "codepoint": "U+F0026",
+                    "glyph": "ts",
+                    "kind": "digraph",
+                    "key": "shift+x"
+                },
+                {
+                    "codepoint": "U+F0027",
+                    "glyph": "ch",
+                    "kind": "digraph",
+                    "key": "shift+c"
+                },
+                {
+                    "codepoint": "U+F0028",
+                    "glyph": "ng",
+                    "kind": "digraph",
+                    "key": "shift+n"
+                },
+                {
+                    "codepoint": "U+F0029",
+                    "glyph": "ny",
+                    "kind": "digraph",
+                    "key": "shift+y"
+                },
+                {
+                    "codepoint": "U+F002A",
+                    "glyph": "hl",
+                    "kind": "digraph",
+                    "key": "shift+h"
+                },
+                {
+                    "codepoint": "U+F0030",
+                    "glyph": "ai",
+                    "kind": "diphthong",
+                    "key": "shift+a"
+                },
+                {
+                    "codepoint": "U+F0031",
+                    "glyph": "au",
+                    "kind": "diphthong",
+                    "key": "shift+u"
+                },
+                {
+                    "codepoint": "U+F0032",
+                    "glyph": "ei",
+                    "kind": "diphthong",
+                    "key": "shift+e"
+                },
+                {
+                    "codepoint": "U+F0033",
+                    "glyph": "oi",
+                    "kind": "diphthong",
+                    "key": "shift+o"
+                },
+                {
+                    "codepoint": "U+F0034",
+                    "glyph": "ou",
+                    "kind": "diphthong",
+                    "key": "shift+w"
+                },
+                {
+                    "codepoint": "U+F0040",
+                    "glyph": "num.0",
+                    "kind": "numeral",
+                    "key": "0"
+                },
+                {
+                    "codepoint": "U+F0041",
+                    "glyph": "num.1",
+                    "kind": "numeral",
+                    "key": "1"
+                },
+                {
+                    "codepoint": "U+F0042",
+                    "glyph": "num.2",
+                    "kind": "numeral",
+                    "key": "2"
+                },
+                {
+                    "codepoint": "U+F0043",
+                    "glyph": "num.3",
+                    "kind": "numeral",
+                    "key": "3"
+                },
+                {
+                    "codepoint": "U+F0044",
+                    "glyph": "num.4",
+                    "kind": "numeral",
+                    "key": "4"
+                },
+                {
+                    "codepoint": "U+F0045",
+                    "glyph": "num.5",
+                    "kind": "numeral",
+                    "key": "5"
+                },
+                {
+                    "codepoint": "U+F0046",
+                    "glyph": "num.6",
+                    "kind": "numeral",
+                    "key": "6"
+                },
+                {
+                    "codepoint": "U+F0047",
+                    "glyph": "num.7",
+                    "kind": "numeral",
+                    "key": "7"
+                },
+                {
+                    "codepoint": "U+F0048",
+                    "glyph": "num.8",
+                    "kind": "numeral",
+                    "key": "8"
+                },
+                {
+                    "codepoint": "U+F0049",
+                    "glyph": "num.9",
+                    "kind": "numeral",
+                    "key": "9"
+                },
+                {
+                    "codepoint": "U+F004A",
+                    "glyph": "num.10",
+                    "kind": "numeral",
+                    "key": "option+0"
+                },
+                {
+                    "codepoint": "U+F004B",
+                    "glyph": "num.11",
+                    "kind": "numeral",
+                    "key": "option+1"
+                },
+                {
+                    "codepoint": "U+F004C",
+                    "glyph": "num.12",
+                    "kind": "numeral",
+                    "key": "option+2"
+                },
+                {
+                    "codepoint": "U+F004D",
+                    "glyph": "num.13",
+                    "kind": "numeral",
+                    "key": "option+3"
+                },
+                {
+                    "codepoint": "U+F004E",
+                    "glyph": "num.14",
+                    "kind": "numeral",
+                    "key": "option+4"
+                },
+                {
+                    "codepoint": "U+F004F",
+                    "glyph": "num.15",
+                    "kind": "numeral",
+                    "key": "option+5"
+                },
+                {
+                    "codepoint": "U+F0050",
+                    "glyph": "period",
+                    "kind": "point",
+                    "key": "."
+                },
+                {
+                    "codepoint": "U+F0051",
+                    "glyph": "comma",
+                    "kind": "point",
+                    "key": ","
+                },
+                {
+                    "codepoint": "U+F0052",
+                    "glyph": "exclam",
+                    "kind": "point",
+                    "key": "shift+1"
+                },
+                {
+                    "codepoint": "U+F0053",
+                    "glyph": "hyphen",
+                    "kind": "point",
+                    "key": "-"
+                },
+                {
+                    "codepoint": "U+F0054",
+                    "glyph": "quote.open",
+                    "kind": "point",
+                    "key": "shift+,"
+                },
+                {
+                    "codepoint": "U+F0055",
+                    "glyph": "quote.close",
+                    "kind": "point",
+                    "key": "shift+."
+                },
+                {
+                    "codepoint": "U+F0060",
+                    "glyph": "lengthmark",
+                    "kind": "mark",
+                    "key": "option+e"
+                }
+            ]
+        },
+        {
+            "name": "Pirzath Hand Lifted",
+            "family": "Pirzath Hand",
+            "class": "hl-pirzath-hand-lifted",
+            "files": {
+                "woff2": "fonts/PirzathHand-Regular.woff2",
+                "ttf": "fonts/PirzathHand-Regular.ttf"
+            },
+            "direction": "ltr",
+            "features": [],
+            "codepoints": [
+                {
+                    "codepoint": "U+F0000",
+                    "glyph": "a",
+                    "kind": "letter",
+                    "key": "a"
+                },
+                {
+                    "codepoint": "U+F0001",
+                    "glyph": "e",
+                    "kind": "letter",
+                    "key": "e"
+                },
+                {
+                    "codepoint": "U+F0002",
+                    "glyph": "i",
+                    "kind": "letter",
+                    "key": "i"
+                },
+                {
+                    "codepoint": "U+F0003",
+                    "glyph": "o",
+                    "kind": "letter",
+                    "key": "o"
+                },
+                {
+                    "codepoint": "U+F0004",
+                    "glyph": "u",
+                    "kind": "letter",
+                    "key": "u"
+                },
+                {
+                    "codepoint": "U+F0005",
+                    "glyph": "p",
+                    "kind": "letter",
+                    "key": "p"
+                },
+                {
+                    "codepoint": "U+F0006",
+                    "glyph": "b",
+                    "kind": "letter",
+                    "key": "b"
+                },
+                {
+                    "codepoint": "U+F0007",
+                    "glyph": "f",
+                    "kind": "letter",
+                    "key": "f"
+                },
+                {
+                    "codepoint": "U+F0008",
+                    "glyph": "v",
+                    "kind": "letter",
+                    "key": "v"
+                },
+                {
+                    "codepoint": "U+F0009",
+                    "glyph": "m",
+                    "kind": "letter",
+                    "key": "m"
+                },
+                {
+                    "codepoint": "U+F000A",
+                    "glyph": "t",
+                    "kind": "letter",
+                    "key": "t"
+                },
+                {
+                    "codepoint": "U+F000B",
+                    "glyph": "d",
+                    "kind": "letter",
+                    "key": "d"
+                },
+                {
+                    "codepoint": "U+F000C",
+                    "glyph": "n",
+                    "kind": "letter",
+                    "key": "n"
+                },
+                {
+                    "codepoint": "U+F000D",
+                    "glyph": "k",
+                    "kind": "letter",
+                    "key": "k"
+                },
+                {
+                    "codepoint": "U+F000E",
+                    "glyph": "g",
+                    "kind": "letter",
+                    "key": "g"
+                },
+                {
+                    "codepoint": "U+F000F",
+                    "glyph": "s",
+                    "kind": "letter",
+                    "key": "s"
+                },
+                {
+                    "codepoint": "U+F0010",
+                    "glyph": "z",
+                    "kind": "letter",
+                    "key": "z"
+                },
+                {
+                    "codepoint": "U+F0011",
+                    "glyph": "h",
+                    "kind": "letter",
+                    "key": "h"
+                },
+                {
+                    "codepoint": "U+F0012",
+                    "glyph": "l",
+                    "kind": "letter",
+                    "key": "l"
+                },
+                {
+                    "codepoint": "U+F0013",
+                    "glyph": "r",
+                    "kind": "letter",
+                    "key": "r"
+                },
+                {
+                    "codepoint": "U+F0014",
+                    "glyph": "j",
+                    "kind": "letter",
+                    "key": "j"
+                },
+                {
+                    "codepoint": "U+F0015",
+                    "glyph": "q",
+                    "kind": "letter",
+                    "key": "q"
+                },
+                {
+                    "codepoint": "U+F0016",
+                    "glyph": "w",
+                    "kind": "letter",
+                    "key": "w"
+                },
+                {
+                    "codepoint": "U+F0017",
+                    "glyph": "y",
+                    "kind": "letter",
+                    "key": "y"
+                },
+                {
+                    "codepoint": "U+F0018",
+                    "glyph": "catch",
+                    "kind": "letter",
+                    "key": "'"
+                },
+                {
+                    "codepoint": "U+F0020",
+                    "glyph": "t_h",
+                    "kind": "digraph",
+                    "key": "shift+t"
+                },
+                {
+                    "codepoint": "U+F0021",
+                    "glyph": "d_h",
+                    "kind": "digraph",
+                    "key": "shift+d"
+                },
+                {
+                    "codepoint": "U+F0022",
+                    "glyph": "k_h",
+                    "kind": "digraph",
+                    "key": "shift+k"
+                },
+                {
+                    "codepoint": "U+F0023",
+                    "glyph": "g_h",
+                    "kind": "digraph",
+                    "key": "shift+g"
+                },
+                {
+                    "codepoint": "U+F0024",
+                    "glyph": "sh",
+                    "kind": "digraph",
+                    "key": "shift+s"
+                },
+                {
+                    "codepoint": "U+F0025",
+                    "glyph": "zh",
+                    "kind": "digraph",
+                    "key": "shift+z"
+                },
+                {
+                    "codepoint": "U+F0026",
+                    "glyph": "ts",
+                    "kind": "digraph",
+                    "key": "shift+x"
+                },
+                {
+                    "codepoint": "U+F0027",
+                    "glyph": "ch",
+                    "kind": "digraph",
+                    "key": "shift+c"
+                },
+                {
+                    "codepoint": "U+F0028",
+                    "glyph": "ng",
+                    "kind": "digraph",
+                    "key": "shift+n"
+                },
+                {
+                    "codepoint": "U+F0029",
+                    "glyph": "ny",
+                    "kind": "digraph",
+                    "key": "shift+y"
+                },
+                {
+                    "codepoint": "U+F002A",
+                    "glyph": "hl",
+                    "kind": "digraph",
+                    "key": "shift+h"
+                },
+                {
+                    "codepoint": "U+F0030",
+                    "glyph": "ai",
+                    "kind": "diphthong",
+                    "key": "shift+a"
+                },
+                {
+                    "codepoint": "U+F0031",
+                    "glyph": "au",
+                    "kind": "diphthong",
+                    "key": "shift+u"
+                },
+                {
+                    "codepoint": "U+F0032",
+                    "glyph": "ei",
+                    "kind": "diphthong",
+                    "key": "shift+e"
+                },
+                {
+                    "codepoint": "U+F0033",
+                    "glyph": "oi",
+                    "kind": "diphthong",
+                    "key": "shift+o"
+                },
+                {
+                    "codepoint": "U+F0034",
+                    "glyph": "ou",
+                    "kind": "diphthong",
+                    "key": "shift+w"
+                },
+                {
+                    "codepoint": "U+F0040",
+                    "glyph": "num.0",
+                    "kind": "numeral",
+                    "key": "0"
+                },
+                {
+                    "codepoint": "U+F0041",
+                    "glyph": "num.1",
+                    "kind": "numeral",
+                    "key": "1"
+                },
+                {
+                    "codepoint": "U+F0042",
+                    "glyph": "num.2",
+                    "kind": "numeral",
+                    "key": "2"
+                },
+                {
+                    "codepoint": "U+F0043",
+                    "glyph": "num.3",
+                    "kind": "numeral",
+                    "key": "3"
+                },
+                {
+                    "codepoint": "U+F0044",
+                    "glyph": "num.4",
+                    "kind": "numeral",
+                    "key": "4"
+                },
+                {
+                    "codepoint": "U+F0045",
+                    "glyph": "num.5",
+                    "kind": "numeral",
+                    "key": "5"
+                },
+                {
+                    "codepoint": "U+F0046",
+                    "glyph": "num.6",
+                    "kind": "numeral",
+                    "key": "6"
+                },
+                {
+                    "codepoint": "U+F0047",
+                    "glyph": "num.7",
+                    "kind": "numeral",
+                    "key": "7"
+                },
+                {
+                    "codepoint": "U+F0048",
+                    "glyph": "num.8",
+                    "kind": "numeral",
+                    "key": "8"
+                },
+                {
+                    "codepoint": "U+F0049",
+                    "glyph": "num.9",
+                    "kind": "numeral",
+                    "key": "9"
+                },
+                {
+                    "codepoint": "U+F004A",
+                    "glyph": "num.10",
+                    "kind": "numeral",
+                    "key": "option+0"
+                },
+                {
+                    "codepoint": "U+F004B",
+                    "glyph": "num.11",
+                    "kind": "numeral",
+                    "key": "option+1"
+                },
+                {
+                    "codepoint": "U+F004C",
+                    "glyph": "num.12",
+                    "kind": "numeral",
+                    "key": "option+2"
+                },
+                {
+                    "codepoint": "U+F004D",
+                    "glyph": "num.13",
+                    "kind": "numeral",
+                    "key": "option+3"
+                },
+                {
+                    "codepoint": "U+F004E",
+                    "glyph": "num.14",
+                    "kind": "numeral",
+                    "key": "option+4"
+                },
+                {
+                    "codepoint": "U+F004F",
+                    "glyph": "num.15",
+                    "kind": "numeral",
+                    "key": "option+5"
+                },
+                {
+                    "codepoint": "U+F0050",
+                    "glyph": "period",
+                    "kind": "point",
+                    "key": "."
+                },
+                {
+                    "codepoint": "U+F0051",
+                    "glyph": "comma",
+                    "kind": "point",
+                    "key": ","
+                },
+                {
+                    "codepoint": "U+F0052",
+                    "glyph": "exclam",
+                    "kind": "point",
+                    "key": "shift+1"
+                },
+                {
+                    "codepoint": "U+F0053",
+                    "glyph": "hyphen",
+                    "kind": "point",
+                    "key": "-"
+                },
+                {
+                    "codepoint": "U+F0054",
+                    "glyph": "quote.open",
+                    "kind": "point",
+                    "key": "shift+,"
+                },
+                {
+                    "codepoint": "U+F0055",
+                    "glyph": "quote.close",
+                    "kind": "point",
+                    "key": "shift+."
+                },
+                {
+                    "codepoint": "U+F0060",
+                    "glyph": "lengthmark",
+                    "kind": "mark",
+                    "key": "option+e"
+                }
+            ]
+        },
+        {
+            "name": "Qalezu Hand",
+            "family": "Qalezu Hand",
+            "class": "hl-qalezu-hand",
+            "files": {
+                "woff2": "fonts/QalezuHand-Regular.woff2",
+                "ttf": "fonts/QalezuHand-Regular.ttf"
+            },
+            "direction": "rtl",
+            "features": [],
+            "codepoints": [
+                {
+                    "codepoint": "U+1EA00",
+                    "glyph": "l",
+                    "kind": "letter",
+                    "key": "l"
+                },
+                {
+                    "codepoint": "U+1EA01",
+                    "glyph": "r",
+                    "kind": "letter",
+                    "key": "r"
+                },
+                {
+                    "codepoint": "U+1EA02",
+                    "glyph": "t",
+                    "kind": "letter",
+                    "key": "t"
+                },
+                {
+                    "codepoint": "U+1EA03",
+                    "glyph": "d",
+                    "kind": "letter",
+                    "key": "d"
+                },
+                {
+                    "codepoint": "U+1EA04",
+                    "glyph": "z",
+                    "kind": "letter",
+                    "key": "z"
+                },
+                {
+                    "codepoint": "U+1EA05",
+                    "glyph": "s",
+                    "kind": "letter",
+                    "key": "s"
+                },
+                {
+                    "codepoint": "U+1EA06",
+                    "glyph": "g",
+                    "kind": "letter",
+                    "key": "g"
+                },
+                {
+                    "codepoint": "U+1EA07",
+                    "glyph": "k",
+                    "kind": "letter",
+                    "key": "k"
+                },
+                {
+                    "codepoint": "U+1EA08",
+                    "glyph": "n",
+                    "kind": "letter",
+                    "key": "n"
+                },
+                {
+                    "codepoint": "U+1EA09",
+                    "glyph": "th",
+                    "kind": "letter",
+                    "key": "shift+t"
+                },
+                {
+                    "codepoint": "U+1EA0A",
+                    "glyph": "m",
+                    "kind": "letter",
+                    "key": "m"
+                },
+                {
+                    "codepoint": "U+1EA0B",
+                    "glyph": "q",
+                    "kind": "letter",
+                    "key": "q"
+                },
+                {
+                    "codepoint": "U+1EA0C",
+                    "glyph": "kh",
+                    "kind": "letter",
+                    "key": "shift+k"
+                },
+                {
+                    "codepoint": "U+1EA0D",
+                    "glyph": "gh",
+                    "kind": "letter",
+                    "key": "shift+g"
+                },
+                {
+                    "codepoint": "U+1EA0E",
+                    "glyph": "h",
+                    "kind": "letter",
+                    "key": "h"
+                },
+                {
+                    "codepoint": "U+1EA0F",
+                    "glyph": "sh",
+                    "kind": "letter",
+                    "key": "shift+s"
+                },
+                {
+                    "codepoint": "U+1EA10",
+                    "glyph": "p",
+                    "kind": "letter",
+                    "key": "p"
+                },
+                {
+                    "codepoint": "U+1EA11",
+                    "glyph": "b",
+                    "kind": "letter",
+                    "key": "b"
+                },
+                {
+                    "codepoint": "U+1EA12",
+                    "glyph": "f",
+                    "kind": "letter",
+                    "key": "f"
+                },
+                {
+                    "codepoint": "U+1EA13",
+                    "glyph": "w",
+                    "kind": "letter",
+                    "key": "w"
+                },
+                {
+                    "codepoint": "U+1EA14",
+                    "glyph": "y",
+                    "kind": "letter",
+                    "key": "y"
+                },
+                {
+                    "codepoint": "U+1EA15",
+                    "glyph": "catch",
+                    "kind": "letter",
+                    "key": "'"
+                },
+                {
+                    "codepoint": "U+1EA16",
+                    "glyph": "tj",
+                    "kind": "letter",
+                    "key": "shift+c"
+                },
+                {
+                    "codepoint": "U+1EA17",
+                    "glyph": "l.dbl",
+                    "kind": "doubled",
+                    "key": "option+l"
+                },
+                {
+                    "codepoint": "U+1EA18",
+                    "glyph": "r.dbl",
+                    "kind": "doubled",
+                    "key": "option+r"
+                },
+                {
+                    "codepoint": "U+1EA19",
+                    "glyph": "t.dbl",
+                    "kind": "doubled",
+                    "key": "option+t"
+                },
+                {
+                    "codepoint": "U+1EA1A",
+                    "glyph": "d.dbl",
+                    "kind": "doubled",
+                    "key": "option+d"
+                },
+                {
+                    "codepoint": "U+1EA1B",
+                    "glyph": "z.dbl",
+                    "kind": "doubled",
+                    "key": "option+z"
+                },
+                {
+                    "codepoint": "U+1EA1C",
+                    "glyph": "s.dbl",
+                    "kind": "doubled",
+                    "key": "option+s"
+                },
+                {
+                    "codepoint": "U+1EA1D",
+                    "glyph": "g.dbl",
+                    "kind": "doubled",
+                    "key": "option+g"
+                },
+                {
+                    "codepoint": "U+1EA1E",
+                    "glyph": "k.dbl",
+                    "kind": "doubled",
+                    "key": "option+k"
+                },
+                {
+                    "codepoint": "U+1EA1F",
+                    "glyph": "n.dbl",
+                    "kind": "doubled",
+                    "key": "option+n"
+                },
+                {
+                    "codepoint": "U+1EA20",
+                    "glyph": "th.dbl",
+                    "kind": "doubled",
+                    "key": "shift+a"
+                },
+                {
+                    "codepoint": "U+1EA21",
+                    "glyph": "m.dbl",
+                    "kind": "doubled",
+                    "key": "option+m"
+                },
+                {
+                    "codepoint": "U+1EA22",
+                    "glyph": "q.dbl",
+                    "kind": "doubled",
+                    "key": "option+q"
+                },
+                {
+                    "codepoint": "U+1EA23",
+                    "glyph": "kh.dbl",
+                    "kind": "doubled",
+                    "key": "shift+b"
+                },
+                {
+                    "codepoint": "U+1EA24",
+                    "glyph": "gh.dbl",
+                    "kind": "doubled",
+                    "key": "shift+d"
+                },
+                {
+                    "codepoint": "U+1EA25",
+                    "glyph": "h.dbl",
+                    "kind": "doubled",
+                    "key": "option+h"
+                },
+                {
+                    "codepoint": "U+1EA26",
+                    "glyph": "sh.dbl",
+                    "kind": "doubled",
+                    "key": "shift+e"
+                },
+                {
+                    "codepoint": "U+1EA27",
+                    "glyph": "p.dbl",
+                    "kind": "doubled",
+                    "key": "option+p"
+                },
+                {
+                    "codepoint": "U+1EA28",
+                    "glyph": "b.dbl",
+                    "kind": "doubled",
+                    "key": "option+b"
+                },
+                {
+                    "codepoint": "U+1EA29",
+                    "glyph": "f.dbl",
+                    "kind": "doubled",
+                    "key": "option+f"
+                },
+                {
+                    "codepoint": "U+1EA2A",
+                    "glyph": "w.dbl",
+                    "kind": "doubled",
+                    "key": "option+w"
+                },
+                {
+                    "codepoint": "U+1EA2B",
+                    "glyph": "y.dbl",
+                    "kind": "doubled",
+                    "key": "option+y"
+                },
+                {
+                    "codepoint": "U+1EA2C",
+                    "glyph": "tj.dbl",
+                    "kind": "doubled",
+                    "key": "shift+f"
+                },
+                {
+                    "codepoint": "U+1EA2D",
+                    "glyph": "zero",
+                    "kind": "numeral",
+                    "key": "0"
+                },
+                {
+                    "codepoint": "U+1EA2E",
+                    "glyph": "one",
+                    "kind": "numeral",
+                    "key": "1"
+                },
+                {
+                    "codepoint": "U+1EA2F",
+                    "glyph": "two",
+                    "kind": "numeral",
+                    "key": "2"
+                },
+                {
+                    "codepoint": "U+1EA30",
+                    "glyph": "three",
+                    "kind": "numeral",
+                    "key": "3"
+                },
+                {
+                    "codepoint": "U+1EA31",
+                    "glyph": "four",
+                    "kind": "numeral",
+                    "key": "4"
+                },
+                {
+                    "codepoint": "U+1EA32",
+                    "glyph": "five",
+                    "kind": "numeral",
+                    "key": "5"
+                },
+                {
+                    "codepoint": "U+1EA33",
+                    "glyph": "six",
+                    "kind": "numeral",
+                    "key": "6"
+                },
+                {
+                    "codepoint": "U+1EA34",
+                    "glyph": "seven",
+                    "kind": "numeral",
+                    "key": "7"
+                },
+                {
+                    "codepoint": "U+1EA35",
+                    "glyph": "eight",
+                    "kind": "numeral",
+                    "key": "8"
+                },
+                {
+                    "codepoint": "U+1EA36",
+                    "glyph": "nine",
+                    "kind": "numeral",
+                    "key": "9"
+                },
+                {
+                    "codepoint": "U+1EA37",
+                    "glyph": "period",
+                    "kind": "point",
+                    "key": "."
+                },
+                {
+                    "codepoint": "U+1EA38",
+                    "glyph": "comma",
+                    "kind": "point",
+                    "key": ","
+                },
+                {
+                    "codepoint": "U+1ECC0",
+                    "glyph": "l.catch",
+                    "kind": "catchbefore",
+                    "key": "option+shift+l"
+                },
+                {
+                    "codepoint": "U+1ECC1",
+                    "glyph": "r.catch",
+                    "kind": "catchbefore",
+                    "key": "option+shift+r"
+                },
+                {
+                    "codepoint": "U+1ECC2",
+                    "glyph": "t.catch",
+                    "kind": "catchbefore",
+                    "key": "option+shift+t"
+                },
+                {
+                    "codepoint": "U+1ECC3",
+                    "glyph": "d.catch",
+                    "kind": "catchbefore",
+                    "key": "option+shift+d"
+                },
+                {
+                    "codepoint": "U+1ECC4",
+                    "glyph": "z.catch",
+                    "kind": "catchbefore",
+                    "key": "option+shift+z"
+                },
+                {
+                    "codepoint": "U+1ECC5",
+                    "glyph": "s.catch",
+                    "kind": "catchbefore",
+                    "key": "option+shift+s"
+                },
+                {
+                    "codepoint": "U+1ECC6",
+                    "glyph": "g.catch",
+                    "kind": "catchbefore",
+                    "key": "option+shift+g"
+                },
+                {
+                    "codepoint": "U+1ECC7",
+                    "glyph": "k.catch",
+                    "kind": "catchbefore",
+                    "key": "option+shift+k"
+                },
+                {
+                    "codepoint": "U+1ECC8",
+                    "glyph": "n.catch",
+                    "kind": "catchbefore",
+                    "key": "option+shift+n"
+                },
+                {
+                    "codepoint": "U+1ECC9",
+                    "glyph": "th.catch",
+                    "kind": "catchbefore",
+                    "key": "shift+h"
+                },
+                {
+                    "codepoint": "U+1ECCA",
+                    "glyph": "m.catch",
+                    "kind": "catchbefore",
+                    "key": "option+shift+m"
+                },
+                {
+                    "codepoint": "U+1ECCB",
+                    "glyph": "q.catch",
+                    "kind": "catchbefore",
+                    "key": "option+shift+q"
+                },
+                {
+                    "codepoint": "U+1ECCC",
+                    "glyph": "kh.catch",
+                    "kind": "catchbefore",
+                    "key": "shift+i"
+                },
+                {
+                    "codepoint": "U+1ECCD",
+                    "glyph": "gh.catch",
+                    "kind": "catchbefore",
+                    "key": "shift+j"
+                },
+                {
+                    "codepoint": "U+1ECCE",
+                    "glyph": "h.catch",
+                    "kind": "catchbefore",
+                    "key": "option+shift+h"
+                },
+                {
+                    "codepoint": "U+1ECCF",
+                    "glyph": "sh.catch",
+                    "kind": "catchbefore",
+                    "key": "shift+l"
+                },
+                {
+                    "codepoint": "U+1ECD0",
+                    "glyph": "p.catch",
+                    "kind": "catchbefore",
+                    "key": "option+shift+p"
+                },
+                {
+                    "codepoint": "U+1ECD1",
+                    "glyph": "b.catch",
+                    "kind": "catchbefore",
+                    "key": "option+shift+b"
+                },
+                {
+                    "codepoint": "U+1ECD2",
+                    "glyph": "f.catch",
+                    "kind": "catchbefore",
+                    "key": "option+shift+f"
+                },
+                {
+                    "codepoint": "U+1ECD3",
+                    "glyph": "w.catch",
+                    "kind": "catchbefore",
+                    "key": "option+shift+w"
+                },
+                {
+                    "codepoint": "U+1ECD4",
+                    "glyph": "y.catch",
+                    "kind": "catchbefore",
+                    "key": "option+shift+y"
+                },
+                {
+                    "codepoint": "U+1ECD5",
+                    "glyph": "tj.catch",
+                    "kind": "catchbefore",
+                    "key": "shift+m"
+                },
+                {
+                    "codepoint": "U+1ECD6",
+                    "glyph": "l.dbl.catch",
+                    "kind": "catchbefore",
+                    "key": "shift+n"
+                },
+                {
+                    "codepoint": "U+1ECD7",
+                    "glyph": "r.dbl.catch",
+                    "kind": "catchbefore",
+                    "key": "shift+o"
+                },
+                {
+                    "codepoint": "U+1ECD8",
+                    "glyph": "t.dbl.catch",
+                    "kind": "catchbefore",
+                    "key": "shift+p"
+                },
+                {
+                    "codepoint": "U+1ECD9",
+                    "glyph": "d.dbl.catch",
+                    "kind": "catchbefore",
+                    "key": "shift+q"
+                },
+                {
+                    "codepoint": "U+1ECDA",
+                    "glyph": "z.dbl.catch",
+                    "kind": "catchbefore",
+                    "key": "shift+r"
+                },
+                {
+                    "codepoint": "U+1ECDB",
+                    "glyph": "s.dbl.catch",
+                    "kind": "catchbefore",
+                    "key": "shift+u"
+                },
+                {
+                    "codepoint": "U+1ECDC",
+                    "glyph": "g.dbl.catch",
+                    "kind": "catchbefore",
+                    "key": "shift+v"
+                },
+                {
+                    "codepoint": "U+1ECDD",
+                    "glyph": "k.dbl.catch",
+                    "kind": "catchbefore",
+                    "key": "shift+w"
+                },
+                {
+                    "codepoint": "U+1ECDE",
+                    "glyph": "n.dbl.catch",
+                    "kind": "catchbefore",
+                    "key": "shift+x"
+                },
+                {
+                    "codepoint": "U+1ECDF",
+                    "glyph": "th.dbl.catch",
+                    "kind": "catchbefore",
+                    "key": "shift+y"
+                },
+                {
+                    "codepoint": "U+1ECE0",
+                    "glyph": "m.dbl.catch",
+                    "kind": "catchbefore",
+                    "key": "shift+z"
+                },
+                {
+                    "codepoint": "U+1ECE1",
+                    "glyph": "q.dbl.catch",
+                    "kind": "catchbefore",
+                    "key": "option+shift+a"
+                },
+                {
+                    "codepoint": "U+1ECE2",
+                    "glyph": "kh.dbl.catch",
+                    "kind": "catchbefore",
+                    "key": "option+shift+c"
+                },
+                {
+                    "codepoint": "U+1ECE3",
+                    "glyph": "gh.dbl.catch",
+                    "kind": "catchbefore",
+                    "key": "option+shift+e"
+                },
+                {
+                    "codepoint": "U+1ECE4",
+                    "glyph": "h.dbl.catch",
+                    "kind": "catchbefore",
+                    "key": "option+shift+i"
+                },
+                {
+                    "codepoint": "U+1ECE5",
+                    "glyph": "sh.dbl.catch",
+                    "kind": "catchbefore",
+                    "key": "option+shift+j"
+                },
+                {
+                    "codepoint": "U+1ECE6",
+                    "glyph": "p.dbl.catch",
+                    "kind": "catchbefore",
+                    "key": "option+shift+o"
+                },
+                {
+                    "codepoint": "U+1ECE7",
+                    "glyph": "b.dbl.catch",
+                    "kind": "catchbefore",
+                    "key": "option+shift+u"
+                },
+                {
+                    "codepoint": "U+1ECE8",
+                    "glyph": "f.dbl.catch",
+                    "kind": "catchbefore",
+                    "key": "option+shift+v"
+                },
+                {
+                    "codepoint": "U+1ECE9",
+                    "glyph": "w.dbl.catch",
+                    "kind": "catchbefore",
+                    "key": "option+shift+x"
+                },
+                {
+                    "codepoint": "U+1ECEA",
+                    "glyph": "y.dbl.catch",
+                    "kind": "catchbefore",
+                    "key": "option+shift+0"
+                },
+                {
+                    "codepoint": "U+1ECEB",
+                    "glyph": "tj.dbl.catch",
+                    "kind": "catchbefore",
+                    "key": "option+shift+1"
+                }
+            ]
+        },
+        {
+            "name": "Semaron Kuriale",
+            "family": "Semaron Kuriale",
+            "class": "hl-semaron-kuriale",
+            "files": {
+                "woff2": "fonts/SemaronKuriale-Regular.woff2",
+                "ttf": "fonts/SemaronKuriale-Regular.ttf"
+            },
+            "direction": "ltr",
+            "features": [],
+            "codepoints": [
+                {
+                    "codepoint": "U+F0200",
+                    "glyph": "A",
+                    "kind": "letter",
+                    "key": "shift+a"
+                },
+                {
+                    "codepoint": "U+F0201",
+                    "glyph": "B",
+                    "kind": "letter",
+                    "key": "shift+b"
+                },
+                {
+                    "codepoint": "U+F0202",
+                    "glyph": "D",
+                    "kind": "letter",
+                    "key": "shift+d"
+                },
+                {
+                    "codepoint": "U+F0203",
+                    "glyph": "E",
+                    "kind": "letter",
+                    "key": "shift+e"
+                },
+                {
+                    "codepoint": "U+F0204",
+                    "glyph": "F",
+                    "kind": "letter",
+                    "key": "shift+f"
+                },
+                {
+                    "codepoint": "U+F0205",
+                    "glyph": "G",
+                    "kind": "letter",
+                    "key": "shift+g"
+                },
+                {
+                    "codepoint": "U+F0206",
+                    "glyph": "H",
+                    "kind": "letter",
+                    "key": "shift+h"
+                },
+                {
+                    "codepoint": "U+F0207",
+                    "glyph": "I",
+                    "kind": "letter",
+                    "key": "shift+i"
+                },
+                {
+                    "codepoint": "U+F0208",
+                    "glyph": "J",
+                    "kind": "letter",
+                    "key": "shift+j"
+                },
+                {
+                    "codepoint": "U+F0209",
+                    "glyph": "K",
+                    "kind": "letter",
+                    "key": "shift+k"
+                },
+                {
+                    "codepoint": "U+F020A",
+                    "glyph": "L",
+                    "kind": "letter",
+                    "key": "shift+l"
+                },
+                {
+                    "codepoint": "U+F020B",
+                    "glyph": "M",
+                    "kind": "letter",
+                    "key": "shift+m"
+                },
+                {
+                    "codepoint": "U+F020C",
+                    "glyph": "N",
+                    "kind": "letter",
+                    "key": "shift+n"
+                },
+                {
+                    "codepoint": "U+F020D",
+                    "glyph": "O",
+                    "kind": "letter",
+                    "key": "shift+o"
+                },
+                {
+                    "codepoint": "U+F020E",
+                    "glyph": "P",
+                    "kind": "letter",
+                    "key": "shift+p"
+                },
+                {
+                    "codepoint": "U+F020F",
+                    "glyph": "R",
+                    "kind": "letter",
+                    "key": "shift+r"
+                },
+                {
+                    "codepoint": "U+F0210",
+                    "glyph": "S",
+                    "kind": "letter",
+                    "key": "shift+s"
+                },
+                {
+                    "codepoint": "U+F0211",
+                    "glyph": "T",
+                    "kind": "letter",
+                    "key": "shift+t"
+                },
+                {
+                    "codepoint": "U+F0212",
+                    "glyph": "U",
+                    "kind": "letter",
+                    "key": "shift+u"
+                },
+                {
+                    "codepoint": "U+F0213",
+                    "glyph": "V",
+                    "kind": "letter",
+                    "key": "shift+v"
+                },
+                {
+                    "codepoint": "U+F0214",
+                    "glyph": "W",
+                    "kind": "letter",
+                    "key": "shift+w"
+                },
+                {
+                    "codepoint": "U+F0215",
+                    "glyph": "Y",
+                    "kind": "letter",
+                    "key": "shift+y"
+                },
+                {
+                    "codepoint": "U+F0216",
+                    "glyph": "Z",
+                    "kind": "letter",
+                    "key": "shift+z"
+                },
+                {
+                    "codepoint": "U+F0220",
+                    "glyph": "A.long",
+                    "kind": "letter",
+                    "key": "option+shift+a"
+                },
+                {
+                    "codepoint": "U+F0221",
+                    "glyph": "E.long",
+                    "kind": "letter",
+                    "key": "option+shift+e"
+                },
+                {
+                    "codepoint": "U+F0222",
+                    "glyph": "I.long",
+                    "kind": "letter",
+                    "key": "option+shift+i"
+                },
+                {
+                    "codepoint": "U+F0223",
+                    "glyph": "O.long",
+                    "kind": "letter",
+                    "key": "option+shift+o"
+                },
+                {
+                    "codepoint": "U+F0224",
+                    "glyph": "U.long",
+                    "kind": "letter",
+                    "key": "option+shift+u"
+                },
+                {
+                    "codepoint": "U+F0230",
+                    "glyph": "a",
+                    "kind": "letter",
+                    "key": "a"
+                },
+                {
+                    "codepoint": "U+F0231",
+                    "glyph": "b",
+                    "kind": "letter",
+                    "key": "b"
+                },
+                {
+                    "codepoint": "U+F0232",
+                    "glyph": "d",
+                    "kind": "letter",
+                    "key": "d"
+                },
+                {
+                    "codepoint": "U+F0233",
+                    "glyph": "e",
+                    "kind": "letter",
+                    "key": "e"
+                },
+                {
+                    "codepoint": "U+F0234",
+                    "glyph": "f",
+                    "kind": "letter",
+                    "key": "f"
+                },
+                {
+                    "codepoint": "U+F0235",
+                    "glyph": "g",
+                    "kind": "letter",
+                    "key": "g"
+                },
+                {
+                    "codepoint": "U+F0236",
+                    "glyph": "h",
+                    "kind": "letter",
+                    "key": "h"
+                },
+                {
+                    "codepoint": "U+F0237",
+                    "glyph": "i",
+                    "kind": "letter",
+                    "key": "i"
+                },
+                {
+                    "codepoint": "U+F0238",
+                    "glyph": "j",
+                    "kind": "letter",
+                    "key": "j"
+                },
+                {
+                    "codepoint": "U+F0239",
+                    "glyph": "k",
+                    "kind": "letter",
+                    "key": "k"
+                },
+                {
+                    "codepoint": "U+F023A",
+                    "glyph": "l",
+                    "kind": "letter",
+                    "key": "l"
+                },
+                {
+                    "codepoint": "U+F023B",
+                    "glyph": "m",
+                    "kind": "letter",
+                    "key": "m"
+                },
+                {
+                    "codepoint": "U+F023C",
+                    "glyph": "n",
+                    "kind": "letter",
+                    "key": "n"
+                },
+                {
+                    "codepoint": "U+F023D",
+                    "glyph": "o",
+                    "kind": "letter",
+                    "key": "o"
+                },
+                {
+                    "codepoint": "U+F023E",
+                    "glyph": "p",
+                    "kind": "letter",
+                    "key": "p"
+                },
+                {
+                    "codepoint": "U+F023F",
+                    "glyph": "r",
+                    "kind": "letter",
+                    "key": "r"
+                },
+                {
+                    "codepoint": "U+F0240",
+                    "glyph": "s",
+                    "kind": "letter",
+                    "key": "s"
+                },
+                {
+                    "codepoint": "U+F0241",
+                    "glyph": "t",
+                    "kind": "letter",
+                    "key": "t"
+                },
+                {
+                    "codepoint": "U+F0242",
+                    "glyph": "u",
+                    "kind": "letter",
+                    "key": "u"
+                },
+                {
+                    "codepoint": "U+F0243",
+                    "glyph": "v",
+                    "kind": "letter",
+                    "key": "v"
+                },
+                {
+                    "codepoint": "U+F0244",
+                    "glyph": "w",
+                    "kind": "letter",
+                    "key": "w"
+                },
+                {
+                    "codepoint": "U+F0245",
+                    "glyph": "y",
+                    "kind": "letter",
+                    "key": "y"
+                },
+                {
+                    "codepoint": "U+F0246",
+                    "glyph": "z",
+                    "kind": "letter",
+                    "key": "z"
+                },
+                {
+                    "codepoint": "U+F0248",
+                    "glyph": "a.long",
+                    "kind": "letter",
+                    "key": "option+a"
+                },
+                {
+                    "codepoint": "U+F0249",
+                    "glyph": "e.long",
+                    "kind": "letter",
+                    "key": "option+e"
+                },
+                {
+                    "codepoint": "U+F024A",
+                    "glyph": "i.long",
+                    "kind": "letter",
+                    "key": "option+i"
+                },
+                {
+                    "codepoint": "U+F024B",
+                    "glyph": "o.long",
+                    "kind": "letter",
+                    "key": "option+o"
+                },
+                {
+                    "codepoint": "U+F024C",
+                    "glyph": "u.long",
+                    "kind": "letter",
+                    "key": "option+u"
+                },
+                {
+                    "codepoint": "U+F0250",
+                    "glyph": "th",
+                    "kind": "digraph",
+                    "key": "option+t"
+                },
+                {
+                    "codepoint": "U+F0251",
+                    "glyph": "TH",
+                    "kind": "digraph",
+                    "key": "option+shift+t"
+                },
+                {
+                    "codepoint": "U+F0258",
+                    "glyph": "num.0",
+                    "kind": "numeral",
+                    "key": "0"
+                },
+                {
+                    "codepoint": "U+F0259",
+                    "glyph": "num.1",
+                    "kind": "numeral",
+                    "key": "1"
+                },
+                {
+                    "codepoint": "U+F025A",
+                    "glyph": "num.2",
+                    "kind": "numeral",
+                    "key": "2"
+                },
+                {
+                    "codepoint": "U+F025B",
+                    "glyph": "num.3",
+                    "kind": "numeral",
+                    "key": "3"
+                },
+                {
+                    "codepoint": "U+F025C",
+                    "glyph": "num.4",
+                    "kind": "numeral",
+                    "key": "4"
+                },
+                {
+                    "codepoint": "U+F025D",
+                    "glyph": "num.5",
+                    "kind": "numeral",
+                    "key": "5"
+                },
+                {
+                    "codepoint": "U+F025E",
+                    "glyph": "num.6",
+                    "kind": "numeral",
+                    "key": "6"
+                },
+                {
+                    "codepoint": "U+F025F",
+                    "glyph": "num.7",
+                    "kind": "numeral",
+                    "key": "7"
+                },
+                {
+                    "codepoint": "U+F0260",
+                    "glyph": "num.8",
+                    "kind": "numeral",
+                    "key": "8"
+                },
+                {
+                    "codepoint": "U+F0261",
+                    "glyph": "num.9",
+                    "kind": "numeral",
+                    "key": "9"
+                },
+                {
+                    "codepoint": "U+F0268",
+                    "glyph": "point",
+                    "kind": "point",
+                    "key": "."
+                },
+                {
+                    "codepoint": "U+F0270",
+                    "glyph": "grave",
+                    "kind": "mark",
+                    "key": "`"
+                }
+            ]
+        },
+        {
+            "name": "Thuravark Carved",
+            "family": "Thuravark Carved",
+            "class": "hl-thuravark-carved",
+            "files": {
+                "woff2": "fonts/ThuravarkCarved-Regular.woff2",
+                "ttf": "fonts/ThuravarkCarved-Regular.ttf"
+            },
+            "direction": "ltr",
+            "features": [],
+            "codepoints": [
+                {
+                    "codepoint": "U+F0100",
+                    "glyph": "a",
+                    "kind": "letter",
+                    "key": "a"
+                },
+                {
+                    "codepoint": "U+F0101",
+                    "glyph": "e",
+                    "kind": "letter",
+                    "key": "e"
+                },
+                {
+                    "codepoint": "U+F0102",
+                    "glyph": "i",
+                    "kind": "letter",
+                    "key": "i"
+                },
+                {
+                    "codepoint": "U+F0103",
+                    "glyph": "o",
+                    "kind": "letter",
+                    "key": "o"
+                },
+                {
+                    "codepoint": "U+F0104",
+                    "glyph": "u",
+                    "kind": "letter",
+                    "key": "u"
+                },
+                {
+                    "codepoint": "U+F0105",
+                    "glyph": "b",
+                    "kind": "letter",
+                    "key": "b"
+                },
+                {
+                    "codepoint": "U+F0106",
+                    "glyph": "d",
+                    "kind": "letter",
+                    "key": "d"
+                },
+                {
+                    "codepoint": "U+F0107",
+                    "glyph": "f",
+                    "kind": "letter",
+                    "key": "f"
+                },
+                {
+                    "codepoint": "U+F0108",
+                    "glyph": "g",
+                    "kind": "letter",
+                    "key": "g"
+                },
+                {
+                    "codepoint": "U+F0109",
+                    "glyph": "h",
+                    "kind": "letter",
+                    "key": "h"
+                },
+                {
+                    "codepoint": "U+F010A",
+                    "glyph": "j",
+                    "kind": "letter",
+                    "key": "j"
+                },
+                {
+                    "codepoint": "U+F010B",
+                    "glyph": "k",
+                    "kind": "letter",
+                    "key": "k"
+                },
+                {
+                    "codepoint": "U+F010C",
+                    "glyph": "l",
+                    "kind": "letter",
+                    "key": "l"
+                },
+                {
+                    "codepoint": "U+F010D",
+                    "glyph": "m",
+                    "kind": "letter",
+                    "key": "m"
+                },
+                {
+                    "codepoint": "U+F010E",
+                    "glyph": "n",
+                    "kind": "letter",
+                    "key": "n"
+                },
+                {
+                    "codepoint": "U+F010F",
+                    "glyph": "p",
+                    "kind": "letter",
+                    "key": "p"
+                },
+                {
+                    "codepoint": "U+F0110",
+                    "glyph": "r",
+                    "kind": "letter",
+                    "key": "r"
+                },
+                {
+                    "codepoint": "U+F0111",
+                    "glyph": "s",
+                    "kind": "letter",
+                    "key": "s"
+                },
+                {
+                    "codepoint": "U+F0112",
+                    "glyph": "t",
+                    "kind": "letter",
+                    "key": "t"
+                },
+                {
+                    "codepoint": "U+F0113",
+                    "glyph": "v",
+                    "kind": "letter",
+                    "key": "v"
+                },
+                {
+                    "codepoint": "U+F0114",
+                    "glyph": "w",
+                    "kind": "letter",
+                    "key": "w"
+                },
+                {
+                    "codepoint": "U+F0115",
+                    "glyph": "z",
+                    "kind": "letter",
+                    "key": "z"
+                },
+                {
+                    "codepoint": "U+F0120",
+                    "glyph": "th",
+                    "kind": "digraph",
+                    "key": "shift+t"
+                },
+                {
+                    "codepoint": "U+F0121",
+                    "glyph": "dh",
+                    "kind": "digraph",
+                    "key": "shift+d"
+                },
+                {
+                    "codepoint": "U+F0122",
+                    "glyph": "kh",
+                    "kind": "digraph",
+                    "key": "shift+k"
+                },
+                {
+                    "codepoint": "U+F0123",
+                    "glyph": "gh",
+                    "kind": "digraph",
+                    "key": "shift+g"
+                },
+                {
+                    "codepoint": "U+F0124",
+                    "glyph": "hl",
+                    "kind": "digraph",
+                    "key": "shift+h"
+                },
+                {
+                    "codepoint": "U+F0125",
+                    "glyph": "ng",
+                    "kind": "digraph",
+                    "key": "shift+n"
+                },
+                {
+                    "codepoint": "U+F0130",
+                    "glyph": "num.0",
+                    "kind": "numeral",
+                    "key": "0"
+                },
+                {
+                    "codepoint": "U+F0131",
+                    "glyph": "num.1",
+                    "kind": "numeral",
+                    "key": "1"
+                },
+                {
+                    "codepoint": "U+F0132",
+                    "glyph": "num.2",
+                    "kind": "numeral",
+                    "key": "2"
+                },
+                {
+                    "codepoint": "U+F0133",
+                    "glyph": "num.3",
+                    "kind": "numeral",
+                    "key": "3"
+                },
+                {
+                    "codepoint": "U+F0134",
+                    "glyph": "num.4",
+                    "kind": "numeral",
+                    "key": "4"
+                },
+                {
+                    "codepoint": "U+F0135",
+                    "glyph": "num.5",
+                    "kind": "numeral",
+                    "key": "5"
+                },
+                {
+                    "codepoint": "U+F0136",
+                    "glyph": "num.6",
+                    "kind": "numeral",
+                    "key": "6"
+                },
+                {
+                    "codepoint": "U+F0137",
+                    "glyph": "num.7",
+                    "kind": "numeral",
+                    "key": "7"
+                },
+                {
+                    "codepoint": "U+F0138",
+                    "glyph": "num.8",
+                    "kind": "numeral",
+                    "key": "8"
+                },
+                {
+                    "codepoint": "U+F0139",
+                    "glyph": "num.9",
+                    "kind": "numeral",
+                    "key": "9"
+                },
+                {
+                    "codepoint": "U+F0140",
+                    "glyph": "period",
+                    "kind": "point",
+                    "key": "."
+                },
+                {
+                    "codepoint": "U+F0148",
+                    "glyph": "acutecomb",
+                    "kind": "mark",
+                    "key": "option+e"
+                }
+            ]
+        }
+    ]
+}

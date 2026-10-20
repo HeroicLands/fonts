@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <glyph name="sh.catch" format="2">
-  <advance width="520"/>
+  <advance width="515"/>
   <unicode hex="1ECCF"/>
   <outline>
     <component base="sh"/>
-    <component base="catchdots" xOffset="260" yOffset="562"/>
+    <component base="catchdots" xOffset="257" yOffset="556"/>
   </outline>
 </glyph>

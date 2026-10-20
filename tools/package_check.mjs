@@ -10,10 +10,13 @@
  *
  * - a `files` entry in package.json packs nothing;
  * - a packed path is not a font (`fonts/*.woff2`, `fonts/*.ttf`), `fonts.css`,
- *   a code-point table (`encoding/*.json`), `LICENSE`, `README.md` or
- *   `package.json`;
+ *   `fonts.json`, a keyboard
+ *   cheatsheet, Emacs input method, or macOS, Windows or Linux layout (`keyboards/`), `LICENSE`,
+ *   `README.md` or `package.json`;
  * - `fonts.css` names a URL that is not packed;
- * - a font in `fonts/` has no `@font-face` rule that names it.
+ * - a font in `fonts/` has no `@font-face` rule that names it;
+ * - `fonts.json` names a font file that is not packed, or a
+ *   package export names a file that is not packed.
  *
  * @module
  */
@@ -30,7 +33,13 @@ export const ALLOWED = [
     "fonts/*.woff2",
     "fonts/*.ttf",
     "fonts.css",
-    "encoding/*.json",
+    "fonts.json",
+    "keyboards/*.md",
+    "keyboards/emacs/*.el",
+    "keyboards/linux/hl_*",
+    "keyboards/windows/*.klc",
+    "keyboards/macos/HeroicLands.bundle/Contents/Info.plist",
+    "keyboards/macos/HeroicLands.bundle/Contents/Resources/*.keylayout",
     "LICENSE",
     "README.md",
     "package.json",
@@ -54,9 +63,11 @@ export function cssUrls(css) {
  * @param {string[]} input.files - The `files` entries of package.json.
  * @param {string|undefined} input.css - The text of `fonts.css`, when it exists.
  * @param {string[]} input.fontFiles - The font files in `fonts/` on disk.
+ * @param {object|undefined} [input.manifest] - The parsed `fonts.json`, when it exists.
+ * @param {Record<string, string>} [input.exports] - The `exports` map of package.json.
  * @returns {string[]} One message per finding; empty when the package is sound.
  */
-export function findings({ packed, files, css, fontFiles }) {
+export function findings({ packed, files, css, fontFiles, manifest, exports = {} }) {
     const found = [];
     for (const entry of files) {
         const hit = packed.some(
@@ -84,6 +95,21 @@ export function findings({ packed, files, css, fontFiles }) {
             found.push(`fonts/${file}: no @font-face rule in fonts.css names it`);
         }
     }
+    if (manifest !== undefined) {
+        for (const entry of manifest.families ?? []) {
+            for (const path of Object.values(entry.files ?? {})) {
+                if (!packed.includes(path)) {
+                    found.push(`fonts.json: ${entry.family} names "${path}", which is not packed`);
+                }
+            }
+        }
+    }
+    for (const [key, target] of Object.entries(exports)) {
+        if (typeof target !== "string" || /[*]/.test(target)) continue;
+        const path = posix.normalize(target);
+        if (!packed.includes(path))
+            found.push(`package.json: export "${key}" names "${target}", which is not packed`);
+    }
     return found;
 }
 
@@ -102,7 +128,15 @@ function main() {
     } catch {
         css = undefined;
     }
+    let manifest;
+    try {
+        manifest = JSON.parse(readFileSync(join(ROOT, "fonts.json"), "utf8"));
+    } catch {
+        manifest = undefined;
+    }
     const result = findings({
+        manifest,
+        exports: pkg.exports,
         packed: report[0].files.map((file) => file.path),
         files: pkg.files,
         css,

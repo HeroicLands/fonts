@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <glyph name="f.catch" format="2">
-  <advance width="534"/>
+  <advance width="529"/>
   <unicode hex="1ECD2"/>
   <outline>
     <component base="f"/>
-    <component base="catchdots" xOffset="267" yOffset="548"/>
+    <component base="catchdots" xOffset="264" yOffset="543"/>
   </outline>
 </glyph>

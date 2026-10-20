@@ -1,18 +1,19 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <glyph name="ai" format="2">
-  <advance width="440"/>
+  <advance width="458"/>
+  <unicode hex="F0030"/>
   <outline>
     <contour>
-      <point x="127.32839965820312" y="41.10005187988281" type="line"/>
-      <point x="179.0" y="192.67007446289062" type="line"/>
-      <point x="179.0" y="57.400001525878906" type="line"/>
-      <point x="220.0" y="0.0" type="line"/>
-      <point x="261.0" y="57.400001525878906" type="line"/>
-      <point x="261.0" y="382.6000061035156" type="line"/>
-      <point x="220.0" y="440.0" type="line"/>
-      <point x="162.67160034179688" y="398.8999328613281" type="line"/>
-      <point x="49.71456527709961" y="67.55931854248047" type="line"/>
-      <point x="70.0" y="0.0" type="line"/>
+      <point x="132" y="43" type="line"/>
+      <point x="186" y="200" type="line"/>
+      <point x="186" y="60" type="line"/>
+      <point x="229" y="0" type="line"/>
+      <point x="271" y="60" type="line"/>
+      <point x="271" y="398" type="line"/>
+      <point x="229" y="458" type="line"/>
+      <point x="169" y="415" type="line"/>
+      <point x="52" y="70" type="line"/>
+      <point x="73" y="0" type="line"/>
     </contour>
   </outline>
 </glyph>

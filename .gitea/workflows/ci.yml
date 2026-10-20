@@ -3,10 +3,10 @@ name: CI
 # What the repository asserts on every change: the canonical git hooks are
 # present, no TODO or FIXME marker is committed, and the fonts rebuild from the
 # UFO sources and pass the font check, and the npm package holds exactly the
-# fonts, their stylesheet and their code-point tables.
+# fonts, their stylesheet, their manifest and their keyboards.
 #
 # The build is reproducible (a fixed head timestamp), so the committed fonts,
-# fonts.css and encoding/ must match a fresh build byte for byte: a file left
+# fonts.css and fonts.json must match a fresh build byte for byte: a file left
 # unrebuilt fails here.
 #
 # The lexicon guards are not run here. They read the lexicon from a local
@@ -51,6 +51,7 @@ jobs:
             - run: npm ci
             - run: npm run format:check
             - run: npm run check:package
+            - run: npm test
 
     fonts:
         name: Fonts build and pass the font check
@@ -73,7 +74,11 @@ jobs:
                   .venv/bin/python tools/semaron-kuriale/check_font.py
                   .venv/bin/python tools/notdef_box.py
                   .venv/bin/python tools/font_names.py
-            - name: Committed fonts, stylesheet and encodings match the build
+                  .venv/bin/python tools/codepoints.py
+                  .venv/bin/python tools/vertical.py
+                  .venv/bin/python tools/keyboards_guard.py --fixtures-only
+                  .venv/bin/python tools/prove_guards.py
+            - name: Committed fonts, stylesheet and manifest match the build
               run: |
-                  git diff --exit-code -- fonts/ fonts.css encoding/
-                  test -z "$(git ls-files --others --exclude-standard -- fonts.css encoding/)"
+                  git diff --exit-code -- fonts/ fonts.css fonts.json
+                  test -z "$(git ls-files --others --exclude-standard -- fonts.css fonts.json)"

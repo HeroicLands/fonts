@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <glyph name="d.dbl.catch" format="2">
-  <advance width="571"/>
+  <advance width="565"/>
   <unicode hex="1ECD9"/>
   <outline>
     <component base="t"/>
-    <component base="dab" xOffset="285" yOffset="585"/>
-    <component base="doubling" xOffset="285" yOffset="-80"/>
-    <component base="catchdots" xOffset="285" yOffset="724"/>
+    <component base="dab" xOffset="282" yOffset="579"/>
+    <component base="doubling" xOffset="282" yOffset="-79"/>
+    <component base="catchdots" xOffset="282" yOffset="717"/>
   </outline>
 </glyph>

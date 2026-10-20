@@ -39,3 +39,40 @@
         url("fonts/ThuravarkCarved-Regular.ttf") format("truetype");
     font-display: swap;
 }
+
+.hl-khelathi-zethu-glyphs {
+    font-family: "Khelathi Zethu Glyphs";
+    font-feature-settings: normal;
+    direction: rtl;
+}
+
+.hl-pirzath-carved {
+    font-family: "Pirzath Carved";
+    font-feature-settings: normal;
+}
+
+.hl-pirzath-hand {
+    font-family: "Pirzath Hand";
+    font-feature-settings: "ss01";
+}
+
+.hl-pirzath-hand-lifted {
+    font-family: "Pirzath Hand";
+    font-feature-settings: normal;
+}
+
+.hl-qalezu-hand {
+    font-family: "Qalezu Hand";
+    font-feature-settings: normal;
+    direction: rtl;
+}
+
+.hl-semaron-kuriale {
+    font-family: "Semaron Kuriale";
+    font-feature-settings: normal;
+}
+
+.hl-thuravark-carved {
+    font-family: "Thuravark Carved";
+    font-feature-settings: normal;
+}

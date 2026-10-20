@@ -1,0 +1,402 @@
+{
+    "fixtures": [
+        {
+            "latin": "Anlagh",
+            "signs": [
+                "n.catch",
+                "l",
+                "gh"
+            ]
+        },
+        {
+            "latin": "Qe'aret",
+            "signs": [
+                "q",
+                "r.catch",
+                "t"
+            ]
+        },
+        {
+            "latin": "Au'Khelathu",
+            "signs": [
+                "catch",
+                "kh.catch",
+                "l",
+                "th"
+            ]
+        },
+        {
+            "latin": "Uqa'a",
+            "signs": [
+                "q.catch",
+                "catch"
+            ]
+        },
+        {
+            "latin": "Lem'",
+            "signs": [
+                "l",
+                "m",
+                "catch"
+            ]
+        },
+        {
+            "latin": "Au",
+            "signs": [
+                "catch"
+            ]
+        },
+        {
+            "latin": "a'nna",
+            "signs": [
+                "catch",
+                "n.dbl.catch"
+            ]
+        },
+        {
+            "latin": "'nna",
+            "signs": [
+                "n.dbl.catch"
+            ]
+        },
+        {
+            "latin": "Gar-Anlagh",
+            "signs": [
+                "g",
+                "r",
+                "space",
+                "n.catch",
+                "l",
+                "gh"
+            ]
+        },
+        {
+            "latin": "Gith’el",
+            "signs": [
+                "g",
+                "th",
+                "l.catch"
+            ]
+        },
+        {
+            "latin": "a'",
+            "signs": [
+                "catch",
+                "catch"
+            ]
+        },
+        {
+            "latin": "a b",
+            "signs": [
+                "catch",
+                "space",
+                "b"
+            ]
+        },
+        {
+            "latin": "'",
+            "signs": [
+                "catch"
+            ]
+        },
+        {
+            "latin": "''",
+            "signs": [
+                "catch",
+                "catch"
+            ]
+        },
+        {
+            "latin": "a'tj",
+            "signs": [
+                "catch",
+                "tj.catch"
+            ]
+        },
+        {
+            "latin": "a-b",
+            "signs": [
+                "catch",
+                "space",
+                "b"
+            ]
+        },
+        {
+            "latin": "Gar-Qethar",
+            "signs": [
+                "g",
+                "r",
+                "space",
+                "q",
+                "th",
+                "r"
+            ]
+        },
+        {
+            "latin": "Khelathi-zethu",
+            "signs": [
+                "kh",
+                "l",
+                "th",
+                "space",
+                "z",
+                "th"
+            ]
+        },
+        {
+            "latin": "Gar-Au",
+            "signs": [
+                "g",
+                "r",
+                "space",
+                "catch"
+            ]
+        },
+        {
+            "latin": "Gar-",
+            "signs": [
+                "g",
+                "r"
+            ]
+        },
+        {
+            "latin": "Lut-",
+            "signs": [
+                "l",
+                "t"
+            ]
+        },
+        {
+            "latin": "a-",
+            "signs": [
+                "catch"
+            ]
+        },
+        {
+            "latin": "kala",
+            "signs": [
+                "k",
+                "l"
+            ]
+        },
+        {
+            "latin": "ku",
+            "signs": [
+                "k"
+            ]
+        },
+        {
+            "latin": "thal",
+            "signs": [
+                "th",
+                "l"
+            ]
+        },
+        {
+            "latin": "shal",
+            "signs": [
+                "sh",
+                "l"
+            ]
+        },
+        {
+            "latin": "khal",
+            "signs": [
+                "kh",
+                "l"
+            ]
+        },
+        {
+            "latin": "ghal",
+            "signs": [
+                "gh",
+                "l"
+            ]
+        },
+        {
+            "latin": "chal",
+            "signs": [
+                "tj",
+                "l"
+            ]
+        },
+        {
+            "latin": "tjal",
+            "signs": [
+                "tj",
+                "l"
+            ]
+        },
+        {
+            "latin": "TJAL",
+            "signs": [
+                "tj",
+                "l"
+            ]
+        },
+        {
+            "latin": "lenni",
+            "signs": [
+                "l",
+                "n.dbl"
+            ]
+        },
+        {
+            "latin": "gerra",
+            "signs": [
+                "g",
+                "r.dbl"
+            ]
+        },
+        {
+            "latin": "lanal",
+            "signs": [
+                "l",
+                "n",
+                "l"
+            ]
+        },
+        {
+            "latin": "tthal",
+            "signs": [
+                "th.dbl",
+                "l"
+            ]
+        },
+        {
+            "latin": "thth",
+            "signs": [
+                "th.dbl"
+            ]
+        },
+        {
+            "latin": "sshal",
+            "signs": [
+                "sh.dbl",
+                "l"
+            ]
+        },
+        {
+            "latin": "ll",
+            "signs": [
+                "l.dbl"
+            ]
+        },
+        {
+            "latin": "kkhal",
+            "signs": [
+                "kh.dbl",
+                "l"
+            ]
+        },
+        {
+            "latin": "tjtj",
+            "signs": [
+                "tj.dbl"
+            ]
+        },
+        {
+            "latin": "chch",
+            "signs": [
+                "tj.dbl"
+            ]
+        },
+        {
+            "latin": "ttj",
+            "signs": [
+                "tj.dbl"
+            ]
+        },
+        {
+            "latin": "Linnuseret",
+            "signs": [
+                "l",
+                "n.dbl",
+                "s",
+                "r",
+                "t"
+            ]
+        },
+        {
+            "latin": "lll",
+            "signs": [
+                "l.dbl",
+                "l"
+            ]
+        },
+        {
+            "latin": "Zel ez Qar",
+            "signs": [
+                "z",
+                "l",
+                "space",
+                "z.catch",
+                "space",
+                "q",
+                "r"
+            ]
+        },
+        {
+            "latin": "1234567890",
+            "signs": [
+                "one",
+                "two",
+                "three",
+                "four",
+                "five",
+                "six",
+                "seven",
+                "eight",
+                "nine",
+                "zero"
+            ]
+        },
+        {
+            "latin": "zeret 305, 14.",
+            "signs": [
+                "z",
+                "r",
+                "t",
+                "space",
+                "three",
+                "zero",
+                "five",
+                "comma",
+                "space",
+                "one",
+                "four",
+                "period"
+            ]
+        }
+    ],
+    "unmappable": [
+        {
+            "latin": "c",
+            "letter": "c"
+        },
+        {
+            "latin": "cal",
+            "letter": "c"
+        },
+        {
+            "latin": "jal",
+            "letter": "j"
+        },
+        {
+            "latin": "val",
+            "letter": "v"
+        },
+        {
+            "latin": "xal",
+            "letter": "x"
+        },
+        {
+            "latin": "l?",
+            "letter": "?"
+        },
+        {
+            "latin": "l;",
+            "letter": ";"
+        }
+    ]
+}

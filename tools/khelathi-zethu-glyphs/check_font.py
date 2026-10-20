@@ -11,8 +11,9 @@
 - The glyph set is exactly the encoding's forms, the notdef, the box, the space and
   the two empty glyphs, and every glyph but the empty ones has an outline whose outer contour
   runs clockwise.
-- Each advance is min(1000, round(10 * box width) + 80), the font holds a full quadrat
-  of 1000 units between its ascender and descender, and no ink leaves the win metrics.
+- Each advance is the scaled min(1000, round(10 * box width) + 80), the font holds a full
+  quadrat between its ascender and descender, and no ink leaves the win metrics. The
+  scale is the one of tools/vertical.py.
 - Every second form (.b) and third form (.c) is reached by a single substitution
   in salt, ss01 or ss02, and the font carries no other feature, no contextual lookup
   and no positioning.
@@ -22,7 +23,9 @@
 """
 
 import json
+import math
 import sys
+from fractions import Fraction
 from pathlib import Path
 
 import uharfbuzz as hb
@@ -31,11 +34,17 @@ from fontTools.ttLib import TTFont
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 import font_names  # noqa: E402
 import notdef_box  # noqa: E402
+import vertical  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent.parent
 ENCODING = Path(__file__).resolve().parent / "encoding.json"
 EMPTY = {"ignorable", "ignorable.sub"}
 FEATURES = {"ccmp", "salt", "ss01", "ss02"}
+
+
+def scaled(units: int) -> int:
+    """A length of the sign grid after the face's scale, rounded half upward."""
+    return math.floor(units * Fraction(str(vertical.SCALES["KhelathiZethuGlyphs"])) + Fraction(1, 2))
 
 
 def cp(text: str) -> int:
@@ -139,14 +148,16 @@ def check(path: Path) -> list[str]:
     if font["head"].unitsPerEm != 1000:
         problems.append(f"unitsPerEm is {font['head'].unitsPerEm}, expected 1000")
     hhea, os2 = font["hhea"], font["OS/2"]
-    if hhea.ascent < 1000 or hhea.descent >= 0:
-        problems.append(f"the vertical metrics {hhea.ascent}/{hhea.descent} do not hold one quadrat")
+    quadrat = scaled(1000)
+    if hhea.ascent < quadrat or hhea.descent >= 0:
+        problems.append(f"the vertical metrics {hhea.ascent}/{hhea.descent} do not hold one quadrat of {quadrat}")
     for name, (adv, _) in font["hmtx"].metrics.items():
         if name in forms:
             e, v = forms[name]
             bw = e["box"][v][0]
-            if adv != min(1000, round(10 * bw) + 80):
-                problems.append(f"{name} has advance {adv}, expected {min(1000, round(10 * bw) + 80)}")
+            want = scaled(min(1000, round(10 * bw) + 80))
+            if adv != want:
+                problems.append(f"{name} has advance {adv}, expected {want}")
         elif name in EMPTY and adv != 0:
             problems.append(f"{name} must have zero advance")
 

@@ -27,6 +27,10 @@ A font fails when
 - ``notdef.box`` is missing, is glyph 0, or differs from ``.notdef`` in outline or
   advance;
 - a default-ignorable of the ranges (U+202A-202E) does not map to an empty glyph;
+- any default-ignorable character (U+200B-200F, U+202A-202E, U+2066-2069, U+FEFF),
+  shaped alone, yields a glyph that draws or an advance other than zero. HarfBuzz
+  replaces a mapped ignorable with the font's space glyph unless a ``ccmp``
+  substitution changes it, and Pirzath's space is a visible dot;
 - a used code point reaches a glyph that draws nothing and is none of the three
   exceptions;
 - the OS/2 winAscent or winDescent is smaller than the highest or lowest ink of any
@@ -40,11 +44,16 @@ from fontTools.pens.boundsPen import BoundsPen
 from fontTools.pens.recordingPen import DecomposingRecordingPen
 from fontTools.ttLib import TTFont
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from render import Renderer  # noqa: E402
+
 ROOT = Path(__file__).resolve().parent.parent
 BOX = "notdef.box"
 RANGES = [(0x21, 0x7E), (0xA1, 0xFF), (0x100, 0x17F), (0x2010, 0x205E)]
 # The default-ignorable characters inside the ranges.
 IGNORABLE = range(0x202A, 0x202F)
+# Every default-ignorable character a font must render as nothing.
+IGNORABLES = [*range(0x200B, 0x2010), *range(0x202A, 0x202F), *range(0x2066, 0x206A), 0xFEFF]
 SPACE = 0x20
 HYPHEN = 0x2D
 
@@ -101,7 +110,23 @@ def check(path: Path) -> list[str]:
     ):
         for cp in found:
             problems.append(f"{path}: error: U+{cp:04X} {label}")
+    problems += ignorable_problems(path, font)
     problems += metrics(path, font)
+    return problems
+
+
+def ignorable_problems(path: Path, font: TTFont) -> list[str]:
+    """Each default-ignorable character, shaped alone, draws nothing and takes no room."""
+    renderer = Renderer(path)
+    order = renderer.order
+    problems = []
+    for cp in IGNORABLES:
+        shaped = renderer.shape(chr(cp))
+        names = [order[g[0]] for g in shaped.glyphs]
+        if any(draws(font, n) for n in names) or shaped.advance != 0:
+            problems.append(
+                f"{path}: error: U+{cp:04X} shapes to {names} with advance {shaped.advance}, not to nothing"
+            )
     return problems
 
 

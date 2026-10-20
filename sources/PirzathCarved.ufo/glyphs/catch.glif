@@ -1,26 +1,27 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <glyph name="catch" format="2">
-  <advance width="660"/>
+  <advance width="686"/>
   <unicode hex="0027"/>
   <unicode hex="2019"/>
+  <unicode hex="F0018"/>
   <outline>
     <contour>
-      <point x="382.0" y="72.80000305175781" type="line"/>
-      <point x="382.0" y="180.55809020996094" type="line"/>
-      <point x="444.32830810546875" y="217.955078125" type="line"/>
-      <point x="480.0" y="300.0" type="line"/>
-      <point x="390.82073974609375" y="307.13433837890625" type="line"/>
-      <point x="382.0" y="301.8418884277344" type="line"/>
-      <point x="382.0" y="627.2000122070312" type="line"/>
-      <point x="330.0" y="700.0" type="line"/>
-      <point x="278.0" y="627.2000122070312" type="line"/>
-      <point x="278.0" y="239.44189453125" type="line"/>
-      <point x="215.6717071533203" y="202.044921875" type="line"/>
-      <point x="180.0" y="120.0" type="line"/>
-      <point x="269.17926025390625" y="112.86566162109375" type="line"/>
-      <point x="278.0" y="118.1581039428711" type="line"/>
-      <point x="278.0" y="72.80000305175781" type="line"/>
-      <point x="330.0" y="0.0" type="line"/>
+      <point x="397" y="76" type="line"/>
+      <point x="397" y="188" type="line"/>
+      <point x="462" y="227" type="line"/>
+      <point x="499" y="312" type="line"/>
+      <point x="406" y="319" type="line"/>
+      <point x="397" y="314" type="line"/>
+      <point x="397" y="652" type="line"/>
+      <point x="343" y="728" type="line"/>
+      <point x="289" y="652" type="line"/>
+      <point x="289" y="249" type="line"/>
+      <point x="224" y="210" type="line"/>
+      <point x="187" y="125" type="line"/>
+      <point x="280" y="117" type="line"/>
+      <point x="289" y="123" type="line"/>
+      <point x="289" y="76" type="line"/>
+      <point x="343" y="0" type="line"/>
     </contour>
   </outline>
 </glyph>

@@ -4,9 +4,9 @@ The everyday alphabet of the Khelathi of thalorna: signs written fast with a ree
 
 ## The reed nib
 
-Every stroke is a centreline swept by one broad reed nib: a thin rounded slab 100 units long and 14 thick on a 1000-unit em, held at 30 degrees from the horizontal. A pull straight across the nib's edge is the full width; a pull along the edge is a hairline. The contrast of the script is that, and nothing else: thick where the pen moves across its edge, a hair where it moves along it. The ends and the thin crossings are rounded by the nib's own radius, never cusped.
+Every stroke is a centreline swept by one broad reed nib: a thin rounded slab 99 units long and 14 thick on a 1000-unit em, held at 30 degrees from the horizontal. A pull straight across the nib's edge is the full width; a pull along the edge is a hairline. The contrast of the script is that, and nothing else: thick where the pen moves across its edge, a hair where it moves along it. The ends and the thin crossings are rounded by the nib's own radius, never cusped.
 
-A sign stands on the line in a body 500 units tall, with the dab above it and the doubling bar below. Each sign is entered from the right, because the pen travels right to left. Signs stand apart, with no joining and no contextual forms; the reed-cursive look is the stroke contrast and the entry flick, and the spacing is the advance each glyph carries.
+A sign stands on the line in a body 495 units tall, with the dab above it and the doubling bar below. Each sign is entered from the right, because the pen travels right to left. Signs stand apart, with no joining and no contextual forms; the reed-cursive look is the stroke contrast and the entry flick, and the spacing is the advance each glyph carries.
 
 ## The signs
 
@@ -73,7 +73,7 @@ Examples, each in reading order:
 
 A doubled consonant keeps its doubling bar under the sign; a catch before it puts the triangle over the doubled sign, whose bar stays below.
 
-The font draws the sign it is given. Which vowels vanish, and which catches combine with the sign after them, is the converter's rule, written once in `tools/qalezu-hand/guard.py`.
+The font draws the sign it is given. Which vowels vanish, and which catches combine with the sign after them, is the converter's rule, written once in `tools/qalezu-hand/convert.mjs`, with the fixtures in `tools/qalezu-hand/fixtures.json`.
 
 ## Right to left
 
@@ -125,5 +125,5 @@ PATH=.venv/bin:$PATH ./build.sh                          # fonts/QalezuHand-Regu
 ```
 
 - `check_font.py` confirms the cmap is `encoding.json` plus the box, which takes every code point of the Latin ranges that the encoding leaves free to the box, that every glyph has an outline, that the bar, dab and catchdots components have zero advance, that every doubled glyph is its sign with the bar drawn in at the sign's advance, that every catch-before glyph is its sign with three more dabs drawn above it at the sign's advance, and that the font carries no mark positioning, that the default-ignorables shape to zero advance and no ink, and that the name table carries the licence.
-- `guard.py` converts every form of the Khelathi lexicon, the `words` forms and the `names`, with the reference converter, shapes the result right to left and asserts no glyph is `.notdef` or the box and that each glyph is the sign the converter wrote. It reports every form that holds a letter Qalezu has no sign for (`c` outside `ch`, `j`, `v`, `x`), and invents no mapping for them. Fixtures cover the word-initial vowel, the apostrophe, each digraph, `ch` and `tj` giving one sign, doubled consonants and doubled digraphs, a number and a word-final vowel, and the catch before a consonant, before a doubled consonant, before another catch, at the end of a word and across a mark.
+- `guard.py` converts every form of the Khelathi lexicon, the `words` forms and the `names`, with `tools/qalezu-hand/convert.mjs` through `node`, in one batch, shapes the result right to left and asserts no glyph is `.notdef` or the box and that each glyph is the sign the converter wrote. It reports every form that holds a letter Qalezu has no sign for (`c` outside `ch`, `j`, `v`, `x`), and invents no mapping for them. Fixtures cover the word-initial vowel, the apostrophe, each digraph, `ch` and `tj` giving one sign, doubled consonants and doubled digraphs, a number and a word-final vowel, and the catch before a consonant, before a doubled consonant, before another catch, at the end of a word and across a mark.
 - `prove_guards.py` removes the th sign from the built font's character map and the guard fails on it.

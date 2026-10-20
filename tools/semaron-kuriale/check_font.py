@@ -31,6 +31,7 @@ from fontTools.ttLib import TTFont
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 import font_names  # noqa: E402
 import notdef_box  # noqa: E402
+import vertical  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent.parent
 
@@ -125,12 +126,15 @@ def check(path: Path) -> list[str]:
         problems.append(f"units per em is {font['head'].unitsPerEm}, expected 1000")
     glyphs = font.getGlyphSet()
     hhea, os2 = font["hhea"], font["OS/2"]
-    top, bottom = -10**6, 10**6
+    top, bottom, band = -10**6, 10**6, 10**6
     for name in font.getGlyphOrder():
         pen = BoundsPen(glyphs)
         glyphs[name].draw(pen)
         if pen.bounds:
             top, bottom = max(top, pen.bounds[3]), min(bottom, pen.bounds[1])
+            # The accepted overshoot of tools/vertical.py reaches past the line metrics.
+            if name.split(".")[0] not in vertical.OVERSHOOT["SemaronKuriale"]:
+                band = min(band, pen.bounds[1])
     # The catch where it stands on a base: its own bounds moved to the base's anchor.
     pen = BoundsPen(glyphs)
     glyphs["grave"].draw(pen)
@@ -140,8 +144,9 @@ def check(path: Path) -> list[str]:
                 if anchor is not None:
                     top = max(top, anchor.YCoordinate + pen.bounds[3])
                     bottom = min(bottom, anchor.YCoordinate + pen.bounds[1])
-    if hhea.ascent < top or hhea.descent > bottom:
-        problems.append(f"the line metrics {hhea.ascent}/{hhea.descent} do not clear the ink {top}/{bottom}")
+                    band = min(band, anchor.YCoordinate + pen.bounds[1])
+    if hhea.ascent < top or hhea.descent > band:
+        problems.append(f"the line metrics {hhea.ascent}/{hhea.descent} do not clear the ink {top}/{band}")
     if os2.usWinAscent < top or os2.usWinDescent < -bottom:
         problems.append(f"the Windows metrics {os2.usWinAscent}/{os2.usWinDescent} do not clear the ink {top}/{bottom}")
     names = {n.nameID: n.toUnicode() for n in font["name"].names if n.platformID == 3}

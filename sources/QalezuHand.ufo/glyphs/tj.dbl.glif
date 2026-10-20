@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <glyph name="tj.dbl" format="2">
-  <advance width="709"/>
+  <advance width="702"/>
   <unicode hex="1EA2C"/>
   <outline>
     <component base="tj"/>
-    <component base="doubling" xOffset="354" yOffset="-80"/>
+    <component base="doubling" xOffset="350" yOffset="-79"/>
   </outline>
 </glyph>

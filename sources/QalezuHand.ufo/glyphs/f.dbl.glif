@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <glyph name="f.dbl" format="2">
-  <advance width="534"/>
+  <advance width="529"/>
   <unicode hex="1EA29"/>
   <outline>
     <component base="f"/>
-    <component base="doubling" xOffset="267" yOffset="-80"/>
+    <component base="doubling" xOffset="264" yOffset="-79"/>
   </outline>
 </glyph>

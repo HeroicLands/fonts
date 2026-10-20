@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <glyph name="h.dbl" format="2">
-  <advance width="547"/>
+  <advance width="542"/>
   <unicode hex="1EA25"/>
   <outline>
     <component base="h"/>
-    <component base="doubling" xOffset="274" yOffset="-84"/>
+    <component base="doubling" xOffset="271" yOffset="-83"/>
   </outline>
 </glyph>

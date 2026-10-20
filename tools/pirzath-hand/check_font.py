@@ -36,6 +36,9 @@ def _carved_check():
     return module
 
 
+sys.path.insert(0, str(ROOT / "tools"))
+import vertical  # noqa: E402
+
 CARVED = _carved_check()
 font_names = CARVED.font_names
 notdef_box = CARVED.notdef_box
@@ -54,8 +57,8 @@ IGNORABLES = [*range(0x200B, 0x2010), *range(0x202A, 0x202F), *range(0x2066, 0x2
 EMPTY = {"ignorable", "ignorable.sub"}
 
 # The connector crosses the advance edge about this high. Its cut face is one stroke, THICKNESS thick.
-MID = 70
-THICKNESS = 45
+MID = 83
+THICKNESS = 54
 TOLERANCE = 1.5  # units: the most the two cut faces of a connector may differ in height
 PROBE = 0.5  # how far in from the advance edge a face is read
 REACH = 20  # units: how far past the advance edge a short exit may run
@@ -215,9 +218,15 @@ def check(path: Path) -> list[str]:
         problems.append(f"units per em is {font['head'].unitsPerEm}, expected 1000")
     top = max(b for g in glyf.keys() if glyf[g].numberOfContours for b in [glyf[g].yMax])
     bottom = min(glyf[g].yMin for g in glyf.keys() if glyf[g].numberOfContours)
+    # The accepted overshoot of tools/vertical.py reaches past the line metrics.
+    band = min(
+        glyf[g].yMin
+        for g in glyf.keys()
+        if glyf[g].numberOfContours and g.split(".")[0] not in vertical.OVERSHOOT["PirzathHand"]
+    )
     hhea, os2 = font["hhea"], font["OS/2"]
-    if hhea.ascent < top or hhea.descent > bottom:
-        problems.append(f"the line metrics {hhea.ascent}/{hhea.descent} do not clear the ink {top}/{bottom}")
+    if hhea.ascent < top or hhea.descent > band:
+        problems.append(f"the line metrics {hhea.ascent}/{hhea.descent} do not clear the ink {top}/{band}")
     if os2.usWinAscent < top or os2.usWinDescent < -bottom:
         problems.append("the Windows metrics do not clear the ink")
     names = {n.nameID: n.toUnicode() for n in font["name"].names if n.platformID == 3}

@@ -12,7 +12,7 @@ repository root builds both fonts.
 
 ## The staves
 
-Every stave is one upright stem, 740 units tall, with up to four straight
+Every stave is one upright stem, 733 units tall, with up to four straight
 branches. A branch is written side, level it leaves from, level it ends at: `F`
 forward or `B` back; `T` top, `M` middle, `0` foot. Two lengths exist. A long
 branch spans the whole stem over a short run at slope 2.73, the angle of
@@ -21,11 +21,11 @@ run at slope 0.86, the angle of Pirzath's point arms. No branch has another
 slope and none is horizontal. The strokes are Pirzath's graver grooves, united
 into one outline.
 
-A tent or trough arm passes 135 units from the stem at the middle level, so a
+A tent or trough arm passes 134 units from the stem at the middle level, so a
 half branch leaving there on the arm's side has no daylight against it. The
 voicing branch of b and d leaves at the end of the stem the arm does not, from
 the foot under the tent and from the top over the trough, and crosses the arm
-where the two are 271 units apart. The nasals are one long arm of their family
+where the two are 268 units apart. The nasals are one long arm of their family
 and one half branch leaving at the middle on the other side: m falls, n rises.
 No stave has more than two branches meeting at one point.
 
@@ -50,11 +50,11 @@ specimen table in `tools/thuravark-carved/specimens.py`.
 
 ## Numerals
 
-A stem 900 tall, taller than any stave, with up to four tally limbs worth 8,
+A stem 891 tall, taller than any stave, with up to four tally limbs worth 8,
 4, 2 and 1. Limbs fall outward from the stem at slope 1.5, a slope no stave has,
-over a run of 220, and leave it at heights no stave branch leaves from; the
+over a run of 218, and leave it at heights no stave branch leaves from; the
 lowest ends on the baseline. No two value limbs leave at one height, so nought
-carries the one pair that does: two limbs of the same length rising from 150,
+carries the one pair that does: two limbs of the same length rising from 149,
 a cup no value makes and no stave has.
 
 ## Checks
@@ -74,14 +74,14 @@ Specimens are `specimens/thuravark-carved/01-glyph-chart.png`, `02-nordmal.png`,
 `03-numerals.png` and `04-descent.png` (each stave beside its Pirzath parent,
 then the same words in both fonts).
 
-1. **First render.** Stroke weight 100, numeral limbs 140 long. The staves read
+1. **First render.** Stroke weight 99, numeral limbs 139 long. The staves read
    as cut runes and the Nordmal lines run on without a gap. The numeral limbs
-   were blobs at 140 and nought, 1 and 2 were not readily told apart. The tent
+   were blobs at 139 and nought, 1 and 2 were not readily told apart. The tent
    and trough families clotted at 36 px.
-2. **Numerals.** Limbs lengthened to 170 and moved to 860, 520, 640 and 330 so
+2. **Numerals.** Limbs lengthened to 168 and moved to 851, 515, 634 and 327 so
    no two limbs on a side touch. Every numeral reads apart, and nought stands
    clearly taller than the stave i.
-3. **Weight and room.** Stroke weight 84 and bearing 66. The branches that sit
+3. **Weight and room.** Stroke weight 83 and bearing 65. The branches that sit
    beside a tent or trough arm (b, d, v, dh, m, n) open up at 36 px; the closest
    pair is now nought against i at 24 pixels, then t/th and d/dh near 35.
    Stopped here: what remains is the design the slopes impose, and is flagged
@@ -89,24 +89,24 @@ then the same words in both fonts).
 4. **Fans, wedges, nought and limbs.** m and n redrawn as one long arm and one
    half branch on the other side (m `FT0 BM0`, n `F0T BMT`) in place of four
    branches on a tent or trough. The voicing branch of b, v, d and dh moved
-   from the middle, where the arm passes 135 units off, to the far end of the
-   stem (b, v `B0M`; d, dh `BTM`), so it leaves with 271 units of daylight and
+   from the middle, where the arm passes 134 units off, to the far end of the
+   stem (b, v `B0M`; d, dh `BTM`), so it leaves with 268 units of daylight and
    crosses the arm instead of wedging against it. Nought gained a rising pair
-   of limbs low on the stem, and every limb lengthened from 170 to 220 of run.
-   The closest pairs are d/dh and t/th at 35 pixels; nought against i is
+   of limbs low on the stem, and every limb lengthened from 168 to 218 of run.
+   The closest pairs are d/dh at 34 pixels and t/th at 35; nought against i is
    outside the six closest.
 
 ## Flagged for a designer pass
 
 - **Width.** Kept at the inventory's slopes, a half branch spans half the stem
-  over a run of 430, wider than it is tall, so e, o, s, k, ng, m and n are not
+  over a run of 426, wider than it is tall, so e, o, s, k, ng, m and n are not
   narrower than Pirzath's letters; only the long-branch staves and the bare i
   are. The brief's "taller and narrower" and the slopes cannot both hold for
   these. A designer should choose between shortening the half branches and
   steeper half slopes.
 - **o.** A wide closed diamond on a tall stem, the widest stave in the row.
 - **k and r.** Mirror triangles; distinct by direction only.
-- **t/th and d/dh** stay apart only by the one half branch, at 35 pixels.
+- **t/th and d/dh** stay apart only by the one half branch, at 34 and 35 pixels.
 
 ## Licence
 

@@ -12,19 +12,19 @@ thousandths of the em; the font has 1000 units to the em.
 
 | Constant   | Value               | What it governs                                                                                 |
 | ---------- | ------------------- | ----------------------------------------------------------------------------------------------- |
-| Body       | 440                 | The minuscule's x-height.                                                                       |
-| Ascender   | 528                 | The tall minuscules: _l_, _h_, _t_, _th_ and _u_.                                               |
-| Descender  | −220                | The foot of _p_, _f_, _j_ and _s_, and _g_'s tail.                                              |
-| Cap height | 572                 | Every majuscule and every numeral.                                                              |
+| Body       | 449                 | The minuscule's x-height.                                                                       |
+| Ascender   | 539                 | The tall minuscules: _l_, _h_, _t_, _th_ and _u_.                                               |
+| Descender  | −224                | The foot of _p_, _f_, _j_ and _s_, and _g_'s tail.                                              |
+| Cap height | 583                 | Every majuscule and every numeral.                                                              |
 | Slant      | 12°                 | One slant for every stroke.                                                                     |
-| Nib        | 84 wide, 28 thin    | One broad nib held at 30° to the line; a stroke's weight follows its direction, never pressure. |
+| Nib        | 86 wide, 29 thin    | One broad nib held at 30° to the line; a stroke's weight follows its direction, never pressure. |
 | Oval       | width : height 0.82 | One oval, from which every bowl, arch and cup is cut.                                           |
-| Reach      | 232                 | How far a branch leaves the stem, long or half.                                                 |
+| Reach      | 237                 | How far a branch leaves the stem, long or half.                                                 |
 | Bearing    | 12                  | The white either side of a letter: the hand is set close, like a medieval book hand.            |
 | Space      | 24                  | The word space, about two stems.                                                                |
 
-The vertical metrics follow the system, with the line gap at zero and the window
-metrics enclosing all ink, the catch where it stands on its base included.
+The vertical metrics are the shared standard of `tools/vertical.py`, Monaspace Neon's,
+with the window metrics enclosing all ink, the catch where it stands on its base included.
 
 ## The method
 

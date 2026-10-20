@@ -19,21 +19,22 @@ thousandths of the em; the font has 1000 units to the em.
 
 | Constant      | Value                                      | What it governs                                                                                              |
 | ------------- | ------------------------------------------ | ------------------------------------------------------------------------------------------------------------ |
-| Body          | 400                                        | The height of a consonant, the script's x-height.                                                            |
-| Vowel         | 260                                        | The height of a vowel, 0.65 of the body.                                                                     |
-| Ascender      | 480                                        | The looped heads of _l_ and _r_: 1.2 of the body, the tallest any letter stands.                             |
-| Descender     | −300                                       | The loops of _ng_ and _j_ below the line.                                                                    |
+| Body          | 476                                        | The height of a consonant, the script's x-height.                                                            |
+| Vowel         | 309                                        | The height of a vowel, 0.65 of the body.                                                                     |
+| Ascender      | 571                                        | The looped heads of _l_ and _r_: 1.2 of the body, the tallest any letter stands.                             |
+| Descender     | −357                                       | The loops of _ng_ and _j_ below the line.                                                                    |
 | Slant         | 12°                                        | One slant for every stroke.                                                                                  |
-| Pen           | thin 26, thick 48                          | A pointed pen with a gentle swell: thick on a stroke falling along the slant, thin on a rising or level one. |
-| Mark weight   | 34                                         | One middle weight for every straight mark, so it survives reading size.                                      |
+| Pen           | thin 31, thick 57                          | A pointed pen with a gentle swell: thick on a stroke falling along the slant, thin on a rising or level one. |
+| Mark weight   | 40                                         | One middle weight for every straight mark, so it survives reading size.                                      |
 | Oval          | width : height 0.70                        | One proportion for every bowl; arches and bowls are its halves.                                              |
-| Widths        | round 280, trough 240, cup 180, narrow 150 | The standard widths from which every curve is cut at the oval's proportion.                                  |
-| Join heights  | exit 40, entry 140                         | Where the connector leaves one letter and enters the next.                                                   |
+| Widths        | round 333, trough 286, cup 214, narrow 179 | The standard widths from which every curve is cut at the oval's proportion.                                  |
+| Join heights  | exit 48, entry 167                         | Where the connector leaves one letter and enters the next.                                                   |
 | Join headings | exit 30°, entry 50°                        | The angles of the join, upright.                                                                             |
-| Space         | 230                                        | The width of a space.                                                                                        |
+| Space         | 274                                        | The width of a space.                                                                                        |
 
-The vertical metrics follow the system: ascender 480, descender −300, with the
-line gap and the window metrics clearing the ink of the dots and loops.
+The vertical metrics are the shared standard of `tools/vertical.py`, Monaspace Neon's.
+The loops of _ng_ and _j_ reach below the descender, which is accepted, and the
+window metrics clear them.
 
 ## The method
 

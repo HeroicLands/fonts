@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <glyph name="notdef.box" format="2">
-  <advance width="600"/>
+  <advance width="462"/>
   <unicode hex="0021"/>
   <unicode hex="0022"/>
   <unicode hex="0023"/>
@@ -394,16 +394,16 @@
   <unicode hex="205E"/>
   <outline>
     <contour>
-      <point x="80" y="0" type="line"/>
-      <point x="520" y="0" type="line"/>
-      <point x="520" y="760" type="line"/>
-      <point x="80" y="760" type="line"/>
+      <point x="62" y="0" type="line"/>
+      <point x="400" y="0" type="line"/>
+      <point x="400" y="585" type="line"/>
+      <point x="62" y="585" type="line"/>
     </contour>
     <contour>
-      <point x="140" y="60" type="line"/>
-      <point x="140" y="700" type="line"/>
-      <point x="460" y="700" type="line"/>
-      <point x="460" y="60" type="line"/>
+      <point x="108" y="46" type="line"/>
+      <point x="108" y="539" type="line"/>
+      <point x="354" y="539" type="line"/>
+      <point x="354" y="46" type="line"/>
     </contour>
   </outline>
 </glyph>

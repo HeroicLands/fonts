@@ -13,7 +13,7 @@ back to front, and each part knocks out the ink of the parts behind it inside
 its own outline, so an overlapping arm, a rope across a post or a hand over a
 jar reads as one drawing with nothing showing through.
 
-The hairline is one and a half percent of a quadrat, 15 units of 1000. Signs
+The hairline is about one and a half percent of a quadrat, 12 units of 770. Signs
 keep their own box scale: a sign half a quadrat wide is drawn half as wide, and
 the same hairline serves both.
 
@@ -116,11 +116,11 @@ copy of the rules and sets the sample inscriptions from the font.
 
 ## Metrics
 
-One quadrat is 1000 units. A sign sits with the bottom of its box on the
-baseline and the box centred in its advance. The advance is the box width with
-40 units of side-bearing a side, and at most 1000, so a full sign is 1000 wide.
+One quadrat is 770 units. A sign sits with the bottom of its box on the baseline and
+the box centred in its advance. The advance is the box width with
+31 units of side-bearing a side, and at most 770, so a full sign is 770 wide.
 The ascender holds the tallest ink above a full quadrat and the descender
-holds the ink that dips below the baseline.
+holds the ink that dips below the baseline; both are Monaspace Neon's.
 
 ## Numerals and the empty pan
 

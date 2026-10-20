@@ -1,15 +1,16 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <glyph name="period" format="2">
-  <advance width="364"/>
+  <advance width="360"/>
   <unicode hex="002E"/>
+  <unicode hex="F0140"/>
   <outline>
     <contour>
-      <point x="166.8000030517578" y="328.0" type="line"/>
-      <point x="239.1999969482422" y="328.0" type="line"/>
-      <point x="298.0" y="370.0" type="line"/>
-      <point x="239.1999969482422" y="412.0" type="line"/>
-      <point x="166.8000030517578" y="412.0" type="line"/>
-      <point x="108.0" y="370.0" type="line"/>
+      <point x="165" y="325" type="line"/>
+      <point x="237" y="325" type="line"/>
+      <point x="295" y="366" type="line"/>
+      <point x="237" y="408" type="line"/>
+      <point x="165" y="408" type="line"/>
+      <point x="107" y="366" type="line"/>
     </contour>
   </outline>
 </glyph>

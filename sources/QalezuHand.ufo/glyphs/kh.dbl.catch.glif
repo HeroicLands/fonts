@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <glyph name="kh.dbl.catch" format="2">
-  <advance width="375"/>
+  <advance width="371"/>
   <unicode hex="1ECE2"/>
   <outline>
     <component base="kh"/>
-    <component base="doubling" xOffset="187" yOffset="-110"/>
-    <component base="catchdots" xOffset="187" yOffset="627"/>
+    <component base="doubling" xOffset="185" yOffset="-109"/>
+    <component base="catchdots" xOffset="185" yOffset="621"/>
   </outline>
 </glyph>

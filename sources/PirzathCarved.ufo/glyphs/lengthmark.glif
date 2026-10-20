@@ -1,16 +1,17 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <glyph name="lengthmark" format="2">
   <unicode hex="0301"/>
+  <unicode hex="F0060"/>
   <outline>
     <contour>
-      <point x="59.57175064086914" y="24.67542839050293" type="line"/>
-      <point x="24.67542839050293" y="59.57175064086914" type="line"/>
-      <point x="-24.67542839050293" y="59.57175064086914" type="line"/>
-      <point x="-59.57175064086914" y="24.67542839050293" type="line"/>
-      <point x="-59.57175064086914" y="-24.67542839050293" type="line"/>
-      <point x="-24.67542839050293" y="-59.57175064086914" type="line"/>
-      <point x="24.67542839050293" y="-59.57175064086914" type="line"/>
-      <point x="59.57175064086914" y="-24.67542839050293" type="line"/>
+      <point x="62" y="26" type="line"/>
+      <point x="26" y="62" type="line"/>
+      <point x="-26" y="62" type="line"/>
+      <point x="-62" y="26" type="line"/>
+      <point x="-62" y="-26" type="line"/>
+      <point x="-26" y="-62" type="line"/>
+      <point x="26" y="-62" type="line"/>
+      <point x="62" y="-26" type="line"/>
     </contour>
   </outline>
 </glyph>

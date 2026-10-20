@@ -137,26 +137,26 @@ markClass lengthmark <anchor 0 0> @LEN;
 
 # The length mark of a vowel pair stands above the pair.
 feature mark {
-  pos base ai <anchor 380 338> mark @LEN;
-  pos base ai.init <anchor 380 338> mark @LEN;
-  pos base ai.medi <anchor 380 338> mark @LEN;
-  pos base ai.fina <anchor 380 338> mark @LEN;
-  pos base au <anchor 386 338> mark @LEN;
-  pos base au.init <anchor 386 338> mark @LEN;
-  pos base au.medi <anchor 386 338> mark @LEN;
-  pos base au.fina <anchor 386 338> mark @LEN;
-  pos base ei <anchor 436 338> mark @LEN;
-  pos base ei.init <anchor 436 338> mark @LEN;
-  pos base ei.medi <anchor 436 338> mark @LEN;
-  pos base ei.fina <anchor 436 338> mark @LEN;
-  pos base oi <anchor 374 338> mark @LEN;
-  pos base oi.init <anchor 374 338> mark @LEN;
-  pos base oi.medi <anchor 374 338> mark @LEN;
-  pos base oi.fina <anchor 374 338> mark @LEN;
-  pos base ou <anchor 380 338> mark @LEN;
-  pos base ou.init <anchor 380 338> mark @LEN;
-  pos base ou.medi <anchor 380 338> mark @LEN;
-  pos base ou.fina <anchor 380 338> mark @LEN;
+  pos base ai <anchor 452 402> mark @LEN;
+  pos base ai.init <anchor 452 402> mark @LEN;
+  pos base ai.medi <anchor 452 402> mark @LEN;
+  pos base ai.fina <anchor 452 402> mark @LEN;
+  pos base au <anchor 459 402> mark @LEN;
+  pos base au.init <anchor 459 402> mark @LEN;
+  pos base au.medi <anchor 459 402> mark @LEN;
+  pos base au.fina <anchor 459 402> mark @LEN;
+  pos base ei <anchor 519 402> mark @LEN;
+  pos base ei.init <anchor 519 402> mark @LEN;
+  pos base ei.medi <anchor 519 402> mark @LEN;
+  pos base ei.fina <anchor 519 402> mark @LEN;
+  pos base oi <anchor 445 402> mark @LEN;
+  pos base oi.init <anchor 445 402> mark @LEN;
+  pos base oi.medi <anchor 445 402> mark @LEN;
+  pos base oi.fina <anchor 445 402> mark @LEN;
+  pos base ou <anchor 452 402> mark @LEN;
+  pos base ou.init <anchor 452 402> mark @LEN;
+  pos base ou.medi <anchor 452 402> mark @LEN;
+  pos base ou.fina <anchor 452 402> mark @LEN;
 } mark;
 
 # The joined look. A joining letter followed by another, marks skipped, takes
