@@ -119,7 +119,9 @@ class Font:
         return self.tt["hmtx"][name][0]
 
     def sign(self, sid: str, v: str = "a"):
-        """A placed-able sign: its glyph, its box in quadrat units and where the box sits in the glyph."""
+        """A placed-able sign: its glyph, its box in quadrat units and where the box sits in the glyph.
+
+        The ink stands centred in the advance, so the box is centred there too."""
         e = self.signs[sid]
         bw, bh = e["box"][v]
         name = gname(sid, v)

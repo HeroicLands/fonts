@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <glyph name="t.dbl.catch" format="2">
-  <advance width="565"/>
+  <advance width="496"/>
   <unicode hex="1ECD8"/>
   <outline>
     <component base="t"/>
-    <component base="doubling" xOffset="282" yOffset="-79"/>
-    <component base="catchdots" xOffset="282" yOffset="639"/>
+    <component base="doubling" xOffset="248" yOffset="-79"/>
+    <component base="catchdots" xOffset="248" yOffset="639"/>
   </outline>
 </glyph>

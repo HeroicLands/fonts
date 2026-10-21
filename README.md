@@ -127,7 +127,7 @@ python3 -m venv .venv
 .venv/bin/pip install -r requirements.txt
 ```
 
-The source of each font is a UFO under `sources/`: `PirzathCarved.ufo`, `PirzathHand.ufo`, `ThuravarkCarved.ufo`, `QalezuHand.ufo`, `KhelathiZethuGlyphs.ufo` and `SemaronKuriale.ufo`. Open one in FontForge, Glyphs or RoboFont to edit it. The UFO carries the outlines, the character map, the metrics and `features.fea`, which holds every OpenType feature.
+The source of each font is a UFO under `sources/`: `PirzathCarved.ufo`, `PirzathHand.ufo`, `ThuravarkCarved.ufo`, `QalezuHand.ufo`, `KhelathiZethuGlyphs.ufo` and `SemaronKuriale.ufo`. Open one in FontForge, Glyphs or RoboFont to edit it. The UFO carries the outlines, the character map, the metrics and `features.fea`, which holds every OpenType feature. Every glyph's advance is its ink width plus one sidebearing a side, the same across its face; `tools/respace.py` sets a UFO to that rule, and `design/making-fonts.md` gives each face's sidebearing.
 
 Build the fonts into `fonts/`. The build is reproducible, so the committed fonts match a fresh build byte for byte:
 
@@ -162,6 +162,7 @@ Check the built fonts, render the specimens, and prove that each guard fails a b
 .venv/bin/python tools/semaron-kuriale/check_font.py
 .venv/bin/python tools/notdef_box.py
 .venv/bin/python tools/vertical.py
+.venv/bin/python tools/spacing.py                 # every face is set at a natural spacing; --report prints the measures
 .venv/bin/python tools/font_names.py
 .venv/bin/python tools/codepoints.py
 .venv/bin/python tools/keyboards_guard.py --fixtures-only   # the layouts type each sound's output, and nothing else

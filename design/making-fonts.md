@@ -76,6 +76,21 @@ Generators live outside the tree because they are one-off drawing tools. The com
 
 Every face takes Monaspace Neon's vertical metrics at 1000 units to the em: ascent 945, descent 200, line gap 100, window ascent 945 and window descent 250 (larger where a glyph reaches farther), with USE_TYPO_METRICS set. Each face is also scaled about the origin by one factor, so that its typical letters stand as tall as Neon's x-height (0.5135 em) or cap height (0.73 em) beside them. `tools/vertical.py` holds the metrics, the factors and the typical letters of each face, and checks them on the built font. A generator draws at its own design size and its output is multiplied by the face's factor; `tools/scale_face.py` does that to a UFO.
 
+### One spacing rule
+
+Every glyph with ink and an advance stands at its ink: its advance is its ink width plus one sidebearing on each side, the same for every glyph of the face. The notdef and the box keep their own widths, and a mark has no advance. The space is the face's word space.
+
+| Face                  | Sidebearing | Space          | Notes                                                                                     |
+| --------------------- | ----------- | -------------- | ----------------------------------------------------------------------------------------- |
+| Pirzath Carved        | 26          | 499, a dot     | The kerning sets each pair to one optical gap.                                            |
+| Thuravark Carved      | 34          | 0              | No kerning; the staves run on.                                                            |
+| Semaron Kuriale       | 12          | 24             | A close book hand.                                                                        |
+| Qalezu Hand           | 28          | 200            | A doubled sign and a catch-before form take their sign's advance.                         |
+| Khelathi Zethu Glyphs | 31          | 62, the gutter | A sign's width follows its drawing; its box scale is unchanged. A phrase runs on.         |
+| Pirzath Hand          | —           | 274            | Joined: a joining letter's connector meets the next at the advance edge, so it is exempt. |
+
+Well-set text leaves about a tenth of each advance blank. `tools/respace.py` applies the rule to a UFO, carrying anchors, components, mark positions and kerning with each glyph, and keeps each face's sidebearing, and the word space of Qalezu Hand and Khelathi Zethu Glyphs, in `SPACING`; a generator's output is respaced with it after scaling. `tools/spacing.py` measures the built fonts and holds those spaces.
+
 ## Who does what
 
 | Work                                                                                      | Who                                      | Why                                                                                                                                    |
@@ -162,7 +177,7 @@ Pirzath Carved and Thuravark Carved are drawn as tool marks, not pen strokes:
 - **Strokes.** A cut is a straight groove, full width in the middle and tapering to a point at each end, or a drilled octagonal dot. A glyph is the union of its cuts.
 - **Orientation.** No cut runs along the line, because the stone splits along the grain. The one exception is the sentence end. Arms follow a small set of fixed slopes; Thuravark has exactly two.
 - **Proportions.** Consonants are larger than vowels, so the skeleton is read first on worn stone. Pirzath Carved uses a 541 × 728 box at weight 108 for consonants, and 312 × 458 at weight 85 for vowels.
-- **Spacing.** Derive it from the outlines: measure each glyph's left and right profile in bands, and set kerning so every pair has the same optical gap. Thuravark's staves carry their own room, so it has no kerning.
+- **Spacing.** Each glyph follows the spacing rule above. Pirzath Carved derives its kerning from the outlines: each glyph's left and right profile is measured in bands, and every pair is kerned to the same optical gap. Thuravark's staves carry their own room, so it has no kerning.
 
 ## Figurative scripts: the hieroglyphs
 
@@ -257,16 +272,17 @@ Latin forced right to left with the bidi override characters works, but HarfBuzz
 
 ## Checks and gates
 
-| Check                          | What it proves                                                                                                                                                                                                                                                                         |
-| ------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `tools/font_names.py`          | Every font carries name IDs 1 to 6 on both the Windows and the Macintosh platform, the same on each; the family name is the one in its table; the PostScript name has no spaces; the OS/2 Unicode ranges and code pages name only the font's own script, never Latin. Runs in CI.      |
-| `tools/<font>/check_font.py`   | The cmap matches the encoding; the name table carries the OFL; every glyph has outlines; marks have zero advance; features reach every variant; every unused character maps to the box. Runs in CI.                                                                                    |
-| `tools/vertical.py`            | Every face has Monaspace Neon's vertical metrics with USE_TYPO_METRICS set, its typical letters stand within 2% of Neon's x-height or cap height, its sxHeight and sCapHeight match them, and no ink leaves the band between the ascent and the descent except the accepted overshoot. |
-| `tools/notdef_box.py`          | Every code point of the Latin and punctuation ranges is mapped, and every one the typing does not use is on `notdef.box`, never glyph 0. Runs in CI.                                                                                                                                   |
-| `tools/<font>/guard.py`        | Shapes every lexicon form, or every sample inscription, through the built font with uharfbuzz and asserts the right glyphs and neither `.notdef` nor the box. It reads thalorna's lexicon from a local checkout, so it does not run in CI, where thalorna is private.                  |
-| `tools/prove_guards.py`        | Each guard fails a deliberately broken font: a sign removed from the cmap, GSUB stripped, or the box guard's question mark unmapped or put on glyph 0. A guard that cannot fail proves nothing.                                                                                        |
-| `tools/<font>/specimens.py`    | Renders the sheets in `specimens/<font>/`. Look at every page.                                                                                                                                                                                                                         |
-| CI (`.gitea/workflows/ci.yml`) | Builds every font, runs each `check_font.py`, and fails if the committed fonts, `fonts.css` or `fonts.json` differ from the build. Also checks the formatting and the npm package. Also runs the hooks, the attribution check and the TODO check.                                      |
+| Check                          | What it proves                                                                                                                                                                                                                                                                                                                     |
+| ------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `tools/font_names.py`          | Every font carries name IDs 1 to 6 on both the Windows and the Macintosh platform, the same on each; the family name is the one in its table; the PostScript name has no spaces; the OS/2 Unicode ranges and code pages name only the font's own script, never Latin. Runs in CI.                                                  |
+| `tools/<font>/check_font.py`   | The cmap matches the encoding; the name table carries the OFL; every glyph has outlines; marks have zero advance; features reach every variant; every unused character maps to the box. Runs in CI.                                                                                                                                |
+| `tools/vertical.py`            | Every face has Monaspace Neon's vertical metrics with USE_TYPO_METRICS set, its typical letters stand within 2% of Neon's x-height or cap height, its sxHeight and sCapHeight match them, and no ink leaves the band between the ascent and the descent except the accepted overshoot.                                             |
+| `tools/spacing.py`             | Every face sets its text at a natural spacing: the median blank share of its advances is at most 14%, and in its sample lines the mean gap between the inks of neighbouring signs is at most 0.08 em and the largest at most 0.22 em; the word space of Qalezu Hand and Khelathi Zethu Glyphs is the one in `SPACING`. Runs in CI. |
+| `tools/notdef_box.py`          | Every code point of the Latin and punctuation ranges is mapped, and every one the typing does not use is on `notdef.box`, never glyph 0. Runs in CI.                                                                                                                                                                               |
+| `tools/<font>/guard.py`        | Shapes every lexicon form, or every sample inscription, through the built font with uharfbuzz and asserts the right glyphs and neither `.notdef` nor the box. It reads thalorna's lexicon from a local checkout, so it does not run in CI, where thalorna is private.                                                              |
+| `tools/prove_guards.py`        | Each guard fails a deliberately broken font: a sign removed from the cmap, GSUB stripped, the box guard's question mark unmapped or put on glyph 0, or every advance widened. A guard that cannot fail proves nothing.                                                                                                             |
+| `tools/<font>/specimens.py`    | Renders the sheets in `specimens/<font>/`. Look at every page.                                                                                                                                                                                                                                                                     |
+| CI (`.gitea/workflows/ci.yml`) | Builds every font, runs each `check_font.py`, and fails if the committed fonts, `fonts.css` or `fonts.json` differ from the build. Also checks the formatting and the npm package. Also runs the hooks, the attribution check and the TODO check.                                                                                  |
 
 ## Delivering the fonts
 

@@ -29,8 +29,9 @@ where the two are 268 units apart. The nasals are one long arm of their family
 and one half branch leaving at the middle on the other side: m falls, n rises.
 No stave has more than two branches meeting at one point.
 
-Each stave carries its own room, so the font has no kerning and no mark
-positioning. The branch of each stave is in the guard's table, `tools/thuravark-carved/guard.py`, which
+Each stave stands at its ink with 34 units of white a side, the font's spacing
+rule (see `design/making-fonts.md`), and carries its own room: the font has no
+kerning and no mark positioning. The branch of each stave is in the guard's table, `tools/thuravark-carved/guard.py`, which
 follows the inventory table row for row; the typed input of each stave is in the
 specimen table in `tools/thuravark-carved/specimens.py`.
 

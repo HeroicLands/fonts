@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <glyph name="gh.dbl" format="2">
-  <advance width="371"/>
+  <advance width="301"/>
   <unicode hex="1EA24"/>
   <outline>
     <component base="kh"/>
-    <component base="dab" xOffset="185" yOffset="579"/>
-    <component base="doubling" xOffset="185" yOffset="-109"/>
+    <component base="dab" xOffset="150" yOffset="579"/>
+    <component base="doubling" xOffset="150" yOffset="-109"/>
   </outline>
 </glyph>

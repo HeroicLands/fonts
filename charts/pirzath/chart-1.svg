@@ -31,127 +31,127 @@
 <text x="40" y="1723.0" text-anchor="end" font-family="Helvetica, Arial, sans-serif" font-size="15" font-weight="bold" fill="#161412">F</text>
 <g class="drawn" id="cp-F0000" transform="translate(50 106)">
 <title>PIRZATH LETTER A U+F0000</title>
-<g fill="#161412"><path transform="translate(32.09 59.28) scale(0.05200 -0.05200)" d="M179 34 114 0 103 72 278 423 343 458 355 385Z"/></g>
+<g fill="#161412"><path transform="translate(36.10 59.28) scale(0.05200 -0.05200)" d="M102 34 37 0 26 72 201 423 266 458 278 385Z"/></g>
 <text x="44.0" y="95" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#6b665f">F0000</text>
 </g>
 <g class="drawn" id="cp-F0001" transform="translate(50 210)">
 <title>PIRZATH LETTER E U+F0001</title>
-<g fill="#161412"><path transform="translate(32.09 59.28) scale(0.05200 -0.05200)" d="M132 43 73 0 52 70 169 415 229 458 288 415 406 70 385 0 325 43 229 325Z"/></g>
+<g fill="#161412"><path transform="translate(33.44 59.28) scale(0.05200 -0.05200)" d="M106 43 47 0 26 70 143 415 203 458 262 415 380 70 359 0 299 43 203 325Z"/></g>
 <text x="44.0" y="95" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#6b665f">F0001</text>
 </g>
 <g class="drawn" id="cp-F0002" transform="translate(50 314)">
 <title>PIRZATH LETTER I U+F0002</title>
-<g fill="#161412"><path transform="translate(32.09 59.28) scale(0.05200 -0.05200)" d="M271 60 229 0 186 60V398L229 458L271 398Z"/></g>
+<g fill="#161412"><path transform="translate(40.44 59.28) scale(0.05200 -0.05200)" d="M111 60 69 0 26 60V398L69 458L111 398Z"/></g>
 <text x="44.0" y="95" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#6b665f">F0002</text>
 </g>
 <g class="drawn" id="cp-F0003" transform="translate(50 418)">
 <title>PIRZATH LETTER O U+F0003</title>
-<g fill="#161412"><path transform="translate(32.09 59.28) scale(0.05200 -0.05200)" d="M229 0 160 25 71 155 73 229 71 302 160 432 229 458 298 432 386 302 385 229 386 155 298 25ZM316 203 385 229 316 254 229 382 142 254 73 229 142 203 229 76Z"/></g>
+<g fill="#161412"><path transform="translate(34.46 59.28) scale(0.05200 -0.05200)" d="M184 0 115 25 26 155 28 229 26 302 115 432 184 458 253 432 341 302 340 229 341 155 253 25ZM271 203 340 229 271 254 184 382 97 254 28 229 97 203 184 76Z"/></g>
 <text x="44.0" y="95" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#6b665f">F0003</text>
 </g>
 <g class="drawn" id="cp-F0004" transform="translate(50 522)">
 <title>PIRZATH LETTER U U+F0004</title>
-<g fill="#161412"><path transform="translate(32.09 59.28) scale(0.05200 -0.05200)" d="M355 72 343 0 278 34 103 385 114 458 179 423Z"/></g>
+<g fill="#161412"><path transform="translate(36.10 59.28) scale(0.05200 -0.05200)" d="M278 72 266 0 201 34 26 385 37 458 102 423Z"/></g>
 <text x="44.0" y="95" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#6b665f">F0004</text>
 </g>
 <g class="drawn" id="cp-F0005" transform="translate(50 626)">
 <title>PIRZATH LETTER PARGH U+F0005</title>
-<g fill="#161412"><path transform="translate(26.16 59.28) scale(0.05200 -0.05200)" d="M150 52 73 0 48 90 266 676 343 728 420 676 638 90 614 0 537 52 343 573Z"/></g>
+<g fill="#161412"><path transform="translate(27.31 59.28) scale(0.05200 -0.05200)" d="M128 52 51 0 26 90 244 676 321 728 398 676 616 90 592 0 515 52 321 573Z"/></g>
 <text x="44.0" y="95" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#6b665f">F0005</text>
 </g>
 <g class="drawn" id="cp-F0006" transform="translate(50 730)">
 <title>PIRZATH LETTER BALG U+F0006</title>
-<g fill="#161412"><path transform="translate(26.16 59.28) scale(0.05200 -0.05200)" d="M150 52 73 0 48 90 266 676 343 728 420 676 638 90 614 0 537 52 343 573ZM397 76 343 0 289 76V288L343 364L397 288Z"/></g>
+<g fill="#161412"><path transform="translate(27.31 59.28) scale(0.05200 -0.05200)" d="M128 52 51 0 26 90 244 676 321 728 398 676 616 90 592 0 515 52 321 573ZM375 76 321 0 267 76V288L321 364L375 288Z"/></g>
 <text x="44.0" y="95" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#6b665f">F0006</text>
 </g>
 <g class="drawn" id="cp-F0007" transform="translate(50 834)">
 <title>PIRZATH LETTER FARZ U+F0007</title>
-<g fill="#161412"><path transform="translate(26.16 59.28) scale(0.05200 -0.05200)" d="M150 52 73 0 48 90 266 676 343 728 420 676 497 470 560 494 650 469 598 392 534 369 638 90 614 0 537 52 433 331 369 307 280 332 332 409 395 432 343 573Z"/></g>
+<g fill="#161412"><path transform="translate(27.00 59.28) scale(0.05200 -0.05200)" d="M128 52 51 0 26 90 244 676 321 728 398 676 475 470 538 494 628 469 576 392 512 369 616 90 592 0 515 52 411 331 347 307 258 332 310 409 373 432 321 573Z"/></g>
 <text x="44.0" y="95" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#6b665f">F0007</text>
 </g>
 <g class="drawn" id="cp-F0008" transform="translate(50 938)">
 <title>PIRZATH LETTER VAZAL U+F0008</title>
-<g fill="#161412"><path transform="translate(26.16 59.28) scale(0.05200 -0.05200)" d="M150 52 73 0 48 90 266 676 343 728 420 676 497 470 560 494 650 469 598 392 534 369 638 90 614 0 537 52 433 331 381 311 397 288V76L343 0L289 76V288L314 322L280 332L332 409L395 432L343 573Z"/></g>
+<g fill="#161412"><path transform="translate(27.00 59.28) scale(0.05200 -0.05200)" d="M128 52 51 0 26 90 244 676 321 728 398 676 475 470 538 494 628 469 576 392 512 369 616 90 592 0 515 52 411 331 359 311 375 288V76L321 0L267 76V288L292 322L258 332L310 409L373 432L321 573Z"/></g>
 <text x="44.0" y="95" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#6b665f">F0008</text>
 </g>
 <g class="drawn" id="cp-F0009" transform="translate(50 1042)">
 <title>PIRZATH LETTER MARP U+F0009</title>
-<g fill="#161412"><path transform="translate(26.16 59.28) scale(0.05200 -0.05200)" d="M140 65 73 0 33 84 141 663 208 728 285 676 343 519 401 676 478 728 545 663 653 84 614 0 547 65 461 526 420 416 343 364 266 416 225 526Z"/></g>
+<g fill="#161412"><path transform="translate(26.53 59.28) scale(0.05200 -0.05200)" d="M133 65 66 0 26 84 134 663 201 728 278 676 336 519 394 676 471 728 538 663 646 84 607 0 540 65 454 526 413 416 336 364 259 416 218 526Z"/></g>
 <text x="44.0" y="95" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#6b665f">F0009</text>
 </g>
 <g class="drawn" id="cp-F000A" transform="translate(50 1146)">
 <title>PIRZATH LETTER TAMB U+F000A</title>
-<g fill="#161412"><path transform="translate(26.16 59.28) scale(0.05200 -0.05200)" d="M48 638 73 728 150 676 343 155 537 676 614 728 638 638 420 52 343 0 266 52Z"/></g>
+<g fill="#161412"><path transform="translate(27.31 59.28) scale(0.05200 -0.05200)" d="M26 638 51 728 128 676 321 155 515 676 592 728 616 638 398 52 321 0 244 52Z"/></g>
 <text x="44.0" y="95" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#6b665f">F000A</text>
 </g>
 <g class="drawn" id="cp-F000B" transform="translate(50 1250)">
 <title>PIRZATH LETTER DALK U+F000B</title>
-<g fill="#161412"><path transform="translate(26.16 59.28) scale(0.05200 -0.05200)" d="M48 638 73 728 150 676 343 155 537 676 614 728 638 638 420 52 343 0 266 52ZM289 652 343 728 397 652V440L343 364L289 440Z"/></g>
+<g fill="#161412"><path transform="translate(27.31 59.28) scale(0.05200 -0.05200)" d="M26 638 51 728 128 676 321 155 515 676 592 728 616 638 398 52 321 0 244 52ZM267 652 321 728 375 652V440L321 364L267 440Z"/></g>
 <text x="44.0" y="95" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#6b665f">F000B</text>
 </g>
 <g class="drawn" id="cp-F000C" transform="translate(50 1354)">
 <title>PIRZATH LETTER NAZAF U+F000C</title>
-<g fill="#161412"><path transform="translate(26.16 59.28) scale(0.05200 -0.05200)" d="M33 644 73 728 140 663 225 202 266 312 343 364 420 312 461 202 547 663 614 728 653 644 545 65 478 0 401 52 343 209 285 52 208 0 141 65Z"/></g>
+<g fill="#161412"><path transform="translate(26.53 59.28) scale(0.05200 -0.05200)" d="M26 644 66 728 133 663 218 202 259 312 336 364 413 312 454 202 540 663 607 728 646 644 538 65 471 0 394 52 336 209 278 52 201 0 134 65Z"/></g>
 <text x="44.0" y="95" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#6b665f">F000C</text>
 </g>
 <g class="drawn" id="cp-F000D" transform="translate(50 1458)">
 <title>PIRZATH LETTER KAMV U+F000D</title>
-<g fill="#161412"><path transform="translate(26.16 59.28) scale(0.05200 -0.05200)" d="M210 638 187 728 280 720 591 454 614 364 591 274 280 8 187 0 210 90 521 356 614 364 521 372Z"/></g>
+<g fill="#161412"><path transform="translate(31.55 59.28) scale(0.05200 -0.05200)" d="M49 638 26 728 119 720 430 454 453 364 430 274 119 8 26 0 49 90 360 356 453 364 360 372Z"/></g>
 <text x="44.0" y="95" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#6b665f">F000D</text>
 </g>
 <g class="drawn" id="cp-F000E" transform="translate(50 1562)">
 <title>PIRZATH LETTER GAMTH U+F000E</title>
-<g fill="#161412"><path transform="translate(26.16 59.28) scale(0.05200 -0.05200)" d="M133 652 187 728 280 720 591 454 614 364 591 274 280 8 187 0 133 76ZM521 356 614 364 521 372 241 611V117Z"/></g>
+<g fill="#161412"><path transform="translate(30.14 59.28) scale(0.05200 -0.05200)" d="M26 652 80 728 173 720 484 454 507 364 484 274 173 8 80 0 26 76ZM414 356 507 364 414 372 134 611V117Z"/></g>
 <text x="44.0" y="95" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#6b665f">F000E</text>
 </g>
 <g class="drawn" id="cp-F000F" transform="translate(50 1666)">
 <title>PIRZATH LETTER SAKAR U+F000F</title>
-<g fill="#161412"><path transform="translate(26.16 59.28) scale(0.05200 -0.05200)" d="M343 0 258 37 117 271 125 364 117 457 258 691 343 728 429 691 569 457 562 364 569 271 429 37ZM476 327 562 364 476 401 343 623 210 401 125 364 210 327 343 105Z"/></g>
+<g fill="#161412"><path transform="translate(30.90 59.28) scale(0.05200 -0.05200)" d="M252 0 167 37 26 271 34 364 26 457 167 691 252 728 338 691 478 457 471 364 478 271 338 37ZM385 327 471 364 385 401 252 623 119 401 34 364 119 327 252 105Z"/></g>
 <text x="44.0" y="95" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#6b665f">F000F</text>
 </g>
 <g class="drawn" id="cp-F0010" transform="translate(138 106)">
 <title>PIRZATH LETTER ZALD U+F0010</title>
-<g fill="#161412"><path transform="translate(26.16 59.28) scale(0.05200 -0.05200)" d="M161 29 73 0 75 93 276 364 75 635 73 728 161 699 343 455 525 699 614 728 612 635 411 364 612 93 614 0 525 29 343 273Z"/></g>
+<g fill="#161412"><path transform="translate(28.58 59.28) scale(0.05200 -0.05200)" d="M114 29 26 0 28 93 229 364 28 635 26 728 114 699 296 455 478 699 567 728 565 635 364 364 565 93 567 0 478 29 296 273Z"/></g>
 <text x="44.0" y="95" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#6b665f">F0010</text>
 </g>
 <g class="drawn" id="cp-F0011" transform="translate(138 210)">
 <title>PIRZATH LETTER HALB U+F0011</title>
-<g fill="#161412"><path transform="translate(26.16 59.28) scale(0.05200 -0.05200)" d="M397 76 343 0 289 76V435L280 429L187 437L224 522L289 561V652L343 728L397 652V626L406 631L499 624L462 539L397 500Z"/></g>
+<g fill="#161412"><path transform="translate(34.54 59.28) scale(0.05200 -0.05200)" d="M236 76 182 0 128 76V435L119 429L26 437L63 522L128 561V652L182 728L236 652V626L245 631L338 624L301 539L236 500Z"/></g>
 <text x="44.0" y="95" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#6b665f">F0011</text>
 </g>
 <g class="drawn" id="cp-F0012" transform="translate(138 314)">
 <title>PIRZATH LETTER LADHAV U+F0012</title>
-<g fill="#161412"><path transform="translate(26.16 59.28) scale(0.05200 -0.05200)" d="M157 40 73 0 62 92 394 688 478 728 489 636 328 347 364 335 544 93 546 0 457 29 282 265Z"/></g>
+<g fill="#161412"><path transform="translate(30.06 59.28) scale(0.05200 -0.05200)" d="M121 40 37 0 26 92 358 688 442 728 453 636 292 347 328 335 508 93 510 0 421 29 246 265Z"/></g>
 <text x="44.0" y="95" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#6b665f">F0012</text>
 </g>
 <g class="drawn" id="cp-F0013" transform="translate(138 418)">
 <title>PIRZATH LETTER RAGHAV U+F0013</title>
-<g fill="#161412"><path transform="translate(26.16 59.28) scale(0.05200 -0.05200)" d="M407 720 499 728 477 638 165 372 73 364 165 356 477 90 499 0 407 8 95 274 73 364 95 454Z"/></g>
+<g fill="#161412"><path transform="translate(31.57 59.28) scale(0.05200 -0.05200)" d="M360 720 452 728 430 638 118 372 26 364 118 356 430 90 452 0 360 8 48 274 26 364 48 454Z"/></g>
 <text x="44.0" y="95" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#6b665f">F0013</text>
 </g>
 <g class="drawn" id="cp-F0014" transform="translate(138 522)">
 <title>PIRZATH LETTER JA U+F0014</title>
-<g fill="#161412"><path transform="translate(26.16 59.28) scale(0.05200 -0.05200)" d="M397 76 343 0 289 76V346L75 635L73 728L161 699L343 455L525 699L614 728L612 635L397 346Z"/></g>
+<g fill="#161412"><path transform="translate(28.58 59.28) scale(0.05200 -0.05200)" d="M350 76 296 0 242 76V346L28 635L26 728L114 699L296 455L478 699L567 728L565 635L350 346Z"/></g>
 <text x="44.0" y="95" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#6b665f">F0014</text>
 </g>
 <g class="drawn" id="cp-F0015" transform="translate(138 626)">
 <title>PIRZATH LETTER QA U+F0015</title>
-<g fill="#161412"><path transform="translate(26.16 59.28) scale(0.05200 -0.05200)" d="M289 652 343 728 397 652V382L612 93L614 0L525 29L343 273L161 29L73 0L75 93L289 382Z"/></g>
+<g fill="#161412"><path transform="translate(28.58 59.28) scale(0.05200 -0.05200)" d="M242 652 296 728 350 652V382L565 93L567 0L478 29L296 273L114 29L26 0L28 93L242 382Z"/></g>
 <text x="44.0" y="95" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#6b665f">F0015</text>
 </g>
 <g class="drawn" id="cp-F0016" transform="translate(138 730)">
 <title>PIRZATH LETTER WA U+F0016</title>
-<g fill="#161412"><path transform="translate(20.76 59.28) scale(0.05200 -0.05200)" d="M805 92 822 0 730 14 501 236V76L447 0L393 76V341L89 636L73 728L165 714L393 492V652L447 728L501 652V387Z"/></g>
+<g fill="#161412"><path transform="translate(23.17 59.28) scale(0.05200 -0.05200)" d="M758 92 775 0 683 14 454 236V76L400 0L346 76V341L42 636L26 728L118 714L346 492V652L400 728L454 652V387Z"/></g>
 <text x="44.0" y="95" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#6b665f">F0016</text>
 </g>
 <g class="drawn" id="cp-F0017" transform="translate(138 834)">
 <title>PIRZATH LETTER YA U+F0017</title>
-<g fill="#161412"><path transform="translate(32.09 59.28) scale(0.05200 -0.05200)" d="M271 60 229 0 186 60V398L229 458L271 398Z"/></g>
+<g fill="#161412"><path transform="translate(40.44 59.28) scale(0.05200 -0.05200)" d="M111 60 69 0 26 60V398L69 458L111 398Z"/></g>
 <text x="44.0" y="95" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#6b665f">F0017</text>
 </g>
 <g class="drawn" id="cp-F0018" transform="translate(138 938)">
 <title>PIRZATH LETTER CATCH U+F0018</title>
-<g fill="#161412"><path transform="translate(26.16 59.28) scale(0.05200 -0.05200)" d="M397 76 343 0 289 76V123L280 117L187 125L224 210L289 249V652L343 728L397 652V314L406 319L499 312L462 227L397 188Z"/></g>
+<g fill="#161412"><path transform="translate(34.54 59.28) scale(0.05200 -0.05200)" d="M236 76 182 0 128 76V123L119 117L26 125L63 210L128 249V652L182 728L236 652V314L245 319L338 312L301 227L236 188Z"/></g>
 <text x="44.0" y="95" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#6b665f">F0018</text>
 </g>
 <rect class="undrawn" x="138" y="1042" width="88" height="104" fill="url(#hatch)"/>
@@ -163,57 +163,57 @@
 <rect class="undrawn" x="138" y="1666" width="88" height="104" fill="url(#hatch)"/>
 <g class="drawn" id="cp-F0020" transform="translate(226 106)">
 <title>PIRZATH LETTER THARZ U+F0020</title>
-<g fill="#161412"><path transform="translate(26.16 59.28) scale(0.05200 -0.05200)" d="M48 638 73 728 150 676 343 155 422 369 359 392 307 469 396 494 460 470 537 676 614 728 638 638 561 432 625 409 677 332 587 307 524 331 420 52 343 0 266 52Z"/></g>
+<g fill="#161412"><path transform="translate(26.29 59.28) scale(0.05200 -0.05200)" d="M26 638 51 728 128 676 321 155 400 369 337 392 285 469 374 494 438 470 515 676 592 728 616 638 539 432 603 409 655 332 565 307 502 331 398 52 321 0 244 52Z"/></g>
 <text x="44.0" y="95" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#6b665f">F0020</text>
 </g>
 <g class="drawn" id="cp-F0021" transform="translate(226 210)">
 <title>PIRZATH LETTER DHALZ U+F0021</title>
-<g fill="#161412"><path transform="translate(26.16 59.28) scale(0.05200 -0.05200)" d="M48 638 73 728 150 676 343 155 422 369 362 391 343 364 289 440V652L343 728L397 652V493L460 470L537 676L614 728L638 638L561 432L625 409L677 332L587 307L524 331L420 52L343 0L266 52Z"/></g>
+<g fill="#161412"><path transform="translate(26.29 59.28) scale(0.05200 -0.05200)" d="M26 638 51 728 128 676 321 155 400 369 340 391 321 364 267 440V652L321 728L375 652V493L438 470L515 676L592 728L616 638L539 432L603 409L655 332L565 307L502 331L398 52L321 0L244 52Z"/></g>
 <text x="44.0" y="95" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#6b665f">F0021</text>
 </g>
 <g class="drawn" id="cp-F0022" transform="translate(226 314)">
 <title>PIRZATH LETTER KHABAR U+F0022</title>
-<g fill="#161412"><path transform="translate(26.16 59.28) scale(0.05200 -0.05200)" d="M210 638 187 728 280 720 394 622 438 674 529 696 521 604 477 552 591 454 614 364 591 274 280 8 187 0 210 90 521 356 614 364 521 372 406 470 362 418 272 396 280 488 324 540Z"/></g>
+<g fill="#161412"><path transform="translate(31.55 59.28) scale(0.05200 -0.05200)" d="M49 638 26 728 119 720 233 622 277 674 368 696 360 604 316 552 430 454 453 364 430 274 119 8 26 0 49 90 360 356 453 364 360 372 245 470 201 418 111 396 119 488 163 540Z"/></g>
 <text x="44.0" y="95" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#6b665f">F0022</text>
 </g>
 <g class="drawn" id="cp-F0023" transform="translate(226 418)">
 <title>PIRZATH LETTER GHARM U+F0023</title>
-<g fill="#161412"><path transform="translate(26.16 59.28) scale(0.05200 -0.05200)" d="M133 652 187 728 280 720 394 622 438 674 529 696 521 604 477 552 591 454 614 364 591 274 280 8 187 0 133 76ZM521 356 614 364 521 372 406 470 362 418 272 396 280 488 324 540 241 611V117Z"/></g>
+<g fill="#161412"><path transform="translate(30.14 59.28) scale(0.05200 -0.05200)" d="M26 652 80 728 173 720 287 622 331 674 422 696 414 604 370 552 484 454 507 364 484 274 173 8 80 0 26 76ZM414 356 507 364 414 372 299 470 255 418 165 396 173 488 217 540 134 611V117Z"/></g>
 <text x="44.0" y="95" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#6b665f">F0023</text>
 </g>
 <g class="drawn" id="cp-F0024" transform="translate(226 522)">
 <title>PIRZATH LETTER SHA U+F0024</title>
-<g fill="#161412"><path transform="translate(26.16 59.28) scale(0.05200 -0.05200)" d="M343 0 258 37 117 271 125 364 117 457 258 691 343 728 429 691 471 620 493 634 586 626 549 541 527 527 569 457 562 364 569 271 429 37ZM476 327 562 364 476 401 434 472 411 458 319 466 356 551 378 565 343 623 210 401 125 364 210 327 343 105Z"/></g>
+<g fill="#161412"><path transform="translate(30.45 59.28) scale(0.05200 -0.05200)" d="M252 0 167 37 26 271 34 364 26 457 167 691 252 728 338 691 380 620 402 634 495 626 458 541 436 527 478 457 471 364 478 271 338 37ZM385 327 471 364 385 401 343 472 320 458 228 466 265 551 287 565 252 623 119 401 34 364 119 327 252 105Z"/></g>
 <text x="44.0" y="95" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#6b665f">F0024</text>
 </g>
 <g class="drawn" id="cp-F0025" transform="translate(226 626)">
 <title>PIRZATH LETTER ZHA U+F0025</title>
-<g fill="#161412"><path transform="translate(26.16 59.28) scale(0.05200 -0.05200)" d="M161 29 73 0 75 93 276 364 75 635 73 728 161 699 343 455 525 699 614 728 612 635 411 364 490 258 511 273 604 275 575 186 554 171 612 93 614 0 525 29 467 106 446 91 353 89 382 178 403 193 343 273Z"/></g>
+<g fill="#161412"><path transform="translate(28.58 59.28) scale(0.05200 -0.05200)" d="M114 29 26 0 28 93 229 364 28 635 26 728 114 699 296 455 478 699 567 728 565 635 364 364 443 258 464 273 557 275 528 186 507 171 565 93 567 0 478 29 420 106 399 91 306 89 335 178 356 193 296 273Z"/></g>
 <text x="44.0" y="95" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#6b665f">F0025</text>
 </g>
 <g class="drawn" id="cp-F0026" transform="translate(226 730)">
 <title>PIRZATH LETTER TSA U+F0026</title>
-<g fill="#161412"><path transform="translate(26.16 59.28) scale(0.05200 -0.05200)" d="M262 76 208 0 154 76V652L208 728L262 652V485L521 718L614 728L593 637L300 374L262 370V358L300 354L593 91L614 0L521 10L262 243Z"/></g>
+<g fill="#161412"><path transform="translate(30.69 59.28) scale(0.05200 -0.05200)" d="M134 76 80 0 26 76V652L80 728L134 652V485L393 718L486 728L465 637L172 374L134 370V358L172 354L465 91L486 0L393 10L134 243Z"/></g>
 <text x="44.0" y="95" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#6b665f">F0026</text>
 </g>
 <g class="drawn" id="cp-F0027" transform="translate(226 834)">
 <title>PIRZATH LETTER CHA U+F0027</title>
-<g fill="#161412"><path transform="translate(26.16 59.28) scale(0.05200 -0.05200)" d="M532 76 478 0 424 76V243L165 10L73 0L93 91L386 354L424 358V370L386 374L93 637L73 728L165 718L424 485V652L478 728L532 652Z"/></g>
+<g fill="#161412"><path transform="translate(30.71 59.28) scale(0.05200 -0.05200)" d="M485 76 431 0 377 76V243L118 10L26 0L46 91L339 354L377 358V370L339 374L46 637L26 728L118 718L377 485V652L431 728L485 652Z"/></g>
 <text x="44.0" y="95" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#6b665f">F0027</text>
 </g>
 <g class="drawn" id="cp-F0028" transform="translate(226 938)">
 <title>PIRZATH LETTER NGA U+F0028</title>
-<g fill="#161412"><path transform="translate(26.16 59.28) scale(0.05200 -0.05200)" d="M223 642 187 728 280 734 443 632 478 546 443 460 289 364 443 268 478 182 443 96 280 -6 187 0 223 86 376 182 223 278 187 364 223 450 376 546Z"/></g>
+<g fill="#161412"><path transform="translate(35.08 59.28) scale(0.05200 -0.05200)" d="M62 642 26 728 119 734 282 632 317 546 282 460 128 364 282 268 317 182 282 96 119 -6 26 0 62 86 215 182 62 278 26 364 62 450 215 546Z"/></g>
 <text x="44.0" y="95" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#6b665f">F0028</text>
 </g>
 <g class="drawn" id="cp-F0029" transform="translate(226 1042)">
 <title>PIRZATH LETTER NYA U+F0029</title>
-<g fill="#161412"><path transform="translate(26.16 59.28) scale(0.05200 -0.05200)" d="M33 644 73 728 140 663 225 202 266 312 343 364 289 440V652L343 728L397 652V440L343 364L420 312L461 202L547 663L614 728L653 644L545 65L478 0L401 52L343 209L285 52L208 0L141 65Z"/></g>
+<g fill="#161412"><path transform="translate(26.53 59.28) scale(0.05200 -0.05200)" d="M26 644 66 728 133 663 218 202 259 312 336 364 282 440V652L336 728L390 652V440L336 364L413 312L454 202L540 663L607 728L646 644L538 65L471 0L394 52L336 209L278 52L201 0L134 65Z"/></g>
 <text x="44.0" y="95" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#6b665f">F0029</text>
 </g>
 <g class="drawn" id="cp-F002A" transform="translate(226 1146)">
 <title>PIRZATH LETTER HLA U+F002A</title>
-<g fill="#161412"><path transform="translate(26.16 59.28) scale(0.05200 -0.05200)" d="M157 40 73 0 62 92 291 503 268 516 229 600 321 610 344 598 394 688 478 728 489 636 438 545 461 532 501 448 409 438 386 451 328 347 364 335 544 93 546 0 457 29 282 265Z"/></g>
+<g fill="#161412"><path transform="translate(30.06 59.28) scale(0.05200 -0.05200)" d="M121 40 37 0 26 92 255 503 232 516 193 600 285 610 308 598 358 688 442 728 453 636 402 545 425 532 465 448 373 438 350 451 292 347 328 335 508 93 510 0 421 29 246 265Z"/></g>
 <text x="44.0" y="95" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#6b665f">F002A</text>
 </g>
 <rect class="undrawn" x="226" y="1250" width="88" height="104" fill="url(#hatch)"/>
@@ -223,27 +223,27 @@
 <rect class="undrawn" x="226" y="1666" width="88" height="104" fill="url(#hatch)"/>
 <g class="drawn" id="cp-F0030" transform="translate(314 106)">
 <title>PIRZATH LETTER AI U+F0030</title>
-<g fill="#161412"><path transform="translate(32.09 59.28) scale(0.05200 -0.05200)" d="M132 43 73 0 52 70 169 415 229 458 271 398V60L229 0L186 60V200Z"/></g>
+<g fill="#161412"><path transform="translate(36.95 59.28) scale(0.05200 -0.05200)" d="M106 43 47 0 26 70 143 415 203 458 245 398V60L203 0L160 60V200Z"/></g>
 <text x="44.0" y="95" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#6b665f">F0030</text>
 </g>
 <g class="drawn" id="cp-F0031" transform="translate(314 210)">
 <title>PIRZATH LETTER AU U+F0031</title>
-<g fill="#161412"><path transform="translate(32.09 59.28) scale(0.05200 -0.05200)" d="M52 387 73 458 132 415 229 132 325 415 385 458 406 387 288 43 229 0 169 43Z"/></g>
+<g fill="#161412"><path transform="translate(33.44 59.28) scale(0.05200 -0.05200)" d="M26 387 47 458 106 415 203 132 299 415 359 458 380 387 262 43 203 0 143 43Z"/></g>
 <text x="44.0" y="95" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#6b665f">F0031</text>
 </g>
 <g class="drawn" id="cp-F0032" transform="translate(314 314)">
 <title>PIRZATH LETTER EI U+F0032</title>
-<g fill="#161412"><path transform="translate(32.09 59.28) scale(0.05200 -0.05200)" d="M132 43 73 0 52 70 169 415 229 458 288 415 406 70 385 0 325 43 271 200V60L229 0L186 60V200Z"/></g>
+<g fill="#161412"><path transform="translate(33.44 59.28) scale(0.05200 -0.05200)" d="M106 43 47 0 26 70 143 415 203 458 262 415 380 70 359 0 299 43 245 200V60L203 0L160 60V200Z"/></g>
 <text x="44.0" y="95" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#6b665f">F0032</text>
 </g>
 <g class="drawn" id="cp-F0033" transform="translate(314 418)">
 <title>PIRZATH LETTER OI U+F0033</title>
-<g fill="#161412"><path transform="translate(32.09 59.28) scale(0.05200 -0.05200)" d="M52 387 73 458 132 415 186 257V398L229 458L271 398V257L325 415L385 458L406 387L288 43L229 0L169 43Z"/></g>
+<g fill="#161412"><path transform="translate(33.44 59.28) scale(0.05200 -0.05200)" d="M26 387 47 458 106 415 160 257V398L203 458L245 398V257L299 415L359 458L380 387L262 43L203 0L143 43Z"/></g>
 <text x="44.0" y="95" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#6b665f">F0033</text>
 </g>
 <g class="drawn" id="cp-F0034" transform="translate(314 522)">
 <title>PIRZATH LETTER OU U+F0034</title>
-<g fill="#161412"><path transform="translate(32.09 59.28) scale(0.05200 -0.05200)" d="M106 364 114 437 151 419 160 432 229 458 298 432 386 302 385 229 386 155 348 100 352 94 343 21 307 38 298 25 229 0 160 25 71 155 73 229 71 302 109 358ZM316 203 385 229 316 254 229 382 209 353 302 184ZM142 254 73 229 142 203 229 76 248 105 155 274Z"/></g>
+<g fill="#161412"><path transform="translate(34.46 59.28) scale(0.05200 -0.05200)" d="M61 364 69 437 106 419 115 432 184 458 253 432 341 302 340 229 341 155 303 100 307 94 298 21 262 38 253 25 184 0 115 25 26 155 28 229 26 302 64 358ZM271 203 340 229 271 254 184 382 164 353 257 184ZM97 254 28 229 97 203 184 76 203 105 110 274Z"/></g>
 <text x="44.0" y="95" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#6b665f">F0034</text>
 </g>
 <rect class="undrawn" x="314" y="626" width="88" height="104" fill="url(#hatch)"/>
@@ -259,112 +259,112 @@
 <rect class="undrawn" x="314" y="1666" width="88" height="104" fill="url(#hatch)"/>
 <g class="drawn" id="cp-F0040" transform="translate(402 106)">
 <title>PIRZATH DIGIT ZERO U+F0040</title>
-<g fill="#161412"><path transform="translate(28.87 59.28) scale(0.05200 -0.05200)" d="M345 76 291 0 237 76V652L291 728L345 652Z"/></g>
+<g fill="#161412"><path transform="translate(39.84 59.28) scale(0.05200 -0.05200)" d="M134 76 80 0 26 76V652L80 728L134 652Z"/></g>
 <text x="44.0" y="95" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#6b665f">F0040</text>
 </g>
 <g class="drawn" id="cp-F0041" transform="translate(402 210)">
 <title>PIRZATH DIGIT ONE U+F0041</title>
-<g fill="#161412"><path transform="translate(28.87 59.28) scale(0.05200 -0.05200)" d="M345 76 291 0 254 52 185 -16 94 -31 109 61 199 151 237 157V652L291 728L345 652Z"/></g>
+<g fill="#161412"><path transform="translate(36.12 59.28) scale(0.05200 -0.05200)" d="M277 76 223 0 186 52 117 -16 26 -31 41 61 131 151 169 157V652L223 728L277 652Z"/></g>
 <text x="44.0" y="95" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#6b665f">F0041</text>
 </g>
 <g class="drawn" id="cp-F0042" transform="translate(402 314)">
 <title>PIRZATH DIGIT TWO U+F0042</title>
-<g fill="#161412"><path transform="translate(28.87 59.28) scale(0.05200 -0.05200)" d="M345 76 291 0 237 76V265L185 213L94 198L109 289L199 380L237 386V652L291 728L345 652Z"/></g>
+<g fill="#161412"><path transform="translate(36.12 59.28) scale(0.05200 -0.05200)" d="M277 76 223 0 169 76V265L117 213L26 198L41 289L131 380L169 386V652L223 728L277 652Z"/></g>
 <text x="44.0" y="95" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#6b665f">F0042</text>
 </g>
 <g class="drawn" id="cp-F0043" transform="translate(402 418)">
 <title>PIRZATH DIGIT THREE U+F0043</title>
-<g fill="#161412"><path transform="translate(28.87 59.28) scale(0.05200 -0.05200)" d="M345 76 291 0 254 52 185 -16 94 -31 109 61 199 151 237 157V265L185 213L94 198L109 289L199 380L237 386V652L291 728L345 652Z"/></g>
+<g fill="#161412"><path transform="translate(36.12 59.28) scale(0.05200 -0.05200)" d="M277 76 223 0 186 52 117 -16 26 -31 41 61 131 151 169 157V265L117 213L26 198L41 289L131 380L169 386V652L223 728L277 652Z"/></g>
 <text x="44.0" y="95" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#6b665f">F0043</text>
 </g>
 <g class="drawn" id="cp-F0044" transform="translate(402 522)">
 <title>PIRZATH DIGIT FOUR U+F0044</title>
-<g fill="#161412"><path transform="translate(28.87 59.28) scale(0.05200 -0.05200)" d="M345 76 291 0 237 76V652L291 728L345 652V428L383 422L474 331L489 239L397 254L345 306Z"/></g>
+<g fill="#161412"><path transform="translate(36.10 59.28) scale(0.05200 -0.05200)" d="M134 76 80 0 26 76V652L80 728L134 652V428L172 422L263 331L278 239L186 254L134 306Z"/></g>
 <text x="44.0" y="95" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#6b665f">F0044</text>
 </g>
 <g class="drawn" id="cp-F0045" transform="translate(402 626)">
 <title>PIRZATH DIGIT FIVE U+F0045</title>
-<g fill="#161412"><path transform="translate(28.87 59.28) scale(0.05200 -0.05200)" d="M345 76 291 0 254 52 185 -16 94 -31 109 61 199 151 237 157V652L291 728L345 652V428L383 422L474 331L489 239L397 254L345 306Z"/></g>
+<g fill="#161412"><path transform="translate(32.38 59.28) scale(0.05200 -0.05200)" d="M277 76 223 0 186 52 117 -16 26 -31 41 61 131 151 169 157V652L223 728L277 652V428L315 422L406 331L421 239L329 254L277 306Z"/></g>
 <text x="44.0" y="95" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#6b665f">F0045</text>
 </g>
 <g class="drawn" id="cp-F0046" transform="translate(402 730)">
 <title>PIRZATH DIGIT SIX U+F0046</title>
-<g fill="#161412"><path transform="translate(28.87 59.28) scale(0.05200 -0.05200)" d="M345 76 291 0 237 76V265L185 213L94 198L109 289L199 380L237 386V652L291 728L345 652V428L383 422L474 331L489 239L397 254L345 306Z"/></g>
+<g fill="#161412"><path transform="translate(32.38 59.28) scale(0.05200 -0.05200)" d="M277 76 223 0 169 76V265L117 213L26 198L41 289L131 380L169 386V652L223 728L277 652V428L315 422L406 331L421 239L329 254L277 306Z"/></g>
 <text x="44.0" y="95" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#6b665f">F0046</text>
 </g>
 <g class="drawn" id="cp-F0047" transform="translate(402 834)">
 <title>PIRZATH DIGIT SEVEN U+F0047</title>
-<g fill="#161412"><path transform="translate(28.87 59.28) scale(0.05200 -0.05200)" d="M345 76 291 0 254 52 185 -16 94 -31 109 61 199 151 237 157V265L185 213L94 198L109 289L199 380L237 386V652L291 728L345 652V428L383 422L474 331L489 239L397 254L345 306Z"/></g>
+<g fill="#161412"><path transform="translate(32.38 59.28) scale(0.05200 -0.05200)" d="M277 76 223 0 186 52 117 -16 26 -31 41 61 131 151 169 157V265L117 213L26 198L41 289L131 380L169 386V652L223 728L277 652V428L315 422L406 331L421 239L329 254L277 306Z"/></g>
 <text x="44.0" y="95" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#6b665f">F0047</text>
 </g>
 <g class="drawn" id="cp-F0048" transform="translate(402 938)">
 <title>PIRZATH DIGIT EIGHT U+F0048</title>
-<g fill="#161412"><path transform="translate(28.87 59.28) scale(0.05200 -0.05200)" d="M345 76 291 0 237 76V652L291 728L342 657L383 650L474 560L489 468L397 483L345 535Z"/></g>
+<g fill="#161412"><path transform="translate(36.10 59.28) scale(0.05200 -0.05200)" d="M134 76 80 0 26 76V652L80 728L131 657L172 650L263 560L278 468L186 483L134 535Z"/></g>
 <text x="44.0" y="95" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#6b665f">F0048</text>
 </g>
 <g class="drawn" id="cp-F0049" transform="translate(402 1042)">
 <title>PIRZATH DIGIT NINE U+F0049</title>
-<g fill="#161412"><path transform="translate(28.87 59.28) scale(0.05200 -0.05200)" d="M345 76 291 0 254 52 185 -16 94 -31 109 61 199 151 237 157V652L291 728L342 657L383 650L474 560L489 468L397 483L345 535Z"/></g>
+<g fill="#161412"><path transform="translate(32.38 59.28) scale(0.05200 -0.05200)" d="M277 76 223 0 186 52 117 -16 26 -31 41 61 131 151 169 157V652L223 728L274 657L315 650L406 560L421 468L329 483L277 535Z"/></g>
 <text x="44.0" y="95" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#6b665f">F0049</text>
 </g>
 <g class="drawn" id="cp-F004A" transform="translate(402 1146)">
 <title>PIRZATH DIGIT TEN U+F004A</title>
-<g fill="#161412"><path transform="translate(28.87 59.28) scale(0.05200 -0.05200)" d="M345 76 291 0 237 76V265L185 213L94 198L109 289L199 380L237 386V652L291 728L342 657L383 650L474 560L489 468L397 483L345 535Z"/></g>
+<g fill="#161412"><path transform="translate(32.38 59.28) scale(0.05200 -0.05200)" d="M277 76 223 0 169 76V265L117 213L26 198L41 289L131 380L169 386V652L223 728L274 657L315 650L406 560L421 468L329 483L277 535Z"/></g>
 <text x="44.0" y="95" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#6b665f">F004A</text>
 </g>
 <g class="drawn" id="cp-F004B" transform="translate(402 1250)">
 <title>PIRZATH DIGIT ELEVEN U+F004B</title>
-<g fill="#161412"><path transform="translate(28.87 59.28) scale(0.05200 -0.05200)" d="M345 76 291 0 254 52 185 -16 94 -31 109 61 199 151 237 157V265L185 213L94 198L109 289L199 380L237 386V652L291 728L342 657L383 650L474 560L489 468L397 483L345 535Z"/></g>
+<g fill="#161412"><path transform="translate(32.38 59.28) scale(0.05200 -0.05200)" d="M277 76 223 0 186 52 117 -16 26 -31 41 61 131 151 169 157V265L117 213L26 198L41 289L131 380L169 386V652L223 728L274 657L315 650L406 560L421 468L329 483L277 535Z"/></g>
 <text x="44.0" y="95" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#6b665f">F004B</text>
 </g>
 <g class="drawn" id="cp-F004C" transform="translate(402 1354)">
 <title>PIRZATH DIGIT TWELVE U+F004C</title>
-<g fill="#161412"><path transform="translate(28.87 59.28) scale(0.05200 -0.05200)" d="M345 76 291 0 237 76V652L291 728L342 657L383 650L474 560L489 468L397 483L345 535V428L383 422L474 331L489 239L397 254L345 306Z"/></g>
+<g fill="#161412"><path transform="translate(36.10 59.28) scale(0.05200 -0.05200)" d="M134 76 80 0 26 76V652L80 728L131 657L172 650L263 560L278 468L186 483L134 535V428L172 422L263 331L278 239L186 254L134 306Z"/></g>
 <text x="44.0" y="95" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#6b665f">F004C</text>
 </g>
 <g class="drawn" id="cp-F004D" transform="translate(402 1458)">
 <title>PIRZATH DIGIT THIRTEEN U+F004D</title>
-<g fill="#161412"><path transform="translate(28.87 59.28) scale(0.05200 -0.05200)" d="M345 76 291 0 254 52 185 -16 94 -31 109 61 199 151 237 157V652L291 728L342 657L383 650L474 560L489 468L397 483L345 535V428L383 422L474 331L489 239L397 254L345 306Z"/></g>
+<g fill="#161412"><path transform="translate(32.38 59.28) scale(0.05200 -0.05200)" d="M277 76 223 0 186 52 117 -16 26 -31 41 61 131 151 169 157V652L223 728L274 657L315 650L406 560L421 468L329 483L277 535V428L315 422L406 331L421 239L329 254L277 306Z"/></g>
 <text x="44.0" y="95" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#6b665f">F004D</text>
 </g>
 <g class="drawn" id="cp-F004E" transform="translate(402 1562)">
 <title>PIRZATH DIGIT FOURTEEN U+F004E</title>
-<g fill="#161412"><path transform="translate(28.87 59.28) scale(0.05200 -0.05200)" d="M345 76 291 0 237 76V265L185 213L94 198L109 289L199 380L237 386V652L291 728L342 657L383 650L474 560L489 468L397 483L345 535V428L383 422L474 331L489 239L397 254L345 306Z"/></g>
+<g fill="#161412"><path transform="translate(32.38 59.28) scale(0.05200 -0.05200)" d="M277 76 223 0 169 76V265L117 213L26 198L41 289L131 380L169 386V652L223 728L274 657L315 650L406 560L421 468L329 483L277 535V428L315 422L406 331L421 239L329 254L277 306Z"/></g>
 <text x="44.0" y="95" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#6b665f">F004E</text>
 </g>
 <g class="drawn" id="cp-F004F" transform="translate(402 1666)">
 <title>PIRZATH DIGIT FIFTEEN U+F004F</title>
-<g fill="#161412"><path transform="translate(28.87 59.28) scale(0.05200 -0.05200)" d="M345 76 291 0 254 52 185 -16 94 -31 109 61 199 151 237 157V265L185 213L94 198L109 289L199 380L237 386V652L291 728L342 657L383 650L474 560L489 468L397 483L345 535V428L383 422L474 331L489 239L397 254L345 306Z"/></g>
+<g fill="#161412"><path transform="translate(32.38 59.28) scale(0.05200 -0.05200)" d="M277 76 223 0 186 52 117 -16 26 -31 41 61 131 151 169 157V265L117 213L26 198L41 289L131 380L169 386V652L223 728L274 657L315 650L406 560L421 468L329 483L277 535V428L315 422L406 331L421 239L329 254L277 306Z"/></g>
 <text x="44.0" y="95" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#6b665f">F004F</text>
 </g>
 <g class="drawn" id="cp-F0050" transform="translate(490 106)">
 <title>PIRZATH SENTENCE END U+F0050</title>
-<g fill="#161412"><path transform="translate(32.09 59.28) scale(0.05200 -0.05200)" d="M169 310 94 364 169 418H288L364 364L288 310Z"/></g>
+<g fill="#161412"><path transform="translate(35.63 59.28) scale(0.05200 -0.05200)" d="M101 310 26 364 101 418H220L296 364L220 310Z"/></g>
 <text x="44.0" y="95" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#6b665f">F0050</text>
 </g>
 <g class="drawn" id="cp-F0051" transform="translate(490 210)">
 <title>PIRZATH PAUSE U+F0051</title>
-<g fill="#161412"><path transform="translate(34.80 59.28) scale(0.05200 -0.05200)" d="M99 375 94 468 183 443 255 353 260 260 170 285Z"/></g>
+<g fill="#161412"><path transform="translate(38.33 59.28) scale(0.05200 -0.05200)" d="M31 375 26 468 115 443 187 353 192 260 102 285Z"/></g>
 <text x="44.0" y="95" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#6b665f">F0051</text>
 </g>
 <g class="drawn" id="cp-F0052" transform="translate(490 314)">
 <title>PIRZATH IMPERATIVE MARK U+F0052</title>
-<g fill="#161412"><path transform="translate(32.09 59.28) scale(0.05200 -0.05200)" d="M169 222 94 276 169 330H288L364 276L288 222ZM169 398 94 452 169 506H288L364 452L288 398Z"/></g>
+<g fill="#161412"><path transform="translate(35.63 59.28) scale(0.05200 -0.05200)" d="M101 222 26 276 101 330H220L296 276L220 222ZM101 398 26 452 101 506H220L296 452L220 398Z"/></g>
 <text x="44.0" y="95" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#6b665f">F0052</text>
 </g>
 <g class="drawn" id="cp-F0053" transform="translate(490 418)">
 <title>PIRZATH NAME DASH U+F0053</title>
-<g fill="#161412"><path transform="translate(34.28 59.28) scale(0.05200 -0.05200)" d="M182 269 94 239V332L193 469L281 499L280 406Z"/></g>
+<g fill="#161412"><path transform="translate(37.79 59.28) scale(0.05200 -0.05200)" d="M114 269 26 239V332L125 469L213 499L212 406Z"/></g>
 <text x="44.0" y="95" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#6b665f">F0053</text>
 </g>
 <g class="drawn" id="cp-F0054" transform="translate(490 522)">
 <title>PIRZATH OPENING QUOTATION MARK U+F0054</title>
-<g fill="#161412"><path transform="translate(26.16 59.28) scale(0.05200 -0.05200)" d="M133 652 187 728 280 720 591 454 614 364 593 282 616 255 623 180 550 199 530 222 426 133 446 110 452 35 379 53 360 76 280 8 187 0 133 76ZM440 327 434 402 507 384 530 357 614 364 521 372 241 611V117L289 158L270 181L263 256L336 238L356 215L460 304Z"/></g>
+<g fill="#161412"><path transform="translate(29.91 59.28) scale(0.05200 -0.05200)" d="M26 652 80 728 173 720 484 454 507 364 486 282 509 255 516 180 443 199 423 222 319 133 339 110 345 35 272 53 253 76 173 8 80 0 26 76ZM333 327 327 402 400 384 423 357 507 364 414 372 134 611V117L182 158L163 181L156 256L229 238L249 215L353 304Z"/></g>
 <text x="44.0" y="95" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#6b665f">F0054</text>
 </g>
 <g class="drawn" id="cp-F0055" transform="translate(490 626)">
 <title>PIRZATH CLOSING QUOTATION MARK U+F0055</title>
-<g fill="#161412"><path transform="translate(26.16 59.28) scale(0.05200 -0.05200)" d="M133 652 187 728 280 720 360 652 379 675 452 693 446 618 426 595 530 506 550 529 623 548 616 473 593 446 614 364 591 274 280 8 187 0 133 76ZM521 356 614 364 530 371 507 344 434 326 440 401 460 424 356 513 336 490 263 472 270 547 289 570 241 611V117Z"/></g>
+<g fill="#161412"><path transform="translate(29.91 59.28) scale(0.05200 -0.05200)" d="M26 652 80 728 173 720 253 652 272 675 345 693 339 618 319 595 423 506 443 529 516 548 509 473 486 446 507 364 484 274 173 8 80 0 26 76ZM414 356 507 364 423 371 400 344 327 326 333 401 353 424 249 513 229 490 156 472 163 547 182 570 134 611V117Z"/></g>
 <text x="44.0" y="95" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#6b665f">F0055</text>
 </g>
 <rect class="undrawn" x="490" y="730" width="88" height="104" fill="url(#hatch)"/>

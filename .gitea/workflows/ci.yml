@@ -76,6 +76,7 @@ jobs:
                   .venv/bin/python tools/font_names.py
                   .venv/bin/python tools/codepoints.py
                   .venv/bin/python tools/vertical.py
+                  .venv/bin/python tools/spacing.py
                   .venv/bin/python tools/keyboards_guard.py --fixtures-only
                   .venv/bin/python tools/prove_guards.py
             - name: Committed fonts, stylesheet and manifest match the build

@@ -20,7 +20,8 @@ is proved on every font with the first code point of its fonts.json table remove
 with an entry in the Basic Multilingual Plane's Private Use Area. Its key rules are proved
 on altered fonts.json tables: a Khelathi Zethu Glyphs sign without a key, two signs on one key, and a key on a character of a script
 typed by sound. Its block registry is proved on a code point outside its family's blocks, two overlapping blocks and a README table that
-differs from the registry. The default-ignorable check of the box guard is proved on every font with the glyph of the ignorables drawing the box, and on
+differs from the registry. The spacing guard (tools/spacing.py) is proved on every font with every advance widened by 120 units,
+half on each side of the ink, and on Khelathi Zethu Glyphs and Qalezu Hand with the space widened by 100 units. The default-ignorable check of the box guard is proved on every font with the glyph of the ignorables drawing the box, and on
 Pirzath Carved with the GSUB table removed. The keyboard guard (tools/keyboards_guard.py) is proved on a key map with
 two sounds on one key, with a sound removed, with a capital off Shift, with a quote off Shift+, and Shift+., with a markup character missing and with a
 markup character on a key that carries a sound; on layouts with a macOS output cut short, a Linux key
@@ -131,6 +132,35 @@ def lifted_glyph(font: Path, out: Path) -> Path:
     glyph = f["glyf"]["notdef.box"]
     glyph.coordinates.translate((0, 600))
     glyph.recalcBounds(f["glyf"])
+    f.save(str(out))
+    return out
+
+
+def loosened(font: Path, out: Path) -> Path:
+    """Widen every advance by 120 units, half on each side of the ink, and on Khelathi Zethu Glyphs and Qalezu Hand with the space widened by 100 units."""
+    f = TTFont(str(font))
+    hmtx, glyf = f["hmtx"].metrics, f["glyf"]
+    moved = {n for n, (adv, _) in hmtx.items() if adv > 0 and (glyf[n].numberOfContours > 0 or glyf[n].isComposite())}
+    for name in moved:
+        glyph = glyf[name]
+        if glyph.isComposite():
+            for component in glyph.components:
+                if component.glyphName not in moved:
+                    component.x += 60
+        else:
+            glyph.coordinates.translate((60, 0))
+        glyph.recalcBounds(glyf)
+        adv, lsb = hmtx[name]
+        hmtx[name] = (adv + 120, lsb + 60)
+    f.save(str(out))
+    return out
+
+
+def wide_space(font: Path, out: Path) -> Path:
+    f = TTFont(str(font))
+    space = f.getBestCmap()[0x20]
+    adv, lsb = f["hmtx"][space]
+    f["hmtx"][space] = (adv + 100, lsb)
     f.save(str(out))
     return out
 
@@ -436,6 +466,7 @@ def main():
     notdef = load("notdef_box", ROOT / "tools" / "notdef_box.py")
     names = load("font_names", ROOT / "tools" / "font_names.py")
     vertical = load("vertical", ROOT / "tools" / "vertical.py")
+    spacing = load("spacing", ROOT / "tools" / "spacing.py")
     for font in sorted((ROOT / "fonts").glob("*-Regular.ttf")):
         label = font.name.split("-")[0]
         cases.append((label, font, codepoints.check, without_codepoint, "with its first code point unmapped"))
@@ -449,6 +480,9 @@ def main():
         cases.append((label, font, vertical.check, lifted_glyph, "with a glyph lifted out of the band"))
         cases.append((label, font, names.check, without_name, "with the Macintosh full name removed"))
         cases.append((label, font, names.check, latin_declared, "declaring Basic Latin"))
+        cases.append((label, font, spacing.check, loosened, "with every advance widened by 120 units"))
+        if label in ("KhelathiZethuGlyphs", "QalezuHand"):
+            cases.append((label, font, spacing.check, wide_space, "with the space widened by 100 units"))
     status = 0
     with tempfile.TemporaryDirectory() as tmp:
         for label, font, guard, break_font, how in cases:

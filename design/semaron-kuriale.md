@@ -20,7 +20,7 @@ thousandths of the em; the font has 1000 units to the em.
 | Nib        | 86 wide, 29 thin    | One broad nib held at 30° to the line; a stroke's weight follows its direction, never pressure. |
 | Oval       | width : height 0.82 | One oval, from which every bowl, arch and cup is cut.                                           |
 | Reach      | 237                 | How far a branch leaves the stem, long or half.                                                 |
-| Bearing    | 12                  | The white either side of a letter: the hand is set close, like a medieval book hand.            |
+| Bearing    | 12                  | The white either side of a letter's ink: the hand is set close, like a medieval book hand.      |
 | Space      | 24                  | The word space, about two stems.                                                                |
 
 The vertical metrics are the shared standard of `tools/vertical.py`, Monaspace Neon's,

@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <glyph name="q.catch" format="2">
-  <advance width="624"/>
+  <advance width="559"/>
   <unicode hex="1ECCB"/>
   <outline>
     <component base="q"/>
-    <component base="catchdots" xOffset="312" yOffset="558"/>
+    <component base="catchdots" xOffset="279" yOffset="558"/>
   </outline>
 </glyph>

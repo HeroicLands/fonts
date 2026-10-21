@@ -1,28 +1,28 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <glyph name="z10_018.b" format="2">
-  <advance width="524"/>
+  <advance width="474"/>
   <outline>
     <contour>
-      <point x="391" y="314" type="line"/>
-      <point x="133" y="314" type="line"/>
-      <point x="133" y="68" type="line"/>
-      <point x="56" y="68" type="line"/>
-      <point x="56" y="18" type="line"/>
-      <point x="468" y="18" type="line"/>
-      <point x="468" y="68" type="line"/>
-      <point x="391" y="68" type="line"/>
+      <point x="366" y="314" type="line"/>
+      <point x="108" y="314" type="line"/>
+      <point x="108" y="68" type="line"/>
+      <point x="31" y="68" type="line"/>
+      <point x="31" y="18" type="line"/>
+      <point x="443" y="18" type="line"/>
+      <point x="443" y="68" type="line"/>
+      <point x="366" y="68" type="line"/>
     </contour>
     <contour>
-      <point x="145" y="303" type="line"/>
-      <point x="380" y="303" type="line"/>
-      <point x="380" y="68" type="line"/>
-      <point x="145" y="68" type="line"/>
+      <point x="120" y="303" type="line"/>
+      <point x="355" y="303" type="line"/>
+      <point x="355" y="68" type="line"/>
+      <point x="120" y="68" type="line"/>
     </contour>
     <contour>
-      <point x="68" y="56" type="line"/>
-      <point x="457" y="56" type="line"/>
-      <point x="457" y="29" type="line"/>
-      <point x="68" y="29" type="line"/>
+      <point x="43" y="56" type="line"/>
+      <point x="432" y="56" type="line"/>
+      <point x="432" y="29" type="line"/>
+      <point x="43" y="29" type="line"/>
     </contour>
   </outline>
 </glyph>

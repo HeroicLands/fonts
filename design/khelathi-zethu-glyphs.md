@@ -116,9 +116,13 @@ copy of the rules and sets the sample inscriptions from the font.
 
 ## Metrics
 
-One quadrat is 770 units. A sign sits with the bottom of its box on the baseline and
-the box centred in its advance. The advance is the box width with
-31 units of side-bearing a side, and at most 770, so a full sign is 770 wide.
+One quadrat is 770 units. A sign sits with the bottom of its box on the baseline,
+and its drawing keeps its own box scale. Its width follows its drawing: the
+advance is the ink width with 31 units of white a side, so the ink stands
+centred in the advance, a quadrat layout centres the sign's box there, and a
+narrow sign takes a narrow advance in a line. This is the font's spacing rule (see `design/making-fonts.md`). The space is
+62 units, the gutter between two signs: an inscription has no word spaces, so a
+phrase runs on as one line of signs.
 The ascender holds the tallest ink above a full quadrat and the descender
 holds the ink that dips below the baseline; both are Monaspace Neon's.
 
@@ -182,7 +186,8 @@ typed, and the writer chooses the signs.
 The drawing source lives outside the tree, in the author's local `nogit/zethu`:
 a library of splines and kits and one module per group. A generator there writes
 `sources/KhelathiZethuGlyphs.ufo`, `tools/khelathi-zethu-glyphs/encoding.json` and
-`tools/khelathi-zethu-glyphs/samples.json`. The UFO is the source in the repository: edit
+`tools/khelathi-zethu-glyphs/samples.json`. Its output is set to the spacing rule with
+`tools/respace.py`. The UFO is the source in the repository: edit
 outlines in it, and `features.fea` for the substitutions.
 
 ```sh

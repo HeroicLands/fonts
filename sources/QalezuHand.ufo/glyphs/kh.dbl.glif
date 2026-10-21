@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <glyph name="kh.dbl" format="2">
-  <advance width="371"/>
+  <advance width="301"/>
   <unicode hex="1EA23"/>
   <outline>
     <component base="kh"/>
-    <component base="doubling" xOffset="185" yOffset="-109"/>
+    <component base="doubling" xOffset="150" yOffset="-109"/>
   </outline>
 </glyph>

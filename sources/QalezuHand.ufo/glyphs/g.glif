@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <glyph name="g" format="2">
-  <advance width="375"/>
+  <advance width="302"/>
   <unicode hex="1EA06"/>
-  <anchor x="187" y="-79" name="doubling"/>
-  <anchor x="187" y="717" name="catch"/>
+  <anchor x="152" y="-79" name="doubling"/>
+  <anchor x="152" y="717" name="catch"/>
   <outline>
     <component base="k"/>
-    <component base="dab" xOffset="187" yOffset="579"/>
+    <component base="dab" xOffset="152" yOffset="579"/>
   </outline>
 </glyph>

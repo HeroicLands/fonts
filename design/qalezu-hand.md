@@ -6,7 +6,7 @@ The everyday alphabet of the Khelathi of thalorna: signs written fast with a ree
 
 Every stroke is a centreline swept by one broad reed nib: a thin rounded slab 99 units long and 14 thick on a 1000-unit em, held at 30 degrees from the horizontal. A pull straight across the nib's edge is the full width; a pull along the edge is a hairline. The contrast of the script is that, and nothing else: thick where the pen moves across its edge, a hair where it moves along it. The ends and the thin crossings are rounded by the nib's own radius, never cusped.
 
-A sign stands on the line in a body 495 units tall, with the dab above it and the doubling bar below. Each sign is entered from the right, because the pen travels right to left. Signs stand apart, with no joining and no contextual forms; the reed-cursive look is the stroke contrast and the entry flick, and the spacing is the advance each glyph carries.
+A sign stands on the line in a body 495 units tall, with the dab above it and the doubling bar below. Each sign is entered from the right, because the pen travels right to left. Signs stand apart, with no joining and no contextual forms; the reed-cursive look is the stroke contrast and the entry flick. The spacing is the advance each sign carries: its ink width with 28 units of white a side, the font's spacing rule (see `design/making-fonts.md`). A doubled sign and a catch-before form take their sign's advance, so the bar or the dabs may reach a little into that white.
 
 ## The signs
 
@@ -103,11 +103,11 @@ Base ten, place order, ten independent signs from the counting-house tradition, 
 
 ## The punctuation
 
-| Mark  | Role          | Shape                                               |
-| ----- | ------------- | --------------------------------------------------- |
-| `.`   | sentence end  | a short stroke on the line, hooking down at its end |
-| `,`   | pause         | a short low dash                                    |
-| space | word division | a gap wider than the gap between signs              |
+| Mark  | Role          | Shape                                                |
+| ----- | ------------- | ---------------------------------------------------- |
+| `.`   | sentence end  | a short stroke on the line, hooking down at its end  |
+| `,`   | pause         | a short low dash                                     |
+| space | word division | 200 units, a gap several times the gap between signs |
 
 There is no hyphen, exclamation mark, question mark, semicolon, colon or quotation mark. A hyphen between the parts of a name is written as the space between two words.
 

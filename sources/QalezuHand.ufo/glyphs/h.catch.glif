@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <glyph name="h.catch" format="2">
-  <advance width="542"/>
+  <advance width="476"/>
   <unicode hex="1ECCE"/>
   <outline>
     <component base="h"/>
-    <component base="catchdots" xOffset="271" yOffset="609"/>
+    <component base="catchdots" xOffset="237" yOffset="609"/>
   </outline>
 </glyph>

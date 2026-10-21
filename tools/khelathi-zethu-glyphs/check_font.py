@@ -11,9 +11,10 @@
 - The glyph set is exactly the encoding's forms, the notdef, the box, the space and
   the two empty glyphs, and every glyph but the empty ones has an outline whose outer contour
   runs clockwise.
-- Each advance is the scaled min(1000, round(10 * box width) + 80), the font holds a full
-  quadrat between its ascender and descender, and no ink leaves the win metrics. The
-  scale is the one of tools/vertical.py.
+- Each form's ink stands the sidebearing of tools/respace.py from each edge of its
+  advance, to within two units, so its advance is its ink width and the sidebearing
+  a side. The font holds a full quadrat between its ascender and descender, and no
+  ink leaves the win metrics. The quadrat's scale is the one of tools/vertical.py.
 - Every second form (.b) and third form (.c) is reached by a single substitution
   in salt, ss01 or ss02, and the font carries no other feature, no contextual lookup
   and no positioning.
@@ -29,11 +30,13 @@ from fractions import Fraction
 from pathlib import Path
 
 import uharfbuzz as hb
+from fontTools.pens.boundsPen import BoundsPen
 from fontTools.ttLib import TTFont
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 import font_names  # noqa: E402
 import notdef_box  # noqa: E402
+import respace  # noqa: E402
 import vertical  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent.parent
@@ -151,13 +154,15 @@ def check(path: Path) -> list[str]:
     quadrat = scaled(1000)
     if hhea.ascent < quadrat or hhea.descent >= 0:
         problems.append(f"the vertical metrics {hhea.ascent}/{hhea.descent} do not hold one quadrat of {quadrat}")
+    side = respace.SPACING["KhelathiZethuGlyphs"]["sidebearing"]
+    glyph_set = font.getGlyphSet()
     for name, (adv, _) in font["hmtx"].metrics.items():
         if name in forms:
-            e, v = forms[name]
-            bw = e["box"][v][0]
-            want = scaled(min(1000, round(10 * bw) + 80))
-            if adv != want:
-                problems.append(f"{name} has advance {adv}, expected {want}")
+            pen = BoundsPen(glyph_set)
+            glyph_set[name].draw(pen)
+            left, right = pen.bounds[0], adv - pen.bounds[2]
+            if abs(left - side) > 2 or abs(right - side) > 2:
+                problems.append(f"{name} has sidebearings {left:g} and {right:g}, expected {side}")
         elif name in EMPTY and adv != 0:
             problems.append(f"{name} must have zero advance")
 

@@ -29,12 +29,13 @@ worn inscription is read from its skeleton first. The length mark is a drilled
 dot in the headroom above the vowel it lengthens, so a long vowel is still
 shorter than the consonants around it.
 
-Each letter stands separate. Spacing is derived from the outlines: the build
-measures each glyph's left and right profile in 26-unit bands and sets a kern
-for every pair so that the closest approach of two inks is the same optical
-gap, tightening by at most 114 units and loosening by at most 42. A small vowel
-therefore tucks under the arm of a tall consonant without touching it, and a
-word reads as one interlocking carving with its letters still apart.
+Each letter stands separate. Every letter's advance is its ink width with 26
+units of white a side, the font's spacing rule (see `design/making-fonts.md`).
+The kerning is derived from the outlines: each glyph's left and right profile is
+measured in 26-unit bands, and every pair carries a kern that brings the closest
+approach of its two inks to the same optical gap. A small vowel therefore tucks
+under the arm of a tall consonant without touching it, and a word reads as one
+interlocking carving with its letters still apart.
 
 ## The letters
 
