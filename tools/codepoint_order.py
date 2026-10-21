@@ -16,8 +16,13 @@ joined, initial and doubled forms, the doubling mark, precomposed long vowels in
 Pirzath and Thuravark, the letters c and C that only spell ch, y in Thuravark, and the
 straight quotation mark. The space stays U+0020.
 
+A row also carries a ``name``, in Unicode's style, read from the script's name table in
+``tools/names/<script>.json`` (see ``names``). A row the table does not name has no ``name``.
+
 The Qalezu Hand and Khelathi Zethu Glyphs tables are read from their encoding.json.
-Every row also carries the ``key`` that types it, which tools/keyboard_keys.py assigns.
+A Khelathi Zethu Glyphs row also carries its sign id as the ``key`` that types it in
+its Emacs input method. The other scripts are typed by sound (tools/sound_keys.json),
+so a character of theirs has no key of its own.
 """
 
 import json
@@ -25,7 +30,6 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-import keyboard_keys  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
 
@@ -147,7 +151,7 @@ def ltr_table(stem: str) -> list[dict]:
     for kind, start, glyphs in groups:
         for offset, glyph in enumerate(glyphs):
             rows.append({"codepoint": f"U+{start + offset:04X}", "glyph": glyph, "kind": kind})
-    return keyboard_keys.assign(stem, rows)
+    return rows
 
 
 def block(stem: str) -> tuple[int, int]:
@@ -165,7 +169,7 @@ def qalezu_table() -> list[dict]:
         {"codepoint": e["codepoint"], "glyph": e["glyph"], "kind": QALEZU_KINDS.get(e["kind"], e["kind"])}
         for e in enc["glyphs"]
     ]
-    return keyboard_keys.assign("QalezuHand-Regular", sorted(rows, key=lambda r: int(r["codepoint"][2:], 16)))
+    return sorted(rows, key=lambda r: int(r["codepoint"][2:], 16))
 
 
 def zethu_table() -> list[dict]:
@@ -178,11 +182,70 @@ def zethu_table() -> list[dict]:
     ]
 
 
+# Font file stem -> script, the key of its name table.
+SCRIPTS = {
+    "SemaronKuriale-Regular": "semaron",
+    "PirzathCarved-Regular": "pirzath",
+    "PirzathHand-Regular": "pirzath",
+    "ThuravarkCarved-Regular": "thuravark",
+    "QalezuHand-Regular": "qalezu",
+    "KhelathiZethuGlyphs-Regular": "zethu",
+}
+
+
+def names(script: str) -> dict[str, str]:
+    """The character names of a script, by code point, from ``tools/names/<script>.json``.
+
+    The file is one JSON object of ``"U+XXXX": "NAME"`` pairs, a name written in
+    Unicode's style: uppercase ASCII letters, digits, spaces and hyphens. A script
+    without a file has no names, and its rows carry no ``name``.
+    """
+    path = ROOT / "tools" / "names" / f"{script}.json"
+    return json.loads(path.read_text(encoding="utf-8")) if path.exists() else {}
+
+
+def named(stem: str, rows: list[dict]) -> list[dict]:
+    """The rows with a ``name`` after the code point wherever the script's table names it."""
+    table_names = names(SCRIPTS[stem])
+    out = []
+    for row in rows:
+        new = {"codepoint": row["codepoint"]}
+        if row["codepoint"] in table_names:
+            new["name"] = table_names[row["codepoint"]]
+        new.update({k: v for k, v in row.items() if k != "codepoint"})
+        out.append(new)
+    return out
+
+
+def zethu_number(point: int) -> int:
+    """The position of a code point in Khelathi Zethu Glyphs' code point space, counting from 1.
+
+    The main block of tools/khelathi-zethu-glyphs/encoding.json comes first and the other
+    blocks BLOCKS registers for the font follow in code point order, so a sign's number
+    depends on its code point alone and never changes when another sign is drawn.
+    """
+    enc = json.loads((ROOT / "tools" / "khelathi-zethu-glyphs" / "encoding.json").read_text(encoding="utf-8"))
+    main = (int(enc["block"]["start"][2:], 16), int(enc["block"]["end"][2:], 16))
+    spans = [main] + sorted(
+        (b["start"], b["end"]) for b in BLOCKS if "Khelathi Zethu Glyphs" in b["families"] and (b["start"], b["end"]) != main
+    )
+    before = 0
+    for start, end in spans:
+        if start <= point <= end:
+            return before + point - start + 1
+        before += end - start + 1
+    raise ValueError(f"U+{point:04X} is outside Khelathi Zethu Glyphs' blocks")
+
+
+def zethu_name(point: int) -> str:
+    return f"ZETHU CHARACTER {zethu_number(point):03d}"
+
+
 def table(stem: str) -> list[dict]:
     if stem in LTR:
-        return ltr_table(stem)
+        return named(stem, ltr_table(stem))
     if stem == "QalezuHand-Regular":
-        return qalezu_table()
+        return named(stem, qalezu_table())
     if stem == "KhelathiZethuGlyphs-Regular":
-        return zethu_table()
+        return named(stem, zethu_table())
     raise KeyError(stem)

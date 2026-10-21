@@ -10,7 +10,7 @@
  *
  * - a `files` entry in package.json packs nothing;
  * - a packed path is not a font (`fonts/*.woff2`, `fonts/*.ttf`), `fonts.css`,
- *   `fonts.json`, a keyboard
+ *   `fonts.json`, a font cheatsheet (`charts/`), a keyboard
  *   cheatsheet, Emacs input method, or macOS, Windows or Linux layout (`keyboards/`), `LICENSE`,
  *   `README.md` or `package.json`;
  * - `fonts.css` names a URL that is not packed;
@@ -34,7 +34,14 @@ export const ALLOWED = [
     "fonts/*.ttf",
     "fonts.css",
     "fonts.json",
+    "charts/*.md",
+    "charts/*/chart-*.svg",
+    "charts/*/chart-*.png",
+    "charts/*/glyphs/*.svg",
     "keyboards/*.md",
+    "keyboards/sounds.json",
+    "keyboards/keyboard.svg",
+    "keyboards/keyboard.png",
     "keyboards/emacs/*.el",
     "keyboards/linux/hl_*",
     "keyboards/windows/*.klc",

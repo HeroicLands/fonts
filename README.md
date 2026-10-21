@@ -37,7 +37,7 @@ The fonts are licensed under the SIL Open Font License 1.1; see `LICENSE`. Under
 
 ## Installing and using the fonts
 
-The fonts are published to npm as `@heroiclands/fonts`. The package holds each font as WOFF2 and TrueType, `fonts.css` with one `@font-face` rule and one `hl-<font>` class per family, `fonts.json`, the manifest of the families, and `keyboards/`, the keyboard layouts, Emacs input methods and cheatsheets for typing in them.
+The fonts are published to npm as `@heroiclands/fonts`. The package holds each font as WOFF2 and TrueType, `fonts.css` with one `@font-face` rule and one `hl-<font>` class per family, `fonts.json`, the manifest of the families, `keyboards/`, the keyboard layouts, Emacs input methods and cheatsheets for typing in them, and `charts/`, the cheatsheet of each font.
 
 ```sh
 npm install @heroiclands/fonts
@@ -70,7 +70,7 @@ CONFIG.fontDefinitions["Pirzath Carved"] = {
 typst compile --font-path node_modules/@heroiclands/fonts/fonts book.typ
 ```
 
-`fonts.json` states, for each entry, its `name` (unique across the manifest), its `family` (the font-family), its `hl-<font>` class, its `files`, its `direction`, its OpenType `features` and its `codepoints`: every character the font draws, each with its code point, glyph name, kind and the key that types it. The class sets the family's `font-family`, `font-feature-settings` and, for a right-to-left family, `direction`. Pirzath Hand's joined form needs `ss01`, which its class turns on; Pirzath Hand Lifted is the same font with `ss01` turned off.
+`fonts.json` states, for each entry, its `name` (unique across the manifest), its `family` (the font-family), its `hl-<font>` class, its `files`, its `direction`, its OpenType `features` and its `codepoints`: every character the font draws, each with its code point, character name where the script's name table gives one, glyph name and kind, and for Khelathi Zethu Glyphs the sign id that types it. The class sets the family's `font-family`, `font-feature-settings` and, for a right-to-left family, `direction`. Pirzath Hand's joined form needs `ss01`, which its class turns on; Pirzath Hand Lifted is the same font with `ss01` turned off.
 
 A note's text in one of these fonts is the font's own code points. They are typed with the keyboard layouts in `keyboards/`, or produced by a mapping in the consuming build.
 
@@ -78,14 +78,37 @@ The fonts are licensed under the SIL Open Font License 1.1, which `LICENSE` carr
 
 ## Typing in the fonts
 
-A note records Unicode characters, so typing in a family's fonts needs a keyboard layout that produces its code points. Each family has one, and the faces of a family share their code points, so one layout types for every face: the three Pirzath faces share the Pirzath layout. The layouts come from the `key` of each row of `fonts.json`'s `codepoints` tables, and `keyboards/` carries them:
+A note records Unicode characters, so typing in these fonts needs a keyboard layout that produces their code points. HL Semaron, HL Pirzath, HL Thuravark and HL Qalezu type by sound: every sound of thalorna's spelling guide, _Pronouncing Thalorna_, sits on one key or chord, and that key is the same in every layout. Each layout types its script's own characters for the sound, exactly as the script's mapping note spells it, so one key may type several code points: in HL Semaron, `a` types U+F0230, Shift+A U+F0200, Option+T (_th_) U+F0250 and Option+C (_ch_) U+F0241 U+F0240 U+F0236. A key whose sound the script does not write types nothing in that layout, and no key types a roman letter. A script's faces share its code points, so the Pirzath layout types Pirzath Carved, Pirzath Hand and Pirzath Hand Lifted alike.
 
-- **macOS layouts.** `keyboards/macos/HeroicLands.bundle` holds one layout for Semaron, Pirzath, Thuravark and Qalezu: HL Semaron, HL Pirzath, HL Thuravark and HL Qalezu. Copy the bundle to `~/Library/Keyboard Layouts/`, log out and back in, then add each layout under System Settings → Keyboard → Text Input → Input Sources, where the layouts appear under the language English. Letters sit on their roman keys and numerals on the digit row; Shift types capitals or digraph letters, and Option types what is left: Semaron's `th` and long vowels, Pirzath's numerals ten to fifteen and the length mark, Qalezu's doubled signs and the signs after a catch.
-- **Windows layouts.** `keyboards/windows/<family>.klc` is the Microsoft Keyboard Layout Creator source of HL Semaron, HL Pirzath, HL Thuravark and HL Qalezu, saved as UTF-16 with a byte order mark. Option is the right Alt key (AltGr). A character of plane 15 is a ligature entry holding its surrogate pair, which Windows delivers as one character. MSKLC builds the installer on Windows only: open the `.klc` in Microsoft Keyboard Layout Creator, choose Project, Build DLL and Setup Package, and run the `setup.exe` it writes. Then add the layout under Settings, Time & language, Language & region, English (United States), Keyboard.
-- **Linux layouts.** `keyboards/linux/hl_<family>` is an XKB symbols file for each of the four families, with a `U<hex>` keysym for every character. Option is the third level, reached with the right Alt key. Copy the files to `~/.config/xkb/symbols/`, then run `setxkbmap -I$HOME/.config/xkb -layout hl_pirzath` under X11; a desktop that reads `~/.config/xkb` lists them as custom layouts. `setxkbmap us` returns to the usual layout.
-- **Emacs input methods.** `keyboards/emacs/heroiclands-<family>.el` defines a Quail input method per family. Put the directory on `load-path`, evaluate `(require 'heroiclands-semaron)`, then `M-x set-input-method RET heroiclands-semaron`. Shift is the shifted character. Emacs has no Option key, so Option+x is typed `\` and then the key x types: Option+E is `\e` and Option+Shift+A is `\A`.
-- **Khelathi Zethu Glyphs.** It has far more signs than a keyboard has keys, so it has an Emacs input method only, typed by sign id: `08-001` inserts that sign.
-- **Cheatsheets.** `keyboards/<family>.md` lists every key beside its Emacs sequence, code point and glyph, and `specimens/<face folder>/keyboard.png` draws each key beside its glyph in every face of the family, Pirzath's three faces side by side.
+[`keyboards/index.md`](keyboards/index.md) is the cheatsheet: a diagram of the shared keys on an ANSI keyboard, the principles of the key map, and a table of every key or chord, its sound and each script's output as glyphs, code points and character names. `keyboards/<script>.md` gives one script's table.
+
+**The key map.** Letters sit on their roman keys and capitals on Shift. A consonant pair sits on Option and its first letter (Option+T _th_, Option+C _ch_), with _ny_ on Option+Y and _ts_ on Option+X. An acute vowel sits on Option and its vowel. The vowel pairs sit on Option and the digit row: the long vowels _aa ee ii oo uu_ on 1 to 5, then _ai au ei oi ou_ on 6 to 0, and _ie uo ae ea_ on `-`, `=`, `[` and `]`. The diaeresis vowels sit on Option and `;`, `'`, `,`, `.` and `/`. The catch is `'`, the stop `.`, the pause `,`, and the quotes `[` and `]`. Digits sit on the digit row, and Pirzath's numerals ten to fifteen on Shift+2 to Shift+7. A capital is always Shift and its small sound's key: Option+Shift+T is _Th_.
+
+**Where the outputs come from.** `tools/sound_keys.json` puts each sound on its key and states the principles. `keyboards/sounds.json` gives each sound's output in each script; `tools/sounds.mjs` writes it by running each sound's spelling through the four mapping notes on thalorna's `origin/main` (`Lore/Scripts/Semaron_Spelling.md`, `Pirzath_Spelling.md`, `Thuravark_Spelling.md` and `Qalezu_Spelling.md`) with package-build's own mapping rules, the ones a run marked `map=` is set by. A vowel is spelled inside a word, between two _t_'s, and _y_ before an _a_, where it is the glide; so a vowel in Qalezu, which writes consonants only, types nothing. `tools/keyboards.py` writes the layouts from those two files, and the fonts build needs no thalorna checkout:
+
+```sh
+node tools/sounds.mjs --thalorna ~/dev/HeroicLands/thalorna --write
+.venv/bin/python tools/keyboards.py
+```
+
+**What a platform cannot carry.** A Windows layout types at most four UTF-16 code units from one key, the limit Microsoft Keyboard Layout Creator puts on a ligature, so Semaron's _ch_ and _Ch_, three plane-15 characters each, type nothing on Windows. An XKB key types one keysym, so every sound a script writes with more than one code point types nothing on Linux. macOS and Emacs carry every output. The cheatsheet lists each of these keys.
+
+The layouts and input methods are in `keyboards/`:
+
+- **macOS layouts.** `keyboards/macos/HeroicLands.bundle` holds HL Semaron, HL Pirzath, HL Thuravark and HL Qalezu. Copy the bundle to `~/Library/Keyboard Layouts/`, log out and back in, then add each layout under System Settings → Keyboard → Text Input → Input Sources, where the layouts appear under the language English. Command and Control chords type the US keys, so shortcuts keep working.
+- **Windows layouts.** `keyboards/windows/<script>.klc` is the Microsoft Keyboard Layout Creator source of each layout, saved as UTF-16 with a byte order mark. Option is the right Alt key (AltGr). Every output is a ligature entry, a character of plane 1 or plane 15 written as its surrogate pair. MSKLC builds the installer on Windows only: open the `.klc` in Microsoft Keyboard Layout Creator, choose Project, Build DLL and Setup Package, and run the `setup.exe` it writes. Then add the layout under Settings, Time & language, Language & region, English (United States), Keyboard.
+- **Linux layouts.** `keyboards/linux/hl_<script>` is an XKB symbols file for each layout, with a `U<hex>` keysym on every key that types one character and `VoidSymbol` on the rest. Option is the third level, reached with the right Alt key. Copy the files to `~/.config/xkb/symbols/`, then run `setxkbmap -I$HOME/.config/xkb -layout hl_pirzath` under X11; a desktop that reads `~/.config/xkb` lists them as custom layouts. `setxkbmap us` returns to the usual layout.
+- **Emacs input methods.** `keyboards/emacs/heroiclands-<script>.el` defines a Quail input method per layout. Put the directory on `load-path`, evaluate `(require 'heroiclands-semaron)`, then `M-x set-input-method RET heroiclands-semaron`. Shift is the shifted character. Emacs has no Option key, so Option+x is typed `\` and then the key x types: Option+T is `\t` and Option+Shift+T is `\T`.
+- **Khelathi Zethu Glyphs.** Zethu writes meanings, not sounds, and has far more signs than a keyboard has keys, so it has an Emacs input method only, `heroiclands-zethu`, typed by sign id: `08-001` inserts that sign. `keyboards/zethu.md` lists the ids.
+
+## Cheatsheets
+
+Each font has a cheatsheet of every character it draws, in `charts/`; [`charts/index.md`](charts/index.md) links them all. A sheet holds two views:
+
+- **A code chart**, laid out like Unicode's charts: columns headed by the code point without its last hex digit, rows `0` to `F`, each cell holding the glyph above its code point, and a code point the font does not draw hatched. The grid runs left to right in every font. A long range is split into pages of eight columns, and a column with no character is left out.
+- **A table** of Character Name, Character, Code Point (`U+05DC`), Entity (`&#1500;`) and Hex Entity (`&#x05DC;`), in code point order and grouped by kind.
+
+The glyphs are outlines taken from the font, so a sheet reads without the font installed: `charts/<face folder>/chart-<n>.svg` and `.png` are the chart pages, `charts/<face folder>/glyphs/U+XXXX.svg` is one glyph for the table, and `charts/<face folder>.md` embeds both. Pirzath Hand Lifted is drawn with `ss01` off. Character names are Unicode-style (uppercase ASCII letters, digits, spaces and hyphens) and come from `tools/names/<script>.json`, one JSON object per script of `"U+XXXX": "NAME"` pairs, which `tools/write_css.py` writes into `fonts.json`. A script without that file has no names, and its table shows an empty Character Name cell. Khelathi Zethu Glyphs names a sign `ZETHU CHARACTER <n>`, where n is its code point's position in the font's code point space: U+1EA40 is `ZETHU CHARACTER 001`, and the overflow block U+1E960 to U+1E9FF continues after the main block. `tools/zethu_names.py` writes `tools/names/zethu.json`, so drawing a sign renames no other.
 
 ## Setting up
 
@@ -110,7 +133,7 @@ Build the fonts into `fonts/`. The build is reproducible, so the committed fonts
 PATH=.venv/bin:$PATH ./build.sh
 ```
 
-`build.sh` runs `fontmake` and compresses the `.woff2`, once per font (`PirzathCarved` shown), then runs `tools/write_css.py`, which writes `fonts.css` and `fonts.json` from the built fonts' name tables and one table of per-family facts. `tools/keyboards.py` then writes `keyboards/` and each family's `specimens/<face folder>/keyboard.png` from `fonts.json`; `tools/keyboard_keys.py` is the one place that assigns a key to each character:
+`build.sh` runs `fontmake` and compresses the `.woff2`, once per font (`PirzathCarved` shown), then runs `tools/write_css.py`, which writes `fonts.css` and `fonts.json` from the built fonts' name tables and one table of per-family facts. `tools/keyboards.py` then writes `keyboards/` from `tools/sound_keys.json` and `keyboards/sounds.json` (see [Typing in the fonts](#typing-in-the-fonts)). `tools/charts.py` last writes `charts/` from `fonts.json` and the built fonts, and rasterizes the chart pages with `resvg-py`, pinned in `requirements.txt`:
 
 ```sh
 export SOURCE_DATE_EPOCH=1767225600
@@ -139,7 +162,8 @@ Check the built fonts, render the specimens, and prove that each guard fails a b
 .venv/bin/python tools/vertical.py
 .venv/bin/python tools/font_names.py
 .venv/bin/python tools/codepoints.py
-.venv/bin/python tools/keyboards_guard.py --fixtures-only   # the layouts type every character
+.venv/bin/python tools/keyboards_guard.py --fixtures-only   # the layouts type each sound's output, and nothing else
+.venv/bin/python tools/charts_guard.py            # every character is on its sheet; unnamed rows are listed
 .venv/bin/python tools/codepoints_chart.py         # specimens/<face>/codepoints.png
 .venv/bin/python tools/pirzath/specimens.py       # specimens/pirzath/
 .venv/bin/python tools/pirzath-hand/specimens.py  # specimens/pirzath-hand/
@@ -160,7 +184,7 @@ Each guard shapes every form of its lexicon and asserts the font renders it righ
 .venv/bin/python tools/semaron-kuriale/guard.py --thalorna /path/to/thalorna
 ```
 
-`tools/keyboards_guard.py` also reads the layouts back and asserts that each puts every character of its family on the key `fonts.json` names. Without `--fixtures-only` it shapes every lexicon form of the families above with the fonts' Latin typing rules, maps each glyph to its code point, and asserts that the family's layout has a key for it; it reads thalorna the same way, through `--thalorna`. Qalezu's forms go through its converter first, and Khelathi Zethu Glyphs is checked on the sign ids of its sample inscriptions.
+`tools/keyboards_guard.py` checks the key map (no key or chord carries two sounds, every sound has a key, a capital sits on Shift and its small sound's key) and reads every layout and input method back: each key must type exactly the code points `keyboards/sounds.json` gives its sound in the script, or nothing where the script does not write the sound or the platform cannot carry it, and no key may type a character below U+0080. Without `--fixtures-only` it also writes `keyboards/sounds.json` afresh from thalorna's mapping notes, through `tools/sounds.mjs` under `node`, and fails where the committed file differs.
 
 ```sh
 .venv/bin/python tools/keyboards_guard.py --thalorna /path/to/thalorna

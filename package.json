@@ -16,12 +16,13 @@
         "fonts.css",
         "fonts.json",
         "keyboards",
+        "charts",
         "LICENSE",
         "README.md"
     ],
     "devDependencies": {
         "@changesets/cli": "^3.0.3",
-        "@heroiclands/package-build": "^23.12.6"
+        "@heroiclands/package-build": "^23.12.8"
     },
     "scripts": {
         "test": "node --test tools/convert.test.mjs",

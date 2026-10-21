@@ -1,99 +1,112 @@
 # Copyright (c) 2026 Tom Rodriguez ("Toasty") — <toasty@heroiclands.org>
 # SPDX-License-Identifier: OFL-1.1
-"""Confirm that each family's keyboard layouts type every character, and every lexicon form.
+"""Confirm that the sound layouts type what the mapping notes spell, and nothing else.
 
     .venv/bin/python tools/keyboards_guard.py [--thalorna ~/dev/HeroicLands/thalorna | --fixtures-only]
 
-Two things are checked for each family.
-
-- **The layouts agree with the table.** The macOS, Windows, Linux and Emacs files in
-  ``keyboards/`` are read back, and each must put every character of the family's
-  ``codepoints`` table on the key the table names, and nothing else. Khelathi Zethu
-  Glyphs has an Emacs input method only.
-- **The layout reaches the lexicon.** Every form is shaped with the font's Latin typing
-  rules, each resulting glyph is mapped to its code point, and every code point must have
-  a key in the family's table. A glyph that is not a character (a spelling helper, the
-  doubling mark, the space) needs none. Qalezu's Latin forms go through the guard's
-  converter first, and Khelathi Zethu Glyphs is checked on the sign ids of its sample
-  inscriptions.
-
-The forms are the lexicon of each language note on the ``origin/main`` of a thalorna
-checkout, plus the fixtures of each family's own guard. ``--fixtures-only`` reads the
-fixtures alone, which needs no thalorna checkout.
+- **The key map.** Every key of tools/sound_keys.json is a key, no key or chord carries
+  two sounds, a capital sits on Shift and the key of its small sound, the Emacs Option
+  prefix carries no sound, and keyboards/sounds.json lists exactly the key map's sounds
+  with their spellings, so every sound has a key.
+- **The layouts.** The macOS, Windows, Linux and Emacs files of HL Semaron, HL Pirzath,
+  HL Thuravark and HL Qalezu are read back. On each key each must type exactly the
+  code points keyboards/sounds.json gives that key's sound in the script, or nothing
+  where the script does not spell the sound or the platform cannot carry the output
+  (tools/keyboards.py ``carries``), and no key may type a character below U+0080. The
+  Khelathi Zethu Glyphs input method must type every sign on its sign id.
+- **The mapping notes.** Unless ``--fixtures-only`` is given, keyboards/sounds.json is
+  written afresh by tools/sounds.mjs from the ``origin/main`` of the thalorna checkout
+  and must equal the committed file.
 """
 
 import argparse
-import importlib.util
 import json
 import re
+import subprocess
 import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-import codepoints  # noqa: E402
 import keyboard_keys as kk  # noqa: E402
 import keyboards  # noqa: E402
-from render import Renderer  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
 KEYBOARDS = ROOT / "keyboards"
-
-# Family key -> manifest name of its table, the fonts it shapes with and the guard that reads its lexicon.
-FAMILIES = {
-    "semaron": ("Semaron Kuriale", ["SemaronKuriale-Regular"], "semaron-kuriale"),
-    "pirzath": ("Pirzath Carved", ["PirzathCarved-Regular", "PirzathHand-Regular"], "pirzath"),
-    "thuravark": ("Thuravark Carved", ["ThuravarkCarved-Regular"], "thuravark-carved"),
-    "qalezu": ("Qalezu Hand", ["QalezuHand-Regular"], "qalezu-hand"),
-    "zethu": ("Khelathi Zethu Glyphs", ["KhelathiZethuGlyphs-Regular"], "khelathi-zethu-glyphs"),
-}
 LAYERS = [(False, False), (True, False), (False, True), (True, True)]
+SCRIPT_KEYS = [s["key"] for s in keyboards.SCRIPTS]
 
 
-def load(name: str):
-    path = ROOT / "tools" / name / "guard.py"
-    spec = importlib.util.spec_from_file_location(name.replace("-", "_") + "_guard", path)
-    module = importlib.util.module_from_spec(spec)
-    spec.loader.exec_module(module)
-    return module
+# -- The key map ---------------------------------------------------------------------------
 
 
-def table_of(name: str) -> list[dict]:
-    families = json.loads((ROOT / "fonts.json").read_text(encoding="utf-8"))["families"]
-    return next(f for f in families if f["name"] == name)["codepoints"]
-
-
-def spelled(shift: bool, option: bool, base: str) -> str:
-    return kk.spell(shift, option, base)
+def keymap_problems(keymap: list[dict], sounds: list[dict]) -> list[str]:
+    problems = []
+    owner: dict[str, str] = {}
+    by_sound = {e["sound"]: e for e in keymap}
+    for entry in keymap:
+        key, sound = entry["key"], entry["sound"]
+        if kk.parse(key) is None:
+            problems.append(f"tools/sound_keys.json: error: {sound}: {key!r} is not a key")
+            continue
+        if key in owner:
+            problems.append(f"tools/sound_keys.json: error: {sound} and {owner[key]} both sit on {key}")
+        owner.setdefault(key, sound)
+        if kk.quail_sequence(key) == kk.OPTION_PREFIX:
+            problems.append(f"tools/sound_keys.json: error: {sound} sits on {key}, the Emacs Option prefix")
+        small = entry.get("capital of")
+        if small is not None:
+            if small not in by_sound:
+                problems.append(f"tools/sound_keys.json: error: {sound} is the capital of {small}, which has no key")
+            else:
+                shift, option, base = kk.parse(by_sound[small]["key"])
+                if shift or kk.spell(True, option, base) != key:
+                    problems.append(f"tools/sound_keys.json: error: {sound} sits on {key}, not on Shift and the key of {small}")
+    listed = {s["sound"]: s["spelling"] for s in sounds}
+    mapped = {e["sound"]: e["spelling"] for e in keymap}
+    for sound in sorted(listed.keys() - mapped.keys()):
+        problems.append(f"keyboards/sounds.json: error: {sound} has no key in tools/sound_keys.json")
+    for sound in sorted(mapped.keys() - listed.keys()):
+        problems.append(f"keyboards/sounds.json: error: {sound} of tools/sound_keys.json is missing; run tools/sounds.mjs")
+    for sound in sorted(listed.keys() & mapped.keys()):
+        if listed[sound] != mapped[sound]:
+            problems.append(f"keyboards/sounds.json: error: {sound} is spelled {listed[sound]!r}, not {mapped[sound]!r}")
+    for s in sounds:
+        if set(s["scripts"]) != set(SCRIPT_KEYS):
+            problems.append(f"keyboards/sounds.json: error: {s['sound']} lists the scripts {sorted(s['scripts'])}")
+    return problems
 
 
 # -- Reading the layouts back --------------------------------------------------------------
 
 
-def read_macos(text: str) -> dict[str, int]:
-    """key -> code point for every output that is not the key's own character."""
+def read_macos(text: str) -> dict[str, list[int]]:
+    """key -> code points, for every main-block key of the four sound layers."""
     codes = {v: k for k, v in kk.MAC_CODES.items()}
     out = {}
     for index, body in re.findall(r'<keyMap index="(\d)">(.*?)</keyMap>', text, re.S):
+        if int(index) > 3:
+            continue
         shift, option = LAYERS[int(index)]
         for code, output in re.findall(r'<key code="(\d+)" output="([^"]*)"/>', body):
             base = codes.get(int(code))
-            chars = [int(h, 16) for h in re.findall(r"&#x([0-9A-Fa-f]+);", output)]
-            if base is None or len(chars) != 1 or chars[0] < 0xE000:
-                continue
-            out[spelled(shift, option, base)] = chars[0]
+            if base is not None:
+                out[kk.spell(shift, option, base)] = [int(h, 16) for h in re.findall(r"&#x([0-9A-Fa-f]+);", output)]
     return out
 
 
-def read_windows(data: bytes) -> dict[str, int]:
+def _join(code_units: list[int]) -> list[int]:
+    text = b"".join(u.to_bytes(2, "little") for u in code_units).decode("utf-16-le")
+    return [ord(c) for c in text]
+
+
+def read_windows(data: bytes) -> dict[str, list[int]]:
     text = data.decode("utf-16").replace("\r\n", "\n")
     layout, ligatures = text.split("\nLIGATURE\n", 1)
-    units = {}
+    lig = {}
     for line in ligatures.split("\n"):
         parts = line.split("\t")
         if len(parts) >= 3 and not line.startswith("//") and re.fullmatch(r"[0-9a-f]{4}", parts[2]):
-            vk, state = parts[0], int(parts[1])
-            chars = [int(p, 16) for p in parts[2:] if p]
-            units[(vk, state)] = _join(chars)
+            lig[(parts[0], int(parts[1]))] = _join([int(p, 16) for p in parts[2:] if p])
     by_vk = {vk: base for base, (_, vk) in keyboards.WIN_KEYS.items()}
     out = {}
     for line in layout.split("\n"):
@@ -102,43 +115,48 @@ def read_windows(data: bytes) -> dict[str, int]:
             continue
         base = by_vk[parts[1]]
         for (state, layer), cell in zip(keyboards.WIN_STATES, parts[4:9]):
+            if layer is None:
+                continue
+            shift, option = LAYERS[layer]
             if cell == "%%":
-                shift, option = LAYERS[layer]
-                out[spelled(shift, option, base)] = units[(parts[1], state)]
+                out[kk.spell(shift, option, base)] = lig.get((parts[1], state), [])
+            elif cell != "-1":
+                out[kk.spell(shift, option, base)] = [int(cell, 16)]
     return out
 
 
-def _join(units: list[int]) -> int:
-    if len(units) == 1:
-        return units[0]
-    high, low = units
-    return 0x10000 + ((high - 0xD800) << 10) + (low - 0xDC00)
-
-
-def read_xkb(text: str) -> dict[str, int]:
+def read_xkb(text: str) -> dict[str, list[int]]:
     by_name = {v: k for k, v in keyboards.XKB_KEYS.items()}
     out = {}
     for name, symbols in re.findall(r"key <(\w+)> \{.*?symbols\[Group1\] = \[ ([^\]]*) \] \};", text):
         for layer, symbol in enumerate(s.strip() for s in symbols.split(",")):
-            if re.fullmatch(r"U[0-9A-F]+", symbol):
-                shift, option = LAYERS[layer]
-                out[spelled(shift, option, by_name[name])] = int(symbol[1:], 16)
+            if symbol == "VoidSymbol":
+                continue
+            shift, option = LAYERS[layer]
+            cps = [int(symbol[1:], 16)] if re.fullmatch(r"U[0-9A-F]+", symbol) else [ord(symbol[0])]
+            out[kk.spell(shift, option, by_name[name])] = cps
     return out
 
 
-def read_emacs(text: str) -> dict[str, int]:
-    """quail sequence -> code point."""
+def read_emacs(text: str) -> dict[str, list[int]]:
+    """quail sequence -> code points; a sequence that types nothing maps to []."""
     rules = text.split("(quail-define-rules", 1)[1]
-    return {
-        re.sub(r"\\(.)", r"\1", seq): int(code, 16)
-        for seq, code in re.findall(r'\("((?:[^"\\]|\\.)*)" #x([0-9A-F]+)\)', rules)
-    }
+    out = {}
+    for seq, single, vector in re.findall(r'\("((?:[^"\\]|\\.)*)" (?:#x([0-9A-F]+)|\["((?:[^"\\]|\\.)*)"\])\)', rules):
+        seq = re.sub(r"\\(.)", r"\1", seq)
+        if single:
+            out[seq] = [int(single, 16)]
+        else:
+            out[seq] = [int(h, 16) for h in re.findall(r"\\U([0-9A-F]{8})", vector)]
+            if re.sub(r"\\U[0-9A-F]{8}", "", vector):
+                out[seq] = [ord(c) for c in vector]
+    return out
 
 
 def read_layouts(key: str) -> dict[str, str | bytes]:
     texts = {"emacs": (KEYBOARDS / "emacs" / f"heroiclands-{key}.el").read_text(encoding="utf-8")}
     if key != "zethu":
-        label = next(f for f in keyboards.FAMILIES if f["key"] == key)["layout"]
+        label = next(s for s in keyboards.SCRIPTS if s["key"] == key)["layout"]
         base = KEYBOARDS / "macos" / keyboards.BUNDLE / "Contents" / "Resources"
         texts["macos"] = (base / f"{label}.keylayout").read_text(encoding="utf-8")
         texts["windows"] = (KEYBOARDS / "windows" / f"{key}.klc").read_bytes()
@@ -146,135 +164,101 @@ def read_layouts(key: str) -> dict[str, str | bytes]:
     return texts
 
 
-def layout_problems(key: str, table: list[dict], texts: dict) -> list[str]:
-    """Where a layout file disagrees with the family's table."""
+def read_back(texts: dict) -> dict[str, dict[str, list[int]]]:
+    """platform -> key -> code points typed, with keys that type nothing left out."""
+    got = {
+        "macos": read_macos(texts["macos"]),
+        "windows": read_windows(texts["windows"]),
+        "linux": read_xkb(texts["linux"]),
+    }
+    emacs = read_emacs(texts["emacs"])
+    got["emacs"] = {key: emacs[kk.quail_sequence(key)] for key in kk.every_key() if kk.quail_sequence(key) in emacs}
+    missing = [k for k in kk.every_key() if kk.quail_sequence(k) not in emacs]
+    if missing or kk.OPTION_PREFIX not in emacs:
+        got["emacs"]["(unruled)"] = missing or [kk.OPTION_PREFIX]
+    return {p: {k: v for k, v in m.items() if v} for p, m in got.items()}
+
+
+def layout_problems(script: str, keymap: list[dict], sounds: list[dict], texts: dict) -> list[str]:
+    """Where a layout file disagrees with sounds.json, or types a roman character."""
     problems = []
-    if key == "zethu":
-        want = {r["key"]: int(r["codepoint"][2:], 16) for r in table}
-        got = read_emacs(texts["emacs"])
-        platforms = {"emacs": got}
-        wants = {"emacs": want}
-    else:
-        want = {kk.spell(*kk.parse(r["key"])): int(r["codepoint"][2:], 16) for r in table if "key" in r}
-        platforms = {
-            "macos": read_macos(texts["macos"]),
-            "windows": read_windows(texts["windows"]),
-            "linux": read_xkb(texts["linux"]),
-            "emacs": read_emacs(texts["emacs"]),
-        }
-        wants = {p: want for p in platforms}
-        wants["emacs"] = {kk.quail_sequence(k): c for k, c in want.items()}
-    for platform, got in platforms.items():
-        expected = wants[platform]
-        for k in sorted(expected.keys() - got.keys()):
-            problems.append(f"keyboards: error: {key}: the {platform} layout has no output on {k}")
-        for k in sorted(got.keys() - expected.keys()):
-            problems.append(f"keyboards: error: {key}: the {platform} layout types U+{got[k]:04X} on {k}, which the table lacks")
-        for k in sorted(got.keys() & expected.keys()):
-            if got[k] != expected[k]:
-                problems.append(f"keyboards: error: {key}: the {platform} layout types U+{got[k]:04X} on {k}, not U+{expected[k]:04X}")
+    got = read_back(texts)
+    for platform in keyboards.PLATFORMS:
+        expected = keyboards.platform_keys(script, platform, keymap, sounds)
+        typed = got[platform]
+        if "(unruled)" in typed:
+            problems.append(f"keyboards: error: {script}: the emacs input method leaves {', '.join(map(str, typed.pop('(unruled)')))} to type itself")
+        for k in sorted(expected.keys() - typed.keys()):
+            problems.append(f"keyboards: error: {script}: the {platform} layout types nothing on {k}, not {keyboards.code_list(expected[k])}")
+        for k in sorted(typed.keys() - expected.keys()):
+            problems.append(f"keyboards: error: {script}: the {platform} layout types {keyboards.code_list(typed[k])} on {k}, which carries nothing")
+        for k in sorted(typed.keys() & expected.keys()):
+            if typed[k] != expected[k]:
+                problems.append(f"keyboards: error: {script}: the {platform} layout types {keyboards.code_list(typed[k])} on {k}, not {keyboards.code_list(expected[k])}")
+        for k, cps in sorted(typed.items()):
+            if any(p < 0x80 for p in cps):
+                problems.append(f"keyboards: error: {script}: the {platform} layout types a roman character on {k}")
     return problems
-
-
-# -- Typing the lexicon --------------------------------------------------------------------
-
-
-def typing_problems(key: str, table: list[dict], glyph_runs: list[tuple[str, list[str]]]) -> list[str]:
-    """Every glyph of every run is a character with a key, or is not a character."""
-    stem = FAMILIES[key][1][0]
-    typed = {r["glyph"] for r in table if isinstance(r.get("key"), str) and r["key"]}
-    listed = {r["glyph"] for r in table}
-    exempt = set(codepoints.NOT_CHARACTERS.get(stem, {}))
-    problems, seen = [], set()
-    for text, glyphs in glyph_runs:
-        for glyph in glyphs:
-            if glyph in typed or glyph in exempt or codepoints.is_structural(glyph, listed):
-                continue
-            if (glyph, "k") in seen:
-                continue
-            seen.add((glyph, "k"))
-            why = "has no key" if glyph in listed else "has no code point"
-            problems.append(f"keyboards: error: {key}: {glyph} (in {text!r}) {why}")
-    return problems
-
-
-def latin_runs(key: str, texts: list[str]) -> list[tuple[str, list[str]]]:
-    runs = []
-    for stem in FAMILIES[key][1]:
-        r = Renderer(ROOT / "fonts" / f"{stem}.ttf")
-        runs += [(t, r.glyph_names(t)) for t in texts]
-    return runs
-
-
-def fixture_texts(key: str) -> list[str]:
-    guard = load(FAMILIES[key][2])
-    if key == "pirzath":
-        return [t for t, _ in guard.FIXTURES + guard.LOST_FIXTURES]
-    if key == "qalezu":
-        return [latin for latin, _ in guard.FIXTURES]
-    return [t for t, _ in guard.FIXTURES]
-
-
-def lexicon_texts(key: str, thalorna: Path) -> list[str]:
-    return load(FAMILIES[key][2]).lexicon_forms(thalorna, None)
-
-
-def runs_for(key: str, texts: list[str]) -> list[tuple[str, list[str]]]:
-    """The glyphs each text shapes to; Qalezu's Latin is converted to its signs first."""
-    if key != "qalezu":
-        return latin_runs(key, texts)
-    guard = load(FAMILIES[key][2])
-    names = {int(r["codepoint"][2:], 16): r["glyph"] for r in table_of("Qalezu Hand")}
-    runs = []
-    for latin, signs in zip(texts, guard.convert_all(texts)):
-        if isinstance(signs, str):
-            runs.append((latin, ["space" if c == " " else names.get(ord(c), f"U+{ord(c):04X}") for c in signs]))
-    return runs
-
-
-def zethu_runs() -> list[tuple[str, list[str]]]:
-    guard = load("khelathi-zethu-glyphs")
-    return [(label, ["sign " + i for i in ids]) for label, ids in guard.sample_lists()]
 
 
 def zethu_problems(table: list[dict]) -> list[str]:
-    """Every sign id of the sample inscriptions is the key of a drawn sign."""
-    keys = {r["key"] for r in table}
-    problems, seen = [], set()
-    for label, glyphs in zethu_runs():
-        for glyph in glyphs:
-            sid = glyph[5:]
-            if sid not in keys and sid not in seen:
-                seen.add(sid)
-                problems.append(f"keyboards: error: zethu: the sign {sid} (in {label!r}) has no key")
+    got = read_emacs(read_layouts("zethu")["emacs"])
+    want = {r["key"]: [int(r["codepoint"][2:], 16)] for r in table}
+    problems = [f"keyboards: error: zethu: the emacs input method has no rule for {k}" for k in sorted(want.keys() - got.keys())]
+    problems += [f"keyboards: error: zethu: the emacs input method types {got[k]} on {k}, which is no sign" for k in sorted(got.keys() - want.keys())]
+    problems += [f"keyboards: error: zethu: {k} types {got[k]}, not {want[k]}" for k in sorted(got.keys() & want.keys()) if got[k] != want[k]]
     return problems
 
 
-def check(key: str, table: list[dict], thalorna: Path | None) -> tuple[list[str], int]:
-    """The problems of a family, and how many texts were typed through its layout."""
-    problems = layout_problems(key, table, read_layouts(key))
-    if key == "zethu":
-        return problems + zethu_problems(table), len(zethu_runs())
-    texts = fixture_texts(key)
+def thalorna_problems(thalorna: Path, committed: dict) -> list[str]:
+    """Where keyboards/sounds.json differs from what the mapping notes spell today."""
+    run = subprocess.run(
+        ["node", str(ROOT / "tools" / "sounds.mjs"), "--thalorna", str(thalorna)],
+        capture_output=True, text=True, cwd=ROOT,
+    )  # fmt: skip
+    if run.returncode:
+        return [f"tools/sounds.mjs: error: {line}" for line in run.stderr.strip().splitlines()[-5:]]
+    fresh = json.loads(run.stdout)
+    problems = []
+    if fresh["source"] != committed["source"]:
+        problems.append("keyboards/sounds.json: error: the mapping notes or their faces differ from thalorna's")
+    old = {s["sound"]: s for s in committed["sounds"]}
+    for s in fresh["sounds"]:
+        if s != old.get(s["sound"]):
+            problems.append(f"keyboards/sounds.json: error: {s['sound']}: thalorna spells {json.dumps(s['scripts'], ensure_ascii=False)}")
+    if [s["sound"] for s in fresh["sounds"]] != [s["sound"] for s in committed["sounds"]]:
+        problems.append("keyboards/sounds.json: error: the sounds differ from tools/sound_keys.json's")
+    return problems
+
+
+def committed_sounds() -> dict:
+    return json.loads((KEYBOARDS / "sounds.json").read_text(encoding="utf-8"))
+
+
+def check(thalorna: Path | None) -> list[str]:
+    keymap = kk.load()["sounds"]
+    committed = committed_sounds()
+    sounds = committed["sounds"]
+    problems = keymap_problems(keymap, sounds)
+    for script in SCRIPT_KEYS:
+        problems += layout_problems(script, keymap, sounds, read_layouts(script))
+    zethu = next(f for f in keyboards.manifest()["families"] if f["name"] == "Khelathi Zethu Glyphs")
+    problems += zethu_problems(zethu["codepoints"])
     if thalorna is not None:
-        texts = texts + lexicon_texts(key, thalorna)
-    return problems + typing_problems(key, table, runs_for(key, texts)), len(texts)
+        problems += thalorna_problems(thalorna, committed)
+    return problems
 
 
 def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     ap.add_argument("--thalorna", default=str(Path.home() / "dev/HeroicLands/thalorna"))
-    ap.add_argument("--fixtures-only", action="store_true", help="read the guards' fixtures and no lexicon")
+    ap.add_argument("--fixtures-only", action="store_true", help="read no thalorna checkout")
     args = ap.parse_args()
-    thalorna = None if args.fixtures_only else Path(args.thalorna)
-    status = 0
-    for key, (name, _, _) in FAMILIES.items():
-        problems, count = check(key, table_of(name), thalorna)
-        print(f"{key}: {count} texts typed, " + (f"{len(problems)} problems" if problems else "ok"))
-        for line in problems[:20]:
-            print(line)
-        status |= bool(problems)
-    sys.exit(status)
+    problems = check(None if args.fixtures_only else Path(args.thalorna))
+    print(f"keyboards: {len(kk.load()['sounds'])} sounds on {len(SCRIPT_KEYS)} layouts and 4 platforms, " + (f"{len(problems)} problems" if problems else "ok"))
+    for line in problems[:40]:
+        print(line)
+    sys.exit(bool(problems))
 
 
 if __name__ == "__main__":

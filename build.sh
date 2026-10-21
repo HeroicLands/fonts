@@ -1,5 +1,5 @@
 #!/bin/sh
-# Build every font from their UFO sources into fonts/, then write fonts.css, fonts.json and keyboards/.
+# Build every font from their UFO sources into fonts/, then write fonts.css, fonts.json, keyboards/ and charts/.
 # The timestamp is fixed, so a build is byte-for-byte reproducible. fontmake writes
 # the Windows name records only, so tools/add_mac_names.py adds the Macintosh ones.
 #
@@ -25,3 +25,4 @@ build sources/SemaronKuriale.ufo fonts/SemaronKuriale-Regular.ttf
 
 python tools/write_css.py
 python tools/keyboards.py
+python tools/charts.py

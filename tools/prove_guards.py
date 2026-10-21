@@ -18,11 +18,14 @@ removed, and with the Basic Latin range declared. The vertical guard (tools/vert
 with USE_TYPO_METRICS cleared, and with one glyph lifted out of the band. The code-point guard (tools/codepoints.py)
 is proved on every font with the first code point of its fonts.json table removed from the cmap, and on every left-to-right font
 with an entry in the Basic Multilingual Plane's Private Use Area. Its key rules are proved
-on altered fonts.json tables: a character without a key, two characters on one key, and a Pirzath Hand key that differs from Pirzath
-Carved's. Its block registry is proved on a code point outside its family's blocks, two overlapping blocks and a README table that
+on altered fonts.json tables: a Khelathi Zethu Glyphs sign without a key, two signs on one key, and a key on a character of a script
+typed by sound. Its block registry is proved on a code point outside its family's blocks, two overlapping blocks and a README table that
 differs from the registry. The default-ignorable check of the box guard is proved on every font with the glyph of the ignorables drawing the box, and on
-Pirzath Carved with the GSUB table removed. The keyboard guard (tools/keyboards_guard.py) is proved on a table with a
-character's key removed, with a character's row removed and on a Linux layout with a key line removed. The guards run on their
+Pirzath Carved with the GSUB table removed. The keyboard guard (tools/keyboards_guard.py) is proved on a key map with
+two sounds on one key, with a sound removed and with a capital off Shift; on layouts with a macOS output cut short, a Linux key
+line removed, an Emacs rule removed and a Windows key typing a roman letter; and, where a thalorna checkout exists, on a sounds.json
+that thalorna's mapping notes no longer spell. The cheatsheet guard (tools/charts_guard.py) is proved on a sheet with a table row removed, with a wrong Code Point cell, with a chart cell removed, with a glyph image removed, with a
+lowercase name and with a Zethu name that is not its code point's position. The guards run on their
 fixtures alone, so the proof needs no lexicon.
 """
 
@@ -169,19 +172,19 @@ def prove_keys(codepoints) -> int:
         return next(f for f in manifest["families"] if f["name"] == name)
 
     def lose_key(manifest):
-        del entry(manifest, "Semaron Kuriale")["codepoints"][0]["key"]
+        del entry(manifest, "Khelathi Zethu Glyphs")["codepoints"][0]["key"]
 
     def share_key(manifest):
-        rows = entry(manifest, "Semaron Kuriale")["codepoints"]
+        rows = entry(manifest, "Khelathi Zethu Glyphs")["codepoints"]
         rows[1]["key"] = rows[0]["key"]
 
-    def hand_differs(manifest):
-        entry(manifest, "Pirzath Hand")["codepoints"][0]["key"] = "option+shift+x"
+    def sound_script_key(manifest):
+        entry(manifest, "Semaron Kuriale")["codepoints"][0]["key"] = "a"
 
     cases = [
-        ("Semaron Kuriale", "SemaronKuriale-Regular.ttf", lose_key, "with a character without a key", "has no key"),
-        ("Semaron Kuriale", "SemaronKuriale-Regular.ttf", share_key, "with two characters on one key", "share the key"),
-        ("Pirzath Hand", "PirzathHand-Regular.ttf", hand_differs, "with a key that differs from Pirzath Carved's", "the keys differ"),
+        ("Khelathi Zethu Glyphs", "KhelathiZethuGlyphs-Regular.ttf", lose_key, "with a sign without a key", "has no key"),
+        ("Khelathi Zethu Glyphs", "KhelathiZethuGlyphs-Regular.ttf", share_key, "with two signs on one key", "share the key"),
+        ("Semaron Kuriale", "SemaronKuriale-Regular.ttf", sound_script_key, "with a key on a character typed by sound", "typed by sound"),
     ]
     status = 0
     for label, name, mutate, how, expect in cases:
@@ -238,37 +241,107 @@ def prove_registry(codepoints) -> int:
 
 
 def prove_keyboards() -> int:
-    """Prove that the keyboard guard fails a table that loses a key or a row, and a layout that loses a key."""
+    """Prove that the keyboard guard fails a broken key map, a layout that types the wrong
+    thing or a roman letter, and a sounds.json that differs from thalorna's mapping notes."""
     guard = load("keyboards_guard", ROOT / "tools" / "keyboards_guard.py")
-    key = "pirzath"
-    table = guard.table_of("Pirzath Carved")
-    texts = guard.fixture_texts(key)
-    status = 0
+    keymap = guard.kk.load()["sounds"]
+    committed = guard.committed_sounds()
+    sounds = committed["sounds"]
+    script = "semaron"
+    layouts = guard.read_layouts(script)
 
-    def count(rows, layouts=None):
-        problems = guard.typing_problems(key, rows, guard.runs_for(key, texts))
-        return len(problems) + len(guard.layout_problems(key, rows, layouts or guard.read_layouts(key)))
+    def on_layouts(texts):
+        return len(guard.layout_problems(script, keymap, sounds, texts))
 
-    def without_key(rows):
-        rows = copy.deepcopy(rows)
-        del next(r for r in rows if r["glyph"] == "sh")["key"]
-        return rows
+    def on_keymap(altered):
+        return len(guard.keymap_problems(altered, sounds))
 
-    def without_row(rows):
-        return [r for r in rows if r["glyph"] != "sh"]
+    def keymap_with(change):
+        altered = copy.deepcopy(keymap)
+        change(altered)
+        return altered
 
-    layouts = guard.read_layouts(key)
+    def entry(rows, sound):
+        return next(e for e in rows if e["sound"] == sound)
+
+    def share(rows):
+        entry(rows, "th")["key"] = entry(rows, "ch")["key"]
+
+    def drop(rows):
+        rows.remove(entry(rows, "th"))
+
+    def unshifted(rows):
+        entry(rows, "Th")["key"] = "option+q"
+
+    ch = "&#xF0241;&#xF0240;&#xF0236;"
+    macos = layouts["macos"].replace(ch, "&#xF0241;", 1)
     linux = "\n".join(line for line in layouts["linux"].split("\n") if "<AC03>" not in line)
-    good = count(table)
+    emacs = "\n".join(line for line in layouts["emacs"].split("\n") if not line.startswith(' ("q" '))
+    windows = layouts["windows"].decode("utf-16").replace("\r\n10\tQ\t\t0\t-1", "\r\n10\tQ\t\t0\t0071")
+    windows = b"\xff\xfe" + windows.encode("utf-16-le")
+    good = on_layouts(layouts) + on_keymap(keymap)
     cases = [
-        ("with the key of sh removed", count(without_key(table))),
-        ("with the row of sh removed", count(without_row(table))),
-        ("with a Linux key line removed", count(table, {**layouts, "linux": linux})),
+        ("with two sounds on one key", on_keymap(keymap_with(share))),
+        ("with a sound without a key", on_keymap(keymap_with(drop))),
+        ("with a capital off Shift", on_keymap(keymap_with(unshifted))),
+        ("with a macOS output cut short", on_layouts({**layouts, "macos": macos})),
+        ("with a Linux key line removed", on_layouts({**layouts, "linux": linux})),
+        ("with an Emacs rule removed, so the key types itself", on_layouts({**layouts, "emacs": emacs})),
+        ("with a Windows key typing a roman letter", on_layouts({**layouts, "windows": windows})),
     ]
+    thalorna = Path.home() / "dev/HeroicLands/thalorna"
+    if thalorna.exists():
+        stale = copy.deepcopy(committed)
+        entry(stale["sounds"], "th")["scripts"][script] = {"codepoints": "U+F0241 U+F0236"}
+        good += len(guard.thalorna_problems(thalorna, committed))
+        cases.append(("with a sounds.json that thalorna no longer spells", len(guard.thalorna_problems(thalorna, stale))))
+    else:
+        print(f"keyboards: no thalorna checkout at {thalorna}, so the sounds.json proof is skipped")
+    status = 0
     for how, bad in cases:
-        print(f"keyboards: {good} failures on the table, {bad} on the table {how}")
+        print(f"keyboards: {good} failures on the layouts, {bad} on the layouts {how}")
         if good or not bad:
-            print("tools/keyboards_guard.py: error: the keyboard guard must pass the table and fail the altered table")
+            print("tools/keyboards_guard.py: error: the keyboard guard must pass the layouts and fail the altered ones")
+            status = 1
+    return status
+
+
+def prove_charts() -> int:
+    """Prove that the cheatsheet guard fails a table that loses a row, a chart that loses a cell and a badly written name."""
+    guard = load("charts_guard", ROOT / "tools" / "charts_guard.py")
+    manifest = json.loads((ROOT / "fonts.json").read_text(encoding="utf-8"))
+    entry = next(f for f in manifest["families"] if f["name"] == "Khelathi Zethu Glyphs")
+    folder = guard.charts.FOLDERS[entry["class"]]
+    base = ROOT / "charts" / folder
+    md = (ROOT / "charts" / f"{folder}.md").read_text(encoding="utf-8")
+    svgs = {p.name: p.read_text(encoding="utf-8") for p in base.glob("chart-*.svg")}
+    glyphs = {p.name for p in (base / "glyphs").glob("*.svg")}
+    pngs = {p.name for p in base.glob("chart-*.png")}
+    first = entry["codepoints"][0]
+    cp, hex_ = guard.charts.code(first), guard.charts.hexcode(first)
+
+    def count(*args):
+        return len(guard.sheet_problems(entry, *args))
+
+    def named(rows_name):
+        altered = copy.deepcopy(manifest["families"])
+        next(f for f in altered if f["name"] == entry["name"])["codepoints"][0]["name"] = rows_name
+        return len(guard.name_problems(altered)[0])
+
+    good = count(md, svgs, glyphs, pngs) + named(first["name"])
+    cases = [
+        ("with a table row removed", count(md.replace(f"`&#{cp};`", ""), svgs, glyphs, pngs)),
+        ("with a Code Point cell wrong", count(md.replace(f"| {first['codepoint']} |", "| U+0000 |"), svgs, glyphs, pngs)),
+        ("with a chart cell removed", count(md, {k: v.replace(f'id="cp-{hex_}"', 'id="cp-0"') for k, v in svgs.items()}, glyphs, pngs)),
+        ("with a glyph image removed", count(md, svgs, glyphs - {f"U+{hex_}.svg"}, pngs)),
+        ("with a lowercase name", named(first["name"].lower())),
+        ("with a name that is not its code point's position", named("ZETHU CHARACTER 999")),
+    ]
+    status = 0
+    for how, bad in cases:
+        print(f"charts: {good} failures on the sheet, {bad} on the sheet {how}")
+        if good or not bad:
+            print("tools/charts_guard.py: error: the cheatsheet guard must pass the sheet and fail the altered sheet")
             status = 1
     return status
 
@@ -357,6 +430,7 @@ def main():
     status |= prove_keys(codepoints)
     status |= prove_registry(codepoints)
     status |= prove_keyboards()
+    status |= prove_charts()
     pirzath_font = ROOT / "fonts" / "PirzathCarved-Regular.ttf"
     with tempfile.TemporaryDirectory() as tmp:
         good, bad = notdef.check(pirzath_font), notdef.check(stripped(pirzath_font, Path(tmp) / pirzath_font.name))

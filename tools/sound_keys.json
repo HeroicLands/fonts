@@ -1,0 +1,1176 @@
+{
+  "principles": [
+    "Each sound of the spelling guide, Pronouncing Thalorna, sits on one key or chord, the same in every script, and no key or chord carries two sounds. tools/sounds.mjs runs each sound's spelling through every script's mapping note into keyboards/sounds.json, and each layout types that output, or nothing where the mapping cannot spell the sound.",
+    "A single letter sits on its own roman key. c and x are not letters of the guide, so their plain keys carry nothing.",
+    "A capital sits on Shift and the key of its small sound: Shift+A is A, Option+Shift+T is Th. A pair's capital is written with its first letter capital (Ch, Ai), the form a word starts with.",
+    "A consonant pair sits on Option and its first letter: Option+T th, Option+C ch. Where two pairs share a first letter, the second is a mnemonic: ny on Option+Y, its second letter, and ts on Option+X, the cluster letter the guide never writes.",
+    "An acute vowel sits on Option and its vowel, as Option+E types the acute on a Mac and AltGr and a vowel types it on Windows' US-International layout.",
+    "The long vowels sit on Option and the digits 1 to 5, in the order a e i o u: Option+1 aa, Option+5 uu. The other vowel pairs follow in the guide's order on Option and the keys after them: 6 ai, 7 au, 8 ei, 9 oi, 0 ou, - ie, = uo, [ ae, ] ea. A vowel key's Option holds its acute, so the pairs cannot sit on their first vowel.",
+    "A diaeresis vowel sits on Option and the punctuation keys right of L and M, in the order a e i o u: ; ä, ' ë, , ï, . ö, / ü.",
+    "The catch sits on ', the stop on ., the pause on , and the open and close quotes on [ and ].",
+    "Digits sit on the digit row. Pirzath counts in sixteens, and its numerals ten to fifteen sit on Shift+2 to Shift+7, the keys of @ # $ % ^ &, the characters its mapping spells them with.",
+    "A vowel sound, and y, is spelled inside a word: a vowel between two t's, and y before an a, where it is the glide. That is how the sound itself is written, as against a vowel at the start of a word in Qalezu, which is the catch, or y as the vowel i, which the i key types.",
+    "Control chords and function keys carry nothing: the four layers above hold every sound, and no platform types reliably from them."
+  ],
+  "sounds": [
+    {
+      "sound": "a",
+      "spelling": "a",
+      "kind": "letter",
+      "key": "a",
+      "context": [
+        "t",
+        "t"
+      ]
+    },
+    {
+      "sound": "A",
+      "spelling": "A",
+      "kind": "letter",
+      "key": "shift+a",
+      "capital of": "a",
+      "context": [
+        "t",
+        "t"
+      ]
+    },
+    {
+      "sound": "b",
+      "spelling": "b",
+      "kind": "letter",
+      "key": "b"
+    },
+    {
+      "sound": "B",
+      "spelling": "B",
+      "kind": "letter",
+      "key": "shift+b",
+      "capital of": "b"
+    },
+    {
+      "sound": "d",
+      "spelling": "d",
+      "kind": "letter",
+      "key": "d"
+    },
+    {
+      "sound": "D",
+      "spelling": "D",
+      "kind": "letter",
+      "key": "shift+d",
+      "capital of": "d"
+    },
+    {
+      "sound": "e",
+      "spelling": "e",
+      "kind": "letter",
+      "key": "e",
+      "context": [
+        "t",
+        "t"
+      ]
+    },
+    {
+      "sound": "E",
+      "spelling": "E",
+      "kind": "letter",
+      "key": "shift+e",
+      "capital of": "e",
+      "context": [
+        "t",
+        "t"
+      ]
+    },
+    {
+      "sound": "f",
+      "spelling": "f",
+      "kind": "letter",
+      "key": "f"
+    },
+    {
+      "sound": "F",
+      "spelling": "F",
+      "kind": "letter",
+      "key": "shift+f",
+      "capital of": "f"
+    },
+    {
+      "sound": "g",
+      "spelling": "g",
+      "kind": "letter",
+      "key": "g"
+    },
+    {
+      "sound": "G",
+      "spelling": "G",
+      "kind": "letter",
+      "key": "shift+g",
+      "capital of": "g"
+    },
+    {
+      "sound": "h",
+      "spelling": "h",
+      "kind": "letter",
+      "key": "h"
+    },
+    {
+      "sound": "H",
+      "spelling": "H",
+      "kind": "letter",
+      "key": "shift+h",
+      "capital of": "h"
+    },
+    {
+      "sound": "i",
+      "spelling": "i",
+      "kind": "letter",
+      "key": "i",
+      "context": [
+        "t",
+        "t"
+      ]
+    },
+    {
+      "sound": "I",
+      "spelling": "I",
+      "kind": "letter",
+      "key": "shift+i",
+      "capital of": "i",
+      "context": [
+        "t",
+        "t"
+      ]
+    },
+    {
+      "sound": "j",
+      "spelling": "j",
+      "kind": "letter",
+      "key": "j"
+    },
+    {
+      "sound": "J",
+      "spelling": "J",
+      "kind": "letter",
+      "key": "shift+j",
+      "capital of": "j"
+    },
+    {
+      "sound": "k",
+      "spelling": "k",
+      "kind": "letter",
+      "key": "k"
+    },
+    {
+      "sound": "K",
+      "spelling": "K",
+      "kind": "letter",
+      "key": "shift+k",
+      "capital of": "k"
+    },
+    {
+      "sound": "l",
+      "spelling": "l",
+      "kind": "letter",
+      "key": "l"
+    },
+    {
+      "sound": "L",
+      "spelling": "L",
+      "kind": "letter",
+      "key": "shift+l",
+      "capital of": "l"
+    },
+    {
+      "sound": "m",
+      "spelling": "m",
+      "kind": "letter",
+      "key": "m"
+    },
+    {
+      "sound": "M",
+      "spelling": "M",
+      "kind": "letter",
+      "key": "shift+m",
+      "capital of": "m"
+    },
+    {
+      "sound": "n",
+      "spelling": "n",
+      "kind": "letter",
+      "key": "n"
+    },
+    {
+      "sound": "N",
+      "spelling": "N",
+      "kind": "letter",
+      "key": "shift+n",
+      "capital of": "n"
+    },
+    {
+      "sound": "o",
+      "spelling": "o",
+      "kind": "letter",
+      "key": "o",
+      "context": [
+        "t",
+        "t"
+      ]
+    },
+    {
+      "sound": "O",
+      "spelling": "O",
+      "kind": "letter",
+      "key": "shift+o",
+      "capital of": "o",
+      "context": [
+        "t",
+        "t"
+      ]
+    },
+    {
+      "sound": "p",
+      "spelling": "p",
+      "kind": "letter",
+      "key": "p"
+    },
+    {
+      "sound": "P",
+      "spelling": "P",
+      "kind": "letter",
+      "key": "shift+p",
+      "capital of": "p"
+    },
+    {
+      "sound": "q",
+      "spelling": "q",
+      "kind": "letter",
+      "key": "q"
+    },
+    {
+      "sound": "Q",
+      "spelling": "Q",
+      "kind": "letter",
+      "key": "shift+q",
+      "capital of": "q"
+    },
+    {
+      "sound": "r",
+      "spelling": "r",
+      "kind": "letter",
+      "key": "r"
+    },
+    {
+      "sound": "R",
+      "spelling": "R",
+      "kind": "letter",
+      "key": "shift+r",
+      "capital of": "r"
+    },
+    {
+      "sound": "s",
+      "spelling": "s",
+      "kind": "letter",
+      "key": "s"
+    },
+    {
+      "sound": "S",
+      "spelling": "S",
+      "kind": "letter",
+      "key": "shift+s",
+      "capital of": "s"
+    },
+    {
+      "sound": "t",
+      "spelling": "t",
+      "kind": "letter",
+      "key": "t"
+    },
+    {
+      "sound": "T",
+      "spelling": "T",
+      "kind": "letter",
+      "key": "shift+t",
+      "capital of": "t"
+    },
+    {
+      "sound": "u",
+      "spelling": "u",
+      "kind": "letter",
+      "key": "u",
+      "context": [
+        "t",
+        "t"
+      ]
+    },
+    {
+      "sound": "U",
+      "spelling": "U",
+      "kind": "letter",
+      "key": "shift+u",
+      "capital of": "u",
+      "context": [
+        "t",
+        "t"
+      ]
+    },
+    {
+      "sound": "v",
+      "spelling": "v",
+      "kind": "letter",
+      "key": "v"
+    },
+    {
+      "sound": "V",
+      "spelling": "V",
+      "kind": "letter",
+      "key": "shift+v",
+      "capital of": "v"
+    },
+    {
+      "sound": "w",
+      "spelling": "w",
+      "kind": "letter",
+      "key": "w"
+    },
+    {
+      "sound": "W",
+      "spelling": "W",
+      "kind": "letter",
+      "key": "shift+w",
+      "capital of": "w"
+    },
+    {
+      "sound": "y",
+      "spelling": "y",
+      "kind": "letter",
+      "key": "y",
+      "context": [
+        "",
+        "a"
+      ]
+    },
+    {
+      "sound": "Y",
+      "spelling": "Y",
+      "kind": "letter",
+      "key": "shift+y",
+      "capital of": "y",
+      "context": [
+        "",
+        "a"
+      ]
+    },
+    {
+      "sound": "z",
+      "spelling": "z",
+      "kind": "letter",
+      "key": "z"
+    },
+    {
+      "sound": "Z",
+      "spelling": "Z",
+      "kind": "letter",
+      "key": "shift+z",
+      "capital of": "z"
+    },
+    {
+      "sound": "ch",
+      "spelling": "ch",
+      "kind": "pair",
+      "key": "option+c"
+    },
+    {
+      "sound": "Ch",
+      "spelling": "Ch",
+      "kind": "pair",
+      "key": "option+shift+c",
+      "capital of": "ch"
+    },
+    {
+      "sound": "sh",
+      "spelling": "sh",
+      "kind": "pair",
+      "key": "option+s"
+    },
+    {
+      "sound": "Sh",
+      "spelling": "Sh",
+      "kind": "pair",
+      "key": "option+shift+s",
+      "capital of": "sh"
+    },
+    {
+      "sound": "th",
+      "spelling": "th",
+      "kind": "pair",
+      "key": "option+t"
+    },
+    {
+      "sound": "Th",
+      "spelling": "Th",
+      "kind": "pair",
+      "key": "option+shift+t",
+      "capital of": "th"
+    },
+    {
+      "sound": "dh",
+      "spelling": "dh",
+      "kind": "pair",
+      "key": "option+d"
+    },
+    {
+      "sound": "Dh",
+      "spelling": "Dh",
+      "kind": "pair",
+      "key": "option+shift+d",
+      "capital of": "dh"
+    },
+    {
+      "sound": "kh",
+      "spelling": "kh",
+      "kind": "pair",
+      "key": "option+k"
+    },
+    {
+      "sound": "Kh",
+      "spelling": "Kh",
+      "kind": "pair",
+      "key": "option+shift+k",
+      "capital of": "kh"
+    },
+    {
+      "sound": "gh",
+      "spelling": "gh",
+      "kind": "pair",
+      "key": "option+g"
+    },
+    {
+      "sound": "Gh",
+      "spelling": "Gh",
+      "kind": "pair",
+      "key": "option+shift+g",
+      "capital of": "gh"
+    },
+    {
+      "sound": "zh",
+      "spelling": "zh",
+      "kind": "pair",
+      "key": "option+z"
+    },
+    {
+      "sound": "Zh",
+      "spelling": "Zh",
+      "kind": "pair",
+      "key": "option+shift+z",
+      "capital of": "zh"
+    },
+    {
+      "sound": "ph",
+      "spelling": "ph",
+      "kind": "pair",
+      "key": "option+p"
+    },
+    {
+      "sound": "Ph",
+      "spelling": "Ph",
+      "kind": "pair",
+      "key": "option+shift+p",
+      "capital of": "ph"
+    },
+    {
+      "sound": "ng",
+      "spelling": "ng",
+      "kind": "pair",
+      "key": "option+n"
+    },
+    {
+      "sound": "Ng",
+      "spelling": "Ng",
+      "kind": "pair",
+      "key": "option+shift+n",
+      "capital of": "ng"
+    },
+    {
+      "sound": "ny",
+      "spelling": "ny",
+      "kind": "pair",
+      "key": "option+y"
+    },
+    {
+      "sound": "Ny",
+      "spelling": "Ny",
+      "kind": "pair",
+      "key": "option+shift+y",
+      "capital of": "ny"
+    },
+    {
+      "sound": "ts",
+      "spelling": "ts",
+      "kind": "pair",
+      "key": "option+x"
+    },
+    {
+      "sound": "Ts",
+      "spelling": "Ts",
+      "kind": "pair",
+      "key": "option+shift+x",
+      "capital of": "ts"
+    },
+    {
+      "sound": "hl",
+      "spelling": "hl",
+      "kind": "pair",
+      "key": "option+h"
+    },
+    {
+      "sound": "Hl",
+      "spelling": "Hl",
+      "kind": "pair",
+      "key": "option+shift+h",
+      "capital of": "hl"
+    },
+    {
+      "sound": "bh",
+      "spelling": "bh",
+      "kind": "pair",
+      "key": "option+b"
+    },
+    {
+      "sound": "Bh",
+      "spelling": "Bh",
+      "kind": "pair",
+      "key": "option+shift+b",
+      "capital of": "bh"
+    },
+    {
+      "sound": "aa",
+      "spelling": "aa",
+      "kind": "vowel pair",
+      "key": "option+1",
+      "context": [
+        "t",
+        "t"
+      ]
+    },
+    {
+      "sound": "Aa",
+      "spelling": "Aa",
+      "kind": "vowel pair",
+      "key": "option+shift+1",
+      "capital of": "aa",
+      "context": [
+        "t",
+        "t"
+      ]
+    },
+    {
+      "sound": "ee",
+      "spelling": "ee",
+      "kind": "vowel pair",
+      "key": "option+2",
+      "context": [
+        "t",
+        "t"
+      ]
+    },
+    {
+      "sound": "Ee",
+      "spelling": "Ee",
+      "kind": "vowel pair",
+      "key": "option+shift+2",
+      "capital of": "ee",
+      "context": [
+        "t",
+        "t"
+      ]
+    },
+    {
+      "sound": "ii",
+      "spelling": "ii",
+      "kind": "vowel pair",
+      "key": "option+3",
+      "context": [
+        "t",
+        "t"
+      ]
+    },
+    {
+      "sound": "Ii",
+      "spelling": "Ii",
+      "kind": "vowel pair",
+      "key": "option+shift+3",
+      "capital of": "ii",
+      "context": [
+        "t",
+        "t"
+      ]
+    },
+    {
+      "sound": "oo",
+      "spelling": "oo",
+      "kind": "vowel pair",
+      "key": "option+4",
+      "context": [
+        "t",
+        "t"
+      ]
+    },
+    {
+      "sound": "Oo",
+      "spelling": "Oo",
+      "kind": "vowel pair",
+      "key": "option+shift+4",
+      "capital of": "oo",
+      "context": [
+        "t",
+        "t"
+      ]
+    },
+    {
+      "sound": "uu",
+      "spelling": "uu",
+      "kind": "vowel pair",
+      "key": "option+5",
+      "context": [
+        "t",
+        "t"
+      ]
+    },
+    {
+      "sound": "Uu",
+      "spelling": "Uu",
+      "kind": "vowel pair",
+      "key": "option+shift+5",
+      "capital of": "uu",
+      "context": [
+        "t",
+        "t"
+      ]
+    },
+    {
+      "sound": "ai",
+      "spelling": "ai",
+      "kind": "vowel pair",
+      "key": "option+6",
+      "context": [
+        "t",
+        "t"
+      ]
+    },
+    {
+      "sound": "Ai",
+      "spelling": "Ai",
+      "kind": "vowel pair",
+      "key": "option+shift+6",
+      "capital of": "ai",
+      "context": [
+        "t",
+        "t"
+      ]
+    },
+    {
+      "sound": "au",
+      "spelling": "au",
+      "kind": "vowel pair",
+      "key": "option+7",
+      "context": [
+        "t",
+        "t"
+      ]
+    },
+    {
+      "sound": "Au",
+      "spelling": "Au",
+      "kind": "vowel pair",
+      "key": "option+shift+7",
+      "capital of": "au",
+      "context": [
+        "t",
+        "t"
+      ]
+    },
+    {
+      "sound": "ei",
+      "spelling": "ei",
+      "kind": "vowel pair",
+      "key": "option+8",
+      "context": [
+        "t",
+        "t"
+      ]
+    },
+    {
+      "sound": "Ei",
+      "spelling": "Ei",
+      "kind": "vowel pair",
+      "key": "option+shift+8",
+      "capital of": "ei",
+      "context": [
+        "t",
+        "t"
+      ]
+    },
+    {
+      "sound": "oi",
+      "spelling": "oi",
+      "kind": "vowel pair",
+      "key": "option+9",
+      "context": [
+        "t",
+        "t"
+      ]
+    },
+    {
+      "sound": "Oi",
+      "spelling": "Oi",
+      "kind": "vowel pair",
+      "key": "option+shift+9",
+      "capital of": "oi",
+      "context": [
+        "t",
+        "t"
+      ]
+    },
+    {
+      "sound": "ou",
+      "spelling": "ou",
+      "kind": "vowel pair",
+      "key": "option+0",
+      "context": [
+        "t",
+        "t"
+      ]
+    },
+    {
+      "sound": "Ou",
+      "spelling": "Ou",
+      "kind": "vowel pair",
+      "key": "option+shift+0",
+      "capital of": "ou",
+      "context": [
+        "t",
+        "t"
+      ]
+    },
+    {
+      "sound": "ie",
+      "spelling": "ie",
+      "kind": "vowel pair",
+      "key": "option+-",
+      "context": [
+        "t",
+        "t"
+      ]
+    },
+    {
+      "sound": "Ie",
+      "spelling": "Ie",
+      "kind": "vowel pair",
+      "key": "option+shift+-",
+      "capital of": "ie",
+      "context": [
+        "t",
+        "t"
+      ]
+    },
+    {
+      "sound": "uo",
+      "spelling": "uo",
+      "kind": "vowel pair",
+      "key": "option+=",
+      "context": [
+        "t",
+        "t"
+      ]
+    },
+    {
+      "sound": "Uo",
+      "spelling": "Uo",
+      "kind": "vowel pair",
+      "key": "option+shift+=",
+      "capital of": "uo",
+      "context": [
+        "t",
+        "t"
+      ]
+    },
+    {
+      "sound": "ae",
+      "spelling": "ae",
+      "kind": "vowel pair",
+      "key": "option+[",
+      "context": [
+        "t",
+        "t"
+      ]
+    },
+    {
+      "sound": "Ae",
+      "spelling": "Ae",
+      "kind": "vowel pair",
+      "key": "option+shift+[",
+      "capital of": "ae",
+      "context": [
+        "t",
+        "t"
+      ]
+    },
+    {
+      "sound": "ea",
+      "spelling": "ea",
+      "kind": "vowel pair",
+      "key": "option+]",
+      "context": [
+        "t",
+        "t"
+      ]
+    },
+    {
+      "sound": "Ea",
+      "spelling": "Ea",
+      "kind": "vowel pair",
+      "key": "option+shift+]",
+      "capital of": "ea",
+      "context": [
+        "t",
+        "t"
+      ]
+    },
+    {
+      "sound": "á",
+      "spelling": "á",
+      "kind": "acute",
+      "key": "option+a",
+      "context": [
+        "t",
+        "t"
+      ]
+    },
+    {
+      "sound": "Á",
+      "spelling": "Á",
+      "kind": "acute",
+      "key": "option+shift+a",
+      "capital of": "á",
+      "context": [
+        "t",
+        "t"
+      ]
+    },
+    {
+      "sound": "é",
+      "spelling": "é",
+      "kind": "acute",
+      "key": "option+e",
+      "context": [
+        "t",
+        "t"
+      ]
+    },
+    {
+      "sound": "É",
+      "spelling": "É",
+      "kind": "acute",
+      "key": "option+shift+e",
+      "capital of": "é",
+      "context": [
+        "t",
+        "t"
+      ]
+    },
+    {
+      "sound": "í",
+      "spelling": "í",
+      "kind": "acute",
+      "key": "option+i",
+      "context": [
+        "t",
+        "t"
+      ]
+    },
+    {
+      "sound": "Í",
+      "spelling": "Í",
+      "kind": "acute",
+      "key": "option+shift+i",
+      "capital of": "í",
+      "context": [
+        "t",
+        "t"
+      ]
+    },
+    {
+      "sound": "ó",
+      "spelling": "ó",
+      "kind": "acute",
+      "key": "option+o",
+      "context": [
+        "t",
+        "t"
+      ]
+    },
+    {
+      "sound": "Ó",
+      "spelling": "Ó",
+      "kind": "acute",
+      "key": "option+shift+o",
+      "capital of": "ó",
+      "context": [
+        "t",
+        "t"
+      ]
+    },
+    {
+      "sound": "ú",
+      "spelling": "ú",
+      "kind": "acute",
+      "key": "option+u",
+      "context": [
+        "t",
+        "t"
+      ]
+    },
+    {
+      "sound": "Ú",
+      "spelling": "Ú",
+      "kind": "acute",
+      "key": "option+shift+u",
+      "capital of": "ú",
+      "context": [
+        "t",
+        "t"
+      ]
+    },
+    {
+      "sound": "ä",
+      "spelling": "ä",
+      "kind": "diaeresis",
+      "key": "option+;",
+      "context": [
+        "t",
+        "t"
+      ]
+    },
+    {
+      "sound": "Ä",
+      "spelling": "Ä",
+      "kind": "diaeresis",
+      "key": "option+shift+;",
+      "capital of": "ä",
+      "context": [
+        "t",
+        "t"
+      ]
+    },
+    {
+      "sound": "ë",
+      "spelling": "ë",
+      "kind": "diaeresis",
+      "key": "option+'",
+      "context": [
+        "t",
+        "t"
+      ]
+    },
+    {
+      "sound": "Ë",
+      "spelling": "Ë",
+      "kind": "diaeresis",
+      "key": "option+shift+'",
+      "capital of": "ë",
+      "context": [
+        "t",
+        "t"
+      ]
+    },
+    {
+      "sound": "ï",
+      "spelling": "ï",
+      "kind": "diaeresis",
+      "key": "option+,",
+      "context": [
+        "t",
+        "t"
+      ]
+    },
+    {
+      "sound": "Ï",
+      "spelling": "Ï",
+      "kind": "diaeresis",
+      "key": "option+shift+,",
+      "capital of": "ï",
+      "context": [
+        "t",
+        "t"
+      ]
+    },
+    {
+      "sound": "ö",
+      "spelling": "ö",
+      "kind": "diaeresis",
+      "key": "option+.",
+      "context": [
+        "t",
+        "t"
+      ]
+    },
+    {
+      "sound": "Ö",
+      "spelling": "Ö",
+      "kind": "diaeresis",
+      "key": "option+shift+.",
+      "capital of": "ö",
+      "context": [
+        "t",
+        "t"
+      ]
+    },
+    {
+      "sound": "ü",
+      "spelling": "ü",
+      "kind": "diaeresis",
+      "key": "option+/",
+      "context": [
+        "t",
+        "t"
+      ]
+    },
+    {
+      "sound": "Ü",
+      "spelling": "Ü",
+      "kind": "diaeresis",
+      "key": "option+shift+/",
+      "capital of": "ü",
+      "context": [
+        "t",
+        "t"
+      ]
+    },
+    {
+      "sound": "catch",
+      "spelling": "'",
+      "kind": "catch",
+      "key": "'"
+    },
+    {
+      "sound": "stop",
+      "spelling": ".",
+      "kind": "punctuation",
+      "key": "."
+    },
+    {
+      "sound": "pause",
+      "spelling": ",",
+      "kind": "punctuation",
+      "key": ","
+    },
+    {
+      "sound": "open quote",
+      "spelling": "“",
+      "kind": "punctuation",
+      "key": "["
+    },
+    {
+      "sound": "close quote",
+      "spelling": "”",
+      "kind": "punctuation",
+      "key": "]"
+    },
+    {
+      "sound": "0",
+      "spelling": "0",
+      "kind": "digit",
+      "key": "0"
+    },
+    {
+      "sound": "1",
+      "spelling": "1",
+      "kind": "digit",
+      "key": "1"
+    },
+    {
+      "sound": "2",
+      "spelling": "2",
+      "kind": "digit",
+      "key": "2"
+    },
+    {
+      "sound": "3",
+      "spelling": "3",
+      "kind": "digit",
+      "key": "3"
+    },
+    {
+      "sound": "4",
+      "spelling": "4",
+      "kind": "digit",
+      "key": "4"
+    },
+    {
+      "sound": "5",
+      "spelling": "5",
+      "kind": "digit",
+      "key": "5"
+    },
+    {
+      "sound": "6",
+      "spelling": "6",
+      "kind": "digit",
+      "key": "6"
+    },
+    {
+      "sound": "7",
+      "spelling": "7",
+      "kind": "digit",
+      "key": "7"
+    },
+    {
+      "sound": "8",
+      "spelling": "8",
+      "kind": "digit",
+      "key": "8"
+    },
+    {
+      "sound": "9",
+      "spelling": "9",
+      "kind": "digit",
+      "key": "9"
+    },
+    {
+      "sound": "ten",
+      "spelling": "@",
+      "kind": "digit",
+      "key": "shift+2"
+    },
+    {
+      "sound": "eleven",
+      "spelling": "#",
+      "kind": "digit",
+      "key": "shift+3"
+    },
+    {
+      "sound": "twelve",
+      "spelling": "$",
+      "kind": "digit",
+      "key": "shift+4"
+    },
+    {
+      "sound": "thirteen",
+      "spelling": "%",
+      "kind": "digit",
+      "key": "shift+5"
+    },
+    {
+      "sound": "fourteen",
+      "spelling": "^",
+      "kind": "digit",
+      "key": "shift+6"
+    },
+    {
+      "sound": "fifteen",
+      "spelling": "&",
+      "kind": "digit",
+      "key": "shift+7"
+    }
+  ]
+}

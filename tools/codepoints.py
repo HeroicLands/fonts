@@ -20,9 +20,9 @@ name and kind of every character the face draws. A font fails when
   (``BLOCKS`` in tools/codepoint_order.py) lists for its family, or two registered
   blocks overlap, or the README's "Code point blocks" table is not the registry's;
 - the Pirzath Carved and Pirzath Hand tables differ;
-- a character has no key, a key is not a key of tools/keyboard_keys.py, two characters
-  of the family share a key, a plain key is the Option prefix of the Emacs input
-  methods, or a Pirzath Hand face's keys differ from Pirzath Carved's.
+- a Khelathi Zethu Glyphs sign has no key, its key is not a sign id, or two signs
+  share a key; or a character of a script typed by sound (tools/sound_keys.json)
+  carries a key of its own.
 
 Text is shaped with the font's default features, so an optional style such as
 joining stays off. A few glyphs are reshaped by a typing rule when they stand alone,
@@ -102,21 +102,26 @@ def is_structural(name: str, listed: set[str]) -> bool:
 
 
 def key_problems(label: str, rows: list[dict]) -> list[str]:
-    """What is wrong with the keys of a family's table."""
+    """What is wrong with the keys of a family's table. Khelathi Zethu Glyphs is typed by
+    sign id, so every sign carries its id as its key; every other script is typed by
+    sound, so none of its characters carries a key."""
     problems = []
     owner: dict[str, str] = {}
+    zethu = label == "Khelathi Zethu Glyphs"
     for row in rows:
         glyph, key = row["glyph"], row.get("key")
+        if not zethu:
+            if key is not None:
+                problems.append(f"fonts.json: error: {label}: {glyph} has the key {key!r}; the script is typed by sound")
+            continue
         if not isinstance(key, str) or not key:
             problems.append(f"fonts.json: error: {label}: {glyph} has no key")
-            continue
-        if keyboard_keys.parse(key) is None and not keyboard_keys.is_zethu(key):
-            problems.append(f"fonts.json: error: {label}: {glyph} has the key {key!r}, which is not a key")
+        elif not keyboard_keys.is_zethu(key):
+            problems.append(f"fonts.json: error: {label}: {glyph} has the key {key!r}, which is not a sign id")
         elif key in owner:
             problems.append(f"fonts.json: error: {label}: {glyph} and {owner[key]} share the key {key}")
-        elif key == keyboard_keys.OPTION_PREFIX:
-            problems.append(f"fonts.json: error: {label}: {glyph} has the Option prefix as its key")
-        owner.setdefault(key, glyph)
+        else:
+            owner[key] = glyph
     return problems
 
 
@@ -240,8 +245,6 @@ def check(font: Path) -> list[str]:
         for family in found:
             if carved is None:
                 problems.append(f"fonts.json: error: {family['name']}: there is no Pirzath Carved table to agree with")
-            elif [r.get("key") for r in family.get("codepoints", [])] != [r.get("key") for r in carved["codepoints"]]:
-                problems.append(f"fonts.json: error: {family['name']}: the keys differ from Pirzath Carved's")
             elif carved.get("codepoints") != family.get("codepoints"):
                 problems.append(f"fonts.json: error: {family['name']}: the table differs from Pirzath Carved's")
     return problems

@@ -1,14 +1,8 @@
 # Zethu keyboard
 
-Faces: Khelathi Zethu Glyphs. The faces share code points, so one layout types for every face.
+Faces: Khelathi Zethu Glyphs. The signs far outnumber the keys of a keyboard, so there is no macOS, Windows or Linux layout.
 
-- Emacs input method: `keyboards/emacs/heroiclands-zethu.el`, named `heroiclands-zethu`.
-- macOS, Windows and Linux layouts: none.
-- Keyboard grid: [keyboard.png](https://github.com/HeroicLands/fonts/blob/main/specimens/khelathi-zethu-glyphs/keyboard.png), every key beside its glyph in each face.
-
-## Layout
-
-- The signs far outnumber the keys of a keyboard, so there is no macOS layout. The Emacs input method is typed by sign id, such as `08-001`.
+- Emacs input method: `keyboards/emacs/heroiclands-zethu.el`, named `heroiclands-zethu`, typed by sign id, such as `08-001`.
 
 ## Keys
 
