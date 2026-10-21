@@ -11,6 +11,9 @@ tools/sound_keys.json puts each sound of the spelling guide on one key, and
 tools/keyboards.py writes the layouts, input methods and cheatsheets from it and from
 keyboards/sounds.json. Option is AltGr on Windows and the third level on Linux; Emacs
 has no Option key, so Option+x is typed ``\\`` and then the character x types.
+
+The key map also lists the characters of markup. Each types itself, as plain ASCII, on
+the key that types it on a US keyboard.
 """
 
 import json
@@ -73,10 +76,14 @@ def typed(shift: bool, base: str) -> str:
 
 def quail_sequence(key: str) -> str:
     """The characters typed in Emacs for a key. Option has no Emacs key, so it is the
-    prefix ``\\`` before the character the rest of the key types."""
+    prefix ``\\`` before the character the rest of the key types. The backslash key
+    is the prefix itself, so it is typed twice, and Option+backslash, which carries
+    nothing, shares that sequence."""
     if ZETHU_KEY.match(key):
         return key
     shift, option, base = parse(key)
+    if base == "\\" and not shift and not option:
+        return OPTION_PREFIX * 2
     return (OPTION_PREFIX if option else "") + typed(shift, base)
 
 
@@ -90,5 +97,24 @@ def load() -> dict:
 
 
 def every_key() -> list[str]:
-    """Every key and chord of the four layers, in the physical order of the keys."""
-    return [spell(shift, option, base) for base in KEY_ORDER for option in (False, True) for shift in (False, True)]
+    """Every key and chord of the four layers, in the physical order of the keys, apart
+    from Option+backslash, whose Emacs sequence is the backslash key's."""
+    keys = [spell(shift, option, base) for base in KEY_ORDER for option in (False, True) for shift in (False, True)]
+    return [k for k in keys if k != "option+\\"]
+
+
+def markup_key(char: str) -> str | None:
+    """The key that types a character on a US keyboard, or None when none does."""
+    for base in BASE_KEYS:
+        for shift in (False, True):
+            if typed(shift, base) == char:
+                return spell(shift, False, base)
+    return None
+
+
+def markup() -> dict[str, str]:
+    """key -> the ASCII character it types, for every character of markup in the key map."""
+    out = {}
+    for char in load()["markup"]:
+        out[markup_key(char) or f"(no key for {char})"] = char
+    return out

@@ -6,13 +6,17 @@
 
 - **The key map.** Every key of tools/sound_keys.json is a key, no key or chord carries
   two sounds, a capital sits on Shift and the key of its small sound, the Emacs Option
-  prefix carries no sound, and keyboards/sounds.json lists exactly the key map's sounds
-  with their spellings, so every sound has a key.
+  prefix carries no sound, the open and close quotes sit on Shift+, and Shift+., and
+  keyboards/sounds.json lists exactly the key map's sounds with their spellings, so
+  every sound has a key. The key map's markup lists every character Markdown and a
+  span need, each on the key that types it on a US keyboard, and no key carries both
+  a sound and markup.
 - **The layouts.** The macOS, Windows, Linux and Emacs files of HL Semaron, HL Pirzath,
   HL Thuravark and HL Qalezu are read back. On each key each must type exactly the
   code points keyboards/sounds.json gives that key's sound in the script, or nothing
   where the script does not spell the sound or the platform cannot carry the output
-  (tools/keyboards.py ``carries``), and no key may type a character below U+0080. The
+  (tools/keyboards.py ``carries``), and no key but a key of markup may type a character
+  below U+0080. Each key of markup types itself on every platform. The
   Khelathi Zethu Glyphs input method must type every sign on its sign id.
 - **The mapping notes.** Unless ``--fixtures-only`` is given, keyboards/sounds.json is
   written afresh by tools/sounds.mjs from the ``origin/main`` of the thalorna checkout
@@ -35,6 +39,12 @@ KEYBOARDS = ROOT / "keyboards"
 LAYERS = [(False, False), (True, False), (False, True), (True, True)]
 SCRIPT_KEYS = [s["key"] for s in keyboards.SCRIPTS]
 
+# The characters the key map must list as markup. # is not among them: Shift+3 is Pirzath's eleven,
+# and a sound keeps its key.
+MARKUP = list("*_[]{}()=:|\\~`")
+# The keys of the quotes.
+QUOTE_KEYS = {"open quote": "shift+,", "close quote": "shift+."}
+
 
 # -- The key map ---------------------------------------------------------------------------
 
@@ -51,7 +61,7 @@ def keymap_problems(keymap: list[dict], sounds: list[dict]) -> list[str]:
         if key in owner:
             problems.append(f"tools/sound_keys.json: error: {sound} and {owner[key]} both sit on {key}")
         owner.setdefault(key, sound)
-        if kk.quail_sequence(key) == kk.OPTION_PREFIX:
+        if kk.parse(key)[2] == "\\" and not kk.parse(key)[0]:
             problems.append(f"tools/sound_keys.json: error: {sound} sits on {key}, the Emacs Option prefix")
         small = entry.get("capital of")
         if small is not None:
@@ -61,6 +71,10 @@ def keymap_problems(keymap: list[dict], sounds: list[dict]) -> list[str]:
                 shift, option, base = kk.parse(by_sound[small]["key"])
                 if shift or kk.spell(True, option, base) != key:
                     problems.append(f"tools/sound_keys.json: error: {sound} sits on {key}, not on Shift and the key of {small}")
+    for sound, key in QUOTE_KEYS.items():
+        if sound in by_sound and by_sound[sound]["key"] != key:
+            problems.append(f"tools/sound_keys.json: error: the {sound} sits on {by_sound[sound]['key']}, not {key}")
+    problems += markup_problems(owner)
     listed = {s["sound"]: s["spelling"] for s in sounds}
     mapped = {e["sound"]: e["spelling"] for e in keymap}
     for sound in sorted(listed.keys() - mapped.keys()):
@@ -73,6 +87,22 @@ def keymap_problems(keymap: list[dict], sounds: list[dict]) -> list[str]:
     for s in sounds:
         if set(s["scripts"]) != set(SCRIPT_KEYS):
             problems.append(f"keyboards/sounds.json: error: {s['sound']} lists the scripts {sorted(s['scripts'])}")
+    return problems
+
+
+def markup_problems(owner: dict[str, str]) -> list[str]:
+    """Where the key map's markup misses a character, names one no key types, or shares a key with a sound."""
+    problems = []
+    listed = kk.load().get("markup", [])
+    for char in MARKUP:
+        if char not in listed:
+            problems.append(f"tools/sound_keys.json: error: markup lacks {char}")
+    for char in listed:
+        key = kk.markup_key(char)
+        if key is None:
+            problems.append(f"tools/sound_keys.json: error: markup lists {char}, which no key of a US keyboard types")
+        elif key in owner:
+            problems.append(f"tools/sound_keys.json: error: markup lists {char}, on {key}, which carries the sound {owner[key]}")
     return problems
 
 
@@ -125,6 +155,9 @@ def read_windows(data: bytes) -> dict[str, list[int]]:
     return out
 
 
+KEYSYM_CHARS = {name: char for char, name in keyboards.KEYSYMS.items()}
+
+
 def read_xkb(text: str) -> dict[str, list[int]]:
     by_name = {v: k for k, v in keyboards.XKB_KEYS.items()}
     out = {}
@@ -133,7 +166,7 @@ def read_xkb(text: str) -> dict[str, list[int]]:
             if symbol == "VoidSymbol":
                 continue
             shift, option = LAYERS[layer]
-            cps = [int(symbol[1:], 16)] if re.fullmatch(r"U[0-9A-F]+", symbol) else [ord(symbol[0])]
+            cps = [int(symbol[1:], 16)] if re.fullmatch(r"U[0-9A-F]+", symbol) else [ord(KEYSYM_CHARS[symbol])]
             out[kk.spell(shift, option, by_name[name])] = cps
     return out
 
@@ -172,8 +205,11 @@ def read_back(texts: dict) -> dict[str, dict[str, list[int]]]:
         "linux": read_xkb(texts["linux"]),
     }
     emacs = read_emacs(texts["emacs"])
+    # A key of markup with no rule is typed by Quail as itself; the backslash key always has its rule.
+    markup = {k: [ord(c)] for k, c in kk.markup().items() if k != "\\"}
     got["emacs"] = {key: emacs[kk.quail_sequence(key)] for key in kk.every_key() if kk.quail_sequence(key) in emacs}
-    missing = [k for k in kk.every_key() if kk.quail_sequence(k) not in emacs]
+    missing = [k for k in kk.every_key() if kk.quail_sequence(k) not in emacs and k not in markup]
+    got["emacs"].update({k: v for k, v in markup.items() if kk.quail_sequence(k) not in emacs})
     if missing or kk.OPTION_PREFIX not in emacs:
         got["emacs"]["(unruled)"] = missing or [kk.OPTION_PREFIX]
     return {p: {k: v for k, v in m.items() if v} for p, m in got.items()}
@@ -196,7 +232,7 @@ def layout_problems(script: str, keymap: list[dict], sounds: list[dict], texts: 
             if typed[k] != expected[k]:
                 problems.append(f"keyboards: error: {script}: the {platform} layout types {keyboards.code_list(typed[k])} on {k}, not {keyboards.code_list(expected[k])}")
         for k, cps in sorted(typed.items()):
-            if any(p < 0x80 for p in cps):
+            if any(p < 0x80 for p in cps) and k not in kk.markup():
                 problems.append(f"keyboards: error: {script}: the {platform} layout types a roman character on {k}")
     return problems
 

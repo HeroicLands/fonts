@@ -25,7 +25,7 @@
         "@heroiclands/package-build": "^23.12.8"
     },
     "scripts": {
-        "test": "node --test tools/convert.test.mjs",
+        "test": "node --test tools/convert.test.mjs tools/package_check.test.mjs",
         "format": "package-build format --write",
         "format:check": "package-build format",
         "check:package": "node tools/package_check.mjs",

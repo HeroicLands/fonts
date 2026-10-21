@@ -1,6 +1,6 @@
 # Thuravark keyboard
 
-HL Thuravark types Thuravark Carved by sound. The keys are the shared sound keys of [the cheatsheet](index.md), which draws them on a keyboard and gives their principles; this sheet lists what each key types in Thuravark.
+HL Thuravark types Thuravark Carved by sound. The keys are the shared sound keys of [the cheatsheet](index.md), which draws them on a keyboard and gives their principles; this sheet lists what each key types in Thuravark. The keys of markup, listed there, type themselves.
 
 - macOS layout: `keyboards/macos/HeroicLands.bundle`, input source **HL Thuravark**.
 - Windows layout: `keyboards/windows/thuravark.klc`, the Microsoft Keyboard Layout Creator source of **HL Thuravark**.
@@ -191,8 +191,8 @@ HL Thuravark types Thuravark Carved by sound. The keys are the shared sound keys
 | `'` | `'` | `catch` |  | none: the mapping has no row for it |  |
 | `.` | `.` | `stop` | ![U+F0140](../charts/thuravark-carved/glyphs/U+F0140.svg) | U+F0140 | THURAVARK FULL STOP |
 | `,` | `,` | `pause` |  | none: the mapping has no row for it |  |
-| `[` | `[` | `open quote` |  | none: the mapping has no row for it |  |
-| `]` | `]` | `close quote` |  | none: the mapping has no row for it |  |
+| `shift+,` | `<` | `open quote` |  | none: the mapping has no row for it |  |
+| `shift+.` | `>` | `close quote` |  | none: the mapping has no row for it |  |
 | `0` | `0` | `0` | ![U+F0130](../charts/thuravark-carved/glyphs/U+F0130.svg) | U+F0130 | THURAVARK DIGIT ZERO |
 | `1` | `1` | `1` | ![U+F0131](../charts/thuravark-carved/glyphs/U+F0131.svg) | U+F0131 | THURAVARK DIGIT ONE |
 | `2` | `2` | `2` | ![U+F0132](../charts/thuravark-carved/glyphs/U+F0132.svg) | U+F0132 | THURAVARK DIGIT TWO |

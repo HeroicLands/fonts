@@ -1,6 +1,6 @@
 # Pirzath keyboard
 
-HL Pirzath types Pirzath Carved, Pirzath Hand, Pirzath Hand Lifted by sound. The keys are the shared sound keys of [the cheatsheet](index.md), which draws them on a keyboard and gives their principles; this sheet lists what each key types in Pirzath.
+HL Pirzath types Pirzath Carved, Pirzath Hand, Pirzath Hand Lifted by sound. The keys are the shared sound keys of [the cheatsheet](index.md), which draws them on a keyboard and gives their principles; this sheet lists what each key types in Pirzath. The keys of markup, listed there, type themselves.
 
 - macOS layout: `keyboards/macos/HeroicLands.bundle`, input source **HL Pirzath**.
 - Windows layout: `keyboards/windows/pirzath.klc`, the Microsoft Keyboard Layout Creator source of **HL Pirzath**.
@@ -173,8 +173,8 @@ HL Pirzath types Pirzath Carved, Pirzath Hand, Pirzath Hand Lifted by sound. The
 | `'` | `'` | `catch` | ![U+F0018](../charts/pirzath/glyphs/U+F0018.svg) | U+F0018 | PIRZATH LETTER CATCH |
 | `.` | `.` | `stop` | ![U+F0050](../charts/pirzath/glyphs/U+F0050.svg) | U+F0050 | PIRZATH SENTENCE END |
 | `,` | `,` | `pause` | ![U+F0051](../charts/pirzath/glyphs/U+F0051.svg) | U+F0051 | PIRZATH PAUSE |
-| `[` | `[` | `open quote` | ![U+F0054](../charts/pirzath/glyphs/U+F0054.svg) | U+F0054 | PIRZATH OPENING QUOTATION MARK |
-| `]` | `]` | `close quote` | ![U+F0055](../charts/pirzath/glyphs/U+F0055.svg) | U+F0055 | PIRZATH CLOSING QUOTATION MARK |
+| `shift+,` | `<` | `open quote` | ![U+F0054](../charts/pirzath/glyphs/U+F0054.svg) | U+F0054 | PIRZATH OPENING QUOTATION MARK |
+| `shift+.` | `>` | `close quote` | ![U+F0055](../charts/pirzath/glyphs/U+F0055.svg) | U+F0055 | PIRZATH CLOSING QUOTATION MARK |
 | `0` | `0` | `0` | ![U+F0040](../charts/pirzath/glyphs/U+F0040.svg) | U+F0040 | PIRZATH DIGIT ZERO |
 | `1` | `1` | `1` | ![U+F0041](../charts/pirzath/glyphs/U+F0041.svg) | U+F0041 | PIRZATH DIGIT ONE |
 | `2` | `2` | `2` | ![U+F0042](../charts/pirzath/glyphs/U+F0042.svg) | U+F0042 | PIRZATH DIGIT TWO |

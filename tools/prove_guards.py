@@ -22,8 +22,10 @@ on altered fonts.json tables: a Khelathi Zethu Glyphs sign without a key, two si
 typed by sound. Its block registry is proved on a code point outside its family's blocks, two overlapping blocks and a README table that
 differs from the registry. The default-ignorable check of the box guard is proved on every font with the glyph of the ignorables drawing the box, and on
 Pirzath Carved with the GSUB table removed. The keyboard guard (tools/keyboards_guard.py) is proved on a key map with
-two sounds on one key, with a sound removed and with a capital off Shift; on layouts with a macOS output cut short, a Linux key
-line removed, an Emacs rule removed and a Windows key typing a roman letter; and, where a thalorna checkout exists, on a sounds.json
+two sounds on one key, with a sound removed, with a capital off Shift, with a quote off Shift+, and Shift+., with a markup character missing and with a
+markup character on a key that carries a sound; on layouts with a macOS output cut short, a Linux key
+line removed, an Emacs rule removed and a Windows key typing a roman letter, and with a key of markup typing
+nothing on each platform; and, where a thalorna checkout exists, on a sounds.json
 that thalorna's mapping notes no longer spell. The cheatsheet guard (tools/charts_guard.py) is proved on a sheet with a table row removed, with a wrong Code Point cell, with a chart cell removed, with a glyph image removed, with a
 lowercase name and with a Zethu name that is not its code point's position. The guards run on their
 fixtures alone, so the proof needs no lexicon.
@@ -256,6 +258,19 @@ def prove_keyboards() -> int:
     def on_keymap(altered):
         return len(guard.keymap_problems(altered, sounds))
 
+    kk = guard.kk
+    real_load = kk.load
+
+    def on_markup(change):
+        """Problems of the key map with its markup list altered."""
+        data = real_load()
+        change(data["markup"])
+        kk.load = lambda: data
+        try:
+            return on_keymap(keymap)
+        finally:
+            kk.load = real_load
+
     def keymap_with(change):
         altered = copy.deepcopy(keymap)
         change(altered)
@@ -279,11 +294,28 @@ def prove_keyboards() -> int:
     emacs = "\n".join(line for line in layouts["emacs"].split("\n") if not line.startswith(' ("q" '))
     windows = layouts["windows"].decode("utf-16").replace("\r\n10\tQ\t\t0\t-1", "\r\n10\tQ\t\t0\t0071")
     windows = b"\xff\xfe" + windows.encode("utf-16-le")
+    def quotes_old(rows):
+        entry(rows, "open quote")["key"] = "["
+        entry(rows, "close quote")["key"] = "]"
+
+    star = layouts["macos"].replace('<key code="28" output="&#x002A;"/>', "", 1)
+    underscore = layouts["linux"].replace("underscore", "VoidSymbol", 1)
+    equal = layouts["emacs"].replace("(quail-define-rules\n", '(quail-define-rules\n ("=" [""])\n', 1)
+    colon = layouts["windows"].decode("utf-16").replace("\r\n27\tOEM_1\t\t0\t-1\t003a", "\r\n27\tOEM_1\t\t0\t-1\t-1")
+    colon = b"\xff\xfe" + colon.encode("utf-16-le")
     good = on_layouts(layouts) + on_keymap(keymap)
     cases = [
         ("with two sounds on one key", on_keymap(keymap_with(share))),
         ("with a sound without a key", on_keymap(keymap_with(drop))),
         ("with a capital off Shift", on_keymap(keymap_with(unshifted))),
+        ("with the quotes back on [ and ]", on_keymap(keymap_with(quotes_old))),
+        ("with a markup character missing", on_markup(lambda m: m.remove("*"))),
+        ("with # listed as markup, on Shift+3, the key of eleven", on_markup(lambda m: m.append("#"))),
+        ("with a markup character no key types", on_markup(lambda m: m.append("é"))),
+        ("with a macOS key of markup typing nothing", on_layouts({**layouts, "macos": star})),
+        ("with a Linux key of markup typing nothing", on_layouts({**layouts, "linux": underscore})),
+        ("with an Emacs key of markup given an empty rule", on_layouts({**layouts, "emacs": equal})),
+        ("with a Windows key of markup typing nothing", on_layouts({**layouts, "windows": colon})),
         ("with a macOS output cut short", on_layouts({**layouts, "macos": macos})),
         ("with a Linux key line removed", on_layouts({**layouts, "linux": linux})),
         ("with an Emacs rule removed, so the key types itself", on_layouts({**layouts, "emacs": emacs})),

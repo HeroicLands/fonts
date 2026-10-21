@@ -17,15 +17,14 @@
  "heroiclands-semaron" "Semaron" "HL-Sem" t
  "Type Semaron Kuriale by sound, with the same keys as the HL Semaron layout.
 Each key types its sound in the script, and a key whose sound the script
-does not write types nothing. Option has no Emacs key: Option+x is \\ and
+does not write types nothing. The characters of markup type themselves, and a
+backslash is \\\\. Option has no Emacs key: Option+x is \\ and
 then the key that x types, so Option+t (th) is \\t and Option+Shift+t (Th) is \\T.
 The cheatsheet keyboards/index.md lists every key."
  nil t nil nil nil nil nil nil nil nil t)
 
 (quail-define-rules
  ("\\" [""])
- ("`" [""])
- ("~" [""])
  ("\\`" [""])
  ("\\~" [""])
  ("1" #xF0259)
@@ -57,22 +56,17 @@ The cheatsheet keyboards/index.md lists every key."
  ("\\7" ["\U000F0230\U000F0242"])
  ("\\&" ["\U000F0200\U000F0242"])
  ("8" #xF0260)
- ("*" [""])
  ("\\8" ["\U000F0233\U000F0237"])
  ("\\*" ["\U000F0203\U000F0237"])
  ("9" #xF0261)
- ("(" [""])
  ("\\9" ["\U000F023D\U000F0237"])
  ("\\(" ["\U000F020D\U000F0237"])
  ("0" #xF0258)
- (")" [""])
  ("\\0" ["\U000F023D\U000F0242"])
  ("\\)" ["\U000F020D\U000F0242"])
  ("-" [""])
- ("_" [""])
  ("\\-" ["\U000F0237\U000F0233"])
  ("\\_" ["\U000F0207\U000F0233"])
- ("=" [""])
  ("+" [""])
  ("\\=" ["\U000F0242\U000F023D"])
  ("\\+" ["\U000F0212\U000F023D"])
@@ -116,17 +110,11 @@ The cheatsheet keyboards/index.md lists every key."
  ("P" #xF020E)
  ("\\p" ["\U000F023E\U000F0236"])
  ("\\P" ["\U000F020E\U000F0236"])
- ("[" [""])
- ("{" [""])
  ("\\[" ["\U000F0230\U000F0233"])
  ("\\{" ["\U000F0200\U000F0233"])
- ("]" [""])
- ("}" [""])
  ("\\]" ["\U000F0233\U000F0230"])
  ("\\}" ["\U000F0203\U000F0230"])
- ("\\" [""])
- ("|" [""])
- ("\\\\" [""])
+ ("\\\\" #x5C)
  ("\\|" [""])
  ("a" #xF0230)
  ("A" #xF0200)
@@ -165,7 +153,6 @@ The cheatsheet keyboards/index.md lists every key."
  ("\\l" [""])
  ("\\L" [""])
  (";" [""])
- (":" [""])
  ("\\;" [""])
  ("\\:" [""])
  ("'" #xF0270)

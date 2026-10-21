@@ -15,6 +15,8 @@
  *   `README.md` or `package.json`;
  * - `fonts.css` names a URL that is not packed;
  * - a font in `fonts/` has no `@font-face` rule that names it;
+ * - a family's class in `fonts.css` is missing or lacks `font-synthesis: none`, so a
+ *   bold or italic run would be synthesized;
  * - `fonts.json` names a font file that is not packed, or a
  *   package export names a file that is not packed.
  *
@@ -100,6 +102,15 @@ export function findings({ packed, files, css, fontFiles, manifest, exports = {}
     for (const file of fontFiles) {
         if (!named.has(`fonts/${file}`)) {
             found.push(`fonts/${file}: no @font-face rule in fonts.css names it`);
+        }
+    }
+    if (css !== undefined && manifest !== undefined) {
+        for (const entry of manifest.families ?? []) {
+            const rule = css.match(new RegExp(`\\.${entry.class}\\s*\\{([^}]*)\\}`));
+            if (!rule) found.push(`fonts.css: no .${entry.class} rule for ${entry.name}`);
+            else if (!/font-synthesis:\s*none\s*;/.test(rule[1])) {
+                found.push(`fonts.css: .${entry.class} lacks font-synthesis: none`);
+            }
         }
     }
     if (manifest !== undefined) {

@@ -43,36 +43,43 @@
 .hl-khelathi-zethu-glyphs {
     font-family: "Khelathi Zethu Glyphs";
     font-feature-settings: normal;
+    font-synthesis: none;
     direction: rtl;
 }
 
 .hl-pirzath-carved {
     font-family: "Pirzath Carved";
     font-feature-settings: normal;
+    font-synthesis: none;
 }
 
 .hl-pirzath-hand {
     font-family: "Pirzath Hand";
     font-feature-settings: "ss01";
+    font-synthesis: none;
 }
 
 .hl-pirzath-hand-lifted {
     font-family: "Pirzath Hand";
     font-feature-settings: normal;
+    font-synthesis: none;
 }
 
 .hl-qalezu-hand {
     font-family: "Qalezu Hand";
     font-feature-settings: normal;
+    font-synthesis: none;
     direction: rtl;
 }
 
 .hl-semaron-kuriale {
     font-family: "Semaron Kuriale";
     font-feature-settings: normal;
+    font-synthesis: none;
 }
 
 .hl-thuravark-carved {
     font-family: "Thuravark Carved";
     font-feature-settings: normal;
+    font-synthesis: none;
 }

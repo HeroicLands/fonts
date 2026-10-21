@@ -1,6 +1,6 @@
 # Semaron keyboard
 
-HL Semaron types Semaron Kuriale by sound. The keys are the shared sound keys of [the cheatsheet](index.md), which draws them on a keyboard and gives their principles; this sheet lists what each key types in Semaron.
+HL Semaron types Semaron Kuriale by sound. The keys are the shared sound keys of [the cheatsheet](index.md), which draws them on a keyboard and gives their principles; this sheet lists what each key types in Semaron. The keys of markup, listed there, type themselves.
 
 - macOS layout: `keyboards/macos/HeroicLands.bundle`, input source **HL Semaron**.
 - Windows layout: `keyboards/windows/semaron.klc`, the Microsoft Keyboard Layout Creator source of **HL Semaron**.
@@ -189,8 +189,8 @@ HL Semaron types Semaron Kuriale by sound. The keys are the shared sound keys of
 | `'` | `'` | `catch` | ![U+F0270](../charts/semaron-kuriale/glyphs/U+F0270.svg) | U+F0270 | SEMARON CATCH |
 | `.` | `.` | `stop` | ![U+F0268](../charts/semaron-kuriale/glyphs/U+F0268.svg) | U+F0268 | SEMARON POINT |
 | `,` | `,` | `pause` | ![U+F0268](../charts/semaron-kuriale/glyphs/U+F0268.svg) | U+F0268 | SEMARON POINT |
-| `[` | `[` | `open quote` |  | none: the mapping has no row for it |  |
-| `]` | `]` | `close quote` |  | none: the mapping has no row for it |  |
+| `shift+,` | `<` | `open quote` |  | none: the mapping has no row for it |  |
+| `shift+.` | `>` | `close quote` |  | none: the mapping has no row for it |  |
 | `0` | `0` | `0` | ![U+F0258](../charts/semaron-kuriale/glyphs/U+F0258.svg) | U+F0258 | SEMARON DIGIT ZERO |
 | `1` | `1` | `1` | ![U+F0259](../charts/semaron-kuriale/glyphs/U+F0259.svg) | U+F0259 | SEMARON DIGIT ONE |
 | `2` | `2` | `2` | ![U+F025A](../charts/semaron-kuriale/glyphs/U+F025A.svg) | U+F025A | SEMARON DIGIT TWO |

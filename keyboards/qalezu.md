@@ -1,6 +1,6 @@
 # Qalezu keyboard
 
-HL Qalezu types Qalezu Hand by sound. The keys are the shared sound keys of [the cheatsheet](index.md), which draws them on a keyboard and gives their principles; this sheet lists what each key types in Qalezu.
+HL Qalezu types Qalezu Hand by sound. The keys are the shared sound keys of [the cheatsheet](index.md), which draws them on a keyboard and gives their principles; this sheet lists what each key types in Qalezu. The keys of markup, listed there, type themselves.
 
 - macOS layout: `keyboards/macos/HeroicLands.bundle`, input source **HL Qalezu**.
 - Windows layout: `keyboards/windows/qalezu.klc`, the Microsoft Keyboard Layout Creator source of **HL Qalezu**.
@@ -157,8 +157,8 @@ HL Qalezu types Qalezu Hand by sound. The keys are the shared sound keys of [the
 | `'` | `'` | `catch` | ![U+1EA15](../charts/qalezu-hand/glyphs/U+1EA15.svg) | U+1EA15 | QALEZU LETTER CATCH |
 | `.` | `.` | `stop` | ![U+1EA37](../charts/qalezu-hand/glyphs/U+1EA37.svg) | U+1EA37 | QALEZU SENTENCE END |
 | `,` | `,` | `pause` | ![U+1EA38](../charts/qalezu-hand/glyphs/U+1EA38.svg) | U+1EA38 | QALEZU PAUSE |
-| `[` | `[` | `open quote` |  | none: the mapping has no row for it |  |
-| `]` | `]` | `close quote` |  | none: the mapping has no row for it |  |
+| `shift+,` | `<` | `open quote` |  | none: the mapping has no row for it |  |
+| `shift+.` | `>` | `close quote` |  | none: the mapping has no row for it |  |
 | `0` | `0` | `0` | ![U+1EA2D](../charts/qalezu-hand/glyphs/U+1EA2D.svg) | U+1EA2D | QALEZU DIGIT ZERO |
 | `1` | `1` | `1` | ![U+1EA2E](../charts/qalezu-hand/glyphs/U+1EA2E.svg) | U+1EA2E | QALEZU DIGIT ONE |
 | `2` | `2` | `2` | ![U+1EA2F](../charts/qalezu-hand/glyphs/U+1EA2F.svg) | U+1EA2F | QALEZU DIGIT TWO |

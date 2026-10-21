@@ -7,10 +7,27 @@
     "An acute vowel sits on Option and its vowel, as Option+E types the acute on a Mac and AltGr and a vowel types it on Windows' US-International layout.",
     "The long vowels sit on Option and the digits 1 to 5, in the order a e i o u: Option+1 aa, Option+5 uu. The other vowel pairs follow in the guide's order on Option and the keys after them: 6 ai, 7 au, 8 ei, 9 oi, 0 ou, - ie, = uo, [ ae, ] ea. A vowel key's Option holds its acute, so the pairs cannot sit on their first vowel.",
     "A diaeresis vowel sits on Option and the punctuation keys right of L and M, in the order a e i o u: ; ä, ' ë, , ï, . ö, / ü.",
-    "The catch sits on ', the stop on ., the pause on , and the open and close quotes on [ and ].",
+    "The catch sits on ', the stop on ., the pause on , and the open and close quotes on Shift+, and Shift+., the keys of < and >. Only Pirzath writes quotation marks, so those two keys type nothing in the other scripts.",
     "Digits sit on the digit row. Pirzath counts in sixteens, and its numerals ten to fifteen sit on Shift+2 to Shift+7, the keys of @ # $ % ^ &, the characters its mapping spells them with.",
     "A vowel sound, and y, is spelled inside a word: a vowel between two t's, and y before an a, where it is the glide. That is how the sound itself is written, as against a vowel at the start of a word in Qalezu, which is the catch, or y as the vowel i, which the i key types.",
+    "Markup types itself. The characters Markdown and a span's [text]{font=…} need sit at their U.S. positions and type plain ASCII in every layout, so a note's markup is written without switching layouts, and no script draws it. No sound shares a key with markup; # is not markup because Shift+3 is Pirzath's eleven.",
     "Control chords and function keys carry nothing: the four layers above hold every sound, and no platform types reliably from them."
+  ],
+  "markup": [
+    "*",
+    "_",
+    "[",
+    "]",
+    "{",
+    "}",
+    "(",
+    ")",
+    "=",
+    ":",
+    "|",
+    "\\",
+    "~",
+    "`"
   ],
   "sounds": [
     {
@@ -1068,13 +1085,13 @@
       "sound": "open quote",
       "spelling": "“",
       "kind": "punctuation",
-      "key": "["
+      "key": "shift+,"
     },
     {
       "sound": "close quote",
       "spelling": "”",
       "kind": "punctuation",
-      "key": "]"
+      "key": "shift+."
     },
     {
       "sound": "0",

@@ -17,15 +17,14 @@
  "heroiclands-thuravark" "Thuravark" "HL-Thu" t
  "Type Thuravark Carved by sound, with the same keys as the HL Thuravark layout.
 Each key types its sound in the script, and a key whose sound the script
-does not write types nothing. Option has no Emacs key: Option+x is \\ and
+does not write types nothing. The characters of markup type themselves, and a
+backslash is \\\\. Option has no Emacs key: Option+x is \\ and
 then the key that x types, so Option+t (th) is \\t and Option+Shift+t (Th) is \\T.
 The cheatsheet keyboards/index.md lists every key."
  nil t nil nil nil nil nil nil nil nil t)
 
 (quail-define-rules
  ("\\" [""])
- ("`" [""])
- ("~" [""])
  ("\\`" [""])
  ("\\~" [""])
  ("1" #xF0131)
@@ -57,22 +56,17 @@ The cheatsheet keyboards/index.md lists every key."
  ("\\7" ["\U000F0100\U000F0104"])
  ("\\&" ["\U000F0100\U000F0104"])
  ("8" #xF0138)
- ("*" [""])
  ("\\8" ["\U000F0101\U000F0102"])
  ("\\*" ["\U000F0101\U000F0102"])
  ("9" #xF0139)
- ("(" [""])
  ("\\9" ["\U000F0103\U000F0102"])
  ("\\(" ["\U000F0103\U000F0102"])
  ("0" #xF0130)
- (")" [""])
  ("\\0" ["\U000F0103\U000F0104"])
  ("\\)" ["\U000F0103\U000F0104"])
  ("-" [""])
- ("_" [""])
  ("\\-" ["\U000F0102\U000F0101"])
  ("\\_" ["\U000F0102\U000F0101"])
- ("=" [""])
  ("+" [""])
  ("\\=" ["\U000F0104\U000F0103"])
  ("\\+" ["\U000F0104\U000F0103"])
@@ -116,17 +110,11 @@ The cheatsheet keyboards/index.md lists every key."
  ("P" #xF010F)
  ("\\p" ["\U000F010F\U000F0109"])
  ("\\P" ["\U000F010F\U000F0109"])
- ("[" [""])
- ("{" [""])
  ("\\[" ["\U000F0100\U000F0101"])
  ("\\{" ["\U000F0100\U000F0101"])
- ("]" [""])
- ("}" [""])
  ("\\]" ["\U000F0101\U000F0100"])
  ("\\}" ["\U000F0101\U000F0100"])
- ("\\" [""])
- ("|" [""])
- ("\\\\" [""])
+ ("\\\\" #x5C)
  ("\\|" [""])
  ("a" #xF0100)
  ("A" #xF0100)
@@ -165,7 +153,6 @@ The cheatsheet keyboards/index.md lists every key."
  ("\\l" [""])
  ("\\L" [""])
  (";" [""])
- (":" [""])
  ("\\;" [""])
  ("\\:" [""])
  ("'" [""])

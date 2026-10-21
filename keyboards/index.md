@@ -1,6 +1,6 @@
 # Sound keys
 
-HL Semaron, HL Pirzath, HL Thuravark and HL Qalezu type by sound. Every sound of the spelling guide, _Pronouncing Thalorna_, sits on one key or chord, the same in every script, and the key types that script's own characters for the sound, as many as its mapping note spells it with. A key whose sound a script does not write types nothing in that script, and no key types a roman letter. The README's "Typing in the fonts" says how to install the layouts.
+HL Semaron, HL Pirzath, HL Thuravark and HL Qalezu type by sound. Every sound of the spelling guide, _Pronouncing Thalorna_, sits on one key or chord, the same in every script, and the key types that script's own characters for the sound, as many as its mapping note spells it with. A key whose sound a script does not write types nothing in that script, and no key types a roman letter, apart from the keys of markup, which type themselves. The README's "Typing in the fonts" says how to install the layouts.
 
 ![The sound keys on an ANSI keyboard](keyboard.png)
 
@@ -13,10 +13,32 @@ HL Semaron, HL Pirzath, HL Thuravark and HL Qalezu type by sound. Every sound of
 - An acute vowel sits on Option and its vowel, as Option+E types the acute on a Mac and AltGr and a vowel types it on Windows' US-International layout.
 - The long vowels sit on Option and the digits 1 to 5, in the order a e i o u: Option+1 aa, Option+5 uu. The other vowel pairs follow in the guide's order on Option and the keys after them: 6 ai, 7 au, 8 ei, 9 oi, 0 ou, - ie, = uo, [ ae, ] ea. A vowel key's Option holds its acute, so the pairs cannot sit on their first vowel.
 - A diaeresis vowel sits on Option and the punctuation keys right of L and M, in the order a e i o u: ; ä, ' ë, , ï, . ö, / ü.
-- The catch sits on ', the stop on ., the pause on , and the open and close quotes on [ and ].
+- The catch sits on ', the stop on ., the pause on , and the open and close quotes on Shift+, and Shift+., the keys of < and >. Only Pirzath writes quotation marks, so those two keys type nothing in the other scripts.
 - Digits sit on the digit row. Pirzath counts in sixteens, and its numerals ten to fifteen sit on Shift+2 to Shift+7, the keys of @ # $ % ^ &, the characters its mapping spells them with.
 - A vowel sound, and y, is spelled inside a word: a vowel between two t's, and y before an a, where it is the glide. That is how the sound itself is written, as against a vowel at the start of a word in Qalezu, which is the catch, or y as the vowel i, which the i key types.
+- Markup types itself. The characters Markdown and a span's [text]{font=…} need sit at their U.S. positions and type plain ASCII in every layout, so a note's markup is written without switching layouts, and no script draws it. No sound shares a key with markup; # is not markup because Shift+3 is Pirzath's eleven.
 - Control chords and function keys carry nothing: the four layers above hold every sound, and no platform types reliably from them.
+
+## Markup
+
+The characters of Markdown and of a span, `[text]{font=…}`, type themselves, as plain ASCII, in every layout on every platform, so a note's markup is written without switching layouts. In Emacs a backslash is typed twice, because a single backslash is the Option prefix.
+
+| Key | Emacs | Types |
+| --- | --- | --- |
+| `shift+8` | `*` | `*` |
+| `shift+-` | `_` | `_` |
+| `[` | `[` | `[` |
+| `]` | `]` | `]` |
+| `shift+[` | `{` | `{` |
+| `shift+]` | `}` | `}` |
+| `shift+9` | `(` | `(` |
+| `shift+0` | `)` | `)` |
+| `=` | `=` | `=` |
+| `shift+;` | `:` | `:` |
+| `shift+\` | `\|` | `\|` |
+| `\` | `\\` | `\` |
+| `` shift+` `` | `~` | `~` |
+| `` ` `` | `` ` `` | `` ` `` |
 
 ## Keys a platform cannot carry
 
@@ -302,8 +324,8 @@ Emacs types Option+x as `\` and then the character x types. Glyphs and code poin
 | `'` | `'` | `catch` | ![U+F0270](../charts/semaron-kuriale/glyphs/U+F0270.svg) | U+F0270 | SEMARON CATCH | ![U+F0018](../charts/pirzath/glyphs/U+F0018.svg) | U+F0018 | PIRZATH LETTER CATCH |  | none: the mapping has no row for it |  | ![U+1EA15](../charts/qalezu-hand/glyphs/U+1EA15.svg) | U+1EA15 | QALEZU LETTER CATCH |
 | `.` | `.` | `stop` | ![U+F0268](../charts/semaron-kuriale/glyphs/U+F0268.svg) | U+F0268 | SEMARON POINT | ![U+F0050](../charts/pirzath/glyphs/U+F0050.svg) | U+F0050 | PIRZATH SENTENCE END | ![U+F0140](../charts/thuravark-carved/glyphs/U+F0140.svg) | U+F0140 | THURAVARK FULL STOP | ![U+1EA37](../charts/qalezu-hand/glyphs/U+1EA37.svg) | U+1EA37 | QALEZU SENTENCE END |
 | `,` | `,` | `pause` | ![U+F0268](../charts/semaron-kuriale/glyphs/U+F0268.svg) | U+F0268 | SEMARON POINT | ![U+F0051](../charts/pirzath/glyphs/U+F0051.svg) | U+F0051 | PIRZATH PAUSE |  | none: the mapping has no row for it |  | ![U+1EA38](../charts/qalezu-hand/glyphs/U+1EA38.svg) | U+1EA38 | QALEZU PAUSE |
-| `[` | `[` | `open quote` |  | none: the mapping has no row for it |  | ![U+F0054](../charts/pirzath/glyphs/U+F0054.svg) | U+F0054 | PIRZATH OPENING QUOTATION MARK |  | none: the mapping has no row for it |  |  | none: the mapping has no row for it |  |
-| `]` | `]` | `close quote` |  | none: the mapping has no row for it |  | ![U+F0055](../charts/pirzath/glyphs/U+F0055.svg) | U+F0055 | PIRZATH CLOSING QUOTATION MARK |  | none: the mapping has no row for it |  |  | none: the mapping has no row for it |  |
+| `shift+,` | `<` | `open quote` |  | none: the mapping has no row for it |  | ![U+F0054](../charts/pirzath/glyphs/U+F0054.svg) | U+F0054 | PIRZATH OPENING QUOTATION MARK |  | none: the mapping has no row for it |  |  | none: the mapping has no row for it |  |
+| `shift+.` | `>` | `close quote` |  | none: the mapping has no row for it |  | ![U+F0055](../charts/pirzath/glyphs/U+F0055.svg) | U+F0055 | PIRZATH CLOSING QUOTATION MARK |  | none: the mapping has no row for it |  |  | none: the mapping has no row for it |  |
 | `0` | `0` | `0` | ![U+F0258](../charts/semaron-kuriale/glyphs/U+F0258.svg) | U+F0258 | SEMARON DIGIT ZERO | ![U+F0040](../charts/pirzath/glyphs/U+F0040.svg) | U+F0040 | PIRZATH DIGIT ZERO | ![U+F0130](../charts/thuravark-carved/glyphs/U+F0130.svg) | U+F0130 | THURAVARK DIGIT ZERO | ![U+1EA2D](../charts/qalezu-hand/glyphs/U+1EA2D.svg) | U+1EA2D | QALEZU DIGIT ZERO |
 | `1` | `1` | `1` | ![U+F0259](../charts/semaron-kuriale/glyphs/U+F0259.svg) | U+F0259 | SEMARON DIGIT ONE | ![U+F0041](../charts/pirzath/glyphs/U+F0041.svg) | U+F0041 | PIRZATH DIGIT ONE | ![U+F0131](../charts/thuravark-carved/glyphs/U+F0131.svg) | U+F0131 | THURAVARK DIGIT ONE | ![U+1EA2E](../charts/qalezu-hand/glyphs/U+1EA2E.svg) | U+1EA2E | QALEZU DIGIT ONE |
 | `2` | `2` | `2` | ![U+F025A](../charts/semaron-kuriale/glyphs/U+F025A.svg) | U+F025A | SEMARON DIGIT TWO | ![U+F0042](../charts/pirzath/glyphs/U+F0042.svg) | U+F0042 | PIRZATH DIGIT TWO | ![U+F0132](../charts/thuravark-carved/glyphs/U+F0132.svg) | U+F0132 | THURAVARK DIGIT TWO | ![U+1EA2F](../charts/qalezu-hand/glyphs/U+1EA2F.svg) | U+1EA2F | QALEZU DIGIT TWO |

@@ -8,7 +8,9 @@ fonts.css holds one @font-face rule per built font, named from the font's own
 name table (ID 16 when present, else ID 1), with relative URLs so a stylesheet
 imported from node_modules or a CDN finds the files beside it. After the rules,
 each family has a class, ``hl-<font>``, that sets its ``font-family``,
-``font-feature-settings`` and, for a right-to-left family, ``direction``.
+``font-feature-settings``, ``font-synthesis: none`` (a script face is Regular only, so
+bold or italic text in it stays Regular rather than being smeared or slanted) and, for a
+right-to-left family, ``direction``.
 fonts.json states the same facts for a consumer that reads data: per family the
 name, the class, the files, the direction, the OpenType features and ``codepoints``, the table of
 every character the face draws (tools/codepoint_order.py defines it). fonts.json is
@@ -107,6 +109,7 @@ def class_rule(ttf: Path) -> str:
         f".hl-{fact['slug']} {{",
         f'    font-family: "{family_name(ttf)}";',
         f"    font-feature-settings: {features};",
+        "    font-synthesis: none;",
     ]
     if fact["direction"] == "rtl":
         lines.append("    direction: rtl;")
@@ -172,6 +175,7 @@ def variant_class_rule(ttf: Path, variant: dict) -> str:
     ]
     feature_str = ", ".join(f'"{tag}"' for tag in features) or "normal"
     lines.append(f"    font-feature-settings: {feature_str};")
+    lines.append("    font-synthesis: none;")
     if fact["direction"] == "rtl":
         lines.append("    direction: rtl;")
     lines.append("}")

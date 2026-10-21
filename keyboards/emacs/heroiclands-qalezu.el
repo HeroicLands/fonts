@@ -17,15 +17,14 @@
  "heroiclands-qalezu" "Qalezu" "HL-Qal" t
  "Type Qalezu Hand by sound, with the same keys as the HL Qalezu layout.
 Each key types its sound in the script, and a key whose sound the script
-does not write types nothing. Option has no Emacs key: Option+x is \\ and
+does not write types nothing. The characters of markup type themselves, and a
+backslash is \\\\. Option has no Emacs key: Option+x is \\ and
 then the key that x types, so Option+t (th) is \\t and Option+Shift+t (Th) is \\T.
 The cheatsheet keyboards/index.md lists every key."
  nil t nil nil nil nil nil nil nil nil t)
 
 (quail-define-rules
  ("\\" [""])
- ("`" [""])
- ("~" [""])
  ("\\`" [""])
  ("\\~" [""])
  ("1" #x1EA2E)
@@ -57,22 +56,17 @@ The cheatsheet keyboards/index.md lists every key."
  ("\\7" [""])
  ("\\&" [""])
  ("8" #x1EA35)
- ("*" [""])
  ("\\8" [""])
  ("\\*" [""])
  ("9" #x1EA36)
- ("(" [""])
  ("\\9" [""])
  ("\\(" [""])
  ("0" #x1EA2D)
- (")" [""])
  ("\\0" [""])
  ("\\)" [""])
  ("-" [""])
- ("_" [""])
  ("\\-" [""])
  ("\\_" [""])
- ("=" [""])
  ("+" [""])
  ("\\=" [""])
  ("\\+" [""])
@@ -116,17 +110,11 @@ The cheatsheet keyboards/index.md lists every key."
  ("P" #x1EA10)
  ("\\p" ["\U0001EA10\U0001EA0E"])
  ("\\P" ["\U0001EA10\U0001EA0E"])
- ("[" [""])
- ("{" [""])
  ("\\[" [""])
  ("\\{" [""])
- ("]" [""])
- ("}" [""])
  ("\\]" [""])
  ("\\}" [""])
- ("\\" [""])
- ("|" [""])
- ("\\\\" [""])
+ ("\\\\" #x5C)
  ("\\|" [""])
  ("a" [""])
  ("A" [""])
@@ -165,7 +153,6 @@ The cheatsheet keyboards/index.md lists every key."
  ("\\l" [""])
  ("\\L" [""])
  (";" [""])
- (":" [""])
  ("\\;" [""])
  ("\\:" [""])
  ("'" #x1EA15)
