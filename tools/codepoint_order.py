@@ -62,6 +62,14 @@ BLOCKS = [
         "families": ["Khelathi Zethu Glyphs"],
     },
     {
+        "start": 0x13430,
+        "end": 0x1343F,
+        "use": "Egyptian Hieroglyph Format Controls, Unicode's own: Khelathi Zethu Glyphs' quadrat and cartouche controls",
+        "direction": "left to right",
+        "families": ["Khelathi Zethu Glyphs"],
+        "unicode": True,
+    },
+    {
         "start": 0x1EA00,
         "end": 0x1EA3F,
         "use": "Qalezu: signs, digits and punctuation",
@@ -71,7 +79,7 @@ BLOCKS = [
     {
         "start": 0x1EA40,
         "end": 0x1EC6F,
-        "use": "Khelathi Zethu Glyphs",
+        "use": "Khelathi Zethu Glyphs: signs, and its format controls at U+1EC60–U+1EC6F",
         "direction": "right to left",
         "families": ["Khelathi Zethu Glyphs"],
     },
@@ -172,14 +180,26 @@ def qalezu_table() -> list[dict]:
     return sorted(rows, key=lambda r: int(r["codepoint"][2:], 16))
 
 
+def zethu_controls() -> list[dict]:
+    """Khelathi Zethu Glyphs' format controls, from tools/khelathi-zethu-glyphs/controls.json."""
+    path = ROOT / "tools" / "khelathi-zethu-glyphs" / "controls.json"
+    return json.loads(path.read_text(encoding="utf-8"))["controls"]
+
+
 def zethu_table() -> list[dict]:
-    """Khelathi Zethu Glyphs' table: each drawn sign's default form."""
+    """Khelathi Zethu Glyphs' table: each drawn sign's default form, then each format
+    control at its own code point in the font's block and at its Unicode code point.
+    A control has no key: the Emacs input method types signs by id."""
     enc = json.loads((ROOT / "tools" / "khelathi-zethu-glyphs" / "encoding.json").read_text(encoding="utf-8"))
-    return [
+    rows = [
         {"codepoint": e["codepoint"], "glyph": e["glyph"], "kind": "sign", "key": e["id"]}
         for e in enc["signs"]
         if e["drawn"]
     ]
+    controls = zethu_controls()
+    rows += [{"codepoint": c["twin"], "glyph": c["glyph"], "kind": "control"} for c in controls]
+    rows += [{"codepoint": c["codepoint"], "glyph": c["glyph"], "kind": "control"} for c in controls]
+    return rows
 
 
 # Font file stem -> script, the key of its name table.
@@ -221,13 +241,16 @@ def zethu_number(point: int) -> int:
     """The position of a code point in Khelathi Zethu Glyphs' code point space, counting from 1.
 
     The main block of tools/khelathi-zethu-glyphs/encoding.json comes first and the other
-    blocks BLOCKS registers for the font follow in code point order, so a sign's number
+    blocks BLOCKS registers for the font follow in code point order, Unicode's own format
+    controls apart, so a sign's number
     depends on its code point alone and never changes when another sign is drawn.
     """
     enc = json.loads((ROOT / "tools" / "khelathi-zethu-glyphs" / "encoding.json").read_text(encoding="utf-8"))
     main = (int(enc["block"]["start"][2:], 16), int(enc["block"]["end"][2:], 16))
     spans = [main] + sorted(
-        (b["start"], b["end"]) for b in BLOCKS if "Khelathi Zethu Glyphs" in b["families"] and (b["start"], b["end"]) != main
+        (b["start"], b["end"])
+        for b in BLOCKS
+        if "Khelathi Zethu Glyphs" in b["families"] and (b["start"], b["end"]) != main and not b.get("unicode")
     )
     before = 0
     for start, end in spans:
@@ -238,6 +261,13 @@ def zethu_number(point: int) -> int:
 
 
 def zethu_name(point: int) -> str:
+    """A sign's name, ``ZETHU CHARACTER <n>``; a format control's name, Unicode's at its
+    Unicode code point and the font's own at its twin."""
+    for c in zethu_controls():
+        if point == int(c["codepoint"][2:], 16):
+            return c["name"]
+        if point == int(c["twin"][2:], 16):
+            return c["twin_name"]
     return f"ZETHU CHARACTER {zethu_number(point):03d}"
 
 

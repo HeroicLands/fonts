@@ -7,6 +7,9 @@
 Each drawn sign is ``ZETHU CHARACTER <n>``, where n is the position of its code point in
 the font's code point space (``zethu_number`` in tools/codepoint_order.py), padded to three
 digits. A name depends on the code point alone, so drawing another sign renames nothing.
+A format control at its Unicode code point takes Unicode's name, ``EGYPTIAN HIEROGLYPH
+VERTICAL JOINER``, and the same control in the font's block takes ``ZETHU VERTICAL
+JOINER``; tools/khelathi-zethu-glyphs/controls.json holds both.
 """
 
 import json

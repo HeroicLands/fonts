@@ -1,0 +1,24 @@
+{
+  "fixtures": [
+    {"name": "vertical-pair", "title": "Two signs stacked", "text": "01-002 vj 01-003"},
+    {"name": "vertical-three", "title": "Three signs stacked", "text": "10-016 vj 14-019 vj 10-029"},
+    {"name": "horizontal-pair", "title": "Two narrow signs side by side", "text": "13-010 hj 13-010"},
+    {"name": "row-over-flat", "title": "A row over a flat sign", "text": "13-010 hj 13-010 vj 10-016"},
+    {"name": "flat-over-row", "title": "A flat sign over a row", "text": "10-016 vj 01-002 hj 13-010"},
+    {"name": "segment-in-row", "title": "A stacked segment beside a sign", "text": "13-010 hj bs 01-002 vj 01-003 es"},
+    {"name": "segment-first", "title": "A stacked segment, then a sign", "text": "bs 01-002 vj 01-003 es hj 13-010"},
+    {"name": "nested-segments", "title": "A segment inside a segment, over a flat sign", "text": "bs 13-010 hj bs 01-002 vj 01-003 es es vj 10-016"},
+    {"name": "lone-segment", "title": "One sign in a segment", "text": "bs 06-003 es"},
+    {"name": "insert-top-start", "title": "Insertion at the top start", "text": "13-002 its 16-001"},
+    {"name": "insert-bottom-start", "title": "Insertion at the bottom start", "text": "01-002 ibs 10-016"},
+    {"name": "insert-top-end", "title": "Insertion at the top end", "text": "06-003 ite 16-001"},
+    {"name": "insert-bottom-end", "title": "Insertion at the bottom end", "text": "13-002 ibe 16-001"},
+    {"name": "insert-in-row", "title": "An insertion in a row, over a flat sign", "text": "06-003 ite 16-001 hj 13-010 vj 10-016"},
+    {"name": "insert-in-segment", "title": "An insertion inside a segment", "text": "bs 06-003 ite 16-001 vj 10-016 es hj 13-010"}
+  ],
+  "cartouches": [
+    {"name": "cartouche-signs", "title": "A cartouche of single signs", "text": "be 01-013 09-002 06-003 ee"},
+    {"name": "cartouche-quadrats", "title": "A cartouche of quadrats", "text": "be 13-002 vj 13-003 hj 13-001 16-001 vj 09-002 ee"},
+    {"name": "cartouche-in-line", "title": "A cartouche in a line, between quadrats", "text": "11-001 vj 11-002 sp be 13-002 vj 13-003 hj 13-001 16-001 vj 09-002 ee sp 10-016 sp 09-017"}
+  ]
+}

@@ -312,3 +312,8 @@ Faces: Khelathi Zethu Glyphs. The signs far outnumber the keys of a keyboard, so
 | `16-029` | U+1EC19 | z16_029.a |
 | `16-030` | U+1EC1A | z16_030.a |
 | `03-030` | U+1EC1B | z03_030.a |
+| `01-073` | U+1EC1C | z01_073.a |
+| `01-074` | U+1EC1D | z01_074.a |
+| `01-075` | U+1EC1E | z01_075.a |
+| `01-076` | U+1EC1F | z01_076.a |
+| `01-077` | U+1EC20 | z01_077.a |

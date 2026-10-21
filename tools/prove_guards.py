@@ -8,7 +8,11 @@ The broken Pirzath and Thuravark fonts are the built .ttf with the GSUB table
 removed, so no ligature, decomposition or contextual rule applies. The broken
 Qalezu Hand font has one sign, the th, removed from its cmap. Khelathi Zethu Glyphs is broken
 twice: once with one sign, the crocodile-hunt house 11-001, removed from its cmap,
-and once with the GSUB table removed so that no second or third form is reachable.
+and once with the GSUB table removed so that no second or third form is reachable. Its
+quadrat guard (tools/khelathi-zethu-glyphs/quadrats.py) is proved four times: with the
+lookup that sums a row's widths taken out of the features, with the GPOS table removed,
+with the vertical joiner in the font's own block unmapped, and with the lookup that lays
+the cord along a cartouche taken out.
 Semaron Kuriale is broken twice: with the GSUB table removed, so that no
 th, long vowel or spelled-out ch applies, and with the GPOS table removed, so that no catch stands on its
 base. The box guard (tools/notdef_box.py) is proved on every font twice: with the question
@@ -28,7 +32,10 @@ markup character on a key that carries a sound; on layouts with a macOS output c
 line removed, an Emacs rule removed and a Windows key typing a roman letter, and with a key of markup typing
 nothing on each platform; and, where a thalorna checkout exists, on a sounds.json
 that thalorna's mapping notes no longer spell. The cheatsheet guard (tools/charts_guard.py) is proved on a sheet with a table row removed, with a wrong Code Point cell, with a chart cell removed, with a glyph image removed, with a
-lowercase name and with a Zethu name that is not its code point's position. The guards run on their
+lowercase name and with a Zethu name that is not its code point's position. The paint guard
+(tools/khelathi-zethu-glyphs/paint_guard.py) is proved on a map without the 11-001 sign's entry and on a
+map with a seed of 01-008 moved onto its outline, and on a map with one region of the oxen 05-004
+left without a seed. The guards run on their
 fixtures alone, so the proof needs no lexicon.
 """
 
@@ -72,6 +79,51 @@ def without_sign(font: Path, out: Path) -> Path:
     f = TTFont(str(font))
     for table in f["cmap"].tables:
         table.cmap.pop(cp, None)
+    f.save(str(out))
+    return out
+
+
+def _mentions(table, glyph: str) -> bool:
+    """Whether a lookup subtable names `glyph` in a coverage, a class definition or a mapping."""
+    table = getattr(table, "ExtSubTable", table)
+    for attr in ("Coverage", "InputCoverage", "BacktrackCoverage", "LookAheadCoverage"):
+        value = getattr(table, attr, None)
+        for cov in value if isinstance(value, list) else [value] if value is not None else []:
+            if glyph in cov.glyphs:
+                return True
+    for attr in ("InputClassDef", "BacktrackClassDef", "LookAheadClassDef", "ClassDef"):
+        value = getattr(table, attr, None)
+        if value is not None and glyph in value.classDefs:
+            return True
+    return glyph in (getattr(table, "mapping", None) or {})
+
+
+def without_lookup(glyph: str):
+    """A breaker that takes out of the font's features every substitution lookup whose
+    context names `glyph`."""
+
+    def broken(font: Path, out: Path) -> Path:
+        f = TTFont(str(font))
+        gsub = f["GSUB"].table
+        drop = {
+            i
+            for i, lookup in enumerate(gsub.LookupList.Lookup)
+            if any(type(getattr(st, "ExtSubTable", st)).__name__.startswith("Chain") and _mentions(st, glyph) for st in lookup.SubTable)
+        }
+        for record in gsub.FeatureList.FeatureRecord:
+            record.Feature.LookupListIndex = [i for i in record.Feature.LookupListIndex if i not in drop]
+            record.Feature.LookupCount = len(record.Feature.LookupListIndex)
+        f.save(str(out))
+        return out
+
+    return broken
+
+
+def without_twin(font: Path, out: Path) -> Path:
+    """The vertical joiner in the font's own block unmapped."""
+    f = TTFont(str(font))
+    for table in f["cmap"].tables:
+        table.cmap.pop(0x1EC60, None)
     f.save(str(out))
     return out
 
@@ -408,12 +460,48 @@ def prove_charts() -> int:
     return status
 
 
+def prove_paint() -> int:
+    """Prove that the paint guard fails a map that loses a drawn sign, one with a seed on the outline and one with a figure region unseeded."""
+    guard = load("paint_guard", ROOT / "tools" / "khelathi-zethu-glyphs" / "paint_guard.py")
+    paint = guard.paint
+    data = paint.load()
+    enc = paint.encoding()
+    glyphs = paint.Glyphs()
+    good = guard.check(data, enc, glyphs)
+
+    dropped = copy.deepcopy(data)
+    del dropped["signs"]["11-001"]
+
+    on_line = copy.deepcopy(data)
+    sid = "01-008"
+    seed = on_line["signs"][sid]["regions"][0]
+    regions = paint.Regions(glyphs, enc[sid]["glyph"])
+    row, col = regions.to_px(*seed["seed"])
+    while not regions.ink[row, col]:
+        col -= 1
+    seed["seed"] = list(regions.to_units(row, col))
+
+    unseeded = copy.deepcopy(data)
+    unseeded["signs"]["05-004"]["regions"].pop()
+
+    status = 0
+    for how, bad in (("without the 11-001 map", guard.check(dropped, enc, glyphs)),
+                     ("with a seed of 01-008 moved onto its outline", guard.check(on_line, enc, glyphs)),
+                     ("with one region of 05-004 left without a seed", guard.check(unseeded, enc, glyphs))):
+        print(f"paint: {len(good)} failures on the map, {len(bad)} on the map {how}")
+        if good or not bad:
+            print("tools/khelathi-zethu-glyphs/paint_guard.py: error: the paint guard must pass the map and fail the altered map")
+            status = 1
+    return status
+
+
 def main():
     pirzath = load("pirzath_guard", ROOT / "tools" / "pirzath" / "guard.py")
     hand = load("pirzath_hand_guard", ROOT / "tools" / "pirzath-hand" / "guard.py")
     thuravark = load("thuravark_guard", ROOT / "tools" / "thuravark-carved" / "guard.py")
     qalezu = load("qalezu_guard", ROOT / "tools" / "qalezu-hand" / "guard.py")
     zethu = load("zethu_guard", ROOT / "tools" / "khelathi-zethu-glyphs" / "guard.py")
+    quadrats = load("zethu_quadrats", ROOT / "tools" / "khelathi-zethu-glyphs" / "quadrats.py")
     semaron = load("semaron_guard", ROOT / "tools" / "semaron-kuriale" / "guard.py")
     zethu_font = ROOT / "fonts" / "KhelathiZethuGlyphs-Regular.ttf"
     cases = [
@@ -461,6 +549,10 @@ def main():
         ),
         ("Khelathi Zethu Glyphs", zethu_font, zethu.run, without_sign, "without the 11-001 sign"),
         ("Khelathi Zethu Glyphs", zethu_font, zethu.run, stripped, "without GSUB"),
+        ("Khelathi Zethu Glyphs quadrats", zethu_font, quadrats.run, without_lookup("qxf0.p"), "without the lookup that sums a row's widths"),
+        ("Khelathi Zethu Glyphs quadrats", zethu_font, quadrats.run, without_gpos, "without GPOS"),
+        ("Khelathi Zethu Glyphs quadrats", zethu_font, quadrats.run, without_twin, "without the vertical joiner in its own block"),
+        ("Khelathi Zethu Glyphs quadrats", zethu_font, quadrats.run, without_lookup("qcap.l"), "without the cartouche's cord"),
     ]
     codepoints = load("codepoints", ROOT / "tools" / "codepoints.py")
     notdef = load("notdef_box", ROOT / "tools" / "notdef_box.py")
@@ -497,6 +589,7 @@ def main():
     status |= prove_registry(codepoints)
     status |= prove_keyboards()
     status |= prove_charts()
+    status |= prove_paint()
     pirzath_font = ROOT / "fonts" / "PirzathCarved-Regular.ttf"
     with tempfile.TemporaryDirectory() as tmp:
         good, bad = notdef.check(pirzath_font), notdef.check(stripped(pirzath_font, Path(tmp) / pirzath_font.name))

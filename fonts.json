@@ -2139,6 +2139,161 @@
                     "glyph": "z03_030.a",
                     "kind": "sign",
                     "key": "03-030"
+                },
+                {
+                    "codepoint": "U+1EC1C",
+                    "name": "ZETHU CHARACTER 477",
+                    "glyph": "z01_073.a",
+                    "kind": "sign",
+                    "key": "01-073"
+                },
+                {
+                    "codepoint": "U+1EC1D",
+                    "name": "ZETHU CHARACTER 478",
+                    "glyph": "z01_074.a",
+                    "kind": "sign",
+                    "key": "01-074"
+                },
+                {
+                    "codepoint": "U+1EC1E",
+                    "name": "ZETHU CHARACTER 479",
+                    "glyph": "z01_075.a",
+                    "kind": "sign",
+                    "key": "01-075"
+                },
+                {
+                    "codepoint": "U+1EC1F",
+                    "name": "ZETHU CHARACTER 480",
+                    "glyph": "z01_076.a",
+                    "kind": "sign",
+                    "key": "01-076"
+                },
+                {
+                    "codepoint": "U+1EC20",
+                    "name": "ZETHU CHARACTER 481",
+                    "glyph": "z01_077.a",
+                    "kind": "sign",
+                    "key": "01-077"
+                },
+                {
+                    "codepoint": "U+1EC60",
+                    "name": "ZETHU VERTICAL JOINER",
+                    "glyph": "ctl.vj",
+                    "kind": "control"
+                },
+                {
+                    "codepoint": "U+1EC61",
+                    "name": "ZETHU HORIZONTAL JOINER",
+                    "glyph": "ctl.hj",
+                    "kind": "control"
+                },
+                {
+                    "codepoint": "U+1EC62",
+                    "name": "ZETHU INSERT AT TOP START",
+                    "glyph": "ctl.its",
+                    "kind": "control"
+                },
+                {
+                    "codepoint": "U+1EC63",
+                    "name": "ZETHU INSERT AT BOTTOM START",
+                    "glyph": "ctl.ibs",
+                    "kind": "control"
+                },
+                {
+                    "codepoint": "U+1EC64",
+                    "name": "ZETHU INSERT AT TOP END",
+                    "glyph": "ctl.ite",
+                    "kind": "control"
+                },
+                {
+                    "codepoint": "U+1EC65",
+                    "name": "ZETHU INSERT AT BOTTOM END",
+                    "glyph": "ctl.ibe",
+                    "kind": "control"
+                },
+                {
+                    "codepoint": "U+1EC67",
+                    "name": "ZETHU BEGIN SEGMENT",
+                    "glyph": "ctl.bs",
+                    "kind": "control"
+                },
+                {
+                    "codepoint": "U+1EC68",
+                    "name": "ZETHU END SEGMENT",
+                    "glyph": "ctl.es",
+                    "kind": "control"
+                },
+                {
+                    "codepoint": "U+1EC6C",
+                    "name": "ZETHU BEGIN ENCLOSURE",
+                    "glyph": "ctl.be",
+                    "kind": "control"
+                },
+                {
+                    "codepoint": "U+1EC6D",
+                    "name": "ZETHU END ENCLOSURE",
+                    "glyph": "ctl.ee",
+                    "kind": "control"
+                },
+                {
+                    "codepoint": "U+13430",
+                    "name": "EGYPTIAN HIEROGLYPH VERTICAL JOINER",
+                    "glyph": "ctl.vj",
+                    "kind": "control"
+                },
+                {
+                    "codepoint": "U+13431",
+                    "name": "EGYPTIAN HIEROGLYPH HORIZONTAL JOINER",
+                    "glyph": "ctl.hj",
+                    "kind": "control"
+                },
+                {
+                    "codepoint": "U+13432",
+                    "name": "EGYPTIAN HIEROGLYPH INSERT AT TOP START",
+                    "glyph": "ctl.its",
+                    "kind": "control"
+                },
+                {
+                    "codepoint": "U+13433",
+                    "name": "EGYPTIAN HIEROGLYPH INSERT AT BOTTOM START",
+                    "glyph": "ctl.ibs",
+                    "kind": "control"
+                },
+                {
+                    "codepoint": "U+13434",
+                    "name": "EGYPTIAN HIEROGLYPH INSERT AT TOP END",
+                    "glyph": "ctl.ite",
+                    "kind": "control"
+                },
+                {
+                    "codepoint": "U+13435",
+                    "name": "EGYPTIAN HIEROGLYPH INSERT AT BOTTOM END",
+                    "glyph": "ctl.ibe",
+                    "kind": "control"
+                },
+                {
+                    "codepoint": "U+13437",
+                    "name": "EGYPTIAN HIEROGLYPH BEGIN SEGMENT",
+                    "glyph": "ctl.bs",
+                    "kind": "control"
+                },
+                {
+                    "codepoint": "U+13438",
+                    "name": "EGYPTIAN HIEROGLYPH END SEGMENT",
+                    "glyph": "ctl.es",
+                    "kind": "control"
+                },
+                {
+                    "codepoint": "U+1343C",
+                    "name": "EGYPTIAN HIEROGLYPH BEGIN ENCLOSURE",
+                    "glyph": "ctl.be",
+                    "kind": "control"
+                },
+                {
+                    "codepoint": "U+1343D",
+                    "name": "EGYPTIAN HIEROGLYPH END ENCLOSURE",
+                    "glyph": "ctl.ee",
+                    "kind": "control"
                 }
             ]
         },

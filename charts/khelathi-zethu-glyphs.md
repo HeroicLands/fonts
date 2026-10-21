@@ -1,6 +1,6 @@
 # Khelathi Zethu Glyphs
 
-304 characters, U+1EA41 to U+1EC1B, in the font `Khelathi Zethu Glyphs`.
+329 characters, U+13430 to U+1EC6D, in the font `Khelathi Zethu Glyphs`.
 
 ## Code chart
 
@@ -8,8 +8,35 @@
 ![Khelathi Zethu Glyphs, code chart 2](khelathi-zethu-glyphs/chart-2.png)
 ![Khelathi Zethu Glyphs, code chart 3](khelathi-zethu-glyphs/chart-3.png)
 ![Khelathi Zethu Glyphs, code chart 4](khelathi-zethu-glyphs/chart-4.png)
+![Khelathi Zethu Glyphs, code chart 5](khelathi-zethu-glyphs/chart-5.png)
+![Khelathi Zethu Glyphs, code chart 6](khelathi-zethu-glyphs/chart-6.png)
 
 ## Characters
+
+### Controls
+
+| Character Name | Character | Code Point | Entity | Hex Entity |
+| --- | --- | --- | --- | --- |
+| EGYPTIAN HIEROGLYPH VERTICAL JOINER | ![U+13430](khelathi-zethu-glyphs/glyphs/U+13430.svg) | U+13430 | `&#78896;` | `&#x13430;` |
+| EGYPTIAN HIEROGLYPH HORIZONTAL JOINER | ![U+13431](khelathi-zethu-glyphs/glyphs/U+13431.svg) | U+13431 | `&#78897;` | `&#x13431;` |
+| EGYPTIAN HIEROGLYPH INSERT AT TOP START | ![U+13432](khelathi-zethu-glyphs/glyphs/U+13432.svg) | U+13432 | `&#78898;` | `&#x13432;` |
+| EGYPTIAN HIEROGLYPH INSERT AT BOTTOM START | ![U+13433](khelathi-zethu-glyphs/glyphs/U+13433.svg) | U+13433 | `&#78899;` | `&#x13433;` |
+| EGYPTIAN HIEROGLYPH INSERT AT TOP END | ![U+13434](khelathi-zethu-glyphs/glyphs/U+13434.svg) | U+13434 | `&#78900;` | `&#x13434;` |
+| EGYPTIAN HIEROGLYPH INSERT AT BOTTOM END | ![U+13435](khelathi-zethu-glyphs/glyphs/U+13435.svg) | U+13435 | `&#78901;` | `&#x13435;` |
+| EGYPTIAN HIEROGLYPH BEGIN SEGMENT | ![U+13437](khelathi-zethu-glyphs/glyphs/U+13437.svg) | U+13437 | `&#78903;` | `&#x13437;` |
+| EGYPTIAN HIEROGLYPH END SEGMENT | ![U+13438](khelathi-zethu-glyphs/glyphs/U+13438.svg) | U+13438 | `&#78904;` | `&#x13438;` |
+| EGYPTIAN HIEROGLYPH BEGIN ENCLOSURE | ![U+1343C](khelathi-zethu-glyphs/glyphs/U+1343C.svg) | U+1343C | `&#78908;` | `&#x1343C;` |
+| EGYPTIAN HIEROGLYPH END ENCLOSURE | ![U+1343D](khelathi-zethu-glyphs/glyphs/U+1343D.svg) | U+1343D | `&#78909;` | `&#x1343D;` |
+| ZETHU VERTICAL JOINER | ![U+1EC60](khelathi-zethu-glyphs/glyphs/U+1EC60.svg) | U+1EC60 | `&#126048;` | `&#x1EC60;` |
+| ZETHU HORIZONTAL JOINER | ![U+1EC61](khelathi-zethu-glyphs/glyphs/U+1EC61.svg) | U+1EC61 | `&#126049;` | `&#x1EC61;` |
+| ZETHU INSERT AT TOP START | ![U+1EC62](khelathi-zethu-glyphs/glyphs/U+1EC62.svg) | U+1EC62 | `&#126050;` | `&#x1EC62;` |
+| ZETHU INSERT AT BOTTOM START | ![U+1EC63](khelathi-zethu-glyphs/glyphs/U+1EC63.svg) | U+1EC63 | `&#126051;` | `&#x1EC63;` |
+| ZETHU INSERT AT TOP END | ![U+1EC64](khelathi-zethu-glyphs/glyphs/U+1EC64.svg) | U+1EC64 | `&#126052;` | `&#x1EC64;` |
+| ZETHU INSERT AT BOTTOM END | ![U+1EC65](khelathi-zethu-glyphs/glyphs/U+1EC65.svg) | U+1EC65 | `&#126053;` | `&#x1EC65;` |
+| ZETHU BEGIN SEGMENT | ![U+1EC67](khelathi-zethu-glyphs/glyphs/U+1EC67.svg) | U+1EC67 | `&#126055;` | `&#x1EC67;` |
+| ZETHU END SEGMENT | ![U+1EC68](khelathi-zethu-glyphs/glyphs/U+1EC68.svg) | U+1EC68 | `&#126056;` | `&#x1EC68;` |
+| ZETHU BEGIN ENCLOSURE | ![U+1EC6C](khelathi-zethu-glyphs/glyphs/U+1EC6C.svg) | U+1EC6C | `&#126060;` | `&#x1EC6C;` |
+| ZETHU END ENCLOSURE | ![U+1EC6D](khelathi-zethu-glyphs/glyphs/U+1EC6D.svg) | U+1EC6D | `&#126061;` | `&#x1EC6D;` |
 
 ### Signs
 
@@ -319,3 +346,8 @@
 | ZETHU CHARACTER 474 | ![U+1EC19](khelathi-zethu-glyphs/glyphs/U+1EC19.svg) | U+1EC19 | `&#125977;` | `&#x1EC19;` |
 | ZETHU CHARACTER 475 | ![U+1EC1A](khelathi-zethu-glyphs/glyphs/U+1EC1A.svg) | U+1EC1A | `&#125978;` | `&#x1EC1A;` |
 | ZETHU CHARACTER 476 | ![U+1EC1B](khelathi-zethu-glyphs/glyphs/U+1EC1B.svg) | U+1EC1B | `&#125979;` | `&#x1EC1B;` |
+| ZETHU CHARACTER 477 | ![U+1EC1C](khelathi-zethu-glyphs/glyphs/U+1EC1C.svg) | U+1EC1C | `&#125980;` | `&#x1EC1C;` |
+| ZETHU CHARACTER 478 | ![U+1EC1D](khelathi-zethu-glyphs/glyphs/U+1EC1D.svg) | U+1EC1D | `&#125981;` | `&#x1EC1D;` |
+| ZETHU CHARACTER 479 | ![U+1EC1E](khelathi-zethu-glyphs/glyphs/U+1EC1E.svg) | U+1EC1E | `&#125982;` | `&#x1EC1E;` |
+| ZETHU CHARACTER 480 | ![U+1EC1F](khelathi-zethu-glyphs/glyphs/U+1EC1F.svg) | U+1EC1F | `&#125983;` | `&#x1EC1F;` |
+| ZETHU CHARACTER 481 | ![U+1EC20](khelathi-zethu-glyphs/glyphs/U+1EC20.svg) | U+1EC20 | `&#125984;` | `&#x1EC20;` |

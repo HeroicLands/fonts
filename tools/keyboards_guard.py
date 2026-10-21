@@ -239,7 +239,7 @@ def layout_problems(script: str, keymap: list[dict], sounds: list[dict], texts: 
 
 def zethu_problems(table: list[dict]) -> list[str]:
     got = read_emacs(read_layouts("zethu")["emacs"])
-    want = {r["key"]: [int(r["codepoint"][2:], 16)] for r in table}
+    want = {r["key"]: [int(r["codepoint"][2:], 16)] for r in table if "key" in r}
     problems = [f"keyboards: error: zethu: the emacs input method has no rule for {k}" for k in sorted(want.keys() - got.keys())]
     problems += [f"keyboards: error: zethu: the emacs input method types {got[k]} on {k}, which is no sign" for k in sorted(got.keys() - want.keys())]
     problems += [f"keyboards: error: zethu: {k} types {got[k]}, not {want[k]}" for k in sorted(got.keys() & want.keys()) if got[k] != want[k]]

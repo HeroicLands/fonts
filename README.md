@@ -14,18 +14,19 @@ Qalezu, the Khelathi alphabet, is written right to left on code points of its ow
 
 Every script draws on a block of code points of its own, and every face of a script draws its script's block: Pirzath Carved, Pirzath Hand and Pirzath Hand Lifted share the Pirzath block, so changing the face changes only the look. The blocks are registered in `BLOCKS` in `tools/codepoint_order.py`; `tools/codepoints.py` checks that every face's code points lie in its registered blocks, that no two blocks overlap, and that this table is the registry's.
 
-| Range             | Use                                                                                             | Direction     |
-| ----------------- | ----------------------------------------------------------------------------------------------- | ------------- |
-| U+1E960–U+1E9FF   | Khelathi Zethu Glyphs, overflow beyond its main block                                           | right to left |
-| U+1EA00–U+1EA3F   | Qalezu: signs, digits and punctuation                                                           | right to left |
-| U+1EA40–U+1EC6F   | Khelathi Zethu Glyphs                                                                           | right to left |
-| U+1ECC0–U+1ECFF   | Qalezu: a sign with a catch before it                                                           | right to left |
-| U+F0000–U+F00FF   | Pirzath                                                                                         | left to right |
-| U+F0100–U+F01FF   | Thuravark                                                                                       | left to right |
-| U+F0200–U+F02FF   | Semaron                                                                                         | left to right |
-| U+F0300–U+F0FFF   | Reserved for the remaining alphabets and syllabaries, 256 code points each as they are assigned | left to right |
-| U+F1000–U+F2FFF   | Reserved for Teng Chou                                                                          | left to right |
-| U+100000–U+10FFFD | Plane 16, unassigned                                                                            | –             |
+| Range             | Use                                                                                                       | Direction     |
+| ----------------- | --------------------------------------------------------------------------------------------------------- | ------------- |
+| U+13430–U+1343F   | Egyptian Hieroglyph Format Controls, Unicode's own: Khelathi Zethu Glyphs' quadrat and cartouche controls | left to right |
+| U+1E960–U+1E9FF   | Khelathi Zethu Glyphs, overflow beyond its main block                                                     | right to left |
+| U+1EA00–U+1EA3F   | Qalezu: signs, digits and punctuation                                                                     | right to left |
+| U+1EA40–U+1EC6F   | Khelathi Zethu Glyphs: signs, and its format controls at U+1EC60–U+1EC6F                                  | right to left |
+| U+1ECC0–U+1ECFF   | Qalezu: a sign with a catch before it                                                                     | right to left |
+| U+F0000–U+F00FF   | Pirzath                                                                                                   | left to right |
+| U+F0100–U+F01FF   | Thuravark                                                                                                 | left to right |
+| U+F0200–U+F02FF   | Semaron                                                                                                   | left to right |
+| U+F0300–U+F0FFF   | Reserved for the remaining alphabets and syllabaries, 256 code points each as they are assigned           | left to right |
+| U+F1000–U+F2FFF   | Reserved for Teng Chou                                                                                    | left to right |
+| U+100000–U+10FFFD | Plane 16, unassigned                                                                                      | –             |
 
 - **Left-to-right scripts** (Pirzath, Thuravark, Semaron) sit in plane 15, the Supplementary Private Use Area-A, whose characters are left to right by default. Each takes 256 code points. U+F0300 to U+F0FFF is reserved for the remaining alphabets and syllabaries, 256 code points each as they are assigned, and U+F1000 to U+F2FFF for Teng Chou.
 - **Right-to-left scripts** (Qalezu and Khelathi Zethu Glyphs) sit in unassigned code points of plane 1 whose default bidi class is right to left. That is why their text runs right to left in any editor, browser or typesetter, mixed with English and with no controls. Because the code points are unassigned rather than private, Unicode could in principle assign them to a script later. Qalezu takes U+1EA00 to U+1EA3F for its signs, digits and punctuation and U+1ECC0 to U+1ECFF for a sign with a catch before it. Khelathi Zethu Glyphs takes U+1EA40 to U+1EC6F with U+1E960 to U+1E9FF as overflow, 720 code points together. U+1ED50 to U+1EDFF is the remaining free right-to-left range, kept for a further right-to-left script.
@@ -70,7 +71,7 @@ CONFIG.fontDefinitions["Pirzath Carved"] = {
 typst compile --font-path node_modules/@heroiclands/fonts/fonts book.typ
 ```
 
-`fonts.json` states, for each entry, its `name` (unique across the manifest), its `family` (the font-family), its `hl-<font>` class, its `files`, its `direction`, its OpenType `features` and its `codepoints`: every character the font draws, each with its code point, character name where the script's name table gives one, glyph name and kind, and for Khelathi Zethu Glyphs the sign id that types it. The class sets the family's `font-family`, `font-feature-settings` and, for a right-to-left family, `direction`. Pirzath Hand's joined form needs `ss01`, which its class turns on; Pirzath Hand Lifted is the same font with `ss01` turned off.
+`fonts.json` states, for each entry, its `name` (unique across the manifest), its `family` (the font-family), its `hl-<font>` class, its `files`, its `direction`, its OpenType `features` and its `codepoints`: every character the font draws, each with its code point, character name where the script's name table gives one, glyph name and kind, and for a sign of Khelathi Zethu Glyphs the sign id that types it; that font's format controls are of kind `control`. The class sets the family's `font-family`, `font-feature-settings` and, for a right-to-left family, `direction`. Pirzath Hand's joined form needs `ss01`, which its class turns on; Pirzath Hand Lifted is the same font with `ss01` turned off.
 
 A note's text in one of these fonts is the font's own code points. They are typed with the keyboard layouts in `keyboards/`, or produced by a mapping in the consuming build.
 
@@ -101,7 +102,7 @@ The layouts and input methods are in `keyboards/`:
 - **Windows layouts.** `keyboards/windows/<script>.klc` is the Microsoft Keyboard Layout Creator source of each layout, saved as UTF-16 with a byte order mark. Option is the right Alt key (AltGr). Every output is a ligature entry, a character of plane 1 or plane 15 written as its surrogate pair. MSKLC builds the installer on Windows only: open the `.klc` in Microsoft Keyboard Layout Creator, choose Project, Build DLL and Setup Package, and run the `setup.exe` it writes. Then add the layout under Settings, Time & language, Language & region, English (United States), Keyboard.
 - **Linux layouts.** `keyboards/linux/hl_<script>` is an XKB symbols file for each layout, with a `U<hex>` keysym on every key that types one character and `VoidSymbol` on the rest. Option is the third level, reached with the right Alt key. Copy the files to `~/.config/xkb/symbols/`, then run `setxkbmap -I$HOME/.config/xkb -layout hl_pirzath` under X11; a desktop that reads `~/.config/xkb` lists them as custom layouts. `setxkbmap us` returns to the usual layout.
 - **Emacs input methods.** `keyboards/emacs/heroiclands-<script>.el` defines a Quail input method per layout. Put the directory on `load-path`, evaluate `(require 'heroiclands-semaron)`, then `M-x set-input-method RET heroiclands-semaron`. Shift is the shifted character. Emacs has no Option key, so Option+x is typed `\` and then the key x types: Option+T is `\t` and Option+Shift+T is `\T`.
-- **Khelathi Zethu Glyphs.** Zethu writes meanings, not sounds, and has far more signs than a keyboard has keys, so it has an Emacs input method only, `heroiclands-zethu`, typed by sign id: `08-001` inserts that sign. `keyboards/zethu.md` lists the ids.
+- **Khelathi Zethu Glyphs.** Zethu writes meanings, not sounds, and has far more signs than a keyboard has keys, so it has an Emacs input method only, `heroiclands-zethu`, typed by sign id: `08-001` inserts that sign. `keyboards/zethu.md` lists the ids. The format controls have no key: a mapping in the consuming build writes them.
 
 ## Cheatsheets
 
@@ -110,7 +111,7 @@ Each font has a cheatsheet of every character it draws, in `charts/`; [`charts/i
 - **A code chart**, laid out like Unicode's charts: columns headed by the code point without its last hex digit, rows `0` to `F`, each cell holding the glyph above its code point, and a code point the font does not draw hatched. The grid runs left to right in every font. A long range is split into pages of eight columns, and a column with no character is left out.
 - **A table** of Character Name, Character, Code Point (`U+05DC`), Entity (`&#1500;`) and Hex Entity (`&#x05DC;`), in code point order and grouped by kind.
 
-The glyphs are outlines taken from the font, so a sheet reads without the font installed: `charts/<face folder>/chart-<n>.svg` and `.png` are the chart pages, `charts/<face folder>/glyphs/U+XXXX.svg` is one glyph for the table, and `charts/<face folder>.md` embeds both. Pirzath Hand Lifted is drawn with `ss01` off. Character names are Unicode-style (uppercase ASCII letters, digits, spaces and hyphens) and come from `tools/names/<script>.json`, one JSON object per script of `"U+XXXX": "NAME"` pairs, which `tools/write_css.py` writes into `fonts.json`. A script without that file has no names, and its table shows an empty Character Name cell. Khelathi Zethu Glyphs names a sign `ZETHU CHARACTER <n>`, where n is its code point's position in the font's code point space: U+1EA40 is `ZETHU CHARACTER 001`, and the overflow block U+1E960 to U+1E9FF continues after the main block. `tools/zethu_names.py` writes `tools/names/zethu.json`, so drawing a sign renames no other.
+The glyphs are outlines taken from the font, so a sheet reads without the font installed: `charts/<face folder>/chart-<n>.svg` and `.png` are the chart pages, `charts/<face folder>/glyphs/U+XXXX.svg` is one glyph for the table, and `charts/<face folder>.md` embeds both. Pirzath Hand Lifted is drawn with `ss01` off. Character names are Unicode-style (uppercase ASCII letters, digits, spaces and hyphens) and come from `tools/names/<script>.json`, one JSON object per script of `"U+XXXX": "NAME"` pairs, which `tools/write_css.py` writes into `fonts.json`. A script without that file has no names, and its table shows an empty Character Name cell. Khelathi Zethu Glyphs names a sign `ZETHU CHARACTER <n>`, where n is its code point's position in the font's code point space: U+1EA40 is `ZETHU CHARACTER 001`, and the overflow block U+1E960 to U+1E9FF continues after the main block. A format control takes Unicode's name at its Unicode code point, `EGYPTIAN HIEROGLYPH VERTICAL JOINER`, and the font's own at its twin, `ZETHU VERTICAL JOINER`. `tools/zethu_names.py` writes `tools/names/zethu.json`, so drawing a sign renames no other.
 
 ## Setting up
 
@@ -135,7 +136,7 @@ Build the fonts into `fonts/`. The build is reproducible, so the committed fonts
 PATH=.venv/bin:$PATH ./build.sh
 ```
 
-`build.sh` runs `fontmake` and compresses the `.woff2`, once per font (`PirzathCarved` shown), then runs `tools/write_css.py`, which writes `fonts.css` and `fonts.json` from the built fonts' name tables and one table of per-family facts. `tools/keyboards.py` then writes `keyboards/` from `tools/sound_keys.json` and `keyboards/sounds.json` (see [Typing in the fonts](#typing-in-the-fonts)). `tools/charts.py` last writes `charts/` from `fonts.json` and the built fonts, and rasterizes the chart pages with `resvg-py`, pinned in `requirements.txt`:
+`build.sh` runs `fontmake` and compresses the `.woff2`, once per font (`PirzathCarved` shown), adding Khelathi Zethu Glyphs' quadrat layout between the two with `tools/khelathi-zethu-glyphs/layout.py`, then runs `tools/write_css.py`, which writes `fonts.css` and `fonts.json` from the built fonts' name tables and one table of per-family facts. `tools/keyboards.py` then writes `keyboards/` from `tools/sound_keys.json` and `keyboards/sounds.json` (see [Typing in the fonts](#typing-in-the-fonts)). `tools/charts.py` last writes `charts/` from `fonts.json` and the built fonts, and rasterizes the chart pages with `resvg-py`, pinned in `requirements.txt`:
 
 ```sh
 export SOURCE_DATE_EPOCH=1767225600
@@ -167,12 +168,14 @@ Check the built fonts, render the specimens, and prove that each guard fails a b
 .venv/bin/python tools/codepoints.py
 .venv/bin/python tools/keyboards_guard.py --fixtures-only   # the layouts type each sound's output, and nothing else
 .venv/bin/python tools/charts_guard.py            # every character is on its sheet; unnamed rows are listed
+.venv/bin/python tools/khelathi-zethu-glyphs/quadrats.py   # quadrats and cartouches land where the layout puts them
 .venv/bin/python tools/codepoints_chart.py         # specimens/<face>/codepoints.png
 .venv/bin/python tools/pirzath/specimens.py       # specimens/pirzath/
 .venv/bin/python tools/pirzath-hand/specimens.py  # specimens/pirzath-hand/
 .venv/bin/python tools/thuravark-carved/specimens.py     # specimens/thuravark-carved/
 .venv/bin/python tools/qalezu-hand/specimens.py        # specimens/qalezu-hand/
 .venv/bin/python tools/khelathi-zethu-glyphs/specimens.py         # specimens/khelathi-zethu-glyphs/
+.venv/bin/python tools/khelathi-zethu-glyphs/paint_guard.py       # every drawn sign has a paint map
 .venv/bin/python tools/semaron-kuriale/specimens.py     # specimens/semaron-kuriale/
 .venv/bin/python tools/prove_guards.py
 ```
@@ -199,6 +202,25 @@ Khelathi Zethu Glyphs is the temple hieroglyphs of the Khelathi, on U+1EA40 to U
 
 ```sh
 .venv/bin/python tools/khelathi-zethu-glyphs/guard.py
+```
+
+Every drawn Zethu sign has a paint map in `tools/khelathi-zethu-glyphs/paint.json`: each enclosed region of the sign, named by a seed point in glyph units, and its colour category, such as `skin-male`, `linen` or `water`, so a banner, a stele or the book paints the sign the conventional way. `tools/khelathi-zethu-glyphs/paint.py` finds the regions and writes the painted contact sheets to `specimens/khelathi-zethu-glyphs/paint/`; a renderer imports it to find the same regions. `paint_guard.py` fails when a drawn sign has no map or a seed misses its region:
+
+```sh
+.venv/bin/python tools/khelathi-zethu-glyphs/paint_guard.py
+.venv/bin/python tools/khelathi-zethu-glyphs/paint.py
+```
+
+**Quadrats and cartouches.** Khelathi Zethu Glyphs lays out quadrats and cartouches itself from format controls typed between its signs: the vertical and horizontal joiners, the four corner insertions, begin and end segment, and begin and end enclosure, the cartouche. Each control is mapped at its Unicode code point, U+13430 to U+1343D, and at the same offset from U+1EC60 in the font's own block; `tools/khelathi-zethu-glyphs/controls.json` lists them. Notes and text store the font's own controls, U+1EC60 to U+1EC6D, the recommended form. The font accepts the Unicode controls so that text pasted from standard Egyptian text shapes in HarfBuzz tools, but a browser shapes a run of one script at a time and the Unicode controls belong to the Egyptian script, so in a browser they fall out of the run of signs and the quadrat comes apart. In a page, text in the font needs no markup and no feature turned on:
+
+```html
+<span class="hl-khelathi-zethu-glyphs">&#x1EA41;&#x1EC60;&#x1EA42;</span>
+```
+
+sets sign 01-002 over sign 01-003. `build.sh` adds the layout to the built font with `tools/khelathi-zethu-glyphs/layout.py`, and `tools/khelathi-zethu-glyphs/quadrats.py` shapes the fixtures of `quadrats.json`, the samples written with joiners, runs of quadrats and a seeded sweep of random ones, and asserts where every sign lands. The layout works in a horizontal line; a column is laid out by the page. `design/khelathi-zethu-glyphs.md` gives the controls, the layout and its limits, and `specimens/khelathi-zethu-glyphs/quadrats/` shows them.
+
+```sh
+.venv/bin/python tools/khelathi-zethu-glyphs/quadrats.py
 ```
 
 See `design/khelathi-zethu-glyphs.md`.

@@ -11,7 +11,7 @@ from pathlib import Path
 import uharfbuzz as hb
 from fontTools.pens.recordingPen import DecomposingRecordingPen
 from fontTools.ttLib import TTFont
-from PIL import Image, ImageDraw, ImageFont
+from PIL import Image, ImageChops, ImageDraw, ImageFont
 
 SUPERSAMPLE = 4
 LABEL_FONT = "/System/Library/Fonts/Supplemental/Arial Unicode.ttf"
@@ -93,15 +93,23 @@ class Renderer:
         scale = size / self.upem * SUPERSAMPLE
         w, h = img.size
         layer = Image.new("L", (w * SUPERSAMPLE, h * SUPERSAMPLE), 0)
-        d = ImageDraw.Draw(layer)
         for gid, gx, gy, _ in shaped.glyphs:
+            contours = self.contours(gid)
+            if not contours:
+                continue
+            # Each glyph is filled on its own and then laid over the others, so a glyph
+            # that overlaps another, as an inserted sign does, keeps its ink where the
+            # other has a hole.
+            glyph = Image.new("L", layer.size, 0)
+            d = ImageDraw.Draw(glyph)
             ox = (x + 0) * SUPERSAMPLE + gx * scale
             oy = baseline * SUPERSAMPLE - gy * scale
-            for area, pts in self.contours(gid):
+            for area, pts in contours:
                 poly = [(ox + px * scale, oy - py * scale) for px, py in pts]
                 # TrueType outer contours run clockwise in y-up coordinates,
                 # which is a negative signed area; holes run the other way.
                 d.polygon(poly, fill=255 if area < 0 else 0)
+            layer = ImageChops.lighter(layer, glyph)
         mask = layer.resize((w, h), Image.LANCZOS)
         img.paste(Image.new("RGB", (w, h), color), (0, 0), mask)
 

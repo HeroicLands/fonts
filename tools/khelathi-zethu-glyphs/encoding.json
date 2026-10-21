@@ -476,7 +476,12 @@
     {"id": "16-028", "codepoint": "U+1EC18", "subject": "eight strokes, four over four", "consonants": "", "god": "", "variants": ["a", "b"], "drawn": true, "glyph": "z16_028.a", "box": {"a": [60.0, 68.0], "b": [60.0, 68.0]}},
     {"id": "16-029", "codepoint": "U+1EC19", "subject": "nine strokes, three rows of three", "consonants": "", "god": "", "variants": ["a", "b"], "drawn": true, "glyph": "z16_029.a", "box": {"a": [47.0, 102.0], "b": [47.0, 102.0]}},
     {"id": "16-030", "codepoint": "U+1EC1A", "subject": "a lone balance pan, empty, hung on its cords", "consonants": "", "god": "", "variants": ["a", "b"], "drawn": true, "glyph": "z16_030.a", "box": {"a": [100, 96], "b": [100, 96]}},
-    {"id": "03-030", "codepoint": "U+1EC1B", "subject": "a black hawk, wings spread and gold-tipped, over a tomb door", "consonants": "", "god": "Weth'ur", "variants": ["a", "b"], "drawn": true, "glyph": "z03_030.a", "box": {"a": [100, 100], "b": [100, 100]}}
+    {"id": "03-030", "codepoint": "U+1EC1B", "subject": "a black hawk, wings spread and gold-tipped, over a tomb door", "consonants": "", "god": "Weth'ur", "variants": ["a", "b"], "drawn": true, "glyph": "z03_030.a", "box": {"a": [100, 100], "b": [100, 100]}},
+    {"id": "01-073", "codepoint": "U+1EC1C", "subject": "captive standing, arms bound behind, roped by the neck", "consonants": "", "god": "", "variants": ["a"], "drawn": true, "glyph": "z01_073.a", "box": {"a": [54.5571, 100.0]}},
+    {"id": "01-074", "codepoint": "U+1EC1D", "subject": "soldier leading a roped captive by the neck", "consonants": "", "god": "", "variants": ["a"], "drawn": true, "glyph": "z01_074.a", "box": {"a": [91.0389, 100.0]}},
+    {"id": "01-075", "codepoint": "U+1EC1E", "subject": "three captives roped together by the neck", "consonants": "", "god": "", "variants": ["a"], "drawn": true, "glyph": "z01_075.a", "box": {"a": [124.1053, 100.0]}},
+    {"id": "01-076", "codepoint": "U+1EC1F", "subject": "kneeling captive, arms bound above the head", "consonants": "", "god": "", "variants": ["a"], "drawn": true, "glyph": "z01_076.a", "box": {"a": [42.253, 100.0]}},
+    {"id": "01-077", "codepoint": "U+1EC20", "subject": "captive bound to a stake", "consonants": "", "god": "", "variants": ["a"], "drawn": true, "glyph": "z01_077.a", "box": {"a": [46.084, 100.0]}}
   ],
   "space": {"glyph": "space", "codepoint": "U+0020", "advance": 250},
   "ignorables": {"glyph": "ignorable", "codepoints": ["U+200B", "U+200C", "U+200D", "U+200E", "U+200F", "U+202A", "U+202B", "U+202C", "U+202D", "U+202E", "U+2066", "U+2067", "U+2068", "U+2069", "U+FEFF"]}

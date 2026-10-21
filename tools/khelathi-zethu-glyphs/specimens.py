@@ -10,9 +10,15 @@ One chart per group (01-men.png ... 16-strokes-and-figures.png) shows each drawn
 inscriptions: the Year 3 regnal date, the first sample of the crocodile hunt, and the whole
 of the royal decree scene. Each inscription is set as a right-to-left line and as a column.
 
-The font draws signs, not quadrats: a quadrat is two or more signs stacked or set
-side by side, and a royal name sits in a cord oval. Both are laid out here, as the setting's
-build lays them. The rules:
+``quadrats/`` holds pages the font sets itself: the fixtures of quadrats.json, written with
+the format controls, and every sample of samples.json written with joiners, with
+cartouches in place of the cord oval. A heading's second line gives the text in a short
+notation: ``:`` the vertical joiner, ``*`` the horizontal joiner, ``( )`` a segment,
+``[ts]`` and the like an insertion at that corner, ``< >`` a cartouche and ``|`` a space.
+
+These sample pages lay their quadrats and cord ovals out here, in a line and in a
+column, by the rules the setting's build uses to choose quadrats; the font lays out a line
+itself from the format controls, but not a column. The rules:
 
 - a sign is scaled into its slot by its own box (the font's box width and height, in the
   encoding); a slot is the quadrat, or its half when two signs share it;
@@ -35,7 +41,9 @@ from fontTools.ttLib import TTFont
 from PIL import Image, ImageChops, ImageDraw
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
-from render import label_font  # noqa: E402
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import quadrats  # noqa: E402
+from render import Renderer, label_font  # noqa: E402
 
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parent.parent
@@ -635,6 +643,74 @@ def sample_pages(font: Font, out: Path, data: dict):
         img.crop((0, 0, int(max(wide + 40, 1100)), int(y + 20))).save(out / name)
 
 
+# -- quadrats from the font's own shaping ------------------------------------------------------
+
+
+def notation(items) -> str:
+    """A text's items in the notation of the fixtures: : and * for the joiners, ( ) for a
+    segment, < > for a cartouche and the corner of an insertion in square brackets."""
+    marks = {"vj": ":", "hj": "*", "bs": "(", "es": ")", "be": "<", "ee": ">", "sp": "|",
+             "its": "[ts]", "ibs": "[bs]", "ite": "[te]", "ibe": "[be]"}
+    return " ".join(marks.get(t, t) for t in items)
+
+
+def wrap(d, text, font, width):
+    """`text` broken at spaces into lines no wider than `width` pixels."""
+    lines, cur = [], ""
+    for word in text.split():
+        trial = f"{cur} {word}".strip()
+        if cur and d.textlength(trial, font=font) > width:
+            lines.append(cur)
+            cur = word
+        else:
+            cur = trial
+    return lines + ([cur] if cur else [])
+
+
+def shaped_page(renderer, text, blocks, title, out, size=150, columns=3):
+    """Draw each (heading, notes, items) as a right-to-left line set by the font itself, in
+    a grid, with the quadrat's square ruled: the baseline and a quadrat above it."""
+    lab, small = label_font(18), label_font(14)
+    shaped = [renderer.shape(text.string(items), direction="rtl") for _, _, items in blocks]
+    cell = int(max([sh.advance * size / 1000 for sh in shaped] + [size * 1.6]) + 60)
+    columns = max(1, min(columns, 2400 // cell))
+    rows = math.ceil(len(blocks) / columns)
+    height = int(size * 1.45) + 96
+    img, d = page(columns * cell + 40, 70 + rows * height)
+    d.text((20, 20), title, fill=INK, font=label_font(24))
+    for i, ((heading, notes, _), sh) in enumerate(zip(blocks, shaped)):
+        x0, y0 = 20 + (i % columns) * cell, 70 + (i // columns) * height
+        base = y0 + size * 1.05
+        d.line([(x0, base), (x0 + cell - 30, base)], fill=RULE)
+        d.line([(x0, base - size * 0.77), (x0 + cell - 30, base - size * 0.77)], fill=RULE)
+        w = sh.advance * size / 1000
+        renderer.draw(img, x0 + (cell - 30 - w) / 2, base, sh, size, INK)
+        ty = base + size * 0.18
+        for text_, font_, colour, step in ((heading, lab, INK, 22), (notes, small, GREY, 18)):
+            for part in wrap(d, text_, font_, cell - 40)[:2]:
+                d.text((x0, ty), part, fill=colour, font=font_)
+                ty += step
+    img.save(out)
+
+
+def quadrat_pages(font_path: Path, out: Path):
+    """The quadrat fixtures, the cartouches and every sample written with joiners, set by
+    the font's own shaping, to quadrats/."""
+    out.mkdir(parents=True, exist_ok=True)
+    renderer = Renderer(font_path)
+    text = quadrats.Text(json.loads((HERE / "encoding.json").read_text(encoding="utf-8")))
+    data = quadrats.load_fixtures()
+    fixtures = [(f["title"], notation(f["text"].split()), f["text"].split()) for f in data["fixtures"]]
+    shaped_page(renderer, text, fixtures[:8], "Khelathi Zethu Glyphs: quadrats from the joiners and segments", out / "01-joiners.png")
+    shaped_page(renderer, text, fixtures[8:], "Khelathi Zethu Glyphs: segments and corner insertions", out / "02-insertions.png")
+    carts = [(f["title"], notation(f["text"].split()), f["text"].split()) for f in data["cartouches"]]
+    shaped_page(renderer, text, carts, "Khelathi Zethu Glyphs: cartouches", out / "03-cartouches.png")
+    lines = [(f"{label}: {title}", notation(items), items) for label, title, _, items in quadrats.samples(text)]
+    for n in range(0, len(lines), 10):
+        shaped_page(renderer, text, lines[n : n + 10], "Khelathi Zethu Glyphs: the sample inscriptions written with joiners",
+                    out / f"{4 + n // 10:02d}-samples.png", size=120, columns=2)
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     ap.add_argument("--font", default=str(ROOT / "fonts" / "KhelathiZethuGlyphs-Regular.ttf"))
@@ -646,6 +722,7 @@ def main():
     for g in range(1, 17):
         group_chart(font, g, out / f"{g:02d}-{slug(GROUPS[g - 1])}.png")
     sample_pages(font, out, json.loads((HERE / "samples.json").read_text(encoding="utf-8")))
+    quadrat_pages(Path(args.font), out / "quadrats")
 
 
 if __name__ == "__main__":

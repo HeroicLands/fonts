@@ -1,0 +1,15 @@
+{
+  "twin_block": {"start": "U+1EC60", "end": "U+1EC6F"},
+  "controls": [
+    {"key": "vj", "glyph": "ctl.vj", "codepoint": "U+13430", "twin": "U+1EC60", "name": "EGYPTIAN HIEROGLYPH VERTICAL JOINER", "twin_name": "ZETHU VERTICAL JOINER"},
+    {"key": "hj", "glyph": "ctl.hj", "codepoint": "U+13431", "twin": "U+1EC61", "name": "EGYPTIAN HIEROGLYPH HORIZONTAL JOINER", "twin_name": "ZETHU HORIZONTAL JOINER"},
+    {"key": "its", "glyph": "ctl.its", "codepoint": "U+13432", "twin": "U+1EC62", "name": "EGYPTIAN HIEROGLYPH INSERT AT TOP START", "twin_name": "ZETHU INSERT AT TOP START"},
+    {"key": "ibs", "glyph": "ctl.ibs", "codepoint": "U+13433", "twin": "U+1EC63", "name": "EGYPTIAN HIEROGLYPH INSERT AT BOTTOM START", "twin_name": "ZETHU INSERT AT BOTTOM START"},
+    {"key": "ite", "glyph": "ctl.ite", "codepoint": "U+13434", "twin": "U+1EC64", "name": "EGYPTIAN HIEROGLYPH INSERT AT TOP END", "twin_name": "ZETHU INSERT AT TOP END"},
+    {"key": "ibe", "glyph": "ctl.ibe", "codepoint": "U+13435", "twin": "U+1EC65", "name": "EGYPTIAN HIEROGLYPH INSERT AT BOTTOM END", "twin_name": "ZETHU INSERT AT BOTTOM END"},
+    {"key": "bs", "glyph": "ctl.bs", "codepoint": "U+13437", "twin": "U+1EC67", "name": "EGYPTIAN HIEROGLYPH BEGIN SEGMENT", "twin_name": "ZETHU BEGIN SEGMENT"},
+    {"key": "es", "glyph": "ctl.es", "codepoint": "U+13438", "twin": "U+1EC68", "name": "EGYPTIAN HIEROGLYPH END SEGMENT", "twin_name": "ZETHU END SEGMENT"},
+    {"key": "be", "glyph": "ctl.be", "codepoint": "U+1343C", "twin": "U+1EC6C", "name": "EGYPTIAN HIEROGLYPH BEGIN ENCLOSURE", "twin_name": "ZETHU BEGIN ENCLOSURE"},
+    {"key": "ee", "glyph": "ctl.ee", "codepoint": "U+1343D", "twin": "U+1EC6D", "name": "EGYPTIAN HIEROGLYPH END ENCLOSURE", "twin_name": "ZETHU END ENCLOSURE"}
+  ]
+}

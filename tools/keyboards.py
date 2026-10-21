@@ -452,7 +452,7 @@ def zethu_method(table: list[dict]) -> str:
         "form two digits, a hyphen and three digits.",
         "The cheatsheet keyboards/zethu.md lists every sign.",
     ]
-    rules = "\n".join(f" ({lisp(r['key'])} #x{int(r['codepoint'][2:], 16):X})" for r in table)
+    rules = "\n".join(f" ({lisp(r['key'])} #x{int(r['codepoint'][2:], 16):X})" for r in table if "key" in r)
     body = emacs_header(name, ZETHU["title"], doc, "An input method for the code points of Khelathi Zethu Glyphs.")
     body += ["(quail-define-rules", rules + ")", "", f"(provide '{name})", "", f";;; {name}.el ends here"]
     return "\n".join(body) + "\n"
@@ -724,7 +724,7 @@ def zethu_sheet(table: list[dict]) -> str:
         "| Sign id | Code point | Glyph |",
         "| --- | --- | --- |",
     ]
-    lines += [f"| {md_code(r['key'])} | {r['codepoint']} | {r['glyph']} |" for r in table]
+    lines += [f"| {md_code(r['key'])} | {r['codepoint']} | {r['glyph']} |" for r in table if "key" in r]
     return "\n".join(lines) + "\n"
 
 

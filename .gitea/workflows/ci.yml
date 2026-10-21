@@ -3,7 +3,8 @@ name: CI
 # What the repository asserts on every change: the canonical git hooks are
 # present, no TODO or FIXME marker is committed, and the fonts rebuild from the
 # UFO sources and pass the font check, and the npm package holds exactly the
-# fonts, their stylesheet, their manifest and their keyboards.
+# fonts, their stylesheet, their manifest and their keyboards, and every drawn
+# Khelathi Zethu sign has a paint map whose seeds land in its regions.
 #
 # The build is reproducible (a fixed head timestamp), so the committed fonts,
 # fonts.css and fonts.json must match a fresh build byte for byte: a file left
@@ -78,6 +79,7 @@ jobs:
                   .venv/bin/python tools/vertical.py
                   .venv/bin/python tools/spacing.py
                   .venv/bin/python tools/keyboards_guard.py --fixtures-only
+                  .venv/bin/python tools/khelathi-zethu-glyphs/paint_guard.py
                   .venv/bin/python tools/prove_guards.py
             - name: Committed fonts, stylesheet and manifest match the build
               run: |

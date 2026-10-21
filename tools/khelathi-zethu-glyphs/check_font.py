@@ -5,19 +5,22 @@
     .venv/bin/python tools/khelathi-zethu-glyphs/check_font.py [fonts/KhelathiZethuGlyphs-Regular.ttf]
 
 - The cmap is exactly the encoding: each drawn sign's default form on its code point,
-  the space, the default-ignorable characters on one empty glyph, and every code
-  point of the Latin ranges on the box (tools/notdef_box.py), so a Latin letter
-  prints the box.
-- The glyph set is exactly the encoding's forms, the notdef, the box, the space and
-  the two empty glyphs, and every glyph but the empty ones has an outline whose outer contour
-  runs clockwise.
+  each format control of controls.json on its Unicode code point and on its twin in the
+  font's block, the space, the default-ignorable characters on one empty glyph, and
+  every code point of the Latin ranges on the box (tools/notdef_box.py), so a Latin
+  letter prints the box.
+- The glyph set is exactly the encoding's forms, the notdef, the box, the space, the
+  two empty glyphs, the controls and the glyphs tools/khelathi-zethu-glyphs/layout.py
+  adds. Every glyph with contours has an outer contour that runs clockwise; the layout's
+  tokens, carriers and controls are empty; each copy of a sign at a drawn scale is one
+  component, its sign scaled by its step.
 - Each form's ink stands the sidebearing of tools/respace.py from each edge of its
   advance, to within two units, so its advance is its ink width and the sidebearing
   a side. The font holds a full quadrat between its ascender and descender, and no
   ink leaves the win metrics. The quadrat's scale is the one of tools/vertical.py.
 - Every second form (.b) and third form (.c) is reached by a single substitution
-  in salt, ss01 or ss02, and the font carries no other feature, no contextual lookup
-  and no positioning.
+  in salt, ss01 or ss02, which hold nothing else. The only other features are ccmp,
+  the layout's rclt and its positioning in dist.
 - The default-ignorable characters shape to nothing.
 - The name table carries the licence and the .woff2 beside the .ttf carries the same
   glyphs.
@@ -34,7 +37,9 @@ from fontTools.pens.boundsPen import BoundsPen
 from fontTools.ttLib import TTFont
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+sys.path.insert(0, str(Path(__file__).resolve().parent))
 import font_names  # noqa: E402
+import layout  # noqa: E402
 import notdef_box  # noqa: E402
 import respace  # noqa: E402
 import vertical  # noqa: E402
@@ -42,7 +47,8 @@ import vertical  # noqa: E402
 ROOT = Path(__file__).resolve().parent.parent.parent
 ENCODING = Path(__file__).resolve().parent / "encoding.json"
 EMPTY = {"ignorable", "ignorable.sub"}
-FEATURES = {"ccmp", "salt", "ss01", "ss02"}
+FEATURES = {"ccmp", "salt", "ss01", "ss02", "rclt"}
+VARIANTS = {"salt", "ss01", "ss02", "ccmp"}
 
 
 def scaled(units: int) -> int:
@@ -65,6 +71,9 @@ def gname(sid: str, v: str) -> str:
 def expected_cmap(enc) -> dict[int, str]:
     out = {cp(e["codepoint"]): e["glyph"] for e in enc["signs"] if e["drawn"]}
     out[cp(enc["space"]["codepoint"])] = enc["space"]["glyph"]
+    for c in layout.load_controls():
+        out[cp(c["codepoint"])] = c["glyph"]
+        out[cp(c["twin"])] = c["glyph"]
     for c in enc["ignorables"]["codepoints"]:
         out[cp(c)] = enc["ignorables"]["glyph"]
     for c in notdef_box.codepoints():
@@ -104,6 +113,8 @@ def lookup_maps(font):
         tag = rec.FeatureTag
         if tag not in FEATURES:
             problems.append(f"the font carries the feature {tag}")
+        if tag not in VARIANTS:
+            continue
         m = maps.setdefault(tag, {})
         for li in rec.Feature.LookupListIndex:
             lookup = gsub.LookupList.Lookup[li]
@@ -143,7 +154,13 @@ def check(path: Path) -> list[str]:
     for e in enc["signs"]:
         for v in e["variants"]:
             forms[gname(e["id"], v)] = (e, v)
-    glyphs = {".notdef", notdef_box.BOX, enc["space"]["glyph"], *EMPTY, *forms}
+    lay = layout.Layout(font, enc)
+    lay.build()
+    controls = {c["glyph"] for c in layout.load_controls()}
+    added = set(lay.new)
+    empty = EMPTY | controls | {g for g, (kind, _) in lay.new.items() if kind in ("empty", "empty-base", "carrier")}
+    copies = {g: data for g, (kind, data) in lay.new.items() if kind == "comp"}
+    glyphs = {".notdef", notdef_box.BOX, enc["space"]["glyph"], *EMPTY, *forms, *controls, *added}
     if set(order) != glyphs:
         extra, missing = sorted(set(order) - glyphs), sorted(glyphs - set(order))
         problems.append(f"glyph set differs from the encoding: extra {extra[:5]}, missing {missing[:5]}")
@@ -163,14 +180,25 @@ def check(path: Path) -> list[str]:
             left, right = pen.bounds[0], adv - pen.bounds[2]
             if abs(left - side) > 2 or abs(right - side) > 2:
                 problems.append(f"{name} has sidebearings {left:g} and {right:g}, expected {side}")
-        elif name in EMPTY and adv != 0:
-            problems.append(f"{name} must have zero advance")
+        elif (name in EMPTY or name in controls or name in copies or name.startswith("q")) and adv != 0:
+            if lay.new.get(name, ("", None))[0] not in ("carrier", "cap"):
+                problems.append(f"{name} must have zero advance")
 
     for name in order:
         g = glyf[name]
-        if name in EMPTY or name == enc["space"]["glyph"]:
+        if name in empty or name == enc["space"]["glyph"]:
             if g.numberOfContours != 0:
                 problems.append(f"{name} must be empty")
+            continue
+        if name in copies:
+            sign, scale, _, _ = copies[name]
+            comps = getattr(g, "components", [])
+            if g.numberOfContours != -1 or len(comps) != 1 or comps[0].glyphName != sign:
+                problems.append(f"{name} is not one component of {sign}")
+            else:
+                t = getattr(comps[0], "transform", [[1, 0], [0, 1]])
+                if abs(t[0][0] - scale) > 1e-3 or abs(t[1][1] - scale) > 1e-3 or t[0][1] or t[1][0]:
+                    problems.append(f"{name} scales {sign} by {t}, not {scale:.4f}")
             continue
         if g.numberOfContours <= 0:
             problems.append(f"{name} has no outline")
@@ -183,8 +211,12 @@ def check(path: Path) -> list[str]:
 
     maps, bad = lookup_maps(font)
     problems += bad
-    if "GPOS" in font:
-        problems.append("the font carries positioning; no sign should need it")
+    if "GPOS" not in font:
+        problems.append("the font carries no positioning; the quadrats need it")
+    else:
+        tags = {r.FeatureTag for r in font["GPOS"].table.FeatureList.FeatureRecord}
+        if tags != {"dist"}:
+            problems.append(f"the positioning features are {sorted(tags)}, expected dist alone")
     for name, (e, v) in forms.items():
         if v == "a":
             continue

@@ -21,13 +21,14 @@ name and kind of every character the face draws. A font fails when
   blocks overlap, or the README's "Code point blocks" table is not the registry's;
 - the Pirzath Carved and Pirzath Hand tables differ;
 - a Khelathi Zethu Glyphs sign has no key, its key is not a sign id, or two signs
-  share a key; or a character of a script typed by sound (tools/sound_keys.json)
-  carries a key of its own.
+  share a key, or one of its format controls carries a key; or a character of a script
+  typed by sound (tools/sound_keys.json) carries a key of its own.
 
 Text is shaped with the font's default features, so an optional style such as
 joining stays off. A few glyphs are reshaped by a typing rule when they stand alone,
 so they are shaped in the context the face draws them in: a ``y`` before a vowel, and
-Semaron's catch after a letter.
+Semaron's catch after a letter. A format control of Khelathi Zethu Glyphs is laid out
+by the quadrat or cartouche it stands in, so only its cmap entry is checked.
 """
 
 import json
@@ -110,6 +111,10 @@ def key_problems(label: str, rows: list[dict]) -> list[str]:
     zethu = label == "Khelathi Zethu Glyphs"
     for row in rows:
         glyph, key = row["glyph"], row.get("key")
+        if zethu and row["kind"] == "control":
+            if key is not None:
+                problems.append(f"fonts.json: error: {label}: the control {glyph} has the key {key!r}")
+            continue
         if not zethu:
             if key is not None:
                 problems.append(f"fonts.json: error: {label}: {glyph} has the key {key!r}; the script is typed by sound")
@@ -211,6 +216,10 @@ def check(font: Path) -> list[str]:
             glyph_of[code] = glyph
             if cmap.get(code) != glyph:
                 problems.append(f"{font}: error: {label}: {row['codepoint']} maps to {cmap.get(code)}, not {glyph}")
+                continue
+            if row["kind"] == "control":
+                # A format control is reshaped by the layout it takes part in, so only its
+                # cmap entry is checked here; tools/khelathi-zethu-glyphs/quadrats.py shapes it.
                 continue
             before, after = CONTEXT.get(glyph, ("", ""))
             if (before or after) and stem in codepoint_order.LTR:

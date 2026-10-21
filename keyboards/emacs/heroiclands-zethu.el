@@ -324,7 +324,12 @@ The cheatsheet keyboards/zethu.md lists every sign."
  ("16-028" #x1EC18)
  ("16-029" #x1EC19)
  ("16-030" #x1EC1A)
- ("03-030" #x1EC1B))
+ ("03-030" #x1EC1B)
+ ("01-073" #x1EC1C)
+ ("01-074" #x1EC1D)
+ ("01-075" #x1EC1E)
+ ("01-076" #x1EC1F)
+ ("01-077" #x1EC20))
 
 (provide 'heroiclands-zethu)
 
