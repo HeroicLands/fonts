@@ -339,6 +339,14 @@ the sign's `default`, or else its group's entry in `defaults`. A sign may give a
 `outline` category, and its outline is then drawn in a dark tone of that colour
 rather than the ink of the drawing.
 
+A sign whose drawing is open at its ends, such as a channel between two banks,
+may give `close`: line segments `[x1, y1, x2, y2]` in glyph units. Each counts as
+ink about one hairline wide when the regions are found, so the open space
+between the segment and the drawing becomes a region that a seed can paint. A
+segment is never drawn, and runs from one stroke of the drawing to another
+inside the glyph's box. The sign 10-001, a current between two banks, closes its
+top and bottom from bank to bank, and its whole channel is `water`.
+
 ### The categories
 
 The map records categories, not colours: each surface sets its own palette, and

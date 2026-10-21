@@ -7,7 +7,7 @@
 It fails when a drawn sign has no map, when a map names a sign that is not drawn or not in the
 encoding, when a category is not one of the map's `categories` (in `defaults`, a sign's
 `default` or `outline`, or a region), when a group of drawn signs has no default, when a seed
-falls on the outline or outside every region, when two seeds fall in one region, and when a
+falls on the outline, on a closing segment or outside every region, when a closing segment is not four numbers inside the glyph's box, when two seeds fall in one region, and when a
 region of a sign in a figure group (`paint.SEEDED_GROUPS`: people, women, gods, the body,
 beasts and birds) has no seed of its own, and when any pixel inside a sign's outline belongs to no region. Regions
 are found by `paint.py`, at its scale `K`, exactly as the contact sheets find them.
@@ -68,9 +68,16 @@ def check(data: dict, enc: dict, glyphs: paint.Glyphs, text: str = "") -> list:
             err(sid, f"{sid}: default {entry['default']!r} is not a category", '"default"')
         if "outline" in entry and (entry["outline"] not in cats or entry["outline"] == "ground"):
             err(sid, f"{sid}: outline {entry['outline']!r} is not a colour category", '"outline"')
-        regions = paint.Regions(glyphs, enc[sid]["glyph"])
+        regions = paint.Regions(glyphs, enc[sid]["glyph"], close=entry.get("close", ()))
         if regions.unpainted():
             err(sid, f"{sid}: {regions.unpainted()} pixels inside the outline belong to no region")
+        bx0, by0, bx1, by1 = glyphs.bounds(enc[sid]["glyph"])
+        for seg in entry.get("close", []):
+            if len(seg) != 4 or not all(isinstance(v, (int, float)) and not isinstance(v, bool) for v in seg):
+                err(sid, f"{sid}: closing segment {seg} is not four numbers", '"close"')
+            elif not all(bx0 <= seg[i] <= bx1 and by0 <= seg[i + 1] <= by1 for i in (0, 2)):
+                err(sid, f"{sid}: closing segment {seg} lies outside the glyph's box", '"close"')
+        shut = regions.shut([s for s in entry.get("close", []) if len(s) == 4])
         taken = {}
         for reg in entry.get("regions", []):
             x, y = reg["seed"]
@@ -78,7 +85,10 @@ def check(data: dict, enc: dict, glyphs: paint.Glyphs, text: str = "") -> list:
             if reg.get("paint") not in cats:
                 err(sid, f"{sid}: seed {needle} paints unknown category {reg.get('paint')!r}", needle)
             i, why = regions.at(x, y)
-            if why == "ink":
+            row, col = regions.to_px(x, y)
+            if 0 <= row < shut.shape[0] and 0 <= col < shut.shape[1] and shut[row, col]:
+                err(sid, f"{sid}: seed {needle} falls on a closing segment", needle)
+            elif why == "ink":
                 err(sid, f"{sid}: seed {needle} falls on the outline", needle)
             elif not i:
                 err(sid, f"{sid}: seed {needle} falls outside every region", needle)

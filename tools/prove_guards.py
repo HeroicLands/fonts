@@ -34,8 +34,8 @@ nothing on each platform; and, where a thalorna checkout exists, on a sounds.jso
 that thalorna's mapping notes no longer spell. The cheatsheet guard (tools/charts_guard.py) is proved on a sheet with a table row removed, with a wrong Code Point cell, with a chart cell removed, with a glyph image removed, with a
 lowercase name and with a Zethu name that is not its code point's position. The paint guard
 (tools/khelathi-zethu-glyphs/paint_guard.py) is proved on a map without the 11-001 sign's entry and on a
-map with a seed of 01-008 moved onto its outline, and on a map with one region of the oxen 05-004
-left without a seed. The guards run on their
+map with a seed of 01-008 moved onto its outline, on a map with one region of the oxen 05-004
+left without a seed, and on a map without the closing segments of the river 10-001. The guards run on their
 fixtures alone, so the proof needs no lexicon.
 """
 
@@ -484,10 +484,14 @@ def prove_paint() -> int:
     unseeded = copy.deepcopy(data)
     unseeded["signs"]["05-004"]["regions"].pop()
 
+    unclosed = copy.deepcopy(data)
+    del unclosed["signs"]["10-001"]["close"]
+
     status = 0
     for how, bad in (("without the 11-001 map", guard.check(dropped, enc, glyphs)),
                      ("with a seed of 01-008 moved onto its outline", guard.check(on_line, enc, glyphs)),
-                     ("with one region of 05-004 left without a seed", guard.check(unseeded, enc, glyphs))):
+                     ("with one region of 05-004 left without a seed", guard.check(unseeded, enc, glyphs)),
+                     ("without the closing segments of 10-001", guard.check(unclosed, enc, glyphs))):
         print(f"paint: {len(good)} failures on the map, {len(bad)} on the map {how}")
         if good or not bad:
             print("tools/khelathi-zethu-glyphs/paint_guard.py: error: the paint guard must pass the map and fail the altered map")

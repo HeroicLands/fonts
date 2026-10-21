@@ -19,6 +19,9 @@ reader of the map (the guard, the contact sheets, a renderer) finds the same one
 - every other connected white area is a region, except a speck smaller than `SPECK` hairlines
   square and a sliver the ball leaves in an outer corner, smaller than `SLIVER` square hairlines;
   a speck or sliver is painted as the region nearest it, so no paper shows inside the outline;
+- a sign's `close` segments in `paint.json`, each `[x1, y1, x2, y2]` in glyph units, count as
+  ink about one hairline wide when regions are found, so a channel open at its ends is enclosed
+  into regions; they are never drawn, and `ink` and `coverage` leave them out;
 - regions are numbered in scan order, top to bottom and left to right, and a gap the seal closed
   is painted as the region beside it.
 
@@ -217,7 +220,7 @@ class Regions:
     1..n on the regions. `to_px` takes a point in glyph units to (row, column), and `to_units`
     takes a pixel back."""
 
-    def __init__(self, glyphs: Glyphs, glyph: str, k: float = K):
+    def __init__(self, glyphs: Glyphs, glyph: str, k: float = K, close=()):
         self.k = k
         self.hair = max(2.0, HAIR * k)
         r = max(2, int(math.ceil(self.hair * BALL)))
@@ -227,7 +230,7 @@ class Regions:
         self.ink = self.coverage > 0.5
         rs = max(1, int(round(self.hair * SEAL)))
         sealed = ndimage.binary_closing(np.pad(self.ink, rs + 1), structure=disk(rs))[rs + 1:-rs - 1, rs + 1:-rs - 1]
-        ink = sealed | self.ink
+        ink = sealed | self.ink | self.shut(close)
         bg = np.pad(~ink, r + 2, constant_values=True)
         core = ndimage.binary_erosion(bg, structure=disk(r), border_value=1)
         lab0, _ = ndimage.label(core)
@@ -257,6 +260,17 @@ class Regions:
             labels[specks] = labels[rows[specks], cols[specks]]
         self.labels = labels
 
+    def shut(self, close):
+        """The mask of a sign's closing segments, each a line `[x1, y1, x2, y2]` in glyph units drawn
+        about one hairline wide. They shape the regions and are never ink: `ink` and `coverage`
+        leave them out."""
+        m = Image.new("L", self.ink.shape[::-1], 0)
+        d = ImageDraw.Draw(m)
+        for x1, y1, x2, y2 in close:
+            (r1, c1), (r2, c2) = self.to_px(x1, y1), self.to_px(x2, y2)
+            d.line([(c1, r1), (c2, r2)], fill=255, width=max(1, int(round(self.hair))))
+        return np.array(m) > 0
+
     def unpainted(self):
         """Pixels inside the outline that belong to no region: paper that would show through.
 
@@ -264,11 +278,11 @@ class Regions:
         return 0 if not self.n else int((~self.ink & ~self.open & (self.labels == 0)).sum())
 
     def to_px(self, x, y):
-        h = self.labels.shape[0]
+        h = self.ink.shape[0]
         return int(round(h - 1 - ((y - self.y0) * self.k + self.pad))), int(round((x - self.x0) * self.k + self.pad))
 
     def to_units(self, row, col):
-        h = self.labels.shape[0]
+        h = self.ink.shape[0]
         return round((col - self.pad) / self.k + self.x0), round((h - 1 - row - self.pad) / self.k + self.y0)
 
     def at(self, x, y):
@@ -399,6 +413,7 @@ def main():
     ids = [s for s, e in enc.items() if e["drawn"]]
     if args.ids:
         ids = [s for s in ids if s in args.ids or s[:2] in args.ids]
+    paint = load(args.paint)
     if args.regions:
         args.regions.mkdir(parents=True, exist_ok=True)
         dump = {}
@@ -406,13 +421,12 @@ def main():
             chunk = ids[j:j + args.per]
             tiles = []
             for sid in chunk:
-                reg = Regions(glyphs, enc[sid]["glyph"])
+                reg = Regions(glyphs, enc[sid]["glyph"], close=paint["signs"][sid].get("close", ()))
                 tiles.append((numbered(reg), f"{sid} {enc[sid]['subject'][:44]}"))
                 dump[sid] = {str(i): xy for i, xy in reg.centres().items()}
             sheet(tiles, 4, f"regions {chunk[0]} to {chunk[-1]}", 420, args.regions / f"regions-{chunk[0]}.png")
         (args.regions / "centres.json").write_text(json.dumps(dump, indent=1), encoding="utf-8")
         return
-    paint = load(args.paint)
     args.out.mkdir(parents=True, exist_ok=True)
     for g, name in enumerate(GROUPS, start=1):
         group = [s for s in ids if int(s[:2]) == g and s in paint["signs"]]
@@ -420,7 +434,7 @@ def main():
             continue
         tiles = []
         for sid in group:
-            reg = Regions(glyphs, enc[sid]["glyph"])
+            reg = Regions(glyphs, enc[sid]["glyph"], close=paint["signs"][sid].get("close", ()))
             im = painted(reg, paints(paint, sid, reg), paint["signs"][sid].get("outline"), scale=1)
             tiles.append((im, f"{sid} {enc[sid]['subject'][:30]}"))
         sheet(tiles, 6, f"{g:02d} {name}: paint", 260, args.out / f"{g:02d}-{slug(name)}.png")
@@ -428,7 +442,7 @@ def main():
     if figures:
         tiles = []
         for sid in figures:
-            reg = Regions(glyphs, enc[sid]["glyph"])
+            reg = Regions(glyphs, enc[sid]["glyph"], close=paint["signs"][sid].get("close", ()))
             im = painted(reg, paints(paint, sid, reg), paint["signs"][sid].get("outline"), scale=2)
             tiles.append((im, f"{sid} {enc[sid]['subject'][:44]}"))
         sheet(tiles, 4, "Standing, walking and bending figures: kilt, legs and the ground between them", 480,
@@ -437,7 +451,7 @@ def main():
     if low:
         tiles = []
         for sid in low:
-            reg = Regions(glyphs, enc[sid]["glyph"])
+            reg = Regions(glyphs, enc[sid]["glyph"], close=paint["signs"][sid].get("close", ()))
             im = painted(reg, paints(paint, sid, reg), paint["signs"][sid].get("outline"), scale=2)
             tiles.append((im, f"{sid} {enc[sid]['subject'][:44]}"))
         sheet(tiles, 4, "Kneeling and seated figures, and beasts: the air under knees, arms and bellies", 480,
