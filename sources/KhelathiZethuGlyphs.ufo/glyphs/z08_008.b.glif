@@ -3,7 +3,8 @@
   <advance width="281"/>
   <outline>
     <contour>
-      <point x="72" y="115" type="qcurve"/>
+      <point x="72" y="115" type="qcurve" smooth="yes"/>
+      <point x="69" y="107" type="line"/>
       <point x="211" y="107" type="line"/>
       <point x="209" y="115" type="line" smooth="yes"/>
       <point x="173" y="229"/>

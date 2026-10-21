@@ -34,6 +34,7 @@
       <point x="612" y="45" type="line"/>
       <point x="612" y="164" type="line"/>
       <point x="643" y="164" type="line"/>
+      <point x="643" y="214" type="line"/>
       <point x="523" y="214" type="line"/>
       <point x="529" y="230"/>
       <point x="527" y="247" type="qcurve"/>

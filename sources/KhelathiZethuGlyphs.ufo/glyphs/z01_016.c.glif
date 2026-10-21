@@ -389,8 +389,8 @@
     </contour>
     <contour>
       <point x="202" y="589" type="qcurve"/>
-      <point x="215" y="638" type="line"/>
-      <point x="222" y="657" type="line" smooth="yes"/>
+      <point x="220" y="658" type="line"/>
+      <point x="222" y="657" type="line"/>
       <point x="228" y="675"/>
       <point x="217" y="686" type="qcurve" smooth="yes"/>
       <point x="215" y="688"/>
@@ -457,6 +457,7 @@
     <contour>
       <point x="170" y="290" type="qcurve"/>
       <point x="110" y="390" type="line"/>
+      <point x="150" y="390" type="line"/>
       <point x="172" y="290" type="line"/>
       <point x="171" y="290"/>
     </contour>
@@ -464,6 +465,7 @@
       <point x="137" y="557" type="qcurve"/>
       <point x="135" y="552" type="line"/>
       <point x="127" y="555" type="line"/>
+      <point x="127" y="551" type="line"/>
       <point x="102" y="551" type="line"/>
       <point x="102" y="559" type="line"/>
       <point x="105" y="559" type="line"/>
@@ -505,7 +507,7 @@
       <point x="179" y="664" type="qcurve"/>
       <point x="184" y="663" type="line"/>
       <point x="178" y="664" type="line"/>
-      <point x="172" y="631" type="line"/>
+      <point x="169" y="612" type="line"/>
       <point x="165" y="618" type="line"/>
       <point x="165" y="628"/>
       <point x="162" y="638" type="qcurve"/>

@@ -373,7 +373,6 @@
     </contour>
     <contour>
       <point x="292" y="327" type="qcurve"/>
-      <point x="265" y="453" type="line"/>
       <point x="264" y="457" type="line"/>
       <point x="332" y="438" type="line"/>
       <point x="396" y="330" type="line"/>

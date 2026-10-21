@@ -78,9 +78,9 @@ default to right to left, so text in them runs right to left in browsers, Foundr
 and Typst with no control characters. Each sign of the inventory has one code
 point, in inventory order from U+1EA40, so a sign that is not yet drawn keeps its
 place and a later sign drops in without renumbering. `tools/khelathi-zethu-glyphs/encoding.json`
-is the table: each entry gives the id, the code point, the subject, the consonant
-value, the god, the forms drawn, whether the sign is drawn and the box of each
-form.
+is the table: each entry gives the id, the code point, the subject, the meaning,
+the consonant value, the god, the forms drawn, whether the sign is drawn and the
+box of each form.
 
 The font also maps the space and the default-ignorable controls (U+200B to
 U+200F, U+202A to U+202E, U+2066 to U+2069 and U+FEFF). The controls draw
@@ -262,6 +262,34 @@ cobra, 07-009, alone.
 
 These are rules of writing, not of the font: the font sets whatever signs are
 typed, and the writer chooses the signs.
+
+## Writing conventions
+
+These are rules of writing too, and the font sets whatever is typed.
+
+1. **Plural and count.** Three strokes, 16-006, after a noun make it plural, with no
+   number meant: the gods are 03-001 with the strokes. Any other numeral after a noun
+   is its count: the Two Banks are 10-025 with 16-005, and 128 qelu is the
+   weight-piece, then a hundred, two tens and eight. A count of exactly three is
+   written with a unit stroke, 16-005 and 16-004, where the plural would mislead.
+2. **Ordinals and regnal numbers.** The ordinal marker 16-031 stands before a numeral
+   and makes it a place in a count: the seventh Gar-Au of the house is the Gar-Au, the
+   marker, seven. A regnal number stands inside the cartouche after the throne name,
+   with no marker: Meqes with six strokes in the cord is Meqes VI.
+3. **Dates.** In a date the numeral names which, not how many. After the regnal-year
+   sign 16-024, the month sign 09-024 or a day, a numeral is an ordinal without the
+   marker: Year 3, the second month.
+4. **Foreign names.** A foreign land or people is spelled in sound signs and closed by
+   the foreign-land sign 10-013, or by the foreigner 01-040, as a god's name is closed
+   by the god's sign. A land with a sign of its own closes with that sign: Dunhara
+   closes with the sand seas, 10-035.
+5. **Speech.** Direct speech opens with the formula words spoken by: 03-005 with the
+   mouth 04-006, _ez_, and the speaker. No sign marks its end; the next formula or the
+   end of the inscription closes it.
+6. **The quarters.** A sign that names a quarter also writes what that quarter means.
+   The west, 10-014, beside a person reads the dead, and after a verb of going it reads
+   died. The east, 09-003, writes the sunrise, birth and the new day. The north is the
+   delta, 10-032, and the south the cataract, 10-022.
 
 ## The paint map
 

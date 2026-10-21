@@ -379,8 +379,9 @@
       <point x="58" y="341" type="line"/>
       <point x="89" y="392" type="line"/>
       <point x="66" y="444" type="line"/>
-      <point x="91" y="427" type="line"/>
-      <point x="125" y="396" type="line"/>
+      <point x="123" y="403" type="line"/>
+      <point x="119" y="401" type="line"/>
+      <point x="125" y="396" type="line" smooth="yes"/>
       <point x="129" y="393"/>
     </contour>
     <contour>

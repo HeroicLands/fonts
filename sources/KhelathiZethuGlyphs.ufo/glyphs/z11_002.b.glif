@@ -99,6 +99,7 @@
     </contour>
     <contour>
       <point x="309" y="150" type="qcurve"/>
+      <point x="309" y="195" type="line"/>
       <point x="490" y="195" type="line"/>
       <point x="490" y="151" type="line"/>
       <point x="399" y="161"/>

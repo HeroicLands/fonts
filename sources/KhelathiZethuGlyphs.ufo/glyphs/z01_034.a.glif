@@ -446,7 +446,7 @@
     <contour>
       <point x="226" y="289" type="qcurve"/>
       <point x="165" y="393" type="line"/>
-      <point x="215" y="351" type="line"/>
+      <point x="206" y="391" type="line"/>
       <point x="228" y="290" type="line"/>
       <point x="227" y="289"/>
     </contour>

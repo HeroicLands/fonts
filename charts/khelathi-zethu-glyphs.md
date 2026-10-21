@@ -1,6 +1,6 @@
 # Khelathi Zethu Glyphs
 
-329 characters, U+13430 to U+1EC6D, in the font `Khelathi Zethu Glyphs`.
+364 characters, U+13430 to U+1EC6D, in the font `Khelathi Zethu Glyphs`.
 
 ## Code chart
 
@@ -95,6 +95,7 @@
 | ZETHU CHARACTER 061 | ![U+1EA7C](khelathi-zethu-glyphs/glyphs/U+1EA7C.svg) | U+1EA7C | `&#125564;` | `&#x1EA7C;` |
 | ZETHU CHARACTER 062 | ![U+1EA7D](khelathi-zethu-glyphs/glyphs/U+1EA7D.svg) | U+1EA7D | `&#125565;` | `&#x1EA7D;` |
 | ZETHU CHARACTER 064 | ![U+1EA7F](khelathi-zethu-glyphs/glyphs/U+1EA7F.svg) | U+1EA7F | `&#125567;` | `&#x1EA7F;` |
+| ZETHU CHARACTER 065 | ![U+1EA80](khelathi-zethu-glyphs/glyphs/U+1EA80.svg) | U+1EA80 | `&#125568;` | `&#x1EA80;` |
 | ZETHU CHARACTER 068 | ![U+1EA83](khelathi-zethu-glyphs/glyphs/U+1EA83.svg) | U+1EA83 | `&#125571;` | `&#x1EA83;` |
 | ZETHU CHARACTER 069 | ![U+1EA84](khelathi-zethu-glyphs/glyphs/U+1EA84.svg) | U+1EA84 | `&#125572;` | `&#x1EA84;` |
 | ZETHU CHARACTER 070 | ![U+1EA85](khelathi-zethu-glyphs/glyphs/U+1EA85.svg) | U+1EA85 | `&#125573;` | `&#x1EA85;` |
@@ -127,20 +128,26 @@
 | ZETHU CHARACTER 103 | ![U+1EAA6](khelathi-zethu-glyphs/glyphs/U+1EAA6.svg) | U+1EAA6 | `&#125606;` | `&#x1EAA6;` |
 | ZETHU CHARACTER 104 | ![U+1EAA7](khelathi-zethu-glyphs/glyphs/U+1EAA7.svg) | U+1EAA7 | `&#125607;` | `&#x1EAA7;` |
 | ZETHU CHARACTER 105 | ![U+1EAA8](khelathi-zethu-glyphs/glyphs/U+1EAA8.svg) | U+1EAA8 | `&#125608;` | `&#x1EAA8;` |
+| ZETHU CHARACTER 106 | ![U+1EAA9](khelathi-zethu-glyphs/glyphs/U+1EAA9.svg) | U+1EAA9 | `&#125609;` | `&#x1EAA9;` |
 | ZETHU CHARACTER 109 | ![U+1EAAC](khelathi-zethu-glyphs/glyphs/U+1EAAC.svg) | U+1EAAC | `&#125612;` | `&#x1EAAC;` |
 | ZETHU CHARACTER 112 | ![U+1EAAF](khelathi-zethu-glyphs/glyphs/U+1EAAF.svg) | U+1EAAF | `&#125615;` | `&#x1EAAF;` |
+| ZETHU CHARACTER 115 | ![U+1EAB2](khelathi-zethu-glyphs/glyphs/U+1EAB2.svg) | U+1EAB2 | `&#125618;` | `&#x1EAB2;` |
 | ZETHU CHARACTER 117 | ![U+1EAB4](khelathi-zethu-glyphs/glyphs/U+1EAB4.svg) | U+1EAB4 | `&#125620;` | `&#x1EAB4;` |
 | ZETHU CHARACTER 121 | ![U+1EAB8](khelathi-zethu-glyphs/glyphs/U+1EAB8.svg) | U+1EAB8 | `&#125624;` | `&#x1EAB8;` |
 | ZETHU CHARACTER 123 | ![U+1EABA](khelathi-zethu-glyphs/glyphs/U+1EABA.svg) | U+1EABA | `&#125626;` | `&#x1EABA;` |
 | ZETHU CHARACTER 124 | ![U+1EABB](khelathi-zethu-glyphs/glyphs/U+1EABB.svg) | U+1EABB | `&#125627;` | `&#x1EABB;` |
 | ZETHU CHARACTER 126 | ![U+1EABD](khelathi-zethu-glyphs/glyphs/U+1EABD.svg) | U+1EABD | `&#125629;` | `&#x1EABD;` |
 | ZETHU CHARACTER 127 | ![U+1EABE](khelathi-zethu-glyphs/glyphs/U+1EABE.svg) | U+1EABE | `&#125630;` | `&#x1EABE;` |
+| ZETHU CHARACTER 129 | ![U+1EAC0](khelathi-zethu-glyphs/glyphs/U+1EAC0.svg) | U+1EAC0 | `&#125632;` | `&#x1EAC0;` |
 | ZETHU CHARACTER 132 | ![U+1EAC3](khelathi-zethu-glyphs/glyphs/U+1EAC3.svg) | U+1EAC3 | `&#125635;` | `&#x1EAC3;` |
 | ZETHU CHARACTER 133 | ![U+1EAC4](khelathi-zethu-glyphs/glyphs/U+1EAC4.svg) | U+1EAC4 | `&#125636;` | `&#x1EAC4;` |
 | ZETHU CHARACTER 134 | ![U+1EAC5](khelathi-zethu-glyphs/glyphs/U+1EAC5.svg) | U+1EAC5 | `&#125637;` | `&#x1EAC5;` |
 | ZETHU CHARACTER 142 | ![U+1EACD](khelathi-zethu-glyphs/glyphs/U+1EACD.svg) | U+1EACD | `&#125645;` | `&#x1EACD;` |
+| ZETHU CHARACTER 143 | ![U+1EACE](khelathi-zethu-glyphs/glyphs/U+1EACE.svg) | U+1EACE | `&#125646;` | `&#x1EACE;` |
+| ZETHU CHARACTER 145 | ![U+1EAD0](khelathi-zethu-glyphs/glyphs/U+1EAD0.svg) | U+1EAD0 | `&#125648;` | `&#x1EAD0;` |
 | ZETHU CHARACTER 146 | ![U+1EAD1](khelathi-zethu-glyphs/glyphs/U+1EAD1.svg) | U+1EAD1 | `&#125649;` | `&#x1EAD1;` |
 | ZETHU CHARACTER 152 | ![U+1EAD7](khelathi-zethu-glyphs/glyphs/U+1EAD7.svg) | U+1EAD7 | `&#125655;` | `&#x1EAD7;` |
+| ZETHU CHARACTER 157 | ![U+1EADC](khelathi-zethu-glyphs/glyphs/U+1EADC.svg) | U+1EADC | `&#125660;` | `&#x1EADC;` |
 | ZETHU CHARACTER 163 | ![U+1EAE2](khelathi-zethu-glyphs/glyphs/U+1EAE2.svg) | U+1EAE2 | `&#125666;` | `&#x1EAE2;` |
 | ZETHU CHARACTER 170 | ![U+1EAE9](khelathi-zethu-glyphs/glyphs/U+1EAE9.svg) | U+1EAE9 | `&#125673;` | `&#x1EAE9;` |
 | ZETHU CHARACTER 172 | ![U+1EAEB](khelathi-zethu-glyphs/glyphs/U+1EAEB.svg) | U+1EAEB | `&#125675;` | `&#x1EAEB;` |
@@ -163,12 +170,15 @@
 | ZETHU CHARACTER 237 | ![U+1EB2C](khelathi-zethu-glyphs/glyphs/U+1EB2C.svg) | U+1EB2C | `&#125740;` | `&#x1EB2C;` |
 | ZETHU CHARACTER 242 | ![U+1EB31](khelathi-zethu-glyphs/glyphs/U+1EB31.svg) | U+1EB31 | `&#125745;` | `&#x1EB31;` |
 | ZETHU CHARACTER 243 | ![U+1EB32](khelathi-zethu-glyphs/glyphs/U+1EB32.svg) | U+1EB32 | `&#125746;` | `&#x1EB32;` |
+| ZETHU CHARACTER 244 | ![U+1EB33](khelathi-zethu-glyphs/glyphs/U+1EB33.svg) | U+1EB33 | `&#125747;` | `&#x1EB33;` |
 | ZETHU CHARACTER 246 | ![U+1EB35](khelathi-zethu-glyphs/glyphs/U+1EB35.svg) | U+1EB35 | `&#125749;` | `&#x1EB35;` |
 | ZETHU CHARACTER 247 | ![U+1EB36](khelathi-zethu-glyphs/glyphs/U+1EB36.svg) | U+1EB36 | `&#125750;` | `&#x1EB36;` |
 | ZETHU CHARACTER 248 | ![U+1EB37](khelathi-zethu-glyphs/glyphs/U+1EB37.svg) | U+1EB37 | `&#125751;` | `&#x1EB37;` |
 | ZETHU CHARACTER 249 | ![U+1EB38](khelathi-zethu-glyphs/glyphs/U+1EB38.svg) | U+1EB38 | `&#125752;` | `&#x1EB38;` |
 | ZETHU CHARACTER 250 | ![U+1EB39](khelathi-zethu-glyphs/glyphs/U+1EB39.svg) | U+1EB39 | `&#125753;` | `&#x1EB39;` |
 | ZETHU CHARACTER 251 | ![U+1EB3A](khelathi-zethu-glyphs/glyphs/U+1EB3A.svg) | U+1EB3A | `&#125754;` | `&#x1EB3A;` |
+| ZETHU CHARACTER 252 | ![U+1EB3B](khelathi-zethu-glyphs/glyphs/U+1EB3B.svg) | U+1EB3B | `&#125755;` | `&#x1EB3B;` |
+| ZETHU CHARACTER 255 | ![U+1EB3E](khelathi-zethu-glyphs/glyphs/U+1EB3E.svg) | U+1EB3E | `&#125758;` | `&#x1EB3E;` |
 | ZETHU CHARACTER 256 | ![U+1EB3F](khelathi-zethu-glyphs/glyphs/U+1EB3F.svg) | U+1EB3F | `&#125759;` | `&#x1EB3F;` |
 | ZETHU CHARACTER 257 | ![U+1EB40](khelathi-zethu-glyphs/glyphs/U+1EB40.svg) | U+1EB40 | `&#125760;` | `&#x1EB40;` |
 | ZETHU CHARACTER 258 | ![U+1EB41](khelathi-zethu-glyphs/glyphs/U+1EB41.svg) | U+1EB41 | `&#125761;` | `&#x1EB41;` |
@@ -196,6 +206,7 @@
 | ZETHU CHARACTER 286 | ![U+1EB5D](khelathi-zethu-glyphs/glyphs/U+1EB5D.svg) | U+1EB5D | `&#125789;` | `&#x1EB5D;` |
 | ZETHU CHARACTER 287 | ![U+1EB5E](khelathi-zethu-glyphs/glyphs/U+1EB5E.svg) | U+1EB5E | `&#125790;` | `&#x1EB5E;` |
 | ZETHU CHARACTER 288 | ![U+1EB5F](khelathi-zethu-glyphs/glyphs/U+1EB5F.svg) | U+1EB5F | `&#125791;` | `&#x1EB5F;` |
+| ZETHU CHARACTER 289 | ![U+1EB60](khelathi-zethu-glyphs/glyphs/U+1EB60.svg) | U+1EB60 | `&#125792;` | `&#x1EB60;` |
 | ZETHU CHARACTER 290 | ![U+1EB61](khelathi-zethu-glyphs/glyphs/U+1EB61.svg) | U+1EB61 | `&#125793;` | `&#x1EB61;` |
 | ZETHU CHARACTER 291 | ![U+1EB62](khelathi-zethu-glyphs/glyphs/U+1EB62.svg) | U+1EB62 | `&#125794;` | `&#x1EB62;` |
 | ZETHU CHARACTER 292 | ![U+1EB63](khelathi-zethu-glyphs/glyphs/U+1EB63.svg) | U+1EB63 | `&#125795;` | `&#x1EB63;` |
@@ -208,6 +219,7 @@
 | ZETHU CHARACTER 299 | ![U+1EB6A](khelathi-zethu-glyphs/glyphs/U+1EB6A.svg) | U+1EB6A | `&#125802;` | `&#x1EB6A;` |
 | ZETHU CHARACTER 300 | ![U+1EB6B](khelathi-zethu-glyphs/glyphs/U+1EB6B.svg) | U+1EB6B | `&#125803;` | `&#x1EB6B;` |
 | ZETHU CHARACTER 301 | ![U+1EB6C](khelathi-zethu-glyphs/glyphs/U+1EB6C.svg) | U+1EB6C | `&#125804;` | `&#x1EB6C;` |
+| ZETHU CHARACTER 302 | ![U+1EB6D](khelathi-zethu-glyphs/glyphs/U+1EB6D.svg) | U+1EB6D | `&#125805;` | `&#x1EB6D;` |
 | ZETHU CHARACTER 303 | ![U+1EB6E](khelathi-zethu-glyphs/glyphs/U+1EB6E.svg) | U+1EB6E | `&#125806;` | `&#x1EB6E;` |
 | ZETHU CHARACTER 304 | ![U+1EB6F](khelathi-zethu-glyphs/glyphs/U+1EB6F.svg) | U+1EB6F | `&#125807;` | `&#x1EB6F;` |
 | ZETHU CHARACTER 305 | ![U+1EB70](khelathi-zethu-glyphs/glyphs/U+1EB70.svg) | U+1EB70 | `&#125808;` | `&#x1EB70;` |
@@ -289,6 +301,8 @@
 | ZETHU CHARACTER 396 | ![U+1EBCB](khelathi-zethu-glyphs/glyphs/U+1EBCB.svg) | U+1EBCB | `&#125899;` | `&#x1EBCB;` |
 | ZETHU CHARACTER 399 | ![U+1EBCE](khelathi-zethu-glyphs/glyphs/U+1EBCE.svg) | U+1EBCE | `&#125902;` | `&#x1EBCE;` |
 | ZETHU CHARACTER 402 | ![U+1EBD1](khelathi-zethu-glyphs/glyphs/U+1EBD1.svg) | U+1EBD1 | `&#125905;` | `&#x1EBD1;` |
+| ZETHU CHARACTER 404 | ![U+1EBD3](khelathi-zethu-glyphs/glyphs/U+1EBD3.svg) | U+1EBD3 | `&#125907;` | `&#x1EBD3;` |
+| ZETHU CHARACTER 405 | ![U+1EBD4](khelathi-zethu-glyphs/glyphs/U+1EBD4.svg) | U+1EBD4 | `&#125908;` | `&#x1EBD4;` |
 | ZETHU CHARACTER 409 | ![U+1EBD8](khelathi-zethu-glyphs/glyphs/U+1EBD8.svg) | U+1EBD8 | `&#125912;` | `&#x1EBD8;` |
 | ZETHU CHARACTER 410 | ![U+1EBD9](khelathi-zethu-glyphs/glyphs/U+1EBD9.svg) | U+1EBD9 | `&#125913;` | `&#x1EBD9;` |
 | ZETHU CHARACTER 411 | ![U+1EBDA](khelathi-zethu-glyphs/glyphs/U+1EBDA.svg) | U+1EBDA | `&#125914;` | `&#x1EBDA;` |
@@ -319,6 +333,9 @@
 | ZETHU CHARACTER 440 | ![U+1EBF7](khelathi-zethu-glyphs/glyphs/U+1EBF7.svg) | U+1EBF7 | `&#125943;` | `&#x1EBF7;` |
 | ZETHU CHARACTER 441 | ![U+1EBF8](khelathi-zethu-glyphs/glyphs/U+1EBF8.svg) | U+1EBF8 | `&#125944;` | `&#x1EBF8;` |
 | ZETHU CHARACTER 442 | ![U+1EBF9](khelathi-zethu-glyphs/glyphs/U+1EBF9.svg) | U+1EBF9 | `&#125945;` | `&#x1EBF9;` |
+| ZETHU CHARACTER 443 | ![U+1EBFA](khelathi-zethu-glyphs/glyphs/U+1EBFA.svg) | U+1EBFA | `&#125946;` | `&#x1EBFA;` |
+| ZETHU CHARACTER 444 | ![U+1EBFB](khelathi-zethu-glyphs/glyphs/U+1EBFB.svg) | U+1EBFB | `&#125947;` | `&#x1EBFB;` |
+| ZETHU CHARACTER 445 | ![U+1EBFC](khelathi-zethu-glyphs/glyphs/U+1EBFC.svg) | U+1EBFC | `&#125948;` | `&#x1EBFC;` |
 | ZETHU CHARACTER 446 | ![U+1EBFD](khelathi-zethu-glyphs/glyphs/U+1EBFD.svg) | U+1EBFD | `&#125949;` | `&#x1EBFD;` |
 | ZETHU CHARACTER 447 | ![U+1EBFE](khelathi-zethu-glyphs/glyphs/U+1EBFE.svg) | U+1EBFE | `&#125950;` | `&#x1EBFE;` |
 | ZETHU CHARACTER 448 | ![U+1EBFF](khelathi-zethu-glyphs/glyphs/U+1EBFF.svg) | U+1EBFF | `&#125951;` | `&#x1EBFF;` |
@@ -351,3 +368,21 @@
 | ZETHU CHARACTER 479 | ![U+1EC1E](khelathi-zethu-glyphs/glyphs/U+1EC1E.svg) | U+1EC1E | `&#125982;` | `&#x1EC1E;` |
 | ZETHU CHARACTER 480 | ![U+1EC1F](khelathi-zethu-glyphs/glyphs/U+1EC1F.svg) | U+1EC1F | `&#125983;` | `&#x1EC1F;` |
 | ZETHU CHARACTER 481 | ![U+1EC20](khelathi-zethu-glyphs/glyphs/U+1EC20.svg) | U+1EC20 | `&#125984;` | `&#x1EC20;` |
+| ZETHU CHARACTER 482 | ![U+1EC21](khelathi-zethu-glyphs/glyphs/U+1EC21.svg) | U+1EC21 | `&#125985;` | `&#x1EC21;` |
+| ZETHU CHARACTER 483 | ![U+1EC22](khelathi-zethu-glyphs/glyphs/U+1EC22.svg) | U+1EC22 | `&#125986;` | `&#x1EC22;` |
+| ZETHU CHARACTER 484 | ![U+1EC23](khelathi-zethu-glyphs/glyphs/U+1EC23.svg) | U+1EC23 | `&#125987;` | `&#x1EC23;` |
+| ZETHU CHARACTER 485 | ![U+1EC24](khelathi-zethu-glyphs/glyphs/U+1EC24.svg) | U+1EC24 | `&#125988;` | `&#x1EC24;` |
+| ZETHU CHARACTER 486 | ![U+1EC25](khelathi-zethu-glyphs/glyphs/U+1EC25.svg) | U+1EC25 | `&#125989;` | `&#x1EC25;` |
+| ZETHU CHARACTER 487 | ![U+1EC26](khelathi-zethu-glyphs/glyphs/U+1EC26.svg) | U+1EC26 | `&#125990;` | `&#x1EC26;` |
+| ZETHU CHARACTER 488 | ![U+1EC27](khelathi-zethu-glyphs/glyphs/U+1EC27.svg) | U+1EC27 | `&#125991;` | `&#x1EC27;` |
+| ZETHU CHARACTER 489 | ![U+1EC28](khelathi-zethu-glyphs/glyphs/U+1EC28.svg) | U+1EC28 | `&#125992;` | `&#x1EC28;` |
+| ZETHU CHARACTER 490 | ![U+1EC29](khelathi-zethu-glyphs/glyphs/U+1EC29.svg) | U+1EC29 | `&#125993;` | `&#x1EC29;` |
+| ZETHU CHARACTER 491 | ![U+1EC2A](khelathi-zethu-glyphs/glyphs/U+1EC2A.svg) | U+1EC2A | `&#125994;` | `&#x1EC2A;` |
+| ZETHU CHARACTER 492 | ![U+1EC2B](khelathi-zethu-glyphs/glyphs/U+1EC2B.svg) | U+1EC2B | `&#125995;` | `&#x1EC2B;` |
+| ZETHU CHARACTER 493 | ![U+1EC2C](khelathi-zethu-glyphs/glyphs/U+1EC2C.svg) | U+1EC2C | `&#125996;` | `&#x1EC2C;` |
+| ZETHU CHARACTER 494 | ![U+1EC2D](khelathi-zethu-glyphs/glyphs/U+1EC2D.svg) | U+1EC2D | `&#125997;` | `&#x1EC2D;` |
+| ZETHU CHARACTER 495 | ![U+1EC2E](khelathi-zethu-glyphs/glyphs/U+1EC2E.svg) | U+1EC2E | `&#125998;` | `&#x1EC2E;` |
+| ZETHU CHARACTER 496 | ![U+1EC2F](khelathi-zethu-glyphs/glyphs/U+1EC2F.svg) | U+1EC2F | `&#125999;` | `&#x1EC2F;` |
+| ZETHU CHARACTER 497 | ![U+1EC30](khelathi-zethu-glyphs/glyphs/U+1EC30.svg) | U+1EC30 | `&#126000;` | `&#x1EC30;` |
+| ZETHU CHARACTER 498 | ![U+1EC31](khelathi-zethu-glyphs/glyphs/U+1EC31.svg) | U+1EC31 | `&#126001;` | `&#x1EC31;` |
+| ZETHU CHARACTER 499 | ![U+1EC32](khelathi-zethu-glyphs/glyphs/U+1EC32.svg) | U+1EC32 | `&#126002;` | `&#x1EC32;` |

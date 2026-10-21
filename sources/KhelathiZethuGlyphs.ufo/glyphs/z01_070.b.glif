@@ -325,6 +325,7 @@
     </contour>
     <contour>
       <point x="80" y="310" type="qcurve"/>
+      <point x="90" y="464" type="line"/>
       <point x="162" y="464" type="line"/>
       <point x="192" y="325" type="line"/>
       <point x="137" y="303"/>
@@ -382,6 +383,8 @@
     </contour>
     <contour>
       <point x="291" y="464" type="qcurve"/>
+      <point x="289" y="459" type="line"/>
+      <point x="290" y="464" type="line"/>
       <point x="244" y="470" type="line" smooth="yes"/>
       <point x="232" y="470"/>
       <point x="232" y="470" type="qcurve"/>

@@ -384,6 +384,13 @@
                     "key": "02-002"
                 },
                 {
+                    "codepoint": "U+1EA80",
+                    "name": "ZETHU CHARACTER 065",
+                    "glyph": "z02_003.a",
+                    "kind": "sign",
+                    "key": "02-003"
+                },
+                {
                     "codepoint": "U+1EA83",
                     "name": "ZETHU CHARACTER 068",
                     "glyph": "z02_006.a",
@@ -608,6 +615,13 @@
                     "key": "03-024"
                 },
                 {
+                    "codepoint": "U+1EAA9",
+                    "name": "ZETHU CHARACTER 106",
+                    "glyph": "z03_025.a",
+                    "kind": "sign",
+                    "key": "03-025"
+                },
+                {
                     "codepoint": "U+1EAAC",
                     "name": "ZETHU CHARACTER 109",
                     "glyph": "z04_003.a",
@@ -620,6 +634,13 @@
                     "glyph": "z04_006.a",
                     "kind": "sign",
                     "key": "04-006"
+                },
+                {
+                    "codepoint": "U+1EAB2",
+                    "name": "ZETHU CHARACTER 115",
+                    "glyph": "z04_009.a",
+                    "kind": "sign",
+                    "key": "04-009"
                 },
                 {
                     "codepoint": "U+1EAB4",
@@ -664,6 +685,13 @@
                     "key": "04-021"
                 },
                 {
+                    "codepoint": "U+1EAC0",
+                    "name": "ZETHU CHARACTER 129",
+                    "glyph": "z05_001.a",
+                    "kind": "sign",
+                    "key": "05-001"
+                },
+                {
                     "codepoint": "U+1EAC3",
                     "name": "ZETHU CHARACTER 132",
                     "glyph": "z05_004.a",
@@ -692,6 +720,20 @@
                     "key": "05-014"
                 },
                 {
+                    "codepoint": "U+1EACE",
+                    "name": "ZETHU CHARACTER 143",
+                    "glyph": "z05_015.a",
+                    "kind": "sign",
+                    "key": "05-015"
+                },
+                {
+                    "codepoint": "U+1EAD0",
+                    "name": "ZETHU CHARACTER 145",
+                    "glyph": "z05_017.a",
+                    "kind": "sign",
+                    "key": "05-017"
+                },
+                {
                     "codepoint": "U+1EAD1",
                     "name": "ZETHU CHARACTER 146",
                     "glyph": "z05_018.a",
@@ -704,6 +746,13 @@
                     "glyph": "z05_024.a",
                     "kind": "sign",
                     "key": "05-024"
+                },
+                {
+                    "codepoint": "U+1EADC",
+                    "name": "ZETHU CHARACTER 157",
+                    "glyph": "z05_029.a",
+                    "kind": "sign",
+                    "key": "05-029"
                 },
                 {
                     "codepoint": "U+1EAE2",
@@ -860,6 +909,13 @@
                     "key": "09-002"
                 },
                 {
+                    "codepoint": "U+1EB33",
+                    "name": "ZETHU CHARACTER 244",
+                    "glyph": "z09_003.a",
+                    "kind": "sign",
+                    "key": "09-003"
+                },
+                {
                     "codepoint": "U+1EB35",
                     "name": "ZETHU CHARACTER 246",
                     "glyph": "z09_005.a",
@@ -900,6 +956,20 @@
                     "glyph": "z09_010.a",
                     "kind": "sign",
                     "key": "09-010"
+                },
+                {
+                    "codepoint": "U+1EB3B",
+                    "name": "ZETHU CHARACTER 252",
+                    "glyph": "z09_011.a",
+                    "kind": "sign",
+                    "key": "09-011"
+                },
+                {
+                    "codepoint": "U+1EB3E",
+                    "name": "ZETHU CHARACTER 255",
+                    "glyph": "z09_014.a",
+                    "kind": "sign",
+                    "key": "09-014"
                 },
                 {
                     "codepoint": "U+1EB3F",
@@ -1091,6 +1161,13 @@
                     "key": "10-024"
                 },
                 {
+                    "codepoint": "U+1EB60",
+                    "name": "ZETHU CHARACTER 289",
+                    "glyph": "z10_025.a",
+                    "kind": "sign",
+                    "key": "10-025"
+                },
+                {
                     "codepoint": "U+1EB61",
                     "name": "ZETHU CHARACTER 290",
                     "glyph": "z10_026.a",
@@ -1173,6 +1250,13 @@
                     "glyph": "z11_009.a",
                     "kind": "sign",
                     "key": "11-009"
+                },
+                {
+                    "codepoint": "U+1EB6D",
+                    "name": "ZETHU CHARACTER 302",
+                    "glyph": "z11_010.a",
+                    "kind": "sign",
+                    "key": "11-010"
                 },
                 {
                     "codepoint": "U+1EB6E",
@@ -1742,6 +1826,20 @@
                     "key": "15-007"
                 },
                 {
+                    "codepoint": "U+1EBD3",
+                    "name": "ZETHU CHARACTER 404",
+                    "glyph": "z15_009.a",
+                    "kind": "sign",
+                    "key": "15-009"
+                },
+                {
+                    "codepoint": "U+1EBD4",
+                    "name": "ZETHU CHARACTER 405",
+                    "glyph": "z15_010.a",
+                    "kind": "sign",
+                    "key": "15-010"
+                },
+                {
                     "codepoint": "U+1EBD8",
                     "name": "ZETHU CHARACTER 409",
                     "glyph": "z15_014.a",
@@ -1950,6 +2048,27 @@
                     "glyph": "z14_025.a",
                     "kind": "sign",
                     "key": "14-025"
+                },
+                {
+                    "codepoint": "U+1EBFA",
+                    "name": "ZETHU CHARACTER 443",
+                    "glyph": "z14_026.a",
+                    "kind": "sign",
+                    "key": "14-026"
+                },
+                {
+                    "codepoint": "U+1EBFB",
+                    "name": "ZETHU CHARACTER 444",
+                    "glyph": "z14_027.a",
+                    "kind": "sign",
+                    "key": "14-027"
+                },
+                {
+                    "codepoint": "U+1EBFC",
+                    "name": "ZETHU CHARACTER 445",
+                    "glyph": "z14_028.a",
+                    "kind": "sign",
+                    "key": "14-028"
                 },
                 {
                     "codepoint": "U+1EBFD",
@@ -2174,6 +2293,132 @@
                     "glyph": "z01_077.a",
                     "kind": "sign",
                     "key": "01-077"
+                },
+                {
+                    "codepoint": "U+1EC21",
+                    "name": "ZETHU CHARACTER 482",
+                    "glyph": "z14_031.a",
+                    "kind": "sign",
+                    "key": "14-031"
+                },
+                {
+                    "codepoint": "U+1EC22",
+                    "name": "ZETHU CHARACTER 483",
+                    "glyph": "z14_032.a",
+                    "kind": "sign",
+                    "key": "14-032"
+                },
+                {
+                    "codepoint": "U+1EC23",
+                    "name": "ZETHU CHARACTER 484",
+                    "glyph": "z14_033.a",
+                    "kind": "sign",
+                    "key": "14-033"
+                },
+                {
+                    "codepoint": "U+1EC24",
+                    "name": "ZETHU CHARACTER 485",
+                    "glyph": "z14_034.a",
+                    "kind": "sign",
+                    "key": "14-034"
+                },
+                {
+                    "codepoint": "U+1EC25",
+                    "name": "ZETHU CHARACTER 486",
+                    "glyph": "z14_035.a",
+                    "kind": "sign",
+                    "key": "14-035"
+                },
+                {
+                    "codepoint": "U+1EC26",
+                    "name": "ZETHU CHARACTER 487",
+                    "glyph": "z14_036.a",
+                    "kind": "sign",
+                    "key": "14-036"
+                },
+                {
+                    "codepoint": "U+1EC27",
+                    "name": "ZETHU CHARACTER 488",
+                    "glyph": "z13_043.a",
+                    "kind": "sign",
+                    "key": "13-043"
+                },
+                {
+                    "codepoint": "U+1EC28",
+                    "name": "ZETHU CHARACTER 489",
+                    "glyph": "z04_026.a",
+                    "kind": "sign",
+                    "key": "04-026"
+                },
+                {
+                    "codepoint": "U+1EC29",
+                    "name": "ZETHU CHARACTER 490",
+                    "glyph": "z04_027.a",
+                    "kind": "sign",
+                    "key": "04-027"
+                },
+                {
+                    "codepoint": "U+1EC2A",
+                    "name": "ZETHU CHARACTER 491",
+                    "glyph": "z01_078.a",
+                    "kind": "sign",
+                    "key": "01-078"
+                },
+                {
+                    "codepoint": "U+1EC2B",
+                    "name": "ZETHU CHARACTER 492",
+                    "glyph": "z01_079.a",
+                    "kind": "sign",
+                    "key": "01-079"
+                },
+                {
+                    "codepoint": "U+1EC2C",
+                    "name": "ZETHU CHARACTER 493",
+                    "glyph": "z04_028.a",
+                    "kind": "sign",
+                    "key": "04-028"
+                },
+                {
+                    "codepoint": "U+1EC2D",
+                    "name": "ZETHU CHARACTER 494",
+                    "glyph": "z10_032.a",
+                    "kind": "sign",
+                    "key": "10-032"
+                },
+                {
+                    "codepoint": "U+1EC2E",
+                    "name": "ZETHU CHARACTER 495",
+                    "glyph": "z10_034.a",
+                    "kind": "sign",
+                    "key": "10-034"
+                },
+                {
+                    "codepoint": "U+1EC2F",
+                    "name": "ZETHU CHARACTER 496",
+                    "glyph": "z10_035.a",
+                    "kind": "sign",
+                    "key": "10-035"
+                },
+                {
+                    "codepoint": "U+1EC30",
+                    "name": "ZETHU CHARACTER 497",
+                    "glyph": "z01_080.a",
+                    "kind": "sign",
+                    "key": "01-080"
+                },
+                {
+                    "codepoint": "U+1EC31",
+                    "name": "ZETHU CHARACTER 498",
+                    "glyph": "z16_031.a",
+                    "kind": "sign",
+                    "key": "16-031"
+                },
+                {
+                    "codepoint": "U+1EC32",
+                    "name": "ZETHU CHARACTER 499",
+                    "glyph": "z01_081.a",
+                    "kind": "sign",
+                    "key": "01-081"
                 },
                 {
                     "codepoint": "U+1EC60",

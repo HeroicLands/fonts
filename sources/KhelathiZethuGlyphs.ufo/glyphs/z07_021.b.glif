@@ -4,6 +4,7 @@
   <outline>
     <contour>
       <point x="106" y="299" type="qcurve"/>
+      <point x="31" y="299" type="line"/>
       <point x="31" y="287" type="line"/>
       <point x="770" y="287" type="line"/>
       <point x="770" y="299" type="line"/>
@@ -269,7 +270,6 @@
     </contour>
     <contour>
       <point x="83" y="598" type="qcurve"/>
-      <point x="103" y="611" type="line"/>
       <point x="117" y="621" type="line"/>
       <point x="117" y="609"/>
       <point x="120" y="598" type="qcurve" smooth="yes"/>

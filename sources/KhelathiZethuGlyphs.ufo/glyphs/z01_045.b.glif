@@ -303,8 +303,7 @@
     <contour>
       <point x="150" y="313" type="qcurve"/>
       <point x="158" y="429" type="line"/>
-      <point x="196" y="431" type="line"/>
-      <point x="248" y="391" type="line"/>
+      <point x="239" y="434" type="line"/>
       <point x="263" y="321" type="line"/>
       <point x="207" y="302"/>
     </contour>

@@ -5,7 +5,7 @@
     <key>ascender</key>
     <integer>945</integer>
     <key>capHeight</key>
-    <integer>728</integer>
+    <integer>731</integer>
     <key>copyright</key>
     <string>Copyright (c) 2026 Tom Rodriguez ("Toasty") — &lt;toasty@heroiclands.org&gt;</string>
     <key>descender</key>
@@ -78,6 +78,6 @@
     <key>versionMinor</key>
     <integer>100</integer>
     <key>xHeight</key>
-    <integer>728</integer>
+    <integer>731</integer>
   </dict>
 </plist>
