@@ -1,21 +1,19 @@
 # Thalorna Fonts
 
-These are the fonts for the [HeroicLands Thalorna](https://www.heroiclands.org/thalorna/) setting. This includes the following fonts:
+These are the fonts for the [HeroicLands Thalorna](https://www.heroiclands.org/thalorna/) setting:
 
-| Font Name | Description | Direction |
-|--- |--- |
-| Pirzath Carved | Khazari (dwarven) Runic Lapidary | Left to Right |
-| Pirzath Hand | Khazari (dwarven) Common Hand (modern script) | Left to Right |
-| Veldikko | Sinale (elvish) Joined (cursive) Calligraphic Hand | Right to Left |
-| Khelathi Zethu Glyphs | Au'Khelathu Temple Heiroglyphics | Right to Left |
-| Qalezu Hand | Au'Khelathu Merchant's Script | Right to Left |
-| Thurvark Carved | Proto-Pelwar (human) Runic Lapidary (derived from Pirzath) | Left to Right |
-| Semaron Kuriale | Vylarian (human) Chancery Hand | Left to Right |
-| Teng Chou | Tantsou (human) Logographic Script | Vertical (top to bottom) |
+| Font                  | Description                                               | Direction               |
+| --------------------- | --------------------------------------------------------- | ----------------------- |
+| Pirzath Carved        | Khazari (dwarven) runic lapidary                          | Left to right           |
+| Pirzath Hand          | Khazari (dwarven) common hand, the modern script          | Left to right           |
+| Thuravark Carved      | Proto-Pelwar (human) runic lapidary, derived from Pirzath | Left to right           |
+| Semaron Kuriale       | Vylarian (human) chancery hand                            | Left to right           |
+| Veldikko              | Sinale (elvish) joined calligraphic hand                  | Right to left           |
+| Qalezu Hand           | Au'Khelathu merchants' script                             | Right to left           |
+| Khelathi Zethu Glyphs | Au'Khelathu temple hieroglyphs                            | Right to left           |
+| Teng Chou             | Tantsou (human) logographic script                        | Vertical, top to bottom |
 
-All of these fonts are available in the Releases section.
-
-Veldikko is the starlight-hand of the Sinale, in which both the Sinale and the Áelendi write: a flowing calligraphy written right to left, its letters joined by hairlines along the line and its vowels marks floating above, in one face for both tongues. It is written on code points of its own, U+1ED50 to U+1EDFF: a letter, then the length bar if the consonant is doubled, then each vowel mark, each followed by its signs of length, pitch and emphasis. The font joins each letter to its neighbours, folds a vowel and its signs into one mark and stands the marks over their letter. Its bowls stand at the x-height Semaron Kuriale and Latin text stand at, and its risers and tails reach well beyond, so a block of Veldikko wants a line height of about 2.4 em from the page's style sheet; a Veldikko word inside an English line leaves the line spacing even. `tools/veldikko/encoding.json` is the one table of what each code point is, and `tools/veldikko/convert.mjs` turns romanized Sinale into those code points; `design/veldikko.md` gives the system.
+**Download.** Every font is available as TrueType and WOFF2 from the [latest release](https://github.com/HeroicLands/fonts/releases/latest). Programs and sites take them from npm instead; see [Installing and using the fonts](#installing-and-using-the-fonts).
 
 ## Code point blocks
 
@@ -86,6 +84,8 @@ typst compile --font-path node_modules/@heroiclands/fonts/fonts book.typ
 A note's text in one of these fonts is the font's own code points. They are typed with the keyboard layouts in `keyboards/`, or produced by a mapping in the consuming build.
 
 The fonts are licensed under the SIL Open Font License 1.1, which `LICENSE` carries in the package.
+
+**Veldikko.** It is the starlight-hand of the Sinale, in which both the Sinale and the Áelendi write: a flowing calligraphy written right to left, its letters joined by hairlines along the line and its vowel marks floating above, in one face for both tongues. It is written on code points of its own, U+1ED50 to U+1EDFF: a letter, then the length bar if the consonant is doubled, then each vowel mark, each followed by its signs of length, pitch and emphasis. The font joins each letter to its neighbours, folds a vowel and its signs into one mark and stands the marks over their letter. Its bowls stand at the x-height Semaron Kuriale and Latin text stand at, and its risers and tails reach well beyond, so a block of Veldikko wants a line height of about 2.4 em from the page's style sheet; a Veldikko word inside an English line leaves the line spacing even. `tools/veldikko/encoding.json` is the one table of what each code point is, and `tools/veldikko/convert.mjs` turns romanized Sinale into those code points; `design/veldikko.md` gives the system.
 
 ## Typing in the fonts
 
