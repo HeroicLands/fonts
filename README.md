@@ -12,6 +12,8 @@ Teng Chou, the Celestial Record of Tantsou and Jenchai, writes one character per
 
 Qalezu, the Khelathi alphabet, is written right to left on code points of its own, U+1EA00 to U+1EA3F, with the catch-before forms in U+1ECC0 to U+1ECFF. A converter turns Latin Khelathi into those code points, and the font draws them; `tools/qalezu-hand/encoding.json` is the one table of what each code point is, its sound and the Latin that types it.
 
+Veldikko is the starlight-hand of the Sinale, in which both the Sinale and the Áelendi write: a flowing calligraphy written right to left, its letters joined by hairlines along the line and its vowels marks floating above, in one face for both tongues. It is written on code points of its own, U+1ED50 to U+1EDFF: a letter, then the length bar if the consonant is doubled, then each vowel mark, each followed by its signs of length, pitch and emphasis. The font joins each letter to its neighbours, folds a vowel and its signs into one mark and stands the marks over their letter. Its bowls stand at the x-height Semaron Kuriale and Latin text stand at, and its risers and tails reach well beyond, so a block of Veldikko wants a line height of about 2.4 em from the page's style sheet; a Veldikko word inside an English line leaves the line spacing even. `tools/veldikko/encoding.json` is the one table of what each code point is, and `tools/veldikko/convert.mjs` turns romanized Sinale into those code points; `design/veldikko.md` gives the system.
+
 ## Code point blocks
 
 Every script draws on a block of code points of its own, and every face of a script draws its script's block: Pirzath Carved, Pirzath Hand and Pirzath Hand Lifted share the Pirzath block, so changing the face changes only the look. The blocks are registered in `BLOCKS` in `tools/codepoint_order.py`; `tools/codepoints.py` checks that every face's code points lie in its registered blocks, that no two blocks overlap, and that this table is the registry's.
@@ -23,6 +25,7 @@ Every script draws on a block of code points of its own, and every face of a scr
 | U+1EA00–U+1EA3F   | Qalezu: signs, digits and punctuation                                                                     | right to left |
 | U+1EA40–U+1EC6F   | Khelathi Zethu Glyphs: signs, and its format controls at U+1EC60–U+1EC6F                                  | right to left |
 | U+1ECC0–U+1ECFF   | Qalezu: a sign with a catch before it                                                                     | right to left |
+| U+1ED50–U+1EDFF   | Veldikko: letters, vowel marks and the signs of length, pitch, emphasis and doubling                      | right to left |
 | U+F0000–U+F00FF   | Pirzath                                                                                                   | left to right |
 | U+F0100–U+F01FF   | Thuravark                                                                                                 | left to right |
 | U+F0200–U+F02FF   | Semaron                                                                                                   | left to right |
@@ -33,7 +36,7 @@ Every script draws on a block of code points of its own, and every face of a scr
 | U+100000–U+10FFFD | Plane 16, unassigned                                                                                      | –             |
 
 - **Left-to-right scripts** (Pirzath, Thuravark, Semaron) sit in plane 15, the Supplementary Private Use Area-A, whose characters are left to right by default. Each takes 256 code points. U+F0300 to U+F0FFF is reserved for the remaining alphabets and syllabaries, 256 code points each as they are assigned. Teng Chou takes U+F1000 to U+F2FFF: its characters from U+F1000, one per morpheme in the order they are added so that none is renumbered, its Jurthati syllabary from U+F2000, and the rest reserved. Teng Chou is written in columns; its characters are left to right where an inline span sets them along a line.
-- **Right-to-left scripts** (Qalezu and Khelathi Zethu Glyphs) sit in unassigned code points of plane 1 whose default bidi class is right to left. That is why their text runs right to left in any editor, browser or typesetter, mixed with English and with no controls. Because the code points are unassigned rather than private, Unicode could in principle assign them to a script later. Qalezu takes U+1EA00 to U+1EA3F for its signs, digits and punctuation and U+1ECC0 to U+1ECFF for a sign with a catch before it. Khelathi Zethu Glyphs takes U+1EA40 to U+1EC6F with U+1E960 to U+1E9FF as overflow, 720 code points together. U+1ED50 to U+1EDFF is the remaining free right-to-left range, kept for a further right-to-left script.
+- **Right-to-left scripts** (Qalezu, Khelathi Zethu Glyphs and Veldikko) sit in unassigned code points of plane 1 whose default bidi class is right to left. That is why their text runs right to left in any editor, browser or typesetter, mixed with English and with no controls. Because the code points are unassigned rather than private, Unicode could in principle assign them to a script later. Qalezu takes U+1EA00 to U+1EA3F for its signs, digits and punctuation and U+1ECC0 to U+1ECFF for a sign with a catch before it. Khelathi Zethu Glyphs takes U+1EA40 to U+1EC6F with U+1E960 to U+1E9FF as overflow, 720 code points together. Veldikko takes U+1ED50 to U+1EDFF: its letters from U+1ED50, its vowel marks from U+1ED70 and its signs of length, pitch, emphasis and doubling from U+1ED78.
 - **Plane 16** is unassigned.
 
 ## Licence
@@ -107,6 +110,7 @@ The layouts and input methods are in `keyboards/`:
 - **Linux layouts.** `keyboards/linux/hl_<script>` is an XKB symbols file for each layout, with a `U<hex>` keysym on every key that types one character and `VoidSymbol` on the rest. Option is the third level, reached with the right Alt key. Copy the files to `~/.config/xkb/symbols/`, then run `setxkbmap -I$HOME/.config/xkb -layout hl_pirzath` under X11; a desktop that reads `~/.config/xkb` lists them as custom layouts. `setxkbmap us` returns to the usual layout.
 - **Emacs input methods.** `keyboards/emacs/heroiclands-<script>.el` defines a Quail input method per layout. Put the directory on `load-path`, evaluate `(require 'heroiclands-semaron)`, then `M-x set-input-method RET heroiclands-semaron`. Shift is the shifted character. Emacs has no Option key, so Option+x is typed `\` and then the key x types: Option+T is `\t` and Option+Shift+T is `\T`.
 - **Teng Chou.** Teng Chou writes one character per morpheme and has no keyboard layout: its characters and signs are typed by code point, or written by a mapping in the consuming build. `charts/teng-chou.md` lists every code point with its morpheme or syllable.
+- **Veldikko.** The Veldikko has no keyboard layout: its letters, vowel marks and signs are typed by code point, or written from romanized Sinale by a mapping in the consuming build. `charts/veldikko.md` lists every code point with its name.
 - **Khelathi Zethu Glyphs.** Zethu writes meanings, not sounds, and has far more signs than a keyboard has keys, so it has an Emacs input method only, `heroiclands-zethu`, typed by sign id: `08-001` inserts that sign. `keyboards/zethu.md` lists the ids. The format controls have no key: a mapping in the consuming build writes them.
 
 ## Cheatsheets
@@ -133,7 +137,7 @@ python3 -m venv .venv
 .venv/bin/pip install -r requirements.txt
 ```
 
-The source of each font is a UFO under `sources/`: `PirzathCarved.ufo`, `PirzathHand.ufo`, `ThuravarkCarved.ufo`, `QalezuHand.ufo`, `KhelathiZethuGlyphs.ufo`, `SemaronKuriale.ufo` and `TengChou.ufo`. Open one in FontForge, Glyphs or RoboFont to edit it. `TengChou.ufo` is generated from its data by `tools/teng-chou/build_ufo.py`: an edit to a Teng Chou character belongs in `tools/teng-chou/`, and the script is run after it, before the build. The UFO carries the outlines, the character map, the metrics and `features.fea`, which holds every OpenType feature. Every glyph's advance is its ink width plus one sidebearing a side, the same across its face; `tools/respace.py` sets a UFO to that rule, and `design/making-fonts.md` gives each face's sidebearing.
+The source of each font is a UFO under `sources/`: `PirzathCarved.ufo`, `PirzathHand.ufo`, `ThuravarkCarved.ufo`, `QalezuHand.ufo`, `KhelathiZethuGlyphs.ufo`, `SemaronKuriale.ufo`, `TengChou.ufo` and `Veldikko.ufo`. Open one in FontForge, Glyphs or RoboFont to edit it. `TengChou.ufo` is generated from its data by `tools/teng-chou/build_ufo.py`: an edit to a Teng Chou character belongs in `tools/teng-chou/`, and the script is run after it, before the build. `Veldikko.ufo` is generated the same way by `tools/veldikko/build_ufo.py`, from the letters and the joining in `tools/veldikko/`. The UFO carries the outlines, the character map, the metrics and `features.fea`, which holds every OpenType feature. Every glyph's advance is its ink width plus one sidebearing a side, the same across its face; `tools/respace.py` sets a UFO to that rule, and `design/making-fonts.md` gives each face's sidebearing.
 
 Build the fonts into `fonts/`. The build is reproducible, so the committed fonts match a fresh build byte for byte:
 
@@ -167,6 +171,8 @@ Check the built fonts, render the specimens, and prove that each guard fails a b
 .venv/bin/python tools/khelathi-zethu-glyphs/check_font.py
 .venv/bin/python tools/semaron-kuriale/check_font.py
 .venv/bin/python tools/teng-chou/check_font.py
+.venv/bin/python tools/veldikko/check_font.py
+.venv/bin/python tools/veldikko/guard.py --fixtures-only   # the converter's fixtures join and carry their marks
 .venv/bin/python tools/teng-chou/syllabary_distinct.py   # the Jurthati signs stay distinct at body size
 .venv/bin/python tools/teng-chou/stroke_mix.py   # every character's body is strokes, dabs a minority
 .venv/bin/python tools/notdef_box.py
@@ -188,10 +194,11 @@ Check the built fonts, render the specimens, and prove that each guard fails a b
 .venv/bin/python tools/teng-chou/character_specimens.py   # specimens/teng-chou/characters.png
 .venv/bin/python tools/teng-chou/character_specimens.py --name syllabary.png
 .venv/bin/python tools/teng-chou/text_specimen.py     # specimens/teng-chou/text.png, text-vertical.png and tally.png
+.venv/bin/python tools/veldikko/font_sheets.py        # specimens/veldikko/forms.png, joined.png, verse.png, sizes.png and beside.png
 .venv/bin/python tools/prove_guards.py
 ```
 
-Each guard shapes every form of its lexicon and asserts the font renders it rightly; the Pirzath guards read the Khazari lexicon, the Thuravark guard the Nordmal one, Semaron Kuriale's the Vylari one, Teng Chou's the Tantsou one (each form cut into morphemes and set one character to each, along a line and down a column), and Qalezu's converts the Khelathi lexicon from Latin first, through `tools/qalezu-hand/convert.mjs`, an internal tool of that guard, under `node`. Each reads its lexicon from the `origin/main` of a local thalorna checkout, `~/dev/HeroicLands/thalorna` by default:
+Each guard shapes every form of its lexicon and asserts the font renders it rightly; the Pirzath guards read the Khazari lexicon, the Thuravark guard the Nordmal one, Semaron Kuriale's the Vylari one, Teng Chou's the Tantsou one (each form cut into morphemes and set one character to each, along a line and down a column), Qalezu's converts the Khelathi lexicon from Latin first, through `tools/qalezu-hand/convert.mjs`, an internal tool of that guard, under `node`, and Veldikko's converts the Sinale lexicon the same way, through `tools/veldikko/convert.mjs`, and asserts each letter's form and where each mark stands. Each reads its lexicon from the `origin/main` of a local thalorna checkout, `~/dev/HeroicLands/thalorna` by default:
 
 ```sh
 .venv/bin/python tools/pirzath/guard.py --thalorna /path/to/thalorna
@@ -200,6 +207,7 @@ Each guard shapes every form of its lexicon and asserts the font renders it righ
 .venv/bin/python tools/qalezu-hand/guard.py --thalorna /path/to/thalorna
 .venv/bin/python tools/semaron-kuriale/guard.py --thalorna /path/to/thalorna
 .venv/bin/python tools/teng-chou/guard.py --thalorna /path/to/thalorna
+.venv/bin/python tools/veldikko/guard.py --thalorna /path/to/thalorna
 ```
 
 `tools/keyboards_guard.py` checks the key map (no key or chord carries two sounds, every sound has a key, a capital sits on Shift and its small sound's key) and reads every layout and input method back: each key must type exactly the code points `keyboards/sounds.json` gives its sound in the script, or nothing where the script does not write the sound or the platform cannot carry it, and no key may type a character below U+0080. Without `--fixtures-only` it also writes `keyboards/sounds.json` afresh from thalorna's mapping notes, through `tools/sounds.mjs` under `node`, and fails where the committed file differs.

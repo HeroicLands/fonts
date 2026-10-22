@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="vowel.edieresis" format="2">
+  <unicode hex="1ED76"/>
+  <outline>
+    <contour>
+      <point x="-58" y="16"/>
+      <point x="-158" y="172"/>
+      <point x="-146" y="280" type="curve"/>
+      <point x="-119" y="300"/>
+      <point x="-56" y="296"/>
+      <point x="-31" y="273" type="curve"/>
+      <point x="-27" y="277"/>
+      <point x="-38" y="311"/>
+      <point x="-41" y="319" type="curve"/>
+      <point x="-59" y="358"/>
+      <point x="-108" y="367"/>
+      <point x="-138" y="336" type="curve"/>
+      <point x="-150" y="324"/>
+      <point x="-158" y="308"/>
+      <point x="-166" y="293" type="curve"/>
+      <point x="-177" y="273"/>
+      <point x="-187" y="253"/>
+      <point x="-191" y="231" type="curve"/>
+      <point x="-194" y="211"/>
+      <point x="-192" y="190"/>
+      <point x="-189" y="170" type="curve"/>
+      <point x="-174" y="76"/>
+      <point x="-103" y="-32"/>
+      <point x="1" y="-34" type="curve"/>
+      <point x="51" y="-35"/>
+      <point x="64" y="-7"/>
+      <point x="85" y="34" type="curve"/>
+      <point x="92" y="48"/>
+      <point x="100" y="61"/>
+      <point x="105" y="76" type="curve"/>
+      <point x="122" y="130"/>
+      <point x="108" y="215"/>
+      <point x="87" y="266" type="curve"/>
+      <point x="76" y="294"/>
+      <point x="61" y="319"/>
+      <point x="47" y="345" type="curve"/>
+      <point x="44" y="341"/>
+      <point x="47" y="331"/>
+      <point x="48" y="326" type="curve"/>
+      <point x="52" y="265" type="line"/>
+      <point x="57" y="195"/>
+      <point x="73" y="124"/>
+      <point x="65" y="53" type="curve"/>
+    </contour>
+  </outline>
+</glyph>

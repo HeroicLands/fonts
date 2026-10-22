@@ -3,7 +3,8 @@
 
 /**
  * Tests `convert.mjs`: the Qalezu fixtures, the letters Qalezu has no sign for,
- * the Khelathi Zethu sign lookup and `fonts.json`.
+ * the Khelathi Zethu sign lookup, the Veldikko fixtures and the letters the
+ * Veldikko has no sign for, and `fonts.json`.
  *
  *     npm test
  *
@@ -59,6 +60,34 @@ test("an unknown or undrawn Zethu id is refused", () => {
     assert.throws(() => zethuSign("01-001"), /not drawn/);
 });
 
+const VELDIKKO = "Veldikko";
+const veldikko = readJson("tools", "veldikko", "encoding.json");
+const veldikkoName = new Map(
+    veldikko.glyphs.map((glyph) => [
+        String.fromCodePoint(parseInt(glyph.codepoint.slice(2), 16)),
+        glyph.glyph,
+    ]),
+);
+const veldikkoGlyphs = (text) =>
+    Array.from(text, (char) => (char === " " ? "space" : veldikkoName.get(char)));
+const veldikkoFixtures = readJson("tools", "veldikko", "fixtures.json");
+
+test("each Veldikko fixture converts to its letters and marks", () => {
+    for (const { latin, glyphs } of veldikkoFixtures.fixtures) {
+        assert.deepEqual(veldikkoGlyphs(convert(VELDIKKO, latin)), glyphs, latin);
+    }
+});
+
+test("a character the Veldikko has no sign for is refused, naming it", () => {
+    for (const { latin, letter } of veldikkoFixtures.unmappable) {
+        assert.throws(
+            () => convert(VELDIKKO, latin),
+            (error) => error instanceof Unmappable && error.letter === letter,
+            latin,
+        );
+    }
+});
+
 test("an unknown family is refused", () => {
     assert.throws(() => convert("Pirzath Hand", "x"), /no converter/);
 });
@@ -73,6 +102,7 @@ test("fonts.json names the families of the built fonts", () => {
     assert.deepEqual(byName.get("Pirzath Hand Lifted").features, []);
     assert.equal(byName.get(QALEZU).direction, "rtl");
     assert.equal(byName.get("Semaron Kuriale").direction, "ltr");
+    assert.equal(byName.get(VELDIKKO).direction, "rtl");
 });
 
 test("fonts.json entries have unique name keys", () => {

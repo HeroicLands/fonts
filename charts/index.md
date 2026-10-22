@@ -10,3 +10,4 @@ Each font has a sheet of every character it draws: a code chart laid out like Un
 - [Semaron Kuriale](semaron-kuriale.md): 70 characters on 1 chart page
 - [Teng Chou](teng-chou.md): 305 characters on 3 chart pages
 - [Thuravark Carved](thuravark-carved.md): 40 characters on 1 chart page
+- [Veldikko](veldikko.md): 35 characters on 1 chart page

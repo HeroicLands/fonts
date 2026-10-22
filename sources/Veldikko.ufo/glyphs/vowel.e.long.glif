@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="vowel.e.long" format="2">
+  <outline>
+    <contour>
+      <point x="-7" y="79"/>
+      <point x="50" y="39"/>
+      <point x="102" y="8" type="curve"/>
+      <point x="118" y="-1"/>
+      <point x="150" y="-22"/>
+      <point x="167" y="-26" type="curve"/>
+      <point x="187" y="-31"/>
+      <point x="201" y="-23"/>
+      <point x="218" y="-17" type="curve"/>
+      <point x="216" y="-3"/>
+      <point x="217" y="11"/>
+      <point x="211" y="24" type="curve"/>
+      <point x="198" y="52"/>
+      <point x="150" y="82"/>
+      <point x="125" y="100" type="curve"/>
+      <point x="93" y="122"/>
+      <point x="15" y="171"/>
+      <point x="-20" y="177" type="curve"/>
+      <point x="-31" y="179"/>
+      <point x="-37" y="173"/>
+      <point x="-47" y="170" type="curve"/>
+      <point x="-56" y="168"/>
+      <point x="-66" y="167"/>
+      <point x="-76" y="166" type="curve"/>
+      <point x="-109" y="164"/>
+      <point x="-143" y="166"/>
+      <point x="-176" y="162" type="curve"/>
+      <point x="-201" y="159"/>
+      <point x="-223" y="151"/>
+      <point x="-245" y="143" type="curve"/>
+      <point x="-207" y="100"/>
+      <point x="-95" y="99"/>
+      <point x="-46" y="124" type="curve"/>
+    </contour>
+  </outline>
+</glyph>

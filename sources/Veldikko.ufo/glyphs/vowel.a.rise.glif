@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="vowel.a.rise" format="2">
+  <outline>
+    <contour>
+      <point x="-20" y="6" type="line"/>
+      <point x="-13" y="12" type="line"/>
+      <point x="-10" y="-7"/>
+      <point x="17" y="-13"/>
+      <point x="28" y="3" type="curve"/>
+      <point x="36" y="15"/>
+      <point x="59" y="52"/>
+      <point x="59" y="68" type="curve"/>
+      <point x="58" y="91"/>
+      <point x="26" y="105"/>
+      <point x="7" y="92" type="curve"/>
+      <point x="0" y="101"/>
+      <point x="-5" y="113"/>
+      <point x="-11" y="123" type="curve"/>
+      <point x="-18" y="136"/>
+      <point x="-27" y="149"/>
+      <point x="-35" y="161" type="curve"/>
+      <point x="-53" y="185"/>
+      <point x="-75" y="206"/>
+      <point x="-93" y="228" type="curve"/>
+      <point x="-93" y="228"/>
+      <point x="-95" y="227"/>
+      <point x="-94" y="227" type="curve"/>
+      <point x="-91" y="212"/>
+      <point x="-87" y="198"/>
+      <point x="-84" y="183" type="curve"/>
+      <point x="-74" y="132"/>
+      <point x="-63" y="68"/>
+      <point x="-29" y="27" type="curve"/>
+      <point x="-30" y="22"/>
+      <point x="-31" y="17"/>
+      <point x="-30" y="11" type="curve"/>
+    </contour>
+  </outline>
+</glyph>

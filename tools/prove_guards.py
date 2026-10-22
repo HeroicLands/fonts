@@ -22,7 +22,11 @@ stroke-mix guard (tools/teng-chou/stroke_mix.py) is proved on its data with wate
 six dabs, and with the syllabary sign ka kept to one stroke.
 Semaron Kuriale is broken twice: with the GSUB table removed, so that no
 th, long vowel or spelled-out ch applies, and with the GPOS table removed, so that no catch stands on its
-base. The box guard (tools/notdef_box.py) is proved on every font twice: with the question
+base. Veldikko's guard (tools/veldikko/guard.py) and its font check
+(tools/veldikko/check_font.py) are each proved twice: with the GSUB table removed, so that no
+letter joins and no vowel takes its signs, and with the GPOS table removed, so that no mark
+stands over its letter; and the vertical guard is proved on Veldikko with its Windows ascent and
+descent cut to the shared line box, so that its risers and tails would be clipped. The box guard (tools/notdef_box.py) is proved on every font twice: with the question
 mark removed from the cmap, and with it pointed at glyph 0. The name guard
 (tools/font_names.py) is proved on every font twice: with the Macintosh full name
 removed, and with the Basic Latin range declared. The vertical guard (tools/vertical.py) is proved on every font three times: with the hhea ascent changed,
@@ -229,6 +233,14 @@ def lifted_glyph(font: Path, out: Path) -> Path:
     glyph = f["glyf"]["notdef.box"]
     glyph.coordinates.translate((0, 600))
     glyph.recalcBounds(f["glyf"])
+    f.save(str(out))
+    return out
+
+
+def win_to_line_box(font: Path, out: Path) -> Path:
+    """Cut the Windows ascent and descent to the shared table, inside a face's long extenders."""
+    f = TTFont(str(font))
+    f["OS/2"].usWinAscent, f["OS/2"].usWinDescent = 945, 250
     f.save(str(out))
     return out
 
@@ -592,6 +604,9 @@ def main():
     teng_chou = load("teng_chou_guard", ROOT / "tools" / "teng-chou" / "guard.py")
     teng_chou_check = load("teng_chou_check", ROOT / "tools" / "teng-chou" / "check_font.py")
     teng_chou_font = ROOT / "fonts" / "TengChou-Regular.ttf"
+    veldikko = load("veldikko_guard", ROOT / "tools" / "veldikko" / "guard.py")
+    veldikko_check = load("veldikko_check", ROOT / "tools" / "veldikko" / "check_font.py")
+    veldikko_font = ROOT / "fonts" / "Veldikko-Regular.ttf"
     zethu_font = ROOT / "fonts" / "KhelathiZethuGlyphs-Regular.ttf"
     cases = [
         (
@@ -636,6 +651,12 @@ def main():
             without_gpos,
             "without GPOS",
         ),
+        ("Veldikko", veldikko_font, lambda p: veldikko.run(p, []), stripped, "without GSUB"),
+        ("Veldikko", veldikko_font, lambda p: veldikko.run(p, []), without_gpos, "without GPOS"),
+        ("Veldikko", veldikko_font, veldikko_check.check, stripped, "without GSUB"),
+        ("Veldikko", veldikko_font, veldikko_check.check, without_gpos, "without GPOS"),
+        ("Veldikko", veldikko_font, load("vertical_win", ROOT / "tools" / "vertical.py").check, win_to_line_box,
+         "with its Windows ascent and descent cut to the shared line box, inside its risers and tails"),
         ("Teng Chou", teng_chou_font, lambda p: teng_chou.run(p, []), without_teng, "without the character teng"),
         ("Teng Chou", teng_chou_font, teng_chou_check.check, without_teng, "without the character teng"),
         ("Teng Chou", teng_chou_font, teng_chou_check.check, without_vmtx, "without vertical metrics"),

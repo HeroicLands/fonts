@@ -6880,6 +6880,229 @@
                     "kind": "mark"
                 }
             ]
+        },
+        {
+            "name": "Veldikko",
+            "family": "Veldikko",
+            "class": "hl-veldikko",
+            "files": {
+                "woff2": "fonts/Veldikko-Regular.woff2",
+                "ttf": "fonts/Veldikko-Regular.ttf"
+            },
+            "direction": "rtl",
+            "features": [],
+            "codepoints": [
+                {
+                    "codepoint": "U+1ED50",
+                    "name": "VELDIKKO LETTER P",
+                    "glyph": "p",
+                    "kind": "letter"
+                },
+                {
+                    "codepoint": "U+1ED51",
+                    "name": "VELDIKKO LETTER V",
+                    "glyph": "v",
+                    "kind": "letter"
+                },
+                {
+                    "codepoint": "U+1ED52",
+                    "name": "VELDIKKO LETTER M",
+                    "glyph": "m",
+                    "kind": "letter"
+                },
+                {
+                    "codepoint": "U+1ED53",
+                    "name": "VELDIKKO LETTER T",
+                    "glyph": "t",
+                    "kind": "letter"
+                },
+                {
+                    "codepoint": "U+1ED54",
+                    "name": "VELDIKKO LETTER S",
+                    "glyph": "s",
+                    "kind": "letter"
+                },
+                {
+                    "codepoint": "U+1ED55",
+                    "name": "VELDIKKO LETTER N",
+                    "glyph": "n",
+                    "kind": "letter"
+                },
+                {
+                    "codepoint": "U+1ED56",
+                    "name": "VELDIKKO LETTER D",
+                    "glyph": "d",
+                    "kind": "letter"
+                },
+                {
+                    "codepoint": "U+1ED57",
+                    "name": "VELDIKKO LETTER DH",
+                    "glyph": "dh",
+                    "kind": "letter"
+                },
+                {
+                    "codepoint": "U+1ED58",
+                    "name": "VELDIKKO LETTER K",
+                    "glyph": "k",
+                    "kind": "letter"
+                },
+                {
+                    "codepoint": "U+1ED59",
+                    "name": "VELDIKKO LETTER H",
+                    "glyph": "h",
+                    "kind": "letter"
+                },
+                {
+                    "codepoint": "U+1ED5A",
+                    "name": "VELDIKKO LETTER NG",
+                    "glyph": "ng",
+                    "kind": "letter"
+                },
+                {
+                    "codepoint": "U+1ED5B",
+                    "name": "VELDIKKO LETTER L",
+                    "glyph": "l",
+                    "kind": "letter"
+                },
+                {
+                    "codepoint": "U+1ED5C",
+                    "name": "VELDIKKO LETTER R",
+                    "glyph": "r",
+                    "kind": "letter"
+                },
+                {
+                    "codepoint": "U+1ED5D",
+                    "name": "VELDIKKO LETTER CARRIER",
+                    "glyph": "carrier",
+                    "kind": "letter"
+                },
+                {
+                    "codepoint": "U+1ED60",
+                    "name": "VELDIKKO LETTER G",
+                    "glyph": "g",
+                    "kind": "letter"
+                },
+                {
+                    "codepoint": "U+1ED61",
+                    "name": "VELDIKKO LETTER TH",
+                    "glyph": "th",
+                    "kind": "letter"
+                },
+                {
+                    "codepoint": "U+1ED62",
+                    "name": "VELDIKKO LETTER AELENDI DH",
+                    "glyph": "dhasp",
+                    "kind": "letter"
+                },
+                {
+                    "codepoint": "U+1ED63",
+                    "name": "VELDIKKO LETTER KH",
+                    "glyph": "kh",
+                    "kind": "letter"
+                },
+                {
+                    "codepoint": "U+1ED64",
+                    "name": "VELDIKKO LETTER GH",
+                    "glyph": "gh",
+                    "kind": "letter"
+                },
+                {
+                    "codepoint": "U+1ED65",
+                    "name": "VELDIKKO LETTER T EJECTIVE",
+                    "glyph": "tej",
+                    "kind": "letter"
+                },
+                {
+                    "codepoint": "U+1ED66",
+                    "name": "VELDIKKO LETTER D EJECTIVE",
+                    "glyph": "dej",
+                    "kind": "letter"
+                },
+                {
+                    "codepoint": "U+1ED67",
+                    "name": "VELDIKKO LETTER K EJECTIVE",
+                    "glyph": "kej",
+                    "kind": "letter"
+                },
+                {
+                    "codepoint": "U+1ED68",
+                    "name": "VELDIKKO LETTER G EJECTIVE",
+                    "glyph": "gej",
+                    "kind": "letter"
+                },
+                {
+                    "codepoint": "U+1ED70",
+                    "name": "VELDIKKO VOWEL SIGN A",
+                    "glyph": "vowel.a",
+                    "kind": "mark"
+                },
+                {
+                    "codepoint": "U+1ED71",
+                    "name": "VELDIKKO VOWEL SIGN O",
+                    "glyph": "vowel.o",
+                    "kind": "mark"
+                },
+                {
+                    "codepoint": "U+1ED72",
+                    "name": "VELDIKKO VOWEL SIGN U",
+                    "glyph": "vowel.u",
+                    "kind": "mark"
+                },
+                {
+                    "codepoint": "U+1ED73",
+                    "name": "VELDIKKO VOWEL SIGN E",
+                    "glyph": "vowel.e",
+                    "kind": "mark"
+                },
+                {
+                    "codepoint": "U+1ED74",
+                    "name": "VELDIKKO VOWEL SIGN I",
+                    "glyph": "vowel.i",
+                    "kind": "mark"
+                },
+                {
+                    "codepoint": "U+1ED75",
+                    "name": "VELDIKKO VOWEL SIGN Y",
+                    "glyph": "vowel.y",
+                    "kind": "mark"
+                },
+                {
+                    "codepoint": "U+1ED76",
+                    "name": "VELDIKKO VOWEL SIGN E WITH DIAERESIS",
+                    "glyph": "vowel.edieresis",
+                    "kind": "mark"
+                },
+                {
+                    "codepoint": "U+1ED78",
+                    "name": "VELDIKKO SIGN LONG",
+                    "glyph": "long",
+                    "kind": "mark"
+                },
+                {
+                    "codepoint": "U+1ED79",
+                    "name": "VELDIKKO SIGN RISE",
+                    "glyph": "rise",
+                    "kind": "mark"
+                },
+                {
+                    "codepoint": "U+1ED7A",
+                    "name": "VELDIKKO SIGN FALL",
+                    "glyph": "fall",
+                    "kind": "mark"
+                },
+                {
+                    "codepoint": "U+1ED7B",
+                    "name": "VELDIKKO SIGN EMPHASIS",
+                    "glyph": "emph",
+                    "kind": "mark"
+                },
+                {
+                    "codepoint": "U+1ED7C",
+                    "name": "VELDIKKO SIGN DOUBLING BAR",
+                    "glyph": "bar",
+                    "kind": "mark"
+                }
+            ]
         }
     ]
 }

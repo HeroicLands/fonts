@@ -1,0 +1,34 @@
+{
+  "fixtures": [
+    {"latin": "nuuva", "glyphs": ["n", "vowel.u", "long", "v", "vowel.a"]},
+    {"latin": "mollu", "glyphs": ["m", "vowel.o", "l", "bar", "vowel.u"]},
+    {"latin": "molu", "glyphs": ["m", "vowel.o", "l", "vowel.u"]},
+    {"latin": "kalpi", "glyphs": ["k", "vowel.a", "l", "p", "vowel.i"]},
+    {"latin": "halpi", "glyphs": ["h", "vowel.a", "l", "p", "vowel.i"]},
+    {"latin": "eilava", "glyphs": ["carrier", "vowel.e", "vowel.i", "l", "vowel.a", "v", "vowel.a"]},
+    {"latin": "aamas", "glyphs": ["carrier", "vowel.a", "long", "m", "vowel.a", "s"]},
+    {"latin": "rivy", "glyphs": ["r", "vowel.i", "v", "vowel.y"]},
+    {"latin": "ennedhi", "glyphs": ["carrier", "vowel.e", "n", "bar", "vowel.e", "dh", "vowel.i"]},
+    {"latin": "lonku", "glyphs": ["l", "vowel.o", "ng", "k", "vowel.u"]},
+    {"latin": "leësy", "glyphs": ["l", "vowel.edieresis", "long", "s", "vowel.y"]},
+    {"latin": "huoma", "glyphs": ["h", "vowel.u", "vowel.o", "m", "vowel.a"]},
+    {"latin": "Kalpitti", "glyphs": ["k", "vowel.a", "l", "p", "vowel.i", "t", "bar", "vowel.i"]},
+    {"latin": "seëlis", "glyphs": ["s", "vowel.edieresis", "long", "l", "vowel.i", "s"]},
+    {"latin": "eëvi", "glyphs": ["carrier", "vowel.edieresis", "long", "v", "vowel.i"]},
+    {"latin": "aulira", "glyphs": ["carrier", "vowel.a", "vowel.u", "l", "vowel.i", "r", "vowel.a"]},
+    {"latin": "Sinalo", "glyphs": ["s", "vowel.i", "n", "vowel.a", "l", "vowel.o"]},
+    {"latin": "naë", "glyphs": ["n", "vowel.a", "carrier", "vowel.edieresis"]},
+    {"latin": "olde", "glyphs": ["carrier", "vowel.o", "l", "d", "vowel.e"]},
+    {"latin": "Luuro nuuva", "glyphs": ["l", "vowel.u", "long", "r", "vowel.o", "space", "n", "vowel.u", "long", "v", "vowel.a"]},
+    {"latin": "nuuva-nu", "glyphs": ["n", "vowel.u", "long", "v", "vowel.a", "space", "n", "vowel.u"]},
+    {"latin": "-sto", "glyphs": ["s", "t", "vowel.o"]},
+    {"latin": "a", "glyphs": ["carrier", "vowel.a"]}
+  ],
+  "unmappable": [
+    {"latin": "beth", "letter": "b"},
+    {"latin": "gora", "letter": "g"},
+    {"latin": "fëa", "letter": "f"},
+    {"latin": "táli", "letter": "á"},
+    {"latin": "luuro.", "letter": "."}
+  ]
+}

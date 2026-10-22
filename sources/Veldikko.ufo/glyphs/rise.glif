@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="rise" format="2">
+  <unicode hex="1ED79"/>
+  <outline>
+    <contour>
+      <point x="62" y="18"/>
+      <point x="80" y="52"/>
+      <point x="77" y="60" type="curve"/>
+      <point x="73" y="63"/>
+      <point x="69" y="64"/>
+      <point x="64" y="66" type="curve"/>
+      <point x="58" y="69"/>
+      <point x="49" y="86"/>
+      <point x="46" y="92" type="curve"/>
+      <point x="33" y="117"/>
+      <point x="24" y="144"/>
+      <point x="11" y="170" type="curve"/>
+      <point x="-1" y="195"/>
+      <point x="-22" y="208"/>
+      <point x="-44" y="223" type="curve"/>
+      <point x="-47" y="220"/>
+      <point x="-43" y="179"/>
+      <point x="-42" y="172" type="curve"/>
+      <point x="-41" y="158"/>
+      <point x="-37" y="144"/>
+      <point x="-32" y="131" type="curve"/>
+      <point x="-27" y="116"/>
+      <point x="-20" y="102"/>
+      <point x="-13" y="88" type="curve"/>
+      <point x="0" y="63"/>
+      <point x="20" y="16"/>
+      <point x="53" y="16" type="curve"/>
+    </contour>
+  </outline>
+</glyph>

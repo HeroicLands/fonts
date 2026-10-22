@@ -71,6 +71,11 @@ FAMILIES = {
         "direction": "ltr",
         "features": [],
     },
+    "Veldikko-Regular": {
+        "slug": "veldikko",
+        "direction": "rtl",
+        "features": [],
+    },
     "ThuravarkCarved-Regular": {
         "slug": "thuravark-carved",
         "direction": "ltr",

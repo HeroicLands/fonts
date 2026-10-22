@@ -47,6 +47,7 @@ FOLDERS = {
     "hl-pirzath-hand-lifted": "pirzath-hand-lifted",
     "hl-qalezu-hand": "qalezu-hand",
     "hl-khelathi-zethu-glyphs": "khelathi-zethu-glyphs",
+    "hl-veldikko": "veldikko",
 }
 
 COLUMNS = 8

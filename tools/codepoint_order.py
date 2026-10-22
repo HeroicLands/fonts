@@ -20,7 +20,8 @@ straight quotation mark. The space stays U+0020.
 A row also carries a ``name``, in Unicode's style, read from the script's name table in
 ``tools/names/<script>.json`` (see ``names``). A row the table does not name has no ``name``.
 
-The Qalezu Hand and Khelathi Zethu Glyphs tables are read from their encoding.json.
+The Qalezu Hand, Khelathi Zethu Glyphs and Veldikko tables are read from their
+encoding.json.
 A Khelathi Zethu Glyphs row also carries its sign id as the ``key`` that types it in
 its Emacs input method. The other scripts are typed by sound (tools/sound_keys.json),
 so a character of theirs has no key of its own.
@@ -104,6 +105,13 @@ BLOCKS = [
         "use": "Qalezu: a sign with a catch before it",
         "direction": "right to left",
         "families": ["Qalezu Hand"],
+    },
+    {
+        "start": 0x1ED50,
+        "end": 0x1EDFF,
+        "use": "Veldikko: letters, vowel marks and the signs of length, pitch, emphasis and doubling",
+        "direction": "right to left",
+        "families": ["Veldikko"],
     },
     {"start": 0x100000, "end": 0x10FFFD, "use": "Plane 16, unassigned", "direction": "", "families": []},
 ]
@@ -218,6 +226,16 @@ def qalezu_table() -> list[dict]:
     return sorted(rows, key=lambda r: int(r["codepoint"][2:], 16))
 
 
+VELDIKKO_KINDS = {"letter": "letter", "vowel": "mark", "modifier": "mark", "bar": "mark"}
+
+
+def veldikko_table() -> list[dict]:
+    """Veldikko's table, from tools/veldikko/encoding.json, in code point order."""
+    enc = json.loads((ROOT / "tools" / "veldikko" / "encoding.json").read_text(encoding="utf-8"))
+    rows = [{"codepoint": e["codepoint"], "glyph": e["glyph"], "kind": VELDIKKO_KINDS[e["kind"]]} for e in enc["glyphs"]]
+    return sorted(rows, key=lambda r: int(r["codepoint"][2:], 16))
+
+
 def zethu_controls() -> list[dict]:
     """Khelathi Zethu Glyphs' format controls, from tools/khelathi-zethu-glyphs/controls.json."""
     path = ROOT / "tools" / "khelathi-zethu-glyphs" / "controls.json"
@@ -249,6 +267,7 @@ SCRIPTS = {
     "QalezuHand-Regular": "qalezu",
     "KhelathiZethuGlyphs-Regular": "zethu",
     "TengChou-Regular": "tengchou",
+    "Veldikko-Regular": "veldikko",
 }
 
 
@@ -317,4 +336,6 @@ def table(stem: str) -> list[dict]:
         return named(stem, qalezu_table())
     if stem == "KhelathiZethuGlyphs-Regular":
         return named(stem, zethu_table())
+    if stem == "Veldikko-Regular":
+        return named(stem, veldikko_table())
     raise KeyError(stem)

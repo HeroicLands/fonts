@@ -20,16 +20,16 @@ Two measures are taken from each built font:
 
 A font fails when its median blank share is above ``MAX_BLANK``, its mean gap
 above ``MAX_MEAN_GAP`` or its largest gap above ``MAX_GAP``, or when its space is
-not the word space ``SPACING`` in tools/respace.py states for the face. A joined face
-(Pirzath Hand with ``ss01``) overlaps its signs, so its gaps are negative and
-pass.
+not the word space ``SPACING`` in tools/respace.py states for the face.
 
 The sample lines are the texts of each face's specimens: the Khazari texts for
 the Pirzath faces, the Nordmal lines for Thuravark Carved and the Vylari texts for
 Semaron Kuriale; Qalezu Hand's converter fixtures, written in the glyphs the
 fixtures name; the sample inscriptions of Khelathi Zethu Glyphs, set as one
-strip of signs; and Teng Chou's Tantsou and Jurthati passages, each line one run
-of characters. None needs a thalorna checkout.
+strip of signs; Teng Chou's Tantsou and Jurthati passages, each line one run
+of characters; and Veldikko's converter fixtures, written in the letters
+and marks the fixtures name. A joined face (Pirzath Hand with ``ss01``, and Veldikko
+Sinale) meets its neighbours at the join, so its gaps are at most zero. None needs a thalorna checkout.
 """
 
 import importlib.util
@@ -101,6 +101,15 @@ def _zethu_lines() -> list[str]:
     return ["".join(cp[i] for i in ids if i in cp) for _, ids in guard.sample_lists()]
 
 
+def _veldikko_lines() -> list[str]:
+    enc = json.loads((TOOLS / "veldikko" / "encoding.json").read_text(encoding="utf-8"))
+    point = {g["glyph"]: chr(int(g["codepoint"][2:], 16)) for g in enc["glyphs"]}
+    point["space"] = " "
+    fixtures = json.loads((TOOLS / "veldikko" / "fixtures.json").read_text(encoding="utf-8"))["fixtures"]
+    words = ["".join(point[g] for g in f["glyphs"]) for f in fixtures]
+    return [" ".join(words[i:i + 6]) for i in range(0, len(words), 6)]
+
+
 def _teng_chou_lines() -> list[str]:
     return _load("teng_chou_texts", TOOLS / "teng-chou" / "texts.py").lines()
 
@@ -114,6 +123,7 @@ FACES = {
     "QalezuHand": (_qalezu_lines, "rtl", {}),
     "KhelathiZethuGlyphs": (_zethu_lines, "rtl", {}),
     "TengChou": (_teng_chou_lines, "ltr", {}),
+    "Veldikko": (_veldikko_lines, "rtl", {}),
 }
 
 

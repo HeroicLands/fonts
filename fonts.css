@@ -47,6 +47,13 @@
     font-display: swap;
 }
 
+@font-face {
+    font-family: "Veldikko";
+    src: url("fonts/Veldikko-Regular.woff2") format("woff2"),
+        url("fonts/Veldikko-Regular.ttf") format("truetype");
+    font-display: swap;
+}
+
 .hl-khelathi-zethu-glyphs {
     font-family: "Khelathi Zethu Glyphs";
     font-feature-settings: normal;
@@ -95,4 +102,11 @@
     font-family: "Thuravark Carved";
     font-feature-settings: normal;
     font-synthesis: none;
+}
+
+.hl-veldikko {
+    font-family: "Veldikko";
+    font-feature-settings: normal;
+    font-synthesis: none;
+    direction: rtl;
 }

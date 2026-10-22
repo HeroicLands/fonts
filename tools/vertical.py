@@ -24,7 +24,10 @@ font fails when
   height of its typical x-height letters or capitals;
 - a glyph's ink leaves the band between the ascent and the descent, other than
   the accepted overshoot: Pirzath Hand's ``j`` and ``ng`` and their doubled and
-  joined forms, and Semaron Kuriale's ``f j p s g``, whose descenders reach below it.
+  joined forms, Semaron Kuriale's ``f j p s g``, whose descenders reach below
+  it, and Veldikko's raised stops, its riser _l_ and its nasals in every form,
+  whose stems and tails reach past both edges, and its length bar: Veldikko's
+  bowls, not its extenders, stand at the x-height.
 
 Each face has one set of typical letters for each of the two heights; a script with
 a single height uses one set for both.
@@ -70,6 +73,7 @@ SCALES = {
     "QalezuHand": 0.99,
     "KhelathiZethuGlyphs": 0.77,
     "TengChou": 0.81,
+    "Veldikko": 1.72,
 }
 
 CONSONANTS = (
@@ -80,6 +84,8 @@ VOWELS = "a aacute ai au e ei i o oi ou u".split()
 SEMARON_MINUSCULES = "a b c d e g i j k m n o p r s w y z".split()
 SEMARON_CAPITALS = "A B C D E F G H I J K L M N O P R S T TH U V W Y Z".split()
 QALEZU = "b d f g gh h k kh l m n p q r s sh t th tj w y z".split()
+VELDIKKO_STOPS = "p t k d".split()
+VELDIKKO_BODY = ["r"]  # the crozier, the one letter standing at the bowls' height alone
 THURAVARK = "a b d dh e f g gh h hl i j k kh l m n ng o p r s t th u v w y z".split()
 
 # Each face: the glyphs whose median height is x-height, those for cap height, and the
@@ -92,6 +98,7 @@ FACES = {
     "QalezuHand": {"x": QALEZU, "cap": QALEZU, "target": "x"},
     "KhelathiZethuGlyphs": {"x": None, "cap": None, "target": "cap"},
     "TengChou": {"x": "characters", "cap": "characters", "target": "cap"},
+    "Veldikko": {"x": VELDIKKO_BODY, "cap": VELDIKKO_STOPS, "target": "x"},
 }
 
 # Glyphs allowed to leave the band, by face: the first part of the glyph name, before
@@ -99,6 +106,9 @@ FACES = {
 OVERSHOOT = {
     "PirzathHand": {"j", "ng", "j_j", "ng_ng"},
     "SemaronKuriale": {"f", "j", "p", "s", "g"},
+    # the raised stems, the riser and the nasals' tails reach well past Semaron's
+    # extenders by design; the bowls stand at the x-height
+    "Veldikko": set("p t k d g th dhasp kh gh tej dej kej gej l m n ng bar".split()),
 }
 
 

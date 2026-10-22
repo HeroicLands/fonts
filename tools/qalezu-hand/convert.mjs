@@ -7,6 +7,7 @@
  *     import { convert } from "./convert.mjs";
  *     convert("Qalezu Hand", "Anlagh");
  *     convert("Khelathi Zethu Glyphs", "01-002 01-003");
+ *     convert("Veldikko", "nuuva");
  *
  * An internal tool of the Qalezu guard, not shipped. The code points come from
  * the `encoding.json` beside each font's tools.
@@ -33,12 +34,16 @@
  *
  * Khelathi Zethu Glyphs takes sign ids separated by spaces, such as `01-002`.
  *
+ * Veldikko takes romanized Sinale, by the rules of `../veldikko/convert.mjs`.
+ *
  * @module
  */
 
 import { readFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
+
+import { convertVeldikko } from "../veldikko/convert.mjs";
 
 const TOOLS = join(dirname(fileURLToPath(import.meta.url)), "..");
 
@@ -191,13 +196,15 @@ export function zethuSign(id) {
  * The code points of a text in a family's script.
  *
  * @param {string} family - A `family` of `fonts.json` whose `input` is `convert`.
- * @param {string} text - The Latin spelling for Qalezu Hand, or sign ids
- *   separated by spaces for Khelathi Zethu Glyphs.
+ * @param {string} text - The Latin spelling for Qalezu Hand, sign ids
+ *   separated by spaces for Khelathi Zethu Glyphs, or romanized Sinale for
+ *   Veldikko.
  * @returns {string} The code points, in logical order.
  * @throws {Error} When the family has no converter or the text cannot be converted.
  */
 export function convert(family, text) {
     if (family === "Qalezu Hand") return convertQalezu(text);
+    if (family === "Veldikko") return convertVeldikko(text);
     if (family === "Khelathi Zethu Glyphs") {
         return text
             .split(/\s+/)

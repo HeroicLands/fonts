@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="vowel.y.rise" format="2">
+  <outline>
+    <contour>
+      <point x="-11" y="37"/>
+      <point x="-53" y="111"/>
+      <point x="-74" y="179" type="curve"/>
+      <point x="-79" y="182"/>
+      <point x="-84" y="183"/>
+      <point x="-89" y="185" type="curve"/>
+      <point x="-99" y="191"/>
+      <point x="-107" y="205"/>
+      <point x="-114" y="214" type="curve"/>
+      <point x="-131" y="238"/>
+      <point x="-147" y="264"/>
+      <point x="-163" y="288" type="curve"/>
+      <point x="-168" y="295"/>
+      <point x="-194" y="339"/>
+      <point x="-197" y="340" type="curve"/>
+      <point x="-197" y="339"/>
+      <point x="-198" y="339"/>
+      <point x="-198" y="338" type="curve"/>
+      <point x="-180" y="291"/>
+      <point x="-167" y="241"/>
+      <point x="-151" y="193" type="curve"/>
+      <point x="-142" y="169"/>
+      <point x="-134" y="143"/>
+      <point x="-109" y="133" type="curve"/>
+      <point x="-96" y="77"/>
+      <point x="-72" y="13"/>
+      <point x="-17" y="-15" type="curve"/>
+      <point x="8" y="-27"/>
+      <point x="41" y="-33"/>
+      <point x="62" y="-12" type="curve"/>
+      <point x="76" y="0"/>
+      <point x="84" y="18"/>
+      <point x="92" y="34" type="curve"/>
+      <point x="101" y="52"/>
+      <point x="111" y="68"/>
+      <point x="115" y="88" type="curve"/>
+      <point x="124" y="130"/>
+      <point x="111" y="204"/>
+      <point x="92" y="241" type="curve"/>
+      <point x="83" y="260"/>
+      <point x="69" y="276"/>
+      <point x="58" y="293" type="curve"/>
+      <point x="56" y="291"/>
+      <point x="58" y="242"/>
+      <point x="59" y="234" type="curve"/>
+      <point x="60" y="176"/>
+      <point x="76" y="118"/>
+      <point x="72" y="59" type="curve"/>
+    </contour>
+  </outline>
+</glyph>
