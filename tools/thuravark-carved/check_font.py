@@ -9,7 +9,10 @@ must carry an outline unless it is one of the few that draw nothing by design.
 Every other character, Latin included, must map to the box (tools/notdef_box.py):
 the face draws its own code points alone, which tools/codepoints.py checks.
 The name table must carry the family, version and licence, and the .woff2 beside
-the .ttf must open and carry the same glyphs.
+the .ttf must open and carry the same glyphs. The imperial recension is present:
+the three diphthong staves and the two crown marks draw, every glyph a crown may
+hold has its crowned form and each post its joined form, the bound runes draw,
+and the GSUB carries ``ss01`` and ``rclt``.
 """
 
 import sys
@@ -19,6 +22,8 @@ from fontTools.ttLib import TTFont
 
 ROOT = Path(__file__).resolve().parent.parent.parent
 sys.path.insert(0, str(ROOT / "tools"))
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import crown  # noqa: E402
 import font_names  # noqa: E402
 import notdef_box  # noqa: E402
 
@@ -28,7 +33,9 @@ IGNORABLES = [*range(0x200B, 0x2010), *range(0x202A, 0x202F), *range(0x2066, 0x2
 # Latin text is not the face's: every Latin letter, digit and mark draws the box,
 # and the space is the only character the face shares with it.
 LATIN = "0123456789-.,!?;:\"'()<>[]@#$%^&abdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZáéíóú"
-STAVES = ("a e i o u p b f v t d th dh k g kh gh s z h l r hl m n ng j w").split()
+STAVES = ("a e i o u p b f v t d th dh k g kh gh s z h l r hl m n ng j w ai au oi").split()
+BOUND = "e_n e_l a_r a_l m_a z_a k_a u_r l_m l_th".split()
+CROWN = {0xF0150: "crown.open", 0xF0151: "crown.close"}
 
 
 def check(path: Path) -> list[str]:
@@ -52,6 +59,21 @@ def check(path: Path) -> list[str]:
     for name in STAVES:
         if name not in order or glyf[name].numberOfContours == 0:
             problems.append(f"the stave {name} is missing or draws nothing")
+    for name in BOUND:
+        if name not in order or glyf[name].numberOfContours == 0:
+            problems.append(f"the bound rune {name} is missing or draws nothing")
+    for cp, name in CROWN.items():
+        if cmap.get(cp) != name:
+            problems.append(f"U+{cp:04X} maps to {cmap.get(cp)}, not {name}")
+        if name + crown.RAIL not in order or glyf.get(name + crown.RAIL) is None or glyf[name + crown.RAIL].numberOfContours == 0:
+            problems.append(f"{name + crown.RAIL} is missing or draws nothing")
+    for name in crown.inside(font.getGlyphOrder()):
+        if name + crown.CROWNED not in order:
+            problems.append(f"{name} has no crowned form {name + crown.CROWNED}")
+    tags = {r.FeatureTag for r in font["GSUB"].table.FeatureList.FeatureRecord} if "GSUB" in font else set()
+    for tag in ("ss01", "rclt"):
+        if tag not in tags:
+            problems.append(f"no {tag} feature")
     for name in EMPTY_BY_DESIGN:
         if name not in order:
             problems.append(f"{name} is missing")

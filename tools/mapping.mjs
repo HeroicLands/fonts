@@ -8,7 +8,7 @@
  *     node tools/mapping.mjs --thalorna ~/dev/HeroicLands/thalorna <script> [<face>] < words.json
  *     node tools/mapping.mjs --note Qalezu_Spelling.md <script> [<face>] < words.json
  *
- * `<script>` is `semaron`, `pirzath`, `thuravark` or `qalezu`. The mapping note is
+ * `<script>` is `semaron`, `pirzath`, `thuravark`, `qalezu`, `veldikko` or `vedyakshara`. The mapping note is
  * `assets/content/Lore/Scripts/<Script>_Spelling.md` on the thalorna checkout's
  * `origin/main`, or the file `--note` names. Standard input is a JSON array of
  * strings; standard output is a JSON array with one record per string:
@@ -34,6 +34,9 @@ export const SCRIPTS = [
     ["pirzath", "Pirzath_Spelling.md"],
     ["thuravark", "Thuravark_Spelling.md"],
     ["qalezu", "Qalezu_Spelling.md"],
+    ["veldikko", "Veldikko_Spelling.md"],
+    ["vedyakshara", "Vedyakshara_Spelling.md"],
+    ["helonika", "Helonika_Spelling.md"],
 ];
 export const NOTES = "assets/content/Lore/Scripts";
 

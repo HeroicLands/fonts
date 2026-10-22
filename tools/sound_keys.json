@@ -1,16 +1,18 @@
 {
   "principles": [
-    "Each sound of the spelling guide, Pronouncing Thalorna, sits on one key or chord, the same in every script, and no key or chord carries two sounds. tools/sounds.mjs runs each sound's spelling through every script's mapping note into keyboards/sounds.json, and each layout types that output, or nothing where the mapping cannot spell the sound.",
-    "A single letter sits on its own roman key. c and x are not letters of the guide, so their plain keys carry nothing.",
+    "Each sound sits on one key or chord, the same in every script, and no key or chord carries two sounds. A layout types the sound in its script's own characters, or nothing where the script does not write the sound.",
+    "A single letter sits on its own roman key. c and x are not sounds, so their plain keys carry no sound; x types the carrier in HL Veldikko.",
     "A capital sits on Shift and the key of its small sound: Shift+A is A, Option+Shift+T is Th. A pair's capital is written with its first letter capital (Ch, Ai), the form a word starts with.",
-    "A consonant pair sits on Option and its first letter: Option+T th, Option+C ch. Where two pairs share a first letter, the second is a mnemonic: ny on Option+Y, its second letter, and ts on Option+X, the cluster letter the guide never writes.",
+    "A consonant pair sits on Option and its first letter: Option+T th, Option+C ch. Where two pairs share a first letter, the second is a mnemonic: ny on Option+Y, its second letter, and ts on Option+X.",
     "An acute vowel sits on Option and its vowel, as Option+E types the acute on a Mac and AltGr and a vowel types it on Windows' US-International layout.",
-    "The long vowels sit on Option and the digits 1 to 5, in the order a e i o u: Option+1 aa, Option+5 uu. The other vowel pairs follow in the guide's order on Option and the keys after them: 6 ai, 7 au, 8 ei, 9 oi, 0 ou, - ie, = uo, [ ae, ] ea. A vowel key's Option holds its acute, so the pairs cannot sit on their first vowel.",
+    "The long vowels sit on Option and the digits 1 to 5, in the order a e i o u: Option+1 aa, Option+5 uu. The other vowel pairs follow in order on Option and the keys after them: 6 ai, 7 au, 8 ei, 9 oi, 0 ou, - ie, = uo, [ ae, ] ea. A vowel key's Option holds its acute, so the pairs cannot sit on their first vowel.",
     "A diaeresis vowel sits on Option and the punctuation keys right of L and M, in the order a e i o u: ; ä, ' ë, , ï, . ö, / ü.",
-    "The catch sits on ', the stop on ., the pause on , and the open and close quotes on Shift+, and Shift+., the keys of < and >. Only Pirzath writes quotation marks, so those two keys type nothing in the other scripts.",
-    "Digits sit on the digit row. Pirzath counts in sixteens, and its numerals ten to fifteen sit on Shift+2 to Shift+7, the keys of @ # $ % ^ &, the characters its mapping spells them with.",
-    "A vowel sound, and y, is spelled inside a word: a vowel between two t's, and y before an a, where it is the glide. That is how the sound itself is written, as against a vowel at the start of a word in Qalezu, which is the catch, or y as the vowel i, which the i key types.",
-    "Markup types itself. The characters Markdown and a span's [text]{font=…} need sit at their U.S. positions and type plain ASCII in every layout, so a note's markup is written without switching layouts, and no script draws it. No sound shares a key with markup; # is not markup because Shift+3 is Pirzath's eleven.",
+    "The catch sits on ', the stop on ., the pause on , and the open and close quotes on Shift+, and Shift+., the keys of < and >. Vedyari writes no catch, and its mapping note writes an apostrophe as the cut, so in HL Vedyakshara ' types the cut. Only Pirzath writes quotation marks, so those two keys type nothing in the other scripts.",
+    "Digits sit on the digit row. Pirzath counts in sixteens, and its numerals ten to fifteen sit on Shift+2 to Shift+7, the keys of @ # $ % ^ &, the characters on those keys.",
+    "Qalezu writes consonants only, so its vowel keys type nothing; a vowel at the start of a word is written with the catch.",
+    "Vedyakshara's consonant carries the vowel a, so in HL Vedyakshara a consonant is spelled before an a and its key types the bare consonant; the a key types nothing, another vowel key types its vowel sign, and a capital vowel types the vowel's own sign.",
+    "Markup types itself. The characters Markdown and similar markup need sit at their U.S. positions and type plain ASCII in every layout, so formatting is written without switching layouts, and no script draws them. No sound shares a key with markup; # is not markup because Shift+3 is Pirzath's eleven.",
+    "A sign that is not a sound sits on a key of its own and types in the one layout whose script writes it, as the quote keys do outside Pirzath. HL Veldikko's six: the carrier on x, and on Option the long sign on L, the bar of a doubled consonant on W, the rise on R, the fall on F and the emphasis on M. No sound shares a key with a sign, and a sign types nothing in the other layouts.",
     "Control chords and function keys carry nothing: the four layers above hold every sound, and no platform types reliably from them."
   ],
   "markup": [
@@ -28,6 +30,50 @@
     "\\",
     "~",
     "`"
+  ],
+  "signs": [
+    {
+      "sign": "carrier",
+      "script": "veldikko",
+      "key": "x",
+      "codepoint": "U+1ED5D"
+    },
+    {
+      "sign": "long sign",
+      "script": "veldikko",
+      "key": "option+l",
+      "codepoint": "U+1ED78"
+    },
+    {
+      "sign": "bar",
+      "script": "veldikko",
+      "key": "option+w",
+      "codepoint": "U+1ED7C"
+    },
+    {
+      "sign": "rise",
+      "script": "veldikko",
+      "key": "option+r",
+      "codepoint": "U+1ED79"
+    },
+    {
+      "sign": "fall",
+      "script": "veldikko",
+      "key": "option+f",
+      "codepoint": "U+1ED7A"
+    },
+    {
+      "sign": "emphasis",
+      "script": "veldikko",
+      "key": "option+m",
+      "codepoint": "U+1ED7B"
+    },
+    {
+      "sign": "register-mark",
+      "script": "helonika",
+      "key": "option+shift+r",
+      "codepoint": "U+F0371"
+    }
   ],
   "sounds": [
     {
@@ -55,27 +101,51 @@
       "sound": "b",
       "spelling": "b",
       "kind": "letter",
-      "key": "b"
+      "key": "b",
+      "contexts": {
+        "vedyakshara": [
+          "",
+          "a"
+        ]
+      }
     },
     {
       "sound": "B",
       "spelling": "B",
       "kind": "letter",
       "key": "shift+b",
-      "capital of": "b"
+      "capital of": "b",
+      "contexts": {
+        "vedyakshara": [
+          "",
+          "a"
+        ]
+      }
     },
     {
       "sound": "d",
       "spelling": "d",
       "kind": "letter",
-      "key": "d"
+      "key": "d",
+      "contexts": {
+        "vedyakshara": [
+          "",
+          "a"
+        ]
+      }
     },
     {
       "sound": "D",
       "spelling": "D",
       "kind": "letter",
       "key": "shift+d",
-      "capital of": "d"
+      "capital of": "d",
+      "contexts": {
+        "vedyakshara": [
+          "",
+          "a"
+        ]
+      }
     },
     {
       "sound": "e",
@@ -102,40 +172,76 @@
       "sound": "f",
       "spelling": "f",
       "kind": "letter",
-      "key": "f"
+      "key": "f",
+      "contexts": {
+        "vedyakshara": [
+          "",
+          "a"
+        ]
+      }
     },
     {
       "sound": "F",
       "spelling": "F",
       "kind": "letter",
       "key": "shift+f",
-      "capital of": "f"
+      "capital of": "f",
+      "contexts": {
+        "vedyakshara": [
+          "",
+          "a"
+        ]
+      }
     },
     {
       "sound": "g",
       "spelling": "g",
       "kind": "letter",
-      "key": "g"
+      "key": "g",
+      "contexts": {
+        "vedyakshara": [
+          "",
+          "a"
+        ]
+      }
     },
     {
       "sound": "G",
       "spelling": "G",
       "kind": "letter",
       "key": "shift+g",
-      "capital of": "g"
+      "capital of": "g",
+      "contexts": {
+        "vedyakshara": [
+          "",
+          "a"
+        ]
+      }
     },
     {
       "sound": "h",
       "spelling": "h",
       "kind": "letter",
-      "key": "h"
+      "key": "h",
+      "contexts": {
+        "vedyakshara": [
+          "",
+          "a"
+        ]
+      }
     },
     {
       "sound": "H",
       "spelling": "H",
       "kind": "letter",
       "key": "shift+h",
-      "capital of": "h"
+      "capital of": "h",
+      "contexts": {
+        "vedyakshara": [
+          "",
+          "a"
+        ]
+      }
     },
     {
       "sound": "i",
@@ -162,66 +268,134 @@
       "sound": "j",
       "spelling": "j",
       "kind": "letter",
-      "key": "j"
+      "key": "j",
+      "contexts": {
+        "veldikko": [
+          "t",
+          "t"
+        ],
+        "vedyakshara": [
+          "",
+          "a"
+        ]
+      }
     },
     {
       "sound": "J",
       "spelling": "J",
       "kind": "letter",
       "key": "shift+j",
-      "capital of": "j"
+      "capital of": "j",
+      "contexts": {
+        "veldikko": [
+          "t",
+          "t"
+        ],
+        "vedyakshara": [
+          "",
+          "a"
+        ]
+      }
     },
     {
       "sound": "k",
       "spelling": "k",
       "kind": "letter",
-      "key": "k"
+      "key": "k",
+      "contexts": {
+        "vedyakshara": [
+          "",
+          "a"
+        ]
+      }
     },
     {
       "sound": "K",
       "spelling": "K",
       "kind": "letter",
       "key": "shift+k",
-      "capital of": "k"
+      "capital of": "k",
+      "contexts": {
+        "vedyakshara": [
+          "",
+          "a"
+        ]
+      }
     },
     {
       "sound": "l",
       "spelling": "l",
       "kind": "letter",
-      "key": "l"
+      "key": "l",
+      "contexts": {
+        "vedyakshara": [
+          "",
+          "a"
+        ]
+      }
     },
     {
       "sound": "L",
       "spelling": "L",
       "kind": "letter",
       "key": "shift+l",
-      "capital of": "l"
+      "capital of": "l",
+      "contexts": {
+        "vedyakshara": [
+          "",
+          "a"
+        ]
+      }
     },
     {
       "sound": "m",
       "spelling": "m",
       "kind": "letter",
-      "key": "m"
+      "key": "m",
+      "contexts": {
+        "vedyakshara": [
+          "",
+          "a"
+        ]
+      }
     },
     {
       "sound": "M",
       "spelling": "M",
       "kind": "letter",
       "key": "shift+m",
-      "capital of": "m"
+      "capital of": "m",
+      "contexts": {
+        "vedyakshara": [
+          "",
+          "a"
+        ]
+      }
     },
     {
       "sound": "n",
       "spelling": "n",
       "kind": "letter",
-      "key": "n"
+      "key": "n",
+      "contexts": {
+        "vedyakshara": [
+          "",
+          "a"
+        ]
+      }
     },
     {
       "sound": "N",
       "spelling": "N",
       "kind": "letter",
       "key": "shift+n",
-      "capital of": "n"
+      "capital of": "n",
+      "contexts": {
+        "vedyakshara": [
+          "",
+          "a"
+        ]
+      }
     },
     {
       "sound": "o",
@@ -248,66 +422,126 @@
       "sound": "p",
       "spelling": "p",
       "kind": "letter",
-      "key": "p"
+      "key": "p",
+      "contexts": {
+        "vedyakshara": [
+          "",
+          "a"
+        ]
+      }
     },
     {
       "sound": "P",
       "spelling": "P",
       "kind": "letter",
       "key": "shift+p",
-      "capital of": "p"
+      "capital of": "p",
+      "contexts": {
+        "vedyakshara": [
+          "",
+          "a"
+        ]
+      }
     },
     {
       "sound": "q",
       "spelling": "q",
       "kind": "letter",
-      "key": "q"
+      "key": "q",
+      "contexts": {
+        "vedyakshara": [
+          "",
+          "a"
+        ]
+      }
     },
     {
       "sound": "Q",
       "spelling": "Q",
       "kind": "letter",
       "key": "shift+q",
-      "capital of": "q"
+      "capital of": "q",
+      "contexts": {
+        "vedyakshara": [
+          "",
+          "a"
+        ]
+      }
     },
     {
       "sound": "r",
       "spelling": "r",
       "kind": "letter",
-      "key": "r"
+      "key": "r",
+      "contexts": {
+        "vedyakshara": [
+          "",
+          "a"
+        ]
+      }
     },
     {
       "sound": "R",
       "spelling": "R",
       "kind": "letter",
       "key": "shift+r",
-      "capital of": "r"
+      "capital of": "r",
+      "contexts": {
+        "vedyakshara": [
+          "",
+          "a"
+        ]
+      }
     },
     {
       "sound": "s",
       "spelling": "s",
       "kind": "letter",
-      "key": "s"
+      "key": "s",
+      "contexts": {
+        "vedyakshara": [
+          "",
+          "a"
+        ]
+      }
     },
     {
       "sound": "S",
       "spelling": "S",
       "kind": "letter",
       "key": "shift+s",
-      "capital of": "s"
+      "capital of": "s",
+      "contexts": {
+        "vedyakshara": [
+          "",
+          "a"
+        ]
+      }
     },
     {
       "sound": "t",
       "spelling": "t",
       "kind": "letter",
-      "key": "t"
+      "key": "t",
+      "contexts": {
+        "vedyakshara": [
+          "",
+          "a"
+        ]
+      }
     },
     {
       "sound": "T",
       "spelling": "T",
       "kind": "letter",
       "key": "shift+t",
-      "capital of": "t"
+      "capital of": "t",
+      "contexts": {
+        "vedyakshara": [
+          "",
+          "a"
+        ]
+      }
     },
     {
       "sound": "u",
@@ -334,27 +568,51 @@
       "sound": "v",
       "spelling": "v",
       "kind": "letter",
-      "key": "v"
+      "key": "v",
+      "contexts": {
+        "vedyakshara": [
+          "",
+          "a"
+        ]
+      }
     },
     {
       "sound": "V",
       "spelling": "V",
       "kind": "letter",
       "key": "shift+v",
-      "capital of": "v"
+      "capital of": "v",
+      "contexts": {
+        "vedyakshara": [
+          "",
+          "a"
+        ]
+      }
     },
     {
       "sound": "w",
       "spelling": "w",
       "kind": "letter",
-      "key": "w"
+      "key": "w",
+      "contexts": {
+        "vedyakshara": [
+          "",
+          "a"
+        ]
+      }
     },
     {
       "sound": "W",
       "spelling": "W",
       "kind": "letter",
       "key": "shift+w",
-      "capital of": "w"
+      "capital of": "w",
+      "contexts": {
+        "vedyakshara": [
+          "",
+          "a"
+        ]
+      }
     },
     {
       "sound": "y",
@@ -364,7 +622,13 @@
       "context": [
         "",
         "a"
-      ]
+      ],
+      "contexts": {
+        "veldikko": [
+          "t",
+          "t"
+        ]
+      }
     },
     {
       "sound": "Y",
@@ -375,189 +639,363 @@
       "context": [
         "",
         "a"
-      ]
+      ],
+      "contexts": {
+        "veldikko": [
+          "t",
+          "t"
+        ]
+      }
     },
     {
       "sound": "z",
       "spelling": "z",
       "kind": "letter",
-      "key": "z"
+      "key": "z",
+      "contexts": {
+        "vedyakshara": [
+          "",
+          "a"
+        ]
+      }
     },
     {
       "sound": "Z",
       "spelling": "Z",
       "kind": "letter",
       "key": "shift+z",
-      "capital of": "z"
+      "capital of": "z",
+      "contexts": {
+        "vedyakshara": [
+          "",
+          "a"
+        ]
+      }
     },
     {
       "sound": "ch",
       "spelling": "ch",
       "kind": "pair",
-      "key": "option+c"
+      "key": "option+c",
+      "contexts": {
+        "vedyakshara": [
+          "",
+          "a"
+        ]
+      }
     },
     {
       "sound": "Ch",
       "spelling": "Ch",
       "kind": "pair",
       "key": "option+shift+c",
-      "capital of": "ch"
+      "capital of": "ch",
+      "contexts": {
+        "vedyakshara": [
+          "",
+          "a"
+        ]
+      }
     },
     {
       "sound": "sh",
       "spelling": "sh",
       "kind": "pair",
-      "key": "option+s"
+      "key": "option+s",
+      "contexts": {
+        "vedyakshara": [
+          "",
+          "a"
+        ]
+      }
     },
     {
       "sound": "Sh",
       "spelling": "Sh",
       "kind": "pair",
       "key": "option+shift+s",
-      "capital of": "sh"
+      "capital of": "sh",
+      "contexts": {
+        "vedyakshara": [
+          "",
+          "a"
+        ]
+      }
     },
     {
       "sound": "th",
       "spelling": "th",
       "kind": "pair",
-      "key": "option+t"
+      "key": "option+t",
+      "contexts": {
+        "vedyakshara": [
+          "",
+          "a"
+        ]
+      }
     },
     {
       "sound": "Th",
       "spelling": "Th",
       "kind": "pair",
       "key": "option+shift+t",
-      "capital of": "th"
+      "capital of": "th",
+      "contexts": {
+        "vedyakshara": [
+          "",
+          "a"
+        ]
+      }
     },
     {
       "sound": "dh",
       "spelling": "dh",
       "kind": "pair",
-      "key": "option+d"
+      "key": "option+d",
+      "contexts": {
+        "vedyakshara": [
+          "",
+          "a"
+        ]
+      }
     },
     {
       "sound": "Dh",
       "spelling": "Dh",
       "kind": "pair",
       "key": "option+shift+d",
-      "capital of": "dh"
+      "capital of": "dh",
+      "contexts": {
+        "vedyakshara": [
+          "",
+          "a"
+        ]
+      }
     },
     {
       "sound": "kh",
       "spelling": "kh",
       "kind": "pair",
-      "key": "option+k"
+      "key": "option+k",
+      "contexts": {
+        "vedyakshara": [
+          "",
+          "a"
+        ]
+      }
     },
     {
       "sound": "Kh",
       "spelling": "Kh",
       "kind": "pair",
       "key": "option+shift+k",
-      "capital of": "kh"
+      "capital of": "kh",
+      "contexts": {
+        "vedyakshara": [
+          "",
+          "a"
+        ]
+      }
     },
     {
       "sound": "gh",
       "spelling": "gh",
       "kind": "pair",
-      "key": "option+g"
+      "key": "option+g",
+      "contexts": {
+        "vedyakshara": [
+          "",
+          "a"
+        ]
+      }
     },
     {
       "sound": "Gh",
       "spelling": "Gh",
       "kind": "pair",
       "key": "option+shift+g",
-      "capital of": "gh"
+      "capital of": "gh",
+      "contexts": {
+        "vedyakshara": [
+          "",
+          "a"
+        ]
+      }
     },
     {
       "sound": "zh",
       "spelling": "zh",
       "kind": "pair",
-      "key": "option+z"
+      "key": "option+z",
+      "contexts": {
+        "vedyakshara": [
+          "",
+          "a"
+        ]
+      }
     },
     {
       "sound": "Zh",
       "spelling": "Zh",
       "kind": "pair",
       "key": "option+shift+z",
-      "capital of": "zh"
+      "capital of": "zh",
+      "contexts": {
+        "vedyakshara": [
+          "",
+          "a"
+        ]
+      }
     },
     {
       "sound": "ph",
       "spelling": "ph",
       "kind": "pair",
-      "key": "option+p"
+      "key": "option+p",
+      "contexts": {
+        "vedyakshara": [
+          "",
+          "a"
+        ]
+      }
     },
     {
       "sound": "Ph",
       "spelling": "Ph",
       "kind": "pair",
       "key": "option+shift+p",
-      "capital of": "ph"
+      "capital of": "ph",
+      "contexts": {
+        "vedyakshara": [
+          "",
+          "a"
+        ]
+      }
     },
     {
       "sound": "ng",
       "spelling": "ng",
       "kind": "pair",
-      "key": "option+n"
+      "key": "option+n",
+      "contexts": {
+        "vedyakshara": [
+          "",
+          "a"
+        ]
+      }
     },
     {
       "sound": "Ng",
       "spelling": "Ng",
       "kind": "pair",
       "key": "option+shift+n",
-      "capital of": "ng"
+      "capital of": "ng",
+      "contexts": {
+        "vedyakshara": [
+          "",
+          "a"
+        ]
+      }
     },
     {
       "sound": "ny",
       "spelling": "ny",
       "kind": "pair",
-      "key": "option+y"
+      "key": "option+y",
+      "contexts": {
+        "vedyakshara": [
+          "",
+          "a"
+        ]
+      }
     },
     {
       "sound": "Ny",
       "spelling": "Ny",
       "kind": "pair",
       "key": "option+shift+y",
-      "capital of": "ny"
+      "capital of": "ny",
+      "contexts": {
+        "vedyakshara": [
+          "",
+          "a"
+        ]
+      }
     },
     {
       "sound": "ts",
       "spelling": "ts",
       "kind": "pair",
-      "key": "option+x"
+      "key": "option+x",
+      "contexts": {
+        "vedyakshara": [
+          "",
+          "a"
+        ]
+      }
     },
     {
       "sound": "Ts",
       "spelling": "Ts",
       "kind": "pair",
       "key": "option+shift+x",
-      "capital of": "ts"
+      "capital of": "ts",
+      "contexts": {
+        "vedyakshara": [
+          "",
+          "a"
+        ]
+      }
     },
     {
       "sound": "hl",
       "spelling": "hl",
       "kind": "pair",
-      "key": "option+h"
+      "key": "option+h",
+      "contexts": {
+        "vedyakshara": [
+          "",
+          "a"
+        ]
+      }
     },
     {
       "sound": "Hl",
       "spelling": "Hl",
       "kind": "pair",
       "key": "option+shift+h",
-      "capital of": "hl"
+      "capital of": "hl",
+      "contexts": {
+        "vedyakshara": [
+          "",
+          "a"
+        ]
+      }
     },
     {
       "sound": "bh",
       "spelling": "bh",
       "kind": "pair",
-      "key": "option+b"
+      "key": "option+b",
+      "contexts": {
+        "vedyakshara": [
+          "",
+          "a"
+        ]
+      }
     },
     {
       "sound": "Bh",
       "spelling": "Bh",
       "kind": "pair",
       "key": "option+shift+b",
-      "capital of": "bh"
+      "capital of": "bh",
+      "contexts": {
+        "vedyakshara": [
+          "",
+          "a"
+        ]
+      }
     },
     {
       "sound": "aa",

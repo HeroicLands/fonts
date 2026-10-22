@@ -18,3 +18,21 @@ feature ccmp {
     sub u acutecomb' by u.acute;
   } ccmp_acute;
 } ccmp;
+
+# The imperial recension binds a common pair of staves on one stem. The bound runes
+# sit behind ss01, so plain text is unchanged.
+feature ss01 {
+  featureNames {
+    name "Bound runes";
+  };
+  sub e n by e_n;
+  sub e l by e_l;
+  sub a r by a_r;
+  sub a l by a_l;
+  sub m a by m_a;
+  sub z a by z_a;
+  sub k a by k_a;
+  sub u r by u_r;
+  sub l m by l_m;
+  sub l th by l_th;
+} ss01;

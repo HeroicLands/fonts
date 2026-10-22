@@ -54,6 +54,21 @@
       <string>num.8</string>
       <string>num.9</string>
       <string>period</string>
+      <string>ai</string>
+      <string>au</string>
+      <string>oi</string>
+      <string>e_n</string>
+      <string>e_l</string>
+      <string>a_r</string>
+      <string>a_l</string>
+      <string>m_a</string>
+      <string>z_a</string>
+      <string>k_a</string>
+      <string>u_r</string>
+      <string>l_m</string>
+      <string>l_th</string>
+      <string>crown.open</string>
+      <string>crown.close</string>
     </array>
   </dict>
 </plist>

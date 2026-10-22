@@ -1,13 +1,31 @@
-# Pirzath keyboard
+# HL Pirzath cheatsheet
 
-HL Pirzath types Pirzath Carved, Pirzath Hand, Pirzath Hand Lifted by sound. The keys are the shared sound keys of [the cheatsheet](index.md), which draws them on a keyboard and gives their principles; this sheet lists what each key types in Pirzath. The keys of markup, listed there, type themselves.
+HL Pirzath types Pirzath Carved, Pirzath Hand and Pirzath Hand Lifted by sound. It is a US keyboard that writes the Pirzath script: the key for a sound types that sound's Pirzath character, so `t` types the script's t, Option+T types its th, and Shift makes a capital. You type the sounds of a word one after another, as you would in English.
 
-- macOS layout: `keyboards/macos/HeroicLands.bundle`, input source **HL Pirzath**.
-- Windows layout: `keyboards/windows/pirzath.klc`, the Microsoft Keyboard Layout Creator source of **HL Pirzath**.
-- Linux layout: `keyboards/linux/hl_pirzath`, the XKB symbols of **HL Pirzath**.
-- Emacs input method: `keyboards/emacs/heroiclands-pirzath.el`, named `heroiclands-pirzath`.
+![HL Pirzath on an ANSI keyboard](pirzath.png)
+
+A printable copy is [pirzath.svg](pirzath.svg) and [pirzath.png](pirzath.png).
+
+## Reading the keys
+
+- `t` is the key alone. `shift+t` is Shift and the key.
+- `option+t` is Option and the key on a Mac, and AltGr and the key on Windows and Linux. AltGr is the right Alt key (on a keyboard without one, hold Ctrl and Alt together). `option+shift+t` adds Shift.
+- The Sound column is the roman spelling of the sound a key stands for. A key marked _nothing_ types nothing in this script.
+- Character names and code points identify each character exactly, for a program or a character viewer.
+- The Emacs column is what to type in the Emacs input method `heroiclands-pirzath`, where Option is a backslash.
+
+## Installing the layout
+
+The layout is a file per platform, named below. [The README](../README.md#installing-a-keyboard-layout) walks through installing each.
+
+- macOS: `keyboards/macos/HeroicLands.bundle`, input source **HL Pirzath**.
+- Windows: `keyboards/windows/pirzath.klc`, the Microsoft Keyboard Layout Creator source of **HL Pirzath**.
+- Linux: `keyboards/linux/hl_pirzath`, the XKB symbols of **HL Pirzath**.
+- Emacs: `keyboards/emacs/heroiclands-pirzath.el`, the input method `heroiclands-pirzath`.
 
 ## Keys a platform cannot carry
+
+A Windows key holds at most four UTF-16 code units and a Linux key one character, so a sound this script spells with more types nothing there. macOS and Emacs carry every key.
 
 | Key | Sound | Script | Platform | Why |
 | --- | --- | --- | --- | --- |
@@ -44,150 +62,173 @@ HL Pirzath types Pirzath Carved, Pirzath Hand, Pirzath Hand Lifted by sound. The
 | `option+u` | `ú` | Pirzath | Linux | 2 code points; an XKB key types one |
 | `option+shift+u` | `Ú` | Pirzath | Linux | 2 code points; an XKB key types one |
 
+## Markup
+
+These keys type themselves, as plain ASCII, in every layout, so Markdown and similar markup are written without switching layouts.
+
+| Key | Types |
+| --- | --- |
+| `shift+8` | `*` |
+| `shift+-` | `_` |
+| `[` | `[` |
+| `]` | `]` |
+| `shift+[` | `{` |
+| `shift+]` | `}` |
+| `shift+9` | `(` |
+| `shift+0` | `)` |
+| `=` | `=` |
+| `shift+;` | `:` |
+| `shift+\` | `\|` |
+| `\` | `\` |
+| `` shift+` `` | `~` |
+| `` ` `` | `` ` `` |
+
 ## Keys
 
-| Key | Emacs | Sound | Glyphs | Code points | Names |
+Every sound key, in keyboard order. Example: `t` types the sound `t`.
+
+| Key | Glyphs | Code points | Names | Sound | Emacs |
 | --- | --- | --- | --- | --- | --- |
-| `a` | `a` | `a` | ![U+F0000](../charts/pirzath/glyphs/U+F0000.svg) | U+F0000 | PIRZATH LETTER A |
-| `shift+a` | `A` | `A` | ![U+F0000](../charts/pirzath/glyphs/U+F0000.svg) | U+F0000 | PIRZATH LETTER A |
-| `b` | `b` | `b` | ![U+F0006](../charts/pirzath/glyphs/U+F0006.svg) | U+F0006 | PIRZATH LETTER BALG |
-| `shift+b` | `B` | `B` | ![U+F0006](../charts/pirzath/glyphs/U+F0006.svg) | U+F0006 | PIRZATH LETTER BALG |
-| `d` | `d` | `d` | ![U+F000B](../charts/pirzath/glyphs/U+F000B.svg) | U+F000B | PIRZATH LETTER DALK |
-| `shift+d` | `D` | `D` | ![U+F000B](../charts/pirzath/glyphs/U+F000B.svg) | U+F000B | PIRZATH LETTER DALK |
-| `e` | `e` | `e` | ![U+F0001](../charts/pirzath/glyphs/U+F0001.svg) | U+F0001 | PIRZATH LETTER E |
-| `shift+e` | `E` | `E` | ![U+F0001](../charts/pirzath/glyphs/U+F0001.svg) | U+F0001 | PIRZATH LETTER E |
-| `f` | `f` | `f` | ![U+F0007](../charts/pirzath/glyphs/U+F0007.svg) | U+F0007 | PIRZATH LETTER FARZ |
-| `shift+f` | `F` | `F` | ![U+F0007](../charts/pirzath/glyphs/U+F0007.svg) | U+F0007 | PIRZATH LETTER FARZ |
-| `g` | `g` | `g` | ![U+F000E](../charts/pirzath/glyphs/U+F000E.svg) | U+F000E | PIRZATH LETTER GAMTH |
-| `shift+g` | `G` | `G` | ![U+F000E](../charts/pirzath/glyphs/U+F000E.svg) | U+F000E | PIRZATH LETTER GAMTH |
-| `h` | `h` | `h` | ![U+F0011](../charts/pirzath/glyphs/U+F0011.svg) | U+F0011 | PIRZATH LETTER HALB |
-| `shift+h` | `H` | `H` | ![U+F0011](../charts/pirzath/glyphs/U+F0011.svg) | U+F0011 | PIRZATH LETTER HALB |
-| `i` | `i` | `i` | ![U+F0002](../charts/pirzath/glyphs/U+F0002.svg) | U+F0002 | PIRZATH LETTER I |
-| `shift+i` | `I` | `I` | ![U+F0002](../charts/pirzath/glyphs/U+F0002.svg) | U+F0002 | PIRZATH LETTER I |
-| `j` | `j` | `j` | ![U+F0014](../charts/pirzath/glyphs/U+F0014.svg) | U+F0014 | PIRZATH LETTER JA |
-| `shift+j` | `J` | `J` | ![U+F0014](../charts/pirzath/glyphs/U+F0014.svg) | U+F0014 | PIRZATH LETTER JA |
-| `k` | `k` | `k` | ![U+F000D](../charts/pirzath/glyphs/U+F000D.svg) | U+F000D | PIRZATH LETTER KAMV |
-| `shift+k` | `K` | `K` | ![U+F000D](../charts/pirzath/glyphs/U+F000D.svg) | U+F000D | PIRZATH LETTER KAMV |
-| `l` | `l` | `l` | ![U+F0012](../charts/pirzath/glyphs/U+F0012.svg) | U+F0012 | PIRZATH LETTER LADHAV |
-| `shift+l` | `L` | `L` | ![U+F0012](../charts/pirzath/glyphs/U+F0012.svg) | U+F0012 | PIRZATH LETTER LADHAV |
-| `m` | `m` | `m` | ![U+F0009](../charts/pirzath/glyphs/U+F0009.svg) | U+F0009 | PIRZATH LETTER MARP |
-| `shift+m` | `M` | `M` | ![U+F0009](../charts/pirzath/glyphs/U+F0009.svg) | U+F0009 | PIRZATH LETTER MARP |
-| `n` | `n` | `n` | ![U+F000C](../charts/pirzath/glyphs/U+F000C.svg) | U+F000C | PIRZATH LETTER NAZAF |
-| `shift+n` | `N` | `N` | ![U+F000C](../charts/pirzath/glyphs/U+F000C.svg) | U+F000C | PIRZATH LETTER NAZAF |
-| `o` | `o` | `o` | ![U+F0003](../charts/pirzath/glyphs/U+F0003.svg) | U+F0003 | PIRZATH LETTER O |
-| `shift+o` | `O` | `O` | ![U+F0003](../charts/pirzath/glyphs/U+F0003.svg) | U+F0003 | PIRZATH LETTER O |
-| `p` | `p` | `p` | ![U+F0005](../charts/pirzath/glyphs/U+F0005.svg) | U+F0005 | PIRZATH LETTER PARGH |
-| `shift+p` | `P` | `P` | ![U+F0005](../charts/pirzath/glyphs/U+F0005.svg) | U+F0005 | PIRZATH LETTER PARGH |
-| `q` | `q` | `q` | ![U+F0015](../charts/pirzath/glyphs/U+F0015.svg) | U+F0015 | PIRZATH LETTER QA |
-| `shift+q` | `Q` | `Q` | ![U+F0015](../charts/pirzath/glyphs/U+F0015.svg) | U+F0015 | PIRZATH LETTER QA |
-| `r` | `r` | `r` | ![U+F0013](../charts/pirzath/glyphs/U+F0013.svg) | U+F0013 | PIRZATH LETTER RAGHAV |
-| `shift+r` | `R` | `R` | ![U+F0013](../charts/pirzath/glyphs/U+F0013.svg) | U+F0013 | PIRZATH LETTER RAGHAV |
-| `s` | `s` | `s` | ![U+F000F](../charts/pirzath/glyphs/U+F000F.svg) | U+F000F | PIRZATH LETTER SAKAR |
-| `shift+s` | `S` | `S` | ![U+F000F](../charts/pirzath/glyphs/U+F000F.svg) | U+F000F | PIRZATH LETTER SAKAR |
-| `t` | `t` | `t` | ![U+F000A](../charts/pirzath/glyphs/U+F000A.svg) | U+F000A | PIRZATH LETTER TAMB |
-| `shift+t` | `T` | `T` | ![U+F000A](../charts/pirzath/glyphs/U+F000A.svg) | U+F000A | PIRZATH LETTER TAMB |
-| `u` | `u` | `u` | ![U+F0004](../charts/pirzath/glyphs/U+F0004.svg) | U+F0004 | PIRZATH LETTER U |
-| `shift+u` | `U` | `U` | ![U+F0004](../charts/pirzath/glyphs/U+F0004.svg) | U+F0004 | PIRZATH LETTER U |
-| `v` | `v` | `v` | ![U+F0008](../charts/pirzath/glyphs/U+F0008.svg) | U+F0008 | PIRZATH LETTER VAZAL |
-| `shift+v` | `V` | `V` | ![U+F0008](../charts/pirzath/glyphs/U+F0008.svg) | U+F0008 | PIRZATH LETTER VAZAL |
-| `w` | `w` | `w` | ![U+F0016](../charts/pirzath/glyphs/U+F0016.svg) | U+F0016 | PIRZATH LETTER WA |
-| `shift+w` | `W` | `W` | ![U+F0016](../charts/pirzath/glyphs/U+F0016.svg) | U+F0016 | PIRZATH LETTER WA |
-| `y` | `y` | `y` | ![U+F0017](../charts/pirzath/glyphs/U+F0017.svg) | U+F0017 | PIRZATH LETTER YA |
-| `shift+y` | `Y` | `Y` | ![U+F0017](../charts/pirzath/glyphs/U+F0017.svg) | U+F0017 | PIRZATH LETTER YA |
-| `z` | `z` | `z` | ![U+F0010](../charts/pirzath/glyphs/U+F0010.svg) | U+F0010 | PIRZATH LETTER ZALD |
-| `shift+z` | `Z` | `Z` | ![U+F0010](../charts/pirzath/glyphs/U+F0010.svg) | U+F0010 | PIRZATH LETTER ZALD |
-| `option+c` | `\c` | `ch` | ![U+F0027](../charts/pirzath/glyphs/U+F0027.svg) | U+F0027 | PIRZATH LETTER CHA |
-| `option+shift+c` | `\C` | `Ch` | ![U+F0027](../charts/pirzath/glyphs/U+F0027.svg) | U+F0027 | PIRZATH LETTER CHA |
-| `option+s` | `\s` | `sh` | ![U+F0024](../charts/pirzath/glyphs/U+F0024.svg) | U+F0024 | PIRZATH LETTER SHA |
-| `option+shift+s` | `\S` | `Sh` | ![U+F0024](../charts/pirzath/glyphs/U+F0024.svg) | U+F0024 | PIRZATH LETTER SHA |
-| `option+t` | `\t` | `th` | ![U+F0020](../charts/pirzath/glyphs/U+F0020.svg) | U+F0020 | PIRZATH LETTER THARZ |
-| `option+shift+t` | `\T` | `Th` | ![U+F0020](../charts/pirzath/glyphs/U+F0020.svg) | U+F0020 | PIRZATH LETTER THARZ |
-| `option+d` | `\d` | `dh` | ![U+F0021](../charts/pirzath/glyphs/U+F0021.svg) | U+F0021 | PIRZATH LETTER DHALZ |
-| `option+shift+d` | `\D` | `Dh` | ![U+F0021](../charts/pirzath/glyphs/U+F0021.svg) | U+F0021 | PIRZATH LETTER DHALZ |
-| `option+k` | `\k` | `kh` | ![U+F0022](../charts/pirzath/glyphs/U+F0022.svg) | U+F0022 | PIRZATH LETTER KHABAR |
-| `option+shift+k` | `\K` | `Kh` | ![U+F0022](../charts/pirzath/glyphs/U+F0022.svg) | U+F0022 | PIRZATH LETTER KHABAR |
-| `option+g` | `\g` | `gh` | ![U+F0023](../charts/pirzath/glyphs/U+F0023.svg) | U+F0023 | PIRZATH LETTER GHARM |
-| `option+shift+g` | `\G` | `Gh` | ![U+F0023](../charts/pirzath/glyphs/U+F0023.svg) | U+F0023 | PIRZATH LETTER GHARM |
-| `option+z` | `\z` | `zh` | ![U+F0025](../charts/pirzath/glyphs/U+F0025.svg) | U+F0025 | PIRZATH LETTER ZHA |
-| `option+shift+z` | `\Z` | `Zh` | ![U+F0025](../charts/pirzath/glyphs/U+F0025.svg) | U+F0025 | PIRZATH LETTER ZHA |
-| `option+p` | `\p` | `ph` | ![U+F0005](../charts/pirzath/glyphs/U+F0005.svg) ![U+F0011](../charts/pirzath/glyphs/U+F0011.svg) | U+F0005 U+F0011 | PIRZATH LETTER PARGH; PIRZATH LETTER HALB |
-| `option+shift+p` | `\P` | `Ph` | ![U+F0005](../charts/pirzath/glyphs/U+F0005.svg) ![U+F0011](../charts/pirzath/glyphs/U+F0011.svg) | U+F0005 U+F0011 | PIRZATH LETTER PARGH; PIRZATH LETTER HALB |
-| `option+n` | `\n` | `ng` | ![U+F0028](../charts/pirzath/glyphs/U+F0028.svg) | U+F0028 | PIRZATH LETTER NGA |
-| `option+shift+n` | `\N` | `Ng` | ![U+F0028](../charts/pirzath/glyphs/U+F0028.svg) | U+F0028 | PIRZATH LETTER NGA |
-| `option+y` | `\y` | `ny` | ![U+F0029](../charts/pirzath/glyphs/U+F0029.svg) | U+F0029 | PIRZATH LETTER NYA |
-| `option+shift+y` | `\Y` | `Ny` | ![U+F0029](../charts/pirzath/glyphs/U+F0029.svg) | U+F0029 | PIRZATH LETTER NYA |
-| `option+x` | `\x` | `ts` | ![U+F0026](../charts/pirzath/glyphs/U+F0026.svg) | U+F0026 | PIRZATH LETTER TSA |
-| `option+shift+x` | `\X` | `Ts` | ![U+F0026](../charts/pirzath/glyphs/U+F0026.svg) | U+F0026 | PIRZATH LETTER TSA |
-| `option+h` | `\h` | `hl` | ![U+F002A](../charts/pirzath/glyphs/U+F002A.svg) | U+F002A | PIRZATH LETTER HLA |
-| `option+shift+h` | `\H` | `Hl` | ![U+F002A](../charts/pirzath/glyphs/U+F002A.svg) | U+F002A | PIRZATH LETTER HLA |
-| `option+b` | `\b` | `bh` | ![U+F0006](../charts/pirzath/glyphs/U+F0006.svg) ![U+F0011](../charts/pirzath/glyphs/U+F0011.svg) | U+F0006 U+F0011 | PIRZATH LETTER BALG; PIRZATH LETTER HALB |
-| `option+shift+b` | `\B` | `Bh` | ![U+F0006](../charts/pirzath/glyphs/U+F0006.svg) ![U+F0011](../charts/pirzath/glyphs/U+F0011.svg) | U+F0006 U+F0011 | PIRZATH LETTER BALG; PIRZATH LETTER HALB |
-| `option+1` | `\1` | `aa` | ![U+F0000](../charts/pirzath/glyphs/U+F0000.svg) ![U+F0000](../charts/pirzath/glyphs/U+F0000.svg) | U+F0000 U+F0000 | PIRZATH LETTER A; PIRZATH LETTER A |
-| `option+shift+1` | `\!` | `Aa` | ![U+F0000](../charts/pirzath/glyphs/U+F0000.svg) ![U+F0000](../charts/pirzath/glyphs/U+F0000.svg) | U+F0000 U+F0000 | PIRZATH LETTER A; PIRZATH LETTER A |
-| `option+2` | `\2` | `ee` | ![U+F0001](../charts/pirzath/glyphs/U+F0001.svg) ![U+F0001](../charts/pirzath/glyphs/U+F0001.svg) | U+F0001 U+F0001 | PIRZATH LETTER E; PIRZATH LETTER E |
-| `option+shift+2` | `\@` | `Ee` | ![U+F0001](../charts/pirzath/glyphs/U+F0001.svg) ![U+F0001](../charts/pirzath/glyphs/U+F0001.svg) | U+F0001 U+F0001 | PIRZATH LETTER E; PIRZATH LETTER E |
-| `option+3` | `\3` | `ii` | ![U+F0002](../charts/pirzath/glyphs/U+F0002.svg) ![U+F0002](../charts/pirzath/glyphs/U+F0002.svg) | U+F0002 U+F0002 | PIRZATH LETTER I; PIRZATH LETTER I |
-| `option+shift+3` | `\#` | `Ii` | ![U+F0002](../charts/pirzath/glyphs/U+F0002.svg) ![U+F0002](../charts/pirzath/glyphs/U+F0002.svg) | U+F0002 U+F0002 | PIRZATH LETTER I; PIRZATH LETTER I |
-| `option+4` | `\4` | `oo` | ![U+F0003](../charts/pirzath/glyphs/U+F0003.svg) ![U+F0003](../charts/pirzath/glyphs/U+F0003.svg) | U+F0003 U+F0003 | PIRZATH LETTER O; PIRZATH LETTER O |
-| `option+shift+4` | `\$` | `Oo` | ![U+F0003](../charts/pirzath/glyphs/U+F0003.svg) ![U+F0003](../charts/pirzath/glyphs/U+F0003.svg) | U+F0003 U+F0003 | PIRZATH LETTER O; PIRZATH LETTER O |
-| `option+5` | `\5` | `uu` | ![U+F0004](../charts/pirzath/glyphs/U+F0004.svg) ![U+F0004](../charts/pirzath/glyphs/U+F0004.svg) | U+F0004 U+F0004 | PIRZATH LETTER U; PIRZATH LETTER U |
-| `option+shift+5` | `\%` | `Uu` | ![U+F0004](../charts/pirzath/glyphs/U+F0004.svg) ![U+F0004](../charts/pirzath/glyphs/U+F0004.svg) | U+F0004 U+F0004 | PIRZATH LETTER U; PIRZATH LETTER U |
-| `option+6` | `\6` | `ai` | ![U+F0030](../charts/pirzath/glyphs/U+F0030.svg) | U+F0030 | PIRZATH LETTER AI |
-| `option+shift+6` | `\^` | `Ai` | ![U+F0030](../charts/pirzath/glyphs/U+F0030.svg) | U+F0030 | PIRZATH LETTER AI |
-| `option+7` | `\7` | `au` | ![U+F0031](../charts/pirzath/glyphs/U+F0031.svg) | U+F0031 | PIRZATH LETTER AU |
-| `option+shift+7` | `\&` | `Au` | ![U+F0031](../charts/pirzath/glyphs/U+F0031.svg) | U+F0031 | PIRZATH LETTER AU |
-| `option+8` | `\8` | `ei` | ![U+F0032](../charts/pirzath/glyphs/U+F0032.svg) | U+F0032 | PIRZATH LETTER EI |
-| `option+shift+8` | `\*` | `Ei` | ![U+F0032](../charts/pirzath/glyphs/U+F0032.svg) | U+F0032 | PIRZATH LETTER EI |
-| `option+9` | `\9` | `oi` | ![U+F0033](../charts/pirzath/glyphs/U+F0033.svg) | U+F0033 | PIRZATH LETTER OI |
-| `option+shift+9` | `\(` | `Oi` | ![U+F0033](../charts/pirzath/glyphs/U+F0033.svg) | U+F0033 | PIRZATH LETTER OI |
-| `option+0` | `\0` | `ou` | ![U+F0034](../charts/pirzath/glyphs/U+F0034.svg) | U+F0034 | PIRZATH LETTER OU |
-| `option+shift+0` | `\)` | `Ou` | ![U+F0034](../charts/pirzath/glyphs/U+F0034.svg) | U+F0034 | PIRZATH LETTER OU |
-| `option+-` | `\-` | `ie` | ![U+F0002](../charts/pirzath/glyphs/U+F0002.svg) ![U+F0001](../charts/pirzath/glyphs/U+F0001.svg) | U+F0002 U+F0001 | PIRZATH LETTER I; PIRZATH LETTER E |
-| `option+shift+-` | `\_` | `Ie` | ![U+F0002](../charts/pirzath/glyphs/U+F0002.svg) ![U+F0001](../charts/pirzath/glyphs/U+F0001.svg) | U+F0002 U+F0001 | PIRZATH LETTER I; PIRZATH LETTER E |
-| `option+=` | `\=` | `uo` | ![U+F0004](../charts/pirzath/glyphs/U+F0004.svg) ![U+F0003](../charts/pirzath/glyphs/U+F0003.svg) | U+F0004 U+F0003 | PIRZATH LETTER U; PIRZATH LETTER O |
-| `option+shift+=` | `\+` | `Uo` | ![U+F0004](../charts/pirzath/glyphs/U+F0004.svg) ![U+F0003](../charts/pirzath/glyphs/U+F0003.svg) | U+F0004 U+F0003 | PIRZATH LETTER U; PIRZATH LETTER O |
-| `option+[` | `\[` | `ae` | ![U+F0000](../charts/pirzath/glyphs/U+F0000.svg) ![U+F0001](../charts/pirzath/glyphs/U+F0001.svg) | U+F0000 U+F0001 | PIRZATH LETTER A; PIRZATH LETTER E |
-| `option+shift+[` | `\{` | `Ae` | ![U+F0000](../charts/pirzath/glyphs/U+F0000.svg) ![U+F0001](../charts/pirzath/glyphs/U+F0001.svg) | U+F0000 U+F0001 | PIRZATH LETTER A; PIRZATH LETTER E |
-| `option+]` | `\]` | `ea` | ![U+F0001](../charts/pirzath/glyphs/U+F0001.svg) ![U+F0000](../charts/pirzath/glyphs/U+F0000.svg) | U+F0001 U+F0000 | PIRZATH LETTER E; PIRZATH LETTER A |
-| `option+shift+]` | `\}` | `Ea` | ![U+F0001](../charts/pirzath/glyphs/U+F0001.svg) ![U+F0000](../charts/pirzath/glyphs/U+F0000.svg) | U+F0001 U+F0000 | PIRZATH LETTER E; PIRZATH LETTER A |
-| `option+a` | `\a` | `á` | ![U+F0000](../charts/pirzath/glyphs/U+F0000.svg) ![U+F0060](../charts/pirzath/glyphs/U+F0060.svg) | U+F0000 U+F0060 | PIRZATH LETTER A; PIRZATH LENGTH MARK |
-| `option+shift+a` | `\A` | `Á` | ![U+F0000](../charts/pirzath/glyphs/U+F0000.svg) ![U+F0060](../charts/pirzath/glyphs/U+F0060.svg) | U+F0000 U+F0060 | PIRZATH LETTER A; PIRZATH LENGTH MARK |
-| `option+e` | `\e` | `é` | ![U+F0001](../charts/pirzath/glyphs/U+F0001.svg) ![U+F0060](../charts/pirzath/glyphs/U+F0060.svg) | U+F0001 U+F0060 | PIRZATH LETTER E; PIRZATH LENGTH MARK |
-| `option+shift+e` | `\E` | `É` | ![U+F0001](../charts/pirzath/glyphs/U+F0001.svg) ![U+F0060](../charts/pirzath/glyphs/U+F0060.svg) | U+F0001 U+F0060 | PIRZATH LETTER E; PIRZATH LENGTH MARK |
-| `option+i` | `\i` | `í` | ![U+F0002](../charts/pirzath/glyphs/U+F0002.svg) ![U+F0060](../charts/pirzath/glyphs/U+F0060.svg) | U+F0002 U+F0060 | PIRZATH LETTER I; PIRZATH LENGTH MARK |
-| `option+shift+i` | `\I` | `Í` | ![U+F0002](../charts/pirzath/glyphs/U+F0002.svg) ![U+F0060](../charts/pirzath/glyphs/U+F0060.svg) | U+F0002 U+F0060 | PIRZATH LETTER I; PIRZATH LENGTH MARK |
-| `option+o` | `\o` | `ó` | ![U+F0003](../charts/pirzath/glyphs/U+F0003.svg) ![U+F0060](../charts/pirzath/glyphs/U+F0060.svg) | U+F0003 U+F0060 | PIRZATH LETTER O; PIRZATH LENGTH MARK |
-| `option+shift+o` | `\O` | `Ó` | ![U+F0003](../charts/pirzath/glyphs/U+F0003.svg) ![U+F0060](../charts/pirzath/glyphs/U+F0060.svg) | U+F0003 U+F0060 | PIRZATH LETTER O; PIRZATH LENGTH MARK |
-| `option+u` | `\u` | `ú` | ![U+F0004](../charts/pirzath/glyphs/U+F0004.svg) ![U+F0060](../charts/pirzath/glyphs/U+F0060.svg) | U+F0004 U+F0060 | PIRZATH LETTER U; PIRZATH LENGTH MARK |
-| `option+shift+u` | `\U` | `Ú` | ![U+F0004](../charts/pirzath/glyphs/U+F0004.svg) ![U+F0060](../charts/pirzath/glyphs/U+F0060.svg) | U+F0004 U+F0060 | PIRZATH LETTER U; PIRZATH LENGTH MARK |
-| `option+;` | `\;` | `ä` |  | none: the mapping has no row for it |  |
-| `option+shift+;` | `\:` | `Ä` |  | none: the mapping has no row for it |  |
-| `option+'` | `\'` | `ë` | ![U+F0001](../charts/pirzath/glyphs/U+F0001.svg) | U+F0001 | PIRZATH LETTER E |
-| `option+shift+'` | `\"` | `Ë` | ![U+F0001](../charts/pirzath/glyphs/U+F0001.svg) | U+F0001 | PIRZATH LETTER E |
-| `option+,` | `\,` | `ï` |  | none: the mapping has no row for it |  |
-| `option+shift+,` | `\<` | `Ï` |  | none: the mapping has no row for it |  |
-| `option+.` | `\.` | `ö` |  | none: the mapping has no row for it |  |
-| `option+shift+.` | `\>` | `Ö` |  | none: the mapping has no row for it |  |
-| `option+/` | `\/` | `ü` |  | none: the mapping has no row for it |  |
-| `option+shift+/` | `\?` | `Ü` |  | none: the mapping has no row for it |  |
-| `'` | `'` | `catch` | ![U+F0018](../charts/pirzath/glyphs/U+F0018.svg) | U+F0018 | PIRZATH LETTER CATCH |
-| `.` | `.` | `stop` | ![U+F0050](../charts/pirzath/glyphs/U+F0050.svg) | U+F0050 | PIRZATH SENTENCE END |
-| `,` | `,` | `pause` | ![U+F0051](../charts/pirzath/glyphs/U+F0051.svg) | U+F0051 | PIRZATH PAUSE |
-| `shift+,` | `<` | `open quote` | ![U+F0054](../charts/pirzath/glyphs/U+F0054.svg) | U+F0054 | PIRZATH OPENING QUOTATION MARK |
-| `shift+.` | `>` | `close quote` | ![U+F0055](../charts/pirzath/glyphs/U+F0055.svg) | U+F0055 | PIRZATH CLOSING QUOTATION MARK |
-| `0` | `0` | `0` | ![U+F0040](../charts/pirzath/glyphs/U+F0040.svg) | U+F0040 | PIRZATH DIGIT ZERO |
-| `1` | `1` | `1` | ![U+F0041](../charts/pirzath/glyphs/U+F0041.svg) | U+F0041 | PIRZATH DIGIT ONE |
-| `2` | `2` | `2` | ![U+F0042](../charts/pirzath/glyphs/U+F0042.svg) | U+F0042 | PIRZATH DIGIT TWO |
-| `3` | `3` | `3` | ![U+F0043](../charts/pirzath/glyphs/U+F0043.svg) | U+F0043 | PIRZATH DIGIT THREE |
-| `4` | `4` | `4` | ![U+F0044](../charts/pirzath/glyphs/U+F0044.svg) | U+F0044 | PIRZATH DIGIT FOUR |
-| `5` | `5` | `5` | ![U+F0045](../charts/pirzath/glyphs/U+F0045.svg) | U+F0045 | PIRZATH DIGIT FIVE |
-| `6` | `6` | `6` | ![U+F0046](../charts/pirzath/glyphs/U+F0046.svg) | U+F0046 | PIRZATH DIGIT SIX |
-| `7` | `7` | `7` | ![U+F0047](../charts/pirzath/glyphs/U+F0047.svg) | U+F0047 | PIRZATH DIGIT SEVEN |
-| `8` | `8` | `8` | ![U+F0048](../charts/pirzath/glyphs/U+F0048.svg) | U+F0048 | PIRZATH DIGIT EIGHT |
-| `9` | `9` | `9` | ![U+F0049](../charts/pirzath/glyphs/U+F0049.svg) | U+F0049 | PIRZATH DIGIT NINE |
-| `shift+2` | `@` | `ten` | ![U+F004A](../charts/pirzath/glyphs/U+F004A.svg) | U+F004A | PIRZATH DIGIT TEN |
-| `shift+3` | `#` | `eleven` | ![U+F004B](../charts/pirzath/glyphs/U+F004B.svg) | U+F004B | PIRZATH DIGIT ELEVEN |
-| `shift+4` | `$` | `twelve` | ![U+F004C](../charts/pirzath/glyphs/U+F004C.svg) | U+F004C | PIRZATH DIGIT TWELVE |
-| `shift+5` | `%` | `thirteen` | ![U+F004D](../charts/pirzath/glyphs/U+F004D.svg) | U+F004D | PIRZATH DIGIT THIRTEEN |
-| `shift+6` | `^` | `fourteen` | ![U+F004E](../charts/pirzath/glyphs/U+F004E.svg) | U+F004E | PIRZATH DIGIT FOURTEEN |
-| `shift+7` | `&` | `fifteen` | ![U+F004F](../charts/pirzath/glyphs/U+F004F.svg) | U+F004F | PIRZATH DIGIT FIFTEEN |
+| `a` | ![U+F0000](../charts/pirzath/glyphs/U+F0000.svg) | U+F0000 | PIRZATH LETTER A | `a` | `a` |
+| `shift+a` | ![U+F0000](../charts/pirzath/glyphs/U+F0000.svg) | U+F0000 | PIRZATH LETTER A | `A` | `A` |
+| `b` | ![U+F0006](../charts/pirzath/glyphs/U+F0006.svg) | U+F0006 | PIRZATH LETTER BALG | `b` | `b` |
+| `shift+b` | ![U+F0006](../charts/pirzath/glyphs/U+F0006.svg) | U+F0006 | PIRZATH LETTER BALG | `B` | `B` |
+| `d` | ![U+F000B](../charts/pirzath/glyphs/U+F000B.svg) | U+F000B | PIRZATH LETTER DALK | `d` | `d` |
+| `shift+d` | ![U+F000B](../charts/pirzath/glyphs/U+F000B.svg) | U+F000B | PIRZATH LETTER DALK | `D` | `D` |
+| `e` | ![U+F0001](../charts/pirzath/glyphs/U+F0001.svg) | U+F0001 | PIRZATH LETTER E | `e` | `e` |
+| `shift+e` | ![U+F0001](../charts/pirzath/glyphs/U+F0001.svg) | U+F0001 | PIRZATH LETTER E | `E` | `E` |
+| `f` | ![U+F0007](../charts/pirzath/glyphs/U+F0007.svg) | U+F0007 | PIRZATH LETTER FARZ | `f` | `f` |
+| `shift+f` | ![U+F0007](../charts/pirzath/glyphs/U+F0007.svg) | U+F0007 | PIRZATH LETTER FARZ | `F` | `F` |
+| `g` | ![U+F000E](../charts/pirzath/glyphs/U+F000E.svg) | U+F000E | PIRZATH LETTER GAMTH | `g` | `g` |
+| `shift+g` | ![U+F000E](../charts/pirzath/glyphs/U+F000E.svg) | U+F000E | PIRZATH LETTER GAMTH | `G` | `G` |
+| `h` | ![U+F0011](../charts/pirzath/glyphs/U+F0011.svg) | U+F0011 | PIRZATH LETTER HALB | `h` | `h` |
+| `shift+h` | ![U+F0011](../charts/pirzath/glyphs/U+F0011.svg) | U+F0011 | PIRZATH LETTER HALB | `H` | `H` |
+| `i` | ![U+F0002](../charts/pirzath/glyphs/U+F0002.svg) | U+F0002 | PIRZATH LETTER I | `i` | `i` |
+| `shift+i` | ![U+F0002](../charts/pirzath/glyphs/U+F0002.svg) | U+F0002 | PIRZATH LETTER I | `I` | `I` |
+| `j` | ![U+F0014](../charts/pirzath/glyphs/U+F0014.svg) | U+F0014 | PIRZATH LETTER JA | `j` | `j` |
+| `shift+j` | ![U+F0014](../charts/pirzath/glyphs/U+F0014.svg) | U+F0014 | PIRZATH LETTER JA | `J` | `J` |
+| `k` | ![U+F000D](../charts/pirzath/glyphs/U+F000D.svg) | U+F000D | PIRZATH LETTER KAMV | `k` | `k` |
+| `shift+k` | ![U+F000D](../charts/pirzath/glyphs/U+F000D.svg) | U+F000D | PIRZATH LETTER KAMV | `K` | `K` |
+| `l` | ![U+F0012](../charts/pirzath/glyphs/U+F0012.svg) | U+F0012 | PIRZATH LETTER LADHAV | `l` | `l` |
+| `shift+l` | ![U+F0012](../charts/pirzath/glyphs/U+F0012.svg) | U+F0012 | PIRZATH LETTER LADHAV | `L` | `L` |
+| `m` | ![U+F0009](../charts/pirzath/glyphs/U+F0009.svg) | U+F0009 | PIRZATH LETTER MARP | `m` | `m` |
+| `shift+m` | ![U+F0009](../charts/pirzath/glyphs/U+F0009.svg) | U+F0009 | PIRZATH LETTER MARP | `M` | `M` |
+| `n` | ![U+F000C](../charts/pirzath/glyphs/U+F000C.svg) | U+F000C | PIRZATH LETTER NAZAF | `n` | `n` |
+| `shift+n` | ![U+F000C](../charts/pirzath/glyphs/U+F000C.svg) | U+F000C | PIRZATH LETTER NAZAF | `N` | `N` |
+| `o` | ![U+F0003](../charts/pirzath/glyphs/U+F0003.svg) | U+F0003 | PIRZATH LETTER O | `o` | `o` |
+| `shift+o` | ![U+F0003](../charts/pirzath/glyphs/U+F0003.svg) | U+F0003 | PIRZATH LETTER O | `O` | `O` |
+| `p` | ![U+F0005](../charts/pirzath/glyphs/U+F0005.svg) | U+F0005 | PIRZATH LETTER PARGH | `p` | `p` |
+| `shift+p` | ![U+F0005](../charts/pirzath/glyphs/U+F0005.svg) | U+F0005 | PIRZATH LETTER PARGH | `P` | `P` |
+| `q` | ![U+F0015](../charts/pirzath/glyphs/U+F0015.svg) | U+F0015 | PIRZATH LETTER QA | `q` | `q` |
+| `shift+q` | ![U+F0015](../charts/pirzath/glyphs/U+F0015.svg) | U+F0015 | PIRZATH LETTER QA | `Q` | `Q` |
+| `r` | ![U+F0013](../charts/pirzath/glyphs/U+F0013.svg) | U+F0013 | PIRZATH LETTER RAGHAV | `r` | `r` |
+| `shift+r` | ![U+F0013](../charts/pirzath/glyphs/U+F0013.svg) | U+F0013 | PIRZATH LETTER RAGHAV | `R` | `R` |
+| `s` | ![U+F000F](../charts/pirzath/glyphs/U+F000F.svg) | U+F000F | PIRZATH LETTER SAKAR | `s` | `s` |
+| `shift+s` | ![U+F000F](../charts/pirzath/glyphs/U+F000F.svg) | U+F000F | PIRZATH LETTER SAKAR | `S` | `S` |
+| `t` | ![U+F000A](../charts/pirzath/glyphs/U+F000A.svg) | U+F000A | PIRZATH LETTER TAMB | `t` | `t` |
+| `shift+t` | ![U+F000A](../charts/pirzath/glyphs/U+F000A.svg) | U+F000A | PIRZATH LETTER TAMB | `T` | `T` |
+| `u` | ![U+F0004](../charts/pirzath/glyphs/U+F0004.svg) | U+F0004 | PIRZATH LETTER U | `u` | `u` |
+| `shift+u` | ![U+F0004](../charts/pirzath/glyphs/U+F0004.svg) | U+F0004 | PIRZATH LETTER U | `U` | `U` |
+| `v` | ![U+F0008](../charts/pirzath/glyphs/U+F0008.svg) | U+F0008 | PIRZATH LETTER VAZAL | `v` | `v` |
+| `shift+v` | ![U+F0008](../charts/pirzath/glyphs/U+F0008.svg) | U+F0008 | PIRZATH LETTER VAZAL | `V` | `V` |
+| `w` | ![U+F0016](../charts/pirzath/glyphs/U+F0016.svg) | U+F0016 | PIRZATH LETTER WA | `w` | `w` |
+| `shift+w` | ![U+F0016](../charts/pirzath/glyphs/U+F0016.svg) | U+F0016 | PIRZATH LETTER WA | `W` | `W` |
+| `y` | ![U+F0017](../charts/pirzath/glyphs/U+F0017.svg) | U+F0017 | PIRZATH LETTER YA | `y` | `y` |
+| `shift+y` | ![U+F0017](../charts/pirzath/glyphs/U+F0017.svg) | U+F0017 | PIRZATH LETTER YA | `Y` | `Y` |
+| `z` | ![U+F0010](../charts/pirzath/glyphs/U+F0010.svg) | U+F0010 | PIRZATH LETTER ZALD | `z` | `z` |
+| `shift+z` | ![U+F0010](../charts/pirzath/glyphs/U+F0010.svg) | U+F0010 | PIRZATH LETTER ZALD | `Z` | `Z` |
+| `option+c` | ![U+F0027](../charts/pirzath/glyphs/U+F0027.svg) | U+F0027 | PIRZATH LETTER CHA | `ch` | `\c` |
+| `option+shift+c` | ![U+F0027](../charts/pirzath/glyphs/U+F0027.svg) | U+F0027 | PIRZATH LETTER CHA | `Ch` | `\C` |
+| `option+s` | ![U+F0024](../charts/pirzath/glyphs/U+F0024.svg) | U+F0024 | PIRZATH LETTER SHA | `sh` | `\s` |
+| `option+shift+s` | ![U+F0024](../charts/pirzath/glyphs/U+F0024.svg) | U+F0024 | PIRZATH LETTER SHA | `Sh` | `\S` |
+| `option+t` | ![U+F0020](../charts/pirzath/glyphs/U+F0020.svg) | U+F0020 | PIRZATH LETTER THARZ | `th` | `\t` |
+| `option+shift+t` | ![U+F0020](../charts/pirzath/glyphs/U+F0020.svg) | U+F0020 | PIRZATH LETTER THARZ | `Th` | `\T` |
+| `option+d` | ![U+F0021](../charts/pirzath/glyphs/U+F0021.svg) | U+F0021 | PIRZATH LETTER DHALZ | `dh` | `\d` |
+| `option+shift+d` | ![U+F0021](../charts/pirzath/glyphs/U+F0021.svg) | U+F0021 | PIRZATH LETTER DHALZ | `Dh` | `\D` |
+| `option+k` | ![U+F0022](../charts/pirzath/glyphs/U+F0022.svg) | U+F0022 | PIRZATH LETTER KHABAR | `kh` | `\k` |
+| `option+shift+k` | ![U+F0022](../charts/pirzath/glyphs/U+F0022.svg) | U+F0022 | PIRZATH LETTER KHABAR | `Kh` | `\K` |
+| `option+g` | ![U+F0023](../charts/pirzath/glyphs/U+F0023.svg) | U+F0023 | PIRZATH LETTER GHARM | `gh` | `\g` |
+| `option+shift+g` | ![U+F0023](../charts/pirzath/glyphs/U+F0023.svg) | U+F0023 | PIRZATH LETTER GHARM | `Gh` | `\G` |
+| `option+z` | ![U+F0025](../charts/pirzath/glyphs/U+F0025.svg) | U+F0025 | PIRZATH LETTER ZHA | `zh` | `\z` |
+| `option+shift+z` | ![U+F0025](../charts/pirzath/glyphs/U+F0025.svg) | U+F0025 | PIRZATH LETTER ZHA | `Zh` | `\Z` |
+| `option+p` | ![U+F0005](../charts/pirzath/glyphs/U+F0005.svg) ![U+F0011](../charts/pirzath/glyphs/U+F0011.svg) | U+F0005 U+F0011 | PIRZATH LETTER PARGH; PIRZATH LETTER HALB | `ph` | `\p` |
+| `option+shift+p` | ![U+F0005](../charts/pirzath/glyphs/U+F0005.svg) ![U+F0011](../charts/pirzath/glyphs/U+F0011.svg) | U+F0005 U+F0011 | PIRZATH LETTER PARGH; PIRZATH LETTER HALB | `Ph` | `\P` |
+| `option+n` | ![U+F0028](../charts/pirzath/glyphs/U+F0028.svg) | U+F0028 | PIRZATH LETTER NGA | `ng` | `\n` |
+| `option+shift+n` | ![U+F0028](../charts/pirzath/glyphs/U+F0028.svg) | U+F0028 | PIRZATH LETTER NGA | `Ng` | `\N` |
+| `option+y` | ![U+F0029](../charts/pirzath/glyphs/U+F0029.svg) | U+F0029 | PIRZATH LETTER NYA | `ny` | `\y` |
+| `option+shift+y` | ![U+F0029](../charts/pirzath/glyphs/U+F0029.svg) | U+F0029 | PIRZATH LETTER NYA | `Ny` | `\Y` |
+| `option+x` | ![U+F0026](../charts/pirzath/glyphs/U+F0026.svg) | U+F0026 | PIRZATH LETTER TSA | `ts` | `\x` |
+| `option+shift+x` | ![U+F0026](../charts/pirzath/glyphs/U+F0026.svg) | U+F0026 | PIRZATH LETTER TSA | `Ts` | `\X` |
+| `option+h` | ![U+F002A](../charts/pirzath/glyphs/U+F002A.svg) | U+F002A | PIRZATH LETTER HLA | `hl` | `\h` |
+| `option+shift+h` | ![U+F002A](../charts/pirzath/glyphs/U+F002A.svg) | U+F002A | PIRZATH LETTER HLA | `Hl` | `\H` |
+| `option+b` | ![U+F0006](../charts/pirzath/glyphs/U+F0006.svg) ![U+F0011](../charts/pirzath/glyphs/U+F0011.svg) | U+F0006 U+F0011 | PIRZATH LETTER BALG; PIRZATH LETTER HALB | `bh` | `\b` |
+| `option+shift+b` | ![U+F0006](../charts/pirzath/glyphs/U+F0006.svg) ![U+F0011](../charts/pirzath/glyphs/U+F0011.svg) | U+F0006 U+F0011 | PIRZATH LETTER BALG; PIRZATH LETTER HALB | `Bh` | `\B` |
+| `option+1` | ![U+F0000](../charts/pirzath/glyphs/U+F0000.svg) ![U+F0000](../charts/pirzath/glyphs/U+F0000.svg) | U+F0000 U+F0000 | PIRZATH LETTER A; PIRZATH LETTER A | `aa` | `\1` |
+| `option+shift+1` | ![U+F0000](../charts/pirzath/glyphs/U+F0000.svg) ![U+F0000](../charts/pirzath/glyphs/U+F0000.svg) | U+F0000 U+F0000 | PIRZATH LETTER A; PIRZATH LETTER A | `Aa` | `\!` |
+| `option+2` | ![U+F0001](../charts/pirzath/glyphs/U+F0001.svg) ![U+F0001](../charts/pirzath/glyphs/U+F0001.svg) | U+F0001 U+F0001 | PIRZATH LETTER E; PIRZATH LETTER E | `ee` | `\2` |
+| `option+shift+2` | ![U+F0001](../charts/pirzath/glyphs/U+F0001.svg) ![U+F0001](../charts/pirzath/glyphs/U+F0001.svg) | U+F0001 U+F0001 | PIRZATH LETTER E; PIRZATH LETTER E | `Ee` | `\@` |
+| `option+3` | ![U+F0002](../charts/pirzath/glyphs/U+F0002.svg) ![U+F0002](../charts/pirzath/glyphs/U+F0002.svg) | U+F0002 U+F0002 | PIRZATH LETTER I; PIRZATH LETTER I | `ii` | `\3` |
+| `option+shift+3` | ![U+F0002](../charts/pirzath/glyphs/U+F0002.svg) ![U+F0002](../charts/pirzath/glyphs/U+F0002.svg) | U+F0002 U+F0002 | PIRZATH LETTER I; PIRZATH LETTER I | `Ii` | `\#` |
+| `option+4` | ![U+F0003](../charts/pirzath/glyphs/U+F0003.svg) ![U+F0003](../charts/pirzath/glyphs/U+F0003.svg) | U+F0003 U+F0003 | PIRZATH LETTER O; PIRZATH LETTER O | `oo` | `\4` |
+| `option+shift+4` | ![U+F0003](../charts/pirzath/glyphs/U+F0003.svg) ![U+F0003](../charts/pirzath/glyphs/U+F0003.svg) | U+F0003 U+F0003 | PIRZATH LETTER O; PIRZATH LETTER O | `Oo` | `\$` |
+| `option+5` | ![U+F0004](../charts/pirzath/glyphs/U+F0004.svg) ![U+F0004](../charts/pirzath/glyphs/U+F0004.svg) | U+F0004 U+F0004 | PIRZATH LETTER U; PIRZATH LETTER U | `uu` | `\5` |
+| `option+shift+5` | ![U+F0004](../charts/pirzath/glyphs/U+F0004.svg) ![U+F0004](../charts/pirzath/glyphs/U+F0004.svg) | U+F0004 U+F0004 | PIRZATH LETTER U; PIRZATH LETTER U | `Uu` | `\%` |
+| `option+6` | ![U+F0030](../charts/pirzath/glyphs/U+F0030.svg) | U+F0030 | PIRZATH LETTER AI | `ai` | `\6` |
+| `option+shift+6` | ![U+F0030](../charts/pirzath/glyphs/U+F0030.svg) | U+F0030 | PIRZATH LETTER AI | `Ai` | `\^` |
+| `option+7` | ![U+F0031](../charts/pirzath/glyphs/U+F0031.svg) | U+F0031 | PIRZATH LETTER AU | `au` | `\7` |
+| `option+shift+7` | ![U+F0031](../charts/pirzath/glyphs/U+F0031.svg) | U+F0031 | PIRZATH LETTER AU | `Au` | `\&` |
+| `option+8` | ![U+F0032](../charts/pirzath/glyphs/U+F0032.svg) | U+F0032 | PIRZATH LETTER EI | `ei` | `\8` |
+| `option+shift+8` | ![U+F0032](../charts/pirzath/glyphs/U+F0032.svg) | U+F0032 | PIRZATH LETTER EI | `Ei` | `\*` |
+| `option+9` | ![U+F0033](../charts/pirzath/glyphs/U+F0033.svg) | U+F0033 | PIRZATH LETTER OI | `oi` | `\9` |
+| `option+shift+9` | ![U+F0033](../charts/pirzath/glyphs/U+F0033.svg) | U+F0033 | PIRZATH LETTER OI | `Oi` | `\(` |
+| `option+0` | ![U+F0034](../charts/pirzath/glyphs/U+F0034.svg) | U+F0034 | PIRZATH LETTER OU | `ou` | `\0` |
+| `option+shift+0` | ![U+F0034](../charts/pirzath/glyphs/U+F0034.svg) | U+F0034 | PIRZATH LETTER OU | `Ou` | `\)` |
+| `option+-` | ![U+F0002](../charts/pirzath/glyphs/U+F0002.svg) ![U+F0001](../charts/pirzath/glyphs/U+F0001.svg) | U+F0002 U+F0001 | PIRZATH LETTER I; PIRZATH LETTER E | `ie` | `\-` |
+| `option+shift+-` | ![U+F0002](../charts/pirzath/glyphs/U+F0002.svg) ![U+F0001](../charts/pirzath/glyphs/U+F0001.svg) | U+F0002 U+F0001 | PIRZATH LETTER I; PIRZATH LETTER E | `Ie` | `\_` |
+| `option+=` | ![U+F0004](../charts/pirzath/glyphs/U+F0004.svg) ![U+F0003](../charts/pirzath/glyphs/U+F0003.svg) | U+F0004 U+F0003 | PIRZATH LETTER U; PIRZATH LETTER O | `uo` | `\=` |
+| `option+shift+=` | ![U+F0004](../charts/pirzath/glyphs/U+F0004.svg) ![U+F0003](../charts/pirzath/glyphs/U+F0003.svg) | U+F0004 U+F0003 | PIRZATH LETTER U; PIRZATH LETTER O | `Uo` | `\+` |
+| `option+[` | ![U+F0000](../charts/pirzath/glyphs/U+F0000.svg) ![U+F0001](../charts/pirzath/glyphs/U+F0001.svg) | U+F0000 U+F0001 | PIRZATH LETTER A; PIRZATH LETTER E | `ae` | `\[` |
+| `option+shift+[` | ![U+F0000](../charts/pirzath/glyphs/U+F0000.svg) ![U+F0001](../charts/pirzath/glyphs/U+F0001.svg) | U+F0000 U+F0001 | PIRZATH LETTER A; PIRZATH LETTER E | `Ae` | `\{` |
+| `option+]` | ![U+F0001](../charts/pirzath/glyphs/U+F0001.svg) ![U+F0000](../charts/pirzath/glyphs/U+F0000.svg) | U+F0001 U+F0000 | PIRZATH LETTER E; PIRZATH LETTER A | `ea` | `\]` |
+| `option+shift+]` | ![U+F0001](../charts/pirzath/glyphs/U+F0001.svg) ![U+F0000](../charts/pirzath/glyphs/U+F0000.svg) | U+F0001 U+F0000 | PIRZATH LETTER E; PIRZATH LETTER A | `Ea` | `\}` |
+| `option+a` | ![U+F0000](../charts/pirzath/glyphs/U+F0000.svg) ![U+F0060](../charts/pirzath/glyphs/U+F0060.svg) | U+F0000 U+F0060 | PIRZATH LETTER A; PIRZATH LENGTH MARK | `á` | `\a` |
+| `option+shift+a` | ![U+F0000](../charts/pirzath/glyphs/U+F0000.svg) ![U+F0060](../charts/pirzath/glyphs/U+F0060.svg) | U+F0000 U+F0060 | PIRZATH LETTER A; PIRZATH LENGTH MARK | `Á` | `\A` |
+| `option+e` | ![U+F0001](../charts/pirzath/glyphs/U+F0001.svg) ![U+F0060](../charts/pirzath/glyphs/U+F0060.svg) | U+F0001 U+F0060 | PIRZATH LETTER E; PIRZATH LENGTH MARK | `é` | `\e` |
+| `option+shift+e` | ![U+F0001](../charts/pirzath/glyphs/U+F0001.svg) ![U+F0060](../charts/pirzath/glyphs/U+F0060.svg) | U+F0001 U+F0060 | PIRZATH LETTER E; PIRZATH LENGTH MARK | `É` | `\E` |
+| `option+i` | ![U+F0002](../charts/pirzath/glyphs/U+F0002.svg) ![U+F0060](../charts/pirzath/glyphs/U+F0060.svg) | U+F0002 U+F0060 | PIRZATH LETTER I; PIRZATH LENGTH MARK | `í` | `\i` |
+| `option+shift+i` | ![U+F0002](../charts/pirzath/glyphs/U+F0002.svg) ![U+F0060](../charts/pirzath/glyphs/U+F0060.svg) | U+F0002 U+F0060 | PIRZATH LETTER I; PIRZATH LENGTH MARK | `Í` | `\I` |
+| `option+o` | ![U+F0003](../charts/pirzath/glyphs/U+F0003.svg) ![U+F0060](../charts/pirzath/glyphs/U+F0060.svg) | U+F0003 U+F0060 | PIRZATH LETTER O; PIRZATH LENGTH MARK | `ó` | `\o` |
+| `option+shift+o` | ![U+F0003](../charts/pirzath/glyphs/U+F0003.svg) ![U+F0060](../charts/pirzath/glyphs/U+F0060.svg) | U+F0003 U+F0060 | PIRZATH LETTER O; PIRZATH LENGTH MARK | `Ó` | `\O` |
+| `option+u` | ![U+F0004](../charts/pirzath/glyphs/U+F0004.svg) ![U+F0060](../charts/pirzath/glyphs/U+F0060.svg) | U+F0004 U+F0060 | PIRZATH LETTER U; PIRZATH LENGTH MARK | `ú` | `\u` |
+| `option+shift+u` | ![U+F0004](../charts/pirzath/glyphs/U+F0004.svg) ![U+F0060](../charts/pirzath/glyphs/U+F0060.svg) | U+F0004 U+F0060 | PIRZATH LETTER U; PIRZATH LENGTH MARK | `Ú` | `\U` |
+| `option+;` |  | nothing: this script has no character for the sound |  | `ä` | `\;` |
+| `option+shift+;` |  | nothing: this script has no character for the sound |  | `Ä` | `\:` |
+| `option+'` | ![U+F0001](../charts/pirzath/glyphs/U+F0001.svg) | U+F0001 | PIRZATH LETTER E | `ë` | `\'` |
+| `option+shift+'` | ![U+F0001](../charts/pirzath/glyphs/U+F0001.svg) | U+F0001 | PIRZATH LETTER E | `Ë` | `\"` |
+| `option+,` |  | nothing: this script has no character for the sound |  | `ï` | `\,` |
+| `option+shift+,` |  | nothing: this script has no character for the sound |  | `Ï` | `\<` |
+| `option+.` |  | nothing: this script has no character for the sound |  | `ö` | `\.` |
+| `option+shift+.` |  | nothing: this script has no character for the sound |  | `Ö` | `\>` |
+| `option+/` |  | nothing: this script has no character for the sound |  | `ü` | `\/` |
+| `option+shift+/` |  | nothing: this script has no character for the sound |  | `Ü` | `\?` |
+| `'` | ![U+F0018](../charts/pirzath/glyphs/U+F0018.svg) | U+F0018 | PIRZATH LETTER CATCH | `catch` | `'` |
+| `.` | ![U+F0050](../charts/pirzath/glyphs/U+F0050.svg) | U+F0050 | PIRZATH SENTENCE END | `stop` | `.` |
+| `,` | ![U+F0051](../charts/pirzath/glyphs/U+F0051.svg) | U+F0051 | PIRZATH PAUSE | `pause` | `,` |
+| `shift+,` | ![U+F0054](../charts/pirzath/glyphs/U+F0054.svg) | U+F0054 | PIRZATH OPENING QUOTATION MARK | `open quote` | `<` |
+| `shift+.` | ![U+F0055](../charts/pirzath/glyphs/U+F0055.svg) | U+F0055 | PIRZATH CLOSING QUOTATION MARK | `close quote` | `>` |
+| `0` | ![U+F0040](../charts/pirzath/glyphs/U+F0040.svg) | U+F0040 | PIRZATH DIGIT ZERO | `0` | `0` |
+| `1` | ![U+F0041](../charts/pirzath/glyphs/U+F0041.svg) | U+F0041 | PIRZATH DIGIT ONE | `1` | `1` |
+| `2` | ![U+F0042](../charts/pirzath/glyphs/U+F0042.svg) | U+F0042 | PIRZATH DIGIT TWO | `2` | `2` |
+| `3` | ![U+F0043](../charts/pirzath/glyphs/U+F0043.svg) | U+F0043 | PIRZATH DIGIT THREE | `3` | `3` |
+| `4` | ![U+F0044](../charts/pirzath/glyphs/U+F0044.svg) | U+F0044 | PIRZATH DIGIT FOUR | `4` | `4` |
+| `5` | ![U+F0045](../charts/pirzath/glyphs/U+F0045.svg) | U+F0045 | PIRZATH DIGIT FIVE | `5` | `5` |
+| `6` | ![U+F0046](../charts/pirzath/glyphs/U+F0046.svg) | U+F0046 | PIRZATH DIGIT SIX | `6` | `6` |
+| `7` | ![U+F0047](../charts/pirzath/glyphs/U+F0047.svg) | U+F0047 | PIRZATH DIGIT SEVEN | `7` | `7` |
+| `8` | ![U+F0048](../charts/pirzath/glyphs/U+F0048.svg) | U+F0048 | PIRZATH DIGIT EIGHT | `8` | `8` |
+| `9` | ![U+F0049](../charts/pirzath/glyphs/U+F0049.svg) | U+F0049 | PIRZATH DIGIT NINE | `9` | `9` |
+| `shift+2` | ![U+F004A](../charts/pirzath/glyphs/U+F004A.svg) | U+F004A | PIRZATH DIGIT TEN | `ten` | `@` |
+| `shift+3` | ![U+F004B](../charts/pirzath/glyphs/U+F004B.svg) | U+F004B | PIRZATH DIGIT ELEVEN | `eleven` | `#` |
+| `shift+4` | ![U+F004C](../charts/pirzath/glyphs/U+F004C.svg) | U+F004C | PIRZATH DIGIT TWELVE | `twelve` | `$` |
+| `shift+5` | ![U+F004D](../charts/pirzath/glyphs/U+F004D.svg) | U+F004D | PIRZATH DIGIT THIRTEEN | `thirteen` | `%` |
+| `shift+6` | ![U+F004E](../charts/pirzath/glyphs/U+F004E.svg) | U+F004E | PIRZATH DIGIT FOURTEEN | `fourteen` | `^` |
+| `shift+7` | ![U+F004F](../charts/pirzath/glyphs/U+F004F.svg) | U+F004F | PIRZATH DIGIT FIFTEEN | `fifteen` | `&` |

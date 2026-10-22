@@ -45,6 +45,8 @@ FAMILIES = {
     "SemaronKuriale-Regular.ttf": "Semaron Kuriale",
     "TengChou-Regular.ttf": "Teng Chou",
     "Veldikko-Regular.ttf": "Veldikko",
+    "VedyaksharaClassical-Regular.ttf": "Vedyakshara Classical",
+    "HelonikaBook-Regular.ttf": "Helonika Book",
 }
 
 WINDOWS = (3, 1, 0x409)

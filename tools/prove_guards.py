@@ -2,10 +2,13 @@
 # SPDX-License-Identifier: OFL-1.1
 """Prove that each guard passes a built font and fails the same font broken.
 
-    .venv/bin/python tools/prove_guards.py
+    .venv/bin/python tools/prove_guards.py [--map-note SCRIPT=FILE]
 
 The broken Pirzath and Thuravark fonts are the built .ttf with the GSUB table
-removed, so no ligature, decomposition or contextual rule applies. The broken
+removed, so no ligature, decomposition or contextual rule applies. Thuravark's
+guard is also proved without the lookup that frames a crowned name, without the
+bound runes of ``ss01``, and with the bound runes on in plain text; its font check
+is proved without ``ss01``. The broken
 Qalezu Hand font has one sign, the th, removed from its cmap; its guard and its font
 check are also each proved on it with the GSUB table removed, so that no catch fuses
 with the sign after it. Khelathi Zethu Glyphs is broken
@@ -28,7 +31,16 @@ base. Veldikko's guard (tools/veldikko/guard.py) and its font check
 (tools/veldikko/check_font.py) are each proved twice: with the GSUB table removed, so that no
 letter joins and no vowel takes its signs, and with the GPOS table removed, so that no mark
 stands over its letter; and the vertical guard is proved on Veldikko with its Windows ascent and
-descent cut to the shared line box, so that its risers and tails would be clipped. The box guard (tools/notdef_box.py) is proved on every font twice: with the question
+descent cut to the shared line box, so that its risers and tails would be clipped.
+Vedyakshara Classical's guard (tools/vedyakshara/guard.py) is proved with the GSUB table
+removed, so that no form is drawn, and its font check (tools/vedyakshara/check_font.py)
+with the GSUB table removed and with the GPOS table removed, so that no vowel sign
+stands on its anchor; and the vertical guard is proved on it with its Windows ascent and
+descent cut to the shared line box, so that its hooks would be clipped. Helonika Book's
+guard (tools/helonika/guard.py) is proved with the small letter th removed from the cmap,
+and its font check (tools/helonika/check_font.py) with the GSUB table removed, so that a
+stray accent is not the box, and with the GPOS table removed, so that the accent does
+not stand over its vowel. The box guard (tools/notdef_box.py) is proved on every font twice: with the question
 mark removed from the cmap, and with it pointed at glyph 0. The name guard
 (tools/font_names.py) is proved on every font twice: with the Macintosh full name
 removed, and with the Basic Latin range declared. The vertical guard (tools/vertical.py) is proved on every font three times: with the hhea ascent changed,
@@ -37,7 +49,7 @@ is proved on every font with the first code point of its fonts.json table remove
 to its first character, and with a ligature that writes its third character from its first two, a spelling rule; and on
 every left-to-right font with an entry in the Basic Multilingual Plane's Private Use Area. Its key rules are proved
 on altered fonts.json tables: a Khelathi Zethu Glyphs sign without a key, two signs on one key, and a key on a character of a script
-typed by sound. Its block registry is proved on a code point outside its family's blocks, two overlapping blocks and a README table that
+typed by sound. Its block registry is proved on a code point outside its family's blocks, two overlapping blocks and a DEVELOPING.md table that
 differs from the registry. The spacing guard (tools/spacing.py) is proved on every font with every advance widened by 120 units,
 half on each side of the ink, and on Khelathi Zethu Glyphs and Qalezu Hand with the space widened by 100 units. The default-ignorable check of the box guard is proved on every font with the glyph of the ignorables drawing the box, and on
 Pirzath Carved with the GSUB table removed. The keyboard guard (tools/keyboards_guard.py) is proved on a key map with
@@ -128,6 +140,39 @@ def without_lookup(glyph: str):
         for record in gsub.FeatureList.FeatureRecord:
             record.Feature.LookupListIndex = [i for i in record.Feature.LookupListIndex if i not in drop]
             record.Feature.LookupCount = len(record.Feature.LookupListIndex)
+        f.save(str(out))
+        return out
+
+    return broken
+
+
+def without_feature(tag: str):
+    """A breaker that empties the feature `tag`, so none of its lookups applies."""
+
+    def broken(font: Path, out: Path) -> Path:
+        f = TTFont(str(font))
+        for record in f["GSUB"].table.FeatureList.FeatureRecord:
+            if record.FeatureTag == tag:
+                record.Feature.LookupListIndex = []
+                record.Feature.LookupCount = 0
+        f.save(str(out))
+        return out
+
+    return broken
+
+
+def always_on(tag: str):
+    """A breaker that adds the lookups of the feature `tag` to ccmp, which every shaper
+    applies, so the feature is on with no request."""
+
+    def broken(font: Path, out: Path) -> Path:
+        f = TTFont(str(font))
+        records = f["GSUB"].table.FeatureList.FeatureRecord
+        indices = [i for r in records if r.FeatureTag == tag for i in r.Feature.LookupListIndex]
+        for record in records:
+            if record.FeatureTag == "ccmp":
+                record.Feature.LookupListIndex = sorted(set(record.Feature.LookupListIndex) | set(indices))
+                record.Feature.LookupCount = len(record.Feature.LookupListIndex)
         f.save(str(out))
         return out
 
@@ -228,6 +273,16 @@ def without_teng(font: Path, out: Path) -> Path:
     f = TTFont(str(font))
     for table in f["cmap"].tables:
         for code in [c for c, g in table.cmap.items() if g == "tc.teng"]:
+            del table.cmap[code]
+    f.save(str(out))
+    return out
+
+
+def without_th(font: Path, out: Path) -> Path:
+    """Helonika Book's small letter th removed from the cmap, so a word with it prints the box."""
+    f = TTFont(str(font))
+    for table in f["cmap"].tables:
+        for code in [c for c, g in table.cmap.items() if g == "th"]:
             del table.cmap[code]
     f.save(str(out))
     return out
@@ -415,11 +470,11 @@ def prove_registry(codepoints) -> int:
 
     run("with a code point outside its family's blocks", "outside the blocks registered", outside)
     run("with two blocks overlapping", "overlap", overlap)
-    run("with a README table that differs", "table differs", readme)
+    run("with a table in DEVELOPING.md that differs", "table differs", readme)
     return status
 
 
-def prove_keyboards() -> int:
+def prove_keyboards(notes: list[str] = ()) -> int:
     """Prove that the keyboard guard fails a broken key map, a layout that types the wrong
     thing or a roman letter, and a sounds.json that differs from thalorna's mapping notes."""
     guard = load("keyboards_guard", ROOT / "tools" / "keyboards_guard.py")
@@ -442,6 +497,17 @@ def prove_keyboards() -> int:
         """Problems of the key map with its markup list altered."""
         data = real_load()
         change(data["markup"])
+        kk.load = lambda: data
+        try:
+            return on_keymap(keymap)
+        finally:
+            kk.load = real_load
+
+    def on_signs(change):
+        """Problems of the key map with its signs altered."""
+        data = real_load()
+        data["signs"] = copy.deepcopy(data["signs"])
+        change(data["signs"])
         kk.load = lambda: data
         try:
             return on_keymap(keymap)
@@ -480,8 +546,57 @@ def prove_keyboards() -> int:
     equal = layouts["emacs"].replace("(quail-define-rules\n", '(quail-define-rules\n ("=" [""])\n', 1)
     colon = layouts["windows"].decode("utf-16").replace("\r\n27\tOEM_1\t\t0\t-1\t003a", "\r\n27\tOEM_1\t\t0\t-1\t-1")
     colon = b"\xff\xfe" + colon.encode("utf-16-le")
-    good = on_layouts(layouts) + on_keymap(keymap)
+    veldikko = guard.read_layouts("veldikko")
+
+    def on_veldikko(texts):
+        return len(guard.layout_problems("veldikko", keymap, sounds, texts))
+
+    carrier = veldikko["macos"].replace('<key code="7" output="&#x1ED5D;"/>', "", 1)
+    assert carrier != veldikko["macos"]
+    bar = veldikko["linux"].replace("U1ED7C", "VoidSymbol", 1)
+    assert bar != veldikko["linux"]
+    foreign = layouts["emacs"].replace('\n ("x" [""])', '\n ("x" #x1ED5D)', 1)
+    assert foreign != layouts["emacs"]
+
+    def sign_on_sound(rows):
+        next(r for r in rows if r["sign"] == "bar")["key"] = "option+t"
+
+    def sign_on_sign(rows):
+        next(r for r in rows if r["sign"] == "bar")["key"] = "x"
+
+    def sign_on_markup(rows):
+        next(r for r in rows if r["sign"] == "bar")["key"] = "shift+8"
+
+    def sign_without_script(rows):
+        next(r for r in rows if r["sign"] == "bar")["script"] = "zethu"
+
+    def sign_undrawn(rows):
+        next(r for r in rows if r["sign"] == "bar")["codepoint"] = "U+0041"
+
+    sheet, svg = guard.read_cheatsheet(script)
+
+    def on_sheet(text, picture=svg):
+        return len(guard.cheatsheet_problems(script, keymap, sounds, text, picture))
+
+    lines = sheet.split("\n")
+    no_row = "\n".join(line for line in lines if not line.startswith("| `option+t` | ![") )
+    wrong_row = sheet.replace("U+F0250 |", "U+F0251 |", 1)
+    no_key = svg.replace('data-key="option+t"', 'data-key="option+t-gone"', 1)
+    assert no_row != sheet and wrong_row != sheet and no_key != svg
+
+    good = on_layouts(layouts) + on_keymap(keymap) + on_veldikko(veldikko) + on_sheet(sheet)
     cases = [
+        ("with a key missing from the cheatsheet table", on_sheet(no_row)),
+        ("with a cheatsheet row that lists other code points", on_sheet(wrong_row)),
+        ("with a key missing from the printable keyboard", on_sheet(sheet, no_key)),
+        ("with a sign on the key of a sound", on_signs(sign_on_sound)),
+        ("with two signs on one key", on_signs(sign_on_sign)),
+        ("with a sign on a key of markup", on_signs(sign_on_markup)),
+        ("with a sign of a script with no layout", on_signs(sign_without_script)),
+        ("with a sign of a code point its face does not draw", on_signs(sign_undrawn)),
+        ("with the carrier missing from the HL Veldikko macOS layout", on_veldikko({**veldikko, "macos": carrier})),
+        ("with the bar missing from the HL Veldikko Linux layout", on_veldikko({**veldikko, "linux": bar})),
+        ("with a sign typed in another layout", on_layouts({**layouts, "emacs": foreign})),
         ("with two sounds on one key", on_keymap(keymap_with(share))),
         ("with a sound without a key", on_keymap(keymap_with(drop))),
         ("with a capital off Shift", on_keymap(keymap_with(unshifted))),
@@ -502,8 +617,8 @@ def prove_keyboards() -> int:
     if thalorna.exists():
         stale = copy.deepcopy(committed)
         entry(stale["sounds"], "th")["scripts"][script] = {"codepoints": "U+F0241 U+F0236"}
-        good += len(guard.thalorna_problems(thalorna, committed))
-        cases.append(("with a sounds.json that thalorna no longer spells", len(guard.thalorna_problems(thalorna, stale))))
+        good += len(guard.thalorna_problems(thalorna, committed, notes))
+        cases.append(("with a sounds.json that thalorna no longer spells", len(guard.thalorna_problems(thalorna, stale, notes))))
     else:
         print(f"keyboards: no thalorna checkout at {thalorna}, so the sounds.json proof is skipped")
     status = 0
@@ -645,6 +760,12 @@ def main():
     veldikko = load("veldikko_guard", ROOT / "tools" / "veldikko" / "guard.py")
     veldikko_check = load("veldikko_check", ROOT / "tools" / "veldikko" / "check_font.py")
     veldikko_font = ROOT / "fonts" / "Veldikko-Regular.ttf"
+    vedyakshara = load("vedyakshara_guard", ROOT / "tools" / "vedyakshara" / "guard.py")
+    vedyakshara_check = load("vedyakshara_check", ROOT / "tools" / "vedyakshara" / "check_font.py")
+    vedyakshara_font = ROOT / "fonts" / "VedyaksharaClassical-Regular.ttf"
+    helonika = load("helonika_guard", ROOT / "tools" / "helonika" / "guard.py")
+    helonika_check = load("helonika_check", ROOT / "tools" / "helonika" / "check_font.py")
+    helonika_font = ROOT / "fonts" / "HelonikaBook-Regular.ttf"
     zethu_font = ROOT / "fonts" / "KhelathiZethuGlyphs-Regular.ttf"
     cases = [
         (
@@ -667,6 +788,34 @@ def main():
             lambda p: thuravark.shaping(p, []),
             stripped,
             "without GSUB",
+        ),
+        (
+            "Thuravark Carved",
+            ROOT / "fonts" / "ThuravarkCarved-Regular.ttf",
+            lambda p: thuravark.shaping(p, []),
+            without_lookup("crown.open"),
+            "without the lookup that frames a crowned name",
+        ),
+        (
+            "Thuravark Carved",
+            ROOT / "fonts" / "ThuravarkCarved-Regular.ttf",
+            lambda p: thuravark.shaping(p, []),
+            without_feature("ss01"),
+            "without the bound runes",
+        ),
+        (
+            "Thuravark Carved",
+            ROOT / "fonts" / "ThuravarkCarved-Regular.ttf",
+            lambda p: thuravark.shaping(p, []),
+            always_on("ss01"),
+            "with the bound runes on in plain text",
+        ),
+        (
+            "Thuravark Carved",
+            ROOT / "fonts" / "ThuravarkCarved-Regular.ttf",
+            load("thuravark_check", ROOT / "tools" / "thuravark-carved" / "check_font.py").check,
+            without_feature("ss01"),
+            "without ss01",
         ),
         (
             "Qalezu Hand",
@@ -709,6 +858,14 @@ def main():
         ("Veldikko", veldikko_font, veldikko_check.check, without_gpos, "without GPOS"),
         ("Veldikko", veldikko_font, load("vertical_win", ROOT / "tools" / "vertical.py").check, win_to_line_box,
          "with its Windows ascent and descent cut to the shared line box, inside its risers and tails"),
+        ("Vedyakshara Classical", vedyakshara_font, lambda p: vedyakshara.run(p, []), stripped, "without GSUB"),
+        ("Vedyakshara Classical", vedyakshara_font, vedyakshara_check.check, stripped, "without GSUB"),
+        ("Vedyakshara Classical", vedyakshara_font, vedyakshara_check.check, without_gpos, "without GPOS"),
+        ("Vedyakshara Classical", vedyakshara_font, load("vertical_ved", ROOT / "tools" / "vertical.py").check,
+         win_to_line_box, "with its Windows ascent and descent cut to the shared line box, inside its hooks"),
+        ("Helonika Book", helonika_font, lambda p: helonika.run(p, []), without_th, "without the small letter th"),
+        ("Helonika Book", helonika_font, helonika_check.check, stripped, "without GSUB"),
+        ("Helonika Book", helonika_font, helonika_check.check, without_gpos, "without GPOS"),
         ("Teng Chou", teng_chou_font, lambda p: teng_chou.run(p, []), without_teng, "without the character teng"),
         ("Teng Chou", teng_chou_font, teng_chou_check.check, without_teng, "without the character teng"),
         ("Teng Chou", teng_chou_font, teng_chou_check.check, without_vmtx, "without vertical metrics"),
@@ -733,7 +890,7 @@ def main():
         cases.append((label, font, codepoints.check, without_codepoint, "with its first code point unmapped"))
         cases.append((label, font, codepoints.check, latin_drawn, "with the Latin a drawn as its first character"))
         cases.append((label, font, codepoints.check, spelling_rule, "with a ligature that writes one character from two"))
-        if font.name.split("-")[0] in ("PirzathCarved", "PirzathHand", "ThuravarkCarved", "SemaronKuriale"):
+        if font.name.split("-")[0] in ("PirzathCarved", "PirzathHand", "ThuravarkCarved", "SemaronKuriale", "VedyaksharaClassical", "HelonikaBook"):
             cases.append((label, font, codepoints.check, with_bmp_private, "with an entry in the BMP Private Use Area"))
         cases.append((label, font, notdef.check, ignorable_drawn, "with the glyph of the ignorables drawing the box"))
         cases.append((label, font, notdef.check, box_unmapped, "with ? unmapped"))
@@ -758,7 +915,9 @@ def main():
                 status = 1
     status |= prove_keys(codepoints)
     status |= prove_registry(codepoints)
-    status |= prove_keyboards()
+    # --map-note SCRIPT=FILE reads a script's mapping note from a file, as the keyboard guard does
+    notes = [sys.argv[i + 1] for i, arg in enumerate(sys.argv[:-1]) if arg == "--map-note"]
+    status |= prove_keyboards(notes)
     status |= prove_charts()
     status |= prove_paint()
     status |= prove_stroke_mix()

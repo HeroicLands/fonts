@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="crown.close" format="2">
+  <advance width="126"/>
+  <unicode hex="F0151"/>
+  <outline>
+    <contour>
+      <point x="50" y="-126" type="line"/>
+      <point x="92" y="-126" type="line"/>
+      <point x="92" y="859" type="line"/>
+      <point x="50" y="859" type="line"/>
+    </contour>
+  </outline>
+</glyph>

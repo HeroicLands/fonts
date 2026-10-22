@@ -1,13 +1,31 @@
-# Qalezu keyboard
+# HL Qalezu cheatsheet
 
-HL Qalezu types Qalezu Hand by sound. The keys are the shared sound keys of [the cheatsheet](index.md), which draws them on a keyboard and gives their principles; this sheet lists what each key types in Qalezu. The keys of markup, listed there, type themselves.
+HL Qalezu types Qalezu Hand by sound. It is a US keyboard that writes the Qalezu script: the key for a sound types that sound's Qalezu character, so `t` types the script's t, Option+T types its th, and Shift makes a capital. You type the sounds of a word one after another, as you would in English.
 
-- macOS layout: `keyboards/macos/HeroicLands.bundle`, input source **HL Qalezu**.
-- Windows layout: `keyboards/windows/qalezu.klc`, the Microsoft Keyboard Layout Creator source of **HL Qalezu**.
-- Linux layout: `keyboards/linux/hl_qalezu`, the XKB symbols of **HL Qalezu**.
-- Emacs input method: `keyboards/emacs/heroiclands-qalezu.el`, named `heroiclands-qalezu`.
+![HL Qalezu on an ANSI keyboard](qalezu.png)
+
+A printable copy is [qalezu.svg](qalezu.svg) and [qalezu.png](qalezu.png).
+
+## Reading the keys
+
+- `t` is the key alone. `shift+t` is Shift and the key.
+- `option+t` is Option and the key on a Mac, and AltGr and the key on Windows and Linux. AltGr is the right Alt key (on a keyboard without one, hold Ctrl and Alt together). `option+shift+t` adds Shift.
+- The Sound column is the roman spelling of the sound a key stands for. A key marked _nothing_ types nothing in this script.
+- Character names and code points identify each character exactly, for a program or a character viewer.
+- The Emacs column is what to type in the Emacs input method `heroiclands-qalezu`, where Option is a backslash.
+
+## Installing the layout
+
+The layout is a file per platform, named below. [The README](../README.md#installing-a-keyboard-layout) walks through installing each.
+
+- macOS: `keyboards/macos/HeroicLands.bundle`, input source **HL Qalezu**.
+- Windows: `keyboards/windows/qalezu.klc`, the Microsoft Keyboard Layout Creator source of **HL Qalezu**.
+- Linux: `keyboards/linux/hl_qalezu`, the XKB symbols of **HL Qalezu**.
+- Emacs: `keyboards/emacs/heroiclands-qalezu.el`, the input method `heroiclands-qalezu`.
 
 ## Keys a platform cannot carry
+
+A Windows key holds at most four UTF-16 code units and a Linux key one character, so a sound this script spells with more types nothing there. macOS and Emacs carry every key.
 
 | Key | Sound | Script | Platform | Why |
 | --- | --- | --- | --- | --- |
@@ -28,150 +46,173 @@ HL Qalezu types Qalezu Hand by sound. The keys are the shared sound keys of [the
 | `option+b` | `bh` | Qalezu | Linux | 2 code points; an XKB key types one |
 | `option+shift+b` | `Bh` | Qalezu | Linux | 2 code points; an XKB key types one |
 
+## Markup
+
+These keys type themselves, as plain ASCII, in every layout, so Markdown and similar markup are written without switching layouts.
+
+| Key | Types |
+| --- | --- |
+| `shift+8` | `*` |
+| `shift+-` | `_` |
+| `[` | `[` |
+| `]` | `]` |
+| `shift+[` | `{` |
+| `shift+]` | `}` |
+| `shift+9` | `(` |
+| `shift+0` | `)` |
+| `=` | `=` |
+| `shift+;` | `:` |
+| `shift+\` | `\|` |
+| `\` | `\` |
+| `` shift+` `` | `~` |
+| `` ` `` | `` ` `` |
+
 ## Keys
 
-| Key | Emacs | Sound | Glyphs | Code points | Names |
+Every sound key, in keyboard order. Example: `t` types the sound `t`.
+
+| Key | Glyphs | Code points | Names | Sound | Emacs |
 | --- | --- | --- | --- | --- | --- |
-| `a` | `a` | `a` |  | none: the mapping writes it as nothing |  |
-| `shift+a` | `A` | `A` |  | none: the mapping writes it as nothing |  |
-| `b` | `b` | `b` | ![U+1EA11](../charts/qalezu-hand/glyphs/U+1EA11.svg) | U+1EA11 | QALEZU LETTER BA |
-| `shift+b` | `B` | `B` | ![U+1EA11](../charts/qalezu-hand/glyphs/U+1EA11.svg) | U+1EA11 | QALEZU LETTER BA |
-| `d` | `d` | `d` | ![U+1EA03](../charts/qalezu-hand/glyphs/U+1EA03.svg) | U+1EA03 | QALEZU LETTER DURAS |
-| `shift+d` | `D` | `D` | ![U+1EA03](../charts/qalezu-hand/glyphs/U+1EA03.svg) | U+1EA03 | QALEZU LETTER DURAS |
-| `e` | `e` | `e` |  | none: the mapping writes it as nothing |  |
-| `shift+e` | `E` | `E` |  | none: the mapping writes it as nothing |  |
-| `f` | `f` | `f` | ![U+1EA12](../charts/qalezu-hand/glyphs/U+1EA12.svg) | U+1EA12 | QALEZU LETTER FA |
-| `shift+f` | `F` | `F` | ![U+1EA12](../charts/qalezu-hand/glyphs/U+1EA12.svg) | U+1EA12 | QALEZU LETTER FA |
-| `g` | `g` | `g` | ![U+1EA06](../charts/qalezu-hand/glyphs/U+1EA06.svg) | U+1EA06 | QALEZU LETTER GITHAR |
-| `shift+g` | `G` | `G` | ![U+1EA06](../charts/qalezu-hand/glyphs/U+1EA06.svg) | U+1EA06 | QALEZU LETTER GITHAR |
-| `h` | `h` | `h` | ![U+1EA0E](../charts/qalezu-hand/glyphs/U+1EA0E.svg) | U+1EA0E | QALEZU LETTER HALZI |
-| `shift+h` | `H` | `H` | ![U+1EA0E](../charts/qalezu-hand/glyphs/U+1EA0E.svg) | U+1EA0E | QALEZU LETTER HALZI |
-| `i` | `i` | `i` |  | none: the mapping writes it as nothing |  |
-| `shift+i` | `I` | `I` |  | none: the mapping writes it as nothing |  |
-| `j` | `j` | `j` | ![U+1EA16](../charts/qalezu-hand/glyphs/U+1EA16.svg) | U+1EA16 | QALEZU LETTER TJA |
-| `shift+j` | `J` | `J` | ![U+1EA16](../charts/qalezu-hand/glyphs/U+1EA16.svg) | U+1EA16 | QALEZU LETTER TJA |
-| `k` | `k` | `k` | ![U+1EA07](../charts/qalezu-hand/glyphs/U+1EA07.svg) | U+1EA07 | QALEZU LETTER KA |
-| `shift+k` | `K` | `K` | ![U+1EA07](../charts/qalezu-hand/glyphs/U+1EA07.svg) | U+1EA07 | QALEZU LETTER KA |
-| `l` | `l` | `l` | ![U+1EA00](../charts/qalezu-hand/glyphs/U+1EA00.svg) | U+1EA00 | QALEZU LETTER LAGUN |
-| `shift+l` | `L` | `L` | ![U+1EA00](../charts/qalezu-hand/glyphs/U+1EA00.svg) | U+1EA00 | QALEZU LETTER LAGUN |
-| `m` | `m` | `m` | ![U+1EA0A](../charts/qalezu-hand/glyphs/U+1EA0A.svg) | U+1EA0A | QALEZU LETTER MELNU |
-| `shift+m` | `M` | `M` | ![U+1EA0A](../charts/qalezu-hand/glyphs/U+1EA0A.svg) | U+1EA0A | QALEZU LETTER MELNU |
-| `n` | `n` | `n` | ![U+1EA08](../charts/qalezu-hand/glyphs/U+1EA08.svg) | U+1EA08 | QALEZU LETTER NELGIR |
-| `shift+n` | `N` | `N` | ![U+1EA08](../charts/qalezu-hand/glyphs/U+1EA08.svg) | U+1EA08 | QALEZU LETTER NELGIR |
-| `o` | `o` | `o` |  | none: the mapping writes it as nothing |  |
-| `shift+o` | `O` | `O` |  | none: the mapping writes it as nothing |  |
-| `p` | `p` | `p` | ![U+1EA10](../charts/qalezu-hand/glyphs/U+1EA10.svg) | U+1EA10 | QALEZU LETTER PA |
-| `shift+p` | `P` | `P` | ![U+1EA10](../charts/qalezu-hand/glyphs/U+1EA10.svg) | U+1EA10 | QALEZU LETTER PA |
-| `q` | `q` | `q` | ![U+1EA0B](../charts/qalezu-hand/glyphs/U+1EA0B.svg) | U+1EA0B | QALEZU LETTER QENUWA |
-| `shift+q` | `Q` | `Q` | ![U+1EA0B](../charts/qalezu-hand/glyphs/U+1EA0B.svg) | U+1EA0B | QALEZU LETTER QENUWA |
-| `r` | `r` | `r` | ![U+1EA01](../charts/qalezu-hand/glyphs/U+1EA01.svg) | U+1EA01 | QALEZU LETTER RETHU |
-| `shift+r` | `R` | `R` | ![U+1EA01](../charts/qalezu-hand/glyphs/U+1EA01.svg) | U+1EA01 | QALEZU LETTER RETHU |
-| `s` | `s` | `s` | ![U+1EA05](../charts/qalezu-hand/glyphs/U+1EA05.svg) | U+1EA05 | QALEZU LETTER SELQUR |
-| `shift+s` | `S` | `S` | ![U+1EA05](../charts/qalezu-hand/glyphs/U+1EA05.svg) | U+1EA05 | QALEZU LETTER SELQUR |
-| `t` | `t` | `t` | ![U+1EA02](../charts/qalezu-hand/glyphs/U+1EA02.svg) | U+1EA02 | QALEZU LETTER TULAZ |
-| `shift+t` | `T` | `T` | ![U+1EA02](../charts/qalezu-hand/glyphs/U+1EA02.svg) | U+1EA02 | QALEZU LETTER TULAZ |
-| `u` | `u` | `u` |  | none: the mapping writes it as nothing |  |
-| `shift+u` | `U` | `U` |  | none: the mapping writes it as nothing |  |
-| `v` | `v` | `v` | ![U+1EA12](../charts/qalezu-hand/glyphs/U+1EA12.svg) | U+1EA12 | QALEZU LETTER FA |
-| `shift+v` | `V` | `V` | ![U+1EA12](../charts/qalezu-hand/glyphs/U+1EA12.svg) | U+1EA12 | QALEZU LETTER FA |
-| `w` | `w` | `w` | ![U+1EA13](../charts/qalezu-hand/glyphs/U+1EA13.svg) | U+1EA13 | QALEZU LETTER WALIR |
-| `shift+w` | `W` | `W` | ![U+1EA13](../charts/qalezu-hand/glyphs/U+1EA13.svg) | U+1EA13 | QALEZU LETTER WALIR |
-| `y` | `y` | `y` | ![U+1EA14](../charts/qalezu-hand/glyphs/U+1EA14.svg) | U+1EA14 | QALEZU LETTER YA |
-| `shift+y` | `Y` | `Y` | ![U+1EA14](../charts/qalezu-hand/glyphs/U+1EA14.svg) | U+1EA14 | QALEZU LETTER YA |
-| `z` | `z` | `z` | ![U+1EA04](../charts/qalezu-hand/glyphs/U+1EA04.svg) | U+1EA04 | QALEZU LETTER ZAGUL |
-| `shift+z` | `Z` | `Z` | ![U+1EA04](../charts/qalezu-hand/glyphs/U+1EA04.svg) | U+1EA04 | QALEZU LETTER ZAGUL |
-| `option+c` | `\c` | `ch` | ![U+1EA16](../charts/qalezu-hand/glyphs/U+1EA16.svg) | U+1EA16 | QALEZU LETTER TJA |
-| `option+shift+c` | `\C` | `Ch` | ![U+1EA16](../charts/qalezu-hand/glyphs/U+1EA16.svg) | U+1EA16 | QALEZU LETTER TJA |
-| `option+s` | `\s` | `sh` | ![U+1EA0F](../charts/qalezu-hand/glyphs/U+1EA0F.svg) | U+1EA0F | QALEZU LETTER SHENULET |
-| `option+shift+s` | `\S` | `Sh` | ![U+1EA0F](../charts/qalezu-hand/glyphs/U+1EA0F.svg) | U+1EA0F | QALEZU LETTER SHENULET |
-| `option+t` | `\t` | `th` | ![U+1EA09](../charts/qalezu-hand/glyphs/U+1EA09.svg) | U+1EA09 | QALEZU LETTER THELQEN |
-| `option+shift+t` | `\T` | `Th` | ![U+1EA09](../charts/qalezu-hand/glyphs/U+1EA09.svg) | U+1EA09 | QALEZU LETTER THELQEN |
-| `option+d` | `\d` | `dh` | ![U+1EA03](../charts/qalezu-hand/glyphs/U+1EA03.svg) ![U+1EA0E](../charts/qalezu-hand/glyphs/U+1EA0E.svg) | U+1EA03 U+1EA0E | QALEZU LETTER DURAS; QALEZU LETTER HALZI |
-| `option+shift+d` | `\D` | `Dh` | ![U+1EA03](../charts/qalezu-hand/glyphs/U+1EA03.svg) ![U+1EA0E](../charts/qalezu-hand/glyphs/U+1EA0E.svg) | U+1EA03 U+1EA0E | QALEZU LETTER DURAS; QALEZU LETTER HALZI |
-| `option+k` | `\k` | `kh` | ![U+1EA0C](../charts/qalezu-hand/glyphs/U+1EA0C.svg) | U+1EA0C | QALEZU LETTER KHA |
-| `option+shift+k` | `\K` | `Kh` | ![U+1EA0C](../charts/qalezu-hand/glyphs/U+1EA0C.svg) | U+1EA0C | QALEZU LETTER KHA |
-| `option+g` | `\g` | `gh` | ![U+1EA0D](../charts/qalezu-hand/glyphs/U+1EA0D.svg) | U+1EA0D | QALEZU LETTER GHA |
-| `option+shift+g` | `\G` | `Gh` | ![U+1EA0D](../charts/qalezu-hand/glyphs/U+1EA0D.svg) | U+1EA0D | QALEZU LETTER GHA |
-| `option+z` | `\z` | `zh` | ![U+1EA04](../charts/qalezu-hand/glyphs/U+1EA04.svg) ![U+1EA0E](../charts/qalezu-hand/glyphs/U+1EA0E.svg) | U+1EA04 U+1EA0E | QALEZU LETTER ZAGUL; QALEZU LETTER HALZI |
-| `option+shift+z` | `\Z` | `Zh` | ![U+1EA04](../charts/qalezu-hand/glyphs/U+1EA04.svg) ![U+1EA0E](../charts/qalezu-hand/glyphs/U+1EA0E.svg) | U+1EA04 U+1EA0E | QALEZU LETTER ZAGUL; QALEZU LETTER HALZI |
-| `option+p` | `\p` | `ph` | ![U+1EA10](../charts/qalezu-hand/glyphs/U+1EA10.svg) ![U+1EA0E](../charts/qalezu-hand/glyphs/U+1EA0E.svg) | U+1EA10 U+1EA0E | QALEZU LETTER PA; QALEZU LETTER HALZI |
-| `option+shift+p` | `\P` | `Ph` | ![U+1EA10](../charts/qalezu-hand/glyphs/U+1EA10.svg) ![U+1EA0E](../charts/qalezu-hand/glyphs/U+1EA0E.svg) | U+1EA10 U+1EA0E | QALEZU LETTER PA; QALEZU LETTER HALZI |
-| `option+n` | `\n` | `ng` | ![U+1EA08](../charts/qalezu-hand/glyphs/U+1EA08.svg) ![U+1EA06](../charts/qalezu-hand/glyphs/U+1EA06.svg) | U+1EA08 U+1EA06 | QALEZU LETTER NELGIR; QALEZU LETTER GITHAR |
-| `option+shift+n` | `\N` | `Ng` | ![U+1EA08](../charts/qalezu-hand/glyphs/U+1EA08.svg) ![U+1EA06](../charts/qalezu-hand/glyphs/U+1EA06.svg) | U+1EA08 U+1EA06 | QALEZU LETTER NELGIR; QALEZU LETTER GITHAR |
-| `option+y` | `\y` | `ny` | ![U+1EA08](../charts/qalezu-hand/glyphs/U+1EA08.svg) ![U+1EA14](../charts/qalezu-hand/glyphs/U+1EA14.svg) | U+1EA08 U+1EA14 | QALEZU LETTER NELGIR; QALEZU LETTER YA |
-| `option+shift+y` | `\Y` | `Ny` | ![U+1EA08](../charts/qalezu-hand/glyphs/U+1EA08.svg) ![U+1EA14](../charts/qalezu-hand/glyphs/U+1EA14.svg) | U+1EA08 U+1EA14 | QALEZU LETTER NELGIR; QALEZU LETTER YA |
-| `option+x` | `\x` | `ts` | ![U+1EA02](../charts/qalezu-hand/glyphs/U+1EA02.svg) ![U+1EA05](../charts/qalezu-hand/glyphs/U+1EA05.svg) | U+1EA02 U+1EA05 | QALEZU LETTER TULAZ; QALEZU LETTER SELQUR |
-| `option+shift+x` | `\X` | `Ts` | ![U+1EA02](../charts/qalezu-hand/glyphs/U+1EA02.svg) ![U+1EA05](../charts/qalezu-hand/glyphs/U+1EA05.svg) | U+1EA02 U+1EA05 | QALEZU LETTER TULAZ; QALEZU LETTER SELQUR |
-| `option+h` | `\h` | `hl` | ![U+1EA0E](../charts/qalezu-hand/glyphs/U+1EA0E.svg) ![U+1EA00](../charts/qalezu-hand/glyphs/U+1EA00.svg) | U+1EA0E U+1EA00 | QALEZU LETTER HALZI; QALEZU LETTER LAGUN |
-| `option+shift+h` | `\H` | `Hl` | ![U+1EA0E](../charts/qalezu-hand/glyphs/U+1EA0E.svg) ![U+1EA00](../charts/qalezu-hand/glyphs/U+1EA00.svg) | U+1EA0E U+1EA00 | QALEZU LETTER HALZI; QALEZU LETTER LAGUN |
-| `option+b` | `\b` | `bh` | ![U+1EA11](../charts/qalezu-hand/glyphs/U+1EA11.svg) ![U+1EA0E](../charts/qalezu-hand/glyphs/U+1EA0E.svg) | U+1EA11 U+1EA0E | QALEZU LETTER BA; QALEZU LETTER HALZI |
-| `option+shift+b` | `\B` | `Bh` | ![U+1EA11](../charts/qalezu-hand/glyphs/U+1EA11.svg) ![U+1EA0E](../charts/qalezu-hand/glyphs/U+1EA0E.svg) | U+1EA11 U+1EA0E | QALEZU LETTER BA; QALEZU LETTER HALZI |
-| `option+1` | `\1` | `aa` |  | none: the mapping writes it as nothing |  |
-| `option+shift+1` | `\!` | `Aa` |  | none: the mapping writes it as nothing |  |
-| `option+2` | `\2` | `ee` |  | none: the mapping writes it as nothing |  |
-| `option+shift+2` | `\@` | `Ee` |  | none: the mapping writes it as nothing |  |
-| `option+3` | `\3` | `ii` |  | none: the mapping writes it as nothing |  |
-| `option+shift+3` | `\#` | `Ii` |  | none: the mapping writes it as nothing |  |
-| `option+4` | `\4` | `oo` |  | none: the mapping writes it as nothing |  |
-| `option+shift+4` | `\$` | `Oo` |  | none: the mapping writes it as nothing |  |
-| `option+5` | `\5` | `uu` |  | none: the mapping writes it as nothing |  |
-| `option+shift+5` | `\%` | `Uu` |  | none: the mapping writes it as nothing |  |
-| `option+6` | `\6` | `ai` |  | none: the mapping writes it as nothing |  |
-| `option+shift+6` | `\^` | `Ai` |  | none: the mapping writes it as nothing |  |
-| `option+7` | `\7` | `au` |  | none: the mapping writes it as nothing |  |
-| `option+shift+7` | `\&` | `Au` |  | none: the mapping writes it as nothing |  |
-| `option+8` | `\8` | `ei` |  | none: the mapping writes it as nothing |  |
-| `option+shift+8` | `\*` | `Ei` |  | none: the mapping writes it as nothing |  |
-| `option+9` | `\9` | `oi` |  | none: the mapping writes it as nothing |  |
-| `option+shift+9` | `\(` | `Oi` |  | none: the mapping writes it as nothing |  |
-| `option+0` | `\0` | `ou` |  | none: the mapping writes it as nothing |  |
-| `option+shift+0` | `\)` | `Ou` |  | none: the mapping writes it as nothing |  |
-| `option+-` | `\-` | `ie` |  | none: the mapping writes it as nothing |  |
-| `option+shift+-` | `\_` | `Ie` |  | none: the mapping writes it as nothing |  |
-| `option+=` | `\=` | `uo` |  | none: the mapping writes it as nothing |  |
-| `option+shift+=` | `\+` | `Uo` |  | none: the mapping writes it as nothing |  |
-| `option+[` | `\[` | `ae` |  | none: the mapping writes it as nothing |  |
-| `option+shift+[` | `\{` | `Ae` |  | none: the mapping writes it as nothing |  |
-| `option+]` | `\]` | `ea` |  | none: the mapping writes it as nothing |  |
-| `option+shift+]` | `\}` | `Ea` |  | none: the mapping writes it as nothing |  |
-| `option+a` | `\a` | `á` |  | none: the mapping has no row for it |  |
-| `option+shift+a` | `\A` | `Á` |  | none: the mapping has no row for it |  |
-| `option+e` | `\e` | `é` |  | none: the mapping has no row for it |  |
-| `option+shift+e` | `\E` | `É` |  | none: the mapping has no row for it |  |
-| `option+i` | `\i` | `í` |  | none: the mapping has no row for it |  |
-| `option+shift+i` | `\I` | `Í` |  | none: the mapping has no row for it |  |
-| `option+o` | `\o` | `ó` |  | none: the mapping has no row for it |  |
-| `option+shift+o` | `\O` | `Ó` |  | none: the mapping has no row for it |  |
-| `option+u` | `\u` | `ú` |  | none: the mapping has no row for it |  |
-| `option+shift+u` | `\U` | `Ú` |  | none: the mapping has no row for it |  |
-| `option+;` | `\;` | `ä` |  | none: the mapping has no row for it |  |
-| `option+shift+;` | `\:` | `Ä` |  | none: the mapping has no row for it |  |
-| `option+'` | `\'` | `ë` |  | none: the mapping writes it as nothing |  |
-| `option+shift+'` | `\"` | `Ë` |  | none: the mapping writes it as nothing |  |
-| `option+,` | `\,` | `ï` |  | none: the mapping has no row for it |  |
-| `option+shift+,` | `\<` | `Ï` |  | none: the mapping has no row for it |  |
-| `option+.` | `\.` | `ö` |  | none: the mapping has no row for it |  |
-| `option+shift+.` | `\>` | `Ö` |  | none: the mapping has no row for it |  |
-| `option+/` | `\/` | `ü` |  | none: the mapping has no row for it |  |
-| `option+shift+/` | `\?` | `Ü` |  | none: the mapping has no row for it |  |
-| `'` | `'` | `catch` | ![U+1EA15](../charts/qalezu-hand/glyphs/U+1EA15.svg) | U+1EA15 | QALEZU LETTER CATCH |
-| `.` | `.` | `stop` | ![U+1EA37](../charts/qalezu-hand/glyphs/U+1EA37.svg) | U+1EA37 | QALEZU SENTENCE END |
-| `,` | `,` | `pause` | ![U+1EA38](../charts/qalezu-hand/glyphs/U+1EA38.svg) | U+1EA38 | QALEZU PAUSE |
-| `shift+,` | `<` | `open quote` |  | none: the mapping has no row for it |  |
-| `shift+.` | `>` | `close quote` |  | none: the mapping has no row for it |  |
-| `0` | `0` | `0` | ![U+1EA2D](../charts/qalezu-hand/glyphs/U+1EA2D.svg) | U+1EA2D | QALEZU DIGIT ZERO |
-| `1` | `1` | `1` | ![U+1EA2E](../charts/qalezu-hand/glyphs/U+1EA2E.svg) | U+1EA2E | QALEZU DIGIT ONE |
-| `2` | `2` | `2` | ![U+1EA2F](../charts/qalezu-hand/glyphs/U+1EA2F.svg) | U+1EA2F | QALEZU DIGIT TWO |
-| `3` | `3` | `3` | ![U+1EA30](../charts/qalezu-hand/glyphs/U+1EA30.svg) | U+1EA30 | QALEZU DIGIT THREE |
-| `4` | `4` | `4` | ![U+1EA31](../charts/qalezu-hand/glyphs/U+1EA31.svg) | U+1EA31 | QALEZU DIGIT FOUR |
-| `5` | `5` | `5` | ![U+1EA32](../charts/qalezu-hand/glyphs/U+1EA32.svg) | U+1EA32 | QALEZU DIGIT FIVE |
-| `6` | `6` | `6` | ![U+1EA33](../charts/qalezu-hand/glyphs/U+1EA33.svg) | U+1EA33 | QALEZU DIGIT SIX |
-| `7` | `7` | `7` | ![U+1EA34](../charts/qalezu-hand/glyphs/U+1EA34.svg) | U+1EA34 | QALEZU DIGIT SEVEN |
-| `8` | `8` | `8` | ![U+1EA35](../charts/qalezu-hand/glyphs/U+1EA35.svg) | U+1EA35 | QALEZU DIGIT EIGHT |
-| `9` | `9` | `9` | ![U+1EA36](../charts/qalezu-hand/glyphs/U+1EA36.svg) | U+1EA36 | QALEZU DIGIT NINE |
-| `shift+2` | `@` | `ten` |  | none: the mapping has no row for it |  |
-| `shift+3` | `#` | `eleven` |  | none: the mapping has no row for it |  |
-| `shift+4` | `$` | `twelve` |  | none: the mapping has no row for it |  |
-| `shift+5` | `%` | `thirteen` |  | none: the mapping has no row for it |  |
-| `shift+6` | `^` | `fourteen` |  | none: the mapping has no row for it |  |
-| `shift+7` | `&` | `fifteen` |  | none: the mapping has no row for it |  |
+| `a` |  | nothing: this script has no character for the sound |  | `a` | `a` |
+| `shift+a` |  | nothing: this script has no character for the sound |  | `A` | `A` |
+| `b` | ![U+1EA11](../charts/qalezu-hand/glyphs/U+1EA11.svg) | U+1EA11 | QALEZU LETTER BA | `b` | `b` |
+| `shift+b` | ![U+1EA11](../charts/qalezu-hand/glyphs/U+1EA11.svg) | U+1EA11 | QALEZU LETTER BA | `B` | `B` |
+| `d` | ![U+1EA03](../charts/qalezu-hand/glyphs/U+1EA03.svg) | U+1EA03 | QALEZU LETTER DURAS | `d` | `d` |
+| `shift+d` | ![U+1EA03](../charts/qalezu-hand/glyphs/U+1EA03.svg) | U+1EA03 | QALEZU LETTER DURAS | `D` | `D` |
+| `e` |  | nothing: this script has no character for the sound |  | `e` | `e` |
+| `shift+e` |  | nothing: this script has no character for the sound |  | `E` | `E` |
+| `f` | ![U+1EA12](../charts/qalezu-hand/glyphs/U+1EA12.svg) | U+1EA12 | QALEZU LETTER FA | `f` | `f` |
+| `shift+f` | ![U+1EA12](../charts/qalezu-hand/glyphs/U+1EA12.svg) | U+1EA12 | QALEZU LETTER FA | `F` | `F` |
+| `g` | ![U+1EA06](../charts/qalezu-hand/glyphs/U+1EA06.svg) | U+1EA06 | QALEZU LETTER GITHAR | `g` | `g` |
+| `shift+g` | ![U+1EA06](../charts/qalezu-hand/glyphs/U+1EA06.svg) | U+1EA06 | QALEZU LETTER GITHAR | `G` | `G` |
+| `h` | ![U+1EA0E](../charts/qalezu-hand/glyphs/U+1EA0E.svg) | U+1EA0E | QALEZU LETTER HALZI | `h` | `h` |
+| `shift+h` | ![U+1EA0E](../charts/qalezu-hand/glyphs/U+1EA0E.svg) | U+1EA0E | QALEZU LETTER HALZI | `H` | `H` |
+| `i` |  | nothing: this script has no character for the sound |  | `i` | `i` |
+| `shift+i` |  | nothing: this script has no character for the sound |  | `I` | `I` |
+| `j` | ![U+1EA16](../charts/qalezu-hand/glyphs/U+1EA16.svg) | U+1EA16 | QALEZU LETTER TJA | `j` | `j` |
+| `shift+j` | ![U+1EA16](../charts/qalezu-hand/glyphs/U+1EA16.svg) | U+1EA16 | QALEZU LETTER TJA | `J` | `J` |
+| `k` | ![U+1EA07](../charts/qalezu-hand/glyphs/U+1EA07.svg) | U+1EA07 | QALEZU LETTER KA | `k` | `k` |
+| `shift+k` | ![U+1EA07](../charts/qalezu-hand/glyphs/U+1EA07.svg) | U+1EA07 | QALEZU LETTER KA | `K` | `K` |
+| `l` | ![U+1EA00](../charts/qalezu-hand/glyphs/U+1EA00.svg) | U+1EA00 | QALEZU LETTER LAGUN | `l` | `l` |
+| `shift+l` | ![U+1EA00](../charts/qalezu-hand/glyphs/U+1EA00.svg) | U+1EA00 | QALEZU LETTER LAGUN | `L` | `L` |
+| `m` | ![U+1EA0A](../charts/qalezu-hand/glyphs/U+1EA0A.svg) | U+1EA0A | QALEZU LETTER MELNU | `m` | `m` |
+| `shift+m` | ![U+1EA0A](../charts/qalezu-hand/glyphs/U+1EA0A.svg) | U+1EA0A | QALEZU LETTER MELNU | `M` | `M` |
+| `n` | ![U+1EA08](../charts/qalezu-hand/glyphs/U+1EA08.svg) | U+1EA08 | QALEZU LETTER NELGIR | `n` | `n` |
+| `shift+n` | ![U+1EA08](../charts/qalezu-hand/glyphs/U+1EA08.svg) | U+1EA08 | QALEZU LETTER NELGIR | `N` | `N` |
+| `o` |  | nothing: this script has no character for the sound |  | `o` | `o` |
+| `shift+o` |  | nothing: this script has no character for the sound |  | `O` | `O` |
+| `p` | ![U+1EA10](../charts/qalezu-hand/glyphs/U+1EA10.svg) | U+1EA10 | QALEZU LETTER PA | `p` | `p` |
+| `shift+p` | ![U+1EA10](../charts/qalezu-hand/glyphs/U+1EA10.svg) | U+1EA10 | QALEZU LETTER PA | `P` | `P` |
+| `q` | ![U+1EA0B](../charts/qalezu-hand/glyphs/U+1EA0B.svg) | U+1EA0B | QALEZU LETTER QENUWA | `q` | `q` |
+| `shift+q` | ![U+1EA0B](../charts/qalezu-hand/glyphs/U+1EA0B.svg) | U+1EA0B | QALEZU LETTER QENUWA | `Q` | `Q` |
+| `r` | ![U+1EA01](../charts/qalezu-hand/glyphs/U+1EA01.svg) | U+1EA01 | QALEZU LETTER RETHU | `r` | `r` |
+| `shift+r` | ![U+1EA01](../charts/qalezu-hand/glyphs/U+1EA01.svg) | U+1EA01 | QALEZU LETTER RETHU | `R` | `R` |
+| `s` | ![U+1EA05](../charts/qalezu-hand/glyphs/U+1EA05.svg) | U+1EA05 | QALEZU LETTER SELQUR | `s` | `s` |
+| `shift+s` | ![U+1EA05](../charts/qalezu-hand/glyphs/U+1EA05.svg) | U+1EA05 | QALEZU LETTER SELQUR | `S` | `S` |
+| `t` | ![U+1EA02](../charts/qalezu-hand/glyphs/U+1EA02.svg) | U+1EA02 | QALEZU LETTER TULAZ | `t` | `t` |
+| `shift+t` | ![U+1EA02](../charts/qalezu-hand/glyphs/U+1EA02.svg) | U+1EA02 | QALEZU LETTER TULAZ | `T` | `T` |
+| `u` |  | nothing: this script has no character for the sound |  | `u` | `u` |
+| `shift+u` |  | nothing: this script has no character for the sound |  | `U` | `U` |
+| `v` | ![U+1EA12](../charts/qalezu-hand/glyphs/U+1EA12.svg) | U+1EA12 | QALEZU LETTER FA | `v` | `v` |
+| `shift+v` | ![U+1EA12](../charts/qalezu-hand/glyphs/U+1EA12.svg) | U+1EA12 | QALEZU LETTER FA | `V` | `V` |
+| `w` | ![U+1EA13](../charts/qalezu-hand/glyphs/U+1EA13.svg) | U+1EA13 | QALEZU LETTER WALIR | `w` | `w` |
+| `shift+w` | ![U+1EA13](../charts/qalezu-hand/glyphs/U+1EA13.svg) | U+1EA13 | QALEZU LETTER WALIR | `W` | `W` |
+| `y` | ![U+1EA14](../charts/qalezu-hand/glyphs/U+1EA14.svg) | U+1EA14 | QALEZU LETTER YA | `y` | `y` |
+| `shift+y` | ![U+1EA14](../charts/qalezu-hand/glyphs/U+1EA14.svg) | U+1EA14 | QALEZU LETTER YA | `Y` | `Y` |
+| `z` | ![U+1EA04](../charts/qalezu-hand/glyphs/U+1EA04.svg) | U+1EA04 | QALEZU LETTER ZAGUL | `z` | `z` |
+| `shift+z` | ![U+1EA04](../charts/qalezu-hand/glyphs/U+1EA04.svg) | U+1EA04 | QALEZU LETTER ZAGUL | `Z` | `Z` |
+| `option+c` | ![U+1EA16](../charts/qalezu-hand/glyphs/U+1EA16.svg) | U+1EA16 | QALEZU LETTER TJA | `ch` | `\c` |
+| `option+shift+c` | ![U+1EA16](../charts/qalezu-hand/glyphs/U+1EA16.svg) | U+1EA16 | QALEZU LETTER TJA | `Ch` | `\C` |
+| `option+s` | ![U+1EA0F](../charts/qalezu-hand/glyphs/U+1EA0F.svg) | U+1EA0F | QALEZU LETTER SHENULET | `sh` | `\s` |
+| `option+shift+s` | ![U+1EA0F](../charts/qalezu-hand/glyphs/U+1EA0F.svg) | U+1EA0F | QALEZU LETTER SHENULET | `Sh` | `\S` |
+| `option+t` | ![U+1EA09](../charts/qalezu-hand/glyphs/U+1EA09.svg) | U+1EA09 | QALEZU LETTER THELQEN | `th` | `\t` |
+| `option+shift+t` | ![U+1EA09](../charts/qalezu-hand/glyphs/U+1EA09.svg) | U+1EA09 | QALEZU LETTER THELQEN | `Th` | `\T` |
+| `option+d` | ![U+1EA03](../charts/qalezu-hand/glyphs/U+1EA03.svg) ![U+1EA0E](../charts/qalezu-hand/glyphs/U+1EA0E.svg) | U+1EA03 U+1EA0E | QALEZU LETTER DURAS; QALEZU LETTER HALZI | `dh` | `\d` |
+| `option+shift+d` | ![U+1EA03](../charts/qalezu-hand/glyphs/U+1EA03.svg) ![U+1EA0E](../charts/qalezu-hand/glyphs/U+1EA0E.svg) | U+1EA03 U+1EA0E | QALEZU LETTER DURAS; QALEZU LETTER HALZI | `Dh` | `\D` |
+| `option+k` | ![U+1EA0C](../charts/qalezu-hand/glyphs/U+1EA0C.svg) | U+1EA0C | QALEZU LETTER KHA | `kh` | `\k` |
+| `option+shift+k` | ![U+1EA0C](../charts/qalezu-hand/glyphs/U+1EA0C.svg) | U+1EA0C | QALEZU LETTER KHA | `Kh` | `\K` |
+| `option+g` | ![U+1EA0D](../charts/qalezu-hand/glyphs/U+1EA0D.svg) | U+1EA0D | QALEZU LETTER GHA | `gh` | `\g` |
+| `option+shift+g` | ![U+1EA0D](../charts/qalezu-hand/glyphs/U+1EA0D.svg) | U+1EA0D | QALEZU LETTER GHA | `Gh` | `\G` |
+| `option+z` | ![U+1EA04](../charts/qalezu-hand/glyphs/U+1EA04.svg) ![U+1EA0E](../charts/qalezu-hand/glyphs/U+1EA0E.svg) | U+1EA04 U+1EA0E | QALEZU LETTER ZAGUL; QALEZU LETTER HALZI | `zh` | `\z` |
+| `option+shift+z` | ![U+1EA04](../charts/qalezu-hand/glyphs/U+1EA04.svg) ![U+1EA0E](../charts/qalezu-hand/glyphs/U+1EA0E.svg) | U+1EA04 U+1EA0E | QALEZU LETTER ZAGUL; QALEZU LETTER HALZI | `Zh` | `\Z` |
+| `option+p` | ![U+1EA10](../charts/qalezu-hand/glyphs/U+1EA10.svg) ![U+1EA0E](../charts/qalezu-hand/glyphs/U+1EA0E.svg) | U+1EA10 U+1EA0E | QALEZU LETTER PA; QALEZU LETTER HALZI | `ph` | `\p` |
+| `option+shift+p` | ![U+1EA10](../charts/qalezu-hand/glyphs/U+1EA10.svg) ![U+1EA0E](../charts/qalezu-hand/glyphs/U+1EA0E.svg) | U+1EA10 U+1EA0E | QALEZU LETTER PA; QALEZU LETTER HALZI | `Ph` | `\P` |
+| `option+n` | ![U+1EA08](../charts/qalezu-hand/glyphs/U+1EA08.svg) ![U+1EA06](../charts/qalezu-hand/glyphs/U+1EA06.svg) | U+1EA08 U+1EA06 | QALEZU LETTER NELGIR; QALEZU LETTER GITHAR | `ng` | `\n` |
+| `option+shift+n` | ![U+1EA08](../charts/qalezu-hand/glyphs/U+1EA08.svg) ![U+1EA06](../charts/qalezu-hand/glyphs/U+1EA06.svg) | U+1EA08 U+1EA06 | QALEZU LETTER NELGIR; QALEZU LETTER GITHAR | `Ng` | `\N` |
+| `option+y` | ![U+1EA08](../charts/qalezu-hand/glyphs/U+1EA08.svg) ![U+1EA14](../charts/qalezu-hand/glyphs/U+1EA14.svg) | U+1EA08 U+1EA14 | QALEZU LETTER NELGIR; QALEZU LETTER YA | `ny` | `\y` |
+| `option+shift+y` | ![U+1EA08](../charts/qalezu-hand/glyphs/U+1EA08.svg) ![U+1EA14](../charts/qalezu-hand/glyphs/U+1EA14.svg) | U+1EA08 U+1EA14 | QALEZU LETTER NELGIR; QALEZU LETTER YA | `Ny` | `\Y` |
+| `option+x` | ![U+1EA02](../charts/qalezu-hand/glyphs/U+1EA02.svg) ![U+1EA05](../charts/qalezu-hand/glyphs/U+1EA05.svg) | U+1EA02 U+1EA05 | QALEZU LETTER TULAZ; QALEZU LETTER SELQUR | `ts` | `\x` |
+| `option+shift+x` | ![U+1EA02](../charts/qalezu-hand/glyphs/U+1EA02.svg) ![U+1EA05](../charts/qalezu-hand/glyphs/U+1EA05.svg) | U+1EA02 U+1EA05 | QALEZU LETTER TULAZ; QALEZU LETTER SELQUR | `Ts` | `\X` |
+| `option+h` | ![U+1EA0E](../charts/qalezu-hand/glyphs/U+1EA0E.svg) ![U+1EA00](../charts/qalezu-hand/glyphs/U+1EA00.svg) | U+1EA0E U+1EA00 | QALEZU LETTER HALZI; QALEZU LETTER LAGUN | `hl` | `\h` |
+| `option+shift+h` | ![U+1EA0E](../charts/qalezu-hand/glyphs/U+1EA0E.svg) ![U+1EA00](../charts/qalezu-hand/glyphs/U+1EA00.svg) | U+1EA0E U+1EA00 | QALEZU LETTER HALZI; QALEZU LETTER LAGUN | `Hl` | `\H` |
+| `option+b` | ![U+1EA11](../charts/qalezu-hand/glyphs/U+1EA11.svg) ![U+1EA0E](../charts/qalezu-hand/glyphs/U+1EA0E.svg) | U+1EA11 U+1EA0E | QALEZU LETTER BA; QALEZU LETTER HALZI | `bh` | `\b` |
+| `option+shift+b` | ![U+1EA11](../charts/qalezu-hand/glyphs/U+1EA11.svg) ![U+1EA0E](../charts/qalezu-hand/glyphs/U+1EA0E.svg) | U+1EA11 U+1EA0E | QALEZU LETTER BA; QALEZU LETTER HALZI | `Bh` | `\B` |
+| `option+1` |  | nothing: this script has no character for the sound |  | `aa` | `\1` |
+| `option+shift+1` |  | nothing: this script has no character for the sound |  | `Aa` | `\!` |
+| `option+2` |  | nothing: this script has no character for the sound |  | `ee` | `\2` |
+| `option+shift+2` |  | nothing: this script has no character for the sound |  | `Ee` | `\@` |
+| `option+3` |  | nothing: this script has no character for the sound |  | `ii` | `\3` |
+| `option+shift+3` |  | nothing: this script has no character for the sound |  | `Ii` | `\#` |
+| `option+4` |  | nothing: this script has no character for the sound |  | `oo` | `\4` |
+| `option+shift+4` |  | nothing: this script has no character for the sound |  | `Oo` | `\$` |
+| `option+5` |  | nothing: this script has no character for the sound |  | `uu` | `\5` |
+| `option+shift+5` |  | nothing: this script has no character for the sound |  | `Uu` | `\%` |
+| `option+6` |  | nothing: this script has no character for the sound |  | `ai` | `\6` |
+| `option+shift+6` |  | nothing: this script has no character for the sound |  | `Ai` | `\^` |
+| `option+7` |  | nothing: this script has no character for the sound |  | `au` | `\7` |
+| `option+shift+7` |  | nothing: this script has no character for the sound |  | `Au` | `\&` |
+| `option+8` |  | nothing: this script has no character for the sound |  | `ei` | `\8` |
+| `option+shift+8` |  | nothing: this script has no character for the sound |  | `Ei` | `\*` |
+| `option+9` |  | nothing: this script has no character for the sound |  | `oi` | `\9` |
+| `option+shift+9` |  | nothing: this script has no character for the sound |  | `Oi` | `\(` |
+| `option+0` |  | nothing: this script has no character for the sound |  | `ou` | `\0` |
+| `option+shift+0` |  | nothing: this script has no character for the sound |  | `Ou` | `\)` |
+| `option+-` |  | nothing: this script has no character for the sound |  | `ie` | `\-` |
+| `option+shift+-` |  | nothing: this script has no character for the sound |  | `Ie` | `\_` |
+| `option+=` |  | nothing: this script has no character for the sound |  | `uo` | `\=` |
+| `option+shift+=` |  | nothing: this script has no character for the sound |  | `Uo` | `\+` |
+| `option+[` |  | nothing: this script has no character for the sound |  | `ae` | `\[` |
+| `option+shift+[` |  | nothing: this script has no character for the sound |  | `Ae` | `\{` |
+| `option+]` |  | nothing: this script has no character for the sound |  | `ea` | `\]` |
+| `option+shift+]` |  | nothing: this script has no character for the sound |  | `Ea` | `\}` |
+| `option+a` |  | nothing: this script has no character for the sound |  | `á` | `\a` |
+| `option+shift+a` |  | nothing: this script has no character for the sound |  | `Á` | `\A` |
+| `option+e` |  | nothing: this script has no character for the sound |  | `é` | `\e` |
+| `option+shift+e` |  | nothing: this script has no character for the sound |  | `É` | `\E` |
+| `option+i` |  | nothing: this script has no character for the sound |  | `í` | `\i` |
+| `option+shift+i` |  | nothing: this script has no character for the sound |  | `Í` | `\I` |
+| `option+o` |  | nothing: this script has no character for the sound |  | `ó` | `\o` |
+| `option+shift+o` |  | nothing: this script has no character for the sound |  | `Ó` | `\O` |
+| `option+u` |  | nothing: this script has no character for the sound |  | `ú` | `\u` |
+| `option+shift+u` |  | nothing: this script has no character for the sound |  | `Ú` | `\U` |
+| `option+;` |  | nothing: this script has no character for the sound |  | `ä` | `\;` |
+| `option+shift+;` |  | nothing: this script has no character for the sound |  | `Ä` | `\:` |
+| `option+'` |  | nothing: this script has no character for the sound |  | `ë` | `\'` |
+| `option+shift+'` |  | nothing: this script has no character for the sound |  | `Ë` | `\"` |
+| `option+,` |  | nothing: this script has no character for the sound |  | `ï` | `\,` |
+| `option+shift+,` |  | nothing: this script has no character for the sound |  | `Ï` | `\<` |
+| `option+.` |  | nothing: this script has no character for the sound |  | `ö` | `\.` |
+| `option+shift+.` |  | nothing: this script has no character for the sound |  | `Ö` | `\>` |
+| `option+/` |  | nothing: this script has no character for the sound |  | `ü` | `\/` |
+| `option+shift+/` |  | nothing: this script has no character for the sound |  | `Ü` | `\?` |
+| `'` | ![U+1EA15](../charts/qalezu-hand/glyphs/U+1EA15.svg) | U+1EA15 | QALEZU LETTER CATCH | `catch` | `'` |
+| `.` | ![U+1EA37](../charts/qalezu-hand/glyphs/U+1EA37.svg) | U+1EA37 | QALEZU SENTENCE END | `stop` | `.` |
+| `,` | ![U+1EA38](../charts/qalezu-hand/glyphs/U+1EA38.svg) | U+1EA38 | QALEZU PAUSE | `pause` | `,` |
+| `shift+,` |  | nothing: this script has no character for the sound |  | `open quote` | `<` |
+| `shift+.` |  | nothing: this script has no character for the sound |  | `close quote` | `>` |
+| `0` | ![U+1EA2D](../charts/qalezu-hand/glyphs/U+1EA2D.svg) | U+1EA2D | QALEZU DIGIT ZERO | `0` | `0` |
+| `1` | ![U+1EA2E](../charts/qalezu-hand/glyphs/U+1EA2E.svg) | U+1EA2E | QALEZU DIGIT ONE | `1` | `1` |
+| `2` | ![U+1EA2F](../charts/qalezu-hand/glyphs/U+1EA2F.svg) | U+1EA2F | QALEZU DIGIT TWO | `2` | `2` |
+| `3` | ![U+1EA30](../charts/qalezu-hand/glyphs/U+1EA30.svg) | U+1EA30 | QALEZU DIGIT THREE | `3` | `3` |
+| `4` | ![U+1EA31](../charts/qalezu-hand/glyphs/U+1EA31.svg) | U+1EA31 | QALEZU DIGIT FOUR | `4` | `4` |
+| `5` | ![U+1EA32](../charts/qalezu-hand/glyphs/U+1EA32.svg) | U+1EA32 | QALEZU DIGIT FIVE | `5` | `5` |
+| `6` | ![U+1EA33](../charts/qalezu-hand/glyphs/U+1EA33.svg) | U+1EA33 | QALEZU DIGIT SIX | `6` | `6` |
+| `7` | ![U+1EA34](../charts/qalezu-hand/glyphs/U+1EA34.svg) | U+1EA34 | QALEZU DIGIT SEVEN | `7` | `7` |
+| `8` | ![U+1EA35](../charts/qalezu-hand/glyphs/U+1EA35.svg) | U+1EA35 | QALEZU DIGIT EIGHT | `8` | `8` |
+| `9` | ![U+1EA36](../charts/qalezu-hand/glyphs/U+1EA36.svg) | U+1EA36 | QALEZU DIGIT NINE | `9` | `9` |
+| `shift+2` |  | nothing: this script has no character for the sound |  | `ten` | `@` |
+| `shift+3` |  | nothing: this script has no character for the sound |  | `eleven` | `#` |
+| `shift+4` |  | nothing: this script has no character for the sound |  | `twelve` | `$` |
+| `shift+5` |  | nothing: this script has no character for the sound |  | `thirteen` | `%` |
+| `shift+6` |  | nothing: this script has no character for the sound |  | `fourteen` | `^` |
+| `shift+7` |  | nothing: this script has no character for the sound |  | `fifteen` | `&` |

@@ -2,6 +2,445 @@
     "version": 1,
     "families": [
         {
+            "name": "Helonika Book",
+            "family": "Helonika Book",
+            "class": "hl-helonika-book",
+            "files": {
+                "woff2": "fonts/HelonikaBook-Regular.woff2",
+                "ttf": "fonts/HelonikaBook-Regular.ttf"
+            },
+            "direction": "ltr",
+            "features": [],
+            "codepoints": [
+                {
+                    "codepoint": "U+F0300",
+                    "name": "HELONIKA CAPITAL LETTER A",
+                    "glyph": "A",
+                    "kind": "letter"
+                },
+                {
+                    "codepoint": "U+F0301",
+                    "name": "HELONIKA CAPITAL LETTER B",
+                    "glyph": "B",
+                    "kind": "letter"
+                },
+                {
+                    "codepoint": "U+F0302",
+                    "name": "HELONIKA CAPITAL LETTER D",
+                    "glyph": "D",
+                    "kind": "letter"
+                },
+                {
+                    "codepoint": "U+F0303",
+                    "name": "HELONIKA CAPITAL LETTER E",
+                    "glyph": "E",
+                    "kind": "letter"
+                },
+                {
+                    "codepoint": "U+F0304",
+                    "name": "HELONIKA CAPITAL LETTER LONG E",
+                    "glyph": "E.long",
+                    "kind": "letter"
+                },
+                {
+                    "codepoint": "U+F0305",
+                    "name": "HELONIKA CAPITAL LETTER F",
+                    "glyph": "F",
+                    "kind": "letter"
+                },
+                {
+                    "codepoint": "U+F0306",
+                    "name": "HELONIKA CAPITAL LETTER G",
+                    "glyph": "G",
+                    "kind": "letter"
+                },
+                {
+                    "codepoint": "U+F0307",
+                    "name": "HELONIKA CAPITAL LETTER H",
+                    "glyph": "H",
+                    "kind": "letter"
+                },
+                {
+                    "codepoint": "U+F0308",
+                    "name": "HELONIKA CAPITAL LETTER I",
+                    "glyph": "I",
+                    "kind": "letter"
+                },
+                {
+                    "codepoint": "U+F0309",
+                    "name": "HELONIKA CAPITAL LETTER J",
+                    "glyph": "J",
+                    "kind": "letter"
+                },
+                {
+                    "codepoint": "U+F030A",
+                    "name": "HELONIKA CAPITAL LETTER K",
+                    "glyph": "K",
+                    "kind": "letter"
+                },
+                {
+                    "codepoint": "U+F030B",
+                    "name": "HELONIKA CAPITAL LETTER L",
+                    "glyph": "L",
+                    "kind": "letter"
+                },
+                {
+                    "codepoint": "U+F030C",
+                    "name": "HELONIKA CAPITAL LETTER M",
+                    "glyph": "M",
+                    "kind": "letter"
+                },
+                {
+                    "codepoint": "U+F030D",
+                    "name": "HELONIKA CAPITAL LETTER N",
+                    "glyph": "N",
+                    "kind": "letter"
+                },
+                {
+                    "codepoint": "U+F030E",
+                    "name": "HELONIKA CAPITAL LETTER O",
+                    "glyph": "O",
+                    "kind": "letter"
+                },
+                {
+                    "codepoint": "U+F030F",
+                    "name": "HELONIKA CAPITAL LETTER LONG O",
+                    "glyph": "O.long",
+                    "kind": "letter"
+                },
+                {
+                    "codepoint": "U+F0310",
+                    "name": "HELONIKA CAPITAL LETTER P",
+                    "glyph": "P",
+                    "kind": "letter"
+                },
+                {
+                    "codepoint": "U+F0311",
+                    "name": "HELONIKA CAPITAL LETTER R",
+                    "glyph": "R",
+                    "kind": "letter"
+                },
+                {
+                    "codepoint": "U+F0312",
+                    "name": "HELONIKA CAPITAL LETTER S",
+                    "glyph": "S",
+                    "kind": "letter"
+                },
+                {
+                    "codepoint": "U+F0313",
+                    "name": "HELONIKA CAPITAL LETTER T",
+                    "glyph": "T",
+                    "kind": "letter"
+                },
+                {
+                    "codepoint": "U+F0314",
+                    "name": "HELONIKA CAPITAL LETTER TH",
+                    "glyph": "TH",
+                    "kind": "letter"
+                },
+                {
+                    "codepoint": "U+F0315",
+                    "name": "HELONIKA CAPITAL LETTER U",
+                    "glyph": "U",
+                    "kind": "letter"
+                },
+                {
+                    "codepoint": "U+F0316",
+                    "name": "HELONIKA CAPITAL LETTER V",
+                    "glyph": "V",
+                    "kind": "letter"
+                },
+                {
+                    "codepoint": "U+F0317",
+                    "name": "HELONIKA CAPITAL LETTER Z",
+                    "glyph": "Z",
+                    "kind": "letter"
+                },
+                {
+                    "codepoint": "U+F0318",
+                    "name": "HELONIKA CAPITAL LETTER KH",
+                    "glyph": "KH",
+                    "kind": "letter"
+                },
+                {
+                    "codepoint": "U+F0319",
+                    "name": "HELONIKA CAPITAL LETTER ZH",
+                    "glyph": "ZH",
+                    "kind": "letter"
+                },
+                {
+                    "codepoint": "U+F0320",
+                    "name": "HELONIKA CAPITAL LETTER A WITH LENGTH BAR",
+                    "glyph": "A.macron",
+                    "kind": "letter"
+                },
+                {
+                    "codepoint": "U+F0321",
+                    "name": "HELONIKA CAPITAL LETTER I WITH LENGTH BAR",
+                    "glyph": "I.macron",
+                    "kind": "letter"
+                },
+                {
+                    "codepoint": "U+F0322",
+                    "name": "HELONIKA CAPITAL LETTER U WITH LENGTH BAR",
+                    "glyph": "U.macron",
+                    "kind": "letter"
+                },
+                {
+                    "codepoint": "U+F0330",
+                    "name": "HELONIKA SMALL LETTER A",
+                    "glyph": "a",
+                    "kind": "letter"
+                },
+                {
+                    "codepoint": "U+F0331",
+                    "name": "HELONIKA SMALL LETTER B",
+                    "glyph": "b",
+                    "kind": "letter"
+                },
+                {
+                    "codepoint": "U+F0332",
+                    "name": "HELONIKA SMALL LETTER D",
+                    "glyph": "d",
+                    "kind": "letter"
+                },
+                {
+                    "codepoint": "U+F0333",
+                    "name": "HELONIKA SMALL LETTER E",
+                    "glyph": "e",
+                    "kind": "letter"
+                },
+                {
+                    "codepoint": "U+F0334",
+                    "name": "HELONIKA SMALL LETTER LONG E",
+                    "glyph": "e.long",
+                    "kind": "letter"
+                },
+                {
+                    "codepoint": "U+F0335",
+                    "name": "HELONIKA SMALL LETTER F",
+                    "glyph": "f",
+                    "kind": "letter"
+                },
+                {
+                    "codepoint": "U+F0336",
+                    "name": "HELONIKA SMALL LETTER G",
+                    "glyph": "g",
+                    "kind": "letter"
+                },
+                {
+                    "codepoint": "U+F0337",
+                    "name": "HELONIKA SMALL LETTER H",
+                    "glyph": "h",
+                    "kind": "letter"
+                },
+                {
+                    "codepoint": "U+F0338",
+                    "name": "HELONIKA SMALL LETTER I",
+                    "glyph": "i",
+                    "kind": "letter"
+                },
+                {
+                    "codepoint": "U+F0339",
+                    "name": "HELONIKA SMALL LETTER J",
+                    "glyph": "j",
+                    "kind": "letter"
+                },
+                {
+                    "codepoint": "U+F033A",
+                    "name": "HELONIKA SMALL LETTER K",
+                    "glyph": "k",
+                    "kind": "letter"
+                },
+                {
+                    "codepoint": "U+F033B",
+                    "name": "HELONIKA SMALL LETTER L",
+                    "glyph": "l",
+                    "kind": "letter"
+                },
+                {
+                    "codepoint": "U+F033C",
+                    "name": "HELONIKA SMALL LETTER M",
+                    "glyph": "m",
+                    "kind": "letter"
+                },
+                {
+                    "codepoint": "U+F033D",
+                    "name": "HELONIKA SMALL LETTER N",
+                    "glyph": "n",
+                    "kind": "letter"
+                },
+                {
+                    "codepoint": "U+F033E",
+                    "name": "HELONIKA SMALL LETTER O",
+                    "glyph": "o",
+                    "kind": "letter"
+                },
+                {
+                    "codepoint": "U+F033F",
+                    "name": "HELONIKA SMALL LETTER LONG O",
+                    "glyph": "o.long",
+                    "kind": "letter"
+                },
+                {
+                    "codepoint": "U+F0340",
+                    "name": "HELONIKA SMALL LETTER P",
+                    "glyph": "p",
+                    "kind": "letter"
+                },
+                {
+                    "codepoint": "U+F0341",
+                    "name": "HELONIKA SMALL LETTER R",
+                    "glyph": "r",
+                    "kind": "letter"
+                },
+                {
+                    "codepoint": "U+F0342",
+                    "name": "HELONIKA SMALL LETTER S",
+                    "glyph": "s",
+                    "kind": "letter"
+                },
+                {
+                    "codepoint": "U+F0343",
+                    "name": "HELONIKA SMALL LETTER T",
+                    "glyph": "t",
+                    "kind": "letter"
+                },
+                {
+                    "codepoint": "U+F0344",
+                    "name": "HELONIKA SMALL LETTER TH",
+                    "glyph": "th",
+                    "kind": "letter"
+                },
+                {
+                    "codepoint": "U+F0345",
+                    "name": "HELONIKA SMALL LETTER U",
+                    "glyph": "u",
+                    "kind": "letter"
+                },
+                {
+                    "codepoint": "U+F0346",
+                    "name": "HELONIKA SMALL LETTER V",
+                    "glyph": "v",
+                    "kind": "letter"
+                },
+                {
+                    "codepoint": "U+F0347",
+                    "name": "HELONIKA SMALL LETTER Z",
+                    "glyph": "z",
+                    "kind": "letter"
+                },
+                {
+                    "codepoint": "U+F0348",
+                    "name": "HELONIKA SMALL LETTER KH",
+                    "glyph": "kh",
+                    "kind": "letter"
+                },
+                {
+                    "codepoint": "U+F0349",
+                    "name": "HELONIKA SMALL LETTER ZH",
+                    "glyph": "zh",
+                    "kind": "letter"
+                },
+                {
+                    "codepoint": "U+F0350",
+                    "name": "HELONIKA SMALL LETTER A WITH LENGTH BAR",
+                    "glyph": "a.macron",
+                    "kind": "letter"
+                },
+                {
+                    "codepoint": "U+F0351",
+                    "name": "HELONIKA SMALL LETTER I WITH LENGTH BAR",
+                    "glyph": "i.macron",
+                    "kind": "letter"
+                },
+                {
+                    "codepoint": "U+F0352",
+                    "name": "HELONIKA SMALL LETTER U WITH LENGTH BAR",
+                    "glyph": "u.macron",
+                    "kind": "letter"
+                },
+                {
+                    "codepoint": "U+F0360",
+                    "name": "HELONIKA DIGIT ZERO",
+                    "glyph": "num.0",
+                    "kind": "numeral"
+                },
+                {
+                    "codepoint": "U+F0361",
+                    "name": "HELONIKA DIGIT ONE",
+                    "glyph": "num.1",
+                    "kind": "numeral"
+                },
+                {
+                    "codepoint": "U+F0362",
+                    "name": "HELONIKA DIGIT TWO",
+                    "glyph": "num.2",
+                    "kind": "numeral"
+                },
+                {
+                    "codepoint": "U+F0363",
+                    "name": "HELONIKA DIGIT THREE",
+                    "glyph": "num.3",
+                    "kind": "numeral"
+                },
+                {
+                    "codepoint": "U+F0364",
+                    "name": "HELONIKA DIGIT FOUR",
+                    "glyph": "num.4",
+                    "kind": "numeral"
+                },
+                {
+                    "codepoint": "U+F0365",
+                    "name": "HELONIKA DIGIT FIVE",
+                    "glyph": "num.5",
+                    "kind": "numeral"
+                },
+                {
+                    "codepoint": "U+F0366",
+                    "name": "HELONIKA DIGIT SIX",
+                    "glyph": "num.6",
+                    "kind": "numeral"
+                },
+                {
+                    "codepoint": "U+F0367",
+                    "name": "HELONIKA DIGIT SEVEN",
+                    "glyph": "num.7",
+                    "kind": "numeral"
+                },
+                {
+                    "codepoint": "U+F0368",
+                    "name": "HELONIKA DIGIT EIGHT",
+                    "glyph": "num.8",
+                    "kind": "numeral"
+                },
+                {
+                    "codepoint": "U+F0369",
+                    "name": "HELONIKA DIGIT NINE",
+                    "glyph": "num.9",
+                    "kind": "numeral"
+                },
+                {
+                    "codepoint": "U+F0370",
+                    "name": "HELONIKA RAISED DOT",
+                    "glyph": "raisedDot",
+                    "kind": "point"
+                },
+                {
+                    "codepoint": "U+F0371",
+                    "name": "HELONIKA REGISTER MARK",
+                    "glyph": "registerMark",
+                    "kind": "point"
+                },
+                {
+                    "codepoint": "U+F0378",
+                    "name": "HELONIKA COMBINING ACCENT",
+                    "glyph": "accent",
+                    "kind": "mark"
+                }
+            ]
+        },
+        {
             "name": "Khelathi Zethu Glyphs",
             "family": "Khelathi Zethu Glyphs",
             "class": "hl-khelathi-zethu-glyphs",
@@ -6544,6 +6983,24 @@
                     "kind": "digraph"
                 },
                 {
+                    "codepoint": "U+F0128",
+                    "name": "THURAVARK LETTER AI",
+                    "glyph": "ai",
+                    "kind": "diphthong"
+                },
+                {
+                    "codepoint": "U+F0129",
+                    "name": "THURAVARK LETTER AU",
+                    "glyph": "au",
+                    "kind": "diphthong"
+                },
+                {
+                    "codepoint": "U+F012A",
+                    "name": "THURAVARK LETTER OI",
+                    "glyph": "oi",
+                    "kind": "diphthong"
+                },
+                {
                     "codepoint": "U+F0130",
                     "name": "THURAVARK DIGIT ZERO",
                     "glyph": "num.0",
@@ -6614,6 +7071,608 @@
                     "name": "THURAVARK ACUTE",
                     "glyph": "acutecomb",
                     "kind": "mark"
+                },
+                {
+                    "codepoint": "U+F0150",
+                    "name": "THURAVARK CROWN OPEN",
+                    "glyph": "crown.open",
+                    "kind": "control"
+                },
+                {
+                    "codepoint": "U+F0151",
+                    "name": "THURAVARK CROWN CLOSE",
+                    "glyph": "crown.close",
+                    "kind": "control"
+                }
+            ]
+        },
+        {
+            "name": "Thuravark Carved Bound",
+            "family": "Thuravark Carved",
+            "class": "hl-thuravark-carved-bound",
+            "files": {
+                "woff2": "fonts/ThuravarkCarved-Regular.woff2",
+                "ttf": "fonts/ThuravarkCarved-Regular.ttf"
+            },
+            "direction": "ltr",
+            "features": ["ss01"],
+            "codepoints": [
+                {
+                    "codepoint": "U+F0100",
+                    "name": "THURAVARK LETTER A",
+                    "glyph": "a",
+                    "kind": "letter"
+                },
+                {
+                    "codepoint": "U+F0101",
+                    "name": "THURAVARK LETTER E",
+                    "glyph": "e",
+                    "kind": "letter"
+                },
+                {
+                    "codepoint": "U+F0102",
+                    "name": "THURAVARK LETTER I",
+                    "glyph": "i",
+                    "kind": "letter"
+                },
+                {
+                    "codepoint": "U+F0103",
+                    "name": "THURAVARK LETTER ODEL",
+                    "glyph": "o",
+                    "kind": "letter"
+                },
+                {
+                    "codepoint": "U+F0104",
+                    "name": "THURAVARK LETTER U",
+                    "glyph": "u",
+                    "kind": "letter"
+                },
+                {
+                    "codepoint": "U+F0105",
+                    "name": "THURAVARK LETTER BRELD",
+                    "glyph": "b",
+                    "kind": "letter"
+                },
+                {
+                    "codepoint": "U+F0106",
+                    "name": "THURAVARK LETTER DRESK",
+                    "glyph": "d",
+                    "kind": "letter"
+                },
+                {
+                    "codepoint": "U+F0107",
+                    "name": "THURAVARK LETTER FOSK",
+                    "glyph": "f",
+                    "kind": "letter"
+                },
+                {
+                    "codepoint": "U+F0108",
+                    "name": "THURAVARK LETTER GELDRA",
+                    "glyph": "g",
+                    "kind": "letter"
+                },
+                {
+                    "codepoint": "U+F0109",
+                    "name": "THURAVARK LETTER HVELM",
+                    "glyph": "h",
+                    "kind": "letter"
+                },
+                {
+                    "codepoint": "U+F010A",
+                    "name": "THURAVARK LETTER JA",
+                    "glyph": "j",
+                    "kind": "letter"
+                },
+                {
+                    "codepoint": "U+F010B",
+                    "name": "THURAVARK LETTER KNERV",
+                    "glyph": "k",
+                    "kind": "letter"
+                },
+                {
+                    "codepoint": "U+F010C",
+                    "name": "THURAVARK LETTER LA",
+                    "glyph": "l",
+                    "kind": "letter"
+                },
+                {
+                    "codepoint": "U+F010D",
+                    "name": "THURAVARK LETTER MERV",
+                    "glyph": "m",
+                    "kind": "letter"
+                },
+                {
+                    "codepoint": "U+F010E",
+                    "name": "THURAVARK LETTER NELTH",
+                    "glyph": "n",
+                    "kind": "letter"
+                },
+                {
+                    "codepoint": "U+F010F",
+                    "name": "THURAVARK LETTER PA",
+                    "glyph": "p",
+                    "kind": "letter"
+                },
+                {
+                    "codepoint": "U+F0110",
+                    "name": "THURAVARK LETTER RELTH",
+                    "glyph": "r",
+                    "kind": "letter"
+                },
+                {
+                    "codepoint": "U+F0111",
+                    "name": "THURAVARK LETTER SVELD",
+                    "glyph": "s",
+                    "kind": "letter"
+                },
+                {
+                    "codepoint": "U+F0112",
+                    "name": "THURAVARK LETTER TING",
+                    "glyph": "t",
+                    "kind": "letter"
+                },
+                {
+                    "codepoint": "U+F0113",
+                    "name": "THURAVARK LETTER VULD",
+                    "glyph": "v",
+                    "kind": "letter"
+                },
+                {
+                    "codepoint": "U+F0114",
+                    "name": "THURAVARK LETTER WA",
+                    "glyph": "w",
+                    "kind": "letter"
+                },
+                {
+                    "codepoint": "U+F0115",
+                    "name": "THURAVARK LETTER ZA",
+                    "glyph": "z",
+                    "kind": "letter"
+                },
+                {
+                    "codepoint": "U+F0120",
+                    "name": "THURAVARK LETTER THRESK",
+                    "glyph": "th",
+                    "kind": "digraph"
+                },
+                {
+                    "codepoint": "U+F0121",
+                    "name": "THURAVARK LETTER DHA",
+                    "glyph": "dh",
+                    "kind": "digraph"
+                },
+                {
+                    "codepoint": "U+F0122",
+                    "name": "THURAVARK LETTER KHA",
+                    "glyph": "kh",
+                    "kind": "digraph"
+                },
+                {
+                    "codepoint": "U+F0123",
+                    "name": "THURAVARK LETTER GHA",
+                    "glyph": "gh",
+                    "kind": "digraph"
+                },
+                {
+                    "codepoint": "U+F0124",
+                    "name": "THURAVARK LETTER HLA",
+                    "glyph": "hl",
+                    "kind": "digraph"
+                },
+                {
+                    "codepoint": "U+F0125",
+                    "name": "THURAVARK LETTER NGA",
+                    "glyph": "ng",
+                    "kind": "digraph"
+                },
+                {
+                    "codepoint": "U+F0128",
+                    "name": "THURAVARK LETTER AI",
+                    "glyph": "ai",
+                    "kind": "diphthong"
+                },
+                {
+                    "codepoint": "U+F0129",
+                    "name": "THURAVARK LETTER AU",
+                    "glyph": "au",
+                    "kind": "diphthong"
+                },
+                {
+                    "codepoint": "U+F012A",
+                    "name": "THURAVARK LETTER OI",
+                    "glyph": "oi",
+                    "kind": "diphthong"
+                },
+                {
+                    "codepoint": "U+F0130",
+                    "name": "THURAVARK DIGIT ZERO",
+                    "glyph": "num.0",
+                    "kind": "numeral"
+                },
+                {
+                    "codepoint": "U+F0131",
+                    "name": "THURAVARK DIGIT ONE",
+                    "glyph": "num.1",
+                    "kind": "numeral"
+                },
+                {
+                    "codepoint": "U+F0132",
+                    "name": "THURAVARK DIGIT TWO",
+                    "glyph": "num.2",
+                    "kind": "numeral"
+                },
+                {
+                    "codepoint": "U+F0133",
+                    "name": "THURAVARK DIGIT THREE",
+                    "glyph": "num.3",
+                    "kind": "numeral"
+                },
+                {
+                    "codepoint": "U+F0134",
+                    "name": "THURAVARK DIGIT FOUR",
+                    "glyph": "num.4",
+                    "kind": "numeral"
+                },
+                {
+                    "codepoint": "U+F0135",
+                    "name": "THURAVARK DIGIT FIVE",
+                    "glyph": "num.5",
+                    "kind": "numeral"
+                },
+                {
+                    "codepoint": "U+F0136",
+                    "name": "THURAVARK DIGIT SIX",
+                    "glyph": "num.6",
+                    "kind": "numeral"
+                },
+                {
+                    "codepoint": "U+F0137",
+                    "name": "THURAVARK DIGIT SEVEN",
+                    "glyph": "num.7",
+                    "kind": "numeral"
+                },
+                {
+                    "codepoint": "U+F0138",
+                    "name": "THURAVARK DIGIT EIGHT",
+                    "glyph": "num.8",
+                    "kind": "numeral"
+                },
+                {
+                    "codepoint": "U+F0139",
+                    "name": "THURAVARK DIGIT NINE",
+                    "glyph": "num.9",
+                    "kind": "numeral"
+                },
+                {
+                    "codepoint": "U+F0140",
+                    "name": "THURAVARK FULL STOP",
+                    "glyph": "period",
+                    "kind": "point"
+                },
+                {
+                    "codepoint": "U+F0148",
+                    "name": "THURAVARK ACUTE",
+                    "glyph": "acutecomb",
+                    "kind": "mark"
+                },
+                {
+                    "codepoint": "U+F0150",
+                    "name": "THURAVARK CROWN OPEN",
+                    "glyph": "crown.open",
+                    "kind": "control"
+                },
+                {
+                    "codepoint": "U+F0151",
+                    "name": "THURAVARK CROWN CLOSE",
+                    "glyph": "crown.close",
+                    "kind": "control"
+                }
+            ]
+        },
+        {
+            "name": "Vedyakshara Classical",
+            "family": "Vedyakshara Classical",
+            "class": "hl-vedyakshara-classical",
+            "files": {
+                "woff2": "fonts/VedyaksharaClassical-Regular.woff2",
+                "ttf": "fonts/VedyaksharaClassical-Regular.ttf"
+            },
+            "direction": "ltr",
+            "features": [],
+            "codepoints": [
+                {
+                    "codepoint": "U+F0400",
+                    "name": "VEDYAKSHARA LETTER KA",
+                    "glyph": "ka",
+                    "kind": "letter"
+                },
+                {
+                    "codepoint": "U+F0401",
+                    "name": "VEDYAKSHARA LETTER KHA",
+                    "glyph": "kha",
+                    "kind": "letter"
+                },
+                {
+                    "codepoint": "U+F0402",
+                    "name": "VEDYAKSHARA LETTER GA",
+                    "glyph": "ga",
+                    "kind": "letter"
+                },
+                {
+                    "codepoint": "U+F0403",
+                    "name": "VEDYAKSHARA LETTER GHA",
+                    "glyph": "gha",
+                    "kind": "letter"
+                },
+                {
+                    "codepoint": "U+F0404",
+                    "name": "VEDYAKSHARA LETTER NGA",
+                    "glyph": "nga",
+                    "kind": "letter"
+                },
+                {
+                    "codepoint": "U+F0405",
+                    "name": "VEDYAKSHARA LETTER CHA",
+                    "glyph": "cha",
+                    "kind": "letter"
+                },
+                {
+                    "codepoint": "U+F0406",
+                    "name": "VEDYAKSHARA LETTER JA",
+                    "glyph": "ja",
+                    "kind": "letter"
+                },
+                {
+                    "codepoint": "U+F0407",
+                    "name": "VEDYAKSHARA LETTER NYA",
+                    "glyph": "nya",
+                    "kind": "letter"
+                },
+                {
+                    "codepoint": "U+F0408",
+                    "name": "VEDYAKSHARA LETTER TA",
+                    "glyph": "ta",
+                    "kind": "letter"
+                },
+                {
+                    "codepoint": "U+F0409",
+                    "name": "VEDYAKSHARA LETTER DA",
+                    "glyph": "da",
+                    "kind": "letter"
+                },
+                {
+                    "codepoint": "U+F040A",
+                    "name": "VEDYAKSHARA LETTER NA",
+                    "glyph": "na",
+                    "kind": "letter"
+                },
+                {
+                    "codepoint": "U+F040B",
+                    "name": "VEDYAKSHARA LETTER PA",
+                    "glyph": "pa",
+                    "kind": "letter"
+                },
+                {
+                    "codepoint": "U+F040C",
+                    "name": "VEDYAKSHARA LETTER BA",
+                    "glyph": "ba",
+                    "kind": "letter"
+                },
+                {
+                    "codepoint": "U+F040D",
+                    "name": "VEDYAKSHARA LETTER BHA",
+                    "glyph": "bha",
+                    "kind": "letter"
+                },
+                {
+                    "codepoint": "U+F040E",
+                    "name": "VEDYAKSHARA LETTER MA",
+                    "glyph": "ma",
+                    "kind": "letter"
+                },
+                {
+                    "codepoint": "U+F040F",
+                    "name": "VEDYAKSHARA LETTER YA",
+                    "glyph": "ya",
+                    "kind": "letter"
+                },
+                {
+                    "codepoint": "U+F0410",
+                    "name": "VEDYAKSHARA LETTER RA",
+                    "glyph": "ra",
+                    "kind": "letter"
+                },
+                {
+                    "codepoint": "U+F0411",
+                    "name": "VEDYAKSHARA LETTER LA",
+                    "glyph": "la",
+                    "kind": "letter"
+                },
+                {
+                    "codepoint": "U+F0412",
+                    "name": "VEDYAKSHARA LETTER VA",
+                    "glyph": "va",
+                    "kind": "letter"
+                },
+                {
+                    "codepoint": "U+F0413",
+                    "name": "VEDYAKSHARA LETTER SHA",
+                    "glyph": "sha",
+                    "kind": "letter"
+                },
+                {
+                    "codepoint": "U+F0414",
+                    "name": "VEDYAKSHARA LETTER SA",
+                    "glyph": "sa",
+                    "kind": "letter"
+                },
+                {
+                    "codepoint": "U+F0415",
+                    "name": "VEDYAKSHARA LETTER HA",
+                    "glyph": "ha",
+                    "kind": "letter"
+                },
+                {
+                    "codepoint": "U+F0420",
+                    "name": "VEDYAKSHARA LETTER A",
+                    "glyph": "a",
+                    "kind": "letter"
+                },
+                {
+                    "codepoint": "U+F0421",
+                    "name": "VEDYAKSHARA LETTER I",
+                    "glyph": "i",
+                    "kind": "letter"
+                },
+                {
+                    "codepoint": "U+F0422",
+                    "name": "VEDYAKSHARA LETTER U",
+                    "glyph": "u",
+                    "kind": "letter"
+                },
+                {
+                    "codepoint": "U+F0423",
+                    "name": "VEDYAKSHARA LETTER E",
+                    "glyph": "e",
+                    "kind": "letter"
+                },
+                {
+                    "codepoint": "U+F0424",
+                    "name": "VEDYAKSHARA LETTER O",
+                    "glyph": "o",
+                    "kind": "letter"
+                },
+                {
+                    "codepoint": "U+F0425",
+                    "name": "VEDYAKSHARA LETTER AI",
+                    "glyph": "ai",
+                    "kind": "letter"
+                },
+                {
+                    "codepoint": "U+F0426",
+                    "name": "VEDYAKSHARA LETTER AU",
+                    "glyph": "au",
+                    "kind": "letter"
+                },
+                {
+                    "codepoint": "U+F0430",
+                    "name": "VEDYAKSHARA VOWEL SIGN I",
+                    "glyph": "vs.i",
+                    "kind": "mark"
+                },
+                {
+                    "codepoint": "U+F0431",
+                    "name": "VEDYAKSHARA VOWEL SIGN E",
+                    "glyph": "vs.e",
+                    "kind": "mark"
+                },
+                {
+                    "codepoint": "U+F0432",
+                    "name": "VEDYAKSHARA VOWEL SIGN AI",
+                    "glyph": "vs.ai",
+                    "kind": "mark"
+                },
+                {
+                    "codepoint": "U+F0433",
+                    "name": "VEDYAKSHARA VOWEL SIGN U",
+                    "glyph": "vs.u",
+                    "kind": "mark"
+                },
+                {
+                    "codepoint": "U+F0434",
+                    "name": "VEDYAKSHARA VOWEL SIGN O",
+                    "glyph": "vs.o",
+                    "kind": "mark"
+                },
+                {
+                    "codepoint": "U+F0435",
+                    "name": "VEDYAKSHARA VOWEL SIGN AU",
+                    "glyph": "vs.au",
+                    "kind": "mark"
+                },
+                {
+                    "codepoint": "U+F0438",
+                    "name": "VEDYAKSHARA SIGN CUT",
+                    "glyph": "cut",
+                    "kind": "mark"
+                },
+                {
+                    "codepoint": "U+F0439",
+                    "name": "VEDYAKSHARA SIGN SOFT DOT",
+                    "glyph": "dot",
+                    "kind": "mark"
+                },
+                {
+                    "codepoint": "U+F0440",
+                    "name": "VEDYAKSHARA DIGIT ZERO",
+                    "glyph": "num.0",
+                    "kind": "numeral"
+                },
+                {
+                    "codepoint": "U+F0441",
+                    "name": "VEDYAKSHARA DIGIT ONE",
+                    "glyph": "num.1",
+                    "kind": "numeral"
+                },
+                {
+                    "codepoint": "U+F0442",
+                    "name": "VEDYAKSHARA DIGIT TWO",
+                    "glyph": "num.2",
+                    "kind": "numeral"
+                },
+                {
+                    "codepoint": "U+F0443",
+                    "name": "VEDYAKSHARA DIGIT THREE",
+                    "glyph": "num.3",
+                    "kind": "numeral"
+                },
+                {
+                    "codepoint": "U+F0444",
+                    "name": "VEDYAKSHARA DIGIT FOUR",
+                    "glyph": "num.4",
+                    "kind": "numeral"
+                },
+                {
+                    "codepoint": "U+F0445",
+                    "name": "VEDYAKSHARA DIGIT FIVE",
+                    "glyph": "num.5",
+                    "kind": "numeral"
+                },
+                {
+                    "codepoint": "U+F0446",
+                    "name": "VEDYAKSHARA DIGIT SIX",
+                    "glyph": "num.6",
+                    "kind": "numeral"
+                },
+                {
+                    "codepoint": "U+F0447",
+                    "name": "VEDYAKSHARA DIGIT SEVEN",
+                    "glyph": "num.7",
+                    "kind": "numeral"
+                },
+                {
+                    "codepoint": "U+F0448",
+                    "name": "VEDYAKSHARA DIGIT EIGHT",
+                    "glyph": "num.8",
+                    "kind": "numeral"
+                },
+                {
+                    "codepoint": "U+F0449",
+                    "name": "VEDYAKSHARA DIGIT NINE",
+                    "glyph": "num.9",
+                    "kind": "numeral"
+                },
+                {
+                    "codepoint": "U+F0450",
+                    "name": "VEDYAKSHARA PAUSE",
+                    "glyph": "pause",
+                    "kind": "point"
+                },
+                {
+                    "codepoint": "U+F0451",
+                    "name": "VEDYAKSHARA FULL STOP",
+                    "glyph": "stop",
+                    "kind": "point"
                 }
             ]
         },

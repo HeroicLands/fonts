@@ -1,0 +1,198 @@
+{
+    "fixtures": [
+        {
+            "latin": "Vedyara",
+            "glyphs": [
+                "va",
+                "vs.e",
+                "dya",
+                "ra"
+            ]
+        },
+        {
+            "latin": "dvarna",
+            "glyphs": [
+                "da.half",
+                "va",
+                "rna"
+            ]
+        },
+        {
+            "latin": "Rajepur",
+            "glyphs": [
+                "ra",
+                "ja",
+                "vs.e",
+                "pa",
+                "hook.u",
+                "ra.final"
+            ]
+        },
+        {
+            "latin": "aisu",
+            "glyphs": [
+                "ai",
+                "sa",
+                "hook.u"
+            ]
+        },
+        {
+            "latin": "Ganoka-shalda",
+            "glyphs": [
+                "ga",
+                "na",
+                "hook.o",
+                "ka",
+                "sha",
+                "la.half",
+                "da"
+            ]
+        },
+        {
+            "latin": "foshu",
+            "glyphs": [
+                "fa",
+                "hook.o",
+                "sha",
+                "hook.u"
+            ]
+        },
+        {
+            "latin": "smiriti",
+            "glyphs": [
+                "sa.half",
+                "ma",
+                "vs.i",
+                "ra",
+                "vs.i",
+                "ta",
+                "vs.i"
+            ]
+        },
+        {
+            "latin": "chendra",
+            "glyphs": [
+                "cha",
+                "vs.e",
+                "nda.rfoot"
+            ]
+        },
+        {
+            "latin": "ikshva",
+            "glyphs": [
+                "i",
+                "ksha.half",
+                "va"
+            ]
+        },
+        {
+            "latin": "Suryadvar",
+            "glyphs": [
+                "sa",
+                "hook.u",
+                "ra.half",
+                "ya",
+                "da.half",
+                "va",
+                "ra.final"
+            ]
+        },
+        {
+            "latin": "karmija",
+            "glyphs": [
+                "ka",
+                "rma",
+                "vs.i",
+                "ja"
+            ]
+        },
+        {
+            "latin": "Ushti",
+            "glyphs": [
+                "u",
+                "shta",
+                "vs.i"
+            ]
+        },
+        {
+            "latin": "kau",
+            "glyphs": [
+                "ka",
+                "hook.o",
+                "hook.u"
+            ]
+        },
+        {
+            "latin": "Vastuna karmata vanisa?",
+            "glyphs": [
+                "va",
+                "sta",
+                "hook.u",
+                "na",
+                "space",
+                "ka",
+                "rma",
+                "ta",
+                "space",
+                "va",
+                "na",
+                "vs.i",
+                "sa"
+            ]
+        },
+        {
+            "latin": "Agarana dulipati, vandikana",
+            "glyphs": [
+                "a",
+                "ga",
+                "ra",
+                "na",
+                "space",
+                "da",
+                "hook.u",
+                "la",
+                "vs.i",
+                "pa",
+                "ta",
+                "vs.i",
+                "pause",
+                "space",
+                "va",
+                "nda",
+                "vs.i",
+                "ka",
+                "na"
+            ]
+        },
+        {
+            "latin": "teska 10.",
+            "glyphs": [
+                "ta",
+                "vs.e",
+                "sa.half",
+                "ka",
+                "space",
+                "num.1",
+                "num.0",
+                "stop"
+            ]
+        },
+        {
+            "latin": "lam",
+            "glyphs": [
+                "la",
+                "ma.final"
+            ]
+        }
+    ],
+    "unmappable": [
+        {
+            "latin": "Zaron",
+            "letter": "Z"
+        },
+        {
+            "latin": "wexa",
+            "letter": "w"
+        }
+    ]
+}

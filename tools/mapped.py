@@ -21,6 +21,9 @@ guard run with no thalorna checkout (``Mapping.offline``):
     .venv/bin/python tools/mapped.py --thalorna ~/dev/HeroicLands/thalorna --write   # write the file
     .venv/bin/python tools/mapped.py --thalorna ~/dev/HeroicLands/thalorna           # check it
 
+``--map-note SCRIPT=FILE`` reads one script's mapping note from a file instead, as
+the guards' ``--map-note`` does.
+
 Without ``--write`` the file is written afresh in memory and compared, and any
 text that differs is reported, so a change to a mapping note that a fixture
 meets is found.
@@ -45,6 +48,8 @@ FACES = {
     "pirzath-hand": "pirzath",
     "thuravark-carved": "thuravark",
     "qalezu-hand": "qalezu",
+    "vedyakshara-classical": "vedyakshara",
+    "helonika-book": "helonika",
 }
 
 
@@ -138,6 +143,8 @@ def wanted() -> dict[str, list[str]]:
     hand = _load("pirzath_hand_guard", tools / "pirzath-hand" / "guard.py")
     thuravark = _load("thuravark_guard", tools / "thuravark-carved" / "guard.py")
     qalezu = _load("qalezu_guard", tools / "qalezu-hand" / "guard.py")
+    vedyakshara = _load("vedyakshara_guard", tools / "vedyakshara" / "guard.py")
+    helonika = _load("helonika_guard", tools / "helonika" / "guard.py")
     lines = _load("spacing", tools / "spacing.py")
     return {
         "semaron-kuriale": semaron.fixture_texts() + lines._semaron_texts(),
@@ -145,15 +152,19 @@ def wanted() -> dict[str, list[str]]:
         "pirzath-hand": hand.fixture_texts() + lines._pirzath_texts(),
         "thuravark-carved": thuravark.fixture_texts() + lines._thuravark_texts(),
         "qalezu-hand": qalezu.fixture_texts(),
+        "vedyakshara-classical": vedyakshara.fixture_texts() + lines._vedyakshara_texts(),
+        "helonika-book": helonika.fixture_texts() + lines._helonika_texts(),
     }
 
 
-def build(thalorna: Path) -> dict:
-    """The document tools/mapped.json holds, written afresh from the checkout's mapping notes."""
+def build(thalorna: Path, notes: dict[str, Path] | None = None) -> dict:
+    """The document tools/mapped.json holds, written afresh from the checkout's mapping notes,
+    or, for a script ``notes`` names, from that file."""
+    notes = notes or {}
     faces = {}
     for face, texts in wanted().items():
         texts = sorted(set(texts))
-        m = Mapping(FACES[face], thalorna=thalorna, face=face)
+        m = Mapping(FACES[face], thalorna=thalorna, note=notes.get(FACES[face]), face=face)
         faces[face] = dict(zip(texts, m.records(texts)))
     source = {face: f"{NOTES}/{script.capitalize()}_Spelling.md" for face, script in FACES.items()}
     return {"source": source, "faces": faces}
@@ -174,9 +185,9 @@ def serialise(doc: dict) -> str:
     return "\n".join(out)
 
 
-def stale(thalorna: Path) -> list[str]:
+def stale(thalorna: Path, notes: dict[str, Path] | None = None) -> list[str]:
     """The texts tools/mapped.json records differently from the checkout's mapping notes."""
-    fresh = build(thalorna)
+    fresh = build(thalorna, notes)
     if not CACHE.exists():
         return [f"{CACHE.relative_to(ROOT)}: error: the file is missing; run tools/mapped.py --write"]
     old = json.loads(CACHE.read_text(encoding="utf-8"))
@@ -194,13 +205,16 @@ def stale(thalorna: Path) -> list[str]:
 def main():
     ap = argparse.ArgumentParser(description="Write or check tools/mapped.json.")
     ap.add_argument("--thalorna", default=str(THALORNA))
+    ap.add_argument("--map-note", action="append", default=[], metavar="SCRIPT=FILE",
+                    help="read a script's mapping note from a file instead of git, such as vedyakshara=FILE")
     ap.add_argument("--write", action="store_true")
     args = ap.parse_args()
+    notes = dict(n.split("=", 1) for n in args.map_note)
     if args.write:
-        CACHE.write_text(serialise(build(Path(args.thalorna))), encoding="utf-8")
+        CACHE.write_text(serialise(build(Path(args.thalorna), notes)), encoding="utf-8")
         print(f"{CACHE.relative_to(ROOT)}: written")
         return
-    problems = stale(Path(args.thalorna))
+    problems = stale(Path(args.thalorna), notes)
     for line in problems[:40]:
         print(line)
     print(f"{CACHE.relative_to(ROOT)}: {len(problems)} problems" if problems else f"{CACHE.relative_to(ROOT)}: ok")

@@ -27,7 +27,11 @@ font fails when
   joined forms, Semaron Kuriale's ``f j p s g``, whose descenders reach below
   it, and Veldikko's raised stops, its riser _l_ and its nasals in every form,
   whose stems and tails reach past both edges, and its length bar: Veldikko's
-  bowls, not its extenders, stand at the x-height.
+  bowls, not its extenders, stand at the x-height. Vedyakshara Classical's hooks,
+  r-foot and fused r reach below it, on every sign that carries them; its body
+  stands at the x-height under the headline, and its digits, which stand free of
+  the headline exactly as tall as the body, are its typical letters. Helonika Book's
+  _f_, _g_ and _j_ turn their tails back just below it.
 
 Each face has one set of typical letters for each of the two heights; a script with
 a single height uses one set for both.
@@ -74,6 +78,8 @@ SCALES = {
     "KhelathiZethuGlyphs": 0.77,
     "TengChou": 0.81,
     "Veldikko": 1.72,
+    "VedyaksharaClassical": 1.0,
+    "HelonikaBook": 1.0,
 }
 
 CONSONANTS = (
@@ -86,7 +92,21 @@ SEMARON_CAPITALS = "A B C D E F G H I J K L M N O P R S T TH U V W Y Z".split()
 QALEZU = "b d f g gh h k kh l m n p q r s sh t th tj w y z".split()
 VELDIKKO_STOPS = "p t k d".split()
 VELDIKKO_BODY = ["r"]  # the crozier, the one letter standing at the bowls' height alone
-THURAVARK = "a b d dh e f g gh h hl i j k kh l m n ng o p r s t th u v w y z".split()
+THURAVARK = "a ai au b d dh e f g gh h hl i j k kh l m n ng o oi p r s t th u v w y z".split()
+HELONIKA_X = "b e e.long o s u".split()  # the minuscules that stand on the body, line to x-height, with no tail
+HELONIKA_CAPS = "A B E F G H I J K M N P R S T".split()
+# Vedyakshara's signs hang from a headline above the x-height; its digits stand free of
+# it, exactly as tall as the body, so they are its typical x-height letters.
+VEDYAKSHARA_DIGITS = [f"num.{d}" for d in range(10)]
+VEDYAKSHARA_SIGNS = "ka ga ja ta da na pa ba ma ya ra la va sa ha".split()
+
+
+def vedyakshara_low() -> set[str]:
+    """Vedyakshara's glyphs that reach below the line: every sign, by the r-foot, the
+    r-stem of a fused r or a hook under it, and the hooks themselves."""
+    enc = json.loads((ROOT / "tools" / "vedyakshara" / "encoding.json").read_text(encoding="utf-8"))
+    names = {g["glyph"] for g in enc["glyphs"] if g["kind"] in ("consonant", "vowel")}
+    return names | {f["glyph"] for f in enc["fused"]} | {"fa", "vs", "hook"}
 
 # Each face: the glyphs whose median height is x-height, those for cap height, and the
 # target. Zethu names its standing signs from its encoding table.
@@ -99,6 +119,8 @@ FACES = {
     "KhelathiZethuGlyphs": {"x": None, "cap": None, "target": "cap"},
     "TengChou": {"x": "characters", "cap": "characters", "target": "cap"},
     "Veldikko": {"x": VELDIKKO_BODY, "cap": VELDIKKO_STOPS, "target": "x"},
+    "VedyaksharaClassical": {"x": VEDYAKSHARA_DIGITS, "cap": VEDYAKSHARA_SIGNS, "target": "x"},
+    "HelonikaBook": {"x": HELONIKA_X, "cap": HELONIKA_CAPS, "target": "x"},
 }
 
 # Glyphs allowed to leave the band, by face: the first part of the glyph name, before
@@ -109,6 +131,10 @@ OVERSHOOT = {
     # the raised stems, the riser and the nasals' tails reach well past Semaron's
     # extenders by design; the bowls stand at the x-height
     "Veldikko": set("p t k d g th dhasp kh gh tej dej kej gej l m n ng bar".split()),
+    # the hooks, the r-foot and a fused r's stem hang below the line
+    "VedyaksharaClassical": vedyakshara_low(),
+    # the tails of the descending minuscules turn back a little below the descent
+    "HelonikaBook": {"f", "g", "j"},
 }
 
 

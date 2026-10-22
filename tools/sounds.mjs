@@ -7,13 +7,17 @@
  *
  *     node tools/sounds.mjs --thalorna ~/dev/HeroicLands/thalorna          # print
  *     node tools/sounds.mjs --thalorna ~/dev/HeroicLands/thalorna --write  # write the file
+ *     node tools/sounds.mjs --thalorna ~/dev/HeroicLands/thalorna --map-note vedyakshara=FILE
  *
  * A sound's output is its spelling run through the script's mapping note,
  * `assets/content/Lore/Scripts/<Script>_Spelling.md` on the thalorna checkout's
- * `origin/main`, by package-build's own `compileMap` and `applyMap`, the rules a
+ * `origin/main`, or the file `--map-note <script>=<file>` names for a script, by
+ * package-build's own `compileMap` and `applyMap`, the rules a
  * run marked `map=` is set by. A sound with a `context` is mapped inside it
  * (`context: ["t", "t"]` maps `tat` for `a`), and its output is the pieces that
- * lie within the sound; a piece that runs across the sound's edge is an error.
+ * lie within the sound; a piece that runs across the sound's edge is an error. A
+ * script whose mapping needs another context for a sound names it in the sound's
+ * `contexts`, keyed by script.
  *
  * A sound is unmapped in a script, and its key types nothing there, when a
  * character of it passes through the mapping unchanged (`"no row"`) or when the
@@ -40,8 +44,8 @@ const hex = (text) =>
     Array.from(text, (c) => `U+${c.codePointAt(0).toString(16).toUpperCase().padStart(4, "0")}`);
 
 /** `{codepoints}` or `{unmapped}` for one sound under one face. */
-function spell(map, face, sound) {
-    const [before, after] = sound.context ?? ["", ""];
+function spell(map, face, sound, script) {
+    const [before, after] = sound.contexts?.[script] ?? sound.context ?? ["", ""];
     const start = before.length;
     const end = start + sound.spelling.length;
     const { pieces } = applyMap(map, before + sound.spelling + after, { font: face });
@@ -57,16 +61,25 @@ function spell(map, face, sound) {
     return { codepoints: hex(to).join(" ") };
 }
 
-/** The `sounds.json` document. */
-export function build(thalorna) {
+/**
+ * The `sounds.json` document.
+ *
+ * @param {string} thalorna - The thalorna checkout, whose `origin/main` holds the notes.
+ * @param {Record<string, string>} [notes] - A file to read a script's note from instead, by script.
+ * @returns {object} The document.
+ */
+export function build(thalorna, notes = {}) {
     const keys = JSON.parse(readFileSync(join(ROOT, "tools", "sound_keys.json"), "utf8"));
     const maps = Object.fromEntries(
-        SCRIPTS.map(([script, file]) => [script, { file, ...readMap({ thalorna }, file) }]),
+        SCRIPTS.map(([script, file]) => [
+            script,
+            { file, ...readMap({ thalorna, note: notes[script] }, file) },
+        ]),
     );
     const sounds = keys.sounds.map((sound) => {
         const scripts = {};
         for (const [script, { map, faces }] of Object.entries(maps)) {
-            const each = faces.map((face) => spell(map, face, sound));
+            const each = faces.map((face) => spell(map, face, sound, script));
             const first = JSON.stringify(each[0]);
             if (each.some((e) => JSON.stringify(e) !== first))
                 throw new Error(`${sound.sound}: the faces of ${script} disagree`);
@@ -102,7 +115,14 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
         console.error("tools/sounds.mjs: error: --thalorna <path> is required");
         process.exit(2);
     }
-    const text = serialise(build(args[at + 1]));
+    const notes = {};
+    args.forEach((a, i) => {
+        if (a === "--map-note") {
+            const [script, file] = args[i + 1].split("=");
+            notes[script] = file;
+        }
+    });
+    const text = serialise(build(args[at + 1], notes));
     if (args.includes("--write")) writeFileSync(OUT, text);
     else process.stdout.write(text);
 }

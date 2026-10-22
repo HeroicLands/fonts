@@ -1,354 +1,357 @@
-# Zethu keyboard
+# Khelathi Zethu Glyphs cheatsheet
 
-Faces: Khelathi Zethu Glyphs. The signs far outnumber the keys of a keyboard, so there is no macOS, Windows or Linux layout.
+Khelathi Zethu Glyphs writes with pictorial signs, far more of them than a keyboard has keys, so it has no keyboard layout for macOS, Windows or Linux. Insert a sign by its code point, or pick it from the [glyph charts](../charts/khelathi-zethu-glyphs.md):
 
-- Emacs input method: `keyboards/emacs/heroiclands-zethu.el`, named `heroiclands-zethu`, typed by sign id, such as `08-001`.
+- **Word on Windows:** type the code point's hex digits, such as `1EA41`, and press Alt+X.
+- **macOS:** open the Character Viewer (Edit, Emoji & Symbols), search the code point and double-click the sign.
+- **Linux:** press Ctrl+Shift+U, type the hex digits and press Enter.
+- **Emacs:** the input method `heroiclands-zethu` (`keyboards/emacs/heroiclands-zethu.el`) inserts a sign when you type its sign id, such as `08-001`.
 
-## Keys
+## Signs
 
-| Sign id | Code point | Glyph |
-| --- | --- | --- |
-| `01-002` | U+1EA41 | z01_002.a |
-| `01-003` | U+1EA42 | z01_003.a |
-| `01-005` | U+1EA44 | z01_005.a |
-| `01-006` | U+1EA45 | z01_006.a |
-| `01-007` | U+1EA46 | z01_007.a |
-| `01-008` | U+1EA47 | z01_008.a |
-| `01-009` | U+1EA48 | z01_009.a |
-| `01-010` | U+1EA49 | z01_010.a |
-| `01-011` | U+1EA4A | z01_011.a |
-| `01-012` | U+1EA4B | z01_012.a |
-| `01-013` | U+1EA4C | z01_013.a |
-| `01-014` | U+1EA4D | z01_014.a |
-| `01-015` | U+1EA4E | z01_015.a |
-| `01-016` | U+1EA4F | z01_016.a |
-| `01-017` | U+1EA50 | z01_017.a |
-| `01-018` | U+1EA51 | z01_018.a |
-| `01-020` | U+1EA53 | z01_020.a |
-| `01-021` | U+1EA54 | z01_021.a |
-| `01-023` | U+1EA56 | z01_023.a |
-| `01-024` | U+1EA57 | z01_024.a |
-| `01-025` | U+1EA58 | z01_025.a |
-| `01-026` | U+1EA59 | z01_026.a |
-| `01-028` | U+1EA5B | z01_028.a |
-| `01-029` | U+1EA5C | z01_029.a |
-| `01-030` | U+1EA5D | z01_030.a |
-| `01-032` | U+1EA5F | z01_032.a |
-| `01-033` | U+1EA60 | z01_033.a |
-| `01-034` | U+1EA61 | z01_034.a |
-| `01-035` | U+1EA62 | z01_035.a |
-| `01-038` | U+1EA65 | z01_038.a |
-| `01-039` | U+1EA66 | z01_039.a |
-| `01-040` | U+1EA67 | z01_040.a |
-| `01-041` | U+1EA68 | z01_041.a |
-| `01-042` | U+1EA69 | z01_042.a |
-| `01-043` | U+1EA6A | z01_043.a |
-| `01-044` | U+1EA6B | z01_044.a |
-| `01-045` | U+1EA6C | z01_045.a |
-| `01-046` | U+1EA6D | z01_046.a |
-| `01-047` | U+1EA6E | z01_047.a |
-| `01-049` | U+1EA70 | z01_049.a |
-| `01-050` | U+1EA71 | z01_050.a |
-| `01-051` | U+1EA72 | z01_051.a |
-| `01-052` | U+1EA73 | z01_052.a |
-| `01-053` | U+1EA74 | z01_053.a |
-| `01-054` | U+1EA75 | z01_054.a |
-| `01-056` | U+1EA77 | z01_056.a |
-| `01-057` | U+1EA78 | z01_057.a |
-| `01-058` | U+1EA79 | z01_058.a |
-| `01-059` | U+1EA7A | z01_059.a |
-| `01-060` | U+1EA7B | z01_060.a |
-| `01-061` | U+1EA7C | z01_061.a |
-| `01-062` | U+1EA7D | z01_062.a |
-| `02-002` | U+1EA7F | z02_002.a |
-| `02-003` | U+1EA80 | z02_003.a |
-| `02-006` | U+1EA83 | z02_006.a |
-| `02-007` | U+1EA84 | z02_007.a |
-| `02-008` | U+1EA85 | z02_008.a |
-| `02-009` | U+1EA86 | z02_009.a |
-| `02-010` | U+1EA87 | z02_010.a |
-| `02-011` | U+1EA88 | z02_011.a |
-| `02-015` | U+1EA8C | z02_015.a |
-| `02-017` | U+1EA8E | z02_017.a |
-| `02-019` | U+1EA90 | z02_019.a |
-| `03-001` | U+1EA91 | z03_001.a |
-| `03-003` | U+1EA93 | z03_003.a |
-| `03-004` | U+1EA94 | z03_004.a |
-| `03-005` | U+1EA95 | z03_005.a |
-| `03-006` | U+1EA96 | z03_006.a |
-| `03-007` | U+1EA97 | z03_007.a |
-| `03-008` | U+1EA98 | z03_008.a |
-| `03-009` | U+1EA99 | z03_009.a |
-| `03-010` | U+1EA9A | z03_010.a |
-| `03-011` | U+1EA9B | z03_011.a |
-| `03-012` | U+1EA9C | z03_012.a |
-| `03-013` | U+1EA9D | z03_013.a |
-| `03-014` | U+1EA9E | z03_014.a |
-| `03-015` | U+1EA9F | z03_015.a |
-| `03-016` | U+1EAA0 | z03_016.a |
-| `03-017` | U+1EAA1 | z03_017.a |
-| `03-018` | U+1EAA2 | z03_018.a |
-| `03-019` | U+1EAA3 | z03_019.a |
-| `03-020` | U+1EAA4 | z03_020.a |
-| `03-021` | U+1EAA5 | z03_021.a |
-| `03-022` | U+1EAA6 | z03_022.a |
-| `03-023` | U+1EAA7 | z03_023.a |
-| `03-024` | U+1EAA8 | z03_024.a |
-| `03-025` | U+1EAA9 | z03_025.a |
-| `04-003` | U+1EAAC | z04_003.a |
-| `04-006` | U+1EAAF | z04_006.a |
-| `04-009` | U+1EAB2 | z04_009.a |
-| `04-011` | U+1EAB4 | z04_011.a |
-| `04-015` | U+1EAB8 | z04_015.a |
-| `04-017` | U+1EABA | z04_017.a |
-| `04-018` | U+1EABB | z04_018.a |
-| `04-020` | U+1EABD | z04_020.a |
-| `04-021` | U+1EABE | z04_021.a |
-| `05-001` | U+1EAC0 | z05_001.a |
-| `05-004` | U+1EAC3 | z05_004.a |
-| `05-005` | U+1EAC4 | z05_005.a |
-| `05-006` | U+1EAC5 | z05_006.a |
-| `05-014` | U+1EACD | z05_014.a |
-| `05-015` | U+1EACE | z05_015.a |
-| `05-017` | U+1EAD0 | z05_017.a |
-| `05-018` | U+1EAD1 | z05_018.a |
-| `05-024` | U+1EAD7 | z05_024.a |
-| `05-029` | U+1EADC | z05_029.a |
-| `05-035` | U+1EAE2 | z05_035.a |
-| `06-003` | U+1EAE9 | z06_003.a |
-| `06-005` | U+1EAEB | z06_005.a |
-| `06-010` | U+1EAF0 | z06_010.a |
-| `06-014` | U+1EAF4 | z06_014.a |
-| `06-020` | U+1EAFA | z06_020.a |
-| `06-022` | U+1EAFC | z06_022.a |
-| `06-027` | U+1EB01 | z06_027.a |
-| `06-029` | U+1EB03 | z06_029.a |
-| `06-031` | U+1EB05 | z06_031.a |
-| `07-001` | U+1EB09 | z07_001.a |
-| `07-002` | U+1EB0A | z07_002.a |
-| `07-009` | U+1EB11 | z07_009.a |
-| `08-001` | U+1EB1D | z08_001.a |
-| `08-005` | U+1EB21 | z08_005.a |
-| `08-006` | U+1EB22 | z08_006.a |
-| `08-007` | U+1EB23 | z08_007.a |
-| `08-008` | U+1EB24 | z08_008.a |
-| `08-014` | U+1EB2A | z08_014.a |
-| `08-016` | U+1EB2C | z08_016.a |
-| `09-001` | U+1EB31 | z09_001.a |
-| `09-002` | U+1EB32 | z09_002.a |
-| `09-003` | U+1EB33 | z09_003.a |
-| `09-005` | U+1EB35 | z09_005.a |
-| `09-006` | U+1EB36 | z09_006.a |
-| `09-007` | U+1EB37 | z09_007.a |
-| `09-008` | U+1EB38 | z09_008.a |
-| `09-009` | U+1EB39 | z09_009.a |
-| `09-010` | U+1EB3A | z09_010.a |
-| `09-011` | U+1EB3B | z09_011.a |
-| `09-014` | U+1EB3E | z09_014.a |
-| `09-015` | U+1EB3F | z09_015.a |
-| `09-016` | U+1EB40 | z09_016.a |
-| `09-017` | U+1EB41 | z09_017.a |
-| `09-018` | U+1EB42 | z09_018.a |
-| `09-019` | U+1EB43 | z09_019.a |
-| `09-020` | U+1EB44 | z09_020.a |
-| `09-021` | U+1EB45 | z09_021.a |
-| `09-022` | U+1EB46 | z09_022.a |
-| `10-001` | U+1EB48 | z10_001.a |
-| `10-002` | U+1EB49 | z10_002.a |
-| `10-007` | U+1EB4E | z10_007.a |
-| `10-008` | U+1EB4F | z10_008.a |
-| `10-009` | U+1EB50 | z10_009.a |
-| `10-010` | U+1EB51 | z10_010.a |
-| `10-011` | U+1EB52 | z10_011.a |
-| `10-012` | U+1EB53 | z10_012.a |
-| `10-013` | U+1EB54 | z10_013.a |
-| `10-014` | U+1EB55 | z10_014.a |
-| `10-015` | U+1EB56 | z10_015.a |
-| `10-016` | U+1EB57 | z10_016.a |
-| `10-017` | U+1EB58 | z10_017.a |
-| `10-018` | U+1EB59 | z10_018.a |
-| `10-019` | U+1EB5A | z10_019.a |
-| `10-020` | U+1EB5B | z10_020.a |
-| `10-022` | U+1EB5D | z10_022.a |
-| `10-023` | U+1EB5E | z10_023.a |
-| `10-024` | U+1EB5F | z10_024.a |
-| `10-025` | U+1EB60 | z10_025.a |
-| `10-026` | U+1EB61 | z10_026.a |
-| `10-027` | U+1EB62 | z10_027.a |
-| `10-028` | U+1EB63 | z10_028.a |
-| `11-001` | U+1EB64 | z11_001.a |
-| `11-002` | U+1EB65 | z11_002.a |
-| `11-003` | U+1EB66 | z11_003.a |
-| `11-004` | U+1EB67 | z11_004.a |
-| `11-005` | U+1EB68 | z11_005.a |
-| `11-006` | U+1EB69 | z11_006.a |
-| `11-007` | U+1EB6A | z11_007.a |
-| `11-008` | U+1EB6B | z11_008.a |
-| `11-009` | U+1EB6C | z11_009.a |
-| `11-010` | U+1EB6D | z11_010.a |
-| `11-011` | U+1EB6E | z11_011.a |
-| `11-012` | U+1EB6F | z11_012.a |
-| `11-013` | U+1EB70 | z11_013.a |
-| `11-014` | U+1EB71 | z11_014.a |
-| `11-015` | U+1EB72 | z11_015.a |
-| `11-016` | U+1EB73 | z11_016.a |
-| `11-017` | U+1EB74 | z11_017.a |
-| `11-018` | U+1EB75 | z11_018.a |
-| `11-019` | U+1EB76 | z11_019.a |
-| `11-020` | U+1EB77 | z11_020.a |
-| `11-021` | U+1EB78 | z11_021.a |
-| `11-022` | U+1EB79 | z11_022.a |
-| `11-024` | U+1EB7B | z11_024.a |
-| `11-025` | U+1EB7C | z11_025.a |
-| `12-001` | U+1EB7D | z12_001.a |
-| `12-002` | U+1EB7E | z12_002.a |
-| `12-003` | U+1EB7F | z12_003.a |
-| `12-004` | U+1EB80 | z12_004.a |
-| `12-005` | U+1EB81 | z12_005.a |
-| `12-006` | U+1EB82 | z12_006.a |
-| `12-007` | U+1EB83 | z12_007.a |
-| `12-009` | U+1EB85 | z12_009.a |
-| `12-011` | U+1EB87 | z12_011.a |
-| `12-012` | U+1EB88 | z12_012.a |
-| `12-014` | U+1EB8A | z12_014.a |
-| `13-001` | U+1EB8B | z13_001.a |
-| `13-002` | U+1EB8C | z13_002.a |
-| `13-003` | U+1EB8D | z13_003.a |
-| `13-004` | U+1EB8E | z13_004.a |
-| `13-005` | U+1EB8F | z13_005.a |
-| `13-006` | U+1EB90 | z13_006.a |
-| `13-007` | U+1EB91 | z13_007.a |
-| `13-008` | U+1EB92 | z13_008.a |
-| `13-009` | U+1EB93 | z13_009.a |
-| `13-010` | U+1EB94 | z13_010.a |
-| `13-011` | U+1EB95 | z13_011.a |
-| `13-012` | U+1EB96 | z13_012.a |
-| `13-013` | U+1EB97 | z13_013.a |
-| `13-014` | U+1EB98 | z13_014.a |
-| `13-015` | U+1EB99 | z13_015.a |
-| `13-016` | U+1EB9A | z13_016.a |
-| `13-017` | U+1EB9B | z13_017.a |
-| `13-018` | U+1EB9C | z13_018.a |
-| `13-021` | U+1EB9F | z13_021.a |
-| `13-022` | U+1EBA0 | z13_022.a |
-| `13-024` | U+1EBA2 | z13_024.a |
-| `13-025` | U+1EBA3 | z13_025.a |
-| `13-026` | U+1EBA4 | z13_026.a |
-| `13-027` | U+1EBA5 | z13_027.a |
-| `13-029` | U+1EBA7 | z13_029.a |
-| `13-030` | U+1EBA8 | z13_030.a |
-| `13-032` | U+1EBAA | z13_032.a |
-| `13-033` | U+1EBAB | z13_033.a |
-| `13-034` | U+1EBAC | z13_034.a |
-| `13-035` | U+1EBAD | z13_035.a |
-| `13-036` | U+1EBAE | z13_036.a |
-| `13-037` | U+1EBAF | z13_037.a |
-| `13-038` | U+1EBB0 | z13_038.a |
-| `13-039` | U+1EBB1 | z13_039.a |
-| `13-040` | U+1EBB2 | z13_040.a |
-| `14-001` | U+1EBB4 | z14_001.a |
-| `14-003` | U+1EBB6 | z14_003.a |
-| `14-004` | U+1EBB7 | z14_004.a |
-| `14-005` | U+1EBB8 | z14_005.a |
-| `14-006` | U+1EBB9 | z14_006.a |
-| `14-007` | U+1EBBA | z14_007.a |
-| `14-008` | U+1EBBB | z14_008.a |
-| `14-009` | U+1EBBC | z14_009.a |
-| `14-011` | U+1EBBE | z14_011.a |
-| `14-012` | U+1EBBF | z14_012.a |
-| `14-015` | U+1EBC2 | z14_015.a |
-| `14-016` | U+1EBC3 | z14_016.a |
-| `14-017` | U+1EBC4 | z14_017.a |
-| `14-018` | U+1EBC5 | z14_018.a |
-| `14-019` | U+1EBC6 | z14_019.a |
-| `14-020` | U+1EBC7 | z14_020.a |
-| `14-021` | U+1EBC8 | z14_021.a |
-| `14-022` | U+1EBC9 | z14_022.a |
-| `15-001` | U+1EBCB | z15_001.a |
-| `15-004` | U+1EBCE | z15_004.a |
-| `15-007` | U+1EBD1 | z15_007.a |
-| `15-009` | U+1EBD3 | z15_009.a |
-| `15-010` | U+1EBD4 | z15_010.a |
-| `15-014` | U+1EBD8 | z15_014.a |
-| `15-015` | U+1EBD9 | z15_015.a |
-| `15-016` | U+1EBDA | z15_016.a |
-| `15-017` | U+1EBDB | z15_017.a |
-| `16-001` | U+1EBDC | z16_001.a |
-| `16-003` | U+1EBDE | z16_003.a |
-| `16-004` | U+1EBDF | z16_004.a |
-| `16-005` | U+1EBE0 | z16_005.a |
-| `16-006` | U+1EBE1 | z16_006.a |
-| `16-007` | U+1EBE2 | z16_007.a |
-| `16-008` | U+1EBE3 | z16_008.a |
-| `16-009` | U+1EBE4 | z16_009.a |
-| `16-011` | U+1EBE6 | z16_011.a |
-| `16-012` | U+1EBE7 | z16_012.a |
-| `16-013` | U+1EBE8 | z16_013.a |
-| `16-014` | U+1EBE9 | z16_014.a |
-| `16-015` | U+1EBEA | z16_015.a |
-| `16-016` | U+1EBEB | z16_016.a |
-| `16-018` | U+1EBED | z16_018.a |
-| `16-019` | U+1EBEE | z16_019.a |
-| `01-063` | U+1EBF0 | z01_063.a |
-| `01-064` | U+1EBF1 | z01_064.a |
-| `01-065` | U+1EBF2 | z01_065.a |
-| `05-040` | U+1EBF3 | z05_040.a |
-| `07-021` | U+1EBF4 | z07_021.a |
-| `03-026` | U+1EBF5 | z03_026.a |
-| `03-027` | U+1EBF6 | z03_027.a |
-| `03-028` | U+1EBF7 | z03_028.a |
-| `14-024` | U+1EBF8 | z14_024.a |
-| `14-025` | U+1EBF9 | z14_025.a |
-| `14-026` | U+1EBFA | z14_026.a |
-| `14-027` | U+1EBFB | z14_027.a |
-| `14-028` | U+1EBFC | z14_028.a |
-| `14-029` | U+1EBFD | z14_029.a |
-| `09-024` | U+1EBFE | z09_024.a |
-| `01-066` | U+1EBFF | z01_066.a |
-| `10-029` | U+1EC00 | z10_029.a |
-| `12-015` | U+1EC01 | z12_015.a |
-| `04-023` | U+1EC02 | z04_023.a |
-| `16-021` | U+1EC03 | z16_021.a |
-| `14-030` | U+1EC04 | z14_030.a |
-| `13-042` | U+1EC05 | z13_042.a |
-| `12-016` | U+1EC06 | z12_016.a |
-| `01-067` | U+1EC07 | z01_067.a |
-| `01-068` | U+1EC08 | z01_068.a |
-| `01-069` | U+1EC09 | z01_069.a |
-| `10-030` | U+1EC0A | z10_030.a |
-| `01-070` | U+1EC0B | z01_070.a |
-| `04-024` | U+1EC0C | z04_024.a |
-| `03-029` | U+1EC0D | z03_029.a |
-| `16-022` | U+1EC0F | z16_022.a |
-| `01-072` | U+1EC11 | z01_072.a |
-| `16-024` | U+1EC14 | z16_024.a |
-| `16-025` | U+1EC15 | z16_025.a |
-| `16-026` | U+1EC16 | z16_026.a |
-| `16-027` | U+1EC17 | z16_027.a |
-| `16-028` | U+1EC18 | z16_028.a |
-| `16-029` | U+1EC19 | z16_029.a |
-| `16-030` | U+1EC1A | z16_030.a |
-| `03-030` | U+1EC1B | z03_030.a |
-| `01-073` | U+1EC1C | z01_073.a |
-| `01-074` | U+1EC1D | z01_074.a |
-| `01-075` | U+1EC1E | z01_075.a |
-| `01-076` | U+1EC1F | z01_076.a |
-| `01-077` | U+1EC20 | z01_077.a |
-| `14-031` | U+1EC21 | z14_031.a |
-| `14-032` | U+1EC22 | z14_032.a |
-| `14-033` | U+1EC23 | z14_033.a |
-| `14-034` | U+1EC24 | z14_034.a |
-| `14-035` | U+1EC25 | z14_035.a |
-| `14-036` | U+1EC26 | z14_036.a |
-| `13-043` | U+1EC27 | z13_043.a |
-| `04-026` | U+1EC28 | z04_026.a |
-| `04-027` | U+1EC29 | z04_027.a |
-| `01-078` | U+1EC2A | z01_078.a |
-| `01-079` | U+1EC2B | z01_079.a |
-| `04-028` | U+1EC2C | z04_028.a |
-| `10-032` | U+1EC2D | z10_032.a |
-| `10-034` | U+1EC2E | z10_034.a |
-| `10-035` | U+1EC2F | z10_035.a |
-| `01-080` | U+1EC30 | z01_080.a |
-| `16-031` | U+1EC31 | z16_031.a |
-| `01-081` | U+1EC32 | z01_081.a |
+| Sign id | Glyph | Code point | Name |
+| --- | --- | --- | --- |
+| `01-002` | ![U+1EA41](../charts/khelathi-zethu-glyphs/glyphs/U+1EA41.svg) | U+1EA41 | ZETHU CHARACTER 002 |
+| `01-003` | ![U+1EA42](../charts/khelathi-zethu-glyphs/glyphs/U+1EA42.svg) | U+1EA42 | ZETHU CHARACTER 003 |
+| `01-005` | ![U+1EA44](../charts/khelathi-zethu-glyphs/glyphs/U+1EA44.svg) | U+1EA44 | ZETHU CHARACTER 005 |
+| `01-006` | ![U+1EA45](../charts/khelathi-zethu-glyphs/glyphs/U+1EA45.svg) | U+1EA45 | ZETHU CHARACTER 006 |
+| `01-007` | ![U+1EA46](../charts/khelathi-zethu-glyphs/glyphs/U+1EA46.svg) | U+1EA46 | ZETHU CHARACTER 007 |
+| `01-008` | ![U+1EA47](../charts/khelathi-zethu-glyphs/glyphs/U+1EA47.svg) | U+1EA47 | ZETHU CHARACTER 008 |
+| `01-009` | ![U+1EA48](../charts/khelathi-zethu-glyphs/glyphs/U+1EA48.svg) | U+1EA48 | ZETHU CHARACTER 009 |
+| `01-010` | ![U+1EA49](../charts/khelathi-zethu-glyphs/glyphs/U+1EA49.svg) | U+1EA49 | ZETHU CHARACTER 010 |
+| `01-011` | ![U+1EA4A](../charts/khelathi-zethu-glyphs/glyphs/U+1EA4A.svg) | U+1EA4A | ZETHU CHARACTER 011 |
+| `01-012` | ![U+1EA4B](../charts/khelathi-zethu-glyphs/glyphs/U+1EA4B.svg) | U+1EA4B | ZETHU CHARACTER 012 |
+| `01-013` | ![U+1EA4C](../charts/khelathi-zethu-glyphs/glyphs/U+1EA4C.svg) | U+1EA4C | ZETHU CHARACTER 013 |
+| `01-014` | ![U+1EA4D](../charts/khelathi-zethu-glyphs/glyphs/U+1EA4D.svg) | U+1EA4D | ZETHU CHARACTER 014 |
+| `01-015` | ![U+1EA4E](../charts/khelathi-zethu-glyphs/glyphs/U+1EA4E.svg) | U+1EA4E | ZETHU CHARACTER 015 |
+| `01-016` | ![U+1EA4F](../charts/khelathi-zethu-glyphs/glyphs/U+1EA4F.svg) | U+1EA4F | ZETHU CHARACTER 016 |
+| `01-017` | ![U+1EA50](../charts/khelathi-zethu-glyphs/glyphs/U+1EA50.svg) | U+1EA50 | ZETHU CHARACTER 017 |
+| `01-018` | ![U+1EA51](../charts/khelathi-zethu-glyphs/glyphs/U+1EA51.svg) | U+1EA51 | ZETHU CHARACTER 018 |
+| `01-020` | ![U+1EA53](../charts/khelathi-zethu-glyphs/glyphs/U+1EA53.svg) | U+1EA53 | ZETHU CHARACTER 020 |
+| `01-021` | ![U+1EA54](../charts/khelathi-zethu-glyphs/glyphs/U+1EA54.svg) | U+1EA54 | ZETHU CHARACTER 021 |
+| `01-023` | ![U+1EA56](../charts/khelathi-zethu-glyphs/glyphs/U+1EA56.svg) | U+1EA56 | ZETHU CHARACTER 023 |
+| `01-024` | ![U+1EA57](../charts/khelathi-zethu-glyphs/glyphs/U+1EA57.svg) | U+1EA57 | ZETHU CHARACTER 024 |
+| `01-025` | ![U+1EA58](../charts/khelathi-zethu-glyphs/glyphs/U+1EA58.svg) | U+1EA58 | ZETHU CHARACTER 025 |
+| `01-026` | ![U+1EA59](../charts/khelathi-zethu-glyphs/glyphs/U+1EA59.svg) | U+1EA59 | ZETHU CHARACTER 026 |
+| `01-028` | ![U+1EA5B](../charts/khelathi-zethu-glyphs/glyphs/U+1EA5B.svg) | U+1EA5B | ZETHU CHARACTER 028 |
+| `01-029` | ![U+1EA5C](../charts/khelathi-zethu-glyphs/glyphs/U+1EA5C.svg) | U+1EA5C | ZETHU CHARACTER 029 |
+| `01-030` | ![U+1EA5D](../charts/khelathi-zethu-glyphs/glyphs/U+1EA5D.svg) | U+1EA5D | ZETHU CHARACTER 030 |
+| `01-032` | ![U+1EA5F](../charts/khelathi-zethu-glyphs/glyphs/U+1EA5F.svg) | U+1EA5F | ZETHU CHARACTER 032 |
+| `01-033` | ![U+1EA60](../charts/khelathi-zethu-glyphs/glyphs/U+1EA60.svg) | U+1EA60 | ZETHU CHARACTER 033 |
+| `01-034` | ![U+1EA61](../charts/khelathi-zethu-glyphs/glyphs/U+1EA61.svg) | U+1EA61 | ZETHU CHARACTER 034 |
+| `01-035` | ![U+1EA62](../charts/khelathi-zethu-glyphs/glyphs/U+1EA62.svg) | U+1EA62 | ZETHU CHARACTER 035 |
+| `01-038` | ![U+1EA65](../charts/khelathi-zethu-glyphs/glyphs/U+1EA65.svg) | U+1EA65 | ZETHU CHARACTER 038 |
+| `01-039` | ![U+1EA66](../charts/khelathi-zethu-glyphs/glyphs/U+1EA66.svg) | U+1EA66 | ZETHU CHARACTER 039 |
+| `01-040` | ![U+1EA67](../charts/khelathi-zethu-glyphs/glyphs/U+1EA67.svg) | U+1EA67 | ZETHU CHARACTER 040 |
+| `01-041` | ![U+1EA68](../charts/khelathi-zethu-glyphs/glyphs/U+1EA68.svg) | U+1EA68 | ZETHU CHARACTER 041 |
+| `01-042` | ![U+1EA69](../charts/khelathi-zethu-glyphs/glyphs/U+1EA69.svg) | U+1EA69 | ZETHU CHARACTER 042 |
+| `01-043` | ![U+1EA6A](../charts/khelathi-zethu-glyphs/glyphs/U+1EA6A.svg) | U+1EA6A | ZETHU CHARACTER 043 |
+| `01-044` | ![U+1EA6B](../charts/khelathi-zethu-glyphs/glyphs/U+1EA6B.svg) | U+1EA6B | ZETHU CHARACTER 044 |
+| `01-045` | ![U+1EA6C](../charts/khelathi-zethu-glyphs/glyphs/U+1EA6C.svg) | U+1EA6C | ZETHU CHARACTER 045 |
+| `01-046` | ![U+1EA6D](../charts/khelathi-zethu-glyphs/glyphs/U+1EA6D.svg) | U+1EA6D | ZETHU CHARACTER 046 |
+| `01-047` | ![U+1EA6E](../charts/khelathi-zethu-glyphs/glyphs/U+1EA6E.svg) | U+1EA6E | ZETHU CHARACTER 047 |
+| `01-049` | ![U+1EA70](../charts/khelathi-zethu-glyphs/glyphs/U+1EA70.svg) | U+1EA70 | ZETHU CHARACTER 049 |
+| `01-050` | ![U+1EA71](../charts/khelathi-zethu-glyphs/glyphs/U+1EA71.svg) | U+1EA71 | ZETHU CHARACTER 050 |
+| `01-051` | ![U+1EA72](../charts/khelathi-zethu-glyphs/glyphs/U+1EA72.svg) | U+1EA72 | ZETHU CHARACTER 051 |
+| `01-052` | ![U+1EA73](../charts/khelathi-zethu-glyphs/glyphs/U+1EA73.svg) | U+1EA73 | ZETHU CHARACTER 052 |
+| `01-053` | ![U+1EA74](../charts/khelathi-zethu-glyphs/glyphs/U+1EA74.svg) | U+1EA74 | ZETHU CHARACTER 053 |
+| `01-054` | ![U+1EA75](../charts/khelathi-zethu-glyphs/glyphs/U+1EA75.svg) | U+1EA75 | ZETHU CHARACTER 054 |
+| `01-056` | ![U+1EA77](../charts/khelathi-zethu-glyphs/glyphs/U+1EA77.svg) | U+1EA77 | ZETHU CHARACTER 056 |
+| `01-057` | ![U+1EA78](../charts/khelathi-zethu-glyphs/glyphs/U+1EA78.svg) | U+1EA78 | ZETHU CHARACTER 057 |
+| `01-058` | ![U+1EA79](../charts/khelathi-zethu-glyphs/glyphs/U+1EA79.svg) | U+1EA79 | ZETHU CHARACTER 058 |
+| `01-059` | ![U+1EA7A](../charts/khelathi-zethu-glyphs/glyphs/U+1EA7A.svg) | U+1EA7A | ZETHU CHARACTER 059 |
+| `01-060` | ![U+1EA7B](../charts/khelathi-zethu-glyphs/glyphs/U+1EA7B.svg) | U+1EA7B | ZETHU CHARACTER 060 |
+| `01-061` | ![U+1EA7C](../charts/khelathi-zethu-glyphs/glyphs/U+1EA7C.svg) | U+1EA7C | ZETHU CHARACTER 061 |
+| `01-062` | ![U+1EA7D](../charts/khelathi-zethu-glyphs/glyphs/U+1EA7D.svg) | U+1EA7D | ZETHU CHARACTER 062 |
+| `02-002` | ![U+1EA7F](../charts/khelathi-zethu-glyphs/glyphs/U+1EA7F.svg) | U+1EA7F | ZETHU CHARACTER 064 |
+| `02-003` | ![U+1EA80](../charts/khelathi-zethu-glyphs/glyphs/U+1EA80.svg) | U+1EA80 | ZETHU CHARACTER 065 |
+| `02-006` | ![U+1EA83](../charts/khelathi-zethu-glyphs/glyphs/U+1EA83.svg) | U+1EA83 | ZETHU CHARACTER 068 |
+| `02-007` | ![U+1EA84](../charts/khelathi-zethu-glyphs/glyphs/U+1EA84.svg) | U+1EA84 | ZETHU CHARACTER 069 |
+| `02-008` | ![U+1EA85](../charts/khelathi-zethu-glyphs/glyphs/U+1EA85.svg) | U+1EA85 | ZETHU CHARACTER 070 |
+| `02-009` | ![U+1EA86](../charts/khelathi-zethu-glyphs/glyphs/U+1EA86.svg) | U+1EA86 | ZETHU CHARACTER 071 |
+| `02-010` | ![U+1EA87](../charts/khelathi-zethu-glyphs/glyphs/U+1EA87.svg) | U+1EA87 | ZETHU CHARACTER 072 |
+| `02-011` | ![U+1EA88](../charts/khelathi-zethu-glyphs/glyphs/U+1EA88.svg) | U+1EA88 | ZETHU CHARACTER 073 |
+| `02-015` | ![U+1EA8C](../charts/khelathi-zethu-glyphs/glyphs/U+1EA8C.svg) | U+1EA8C | ZETHU CHARACTER 077 |
+| `02-017` | ![U+1EA8E](../charts/khelathi-zethu-glyphs/glyphs/U+1EA8E.svg) | U+1EA8E | ZETHU CHARACTER 079 |
+| `02-019` | ![U+1EA90](../charts/khelathi-zethu-glyphs/glyphs/U+1EA90.svg) | U+1EA90 | ZETHU CHARACTER 081 |
+| `03-001` | ![U+1EA91](../charts/khelathi-zethu-glyphs/glyphs/U+1EA91.svg) | U+1EA91 | ZETHU CHARACTER 082 |
+| `03-003` | ![U+1EA93](../charts/khelathi-zethu-glyphs/glyphs/U+1EA93.svg) | U+1EA93 | ZETHU CHARACTER 084 |
+| `03-004` | ![U+1EA94](../charts/khelathi-zethu-glyphs/glyphs/U+1EA94.svg) | U+1EA94 | ZETHU CHARACTER 085 |
+| `03-005` | ![U+1EA95](../charts/khelathi-zethu-glyphs/glyphs/U+1EA95.svg) | U+1EA95 | ZETHU CHARACTER 086 |
+| `03-006` | ![U+1EA96](../charts/khelathi-zethu-glyphs/glyphs/U+1EA96.svg) | U+1EA96 | ZETHU CHARACTER 087 |
+| `03-007` | ![U+1EA97](../charts/khelathi-zethu-glyphs/glyphs/U+1EA97.svg) | U+1EA97 | ZETHU CHARACTER 088 |
+| `03-008` | ![U+1EA98](../charts/khelathi-zethu-glyphs/glyphs/U+1EA98.svg) | U+1EA98 | ZETHU CHARACTER 089 |
+| `03-009` | ![U+1EA99](../charts/khelathi-zethu-glyphs/glyphs/U+1EA99.svg) | U+1EA99 | ZETHU CHARACTER 090 |
+| `03-010` | ![U+1EA9A](../charts/khelathi-zethu-glyphs/glyphs/U+1EA9A.svg) | U+1EA9A | ZETHU CHARACTER 091 |
+| `03-011` | ![U+1EA9B](../charts/khelathi-zethu-glyphs/glyphs/U+1EA9B.svg) | U+1EA9B | ZETHU CHARACTER 092 |
+| `03-012` | ![U+1EA9C](../charts/khelathi-zethu-glyphs/glyphs/U+1EA9C.svg) | U+1EA9C | ZETHU CHARACTER 093 |
+| `03-013` | ![U+1EA9D](../charts/khelathi-zethu-glyphs/glyphs/U+1EA9D.svg) | U+1EA9D | ZETHU CHARACTER 094 |
+| `03-014` | ![U+1EA9E](../charts/khelathi-zethu-glyphs/glyphs/U+1EA9E.svg) | U+1EA9E | ZETHU CHARACTER 095 |
+| `03-015` | ![U+1EA9F](../charts/khelathi-zethu-glyphs/glyphs/U+1EA9F.svg) | U+1EA9F | ZETHU CHARACTER 096 |
+| `03-016` | ![U+1EAA0](../charts/khelathi-zethu-glyphs/glyphs/U+1EAA0.svg) | U+1EAA0 | ZETHU CHARACTER 097 |
+| `03-017` | ![U+1EAA1](../charts/khelathi-zethu-glyphs/glyphs/U+1EAA1.svg) | U+1EAA1 | ZETHU CHARACTER 098 |
+| `03-018` | ![U+1EAA2](../charts/khelathi-zethu-glyphs/glyphs/U+1EAA2.svg) | U+1EAA2 | ZETHU CHARACTER 099 |
+| `03-019` | ![U+1EAA3](../charts/khelathi-zethu-glyphs/glyphs/U+1EAA3.svg) | U+1EAA3 | ZETHU CHARACTER 100 |
+| `03-020` | ![U+1EAA4](../charts/khelathi-zethu-glyphs/glyphs/U+1EAA4.svg) | U+1EAA4 | ZETHU CHARACTER 101 |
+| `03-021` | ![U+1EAA5](../charts/khelathi-zethu-glyphs/glyphs/U+1EAA5.svg) | U+1EAA5 | ZETHU CHARACTER 102 |
+| `03-022` | ![U+1EAA6](../charts/khelathi-zethu-glyphs/glyphs/U+1EAA6.svg) | U+1EAA6 | ZETHU CHARACTER 103 |
+| `03-023` | ![U+1EAA7](../charts/khelathi-zethu-glyphs/glyphs/U+1EAA7.svg) | U+1EAA7 | ZETHU CHARACTER 104 |
+| `03-024` | ![U+1EAA8](../charts/khelathi-zethu-glyphs/glyphs/U+1EAA8.svg) | U+1EAA8 | ZETHU CHARACTER 105 |
+| `03-025` | ![U+1EAA9](../charts/khelathi-zethu-glyphs/glyphs/U+1EAA9.svg) | U+1EAA9 | ZETHU CHARACTER 106 |
+| `04-003` | ![U+1EAAC](../charts/khelathi-zethu-glyphs/glyphs/U+1EAAC.svg) | U+1EAAC | ZETHU CHARACTER 109 |
+| `04-006` | ![U+1EAAF](../charts/khelathi-zethu-glyphs/glyphs/U+1EAAF.svg) | U+1EAAF | ZETHU CHARACTER 112 |
+| `04-009` | ![U+1EAB2](../charts/khelathi-zethu-glyphs/glyphs/U+1EAB2.svg) | U+1EAB2 | ZETHU CHARACTER 115 |
+| `04-011` | ![U+1EAB4](../charts/khelathi-zethu-glyphs/glyphs/U+1EAB4.svg) | U+1EAB4 | ZETHU CHARACTER 117 |
+| `04-015` | ![U+1EAB8](../charts/khelathi-zethu-glyphs/glyphs/U+1EAB8.svg) | U+1EAB8 | ZETHU CHARACTER 121 |
+| `04-017` | ![U+1EABA](../charts/khelathi-zethu-glyphs/glyphs/U+1EABA.svg) | U+1EABA | ZETHU CHARACTER 123 |
+| `04-018` | ![U+1EABB](../charts/khelathi-zethu-glyphs/glyphs/U+1EABB.svg) | U+1EABB | ZETHU CHARACTER 124 |
+| `04-020` | ![U+1EABD](../charts/khelathi-zethu-glyphs/glyphs/U+1EABD.svg) | U+1EABD | ZETHU CHARACTER 126 |
+| `04-021` | ![U+1EABE](../charts/khelathi-zethu-glyphs/glyphs/U+1EABE.svg) | U+1EABE | ZETHU CHARACTER 127 |
+| `05-001` | ![U+1EAC0](../charts/khelathi-zethu-glyphs/glyphs/U+1EAC0.svg) | U+1EAC0 | ZETHU CHARACTER 129 |
+| `05-004` | ![U+1EAC3](../charts/khelathi-zethu-glyphs/glyphs/U+1EAC3.svg) | U+1EAC3 | ZETHU CHARACTER 132 |
+| `05-005` | ![U+1EAC4](../charts/khelathi-zethu-glyphs/glyphs/U+1EAC4.svg) | U+1EAC4 | ZETHU CHARACTER 133 |
+| `05-006` | ![U+1EAC5](../charts/khelathi-zethu-glyphs/glyphs/U+1EAC5.svg) | U+1EAC5 | ZETHU CHARACTER 134 |
+| `05-014` | ![U+1EACD](../charts/khelathi-zethu-glyphs/glyphs/U+1EACD.svg) | U+1EACD | ZETHU CHARACTER 142 |
+| `05-015` | ![U+1EACE](../charts/khelathi-zethu-glyphs/glyphs/U+1EACE.svg) | U+1EACE | ZETHU CHARACTER 143 |
+| `05-017` | ![U+1EAD0](../charts/khelathi-zethu-glyphs/glyphs/U+1EAD0.svg) | U+1EAD0 | ZETHU CHARACTER 145 |
+| `05-018` | ![U+1EAD1](../charts/khelathi-zethu-glyphs/glyphs/U+1EAD1.svg) | U+1EAD1 | ZETHU CHARACTER 146 |
+| `05-024` | ![U+1EAD7](../charts/khelathi-zethu-glyphs/glyphs/U+1EAD7.svg) | U+1EAD7 | ZETHU CHARACTER 152 |
+| `05-029` | ![U+1EADC](../charts/khelathi-zethu-glyphs/glyphs/U+1EADC.svg) | U+1EADC | ZETHU CHARACTER 157 |
+| `05-035` | ![U+1EAE2](../charts/khelathi-zethu-glyphs/glyphs/U+1EAE2.svg) | U+1EAE2 | ZETHU CHARACTER 163 |
+| `06-003` | ![U+1EAE9](../charts/khelathi-zethu-glyphs/glyphs/U+1EAE9.svg) | U+1EAE9 | ZETHU CHARACTER 170 |
+| `06-005` | ![U+1EAEB](../charts/khelathi-zethu-glyphs/glyphs/U+1EAEB.svg) | U+1EAEB | ZETHU CHARACTER 172 |
+| `06-010` | ![U+1EAF0](../charts/khelathi-zethu-glyphs/glyphs/U+1EAF0.svg) | U+1EAF0 | ZETHU CHARACTER 177 |
+| `06-014` | ![U+1EAF4](../charts/khelathi-zethu-glyphs/glyphs/U+1EAF4.svg) | U+1EAF4 | ZETHU CHARACTER 181 |
+| `06-020` | ![U+1EAFA](../charts/khelathi-zethu-glyphs/glyphs/U+1EAFA.svg) | U+1EAFA | ZETHU CHARACTER 187 |
+| `06-022` | ![U+1EAFC](../charts/khelathi-zethu-glyphs/glyphs/U+1EAFC.svg) | U+1EAFC | ZETHU CHARACTER 189 |
+| `06-027` | ![U+1EB01](../charts/khelathi-zethu-glyphs/glyphs/U+1EB01.svg) | U+1EB01 | ZETHU CHARACTER 194 |
+| `06-029` | ![U+1EB03](../charts/khelathi-zethu-glyphs/glyphs/U+1EB03.svg) | U+1EB03 | ZETHU CHARACTER 196 |
+| `06-031` | ![U+1EB05](../charts/khelathi-zethu-glyphs/glyphs/U+1EB05.svg) | U+1EB05 | ZETHU CHARACTER 198 |
+| `07-001` | ![U+1EB09](../charts/khelathi-zethu-glyphs/glyphs/U+1EB09.svg) | U+1EB09 | ZETHU CHARACTER 202 |
+| `07-002` | ![U+1EB0A](../charts/khelathi-zethu-glyphs/glyphs/U+1EB0A.svg) | U+1EB0A | ZETHU CHARACTER 203 |
+| `07-009` | ![U+1EB11](../charts/khelathi-zethu-glyphs/glyphs/U+1EB11.svg) | U+1EB11 | ZETHU CHARACTER 210 |
+| `08-001` | ![U+1EB1D](../charts/khelathi-zethu-glyphs/glyphs/U+1EB1D.svg) | U+1EB1D | ZETHU CHARACTER 222 |
+| `08-005` | ![U+1EB21](../charts/khelathi-zethu-glyphs/glyphs/U+1EB21.svg) | U+1EB21 | ZETHU CHARACTER 226 |
+| `08-006` | ![U+1EB22](../charts/khelathi-zethu-glyphs/glyphs/U+1EB22.svg) | U+1EB22 | ZETHU CHARACTER 227 |
+| `08-007` | ![U+1EB23](../charts/khelathi-zethu-glyphs/glyphs/U+1EB23.svg) | U+1EB23 | ZETHU CHARACTER 228 |
+| `08-008` | ![U+1EB24](../charts/khelathi-zethu-glyphs/glyphs/U+1EB24.svg) | U+1EB24 | ZETHU CHARACTER 229 |
+| `08-014` | ![U+1EB2A](../charts/khelathi-zethu-glyphs/glyphs/U+1EB2A.svg) | U+1EB2A | ZETHU CHARACTER 235 |
+| `08-016` | ![U+1EB2C](../charts/khelathi-zethu-glyphs/glyphs/U+1EB2C.svg) | U+1EB2C | ZETHU CHARACTER 237 |
+| `09-001` | ![U+1EB31](../charts/khelathi-zethu-glyphs/glyphs/U+1EB31.svg) | U+1EB31 | ZETHU CHARACTER 242 |
+| `09-002` | ![U+1EB32](../charts/khelathi-zethu-glyphs/glyphs/U+1EB32.svg) | U+1EB32 | ZETHU CHARACTER 243 |
+| `09-003` | ![U+1EB33](../charts/khelathi-zethu-glyphs/glyphs/U+1EB33.svg) | U+1EB33 | ZETHU CHARACTER 244 |
+| `09-005` | ![U+1EB35](../charts/khelathi-zethu-glyphs/glyphs/U+1EB35.svg) | U+1EB35 | ZETHU CHARACTER 246 |
+| `09-006` | ![U+1EB36](../charts/khelathi-zethu-glyphs/glyphs/U+1EB36.svg) | U+1EB36 | ZETHU CHARACTER 247 |
+| `09-007` | ![U+1EB37](../charts/khelathi-zethu-glyphs/glyphs/U+1EB37.svg) | U+1EB37 | ZETHU CHARACTER 248 |
+| `09-008` | ![U+1EB38](../charts/khelathi-zethu-glyphs/glyphs/U+1EB38.svg) | U+1EB38 | ZETHU CHARACTER 249 |
+| `09-009` | ![U+1EB39](../charts/khelathi-zethu-glyphs/glyphs/U+1EB39.svg) | U+1EB39 | ZETHU CHARACTER 250 |
+| `09-010` | ![U+1EB3A](../charts/khelathi-zethu-glyphs/glyphs/U+1EB3A.svg) | U+1EB3A | ZETHU CHARACTER 251 |
+| `09-011` | ![U+1EB3B](../charts/khelathi-zethu-glyphs/glyphs/U+1EB3B.svg) | U+1EB3B | ZETHU CHARACTER 252 |
+| `09-014` | ![U+1EB3E](../charts/khelathi-zethu-glyphs/glyphs/U+1EB3E.svg) | U+1EB3E | ZETHU CHARACTER 255 |
+| `09-015` | ![U+1EB3F](../charts/khelathi-zethu-glyphs/glyphs/U+1EB3F.svg) | U+1EB3F | ZETHU CHARACTER 256 |
+| `09-016` | ![U+1EB40](../charts/khelathi-zethu-glyphs/glyphs/U+1EB40.svg) | U+1EB40 | ZETHU CHARACTER 257 |
+| `09-017` | ![U+1EB41](../charts/khelathi-zethu-glyphs/glyphs/U+1EB41.svg) | U+1EB41 | ZETHU CHARACTER 258 |
+| `09-018` | ![U+1EB42](../charts/khelathi-zethu-glyphs/glyphs/U+1EB42.svg) | U+1EB42 | ZETHU CHARACTER 259 |
+| `09-019` | ![U+1EB43](../charts/khelathi-zethu-glyphs/glyphs/U+1EB43.svg) | U+1EB43 | ZETHU CHARACTER 260 |
+| `09-020` | ![U+1EB44](../charts/khelathi-zethu-glyphs/glyphs/U+1EB44.svg) | U+1EB44 | ZETHU CHARACTER 261 |
+| `09-021` | ![U+1EB45](../charts/khelathi-zethu-glyphs/glyphs/U+1EB45.svg) | U+1EB45 | ZETHU CHARACTER 262 |
+| `09-022` | ![U+1EB46](../charts/khelathi-zethu-glyphs/glyphs/U+1EB46.svg) | U+1EB46 | ZETHU CHARACTER 263 |
+| `10-001` | ![U+1EB48](../charts/khelathi-zethu-glyphs/glyphs/U+1EB48.svg) | U+1EB48 | ZETHU CHARACTER 265 |
+| `10-002` | ![U+1EB49](../charts/khelathi-zethu-glyphs/glyphs/U+1EB49.svg) | U+1EB49 | ZETHU CHARACTER 266 |
+| `10-007` | ![U+1EB4E](../charts/khelathi-zethu-glyphs/glyphs/U+1EB4E.svg) | U+1EB4E | ZETHU CHARACTER 271 |
+| `10-008` | ![U+1EB4F](../charts/khelathi-zethu-glyphs/glyphs/U+1EB4F.svg) | U+1EB4F | ZETHU CHARACTER 272 |
+| `10-009` | ![U+1EB50](../charts/khelathi-zethu-glyphs/glyphs/U+1EB50.svg) | U+1EB50 | ZETHU CHARACTER 273 |
+| `10-010` | ![U+1EB51](../charts/khelathi-zethu-glyphs/glyphs/U+1EB51.svg) | U+1EB51 | ZETHU CHARACTER 274 |
+| `10-011` | ![U+1EB52](../charts/khelathi-zethu-glyphs/glyphs/U+1EB52.svg) | U+1EB52 | ZETHU CHARACTER 275 |
+| `10-012` | ![U+1EB53](../charts/khelathi-zethu-glyphs/glyphs/U+1EB53.svg) | U+1EB53 | ZETHU CHARACTER 276 |
+| `10-013` | ![U+1EB54](../charts/khelathi-zethu-glyphs/glyphs/U+1EB54.svg) | U+1EB54 | ZETHU CHARACTER 277 |
+| `10-014` | ![U+1EB55](../charts/khelathi-zethu-glyphs/glyphs/U+1EB55.svg) | U+1EB55 | ZETHU CHARACTER 278 |
+| `10-015` | ![U+1EB56](../charts/khelathi-zethu-glyphs/glyphs/U+1EB56.svg) | U+1EB56 | ZETHU CHARACTER 279 |
+| `10-016` | ![U+1EB57](../charts/khelathi-zethu-glyphs/glyphs/U+1EB57.svg) | U+1EB57 | ZETHU CHARACTER 280 |
+| `10-017` | ![U+1EB58](../charts/khelathi-zethu-glyphs/glyphs/U+1EB58.svg) | U+1EB58 | ZETHU CHARACTER 281 |
+| `10-018` | ![U+1EB59](../charts/khelathi-zethu-glyphs/glyphs/U+1EB59.svg) | U+1EB59 | ZETHU CHARACTER 282 |
+| `10-019` | ![U+1EB5A](../charts/khelathi-zethu-glyphs/glyphs/U+1EB5A.svg) | U+1EB5A | ZETHU CHARACTER 283 |
+| `10-020` | ![U+1EB5B](../charts/khelathi-zethu-glyphs/glyphs/U+1EB5B.svg) | U+1EB5B | ZETHU CHARACTER 284 |
+| `10-022` | ![U+1EB5D](../charts/khelathi-zethu-glyphs/glyphs/U+1EB5D.svg) | U+1EB5D | ZETHU CHARACTER 286 |
+| `10-023` | ![U+1EB5E](../charts/khelathi-zethu-glyphs/glyphs/U+1EB5E.svg) | U+1EB5E | ZETHU CHARACTER 287 |
+| `10-024` | ![U+1EB5F](../charts/khelathi-zethu-glyphs/glyphs/U+1EB5F.svg) | U+1EB5F | ZETHU CHARACTER 288 |
+| `10-025` | ![U+1EB60](../charts/khelathi-zethu-glyphs/glyphs/U+1EB60.svg) | U+1EB60 | ZETHU CHARACTER 289 |
+| `10-026` | ![U+1EB61](../charts/khelathi-zethu-glyphs/glyphs/U+1EB61.svg) | U+1EB61 | ZETHU CHARACTER 290 |
+| `10-027` | ![U+1EB62](../charts/khelathi-zethu-glyphs/glyphs/U+1EB62.svg) | U+1EB62 | ZETHU CHARACTER 291 |
+| `10-028` | ![U+1EB63](../charts/khelathi-zethu-glyphs/glyphs/U+1EB63.svg) | U+1EB63 | ZETHU CHARACTER 292 |
+| `11-001` | ![U+1EB64](../charts/khelathi-zethu-glyphs/glyphs/U+1EB64.svg) | U+1EB64 | ZETHU CHARACTER 293 |
+| `11-002` | ![U+1EB65](../charts/khelathi-zethu-glyphs/glyphs/U+1EB65.svg) | U+1EB65 | ZETHU CHARACTER 294 |
+| `11-003` | ![U+1EB66](../charts/khelathi-zethu-glyphs/glyphs/U+1EB66.svg) | U+1EB66 | ZETHU CHARACTER 295 |
+| `11-004` | ![U+1EB67](../charts/khelathi-zethu-glyphs/glyphs/U+1EB67.svg) | U+1EB67 | ZETHU CHARACTER 296 |
+| `11-005` | ![U+1EB68](../charts/khelathi-zethu-glyphs/glyphs/U+1EB68.svg) | U+1EB68 | ZETHU CHARACTER 297 |
+| `11-006` | ![U+1EB69](../charts/khelathi-zethu-glyphs/glyphs/U+1EB69.svg) | U+1EB69 | ZETHU CHARACTER 298 |
+| `11-007` | ![U+1EB6A](../charts/khelathi-zethu-glyphs/glyphs/U+1EB6A.svg) | U+1EB6A | ZETHU CHARACTER 299 |
+| `11-008` | ![U+1EB6B](../charts/khelathi-zethu-glyphs/glyphs/U+1EB6B.svg) | U+1EB6B | ZETHU CHARACTER 300 |
+| `11-009` | ![U+1EB6C](../charts/khelathi-zethu-glyphs/glyphs/U+1EB6C.svg) | U+1EB6C | ZETHU CHARACTER 301 |
+| `11-010` | ![U+1EB6D](../charts/khelathi-zethu-glyphs/glyphs/U+1EB6D.svg) | U+1EB6D | ZETHU CHARACTER 302 |
+| `11-011` | ![U+1EB6E](../charts/khelathi-zethu-glyphs/glyphs/U+1EB6E.svg) | U+1EB6E | ZETHU CHARACTER 303 |
+| `11-012` | ![U+1EB6F](../charts/khelathi-zethu-glyphs/glyphs/U+1EB6F.svg) | U+1EB6F | ZETHU CHARACTER 304 |
+| `11-013` | ![U+1EB70](../charts/khelathi-zethu-glyphs/glyphs/U+1EB70.svg) | U+1EB70 | ZETHU CHARACTER 305 |
+| `11-014` | ![U+1EB71](../charts/khelathi-zethu-glyphs/glyphs/U+1EB71.svg) | U+1EB71 | ZETHU CHARACTER 306 |
+| `11-015` | ![U+1EB72](../charts/khelathi-zethu-glyphs/glyphs/U+1EB72.svg) | U+1EB72 | ZETHU CHARACTER 307 |
+| `11-016` | ![U+1EB73](../charts/khelathi-zethu-glyphs/glyphs/U+1EB73.svg) | U+1EB73 | ZETHU CHARACTER 308 |
+| `11-017` | ![U+1EB74](../charts/khelathi-zethu-glyphs/glyphs/U+1EB74.svg) | U+1EB74 | ZETHU CHARACTER 309 |
+| `11-018` | ![U+1EB75](../charts/khelathi-zethu-glyphs/glyphs/U+1EB75.svg) | U+1EB75 | ZETHU CHARACTER 310 |
+| `11-019` | ![U+1EB76](../charts/khelathi-zethu-glyphs/glyphs/U+1EB76.svg) | U+1EB76 | ZETHU CHARACTER 311 |
+| `11-020` | ![U+1EB77](../charts/khelathi-zethu-glyphs/glyphs/U+1EB77.svg) | U+1EB77 | ZETHU CHARACTER 312 |
+| `11-021` | ![U+1EB78](../charts/khelathi-zethu-glyphs/glyphs/U+1EB78.svg) | U+1EB78 | ZETHU CHARACTER 313 |
+| `11-022` | ![U+1EB79](../charts/khelathi-zethu-glyphs/glyphs/U+1EB79.svg) | U+1EB79 | ZETHU CHARACTER 314 |
+| `11-024` | ![U+1EB7B](../charts/khelathi-zethu-glyphs/glyphs/U+1EB7B.svg) | U+1EB7B | ZETHU CHARACTER 316 |
+| `11-025` | ![U+1EB7C](../charts/khelathi-zethu-glyphs/glyphs/U+1EB7C.svg) | U+1EB7C | ZETHU CHARACTER 317 |
+| `12-001` | ![U+1EB7D](../charts/khelathi-zethu-glyphs/glyphs/U+1EB7D.svg) | U+1EB7D | ZETHU CHARACTER 318 |
+| `12-002` | ![U+1EB7E](../charts/khelathi-zethu-glyphs/glyphs/U+1EB7E.svg) | U+1EB7E | ZETHU CHARACTER 319 |
+| `12-003` | ![U+1EB7F](../charts/khelathi-zethu-glyphs/glyphs/U+1EB7F.svg) | U+1EB7F | ZETHU CHARACTER 320 |
+| `12-004` | ![U+1EB80](../charts/khelathi-zethu-glyphs/glyphs/U+1EB80.svg) | U+1EB80 | ZETHU CHARACTER 321 |
+| `12-005` | ![U+1EB81](../charts/khelathi-zethu-glyphs/glyphs/U+1EB81.svg) | U+1EB81 | ZETHU CHARACTER 322 |
+| `12-006` | ![U+1EB82](../charts/khelathi-zethu-glyphs/glyphs/U+1EB82.svg) | U+1EB82 | ZETHU CHARACTER 323 |
+| `12-007` | ![U+1EB83](../charts/khelathi-zethu-glyphs/glyphs/U+1EB83.svg) | U+1EB83 | ZETHU CHARACTER 324 |
+| `12-009` | ![U+1EB85](../charts/khelathi-zethu-glyphs/glyphs/U+1EB85.svg) | U+1EB85 | ZETHU CHARACTER 326 |
+| `12-011` | ![U+1EB87](../charts/khelathi-zethu-glyphs/glyphs/U+1EB87.svg) | U+1EB87 | ZETHU CHARACTER 328 |
+| `12-012` | ![U+1EB88](../charts/khelathi-zethu-glyphs/glyphs/U+1EB88.svg) | U+1EB88 | ZETHU CHARACTER 329 |
+| `12-014` | ![U+1EB8A](../charts/khelathi-zethu-glyphs/glyphs/U+1EB8A.svg) | U+1EB8A | ZETHU CHARACTER 331 |
+| `13-001` | ![U+1EB8B](../charts/khelathi-zethu-glyphs/glyphs/U+1EB8B.svg) | U+1EB8B | ZETHU CHARACTER 332 |
+| `13-002` | ![U+1EB8C](../charts/khelathi-zethu-glyphs/glyphs/U+1EB8C.svg) | U+1EB8C | ZETHU CHARACTER 333 |
+| `13-003` | ![U+1EB8D](../charts/khelathi-zethu-glyphs/glyphs/U+1EB8D.svg) | U+1EB8D | ZETHU CHARACTER 334 |
+| `13-004` | ![U+1EB8E](../charts/khelathi-zethu-glyphs/glyphs/U+1EB8E.svg) | U+1EB8E | ZETHU CHARACTER 335 |
+| `13-005` | ![U+1EB8F](../charts/khelathi-zethu-glyphs/glyphs/U+1EB8F.svg) | U+1EB8F | ZETHU CHARACTER 336 |
+| `13-006` | ![U+1EB90](../charts/khelathi-zethu-glyphs/glyphs/U+1EB90.svg) | U+1EB90 | ZETHU CHARACTER 337 |
+| `13-007` | ![U+1EB91](../charts/khelathi-zethu-glyphs/glyphs/U+1EB91.svg) | U+1EB91 | ZETHU CHARACTER 338 |
+| `13-008` | ![U+1EB92](../charts/khelathi-zethu-glyphs/glyphs/U+1EB92.svg) | U+1EB92 | ZETHU CHARACTER 339 |
+| `13-009` | ![U+1EB93](../charts/khelathi-zethu-glyphs/glyphs/U+1EB93.svg) | U+1EB93 | ZETHU CHARACTER 340 |
+| `13-010` | ![U+1EB94](../charts/khelathi-zethu-glyphs/glyphs/U+1EB94.svg) | U+1EB94 | ZETHU CHARACTER 341 |
+| `13-011` | ![U+1EB95](../charts/khelathi-zethu-glyphs/glyphs/U+1EB95.svg) | U+1EB95 | ZETHU CHARACTER 342 |
+| `13-012` | ![U+1EB96](../charts/khelathi-zethu-glyphs/glyphs/U+1EB96.svg) | U+1EB96 | ZETHU CHARACTER 343 |
+| `13-013` | ![U+1EB97](../charts/khelathi-zethu-glyphs/glyphs/U+1EB97.svg) | U+1EB97 | ZETHU CHARACTER 344 |
+| `13-014` | ![U+1EB98](../charts/khelathi-zethu-glyphs/glyphs/U+1EB98.svg) | U+1EB98 | ZETHU CHARACTER 345 |
+| `13-015` | ![U+1EB99](../charts/khelathi-zethu-glyphs/glyphs/U+1EB99.svg) | U+1EB99 | ZETHU CHARACTER 346 |
+| `13-016` | ![U+1EB9A](../charts/khelathi-zethu-glyphs/glyphs/U+1EB9A.svg) | U+1EB9A | ZETHU CHARACTER 347 |
+| `13-017` | ![U+1EB9B](../charts/khelathi-zethu-glyphs/glyphs/U+1EB9B.svg) | U+1EB9B | ZETHU CHARACTER 348 |
+| `13-018` | ![U+1EB9C](../charts/khelathi-zethu-glyphs/glyphs/U+1EB9C.svg) | U+1EB9C | ZETHU CHARACTER 349 |
+| `13-021` | ![U+1EB9F](../charts/khelathi-zethu-glyphs/glyphs/U+1EB9F.svg) | U+1EB9F | ZETHU CHARACTER 352 |
+| `13-022` | ![U+1EBA0](../charts/khelathi-zethu-glyphs/glyphs/U+1EBA0.svg) | U+1EBA0 | ZETHU CHARACTER 353 |
+| `13-024` | ![U+1EBA2](../charts/khelathi-zethu-glyphs/glyphs/U+1EBA2.svg) | U+1EBA2 | ZETHU CHARACTER 355 |
+| `13-025` | ![U+1EBA3](../charts/khelathi-zethu-glyphs/glyphs/U+1EBA3.svg) | U+1EBA3 | ZETHU CHARACTER 356 |
+| `13-026` | ![U+1EBA4](../charts/khelathi-zethu-glyphs/glyphs/U+1EBA4.svg) | U+1EBA4 | ZETHU CHARACTER 357 |
+| `13-027` | ![U+1EBA5](../charts/khelathi-zethu-glyphs/glyphs/U+1EBA5.svg) | U+1EBA5 | ZETHU CHARACTER 358 |
+| `13-029` | ![U+1EBA7](../charts/khelathi-zethu-glyphs/glyphs/U+1EBA7.svg) | U+1EBA7 | ZETHU CHARACTER 360 |
+| `13-030` | ![U+1EBA8](../charts/khelathi-zethu-glyphs/glyphs/U+1EBA8.svg) | U+1EBA8 | ZETHU CHARACTER 361 |
+| `13-032` | ![U+1EBAA](../charts/khelathi-zethu-glyphs/glyphs/U+1EBAA.svg) | U+1EBAA | ZETHU CHARACTER 363 |
+| `13-033` | ![U+1EBAB](../charts/khelathi-zethu-glyphs/glyphs/U+1EBAB.svg) | U+1EBAB | ZETHU CHARACTER 364 |
+| `13-034` | ![U+1EBAC](../charts/khelathi-zethu-glyphs/glyphs/U+1EBAC.svg) | U+1EBAC | ZETHU CHARACTER 365 |
+| `13-035` | ![U+1EBAD](../charts/khelathi-zethu-glyphs/glyphs/U+1EBAD.svg) | U+1EBAD | ZETHU CHARACTER 366 |
+| `13-036` | ![U+1EBAE](../charts/khelathi-zethu-glyphs/glyphs/U+1EBAE.svg) | U+1EBAE | ZETHU CHARACTER 367 |
+| `13-037` | ![U+1EBAF](../charts/khelathi-zethu-glyphs/glyphs/U+1EBAF.svg) | U+1EBAF | ZETHU CHARACTER 368 |
+| `13-038` | ![U+1EBB0](../charts/khelathi-zethu-glyphs/glyphs/U+1EBB0.svg) | U+1EBB0 | ZETHU CHARACTER 369 |
+| `13-039` | ![U+1EBB1](../charts/khelathi-zethu-glyphs/glyphs/U+1EBB1.svg) | U+1EBB1 | ZETHU CHARACTER 370 |
+| `13-040` | ![U+1EBB2](../charts/khelathi-zethu-glyphs/glyphs/U+1EBB2.svg) | U+1EBB2 | ZETHU CHARACTER 371 |
+| `14-001` | ![U+1EBB4](../charts/khelathi-zethu-glyphs/glyphs/U+1EBB4.svg) | U+1EBB4 | ZETHU CHARACTER 373 |
+| `14-003` | ![U+1EBB6](../charts/khelathi-zethu-glyphs/glyphs/U+1EBB6.svg) | U+1EBB6 | ZETHU CHARACTER 375 |
+| `14-004` | ![U+1EBB7](../charts/khelathi-zethu-glyphs/glyphs/U+1EBB7.svg) | U+1EBB7 | ZETHU CHARACTER 376 |
+| `14-005` | ![U+1EBB8](../charts/khelathi-zethu-glyphs/glyphs/U+1EBB8.svg) | U+1EBB8 | ZETHU CHARACTER 377 |
+| `14-006` | ![U+1EBB9](../charts/khelathi-zethu-glyphs/glyphs/U+1EBB9.svg) | U+1EBB9 | ZETHU CHARACTER 378 |
+| `14-007` | ![U+1EBBA](../charts/khelathi-zethu-glyphs/glyphs/U+1EBBA.svg) | U+1EBBA | ZETHU CHARACTER 379 |
+| `14-008` | ![U+1EBBB](../charts/khelathi-zethu-glyphs/glyphs/U+1EBBB.svg) | U+1EBBB | ZETHU CHARACTER 380 |
+| `14-009` | ![U+1EBBC](../charts/khelathi-zethu-glyphs/glyphs/U+1EBBC.svg) | U+1EBBC | ZETHU CHARACTER 381 |
+| `14-011` | ![U+1EBBE](../charts/khelathi-zethu-glyphs/glyphs/U+1EBBE.svg) | U+1EBBE | ZETHU CHARACTER 383 |
+| `14-012` | ![U+1EBBF](../charts/khelathi-zethu-glyphs/glyphs/U+1EBBF.svg) | U+1EBBF | ZETHU CHARACTER 384 |
+| `14-015` | ![U+1EBC2](../charts/khelathi-zethu-glyphs/glyphs/U+1EBC2.svg) | U+1EBC2 | ZETHU CHARACTER 387 |
+| `14-016` | ![U+1EBC3](../charts/khelathi-zethu-glyphs/glyphs/U+1EBC3.svg) | U+1EBC3 | ZETHU CHARACTER 388 |
+| `14-017` | ![U+1EBC4](../charts/khelathi-zethu-glyphs/glyphs/U+1EBC4.svg) | U+1EBC4 | ZETHU CHARACTER 389 |
+| `14-018` | ![U+1EBC5](../charts/khelathi-zethu-glyphs/glyphs/U+1EBC5.svg) | U+1EBC5 | ZETHU CHARACTER 390 |
+| `14-019` | ![U+1EBC6](../charts/khelathi-zethu-glyphs/glyphs/U+1EBC6.svg) | U+1EBC6 | ZETHU CHARACTER 391 |
+| `14-020` | ![U+1EBC7](../charts/khelathi-zethu-glyphs/glyphs/U+1EBC7.svg) | U+1EBC7 | ZETHU CHARACTER 392 |
+| `14-021` | ![U+1EBC8](../charts/khelathi-zethu-glyphs/glyphs/U+1EBC8.svg) | U+1EBC8 | ZETHU CHARACTER 393 |
+| `14-022` | ![U+1EBC9](../charts/khelathi-zethu-glyphs/glyphs/U+1EBC9.svg) | U+1EBC9 | ZETHU CHARACTER 394 |
+| `15-001` | ![U+1EBCB](../charts/khelathi-zethu-glyphs/glyphs/U+1EBCB.svg) | U+1EBCB | ZETHU CHARACTER 396 |
+| `15-004` | ![U+1EBCE](../charts/khelathi-zethu-glyphs/glyphs/U+1EBCE.svg) | U+1EBCE | ZETHU CHARACTER 399 |
+| `15-007` | ![U+1EBD1](../charts/khelathi-zethu-glyphs/glyphs/U+1EBD1.svg) | U+1EBD1 | ZETHU CHARACTER 402 |
+| `15-009` | ![U+1EBD3](../charts/khelathi-zethu-glyphs/glyphs/U+1EBD3.svg) | U+1EBD3 | ZETHU CHARACTER 404 |
+| `15-010` | ![U+1EBD4](../charts/khelathi-zethu-glyphs/glyphs/U+1EBD4.svg) | U+1EBD4 | ZETHU CHARACTER 405 |
+| `15-014` | ![U+1EBD8](../charts/khelathi-zethu-glyphs/glyphs/U+1EBD8.svg) | U+1EBD8 | ZETHU CHARACTER 409 |
+| `15-015` | ![U+1EBD9](../charts/khelathi-zethu-glyphs/glyphs/U+1EBD9.svg) | U+1EBD9 | ZETHU CHARACTER 410 |
+| `15-016` | ![U+1EBDA](../charts/khelathi-zethu-glyphs/glyphs/U+1EBDA.svg) | U+1EBDA | ZETHU CHARACTER 411 |
+| `15-017` | ![U+1EBDB](../charts/khelathi-zethu-glyphs/glyphs/U+1EBDB.svg) | U+1EBDB | ZETHU CHARACTER 412 |
+| `16-001` | ![U+1EBDC](../charts/khelathi-zethu-glyphs/glyphs/U+1EBDC.svg) | U+1EBDC | ZETHU CHARACTER 413 |
+| `16-003` | ![U+1EBDE](../charts/khelathi-zethu-glyphs/glyphs/U+1EBDE.svg) | U+1EBDE | ZETHU CHARACTER 415 |
+| `16-004` | ![U+1EBDF](../charts/khelathi-zethu-glyphs/glyphs/U+1EBDF.svg) | U+1EBDF | ZETHU CHARACTER 416 |
+| `16-005` | ![U+1EBE0](../charts/khelathi-zethu-glyphs/glyphs/U+1EBE0.svg) | U+1EBE0 | ZETHU CHARACTER 417 |
+| `16-006` | ![U+1EBE1](../charts/khelathi-zethu-glyphs/glyphs/U+1EBE1.svg) | U+1EBE1 | ZETHU CHARACTER 418 |
+| `16-007` | ![U+1EBE2](../charts/khelathi-zethu-glyphs/glyphs/U+1EBE2.svg) | U+1EBE2 | ZETHU CHARACTER 419 |
+| `16-008` | ![U+1EBE3](../charts/khelathi-zethu-glyphs/glyphs/U+1EBE3.svg) | U+1EBE3 | ZETHU CHARACTER 420 |
+| `16-009` | ![U+1EBE4](../charts/khelathi-zethu-glyphs/glyphs/U+1EBE4.svg) | U+1EBE4 | ZETHU CHARACTER 421 |
+| `16-011` | ![U+1EBE6](../charts/khelathi-zethu-glyphs/glyphs/U+1EBE6.svg) | U+1EBE6 | ZETHU CHARACTER 423 |
+| `16-012` | ![U+1EBE7](../charts/khelathi-zethu-glyphs/glyphs/U+1EBE7.svg) | U+1EBE7 | ZETHU CHARACTER 424 |
+| `16-013` | ![U+1EBE8](../charts/khelathi-zethu-glyphs/glyphs/U+1EBE8.svg) | U+1EBE8 | ZETHU CHARACTER 425 |
+| `16-014` | ![U+1EBE9](../charts/khelathi-zethu-glyphs/glyphs/U+1EBE9.svg) | U+1EBE9 | ZETHU CHARACTER 426 |
+| `16-015` | ![U+1EBEA](../charts/khelathi-zethu-glyphs/glyphs/U+1EBEA.svg) | U+1EBEA | ZETHU CHARACTER 427 |
+| `16-016` | ![U+1EBEB](../charts/khelathi-zethu-glyphs/glyphs/U+1EBEB.svg) | U+1EBEB | ZETHU CHARACTER 428 |
+| `16-018` | ![U+1EBED](../charts/khelathi-zethu-glyphs/glyphs/U+1EBED.svg) | U+1EBED | ZETHU CHARACTER 430 |
+| `16-019` | ![U+1EBEE](../charts/khelathi-zethu-glyphs/glyphs/U+1EBEE.svg) | U+1EBEE | ZETHU CHARACTER 431 |
+| `01-063` | ![U+1EBF0](../charts/khelathi-zethu-glyphs/glyphs/U+1EBF0.svg) | U+1EBF0 | ZETHU CHARACTER 433 |
+| `01-064` | ![U+1EBF1](../charts/khelathi-zethu-glyphs/glyphs/U+1EBF1.svg) | U+1EBF1 | ZETHU CHARACTER 434 |
+| `01-065` | ![U+1EBF2](../charts/khelathi-zethu-glyphs/glyphs/U+1EBF2.svg) | U+1EBF2 | ZETHU CHARACTER 435 |
+| `05-040` | ![U+1EBF3](../charts/khelathi-zethu-glyphs/glyphs/U+1EBF3.svg) | U+1EBF3 | ZETHU CHARACTER 436 |
+| `07-021` | ![U+1EBF4](../charts/khelathi-zethu-glyphs/glyphs/U+1EBF4.svg) | U+1EBF4 | ZETHU CHARACTER 437 |
+| `03-026` | ![U+1EBF5](../charts/khelathi-zethu-glyphs/glyphs/U+1EBF5.svg) | U+1EBF5 | ZETHU CHARACTER 438 |
+| `03-027` | ![U+1EBF6](../charts/khelathi-zethu-glyphs/glyphs/U+1EBF6.svg) | U+1EBF6 | ZETHU CHARACTER 439 |
+| `03-028` | ![U+1EBF7](../charts/khelathi-zethu-glyphs/glyphs/U+1EBF7.svg) | U+1EBF7 | ZETHU CHARACTER 440 |
+| `14-024` | ![U+1EBF8](../charts/khelathi-zethu-glyphs/glyphs/U+1EBF8.svg) | U+1EBF8 | ZETHU CHARACTER 441 |
+| `14-025` | ![U+1EBF9](../charts/khelathi-zethu-glyphs/glyphs/U+1EBF9.svg) | U+1EBF9 | ZETHU CHARACTER 442 |
+| `14-026` | ![U+1EBFA](../charts/khelathi-zethu-glyphs/glyphs/U+1EBFA.svg) | U+1EBFA | ZETHU CHARACTER 443 |
+| `14-027` | ![U+1EBFB](../charts/khelathi-zethu-glyphs/glyphs/U+1EBFB.svg) | U+1EBFB | ZETHU CHARACTER 444 |
+| `14-028` | ![U+1EBFC](../charts/khelathi-zethu-glyphs/glyphs/U+1EBFC.svg) | U+1EBFC | ZETHU CHARACTER 445 |
+| `14-029` | ![U+1EBFD](../charts/khelathi-zethu-glyphs/glyphs/U+1EBFD.svg) | U+1EBFD | ZETHU CHARACTER 446 |
+| `09-024` | ![U+1EBFE](../charts/khelathi-zethu-glyphs/glyphs/U+1EBFE.svg) | U+1EBFE | ZETHU CHARACTER 447 |
+| `01-066` | ![U+1EBFF](../charts/khelathi-zethu-glyphs/glyphs/U+1EBFF.svg) | U+1EBFF | ZETHU CHARACTER 448 |
+| `10-029` | ![U+1EC00](../charts/khelathi-zethu-glyphs/glyphs/U+1EC00.svg) | U+1EC00 | ZETHU CHARACTER 449 |
+| `12-015` | ![U+1EC01](../charts/khelathi-zethu-glyphs/glyphs/U+1EC01.svg) | U+1EC01 | ZETHU CHARACTER 450 |
+| `04-023` | ![U+1EC02](../charts/khelathi-zethu-glyphs/glyphs/U+1EC02.svg) | U+1EC02 | ZETHU CHARACTER 451 |
+| `16-021` | ![U+1EC03](../charts/khelathi-zethu-glyphs/glyphs/U+1EC03.svg) | U+1EC03 | ZETHU CHARACTER 452 |
+| `14-030` | ![U+1EC04](../charts/khelathi-zethu-glyphs/glyphs/U+1EC04.svg) | U+1EC04 | ZETHU CHARACTER 453 |
+| `13-042` | ![U+1EC05](../charts/khelathi-zethu-glyphs/glyphs/U+1EC05.svg) | U+1EC05 | ZETHU CHARACTER 454 |
+| `12-016` | ![U+1EC06](../charts/khelathi-zethu-glyphs/glyphs/U+1EC06.svg) | U+1EC06 | ZETHU CHARACTER 455 |
+| `01-067` | ![U+1EC07](../charts/khelathi-zethu-glyphs/glyphs/U+1EC07.svg) | U+1EC07 | ZETHU CHARACTER 456 |
+| `01-068` | ![U+1EC08](../charts/khelathi-zethu-glyphs/glyphs/U+1EC08.svg) | U+1EC08 | ZETHU CHARACTER 457 |
+| `01-069` | ![U+1EC09](../charts/khelathi-zethu-glyphs/glyphs/U+1EC09.svg) | U+1EC09 | ZETHU CHARACTER 458 |
+| `10-030` | ![U+1EC0A](../charts/khelathi-zethu-glyphs/glyphs/U+1EC0A.svg) | U+1EC0A | ZETHU CHARACTER 459 |
+| `01-070` | ![U+1EC0B](../charts/khelathi-zethu-glyphs/glyphs/U+1EC0B.svg) | U+1EC0B | ZETHU CHARACTER 460 |
+| `04-024` | ![U+1EC0C](../charts/khelathi-zethu-glyphs/glyphs/U+1EC0C.svg) | U+1EC0C | ZETHU CHARACTER 461 |
+| `03-029` | ![U+1EC0D](../charts/khelathi-zethu-glyphs/glyphs/U+1EC0D.svg) | U+1EC0D | ZETHU CHARACTER 462 |
+| `16-022` | ![U+1EC0F](../charts/khelathi-zethu-glyphs/glyphs/U+1EC0F.svg) | U+1EC0F | ZETHU CHARACTER 464 |
+| `01-072` | ![U+1EC11](../charts/khelathi-zethu-glyphs/glyphs/U+1EC11.svg) | U+1EC11 | ZETHU CHARACTER 466 |
+| `16-024` | ![U+1EC14](../charts/khelathi-zethu-glyphs/glyphs/U+1EC14.svg) | U+1EC14 | ZETHU CHARACTER 469 |
+| `16-025` | ![U+1EC15](../charts/khelathi-zethu-glyphs/glyphs/U+1EC15.svg) | U+1EC15 | ZETHU CHARACTER 470 |
+| `16-026` | ![U+1EC16](../charts/khelathi-zethu-glyphs/glyphs/U+1EC16.svg) | U+1EC16 | ZETHU CHARACTER 471 |
+| `16-027` | ![U+1EC17](../charts/khelathi-zethu-glyphs/glyphs/U+1EC17.svg) | U+1EC17 | ZETHU CHARACTER 472 |
+| `16-028` | ![U+1EC18](../charts/khelathi-zethu-glyphs/glyphs/U+1EC18.svg) | U+1EC18 | ZETHU CHARACTER 473 |
+| `16-029` | ![U+1EC19](../charts/khelathi-zethu-glyphs/glyphs/U+1EC19.svg) | U+1EC19 | ZETHU CHARACTER 474 |
+| `16-030` | ![U+1EC1A](../charts/khelathi-zethu-glyphs/glyphs/U+1EC1A.svg) | U+1EC1A | ZETHU CHARACTER 475 |
+| `03-030` | ![U+1EC1B](../charts/khelathi-zethu-glyphs/glyphs/U+1EC1B.svg) | U+1EC1B | ZETHU CHARACTER 476 |
+| `01-073` | ![U+1EC1C](../charts/khelathi-zethu-glyphs/glyphs/U+1EC1C.svg) | U+1EC1C | ZETHU CHARACTER 477 |
+| `01-074` | ![U+1EC1D](../charts/khelathi-zethu-glyphs/glyphs/U+1EC1D.svg) | U+1EC1D | ZETHU CHARACTER 478 |
+| `01-075` | ![U+1EC1E](../charts/khelathi-zethu-glyphs/glyphs/U+1EC1E.svg) | U+1EC1E | ZETHU CHARACTER 479 |
+| `01-076` | ![U+1EC1F](../charts/khelathi-zethu-glyphs/glyphs/U+1EC1F.svg) | U+1EC1F | ZETHU CHARACTER 480 |
+| `01-077` | ![U+1EC20](../charts/khelathi-zethu-glyphs/glyphs/U+1EC20.svg) | U+1EC20 | ZETHU CHARACTER 481 |
+| `14-031` | ![U+1EC21](../charts/khelathi-zethu-glyphs/glyphs/U+1EC21.svg) | U+1EC21 | ZETHU CHARACTER 482 |
+| `14-032` | ![U+1EC22](../charts/khelathi-zethu-glyphs/glyphs/U+1EC22.svg) | U+1EC22 | ZETHU CHARACTER 483 |
+| `14-033` | ![U+1EC23](../charts/khelathi-zethu-glyphs/glyphs/U+1EC23.svg) | U+1EC23 | ZETHU CHARACTER 484 |
+| `14-034` | ![U+1EC24](../charts/khelathi-zethu-glyphs/glyphs/U+1EC24.svg) | U+1EC24 | ZETHU CHARACTER 485 |
+| `14-035` | ![U+1EC25](../charts/khelathi-zethu-glyphs/glyphs/U+1EC25.svg) | U+1EC25 | ZETHU CHARACTER 486 |
+| `14-036` | ![U+1EC26](../charts/khelathi-zethu-glyphs/glyphs/U+1EC26.svg) | U+1EC26 | ZETHU CHARACTER 487 |
+| `13-043` | ![U+1EC27](../charts/khelathi-zethu-glyphs/glyphs/U+1EC27.svg) | U+1EC27 | ZETHU CHARACTER 488 |
+| `04-026` | ![U+1EC28](../charts/khelathi-zethu-glyphs/glyphs/U+1EC28.svg) | U+1EC28 | ZETHU CHARACTER 489 |
+| `04-027` | ![U+1EC29](../charts/khelathi-zethu-glyphs/glyphs/U+1EC29.svg) | U+1EC29 | ZETHU CHARACTER 490 |
+| `01-078` | ![U+1EC2A](../charts/khelathi-zethu-glyphs/glyphs/U+1EC2A.svg) | U+1EC2A | ZETHU CHARACTER 491 |
+| `01-079` | ![U+1EC2B](../charts/khelathi-zethu-glyphs/glyphs/U+1EC2B.svg) | U+1EC2B | ZETHU CHARACTER 492 |
+| `04-028` | ![U+1EC2C](../charts/khelathi-zethu-glyphs/glyphs/U+1EC2C.svg) | U+1EC2C | ZETHU CHARACTER 493 |
+| `10-032` | ![U+1EC2D](../charts/khelathi-zethu-glyphs/glyphs/U+1EC2D.svg) | U+1EC2D | ZETHU CHARACTER 494 |
+| `10-034` | ![U+1EC2E](../charts/khelathi-zethu-glyphs/glyphs/U+1EC2E.svg) | U+1EC2E | ZETHU CHARACTER 495 |
+| `10-035` | ![U+1EC2F](../charts/khelathi-zethu-glyphs/glyphs/U+1EC2F.svg) | U+1EC2F | ZETHU CHARACTER 496 |
+| `01-080` | ![U+1EC30](../charts/khelathi-zethu-glyphs/glyphs/U+1EC30.svg) | U+1EC30 | ZETHU CHARACTER 497 |
+| `16-031` | ![U+1EC31](../charts/khelathi-zethu-glyphs/glyphs/U+1EC31.svg) | U+1EC31 | ZETHU CHARACTER 498 |
+| `01-081` | ![U+1EC32](../charts/khelathi-zethu-glyphs/glyphs/U+1EC32.svg) | U+1EC32 | ZETHU CHARACTER 499 |

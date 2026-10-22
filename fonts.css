@@ -1,4 +1,11 @@
 @font-face {
+    font-family: "Helonika Book";
+    src: url("fonts/HelonikaBook-Regular.woff2") format("woff2"),
+        url("fonts/HelonikaBook-Regular.ttf") format("truetype");
+    font-display: swap;
+}
+
+@font-face {
     font-family: "Khelathi Zethu Glyphs";
     src: url("fonts/KhelathiZethuGlyphs-Regular.woff2") format("woff2"),
         url("fonts/KhelathiZethuGlyphs-Regular.ttf") format("truetype");
@@ -48,10 +55,23 @@
 }
 
 @font-face {
+    font-family: "Vedyakshara Classical";
+    src: url("fonts/VedyaksharaClassical-Regular.woff2") format("woff2"),
+        url("fonts/VedyaksharaClassical-Regular.ttf") format("truetype");
+    font-display: swap;
+}
+
+@font-face {
     font-family: "Veldikko";
     src: url("fonts/Veldikko-Regular.woff2") format("woff2"),
         url("fonts/Veldikko-Regular.ttf") format("truetype");
     font-display: swap;
+}
+
+.hl-helonika-book {
+    font-family: "Helonika Book";
+    font-feature-settings: normal;
+    font-synthesis: none;
 }
 
 .hl-khelathi-zethu-glyphs {
@@ -100,6 +120,18 @@
 
 .hl-thuravark-carved {
     font-family: "Thuravark Carved";
+    font-feature-settings: normal;
+    font-synthesis: none;
+}
+
+.hl-thuravark-carved-bound {
+    font-family: "Thuravark Carved";
+    font-feature-settings: "ss01";
+    font-synthesis: none;
+}
+
+.hl-vedyakshara-classical {
+    font-family: "Vedyakshara Classical";
     font-feature-settings: normal;
     font-synthesis: none;
 }

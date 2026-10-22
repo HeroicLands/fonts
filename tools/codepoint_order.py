@@ -4,10 +4,12 @@
 
 A left-to-right face draws each of its characters on a code point of its own in a
 block of plane 15, the Supplementary Private Use Area-A: Pirzath from U+F0000,
-Thuravark from U+F0100, Semaron from U+F0200, and Teng Chou's characters from
-U+F1000 and its Jurthati syllabary from U+F2000. Within a block, characters are
+Thuravark from U+F0100, Semaron from U+F0200, Helónika from U+F0300, Vedyakshara
+from U+F0400, and Teng
+Chou's characters from U+F1000 and its Jurthati syllabary from U+F2000. Within a block, characters are
 assigned in groups: capitals (each followed by its own long-vowel group where the face
-has one), small letters, digraphs, diphthongs, numerals, points, and marks. A group
+has one), small letters, digraphs, diphthongs, numerals, points, marks, and format
+controls. A group
 starts on a fixed code point and the gaps between groups leave room for later letters. tools/write_css.py
 writes the resulting table to fonts.json, and tools/codepoints.py checks the built
 fonts against it.
@@ -15,7 +17,12 @@ fonts against it.
 A contextual form a face draws from the characters around it is not a character and
 has no code point: joined and doubled forms, the doubling mark, Pirzath Hand's long
 vowels drawn from a vowel and its length mark, Thuravark's acute mark drawn as a
-second stave, and Qalezu Hand's catch-before forms. The space stays U+0020.
+second stave, Qalezu Hand's catch-before forms, and Vedyakshara's fused, half, final
+and r-foot forms and its placed vowel signs. Vedyakshara's groups follow
+tools/vedyakshara/encoding.json: consonants, independent vowels, vowel signs and its
+other marks, numerals and points. Helónika's follow tools/helonika/encoding.json:
+capitals, the capital additions and long vowels, small letters, the small additions
+and long vowels, numerals, points and the accent. The space stays U+0020.
 
 A row also carries a ``name``, in Unicode's style, read from the script's name table in
 ``tools/names/<script>.json`` (see ``names``). A row the table does not name has no ``name``.
@@ -37,7 +44,7 @@ ROOT = Path(__file__).resolve().parent.parent
 
 # The registry of code point blocks. A block lists the families that draw on it; a
 # block with no families is reserved or unassigned. Ranges do not overlap, and the
-# README's "Code point blocks" table is rendered from this list (readme_table).
+# DEVELOPING.md's "Code point blocks" table is rendered from this list (readme_table).
 BLOCKS = [
     {
         "start": 0xF0000,
@@ -46,10 +53,30 @@ BLOCKS = [
         "direction": "left to right",
         "families": ["Pirzath Carved", "Pirzath Hand", "Pirzath Hand Lifted"],
     },
-    {"start": 0xF0100, "end": 0xF01FF, "use": "Thuravark", "direction": "left to right", "families": ["Thuravark Carved"]},
+    {
+        "start": 0xF0100,
+        "end": 0xF01FF,
+        "use": "Thuravark",
+        "direction": "left to right",
+        "families": ["Thuravark Carved", "Thuravark Carved Bound"],
+    },
     {"start": 0xF0200, "end": 0xF02FF, "use": "Semaron", "direction": "left to right", "families": ["Semaron Kuriale"]},
     {
         "start": 0xF0300,
+        "end": 0xF03FF,
+        "use": "Helónika: capitals, small letters, the kh and zh letters, long vowels, digits, the raised dot, the register-mark and the accent",
+        "direction": "left to right",
+        "families": ["Helonika Book"],
+    },
+    {
+        "start": 0xF0400,
+        "end": 0xF04FF,
+        "use": "Vedyakshara: consonants, independent vowels, vowel signs, the cut, the soft dot, digits and bars",
+        "direction": "left to right",
+        "families": ["Vedyakshara Classical"],
+    },
+    {
+        "start": 0xF0500,
         "end": 0xF0FFF,
         "use": "Reserved for the remaining alphabets and syllabaries, 256 code points each as they are assigned",
         "direction": "left to right",
@@ -111,7 +138,7 @@ BLOCKS = [
 
 
 def readme_table() -> str:
-    """The Markdown table of BLOCKS that the README's "Code point blocks" section carries."""
+    """The Markdown table of BLOCKS that the DEVELOPING.md's "Code point blocks" section carries."""
     lines = ["| Range | Use | Direction |", "| --- | --- | --- |"]
     for b in sorted(BLOCKS, key=lambda b: b["start"]):
         lines.append(f"| U+{b['start']:04X}\u2013U+{b['end']:04X} | {b['use']} | {b['direction'] or '\u2013'} |")
@@ -153,9 +180,11 @@ THURAVARK = (
     [
         ("letter", 0xF0100, "a e i o u b d f g h j k l m n p r s t v w z".split()),
         ("digraph", 0xF0120, "th dh kh gh hl ng".split()),
+        ("diphthong", 0xF0128, "ai au oi".split()),
         ("numeral", 0xF0130, [f"num.{i}" for i in range(10)]),
         ("point", 0xF0140, ["period"]),
         ("mark", 0xF0148, ["acutecomb"]),
+        ("control", 0xF0150, ["crown.open", "crown.close"]),
     ],
 )
 
@@ -181,6 +210,47 @@ def _teng_chou():
 
 TENGCHOU = _teng_chou()
 
+VEDYAKSHARA_KINDS = {"consonant": "letter", "vowel": "letter", "vowel sign": "mark", "sign": "mark",
+                     "digit": "numeral", "point": "point"}
+
+
+def _vedyakshara():
+    """Vedyakshara Classical's block from tools/vedyakshara/encoding.json: each run of
+    consecutive code points of one kind is a group."""
+    enc = json.loads((ROOT / "tools" / "vedyakshara" / "encoding.json").read_text(encoding="utf-8"))
+    groups = []
+    for e in enc["glyphs"]:
+        point, kind = int(e["codepoint"][2:], 16), VEDYAKSHARA_KINDS[e["kind"]]
+        last = groups[-1] if groups else None
+        if last and last[0] == kind and last[1] + len(last[2]) == point:
+            last[2].append(e["glyph"])
+        else:
+            groups.append((kind, point, [e["glyph"]]))
+    return int(enc["block"]["start"][2:], 16), int(enc["block"]["end"][2:], 16), groups
+
+
+VEDYAKSHARA = _vedyakshara()
+
+HELONIKA_KINDS = {"capital": "letter", "small": "letter", "digit": "numeral", "point": "point", "mark": "mark"}
+
+
+def _helonika():
+    """Helonika Book's block from tools/helonika/encoding.json: each run of consecutive
+    code points of one kind is a group."""
+    enc = json.loads((ROOT / "tools" / "helonika" / "encoding.json").read_text(encoding="utf-8"))
+    groups = []
+    for e in enc["glyphs"]:
+        point, kind = int(e["codepoint"][2:], 16), HELONIKA_KINDS[e["kind"]]
+        last = groups[-1] if groups else None
+        if last and last[0] == kind and last[1] + len(last[2]) == point:
+            last[2].append(e["glyph"])
+        else:
+            groups.append((kind, point, [e["glyph"]]))
+    return int(enc["block"]["start"][2:], 16), int(enc["block"]["end"][2:], 16), groups
+
+
+HELONIKA = _helonika()
+
 # Font file stem -> block. Pirzath Hand and Pirzath Hand Lifted are one file.
 LTR = {
     "SemaronKuriale-Regular": SEMARON,
@@ -188,6 +258,8 @@ LTR = {
     "PirzathHand-Regular": PIRZATH,
     "ThuravarkCarved-Regular": THURAVARK,
     "TengChou-Regular": TENGCHOU,
+    "VedyaksharaClassical-Regular": VEDYAKSHARA,
+    "HelonikaBook-Regular": HELONIKA,
 }
 
 
@@ -261,6 +333,8 @@ SCRIPTS = {
     "KhelathiZethuGlyphs-Regular": "zethu",
     "TengChou-Regular": "tengchou",
     "Veldikko-Regular": "veldikko",
+    "VedyaksharaClassical-Regular": "vedyakshara",
+    "HelonikaBook-Regular": "helonika",
 }
 
 

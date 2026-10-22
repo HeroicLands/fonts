@@ -18,14 +18,15 @@ name and kind of every character the face draws. A font fails when
   one of those;
 - a character's code point lies outside every block that the registry
   (``BLOCKS`` in tools/codepoint_order.py) lists for its family, or two registered
-  blocks overlap, or the README's "Code point blocks" table is not the registry's;
+  blocks overlap, or DEVELOPING.md's "Code point blocks" table is not the registry's;
 - the cmap maps a code point to anything but its listed glyph, the space, the empty
   glyph of the default-ignorables or the box: U+0020 and U+00A0 are the only spaces,
   and every other character a face does not list, Latin included, draws the box;
 - a GSUB substitution writes a listed glyph it does not read, so that one character
   becomes another (a spelling rule): what a face substitutes is a contextual form only, such as a
   joined, doubled or fused form, a mark's form, the box for a catch with no letter
-  before it, or the empty glyph of an ignorable;
+  before it or for a Vedyakshara mark with no sign before it, or the empty glyph of an
+  ignorable;
 - a sequence of characters that a spelling rule once rewrote does not shape as
   written (``SEQUENCES``);
 - the Pirzath Carved and Pirzath Hand tables differ;
@@ -64,7 +65,8 @@ SEQUENCES = {
     "PirzathCarved-Regular": [["y", "ai"], ["y", "a", "i"], ["t", "h"], ["a", "i"], ["n", "g", "h"]],
     "PirzathHand-Regular": [["y", "ai"], ["y", "a", "i"], ["t", "h"], ["a", "i"], ["n", "g", "h"]],
     "SemaronKuriale-Regular": [["i", "i"], ["a", "a"], ["t", "h"], ["y", "t"], ["Y"]],
-    "ThuravarkCarved-Regular": [["t", "h"], ["n", "g"], ["i"], ["j", "t"]],
+    "ThuravarkCarved-Regular": [["t", "h"], ["n", "g"], ["i"], ["j", "t"], ["a", "i"], ["a", "u"], ["o", "i"]],
+    "HelonikaBook-Regular": [["e", "i"], ["o", "u"], ["t", "h"], ["k", "h"], ["z", "h"], ["a", "a"], ["E", "i"]],
 }
 
 # The only code points that draw the space.
@@ -83,10 +85,53 @@ NOT_CHARACTERS = {
         **{f"{v}acute": "a vowel and its length mark, drawn as one" for v in "aeiou"},
     },
     "TengChou-Regular": {},
+    "HelonikaBook-Regular": {},
     "ThuravarkCarved-Regular": {
         **{f"{v}.acute": "the acute mark after a vowel, drawn as its stave again" for v in "aeiou"},
+        **{name: "a bound rune, two staves on one stem, set by ss01" for name in "e_n e_l a_r a_l m_a z_a k_a u_r l_m l_th".split()},
     },
 }
+
+
+
+def _vedyakshara_forms() -> dict[str, str]:
+    """Vedyakshara Classical's glyphs that are not characters: the forms its rules draw."""
+    enc = json.loads((ROOT / "tools" / "vedyakshara" / "encoding.json").read_text(encoding="utf-8"))
+    cons = [g["glyph"] for g in enc["glyphs"] if g["kind"] == "consonant"]
+    fused = [f["glyph"] for f in enc["fused"]]
+    out = {"fa": "pa and the soft dot, drawn as one"}
+    out.update({f: "a fused pair of consonants" for f in fused})
+    for b in cons + ["fa"] + fused:
+        out[f"{b}.half"] = "a consonant before another, drawn as its half form"
+        out[f"{b}.final"] = "a consonant ending a word, drawn as its final form"
+        out[f"{b}.rfoot"] = "a consonant before r, drawn with the r-foot"
+    for part in ("flag.i", "flag.e"):
+        out[part] = "a part of a vowel sign, placed on its sign"
+    return out
+
+
+NOT_CHARACTERS["VedyaksharaClassical-Regular"] = _vedyakshara_forms()
+
+
+def not_character(stem: str, glyph: str, excluded: dict[str, str]) -> bool:
+    """Whether a glyph of a face is one of its forms rather than a character."""
+    if stem == "VedyaksharaClassical-Regular" and glyph.startswith("hook."):
+        return True  # a hook with the neck its sign asks for
+    return glyph in excluded
+
+
+def not_characters(stem: str, order: list[str]) -> dict[str, str]:
+    """The glyphs of a face that are not characters: NOT_CHARACTERS, and for Thuravark
+    Carved the crowned frame's glyphs, which tools/thuravark-carved/crown.py adds."""
+    excluded = dict(NOT_CHARACTERS[stem])
+    if stem == "ThuravarkCarved-Regular":
+        import importlib.util
+
+        spec = importlib.util.spec_from_file_location("thuravark_crown", ROOT / "tools" / "thuravark-carved" / "crown.py")
+        module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(module)
+        excluded.update(module.not_characters(order))
+    return excluded
 
 # The Private Use Area of the Basic Multilingual Plane, which no face's cmap uses.
 BMP_PRIVATE = (0xE000, 0xF8FF)
@@ -156,12 +201,12 @@ def registry_problems() -> list[str]:
                 f"tools/codepoint_order.py: error: the blocks U+{a['start']:04X}-U+{a['end']:04X} ({a['use']}) "
                 f"and U+{b['start']:04X}-U+{b['end']:04X} ({b['use']}) overlap"
             )
-    readme = (ROOT / "README.md").read_text(encoding="utf-8")
+    readme = (ROOT / "DEVELOPING.md").read_text(encoding="utf-8")
     heading = re.search(r"^## Code point blocks\n(.*?)(?=^## |\Z)", readme, re.M | re.S)
     if heading is None:
-        problems.append("README.md: error: there is no Code point blocks section")
+        problems.append("DEVELOPING.md: error: there is no Code point blocks section")
     elif cells(codepoint_order.readme_table()) not in cells(heading.group(1)):
-        problems.append("README.md: error: the Code point blocks table differs from BLOCKS in tools/codepoint_order.py")
+        problems.append("DEVELOPING.md: error: the Code point blocks table differs from BLOCKS in tools/codepoint_order.py")
     return problems
 
 
@@ -319,12 +364,12 @@ def check(font: Path) -> list[str]:
             glyphs = [r["glyph"] for r in rows]
             if len(set(glyphs)) != len(glyphs):
                 problems.append(f"fonts.json: error: {label}: a glyph is listed twice")
-            excluded = NOT_CHARACTERS[stem]
+            excluded = not_characters(stem, renderer.order)
             for glyph in glyphs:
-                if glyph in excluded or is_structural(glyph, set(glyphs)):
+                if not_character(stem, glyph, excluded) or is_structural(glyph, set(glyphs)):
                     problems.append(f"fonts.json: error: {label}: {glyph} is not a character")
             for glyph in renderer.order:
-                if glyph in glyphs or glyph in excluded or is_structural(glyph, set(glyphs)):
+                if glyph in glyphs or not_character(stem, glyph, excluded) or is_structural(glyph, set(glyphs)):
                     continue
                 problems.append(f"{font}: error: {label}: the character {glyph} has no code point")
     if stem == "PirzathHand-Regular":

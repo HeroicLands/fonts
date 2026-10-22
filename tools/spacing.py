@@ -29,8 +29,10 @@ records it from thalorna's mapping notes; Qalezu Hand's fixtures, written in the
 signs the fixtures name, a catch-before form as the catch and its sign; the sample inscriptions of Khelathi Zethu Glyphs, set as one
 strip of signs; Teng Chou's Tantsou and Jurthati passages, each line one run
 of characters; and Veldikko's converter fixtures, written in the letters
-and marks the fixtures name. A joined face (Pirzath Hand with ``ss01``, and Veldikko
-Sinale) meets its neighbours at the join, so its gaps are at most zero. None needs a thalorna checkout.
+and marks the fixtures name; and Vedyakshara Classical's and Helonika Book's guard
+fixtures, written as tools/mapped.json records them. A joined face (Pirzath Hand with ``ss01``, and Veldikko
+Sinale) meets its neighbours at the join, and Vedyakshara's signs meet in one headline,
+so their gaps are at most zero. None needs a thalorna checkout.
 """
 
 import importlib.util
@@ -122,6 +124,26 @@ def _veldikko_lines() -> list[str]:
     return [" ".join(words[i:i + 6]) for i in range(0, len(words), 6)]
 
 
+def _vedyakshara_texts() -> list[str]:
+    fixtures = json.loads((TOOLS / "vedyakshara" / "fixtures.json").read_text(encoding="utf-8"))["fixtures"]
+    return [f["latin"] for f in fixtures]
+
+
+def _vedyakshara_lines() -> list[str]:
+    words = _written("vedyakshara-classical", _vedyakshara_texts())
+    return [" ".join(words[i:i + 6]) for i in range(0, len(words), 6)]
+
+
+def _helonika_texts() -> list[str]:
+    fixtures = json.loads((TOOLS / "helonika" / "fixtures.json").read_text(encoding="utf-8"))["fixtures"]
+    return [f["latin"] for f in fixtures]
+
+
+def _helonika_lines() -> list[str]:
+    words = _written("helonika-book", _helonika_texts())
+    return [" ".join(words[i:i + 6]) for i in range(0, len(words), 6)]
+
+
 def _teng_chou_lines() -> list[str]:
     return _load("teng_chou_texts", TOOLS / "teng-chou" / "texts.py").lines()
 
@@ -136,6 +158,8 @@ FACES = {
     "KhelathiZethuGlyphs": (_zethu_lines, "rtl", {}),
     "TengChou": (_teng_chou_lines, "ltr", {}),
     "Veldikko": (_veldikko_lines, "rtl", {}),
+    "VedyaksharaClassical": (_vedyakshara_lines, "ltr", {}),
+    "HelonikaBook": (_helonika_lines, "ltr", {}),
 }
 
 

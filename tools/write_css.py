@@ -71,6 +71,16 @@ FAMILIES = {
         "direction": "ltr",
         "features": [],
     },
+    "VedyaksharaClassical-Regular": {
+        "slug": "vedyakshara-classical",
+        "direction": "ltr",
+        "features": [],
+    },
+    "HelonikaBook-Regular": {
+        "slug": "helonika-book",
+        "direction": "ltr",
+        "features": [],
+    },
     "Veldikko-Regular": {
         "slug": "veldikko",
         "direction": "rtl",
@@ -80,6 +90,13 @@ FAMILIES = {
         "slug": "thuravark-carved",
         "direction": "ltr",
         "features": [],
+        "variants": [
+            {
+                "name": "Thuravark Carved Bound",
+                "slug": "thuravark-carved-bound",
+                "features": ["ss01"],
+            },
+        ],
     },
 }
 

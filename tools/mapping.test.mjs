@@ -41,6 +41,6 @@ test("a character no row writes passes through and is named", () => {
 test("every script with a keyboard layout has a mapping note", () => {
     assert.deepEqual(
         SCRIPTS.map(([script]) => script),
-        ["semaron", "pirzath", "thuravark", "qalezu"],
+        ["semaron", "pirzath", "thuravark", "qalezu", "veldikko", "vedyakshara", "helonika"],
     );
 });

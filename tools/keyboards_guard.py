@@ -10,20 +10,28 @@
   keyboards/sounds.json lists exactly the key map's sounds with their spellings, so
   every sound has a key. The key map's markup lists every character Markdown and a
   span need, each on the key that types it on a US keyboard, and no key carries both
-  a sound and markup.
+  a sound and markup. The key map's signs, the keys that are not sounds, each sit on a
+  key no sound, markup or other sign carries, name a script with a layout, and type a
+  code point that script's face draws.
 - **The layouts.** The macOS, Windows, Linux and Emacs files of HL Semaron, HL Pirzath,
-  HL Thuravark and HL Qalezu are read back. On each key each must type exactly the
-  code points keyboards/sounds.json gives that key's sound in the script, or nothing
+  HL Thuravark, HL Qalezu, HL Veldikko and HL Vedyakshara are read back. On each key each must type exactly the
+  code points keyboards/sounds.json gives that key's sound in the script, or the sign
+  the key map puts there for that script, or nothing
   where the script does not spell the sound or the platform cannot carry the output
   (tools/keyboards.py ``carries``), and no key but a key of markup may type a character
   below U+0080. Each key of markup types itself on every platform. The
   Khelathi Zethu Glyphs input method must type every sign on its sign id.
+- **The cheatsheets.** keyboards/<script>.md, .svg and .png exist for every layout, and
+  every key the macOS layout types has a row in the sheet's tables, with the code points
+  the layout types, and a ``data-key`` entry on the printable keyboard picture. A script
+  added to ``keyboards.SCRIPTS`` is covered with no change here.
 - **The mapping notes.** Unless ``--fixtures-only`` is given, keyboards/sounds.json is
   written afresh by tools/sounds.mjs from the ``origin/main`` of the thalorna checkout
   and must equal the committed file.
 """
 
 import argparse
+import html
 import json
 import re
 import subprocess
@@ -75,6 +83,7 @@ def keymap_problems(keymap: list[dict], sounds: list[dict]) -> list[str]:
         if sound in by_sound and by_sound[sound]["key"] != key:
             problems.append(f"tools/sound_keys.json: error: the {sound} sits on {by_sound[sound]['key']}, not {key}")
     problems += markup_problems(owner)
+    problems += sign_problems(owner)
     listed = {s["sound"]: s["spelling"] for s in sounds}
     mapped = {e["sound"]: e["spelling"] for e in keymap}
     for sound in sorted(listed.keys() - mapped.keys()):
@@ -103,6 +112,34 @@ def markup_problems(owner: dict[str, str]) -> list[str]:
             problems.append(f"tools/sound_keys.json: error: markup lists {char}, which no key of a US keyboard types")
         elif key in owner:
             problems.append(f"tools/sound_keys.json: error: markup lists {char}, on {key}, which carries the sound {owner[key]}")
+    return problems
+
+
+def sign_problems(owner: dict[str, str]) -> list[str]:
+    """Where a sign of the key map sits on a key that carries a sound, markup or another sign,
+    names a script with no layout, or types a code point its face does not draw."""
+    problems = []
+    faces = {f["name"]: {r["codepoint"] for r in f["codepoints"] if "codepoint" in r} for f in keyboards.manifest()["families"]}
+    seen: dict[str, str] = {}
+    for sign in kk.signs():
+        name, key = sign["sign"], sign["key"]
+        script = next((s for s in keyboards.SCRIPTS if s["key"] == sign["script"]), None)
+        if kk.parse(key) is None:
+            problems.append(f"tools/sound_keys.json: error: the sign {name}: {key!r} is not a key")
+            continue
+        if script is None:
+            problems.append(f"tools/sound_keys.json: error: the sign {name} names the script {sign['script']}, which has no layout")
+        elif sign["codepoint"] not in faces.get(script["faces"][0], set()):
+            problems.append(f"tools/sound_keys.json: error: the sign {name} types {sign['codepoint']}, which {script['faces'][0]} does not draw")
+        if key in owner:
+            problems.append(f"tools/sound_keys.json: error: the sign {name} sits on {key}, which carries the sound {owner[key]}")
+        if key in kk.markup():
+            problems.append(f"tools/sound_keys.json: error: the sign {name} sits on {key}, which types markup")
+        if kk.parse(key)[2] == "\\":
+            problems.append(f"tools/sound_keys.json: error: the sign {name} sits on {key}, the Emacs Option prefix")
+        if key in seen:
+            problems.append(f"tools/sound_keys.json: error: the signs {name} and {seen[key]} both sit on {key}")
+        seen.setdefault(key, name)
     return problems
 
 
@@ -189,9 +226,9 @@ def read_emacs(text: str) -> dict[str, list[int]]:
 def read_layouts(key: str) -> dict[str, str | bytes]:
     texts = {"emacs": (KEYBOARDS / "emacs" / f"heroiclands-{key}.el").read_text(encoding="utf-8")}
     if key != "zethu":
-        label = next(s for s in keyboards.SCRIPTS if s["key"] == key)["layout"]
+        script = next(s for s in keyboards.SCRIPTS if s["key"] == key)
         base = KEYBOARDS / "macos" / keyboards.BUNDLE / "Contents" / "Resources"
-        texts["macos"] = (base / f"{label}.keylayout").read_text(encoding="utf-8")
+        texts["macos"] = (base / keyboards.layout_file(script)).read_text(encoding="utf-8")
         texts["windows"] = (KEYBOARDS / "windows" / f"{key}.klc").read_bytes()
         texts["linux"] = (KEYBOARDS / "linux" / f"hl_{key}").read_text(encoding="utf-8")
     return texts
@@ -237,6 +274,50 @@ def layout_problems(script: str, keymap: list[dict], sounds: list[dict], texts: 
     return problems
 
 
+CELL = re.compile(r"^\| (?:(`+) (.+?) \1|(`)([^`]+)`) \|")
+IMAGE = re.compile(r"!\[[^\]]*\]\([^)]*\)")
+ROW_CODES = re.compile(r"U\+[0-9A-F]{4,6}")
+
+
+def read_cheatsheet(script: str) -> tuple[str, str]:
+    return ((KEYBOARDS / f"{script}.md").read_text(encoding="utf-8"), (KEYBOARDS / f"{script}.svg").read_text(encoding="utf-8"))
+
+
+def sheet_keys(sheet: str) -> dict[str, list[str]]:
+    """key -> the code points of its row, for every table row whose first cell is a key."""
+    out: dict[str, list[str]] = {}
+    for line in sheet.splitlines():
+        m = CELL.match(line)
+        if m:
+            key = (m.group(2) or m.group(4)).replace("\\|", "|")
+            codes = ROW_CODES.findall(IMAGE.sub("", line))
+            if codes or key not in out:
+                out[key] = codes
+    return out
+
+
+def cheatsheet_problems(script: str, keymap: list[dict], sounds: list[dict], sheet: str, svg: str) -> list[str]:
+    """Where a layout key has no entry on the script's cheatsheet, or the entry types something else."""
+    problems = []
+    typed = keyboards.platform_keys(script, "macos", keymap, sounds)
+    rows = sheet_keys(sheet)
+    pictured = {html.unescape(k) for k in re.findall(r'data-key="([^"]+)"', svg)}
+    for key, cps in sorted(typed.items()):
+        if key not in rows:
+            problems.append(f"keyboards/{script}.md: error: the layout types {keyboards.code_list(cps)} on {key}, which has no row on the cheatsheet")
+        elif key not in kk.markup() and rows[key] != [f"U+{p:04X}" for p in cps]:
+            problems.append(f"keyboards/{script}.md: error: the row of {key} lists {' '.join(rows[key])}, not {keyboards.code_list(cps)}")
+        if key not in pictured:
+            problems.append(f"keyboards/{script}.svg: error: {key} is not on the printed keyboard")
+    for key in sorted(pictured - typed.keys()):
+        problems.append(f"keyboards/{script}.svg: error: {key} is on the printed keyboard but the layout types nothing there")
+    if f"]({script}.png)" not in sheet:
+        problems.append(f"keyboards/{script}.md: error: the sheet does not show {script}.png")
+    if not (KEYBOARDS / f"{script}.png").exists():
+        problems.append(f"keyboards/{script}.png: error: missing")
+    return problems
+
+
 def zethu_problems(table: list[dict]) -> list[str]:
     got = read_emacs(read_layouts("zethu")["emacs"])
     want = {r["key"]: [int(r["codepoint"][2:], 16)] for r in table if "key" in r}
@@ -246,10 +327,11 @@ def zethu_problems(table: list[dict]) -> list[str]:
     return problems
 
 
-def thalorna_problems(thalorna: Path, committed: dict) -> list[str]:
+def thalorna_problems(thalorna: Path, committed: dict, notes: list[str] = ()) -> list[str]:
     """Where keyboards/sounds.json differs from what the mapping notes spell today."""
     run = subprocess.run(
-        ["node", str(ROOT / "tools" / "sounds.mjs"), "--thalorna", str(thalorna)],
+        ["node", str(ROOT / "tools" / "sounds.mjs"), "--thalorna", str(thalorna),
+         *[a for n in notes for a in ("--map-note", n)]],
         capture_output=True, text=True, cwd=ROOT,
     )  # fmt: skip
     if run.returncode:
@@ -271,17 +353,18 @@ def committed_sounds() -> dict:
     return json.loads((KEYBOARDS / "sounds.json").read_text(encoding="utf-8"))
 
 
-def check(thalorna: Path | None) -> list[str]:
+def check(thalorna: Path | None, notes: list[str] = ()) -> list[str]:
     keymap = kk.load()["sounds"]
     committed = committed_sounds()
     sounds = committed["sounds"]
     problems = keymap_problems(keymap, sounds)
     for script in SCRIPT_KEYS:
         problems += layout_problems(script, keymap, sounds, read_layouts(script))
+        problems += cheatsheet_problems(script, keymap, sounds, *read_cheatsheet(script))
     zethu = next(f for f in keyboards.manifest()["families"] if f["name"] == "Khelathi Zethu Glyphs")
     problems += zethu_problems(zethu["codepoints"])
     if thalorna is not None:
-        problems += thalorna_problems(thalorna, committed)
+        problems += thalorna_problems(thalorna, committed, notes)
     return problems
 
 
@@ -289,8 +372,10 @@ def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     ap.add_argument("--thalorna", default=str(Path.home() / "dev/HeroicLands/thalorna"))
     ap.add_argument("--fixtures-only", action="store_true", help="read no thalorna checkout")
+    ap.add_argument("--map-note", action="append", default=[], metavar="SCRIPT=FILE",
+                    help="read a script's mapping note from a file instead of git, such as vedyakshara=FILE")
     args = ap.parse_args()
-    problems = check(None if args.fixtures_only else Path(args.thalorna))
+    problems = check(None if args.fixtures_only else Path(args.thalorna), args.map_note)
     print(f"keyboards: {len(kk.load()['sounds'])} sounds on {len(SCRIPT_KEYS)} layouts and 4 platforms, " + (f"{len(problems)} problems" if problems else "ok"))
     for line in problems[:40]:
         print(line)

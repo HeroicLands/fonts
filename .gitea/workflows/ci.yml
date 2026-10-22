@@ -62,7 +62,7 @@ jobs:
             - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
             - name: Create the virtual environment
               run: |
-                  python3 -m venv .venv
+                  python3.13 -m venv .venv
                   .venv/bin/pip install -r requirements.txt
             - name: Build the fonts
               run: PATH="$PWD/.venv/bin:$PATH" ./build.sh
@@ -80,6 +80,10 @@ jobs:
                   .venv/bin/python tools/teng-chou/stroke_mix.py
                   .venv/bin/python tools/veldikko/check_font.py
                   .venv/bin/python tools/veldikko/guard.py --fixtures-only
+                  .venv/bin/python tools/vedyakshara/check_font.py
+                  .venv/bin/python tools/vedyakshara/guard.py --fixtures-only
+                  .venv/bin/python tools/helonika/check_font.py
+                  .venv/bin/python tools/helonika/guard.py --fixtures-only
                   .venv/bin/python tools/pirzath/guard.py --fixtures-only
                   .venv/bin/python tools/pirzath-hand/guard.py --fixtures-only
                   .venv/bin/python tools/thuravark-carved/guard.py --fixtures-only

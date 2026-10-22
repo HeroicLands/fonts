@@ -27,10 +27,20 @@ below, written here and read neither from the font source nor from the mapping:
 - nothing is .notdef.
 
 Fixtures, written through the mapping and shaped too, cover the fillers, the
-numerals, the full stop and the empty keys. A
-geometry section asserts the stave design: 28 distinct staves, no horizontal
-edge in any stave, numerals taller than the staves, and every pair of staves
-visibly apart at reading size.
+numerals, the full stop and the empty keys.
+
+The imperial recension's fixtures are typed in the font's code points around a
+name written through the mapping: the three diphthong staves; a crowned name,
+whose every glyph takes its crowned form between the opened and the closed post;
+an open with no close, and a close with no open, which stay bare posts with the
+staves beside them unchanged; a crown longer than the font frames; the bound
+runes with ``ss01`` on, and the same text unchanged with it off. A rendered
+crowned name's rails are checked for a break.
+
+A geometry section asserts the stave design: 31 distinct staves and ten bound
+runes, each bound rune the two staves' branches on one stem by the rules of
+``tools/thuravark-carved/staves.py``, no horizontal edge in any of them,
+numerals taller than the staves, and every pair visibly apart at reading size.
 """
 
 import argparse
@@ -82,18 +92,38 @@ BRANCHES = {
     'ng': 'FTM F0M FMT FM0',
     'j': 'FMT',
     'w': 'BMT',
+    # The imperial recension's diphthong staves.
+    'ai': 'F0T FMT',
+    'au': 'F0T B0M',
+    'oi': 'BTM B0M FMT',
 }
 
-# The 28 staves, by the glyph name the font gives each.
-STAVES = ("a e i o u p b f v t d th dh k g kh gh s z h l r hl m n ng j w").split()
+# The bound runes of the recension: two staves on one stem, set by ss01.
+BOUND = {
+    'e_n': ('e', 'n'),
+    'e_l': ('e', 'l'),
+    'a_r': ('a', 'r'),
+    'a_l': ('a', 'l'),
+    'm_a': ('m', 'a'),
+    'z_a': ('z', 'a'),
+    'k_a': ('k', 'a'),
+    'u_r': ('u', 'r'),
+    'l_m': ('l', 'm'),
+    'l_th': ('l', 'th'),
+}
+
+# The 28 staves of the row, by the glyph name the font gives each, and the recension's three.
+ROW = ("a e i o u p b f v t d th dh k g kh gh s z h l r hl m n ng j w").split()
+RECENSION = "ai au oi".split()
+STAVES = ROW + RECENSION
 DIGRAPHS = ("th", "dh", "kh", "gh", "ng", "hl")
 VOWELS = "aeiou"
 ACUTE = {"á": "a", "é": "e", "í": "i", "ó": "o", "ú": "u"}
 NOTHING = {"space"}
 
 FIXTURES = [
-    # Every stave from its typed input.
-    *[(s, [s]) for s in STAVES if s not in ("j",)],
+    # Every stave of the row from its typed input.
+    *[(s, [s]) for s in ROW if s not in ("j",)],
     ("j", ["j"]),
     ("y", ["i"]),
     ("ya", ["j", "a"]),
@@ -140,10 +170,60 @@ FIXTURES = [
     ("ë", ["e"]),
 ]
 
+# The recension: the diphthong staves, the crown marks and the bound runes, typed in
+# the font's own code points around a roman text written through the mapping. Each
+# fixture is the text before, the roman text, the text after, the features, and the
+# glyphs expected.
+AI, AU, OI = "\U000F0128", "\U000F0129", "\U000F012A"
+OPEN, CLOSE = "\U000F0150", "\U000F0151"
+SS01 = {"ss01": True}
+LONGEST = 40  # the most glyphs a crown holds
+
+
+def crowned(names: list[str]) -> list[str]:
+    return ["crown.open.rail", *[n + ".crown" for n in names], "crown.close.rail"]
+
+
+RECENSION_FIXTURES = [
+    # The three staves, each its own character.
+    (AI, "", "", {}, ["ai"]), (AU, "", "", {}, ["au"]), (OI, "", "", {}, ["oi"]),
+    (AI + AU + OI, "", "", {}, ["ai", "au", "oi"]),
+    # A crowned name: every glyph between the marks takes its crowned form.
+    (OPEN, "Thauras", CLOSE, {}, crowned(["th", "a", "u", "r", "a", "s"])),
+    (OPEN, "Thiland Thauras", CLOSE, {}, crowned(["th", "i", "l", "a", "n", "d", "space", "th", "a", "u", "r", "a", "s"])),
+    (OPEN, "Árdavon", CLOSE, {}, crowned(["a", "a.acute", "r", "d", "a", "v", "o", "n"])),
+    (OPEN, "128", CLOSE, {}, crowned(["num.1", "num.2", "num.8"])),
+    (OPEN, "", CLOSE, {}, crowned([])),
+    (OPEN + AI, "", AU + CLOSE, {}, crowned(["ai", "au"])),
+    # An open with no close, and a close with no open: a bare post, the staves unchanged.
+    (OPEN, "Thauras", "", {}, ["crown.open", "th", "a", "u", "r", "a", "s"]),
+    ("", "Thauras", CLOSE, {}, ["th", "a", "u", "r", "a", "s", "crown.close"]),
+    # A character with no stave breaks the crown: both marks stay bare.
+    (OPEN, "a,b", CLOSE, {}, ["crown.open", "a", "notdef.box", "b", "crown.close"]),
+    # Two crowns in one run, and an open inside a crown, which opens the inner one.
+    (OPEN, "a", CLOSE + OPEN, {}, crowned(["a"]) + ["crown.open"]),
+    (OPEN + AI + OPEN, "", AU + CLOSE, {}, ["crown.open", "ai"] + crowned(["au"])),
+    # The longest crown the font frames, and one glyph more, which it leaves bare.
+    (OPEN + AI * (LONGEST - 1), "", CLOSE, {}, crowned(["ai"] * (LONGEST - 1))),
+    (OPEN + AI * LONGEST, "", CLOSE, {}, ["crown.open"] + ["ai"] * LONGEST + ["crown.close"]),
+    # The bound runes, with ss01 on; the same text with it off is the staves as written.
+    ("", "en el ar al ma za ka ur lm lth", "", SS01,
+     ["e_n", "space", "e_l", "space", "a_r", "space", "a_l", "space", "m_a", "space", "z_a", "space", "k_a", "space",
+      "u_r", "space", "l_m", "space", "l_th"]),
+    ("", "en el ar al ma za ka ur lm lth", "", {},
+     ["e", "n", "space", "e", "l", "space", "a", "r", "space", "a", "l", "space", "m", "a", "space", "z", "a", "space",
+      "k", "a", "space", "u", "r", "space", "l", "m", "space", "l", "th"]),
+    ("", "Marendas", "", SS01, ["m_a", "r", "e_n", "d", "a", "s"]),
+    ("", "Marendas", "", {}, ["m", "a", "r", "e", "n", "d", "a", "s"]),
+    ("", "Thelvaralon", "", SS01, ["th", "e_l", "v", "a_r", "a_l", "o", "n"]),
+    # A bound rune inside a crown takes its crowned form too.
+    (OPEN, "Marendas", CLOSE, SS01, crowned(["m_a", "r", "e_n", "d", "a", "s"])),
+]
+
 
 def fixture_texts() -> list[str]:
     """Every roman text the fixtures write through the mapping."""
-    return [text for text, _ in FIXTURES]
+    return [text for text, _ in FIXTURES] + [roman for _, roman, _, _, _ in RECENSION_FIXTURES if roman]
 
 
 def forms_of(front) -> list[str]:
@@ -237,12 +317,42 @@ def shaping(font: Path, forms: list[str], mapping: Mapping | None = None) -> lis
         got = r.glyph_names(text)
         if got != want:
             failures.append(f"{text!r}: shaped {got}, expected {want}")
+    for before, roman, after, features, want in RECENSION_FIXTURES:
+        text = before + (r.mapping.one(roman) if roman else "") + after
+        got = [r.order[g[0]] for g in r.renderer.shape(text, features).glyphs]
+        if got != want:
+            failures.append(f"{before!r} {roman!r} {after!r} {features}: shaped {got}, expected {want}")
+    failures += frame_problems(r.renderer, r.mapping)
     print(
         f"{font}: {len(forms)} forms shaped, {digraphs} digraph staves, {long_vowels} doubled "
-        f"vowels and {doubled} doubled consonants expected, {len(FIXTURES)} fixtures, "
+        f"vowels and {doubled} doubled consonants expected, {len(FIXTURES) + len(RECENSION_FIXTURES)} fixtures, "
         f"{len(failures)} failures"
     )
     return failures
+
+
+def frame_problems(r: Renderer, mapping: Mapping) -> list[str]:
+    """A rendered crowned name's rails run unbroken from post to post, and an open with
+    no close draws nothing but its post."""
+    problems = []
+    size = 48
+    name = mapping.one("Thiland Thauras")
+    for label, text, framed in (("crowned", OPEN + name + CLOSE, True), ("unclosed", OPEN + name, False)):
+        shaped = r.shape(text)
+        width = int(shaped.advance * size / r.upem) + 40
+        img = Image.new("RGB", (width, 100), "white")
+        r.draw(img, 20, 70, shaped, size, "black")
+        px = img.convert("L").load()
+        for rail in (838, -105):  # the middle of the top rail (817 to 859) and of the bottom (-126 to -84)
+            y = round(70 - rail * size / r.upem)
+            inked = [x for x in range(width) if px[x, y] < 128]
+            if framed:
+                gaps = [x for x in range(inked[0], inked[-1] + 1) if px[x, y] >= 128] if inked else []
+                if not inked or gaps:
+                    problems.append(f"{label}: the rail at {rail} is broken at {gaps[:5]}")
+            elif len(inked) > 2 * STEM_W * size / r.upem:
+                problems.append(f"{label}: ink along the rail line at {rail} beyond the post")
+    return problems
 
 
 # --- the design -------------------------------------------------------------
@@ -264,12 +374,31 @@ def edges(font: TTFont, name: str):
     return out
 
 
+def bound_branches(name: str) -> tuple[str, str | None]:
+    """A bound rune's branches, and what breaks the system's rule for binding, if anything."""
+    first, second = BOUND[name]
+    a, b = set(BRANCHES[first].split()), set(BRANCHES[second].split())
+    joined = " ".join(sorted(a | b))
+    if a & b:
+        return joined, f"{first} and {second} share a branch"
+    if len(a | b) > 4:
+        return joined, "more than four branches"
+    if any(sum(1 for br in a | b if br[1] == level) > 2 for level in "0MT"):
+        return joined, "three branches leave the stem at one level"
+    return joined, None
+
+
 def geometry(path: Path) -> list[str]:
     problems = []
     if list(BRANCHES) != STAVES:
-        problems.append(f"the staves are {list(BRANCHES)}, expected the 28 of the inventory")
+        problems.append(f"the staves are {list(BRANCHES)}, expected the 28 of the row and the recension's three")
     sets = {}
-    for name, spec in BRANCHES.items():
+    drawn = dict(BRANCHES)
+    for name in BOUND:
+        drawn[name], why = bound_branches(name)
+        if why:
+            problems.append(f"{name}: {why}")
+    for name, spec in drawn.items():
         key = frozenset(spec.split())
         if key in sets:
             problems.append(f"{name} and {sets[key]} have the same branches")
@@ -281,7 +410,7 @@ def geometry(path: Path) -> list[str]:
             problems.append(f"{name} has more than four branches")
     font = TTFont(str(path))
     # No stave runs along the line of text.
-    for name in STAVES:
+    for name in list(drawn):
         for e in edges(font, name):
             if e[1] == e[3]:
                 problems.append(f"{name}: a horizontal edge")
@@ -294,7 +423,7 @@ def geometry(path: Path) -> list[str]:
     r = Renderer(path)
     size = 36
     masks = {}
-    for name in STAVES + ["num.0"]:
+    for name in STAVES + list(BOUND) + ["num.0"]:
         masks[name] = ink(r, name, size)
     worst = []
     for a, b in itertools.combinations(masks, 2):
@@ -324,9 +453,10 @@ def stem_x(name: str) -> float:
     """The column of a glyph's stem, from the design's bearing and its longest back branch."""
     if name == "num.0":
         return BEARING + NUMERAL_LIMB_RUN
+    spec = BRANCHES[name] if name in BRANCHES else bound_branches(name)[0]
     back = [
         LONG_RUN if {b[1], b[2]} == {"T", "0"} else HALF_RUN
-        for b in BRANCHES.get(name, "").split()
+        for b in spec.split()
         if b[0] == "B"
     ]
     return BEARING + max(back + [STEM_W / 2])
@@ -337,7 +467,7 @@ def ink(r: Renderer, name: str, size: int):
     gid = r.order.index(name)
     shaped = Shaped([(gid, 0, 0, r.tt["hmtx"][name][0])], r.tt["hmtx"][name][0])
     img = Image.new("RGB", (160, 100), "white")
-    r.draw(img, 60 - stem_x(name) * size / r.upem, 80, shaped, size, "black")
+    r.draw(img, 70 - stem_x(name) * size / r.upem, 80, shaped, size, "black")
     return img.convert("L").point(lambda v: 1 if v < 128 else 0)
 
 

@@ -9,11 +9,12 @@ guide on one key or chord, the same in every script, and keyboards/sounds.json
 (written by tools/sounds.mjs from thalorna's mapping notes) gives what each sound is
 in each script. A layout's key types its sound's output, as many code points as the
 mapping writes; a key whose sound the mapping cannot spell, and a key that carries no
-sound, types nothing. No key types a roman letter, apart from the keys of markup
+sound, types nothing. The signs of the key map (``signs``), keys that are not sounds, type
+one code point in the layout of the script that writes them and nothing in the others. No key types a roman letter, apart from the keys of markup
 (``markup`` in the key map), which type themselves as plain ASCII in every layout.
 
 - ``keyboards/macos/HeroicLands.bundle``: HL Semaron, HL Pirzath, HL Thuravark and
-  HL Qalezu as macOS ``.keylayout`` files. Command and Control chords type the US
+  HL Qalezu and HL Veldikko as macOS ``.keylayout`` files. Command and Control chords type the US
   keys, so shortcuts keep working.
 - ``keyboards/windows/<script>.klc``: the Microsoft Keyboard Layout Creator source
   of each layout. Option is AltGr. Every output is a ligature entry of UTF-16 code
@@ -30,18 +31,24 @@ sound, types nothing. No key types a roman letter, apart from the keys of markup
   keyboard, every key's sound on each layer.
 - ``keyboards/index.md``: the cheatsheet, with the diagram and a table of every key,
   its sound and each script's output: glyphs, code points and character names.
-- ``keyboards/<script>.md``: one script's layout and table; ``zethu.md`` lists the
+- ``keyboards/<script>.md``, ``<script>.svg`` and ``<script>.png``: one script's
+  self-contained cheatsheet: how to type in plain words, a printable keyboard picture
+  of what every key types on the four layers, drawn in the script's own glyphs, and a
+  table of key, glyph, code points and character name. Every entry of SCRIPTS gets one,
+  so a script added to SCRIPTS is covered by regenerating. ``zethu.md`` lists the
   sign ids.
 """
 
 import html
 import json
 import plistlib
+import re
 import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import keyboard_keys as kk  # noqa: E402
+import resvg_py  # noqa: E402
 from charts import rasterize  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -56,11 +63,18 @@ SCRIPTS = [
      "layout": "HL Semaron", "klc": "hlsemaro", "id": -26101},
     {"key": "pirzath", "title": "Pirzath", "faces": ["Pirzath Carved", "Pirzath Hand", "Pirzath Hand Lifted"],
      "chart": "pirzath", "layout": "HL Pirzath", "klc": "hlpirzat", "id": -26102},
-    {"key": "thuravark", "title": "Thuravark", "faces": ["Thuravark Carved"], "chart": "thuravark-carved",
+    {"key": "thuravark", "title": "Thuravark", "faces": ["Thuravark Carved", "Thuravark Carved Bound"], "chart": "thuravark-carved",
      "layout": "HL Thuravark", "klc": "hlthurav", "id": -26103},
     {"key": "qalezu", "title": "Qalezu", "faces": ["Qalezu Hand"], "chart": "qalezu-hand",
      "layout": "HL Qalezu", "klc": "hlqalezu", "id": -26104},
+    {"key": "veldikko", "title": "Veldikko", "faces": ["Veldikko"], "chart": "veldikko",
+     "layout": "HL Veldikko", "klc": "hlveldik", "id": -26105},
+    {"key": "vedyakshara", "title": "Vedyakshara", "faces": ["Vedyakshara Classical"], "chart": "vedyakshara-classical",
+     "layout": "HL Vedyakshara", "klc": "hlvedyak", "id": -26106},
+    {"key": "helonika", "title": "Helónika", "faces": ["Helonika Book"], "chart": "helonika-book",
+     "layout": "HL Helónika", "klc": "hlhelonk", "id": -26107},
 ]  # fmt: skip
+LAYOUTS = ", ".join(s["layout"] for s in SCRIPTS[:-1]) + " and " + SCRIPTS[-1]["layout"]
 ZETHU = {"key": "zethu", "title": "Zethu", "faces": ["Khelathi Zethu Glyphs"]}
 PLATFORMS = ["macos", "windows", "linux", "emacs"]
 PLATFORM_TITLES = {"macos": "macOS", "windows": "Windows", "linux": "Linux", "emacs": "Emacs"}
@@ -109,11 +123,17 @@ def outputs(script: str, keymap: list[dict], sounds: list[dict]) -> dict[str, li
     return out
 
 
+def sign_keys(script: str) -> dict[str, list[int]]:
+    """key -> the code point it types, for the signs of a script."""
+    return {s["key"]: points(s["codepoint"]) for s in kk.signs() if s["script"] == script}
+
+
 def platform_keys(script: str, platform: str, keymap: list[dict], sounds: list[dict]) -> dict[str, list[int]]:
     """key -> the code points it types on a platform: the sounds the platform can carry,
-    and the keys of markup, which type themselves."""
+    the signs of the script, and the keys of markup, which type themselves."""
     typed = {k: cps for k, cps in outputs(script, keymap, sounds).items() if carries(platform, cps)}
-    return {**typed, **{k: [ord(c)] for k, c in kk.markup().items()}}
+    signs = {k: cps for k, cps in sign_keys(script).items() if carries(platform, cps)}
+    return {**typed, **signs, **{k: [ord(c)] for k, c in kk.markup().items()}}
 
 
 def code_list(cps: list[int]) -> str:
@@ -193,6 +213,16 @@ def info_plist() -> bytes:
     return plistlib.dumps(plist, sort_keys=False)
 
 
+def layout_file(script: dict) -> str:
+    """The macOS layout's file name: the layout's name in ASCII, with its accents left
+    off, since a non-ASCII file name breaks in zip tools and between filesystems that
+    normalise it differently. The name inside the file keeps its accents."""
+    import unicodedata
+
+    plain = unicodedata.normalize("NFKD", script["layout"]).encode("ascii", "ignore").decode("ascii")
+    return f"{plain}.keylayout"
+
+
 def write_macos(layouts: dict[str, dict]) -> list[Path]:
     resources = OUT / "macos" / BUNDLE / "Contents" / "Resources"
     resources.mkdir(parents=True, exist_ok=True)
@@ -200,7 +230,7 @@ def write_macos(layouts: dict[str, dict]) -> list[Path]:
     path.write_bytes(info_plist())
     written = [path]
     for script in SCRIPTS:
-        path = resources / f"{script['layout']}.keylayout"
+        path = resources / layout_file(script)
         path.write_text(keylayout(script, layouts[script["key"]]["macos"]), encoding="utf-8")
         written.append(path)
     return written
@@ -437,6 +467,7 @@ def emacs_method(script: dict, keys: dict[str, list[int]]) -> str:
         "does not write types nothing. The characters of markup type themselves, and a",
         f"backslash is {kk.OPTION_PREFIX * 2}. Option has no Emacs key: Option+x is {kk.OPTION_PREFIX} and",
         "then the key that x types, so Option+t (th) is \\t and Option+Shift+t (Th) is \\T.",
+        *[f"{sign['sign'].capitalize()} is {kk.quail_sequence(sign['key'])}." for sign in kk.signs() if sign["script"] == script["key"]],
         "The cheatsheet keyboards/index.md lists every key.",
     ]
     rules = "\n".join(f" ({lisp(seq)} {translation(cps)})" for seq, cps in quail_rules(keys))
@@ -481,8 +512,11 @@ LEGEND_H = 60
 SANS = "Helvetica, Arial, sans-serif"
 INK, GREY, OPTION, KEYFACE, KEYEDGE = "#161412", "#8a847b", "#1f5fa8", "#ffffff", "#7a756d"
 MUTED = "#b3ada3"  # markup, which types itself
+SIGN = "#9a4a14"  # a sign, which only one layout types
 SHORT = {"catch": "'", "stop": ".", "pause": ",", "open quote": "“", "close quote": "”",
          "ten": "10", "eleven": "11", "twelve": "12", "thirteen": "13", "fourteen": "14", "fifteen": "15"}  # fmt: skip
+
+SIGN_SHORT = {"carrier": "carr.", "long sign": "long", "emphasis": "brow", "register-mark": "reg."}
 
 # The ANSI rows: (base key or a label, width in units).
 ROWS = [
@@ -507,15 +541,16 @@ def text(x: float, y: float, s: str, size: int, fill: str, anchor: str = "start"
 
 def diagram_svg(keymap: list[dict]) -> str:
     on = {e["key"]: e for e in keymap}
+    signs = {s["key"]: s for s in kk.signs()}
     markup = kk.markup()
     width = int(PAD * 2 + 15 * UNIT)
     height = int(PAD * 2 + TITLE_H + 5 * UNIT + LEGEND_H)
     o = [
         f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}">',
-        "<title>Sound keys of HL Semaron, HL Pirzath, HL Thuravark and HL Qalezu</title>",
+        f"<title>Sound keys of {LAYOUTS}</title>",
         f'<rect width="{width}" height="{height}" fill="#ffffff"/>',
         text(PAD, PAD + 24, "Sound keys", 24, INK),
-        text(PAD, PAD + 50, "Each key types the same sound in HL Semaron, HL Pirzath, HL Thuravark and HL Qalezu, "
+        text(PAD, PAD + 50, f"Each key types the same sound in {LAYOUTS}, "
              "in that script's own letters.", 15, GREY),
     ]  # fmt: skip
     y = PAD + TITLE_H
@@ -536,6 +571,8 @@ def diagram_svg(keymap: list[dict]) -> str:
                     key = (layer + "+" if layer else "") + name
                     if key in on:
                         o.append(text(cx, cy, label(on[key]), 18, fill, anchor, "bold"))
+                    elif key in signs:
+                        o.append(text(cx, cy, SIGN_SHORT.get(signs[key]["sign"], signs[key]["sign"]), 13, SIGN, anchor, "bold"))
                     elif key in markup:
                         o.append(text(cx - 4 if anchor == "start" else cx, cy, "markup", 9, MUTED, anchor))
             elif name:
@@ -551,6 +588,7 @@ def diagram_svg(keymap: list[dict]) -> str:
         o.append(text(lx, y + 24, f"{a} · {b}", 14, fill))
         lx += 15 * UNIT / 2 - 40
     o.append(text(PAD, y + 46, "markup: the key types itself, as plain ASCII, in every layout", 14, MUTED))
+    o.append(text(PAD + 8 * UNIT, y + 46, "sign: only the layout of its script types it (HL Veldikko)", 14, SIGN))
     o.append("</svg>")
     return "\n".join(o) + "\n"
 
@@ -585,7 +623,7 @@ def glyph_cells(script: dict, cps: list[int], names: dict[int, str]) -> tuple[st
 
 
 def none_cell(reason: str) -> str:
-    return "none: the mapping " + ("has no row for it" if reason == "no row" else "writes it as nothing")
+    return "nothing: this script has no character for the sound"
 
 
 def gaps(keymap: list[dict], sounds: list[dict]) -> list[tuple[dict, dict, str, str]]:
@@ -623,16 +661,33 @@ def markup_table() -> list[str]:
     return lines
 
 
+def sign_table(names: dict, only: str | None = None) -> list[str]:
+    """The signs of the key map, or of one script, with what each types."""
+    lines = ["| Key | Emacs | Sign | Layout | Glyph | Code point | Name |", "| --- | --- | --- | --- | --- | --- | --- |"]
+    for sign in kk.signs():
+        if only is not None and sign["script"] != only:
+            continue
+        script = next(s for s in SCRIPTS if s["key"] == sign["script"])
+        cps = points(sign["codepoint"])
+        glyph, code, name = glyph_cells(script, cps, names[script["key"]])
+        lines.append(
+            f"| {md_code(sign['key'])} | {md_code(kk.quail_sequence(sign['key']))} | {sign['sign']} | {script['layout']} | {glyph} | {code} | {name} |"
+        )
+    return lines
+
+
 def index_sheet(keymap: list[dict], sounds: list[dict], principles: list[str], names: dict) -> str:
     by_sound = {s["sound"]: s for s in sounds}
     lines = [
         "# Sound keys",
         "",
-        "HL Semaron, HL Pirzath, HL Thuravark and HL Qalezu type by sound. Every sound of the spelling guide, "
-        "_Pronouncing Thalorna_, sits on one key or chord, the same in every script, and the key types that "
-        "script's own characters for the sound, as many as its mapping note spells it with. A key whose sound "
+        f"{LAYOUTS} type by sound. Each sound sits on one key or chord, the same in every script, and the key "
+        "types that script's own characters for the sound, as many as the script spells it with. A key whose sound "
         "a script does not write types nothing in that script, and no key types a roman letter, apart from the keys "
-        "of markup, which type themselves. The README's \"Typing in the fonts\" says how to install the layouts.",
+        "of markup, which type themselves. Each script also has a sheet of its own, linked below, with a "
+        "printable keyboard picture. [The README](../README.md#installing-a-keyboard-layout) says how to install the layouts.",
+        "",
+        *[f"- [{s['title']}]({s['key']}.md): {s['layout']}, for {', '.join(s['faces'])}." for s in SCRIPTS],
         "",
         "![The sound keys on an ANSI keyboard](keyboard.png)",
         "",
@@ -642,11 +697,18 @@ def index_sheet(keymap: list[dict], sounds: list[dict], principles: list[str], n
         "",
         "## Markup",
         "",
-        "The characters of Markdown and of a span, `[text]{font=…}`, type themselves, as plain ASCII, in every "
-        "layout on every platform, so a note's markup is written without switching layouts. In Emacs a backslash is "
+        "The characters of Markdown and similar markup type themselves, as plain ASCII, in every "
+        "layout on every platform, so formatting is written without switching layouts. In Emacs a backslash is "
         "typed twice, because a single backslash is the Option prefix.",
         "",
         *markup_table(),
+        "",
+        "## Signs",
+        "",
+        "A sign is not a sound. It sits on a key of its own, types in the one layout whose script writes it, and "
+        "types nothing in the others, as the quote keys do outside Pirzath.",
+        "",
+        *sign_table(names),
         "",
         "## Keys a platform cannot carry",
         "",
@@ -657,7 +719,7 @@ def index_sheet(keymap: list[dict], sounds: list[dict], principles: list[str], n
         "## Keys",
         "",
         "Emacs types Option+x as `\\` and then the character x types. Glyphs and code points are in typing order. "
-        "Character names come from `tools/names/`, and a script without a name table there has none yet.",
+        "A script without character names shows none.",
         "",
     ]
     head = ["Key", "Emacs", "Sound"]
@@ -676,28 +738,170 @@ def index_sheet(keymap: list[dict], sounds: list[dict], principles: list[str], n
     return "\n".join(lines) + "\n"
 
 
+def signs_section(script: dict, names: dict) -> list[str]:
+    """The signs a script's layout types beside its sounds, or nothing where it has none."""
+    if not sign_keys(script["key"]):
+        return []
+    return ["## Signs", "", f"These keys type no sound. They type in {script['layout']} alone.", "", *sign_table(names, script["key"]), ""]
+
+
+# -- A script's own cheatsheet ---------------------------------------------------------------
+
+CHEAT_UNIT = 112
+CHEAT_TITLE_H = 96
+CHEAT_LEGEND_H = 92
+SLOT = 40  # the square a glyph is drawn in, within a quarter of a key
+GLYPH_BOX = 64  # the side of a chart glyph image
+LAYER_CORNERS = {"": (0, 1), "shift": (0, 0), "option": (1, 1), "option+shift": (1, 0)}  # (right?, bottom?)
+GLYPH_BODY = re.compile(r'<g fill="[^"]*">(.*)</g>', re.S)
+
+
+def friendly(key: str) -> str:
+    """A key as it is pressed: ``option+shift+t`` is Option+Shift+T."""
+    return "+".join(part.capitalize() if len(part) > 1 else part.upper() for part in key.split("+"))
+
+
+def glyph_body(script: dict, cp: int) -> str:
+    """The outline of a character, taken from its chart image, which draws it from the font."""
+    path = ROOT / "charts" / script["chart"] / "glyphs" / f"U+{cp:04X}.svg"
+    assert path.exists(), f"{script['key']}: U+{cp:04X} has no glyph image at {path.relative_to(ROOT)}"
+    match = GLYPH_BODY.search(path.read_text(encoding="utf-8"))
+    assert match, f"{path.relative_to(ROOT)}: no outline"
+    return match.group(1)
+
+
+def rtl(script: dict, faces: dict) -> bool:
+    return faces[script["faces"][0]]["direction"] == "rtl"
+
+
+def sound_labels(keymap: list[dict], signs: list[dict]) -> dict[str, str]:
+    labels = {e["key"]: label(e) for e in keymap}
+    labels.update({s["key"]: s["sign"] for s in signs})
+    return labels
+
+
+def cheat_svg(script: dict, keys: dict[str, list[int]], keymap: list[dict], faces: dict) -> str:
+    """The printable keyboard of a script: what each key types on the four layers, in the script's glyphs."""
+    unit, markup = CHEAT_UNIT, kk.markup()
+    labels = sound_labels(keymap, [s for s in kk.signs() if s["script"] == script["key"]])
+    backwards = rtl(script, faces)
+    width = int(PAD * 2 + 15 * unit)
+    height = int(PAD * 2 + CHEAT_TITLE_H + 5 * unit + CHEAT_LEGEND_H)
+    o = [
+        f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}">',
+        f"<title>{script['layout']} keyboard: {', '.join(script['faces'])}</title>",
+        f'<rect width="{width}" height="{height}" fill="#ffffff"/>',
+        text(PAD, PAD + 30, f"{script['layout']}", 30, INK, weight="bold"),
+        text(PAD, PAD + 60, f"Types {', '.join(script['faces'])} by sound, on an ANSI (US) keyboard. "
+             "Each key shows what it types plain, with Shift, with Option (AltGr) and with both.", 16, GREY),
+    ]  # fmt: skip
+    y = PAD + CHEAT_TITLE_H
+    for row in ROWS:
+        x = PAD
+        for name, w in row:
+            kw, kh = w * unit - GAP, unit - GAP
+            o.append(f'<rect x="{x:.1f}" y="{y:.1f}" width="{kw:.1f}" height="{kh:.1f}" rx="8" fill="{KEYFACE}" stroke="{KEYEDGE}" stroke-width="1.2"/>')
+            if name in kk.BASE_KEYS and len(name) == 1:
+                o.append(text(x + kw / 2, y + kh / 2 + 4, name, 11, MUTED, "middle"))
+                for layer, (right, bottom) in LAYER_CORNERS.items():
+                    key = (layer + "+" if layer else "") + name
+                    qx = x + (kw / 2 if right else 0)
+                    qy = y + (kh / 2 if bottom else 0)
+                    qw, qh = kw / 2, kh / 2
+                    colour = OPTION if right else INK
+                    if key in markup:
+                        o.append(f'<g data-key="{html.escape(key)}">' + text(qx + qw / 2, qy + qh / 2 + 7, markup[key], 20, MUTED, "middle") + "</g>")
+                    elif key in keys:
+                        cps = keys[key]
+                        each = min(SLOT, (qw - 8) / len(cps))
+                        scale = each / GLYPH_BOX
+                        left = qx + (qw - each * len(cps)) / 2
+                        o.append(f'<g data-key="{html.escape(key)}">')
+                        for i, cp in enumerate(cps):
+                            slot = len(cps) - 1 - i if backwards else i
+                            gx, gy = left + slot * each, qy + 3
+                            o.append(f'<g fill="{colour}" transform="translate({gx:.1f} {gy:.1f}) scale({scale:.4f})">{glyph_body(script, cp)}</g>')
+                        if key in labels:
+                            o.append(text(qx + qw / 2, qy + qh - 3, labels[key], 10, GREY, "middle"))
+                        o.append("</g>")
+            elif name:
+                o.append(text(x + 9, y + kh - 11, name, 12, GREY))
+            x += w * unit
+        y += unit
+    o.append(text(PAD, y + 28, "Bottom left: the key.  Top left: Shift + the key.", 15, INK))
+    o.append(text(PAD, y + 50, "Bottom right: Option + the key (AltGr on Windows and Linux).  Top right: Option + Shift + the key.", 15, OPTION))
+    o.append(text(PAD, y + 72, "Grey characters type themselves.  A small grey word under a glyph is the sound the key stands for.", 15, GREY))
+    o.append("</svg>")
+    return "\n".join(o) + "\n"
+
+
+def write_cheat_picture(script: dict, keys: dict[str, list[int]], keymap: list[dict], faces: dict) -> list[Path]:
+    svg = OUT / f"{script['key']}.svg"
+    svg.write_text(cheat_svg(script, keys, keymap, faces), encoding="utf-8")
+    png = svg.with_suffix(".png")
+    png.write_bytes(bytes(resvg_py.svg_to_bytes(svg_path=str(svg), zoom=1)))
+    return [svg, png]
+
+
+def markup_rows() -> list[str]:
+    lines = ["| Key | Types |", "| --- | --- |"]
+    lines += [f"| {md_code(key)} | {md_code(char)} |" for key, char in kk.markup().items()]
+    return lines
+
+
 def script_sheet(script: dict, keymap: list[dict], sounds: list[dict], names: dict) -> str:
     by_sound = {s["sound"]: s for s in sounds}
-    k = script["key"]
+    k, layout, title = script["key"], script["layout"], script["title"]
+    faces = " and ".join(script["faces"]) if len(script["faces"]) < 3 else ", ".join(script["faces"][:-1]) + " and " + script["faces"][-1]
+    first = next(e for e in keymap if e["key"] == "t")
     lines = [
-        f"# {script['title']} keyboard",
+        f"# {layout} cheatsheet",
         "",
-        f"{script['layout']} types {', '.join(script['faces'])} by sound. The keys are the shared sound keys of "
-        "[the cheatsheet](index.md), which draws them on a keyboard and gives their principles; this sheet "
-        f"lists what each key types in {script['title']}. The keys of markup, listed there, type themselves.",
+        f"{layout} types {faces} by sound. It is a US keyboard that writes the {title} script: the key for a sound "
+        f"types that sound's {title} character, so `t` types the script's t, Option+T types its th, and Shift makes a "
+        "capital. You type the sounds of a word one after another, as you would in English.",
         "",
-        f"- macOS layout: `keyboards/macos/{BUNDLE}`, input source **{script['layout']}**.",
-        f"- Windows layout: `keyboards/windows/{k}.klc`, the Microsoft Keyboard Layout Creator source of **{script['layout']}**.",
-        f"- Linux layout: `keyboards/linux/hl_{k}`, the XKB symbols of **{script['layout']}**.",
-        f"- Emacs input method: `keyboards/emacs/heroiclands-{k}.el`, named `heroiclands-{k}`.",
+        f"![{layout} on an ANSI keyboard]({k}.png)",
         "",
+        f"A printable copy is [{k}.svg]({k}.svg) and [{k}.png]({k}.png).",
+        "",
+        "## Reading the keys",
+        "",
+        "- `t` is the key alone. `shift+t` is Shift and the key.",
+        "- `option+t` is Option and the key on a Mac, and AltGr and the key on Windows and Linux. AltGr is the right Alt key "
+        "(on a keyboard without one, hold Ctrl and Alt together). `option+shift+t` adds Shift.",
+        "- The Sound column is the roman spelling of the sound a key stands for. A key marked _nothing_ types nothing in this script.",
+        "- Character names and code points identify each character exactly, for a program or a character viewer.",
+        f"- The Emacs column is what to type in the Emacs input method `heroiclands-{k}`, where Option is a backslash.",
+        "",
+        "## Installing the layout",
+        "",
+        f"The layout is a file per platform, named below. [The README](../README.md#installing-a-keyboard-layout) walks through installing each.",
+        "",
+        f"- macOS: `keyboards/macos/{BUNDLE}`, input source **{layout}**.",
+        f"- Windows: `keyboards/windows/{k}.klc`, the Microsoft Keyboard Layout Creator source of **{layout}**.",
+        f"- Linux: `keyboards/linux/hl_{k}`, the XKB symbols of **{layout}**.",
+        f"- Emacs: `keyboards/emacs/heroiclands-{k}.el`, the input method `heroiclands-{k}`.",
+        "",
+        *signs_section(script, names),
         "## Keys a platform cannot carry",
+        "",
+        "A Windows key holds at most four UTF-16 code units and a Linux key one character, so a sound this script spells with "
+        "more types nothing there. macOS and Emacs carry every key.",
         "",
         *gap_table([g for g in gaps(keymap, sounds) if g[1] is script]),
         "",
+        "## Markup",
+        "",
+        "These keys type themselves, as plain ASCII, in every layout, so Markdown and similar markup are written without switching layouts.",
+        "",
+        *markup_rows(),
+        "",
         "## Keys",
         "",
-        "| Key | Emacs | Sound | Glyphs | Code points | Names |",
+        f"Every sound key, in keyboard order. Example: `{first['key']}` types the sound `{first['sound']}`.",
+        "",
+        "| Key | Glyphs | Code points | Names | Sound | Emacs |",
         "| --- | --- | --- | --- | --- | --- |",
     ]
     for entry in keymap:
@@ -706,25 +910,36 @@ def script_sheet(script: dict, keymap: list[dict], sounds: list[dict], names: di
             cells = glyph_cells(script, points(result["codepoints"]), names[k])
         else:
             cells = ("", none_cell(result["unmapped"]), "")
-        lines.append(f"| {md_code(entry['key'])} | {md_code(kk.quail_sequence(entry['key']))} | {md_code(entry['sound'])} | " + " | ".join(cells) + " |")
+        lines.append(f"| {md_code(entry['key'])} | {cells[0]} | {cells[1]} | {cells[2]} | {md_code(entry['sound'])} | {md_code(kk.quail_sequence(entry['key']))} |")
     return "\n".join(lines) + "\n"
 
 
 def zethu_sheet(table: list[dict]) -> str:
+    chart = "khelathi-zethu-glyphs"
     lines = [
-        "# Zethu keyboard",
+        "# Khelathi Zethu Glyphs cheatsheet",
         "",
-        "Faces: Khelathi Zethu Glyphs. The signs far outnumber the keys of a keyboard, so there is no macOS, "
-        "Windows or Linux layout.",
+        "Khelathi Zethu Glyphs writes with pictorial signs, far more of them than a keyboard has keys, so it has no "
+        "keyboard layout for macOS, Windows or Linux. Insert a sign by its code point, or pick it from the "
+        f"[glyph charts](../charts/{chart}.md):",
         "",
-        "- Emacs input method: `keyboards/emacs/heroiclands-zethu.el`, named `heroiclands-zethu`, typed by sign id, such as `08-001`.",
+        "- **Word on Windows:** type the code point's hex digits, such as `1EA41`, and press Alt+X.",
+        "- **macOS:** open the Character Viewer (Edit, Emoji & Symbols), search the code point and double-click the sign.",
+        "- **Linux:** press Ctrl+Shift+U, type the hex digits and press Enter.",
+        "- **Emacs:** the input method `heroiclands-zethu` (`keyboards/emacs/heroiclands-zethu.el`) inserts a sign when you type its sign id, such as `08-001`.",
         "",
-        "## Keys",
+        "## Signs",
         "",
-        "| Sign id | Code point | Glyph |",
-        "| --- | --- | --- |",
+        "| Sign id | Glyph | Code point | Name |",
+        "| --- | --- | --- | --- |",
     ]
-    lines += [f"| {md_code(r['key'])} | {r['codepoint']} | {r['glyph']} |" for r in table if "key" in r]
+    for r in table:
+        if "key" not in r:
+            continue
+        cp = int(r["codepoint"][2:], 16)
+        path = ROOT / "charts" / chart / "glyphs" / f"U+{cp:04X}.svg"
+        image = f"![{r['codepoint']}](../charts/{chart}/glyphs/U+{cp:04X}.svg)" if path.exists() else ""
+        lines.append(f"| {md_code(r['key'])} | {image} | {r['codepoint']} | {r.get('name', '')} |")
     return "\n".join(lines) + "\n"
 
 
@@ -754,6 +969,8 @@ def main() -> None:
     faces = {f["name"]: f for f in manifest()["families"]}
     layouts = layouts_of(keymap, sounds)
     written = write_macos(layouts) + write_windows(layouts) + write_linux(layouts)
+    for script in SCRIPTS:
+        written += write_cheat_picture(script, layouts[script["key"]]["macos"], keymap, faces)
     written += write_emacs(layouts, faces[ZETHU["faces"][0]]["codepoints"])
     written += write_diagram(keymap) + write_cheatsheets(keymap, sounds, data["principles"], faces)
     for path in written:

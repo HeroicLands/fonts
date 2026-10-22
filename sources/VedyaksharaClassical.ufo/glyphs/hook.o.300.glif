@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="hook.o.300" format="2">
+  <outline>
+    <contour>
+      <point x="332" y="-66" type="line"/>
+      <point x="326" y="-75"/>
+      <point x="324" y="-88"/>
+      <point x="322" y="-98" type="curve"/>
+      <point x="319" y="-107"/>
+      <point x="316" y="-116"/>
+      <point x="315" y="-126" type="curve"/>
+      <point x="314" y="-131"/>
+      <point x="316" y="-138"/>
+      <point x="314" y="-143" type="curve"/>
+      <point x="310" y="-153"/>
+      <point x="301" y="-163"/>
+      <point x="294" y="-169" type="curve"/>
+      <point x="267" y="-193"/>
+      <point x="232" y="-196"/>
+      <point x="198" y="-195" type="curve"/>
+      <point x="123" y="-193"/>
+      <point x="63" y="-170"/>
+      <point x="34" y="-95" type="curve"/>
+      <point x="-15" y="37"/>
+      <point x="74" y="219"/>
+      <point x="17" y="330" type="curve"/>
+      <point x="-1" y="334" type="line"/>
+      <point x="-6" y="325"/>
+      <point x="-18" y="282"/>
+      <point x="-18" y="272" type="curve"/>
+      <point x="-18" y="-42" type="line"/>
+      <point x="-18" y="-103"/>
+      <point x="-8" y="-172"/>
+      <point x="41" y="-215" type="curve"/>
+      <point x="93" y="-262"/>
+      <point x="236" y="-287"/>
+      <point x="293" y="-240" type="curve"/>
+      <point x="320" y="-217"/>
+      <point x="329" y="-183"/>
+      <point x="338" y="-149" type="curve"/>
+      <point x="345" y="-124"/>
+      <point x="351" y="-98"/>
+      <point x="350" y="-71" type="curve"/>
+    </contour>
+  </outline>
+</glyph>

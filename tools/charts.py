@@ -45,9 +45,12 @@ OUT = ROOT / "charts"
 FOLDERS = {
     **LTR_FOLDERS,
     "hl-pirzath-hand-lifted": "pirzath-hand-lifted",
+    "hl-thuravark-carved-bound": "thuravark-carved-bound",
     "hl-qalezu-hand": "qalezu-hand",
     "hl-khelathi-zethu-glyphs": "khelathi-zethu-glyphs",
     "hl-veldikko": "veldikko",
+    "hl-vedyakshara-classical": "vedyakshara-classical",
+    "hl-helonika-book": "helonika-book",
 }
 
 COLUMNS = 8

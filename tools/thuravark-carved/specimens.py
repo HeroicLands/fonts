@@ -6,9 +6,10 @@
                                                 [--pirzath fonts/PirzathCarved-Regular.ttf]
                                                 [--out specimens/thuravark-carved]
 
-Four sheets: the glyph chart with each stave's typed input and sound, Nordmal
-text set continuously over its Latin, the numerals with sample numbers, and
-each stave beside the Pirzath letter it descends from.
+Five sheets: the glyph chart with each stave's typed input and sound, Nordmal
+text set continuously over its Latin, the numerals with sample numbers, each
+stave beside the Pirzath letter it descends from, and the imperial recension:
+its three staves, crowned names, and the bound runes beside the staves they bind.
 """
 
 import argparse
@@ -58,7 +59,21 @@ STAVE_TABLE = [
     ('ng', 'ng', 'ng', 'ng'),
     ('j', 'y (glide)', 'j, y before a vowel', 'y'),
     ('w', 'w', 'w', 'w'),
+    ('ai', 'ai', 'ai (Tharavarkon)', 'ai'),
+    ('au', 'au', 'au (Tharavarkon)', 'au'),
+    ('oi', 'oi', 'oi (Tharavarkon)', 'oi'),
 ]
+
+# The recension's characters have no row in the Thuravark mapping, so the sheets type
+# them in the font's own code points.
+RAW = {"ai": "\U000F0128", "au": "\U000F0129", "oi": "\U000F012A"}
+OPEN, CLOSE = "\U000F0150", "\U000F0151"
+SS01 = {"ss01": True}
+BOUND = [("en", "e_n"), ("el", "e_l"), ("ar", "a_r"), ("al", "a_l"), ("ma", "m_a"),
+         ("za", "z_a"), ("ka", "k_a"), ("ur", "u_r"), ("lm", "l_m"), ("lth", "l_th")]
+CROWNED = [("Thauras", "a god: the Keeper"), ("Marendas", "a god: the Keeper of the Book"),
+           ("Thiland Thauras", "a name of two words"), ("Árdavon", "a long vowel inside the crown")]
+DEDICATION = "Thelvaralon Marendas kalmethar"
 
 # The fillers are staves Nordmal does not write.
 FILLERS = {"dh", "kh", "gh", "z", "w"}
@@ -95,7 +110,7 @@ def page(width, height):
 
 
 def centred(r, img, cx, baseline, text, size, color=INK, first_only=False):
-    shaped = r.shape(text)
+    shaped = r.renderer.shape(RAW[text]) if text in RAW else r.shape(text)
     if first_only:
         shaped.glyphs = shaped.glyphs[:1]
         shaped.advance = shaped.glyphs[0][3]
@@ -115,7 +130,7 @@ def glyph_chart(r: Renderer, out: Path):
     rows = (len(cells) + len(extras) + cols - 1) // cols
     margin = 40
     img, d = page(margin * 2 + cols * cell_w, margin * 2 + rows * cell_h + 60)
-    d.text((margin, 18), "Thuravark Carved — the 28 staves, by the Latin that types each",
+    d.text((margin, 18), "Thuravark Carved — the 28 staves of the row and the recension's three, by the Latin that types each",
            fill=GREY, font=label_font(22))
     lab = label_font(19)
     small = label_font(16)
@@ -217,6 +232,63 @@ def descent(r: Renderer, p: Renderer, out: Path):
     img.save(out)
 
 
+def recension(r: Renderer, out: Path):
+    """The imperial recension: its three staves, crowned names, and the bound runes."""
+    lab, head = label_font(19), label_font(22)
+    size = 96
+    img, d = page(1700, 1500)
+    d.text((40, 18), "The imperial recension: three staves, crowned names, and bound runes (ss01)", fill=GREY, font=head)
+    # The three staves, each beside the two staves it joins.
+    y = 90
+    d.text((60, y), "The diphthong staves, each beside the two vowel staves written apart", fill=GREY, font=lab)
+    x = 60
+    for name, pair in (("ai", "ai"), ("au", "au"), ("oi", "oi")):
+        baseline = y + 40 + int(size * 0.98)
+        w = r.renderer.text(img, x, baseline, RAW[name], size, INK)
+        d.text((x, baseline + 14), name, fill=INK, font=lab)
+        x += max(w, 60) + 30
+        w = r.text(img, x, baseline, pair, size, GREY)
+        d.text((x, baseline + 14), f"{pair[0]} {pair[1]}", fill=GREY, font=lab)
+        x += max(w, 60) + 120
+    # Crowned names.
+    y += 230
+    d.text((60, y), "Crowned names: the marks typed around the name, the frame cut by the font", fill=GREY, font=lab)
+    y += 40
+    for roman, note in CROWNED:
+        baseline = y + 40 + int(size * 0.98)
+        text = OPEN + r.mapping.one(roman) + CLOSE
+        w = r.renderer.text(img, 60, baseline, text, size, INK)
+        d.text((60, baseline + 30), f"{roman}   {note}", fill=INK, font=lab)
+        y += int(size * 1.5) + 40
+    # An open with no close.
+    baseline = y + 40 + int(size * 0.98)
+    r.renderer.text(img, 60, baseline, OPEN + r.mapping.one("Thauras"), size, INK)
+    d.text((60, baseline + 30), "Thauras with the open mark and no close: a bare post, no frame", fill=GREY, font=lab)
+    y += int(size * 1.5) + 60
+    # The bound runes.
+    d.text((60, y), "The bound runes: each pair of staves, then the pair on one stem", fill=GREY, font=lab)
+    y += 40
+    x = 60
+    for i, (pair, _) in enumerate(BOUND):
+        baseline = y + 40 + int(size * 0.98)
+        w1 = r.text(img, x, baseline, pair, size, GREY)
+        w2 = r.text(img, x + w1 + 24, baseline, pair, size, INK, SS01)
+        d.text((x, baseline + 14), pair, fill=INK, font=lab)
+        x += w1 + w2 + 90
+        if i == 4:
+            x = 60
+            y += int(size * 1.5) + 40
+    y += int(size * 1.5) + 60
+    d.text((60, y), "A dedication set plain, then with ss01, which lets it fit a shorter span", fill=GREY, font=lab)
+    y += 40
+    for features in ({}, SS01):
+        baseline = y + 40 + int(size * 0.98)
+        r.text(img, 60, baseline, DEDICATION, size, INK, features)
+        d.text((60, baseline + 14), DEDICATION + ("   ss01" if features else ""), fill=GREY, font=lab)
+        y += int(size * 1.5) + 30
+    img.save(out)
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     ap.add_argument("--font", default=str(ROOT / "fonts" / "ThuravarkCarved-Regular.ttf"))
@@ -233,6 +305,7 @@ def main():
     texts(r, out / "02-nordmal.png")
     numerals(r, out / "03-numerals.png")
     descent(r, p, out / "04-descent.png")
+    recension(r, out / "05-recension.png")
     for f in sorted(out.glob("*.png")):
         print(f)
 

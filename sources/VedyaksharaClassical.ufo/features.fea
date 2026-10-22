@@ -1,0 +1,288 @@
+languagesystem DFLT dflt;
+
+# HarfBuzz replaces a default-ignorable character the font maps directly with
+# the space glyph. A glyph that a lookup substitutes is left alone, so each
+# ignorable is substituted once, to a second empty glyph.
+feature ccmp {
+  sub ignorable by ignorable.sub;
+} ccmp;
+
+@NEXT = [ka kha ga gha nga cha ja nya ta da na pa ba bha ma ya ra la va sha sa ha fa nda dra tra ksha pra rta rsha vra sta rna gra dya shta mra nta shra rma tka rka ka.rfoot kha.rfoot gha.rfoot nga.rfoot cha.rfoot ja.rfoot nya.rfoot na.rfoot ba.rfoot bha.rfoot ya.rfoot la.rfoot sa.rfoot ha.rfoot fa.rfoot nda.rfoot ksha.rfoot rta.rfoot rsha.rfoot sta.rfoot rna.rfoot dya.rfoot shta.rfoot nta.rfoot rma.rfoot tka.rfoot rka.rfoot ra.half ra.final];
+@VBASE = [ka ka.rfoot kha kha.rfoot ga gha gha.rfoot nga nga.rfoot cha cha.rfoot ja ja.rfoot nya nya.rfoot ta da na na.rfoot pa ba ba.rfoot bha bha.rfoot ma ya ya.rfoot ra la la.rfoot va sha sa sa.rfoot ha ha.rfoot fa fa.rfoot nda nda.rfoot dra tra ksha ksha.rfoot pra rta rta.rfoot rsha rsha.rfoot vra sta sta.rfoot rna rna.rfoot gra dya dya.rfoot shta shta.rfoot mra nta nta.rfoot shra rma rma.rfoot tka tka.rfoot rka rka.rfoot];
+@VSIGN = [vs.i vs.e vs.ai vs.u vs.o vs.au];
+
+lookup softdot {
+  sub pa dot by fa;
+} softdot;
+
+lookup fused {
+  sub na cut da by nda;
+  sub da cut ra by dra;
+  sub ta cut ra by tra;
+  sub ka cut sha by ksha;
+  sub pa cut ra by pra;
+  sub ra cut ta by rta;
+  sub ra cut sha by rsha;
+  sub va cut ra by vra;
+  sub sa cut ta by sta;
+  sub ra cut na by rna;
+  sub ga cut ra by gra;
+  sub da cut ya by dya;
+  sub sha cut ta by shta;
+  sub ma cut ra by mra;
+  sub na cut ta by nta;
+  sub sha cut ra by shra;
+  sub ra cut ma by rma;
+  sub ta cut ka by tka;
+  sub ra cut ka by rka;
+} fused;
+
+lookup rhalf {
+  sub ra' cut' @NEXT by ra.half;
+} rhalf;
+
+lookup rfinal {
+  sub ra cut by ra.final;
+} rfinal;
+
+lookup rfoot {
+  sub ka cut ra by ka.rfoot;
+  sub kha cut ra by kha.rfoot;
+  sub gha cut ra by gha.rfoot;
+  sub nga cut ra by nga.rfoot;
+  sub cha cut ra by cha.rfoot;
+  sub ja cut ra by ja.rfoot;
+  sub nya cut ra by nya.rfoot;
+  sub na cut ra by na.rfoot;
+  sub ba cut ra by ba.rfoot;
+  sub bha cut ra by bha.rfoot;
+  sub ya cut ra by ya.rfoot;
+  sub la cut ra by la.rfoot;
+  sub sa cut ra by sa.rfoot;
+  sub ha cut ra by ha.rfoot;
+  sub fa cut ra by fa.rfoot;
+  sub nda cut ra by nda.rfoot;
+  sub ksha cut ra by ksha.rfoot;
+  sub rta cut ra by rta.rfoot;
+  sub rsha cut ra by rsha.rfoot;
+  sub sta cut ra by sta.rfoot;
+  sub rna cut ra by rna.rfoot;
+  sub dya cut ra by dya.rfoot;
+  sub shta cut ra by shta.rfoot;
+  sub nta cut ra by nta.rfoot;
+  sub rma cut ra by rma.rfoot;
+  sub tka cut ra by tka.rfoot;
+  sub rka cut ra by rka.rfoot;
+} rfoot;
+
+lookup half {
+  sub ka' cut' @NEXT by ka.half;
+  sub kha' cut' @NEXT by kha.half;
+  sub ga' cut' @NEXT by ga.half;
+  sub gha' cut' @NEXT by gha.half;
+  sub nga' cut' @NEXT by nga.half;
+  sub cha' cut' @NEXT by cha.half;
+  sub ja' cut' @NEXT by ja.half;
+  sub nya' cut' @NEXT by nya.half;
+  sub ta' cut' @NEXT by ta.half;
+  sub da' cut' @NEXT by da.half;
+  sub na' cut' @NEXT by na.half;
+  sub pa' cut' @NEXT by pa.half;
+  sub ba' cut' @NEXT by ba.half;
+  sub bha' cut' @NEXT by bha.half;
+  sub ma' cut' @NEXT by ma.half;
+  sub ya' cut' @NEXT by ya.half;
+  sub la' cut' @NEXT by la.half;
+  sub va' cut' @NEXT by va.half;
+  sub sha' cut' @NEXT by sha.half;
+  sub sa' cut' @NEXT by sa.half;
+  sub ha' cut' @NEXT by ha.half;
+  sub fa' cut' @NEXT by fa.half;
+  sub nda' cut' @NEXT by nda.half;
+  sub dra' cut' @NEXT by dra.half;
+  sub tra' cut' @NEXT by tra.half;
+  sub ksha' cut' @NEXT by ksha.half;
+  sub pra' cut' @NEXT by pra.half;
+  sub rta' cut' @NEXT by rta.half;
+  sub rsha' cut' @NEXT by rsha.half;
+  sub vra' cut' @NEXT by vra.half;
+  sub sta' cut' @NEXT by sta.half;
+  sub rna' cut' @NEXT by rna.half;
+  sub gra' cut' @NEXT by gra.half;
+  sub dya' cut' @NEXT by dya.half;
+  sub shta' cut' @NEXT by shta.half;
+  sub mra' cut' @NEXT by mra.half;
+  sub nta' cut' @NEXT by nta.half;
+  sub shra' cut' @NEXT by shra.half;
+  sub rma' cut' @NEXT by rma.half;
+  sub tka' cut' @NEXT by tka.half;
+  sub rka' cut' @NEXT by rka.half;
+} half;
+
+lookup final {
+  sub ka cut by ka.final;
+  sub kha cut by kha.final;
+  sub ga cut by ga.final;
+  sub gha cut by gha.final;
+  sub nga cut by nga.final;
+  sub cha cut by cha.final;
+  sub ja cut by ja.final;
+  sub nya cut by nya.final;
+  sub ta cut by ta.final;
+  sub da cut by da.final;
+  sub na cut by na.final;
+  sub pa cut by pa.final;
+  sub ba cut by ba.final;
+  sub bha cut by bha.final;
+  sub ma cut by ma.final;
+  sub ya cut by ya.final;
+  sub la cut by la.final;
+  sub va cut by va.final;
+  sub sha cut by sha.final;
+  sub sa cut by sa.final;
+  sub ha cut by ha.final;
+  sub fa cut by fa.final;
+  sub nda cut by nda.final;
+  sub dra cut by dra.final;
+  sub tra cut by tra.final;
+  sub ksha cut by ksha.final;
+  sub pra cut by pra.final;
+  sub rta cut by rta.final;
+  sub rsha cut by rsha.final;
+  sub vra cut by vra.final;
+  sub sta cut by sta.final;
+  sub rna cut by rna.final;
+  sub gra cut by gra.final;
+  sub dya cut by dya.final;
+  sub shta cut by shta.final;
+  sub mra cut by mra.final;
+  sub nta cut by nta.final;
+  sub shra cut by shra.final;
+  sub rma cut by rma.final;
+  sub tka cut by tka.final;
+  sub rka cut by rka.final;
+} final;
+
+lookup vowels {
+  sub @VBASE vs.ai' by flag.e flag.i;
+  sub [ka ka.rfoot kha kha.rfoot ga gha gha.rfoot nga nga.rfoot ta ma ya ya.rfoot sha sa sa.rfoot nda nda.rfoot ksha ksha.rfoot rta rta.rfoot rsha rsha.rfoot sta sta.rfoot dya dya.rfoot shta shta.rfoot nta nta.rfoot rma rma.rfoot tka tka.rfoot rka rka.rfoot] vs.au' by hook.o.0 hook.u.0;
+  sub [la la.rfoot] vs.au' by hook.o.0 hook.u.20;
+  sub [da pa ha ha.rfoot fa fa.rfoot dra pra] vs.au' by hook.o.0 hook.u.40;
+  sub [tra gra shra] vs.au' by hook.o.0 hook.u.100;
+  sub [mra] vs.au' by hook.o.0 hook.u.110;
+  sub [ja ja.rfoot] vs.au' by hook.o.10 hook.u.0;
+  sub [nya nya.rfoot] vs.au' by hook.o.220 hook.u.0;
+  sub [na na.rfoot rna rna.rfoot] vs.au' by hook.o.230 hook.u.0;
+  sub [ra] vs.au' by hook.o.230 hook.u.250;
+  sub [cha cha.rfoot] vs.au' by hook.o.250 hook.u.0;
+  sub [va vra] vs.au' by hook.o.250 hook.u.270;
+  sub [ba ba.rfoot bha bha.rfoot] vs.au' by hook.o.300 hook.u.0;
+  sub [ka ka.rfoot kha kha.rfoot ga gha gha.rfoot nga nga.rfoot cha cha.rfoot ja ja.rfoot nya nya.rfoot ta na na.rfoot ba ba.rfoot bha bha.rfoot ma ya ya.rfoot sha sa sa.rfoot nda nda.rfoot ksha ksha.rfoot rta rta.rfoot rsha rsha.rfoot sta sta.rfoot rna rna.rfoot dya dya.rfoot shta shta.rfoot nta nta.rfoot rma rma.rfoot tka tka.rfoot rka rka.rfoot] vs.u' by hook.u.0;
+  sub [la la.rfoot] vs.u' by hook.u.20;
+  sub [da pa ha ha.rfoot fa fa.rfoot dra pra] vs.u' by hook.u.40;
+  sub [tra gra shra] vs.u' by hook.u.100;
+  sub [mra] vs.u' by hook.u.110;
+  sub [ra] vs.u' by hook.u.250;
+  sub [va vra] vs.u' by hook.u.270;
+  sub [ka ka.rfoot kha kha.rfoot ga gha gha.rfoot nga nga.rfoot ta da pa ma ya ya.rfoot la la.rfoot sha sa sa.rfoot ha ha.rfoot fa fa.rfoot nda nda.rfoot dra tra ksha ksha.rfoot pra rta rta.rfoot rsha rsha.rfoot sta sta.rfoot gra dya dya.rfoot shta shta.rfoot mra nta nta.rfoot shra rma rma.rfoot tka tka.rfoot rka rka.rfoot] vs.o' by hook.o.0;
+  sub [ja ja.rfoot] vs.o' by hook.o.10;
+  sub [nya nya.rfoot] vs.o' by hook.o.220;
+  sub [na na.rfoot ra rna rna.rfoot] vs.o' by hook.o.230;
+  sub [cha cha.rfoot va vra] vs.o' by hook.o.250;
+  sub [ba ba.rfoot bha bha.rfoot] vs.o' by hook.o.300;
+} vowels;
+
+lookup strays {
+  ignore sub @VBASE @VSIGN';
+  ignore sub pa dot';
+  sub [space ka kha ga gha nga cha ja nya ta da na pa ba bha ma ya ra la va sha sa ha a i u e o ai au num.0 num.1 num.2 num.3 num.4 num.5 num.6 num.7 num.8 num.9 pause stop fa nda dra tra ksha pra rta rsha vra sta rna gra dya shta mra nta shra rma tka rka ka.half ka.final kha.half kha.final ga.half ga.final gha.half gha.final nga.half nga.final cha.half cha.final ja.half ja.final nya.half nya.final ta.half ta.final da.half da.final na.half na.final pa.half pa.final ba.half ba.final bha.half bha.final ma.half ma.final ya.half ya.final ra.half ra.final la.half la.final va.half va.final sha.half sha.final sa.half sa.final ha.half ha.final fa.half fa.final nda.half nda.final dra.half dra.final tra.half tra.final ksha.half ksha.final pra.half pra.final rta.half rta.final rsha.half rsha.final vra.half vra.final sta.half sta.final rna.half rna.final gra.half gra.final dya.half dya.final shta.half shta.final mra.half mra.final nta.half nta.final shra.half shra.final rma.half rma.final tka.half tka.final rka.half rka.final ka.rfoot kha.rfoot gha.rfoot nga.rfoot cha.rfoot ja.rfoot nya.rfoot na.rfoot ba.rfoot bha.rfoot ya.rfoot la.rfoot sa.rfoot ha.rfoot fa.rfoot nda.rfoot ksha.rfoot rta.rfoot rsha.rfoot sta.rfoot rna.rfoot dya.rfoot shta.rfoot nta.rfoot rma.rfoot tka.rfoot rka.rfoot vs.i vs.e vs.ai vs.u vs.o vs.au cut dot flag.i flag.e hook.u.0 hook.u.10 hook.u.20 hook.u.40 hook.u.100 hook.u.110 hook.u.220 hook.u.230 hook.u.250 hook.u.270 hook.u.300 hook.o.0 hook.o.10 hook.o.20 hook.o.40 hook.o.100 hook.o.110 hook.o.220 hook.o.230 hook.o.250 hook.o.270 hook.o.300] [@VSIGN cut dot]' by notdef.box;
+} strays;
+
+feature rclt {
+  lookup softdot;
+  lookup fused;
+  lookup rhalf;
+  lookup rfinal;
+  lookup rfoot;
+  lookup half;
+  lookup final;
+  lookup vowels;
+  lookup strays;
+} rclt;
+
+markClass [vs.i flag.i] <anchor 0 0> @TOP_RIGHT;
+markClass [vs.e flag.e] <anchor 0 0> @TOP_MID;
+markClass [hook.u.0 hook.u.10 hook.u.100 hook.u.110 hook.u.20 hook.u.220 hook.u.230 hook.u.250 hook.u.270 hook.u.300 hook.u.40] <anchor 0 0> @FOOT_RIGHT;
+markClass [hook.o.0 hook.o.10 hook.o.100 hook.o.110 hook.o.20 hook.o.220 hook.o.230 hook.o.250 hook.o.270 hook.o.300 hook.o.40] <anchor 0 0> @FOOT_MID;
+
+feature mark {
+  pos base ka <anchor 411 0> mark @TOP_RIGHT <anchor 202 0> mark @TOP_MID <anchor 411 0> mark @FOOT_RIGHT <anchor 232 0> mark @FOOT_MID;
+  pos base ka.rfoot <anchor 411 0> mark @TOP_RIGHT <anchor 202 0> mark @TOP_MID <anchor 411 0> mark @FOOT_RIGHT <anchor 232 0> mark @FOOT_MID;
+  pos base kha <anchor 411 0> mark @TOP_RIGHT <anchor 202 0> mark @TOP_MID <anchor 411 0> mark @FOOT_RIGHT <anchor 232 0> mark @FOOT_MID;
+  pos base kha.rfoot <anchor 411 0> mark @TOP_RIGHT <anchor 202 0> mark @TOP_MID <anchor 411 0> mark @FOOT_RIGHT <anchor 232 0> mark @FOOT_MID;
+  pos base ga <anchor 336 0> mark @TOP_RIGHT <anchor 164 0> mark @TOP_MID <anchor 336 0> mark @FOOT_RIGHT <anchor 194 0> mark @FOOT_MID;
+  pos base gha <anchor 336 0> mark @TOP_RIGHT <anchor 164 0> mark @TOP_MID <anchor 336 0> mark @FOOT_RIGHT <anchor 194 0> mark @FOOT_MID;
+  pos base gha.rfoot <anchor 336 0> mark @TOP_RIGHT <anchor 164 0> mark @TOP_MID <anchor 336 0> mark @FOOT_RIGHT <anchor 194 0> mark @FOOT_MID;
+  pos base nga <anchor 336 0> mark @TOP_RIGHT <anchor 164 0> mark @TOP_MID <anchor 336 0> mark @FOOT_RIGHT <anchor 194 0> mark @FOOT_MID;
+  pos base nga.rfoot <anchor 336 0> mark @TOP_RIGHT <anchor 164 0> mark @TOP_MID <anchor 336 0> mark @FOOT_RIGHT <anchor 194 0> mark @FOOT_MID;
+  pos base cha <anchor 366 0> mark @TOP_RIGHT <anchor 179 0> mark @TOP_MID <anchor 366 0> mark @FOOT_RIGHT <anchor 209 0> mark @FOOT_MID;
+  pos base cha.rfoot <anchor 366 0> mark @TOP_RIGHT <anchor 179 0> mark @TOP_MID <anchor 366 0> mark @FOOT_RIGHT <anchor 209 0> mark @FOOT_MID;
+  pos base ja <anchor 336 0> mark @TOP_RIGHT <anchor 164 0> mark @TOP_MID <anchor 336 0> mark @FOOT_RIGHT <anchor 194 0> mark @FOOT_MID;
+  pos base ja.rfoot <anchor 336 0> mark @TOP_RIGHT <anchor 164 0> mark @TOP_MID <anchor 336 0> mark @FOOT_RIGHT <anchor 194 0> mark @FOOT_MID;
+  pos base nya <anchor 456 0> mark @TOP_RIGHT <anchor 224 0> mark @TOP_MID <anchor 456 0> mark @FOOT_RIGHT <anchor 254 0> mark @FOOT_MID;
+  pos base nya.rfoot <anchor 456 0> mark @TOP_RIGHT <anchor 224 0> mark @TOP_MID <anchor 456 0> mark @FOOT_RIGHT <anchor 254 0> mark @FOOT_MID;
+  pos base ta <anchor 326 0> mark @TOP_RIGHT <anchor 159 0> mark @TOP_MID <anchor 326 0> mark @FOOT_RIGHT <anchor 189 0> mark @FOOT_MID;
+  pos base da <anchor 288 0> mark @TOP_RIGHT <anchor 159 0> mark @TOP_MID <anchor 288 0> mark @FOOT_RIGHT <anchor 189 0> mark @FOOT_MID;
+  pos base na <anchor 316 0> mark @TOP_RIGHT <anchor 154 0> mark @TOP_MID <anchor 316 0> mark @FOOT_RIGHT <anchor 184 0> mark @FOOT_MID;
+  pos base na.rfoot <anchor 316 0> mark @TOP_RIGHT <anchor 154 0> mark @TOP_MID <anchor 316 0> mark @FOOT_RIGHT <anchor 184 0> mark @FOOT_MID;
+  pos base pa <anchor 359 0> mark @TOP_RIGHT <anchor 202 0> mark @TOP_MID <anchor 359 0> mark @FOOT_RIGHT <anchor 232 0> mark @FOOT_MID;
+  pos base ba <anchor 456 0> mark @TOP_RIGHT <anchor 224 0> mark @TOP_MID <anchor 456 0> mark @FOOT_RIGHT <anchor 254 0> mark @FOOT_MID;
+  pos base ba.rfoot <anchor 456 0> mark @TOP_RIGHT <anchor 224 0> mark @TOP_MID <anchor 456 0> mark @FOOT_RIGHT <anchor 254 0> mark @FOOT_MID;
+  pos base bha <anchor 456 0> mark @TOP_RIGHT <anchor 224 0> mark @TOP_MID <anchor 456 0> mark @FOOT_RIGHT <anchor 254 0> mark @FOOT_MID;
+  pos base bha.rfoot <anchor 456 0> mark @TOP_RIGHT <anchor 224 0> mark @TOP_MID <anchor 456 0> mark @FOOT_RIGHT <anchor 254 0> mark @FOOT_MID;
+  pos base ma <anchor 411 0> mark @TOP_RIGHT <anchor 202 0> mark @TOP_MID <anchor 411 0> mark @FOOT_RIGHT <anchor 232 0> mark @FOOT_MID;
+  pos base ya <anchor 366 0> mark @TOP_RIGHT <anchor 179 0> mark @TOP_MID <anchor 366 0> mark @FOOT_RIGHT <anchor 209 0> mark @FOOT_MID;
+  pos base ya.rfoot <anchor 366 0> mark @TOP_RIGHT <anchor 179 0> mark @TOP_MID <anchor 366 0> mark @FOOT_RIGHT <anchor 209 0> mark @FOOT_MID;
+  pos base ra <anchor 279 0> mark @TOP_RIGHT <anchor 154 0> mark @TOP_MID <anchor 279 0> mark @FOOT_RIGHT <anchor 184 0> mark @FOOT_MID;
+  pos base la <anchor 321 0> mark @TOP_RIGHT <anchor 179 0> mark @TOP_MID <anchor 321 0> mark @FOOT_RIGHT <anchor 209 0> mark @FOOT_MID;
+  pos base la.rfoot <anchor 321 0> mark @TOP_RIGHT <anchor 179 0> mark @TOP_MID <anchor 321 0> mark @FOOT_RIGHT <anchor 209 0> mark @FOOT_MID;
+  pos base va <anchor 321 0> mark @TOP_RIGHT <anchor 179 0> mark @TOP_MID <anchor 321 0> mark @FOOT_RIGHT <anchor 209 0> mark @FOOT_MID;
+  pos base sha <anchor 326 0> mark @TOP_RIGHT <anchor 159 0> mark @TOP_MID <anchor 326 0> mark @FOOT_RIGHT <anchor 189 0> mark @FOOT_MID;
+  pos base sa <anchor 366 0> mark @TOP_RIGHT <anchor 179 0> mark @TOP_MID <anchor 366 0> mark @FOOT_RIGHT <anchor 209 0> mark @FOOT_MID;
+  pos base sa.rfoot <anchor 366 0> mark @TOP_RIGHT <anchor 179 0> mark @TOP_MID <anchor 366 0> mark @FOOT_RIGHT <anchor 209 0> mark @FOOT_MID;
+  pos base ha <anchor 296 0> mark @TOP_RIGHT <anchor 164 0> mark @TOP_MID <anchor 296 0> mark @FOOT_RIGHT <anchor 194 0> mark @FOOT_MID;
+  pos base ha.rfoot <anchor 296 0> mark @TOP_RIGHT <anchor 164 0> mark @TOP_MID <anchor 296 0> mark @FOOT_RIGHT <anchor 194 0> mark @FOOT_MID;
+  pos base fa <anchor 359 0> mark @TOP_RIGHT <anchor 202 0> mark @TOP_MID <anchor 359 0> mark @FOOT_RIGHT <anchor 232 0> mark @FOOT_MID;
+  pos base fa.rfoot <anchor 359 0> mark @TOP_RIGHT <anchor 202 0> mark @TOP_MID <anchor 359 0> mark @FOOT_RIGHT <anchor 232 0> mark @FOOT_MID;
+  pos base nda <anchor 297 0> mark @TOP_RIGHT <anchor 144 0> mark @TOP_MID <anchor 297 0> mark @FOOT_RIGHT <anchor 174 0> mark @FOOT_MID;
+  pos base nda.rfoot <anchor 297 0> mark @TOP_RIGHT <anchor 144 0> mark @TOP_MID <anchor 297 0> mark @FOOT_RIGHT <anchor 174 0> mark @FOOT_MID;
+  pos base dra <anchor 288 0> mark @TOP_RIGHT <anchor 159 0> mark @TOP_MID <anchor 288 0> mark @FOOT_RIGHT <anchor 189 0> mark @FOOT_MID;
+  pos base tra <anchor 326 0> mark @TOP_RIGHT <anchor 159 0> mark @TOP_MID <anchor 326 0> mark @FOOT_RIGHT <anchor 189 0> mark @FOOT_MID;
+  pos base ksha <anchor 606 0> mark @TOP_RIGHT <anchor 439 0> mark @TOP_MID <anchor 606 0> mark @FOOT_RIGHT <anchor 469 0> mark @FOOT_MID;
+  pos base ksha.rfoot <anchor 606 0> mark @TOP_RIGHT <anchor 439 0> mark @TOP_MID <anchor 606 0> mark @FOOT_RIGHT <anchor 469 0> mark @FOOT_MID;
+  pos base pra <anchor 359 0> mark @TOP_RIGHT <anchor 202 0> mark @TOP_MID <anchor 359 0> mark @FOOT_RIGHT <anchor 232 0> mark @FOOT_MID;
+  pos base rta <anchor 446 0> mark @TOP_RIGHT <anchor 279 0> mark @TOP_MID <anchor 446 0> mark @FOOT_RIGHT <anchor 309 0> mark @FOOT_MID;
+  pos base rta.rfoot <anchor 446 0> mark @TOP_RIGHT <anchor 279 0> mark @TOP_MID <anchor 446 0> mark @FOOT_RIGHT <anchor 309 0> mark @FOOT_MID;
+  pos base rsha <anchor 446 0> mark @TOP_RIGHT <anchor 279 0> mark @TOP_MID <anchor 446 0> mark @FOOT_RIGHT <anchor 309 0> mark @FOOT_MID;
+  pos base rsha.rfoot <anchor 446 0> mark @TOP_RIGHT <anchor 279 0> mark @TOP_MID <anchor 446 0> mark @FOOT_RIGHT <anchor 309 0> mark @FOOT_MID;
+  pos base vra <anchor 321 0> mark @TOP_RIGHT <anchor 179 0> mark @TOP_MID <anchor 321 0> mark @FOOT_RIGHT <anchor 209 0> mark @FOOT_MID;
+  pos base sta <anchor 574 0> mark @TOP_RIGHT <anchor 407 0> mark @TOP_MID <anchor 574 0> mark @FOOT_RIGHT <anchor 437 0> mark @FOOT_MID;
+  pos base sta.rfoot <anchor 574 0> mark @TOP_RIGHT <anchor 407 0> mark @TOP_MID <anchor 574 0> mark @FOOT_RIGHT <anchor 437 0> mark @FOOT_MID;
+  pos base rna <anchor 436 0> mark @TOP_RIGHT <anchor 274 0> mark @TOP_MID <anchor 436 0> mark @FOOT_RIGHT <anchor 304 0> mark @FOOT_MID;
+  pos base rna.rfoot <anchor 436 0> mark @TOP_RIGHT <anchor 274 0> mark @TOP_MID <anchor 436 0> mark @FOOT_RIGHT <anchor 304 0> mark @FOOT_MID;
+  pos base gra <anchor 336 0> mark @TOP_RIGHT <anchor 164 0> mark @TOP_MID <anchor 336 0> mark @FOOT_RIGHT <anchor 194 0> mark @FOOT_MID;
+  pos base dya <anchor 585 0> mark @TOP_RIGHT <anchor 398 0> mark @TOP_MID <anchor 585 0> mark @FOOT_RIGHT <anchor 428 0> mark @FOOT_MID;
+  pos base dya.rfoot <anchor 585 0> mark @TOP_RIGHT <anchor 398 0> mark @TOP_MID <anchor 585 0> mark @FOOT_RIGHT <anchor 428 0> mark @FOOT_MID;
+  pos base shta <anchor 297 0> mark @TOP_RIGHT <anchor 144 0> mark @TOP_MID <anchor 297 0> mark @FOOT_RIGHT <anchor 174 0> mark @FOOT_MID;
+  pos base shta.rfoot <anchor 297 0> mark @TOP_RIGHT <anchor 144 0> mark @TOP_MID <anchor 297 0> mark @FOOT_RIGHT <anchor 174 0> mark @FOOT_MID;
+  pos base mra <anchor 411 0> mark @TOP_RIGHT <anchor 202 0> mark @TOP_MID <anchor 411 0> mark @FOOT_RIGHT <anchor 232 0> mark @FOOT_MID;
+  pos base nta <anchor 297 0> mark @TOP_RIGHT <anchor 144 0> mark @TOP_MID <anchor 297 0> mark @FOOT_RIGHT <anchor 174 0> mark @FOOT_MID;
+  pos base nta.rfoot <anchor 297 0> mark @TOP_RIGHT <anchor 144 0> mark @TOP_MID <anchor 297 0> mark @FOOT_RIGHT <anchor 174 0> mark @FOOT_MID;
+  pos base shra <anchor 326 0> mark @TOP_RIGHT <anchor 159 0> mark @TOP_MID <anchor 326 0> mark @FOOT_RIGHT <anchor 189 0> mark @FOOT_MID;
+  pos base rma <anchor 531 0> mark @TOP_RIGHT <anchor 322 0> mark @TOP_MID <anchor 531 0> mark @FOOT_RIGHT <anchor 352 0> mark @FOOT_MID;
+  pos base rma.rfoot <anchor 531 0> mark @TOP_RIGHT <anchor 322 0> mark @TOP_MID <anchor 531 0> mark @FOOT_RIGHT <anchor 352 0> mark @FOOT_MID;
+  pos base tka <anchor 374 0> mark @TOP_RIGHT <anchor 183 0> mark @TOP_MID <anchor 374 0> mark @FOOT_RIGHT <anchor 213 0> mark @FOOT_MID;
+  pos base tka.rfoot <anchor 374 0> mark @TOP_RIGHT <anchor 183 0> mark @TOP_MID <anchor 374 0> mark @FOOT_RIGHT <anchor 213 0> mark @FOOT_MID;
+  pos base rka <anchor 531 0> mark @TOP_RIGHT <anchor 322 0> mark @TOP_MID <anchor 531 0> mark @FOOT_RIGHT <anchor 352 0> mark @FOOT_MID;
+  pos base rka.rfoot <anchor 531 0> mark @TOP_RIGHT <anchor 322 0> mark @TOP_MID <anchor 531 0> mark @FOOT_RIGHT <anchor 352 0> mark @FOOT_MID;
+} mark;

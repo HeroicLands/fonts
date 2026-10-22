@@ -13,7 +13,8 @@ keyboards/sounds.json. Option is AltGr on Windows and the third level on Linux; 
 has no Option key, so Option+x is typed ``\\`` and then the character x types.
 
 The key map also lists the characters of markup. Each types itself, as plain ASCII, on
-the key that types it on a US keyboard.
+the key that types it on a US keyboard, and the signs: keys that are not sounds, each
+typing one code point in the one layout whose script writes it.
 """
 
 import json
@@ -94,6 +95,12 @@ def is_zethu(key: str) -> bool:
 def load() -> dict:
     """tools/sound_keys.json: the principles, and every sound with its spelling and key."""
     return json.loads((Path(__file__).resolve().parent / "sound_keys.json").read_text(encoding="utf-8"))
+
+
+def signs() -> list[dict]:
+    """The signs of tools/sound_keys.json: keys that are not sounds, each typing one code
+    point in the one layout whose script writes it."""
+    return load().get("signs", [])
 
 
 def every_key() -> list[str]:

@@ -37,4 +37,7 @@ jobs:
               run: |
                   set -euo pipefail
                   awk '/^## /{c++; if (c>=2) exit; next} c==1{print}' CHANGELOG.md > "$RUNNER_TEMP/notes.md"
-                  gh release create "$GITHUB_REF_NAME" --verify-tag --title "$GITHUB_REF_NAME" --notes-file "$RUNNER_TEMP/notes.md" fonts/*.ttf fonts/*.woff2
+                  # Both zips unpack to a top-level folder, so the cheatsheets' relative links to charts/ resolve when they sit side by side.
+                  zip -qr "$RUNNER_TEMP/keyboards.zip" keyboards -x keyboards/sounds.json
+                  zip -qr "$RUNNER_TEMP/charts.zip" charts
+                  gh release create "$GITHUB_REF_NAME" --verify-tag --title "$GITHUB_REF_NAME" --notes-file "$RUNNER_TEMP/notes.md" fonts/*.ttf fonts/*.woff2 "$RUNNER_TEMP/keyboards.zip" "$RUNNER_TEMP/charts.zip"

@@ -42,6 +42,8 @@ FOLDERS = {
     "hl-pirzath-hand": "pirzath-hand",
     "hl-thuravark-carved": "thuravark-carved",
     "hl-teng-chou": "teng-chou",
+    "hl-vedyakshara-classical": "vedyakshara",
+    "hl-helonika-book": "helonika",
 }
 
 

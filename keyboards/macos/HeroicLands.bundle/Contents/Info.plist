@@ -40,5 +40,26 @@
 		<key>TISIntendedLanguage</key>
 		<string>en</string>
 	</dict>
+	<key>KLInfo_HL Veldikko</key>
+	<dict>
+		<key>TISInputSourceID</key>
+		<string>org.heroiclands.keyboardlayout.veldikko</string>
+		<key>TISIntendedLanguage</key>
+		<string>en</string>
+	</dict>
+	<key>KLInfo_HL Vedyakshara</key>
+	<dict>
+		<key>TISInputSourceID</key>
+		<string>org.heroiclands.keyboardlayout.vedyakshara</string>
+		<key>TISIntendedLanguage</key>
+		<string>en</string>
+	</dict>
+	<key>KLInfo_HL Helónika</key>
+	<dict>
+		<key>TISInputSourceID</key>
+		<string>org.heroiclands.keyboardlayout.helonika</string>
+		<key>TISIntendedLanguage</key>
+		<string>en</string>
+	</dict>
 </dict>
 </plist>

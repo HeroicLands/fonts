@@ -1,6 +1,6 @@
 # Thuravark Carved
 
-40 characters, U+F0100 to U+F0148, in the font `Thuravark Carved`.
+45 characters, U+F0100 to U+F0151, in the font `Thuravark Carved`.
 
 ## Code chart
 
@@ -46,6 +46,14 @@
 | THURAVARK LETTER HLA | ![U+F0124](thuravark-carved/glyphs/U+F0124.svg) | U+F0124 | `&#983332;` | `&#xF0124;` |
 | THURAVARK LETTER NGA | ![U+F0125](thuravark-carved/glyphs/U+F0125.svg) | U+F0125 | `&#983333;` | `&#xF0125;` |
 
+### Diphthongs
+
+| Character Name | Character | Code Point | Entity | Hex Entity |
+| --- | --- | --- | --- | --- |
+| THURAVARK LETTER AI | ![U+F0128](thuravark-carved/glyphs/U+F0128.svg) | U+F0128 | `&#983336;` | `&#xF0128;` |
+| THURAVARK LETTER AU | ![U+F0129](thuravark-carved/glyphs/U+F0129.svg) | U+F0129 | `&#983337;` | `&#xF0129;` |
+| THURAVARK LETTER OI | ![U+F012A](thuravark-carved/glyphs/U+F012A.svg) | U+F012A | `&#983338;` | `&#xF012A;` |
+
 ### Digits
 
 | Character Name | Character | Code Point | Entity | Hex Entity |
@@ -72,3 +80,10 @@
 | Character Name | Character | Code Point | Entity | Hex Entity |
 | --- | --- | --- | --- | --- |
 | THURAVARK ACUTE | ![U+F0148](thuravark-carved/glyphs/U+F0148.svg) | U+F0148 | `&#983368;` | `&#xF0148;` |
+
+### Controls
+
+| Character Name | Character | Code Point | Entity | Hex Entity |
+| --- | --- | --- | --- | --- |
+| THURAVARK CROWN OPEN | ![U+F0150](thuravark-carved/glyphs/U+F0150.svg) | U+F0150 | `&#983376;` | `&#xF0150;` |
+| THURAVARK CROWN CLOSE | ![U+F0151](thuravark-carved/glyphs/U+F0151.svg) | U+F0151 | `&#983377;` | `&#xF0151;` |

@@ -8,10 +8,22 @@
     <string>a.glif</string>
     <key>a.acute</key>
     <string>a.acute.glif</string>
+    <key>a_l</key>
+    <string>a_l.glif</string>
+    <key>a_r</key>
+    <string>a_r.glif</string>
     <key>acutecomb</key>
     <string>acutecomb.glif</string>
+    <key>ai</key>
+    <string>ai.glif</string>
+    <key>au</key>
+    <string>au.glif</string>
     <key>b</key>
     <string>b.glif</string>
+    <key>crown.close</key>
+    <string>crown.close.glif</string>
+    <key>crown.open</key>
+    <string>crown.open.glif</string>
     <key>d</key>
     <string>d.glif</string>
     <key>dh</key>
@@ -20,6 +32,10 @@
     <string>e.glif</string>
     <key>e.acute</key>
     <string>e.acute.glif</string>
+    <key>e_l</key>
+    <string>e_l.glif</string>
+    <key>e_n</key>
+    <string>e_n.glif</string>
     <key>f</key>
     <string>f.glif</string>
     <key>g</key>
@@ -42,12 +58,20 @@
     <string>j.glif</string>
     <key>k</key>
     <string>k.glif</string>
+    <key>k_a</key>
+    <string>k_a.glif</string>
     <key>kh</key>
     <string>kh.glif</string>
     <key>l</key>
     <string>l.glif</string>
+    <key>l_m</key>
+    <string>l_m.glif</string>
+    <key>l_th</key>
+    <string>l_th.glif</string>
     <key>m</key>
     <string>m.glif</string>
+    <key>m_a</key>
+    <string>m_a.glif</string>
     <key>n</key>
     <string>n.glif</string>
     <key>ng</key>
@@ -78,6 +102,8 @@
     <string>o.glif</string>
     <key>o.acute</key>
     <string>o.acute.glif</string>
+    <key>oi</key>
+    <string>oi.glif</string>
     <key>p</key>
     <string>p.glif</string>
     <key>period</key>
@@ -96,11 +122,15 @@
     <string>u.glif</string>
     <key>u.acute</key>
     <string>u.acute.glif</string>
+    <key>u_r</key>
+    <string>u_r.glif</string>
     <key>v</key>
     <string>v.glif</string>
     <key>w</key>
     <string>w.glif</string>
     <key>z</key>
     <string>z.glif</string>
+    <key>z_a</key>
+    <string>z_a.glif</string>
   </dict>
 </plist>

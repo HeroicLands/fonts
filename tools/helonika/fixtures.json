@@ -1,0 +1,34 @@
+{
+  "fixtures": [
+    {"latin": "Sothira.", "glyphs": ["S", "o", "th", "i", "r", "a", "raisedDot"]},
+    {"latin": "teikhir", "glyphs": ["t", "e.long", "k", "h", "i", "r"]},
+    {"latin": "koum", "glyphs": ["k", "o.long", "m"]},
+    {"latin": "Thásira", "glyphs": ["TH", "a", "s", "i", "r", "a"]},
+    {"latin": "THASIRA", "glyphs": ["TH", "A", "S", "I", "R", "A"]},
+    {"latin": "Eirene", "glyphs": ["E.long", "r", "e", "n", "e"]},
+    {"latin": "Ourin", "glyphs": ["O.long", "r", "i", "n"]},
+    {"latin": "kéiros", "glyphs": ["k", "e.long", "r", "o", "s"]},
+    {"latin": "Philon", "glyphs": ["F", "i", "l", "o", "n"]},
+    {"latin": "Chaddul", "glyphs": ["T", "s", "h", "a", "d", "d", "u", "l"]},
+    {"latin": "kyria", "glyphs": ["k", "i", "r", "i", "a"]},
+    {"latin": "Wenos", "glyphs": ["U", "e", "n", "o", "s"]},
+    {"latin": "Ozhar", "glyphs": ["O", "z", "h", "a", "r"]},
+    {"latin": "kaar", "glyphs": ["k", "a", "a", "r"]},
+    {"latin": "Zoë", "glyphs": ["Z", "o", "e"]},
+    {"latin": "noë-ira", "glyphs": ["n", "o", "e", "i", "r", "a"]},
+    {"latin": "dokhazin, therin; agelon: bulos", "glyphs": ["d", "o", "k", "h", "a", "z", "i", "n", "space", "th", "e", "r", "i", "n", "raisedDot", "space", "a", "g", "e", "l", "o", "n", "raisedDot", "space", "b", "u", "l", "o", "s"]},
+    {"latin": "en-telekas", "glyphs": ["e", "n", "t", "e", "l", "e", "k", "a", "s"]},
+    {"latin": "vesmor 1066", "glyphs": ["v", "e", "s", "m", "o", "r", "space", "num.1", "num.0", "num.6", "num.6"]},
+    {"latin": "Qeros", "glyphs": ["K", "e", "r", "o", "s"]},
+    {"latin": "jumina", "glyphs": ["j", "u", "m", "i", "n", "a"]},
+    {"latin": "Bethuan", "glyphs": ["B", "e", "th", "u", "a", "n"]},
+    {"latin": "rhezin", "glyphs": ["r", "h", "e", "z", "i", "n"]}
+  ],
+  "unmappable": [
+    {"latin": "Xenos", "letter": "X"},
+    {"latin": "Cato", "letter": "C"},
+    {"latin": "kosamir?", "letter": "?"},
+    {"latin": "§ 4", "letter": "§"},
+    {"latin": "Moira's", "letter": "'"}
+  ]
+}

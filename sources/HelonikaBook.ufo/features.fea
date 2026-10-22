@@ -1,0 +1,45 @@
+languagesystem DFLT dflt;
+
+# HarfBuzz replaces a default-ignorable character the font maps directly with
+# the space glyph. A glyph that a lookup substitutes is left alone, so each
+# ignorable is substituted once, to a second empty glyph.
+feature ccmp {
+  sub ignorable by ignorable.sub;
+} ccmp;
+
+@VOWEL = [A E E.long I O O.long U A.macron I.macron U.macron a e e.long i o o.long u a.macron i.macron u.macron];
+@OTHER = [space B D F G H J K L M N P R S T TH V Z KH ZH b d f g h j k l m n p r s t th v z kh zh num.0 num.1 num.2 num.3 num.4 num.5 num.6 num.7 num.8 num.9 raisedDot registerMark accent notdef.box];
+
+lookup strays {
+  ignore sub @VOWEL accent';
+  sub @OTHER accent' by notdef.box;
+} strays;
+
+feature rclt {
+  lookup strays;
+} rclt;
+
+markClass accent <anchor 0 0> @TOP;
+
+feature mark {
+  pos base A <anchor 337 217> mark @TOP;
+  pos base E <anchor 250 217> mark @TOP;
+  pos base E.long <anchor 266 217> mark @TOP;
+  pos base I <anchor 223 217> mark @TOP;
+  pos base O <anchor 376 217> mark @TOP;
+  pos base O.long <anchor 432 217> mark @TOP;
+  pos base U <anchor 388 217> mark @TOP;
+  pos base A.macron <anchor 337 287> mark @TOP;
+  pos base I.macron <anchor 223 287> mark @TOP;
+  pos base U.macron <anchor 388 287> mark @TOP;
+  pos base a <anchor 248 0> mark @TOP;
+  pos base e <anchor 198 0> mark @TOP;
+  pos base e.long <anchor 239 0> mark @TOP;
+  pos base i <anchor 119 0> mark @TOP;
+  pos base o <anchor 279 0> mark @TOP;
+  pos base o.long <anchor 277 0> mark @TOP;
+  pos base u <anchor 238 0> mark @TOP;
+  pos base a.macron <anchor 248 70> mark @TOP;
+  pos base i.macron <anchor 119 70> mark @TOP;
+  pos base u.macron <anchor 238 70> mark @TOP;
+} mark;
