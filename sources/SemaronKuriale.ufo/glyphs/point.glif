@@ -1,12 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <glyph name="point" format="2">
   <advance width="132"/>
-  <unicode hex="002C"/>
-  <unicode hex="002E"/>
-  <unicode hex="003A"/>
-  <unicode hex="003B"/>
-  <unicode hex="2013"/>
-  <unicode hex="2014"/>
   <unicode hex="F0268"/>
   <outline>
     <contour>

@@ -97,7 +97,7 @@ The closing mark differs from gh only by its second notch, so the pair stands
 on the apex half of the arm, well apart, cut lighter than the breath notch, and
 clear of the bar and the cap height. There is no interrogative mark, because a Khazari question ends in the
 particle _zef_, which marks it, and there is no semicolon and no colon: the
-`?`, `;` and `:` keys map to the box, so a stray mark shows on the page. Every character the typing does not use maps to the box, which is a copy of `.notdef`: a blank stele, a stem with a
+`?`, `;` and `:` map to the box, so a stray mark shows on the page. Every character the face does not draw maps to the box, which is a copy of `.notdef`: a blank stele, a stem with a
 drill mark either side.
 
 ## The seventeen lost letters
@@ -130,34 +130,37 @@ of the box, so neither is a numeral, whose full stem the limbs fall away from,
 and q is not the tent, whose apex is at the cap. The three cuts of each are
 driven past their junction, so their tapers are buried in one another's ink and
 the letter reads as one Y with a solid join. The cuts of w and y take the
-vowels' own slant. Typing them is set out in the next section. The remaining empty cells are a bar closing a frame other than the point, a
+vowels' own slant. How a spelling reaches them is set out in the next section. The remaining empty cells are a bar closing a frame other than the point, a
 notch on the other arm of a frame, and a pole from the opposite end.
 
-## Typing the lost letters
+## Writing the lost letters
 
-Each of the seventeen is typed by its spelling, and the longest spelling wins.
+Each of the seventeen is a character of its own, on its own code point, and the
+face draws it from that code point alone. A note writes it by its spelling, which
+thalorna's `pirzath` mapping note turns into the code point, the longest spelling
+first:
 
-| Glyph                      | Typed                          |
-| -------------------------- | ------------------------------ |
-| sh, zh, ch, ts, ng, ny, hl | the two letters, as a ligature |
-| j, q, w                    | the letter                     |
-| the catch                  | `'` or `’`                     |
-| y (the glide)              | `y` before a vowel             |
-| ai, au, ei, oi, ou         | the two vowels                 |
+| Glyph                      | Spelled            |
+| -------------------------- | ------------------ |
+| sh, zh, ch, ts, ng, ny, hl | the two letters    |
+| j, q, w                    | the letter         |
+| the catch                  | `'` or `’`         |
+| y (the glide)              | `y` before a vowel |
+| ai, au, ei, oi, ou         | the two vowels     |
 
-- **ngh is n and gh.** The four digraphs th, dh, kh and gh ligate before the
-  lost ones, so _ngh_ shapes as `n` + `gh`, never `ng` + `h`; the lexicon's
-  _zangh_ and _huzangh_ depend on it. _nngh_ is `n`, the doubling mark, `gh`.
-- **y not before a vowel** is the spelling guide's vowel _y_, said _i_. It
-  draws the `i` glyph, and after a vowel it forms the pair the guide reads
-  alike: `ay` is `ai`, `ey` is `ei`, `oy` is `oi`; `uy` is `u` + `i`. This
-  reading is the owner's to confirm. A final `y` is therefore never the glide.
-- **Doubling** works as for the other consonants: `shsh` and `ssh` both draw
-  `sh` and the mark, as `tth` draws `th` and the mark, and likewise `zzh`,
-  `tts`, `nng`, `nny`, `hhl` and `cch`; `jj`, `qq`, `ww` and `''` double the
-  single letters.
+- **ngh is n and gh.** The mapping reads the four digraphs th, dh, kh and gh
+  before the lost ones, so _ngh_ is `n` and `gh`, never `ng` and `h`; the
+  lexicon's _zangh_ and _huzangh_ depend on it.
+- **y not before a vowel** is the spelling guide's vowel _y_, said _i_, and is
+  written `i`; after a vowel it forms the pair the guide reads alike: `ay` is
+  `ai`, `ey` is `ei`, `oy` is `oi`; `uy` is `u` and `i`. A final `y` is
+  therefore never the glide. The glide before a vowel pair is the glide and the
+  pair.
+- **Doubling** is the face's: two identical consonants, single letters or
+  digraph letters, draw the letter once with the doubling mark. The mapping
+  writes `shsh` and `ssh` both as `sh` twice, as it writes `tth` as `th` twice.
 - **A long vowel pair** carries the length mark when an acute falls on either
-  vowel: `aí` and `ái` both draw `ai` with the mark.
+  vowel: `aí` and `ái` are both `ai` and the mark.
 - **A lexicon form is unchanged.** No Khazari form contains a lost spelling,
   and the guard asserts the glyph sequence of every form against the Khazari
   alphabet alone.
@@ -179,45 +182,48 @@ the stave. The numerals' tally stem and limbs pass across unchanged. What is
 lost is the depth of cut, the small vowels and the closed shapes; what is kept
 is angle for angle and notch for notch.
 
-## Typing it
+## Drawing it
 
-The font draws Pirzath over the setting's Latin spelling. The four digraphs
-_th_, _dh_, _kh_ and _gh_ are one glyph each by ligature. An acute vowel,
-precomposed or as the vowel plus U+0301, is decomposed to the vowel and the
-length mark, which mark positioning seats above it. A consonant typed twice,
-_ll_, _mm_, _kk_, shapes to the letter and the doubling mark, and a doubled
-digraph typed as the spelling writes it, _tth_, _ddh_, _kkh_, _ggh_, shapes to
-the digraph's letter and the mark. Capitals draw the lowercase letter; the
-script has no case. The digits `0` to `9` draw the numerals nought
-to nine and `@ # $ % ^ &` draw ten to fifteen, so twenty-six is typed `1@` and
-three hundred and nine is `135`; the letters a to f are always letters. The
-letter c has no Pirzath form and draws the box. A quotation is typed with
-`“ ”` or `« »` directly, with `<<` and `>>`, which ligate to the marks, or with
-a straight `"`, which `calt` resolves: it opens at the start of the text or
-after a space and closes anywhere else. A single `<` or `>` draws the box.
+The face draws Pirzath from its own code points, U+F0000 to U+F00FF, and from
+nothing else: a Latin letter, digit or mark draws the box, and the space is the
+one character it shares with roman text. A digraph letter such as _th_ is one
+character. The face's only substitutions are contextual: two identical
+consonant letters draw the letter and the doubling mark, the length mark is a
+mark that mark positioning seats over its vowel, and a default-ignorable
+character draws nothing. The script has no case. The numerals count in sixteens,
+nought to fifteen, so twenty-six is one and ten and three hundred and nine is
+one, three and five. The opening and closing quotation marks are characters of
+their own.
+
+A note writes Pirzath in roman, and thalorna's `pirzath` mapping note turns the
+spelling into these code points: an acute vowel is the vowel and the length
+mark, a capital is its letter, the digits `0` to `9` and `@ # $ % ^ &` are the
+numerals, and `“ ”`, `[ ]`, `<<` `>>` and a straight `"` are the quotation
+marks. The letter c outside _ch_, and every mark the script lacks, pass through
+the mapping and print the box.
 
 ## Checks
 
 - `tools/pirzath/check_font.py` loads the built font, confirms every mapped code point
-  names a glyph with an outline, checks that `?`, `;` and `:` map to the box, checks that the digits, `@ # $ % ^ &`,
-  the quotation inputs (`"`, `“ ”`, `« »`, `[ ]` and `<<` `>>`), the space, `.`, `!`, `,`, `-` and a to f type
-  what the rulings say, checks the name table and opens the `.woff2`.
-- `tools/pirzath/guard.py` shapes every form in the `words` list of the Khazari language
-  note on thalorna's `origin/main` and asserts the shaped glyph sequence is the
-  one the spelling demands: no `.notdef`, each digraph one glyph, each acute
-  vowel its vowel followed by the length mark, each doubled consonant or
-  digraph the letter once with the doubling mark. A set of fixtures covers the
-  numerals, a number beside words, the letters a to f, the quotation marks
-  opening and closing from every input (`"`, `“ ”`, `« »`, `<<` `>>`) with gh
-  right before the closing mark in each, the four marks between words, the
-  three keys that draw nothing, every consonant and every digraph doubled, and
-  four doubled lexicon words. A second set of fixtures types the seventeen
+  names a glyph with an outline, checks that Latin text, `?`, `;` and `:` included,
+  maps to the box, checks the name table and opens the `.woff2`. `tools/codepoints.py`
+  checks that the face draws its own code points and nothing else, and that no
+  substitution turns one character into another.
+- `tools/pirzath/guard.py` writes every form in the `words` list of the Khazari
+  language note on thalorna's `origin/main` through the `pirzath` mapping note,
+  shapes it, and asserts the shaped glyph sequence is the one the spelling demands:
+  no `.notdef`, each digraph one glyph, each acute vowel its vowel followed by the
+  length mark, each doubled consonant or digraph the letter once with the doubling
+  mark. A set of fixtures, written through the mapping too, covers the numerals, a
+  number beside words, the letters a to f, the quotation marks opening and closing
+  from every input with gh right before the closing mark, the four marks between
+  words, the keys that print the box, every consonant and every digraph doubled,
+  and four doubled lexicon words. A second set of fixtures writes the seventeen
   lost letters initial, medial and final where each can occur, with _zangh_,
-  _huzangh_, `ay`, `ey` and `oy`, `y` before a vowel and between consonants,
-  both apostrophes, the pairs with an acute on either vowel and the doubled lost
+  _huzangh_, `ay`, `ey` and `oy`, `y` before a vowel and between consonants, both
+  apostrophes, the pairs with an acute on either vowel and the doubled lost
   consonants. `tools/prove_guards.py` removes the GSUB table from the built font,
-  which drops the ligature, decomposition, quotation and lost-letter features,
-  and the guard fails on it.
+  which drops the doubling, and the guard fails on it.
 
 ## Source
 

@@ -9,8 +9,12 @@
       <string>space</string>
       <string>ignorable</string>
       <string>ignorable.sub</string>
-      <string>hyphen</string>
       <string>acutecomb</string>
+      <string>a.acute</string>
+      <string>e.acute</string>
+      <string>i.acute</string>
+      <string>o.acute</string>
+      <string>u.acute</string>
       <string>a</string>
       <string>e</string>
       <string>i</string>
@@ -39,12 +43,6 @@
       <string>ng</string>
       <string>j</string>
       <string>w</string>
-      <string>y</string>
-      <string>aacute</string>
-      <string>eacute</string>
-      <string>iacute</string>
-      <string>oacute</string>
-      <string>uacute</string>
       <string>num.0</string>
       <string>num.1</string>
       <string>num.2</string>

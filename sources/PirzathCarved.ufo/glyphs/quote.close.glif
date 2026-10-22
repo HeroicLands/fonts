@@ -1,9 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <glyph name="quote.close" format="2">
   <advance width="542"/>
-  <unicode hex="005D"/>
-  <unicode hex="00BB"/>
-  <unicode hex="201D"/>
   <unicode hex="F0055"/>
   <outline>
     <contour>

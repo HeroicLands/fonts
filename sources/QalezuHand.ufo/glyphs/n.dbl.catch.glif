@@ -1,7 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <glyph name="n.dbl.catch" format="2">
   <advance width="476"/>
-  <unicode hex="1ECDE"/>
   <outline>
     <component base="n"/>
     <component base="doubling" xOffset="237" yOffset="-79"/>

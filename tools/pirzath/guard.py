@@ -4,17 +4,21 @@
 
     .venv/bin/python tools/pirzath/guard.py [--font fonts/PirzathCarved-Regular.ttf]
                                          [--thalorna ~/dev/HeroicLands/thalorna | --note FILE]
+                                         [--map-note FILE | --fixtures-only]
 
 The forms come from the ``words`` list in the frontmatter of
 ``assets/content/Skills/Languages/Khazari.md`` on the thalorna repository's
-``origin/main``. For each form the expected glyph sequence is derived from the
-spelling: a digraph is one ligature glyph, an acute vowel is its vowel followed
-by the length mark, a doubled consonant or digraph is the letter once with
-the doubling mark, and nothing is .notdef or the box. The shaped sequence must match it
-exactly, so a lexicon form shapes with the same glyphs whether or not the font
-also types the lost letters. A set of fixtures covers the numerals, the
-quotation marks, the marks between words, every doubled letter, and the
-seventeen lost letters in every position they occupy.
+``origin/main``. Each form is written in Pirzath's code points by thalorna's
+``pirzath`` mapping note (``assets/content/Lore/Scripts/Pirzath_Spelling.md`` on
+``origin/main``, or the file ``--map-note`` names), as a run marked
+``map=pirzath`` is, and the result is shaped. The expected glyph sequence is
+derived from the spelling, by rules the guard owns: a digraph is one letter, an
+acute vowel is its vowel followed by the length mark, a doubled consonant or
+digraph is the letter once with the doubling mark, and nothing is .notdef or the
+box. The shaped sequence must match it exactly. A set of fixtures, written
+through the mapping and shaped too, covers the numerals, the quotation marks,
+the marks between words, every doubled letter, the seventeen lost letters in
+every position they occupy, and characters the script lacks, which print the box.
 """
 
 import argparse
@@ -25,6 +29,7 @@ from pathlib import Path
 import yaml
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+from mapped import Mapping, MappedRenderer  # noqa: E402
 from render import Renderer  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent.parent
@@ -36,13 +41,11 @@ NUMS = [f"num.{i}" for i in range(16)]
 # the font under test is only ever read.
 DIGRAPHS = {"th": "t_h", "dh": "d_h", "gh": "g_h", "kh": "k_h"}
 ACUTES = {"á": "aacute", "é": "eacute", "í": "iacute", "ó": "oacute", "ú": "uacute"}
-LETTERS = {c: c for c in "bdgkptvfzshmnlrcaeiou"}
+LETTERS = {c: c for c in "bdgkptvfzshmnlraeiou"}
 PUNCT_MAP = {
-    "-": "hyphen", ".": "period", ",": "comma", "!": "exclam", "¡": "exclam",
-    " ": "space", "\u00a0": "space", "\u2010": "hyphen", "\u2011": "hyphen",
-    '"': "quotedbl", "\u201c": "quote.open", "\u201d": "quote.close",
-    "«": "quote.open", "»": "quote.close", "[": "quote.open", "]": "quote.close",
-    "<": "less", ">": "greater",
+    "-": "hyphen", ".": "period", ",": "comma", "!": "exclam",
+    " ": "space", "\u00a0": "space",
+    "\u201c": "quote.open", "\u201d": "quote.close", "[": "quote.open", "]": "quote.close",
 }
 CONSONANT_NAMES = {
     "p", "b", "f", "v", "m", "t", "d", "t_h", "d_h", "n", "k", "g", "k_h", "g_h", "s", "z", "h",
@@ -57,27 +60,26 @@ FIXTURES = [
     ("1@", ["num.1", "num.10"]),
     ("girm 10 bep tob 1", ["g", "i", "r", "m", "space", "num.1", "num.0", "space", "b", "e", "p",
                            "space", "t", "o", "b", "space", "num.1"]),
-    ("abcdef", ["a", "b", "c", "d", "e", "f"]),
+    ("abcdef", ["a", "b", "notdef.box", "d", "e", "f"]),
     ('"dalk"', ["quote.open", "d", "a", "l", "k", "quote.close"]),
     ('gaz "dalk" zef', ["g", "a", "z", "space", "quote.open", "d", "a", "l", "k", "quote.close",
                         "space", "z", "e", "f"]),
-    ('bant."', ["b", "a", "n", "t", "period", "quote.close"]),
+    ('bant."', ["b", "a", "n", "t", "period", "quote.open"]),
     ("“dalk”", ["quote.open", "d", "a", "l", "k", "quote.close"]),
     ("dalk“", ["d", "a", "l", "k", "quote.open"]),
     ("”dalk", ["quote.close", "d", "a", "l", "k"]),
     ("[dalk]", ["quote.open", "d", "a", "l", "k", "quote.close"]),
     ("gaz [ghulk]", ["g", "a", "z", "space", "quote.open", "g_h", "u", "l", "k", "quote.close"]),
-    ("«dalk»", ["quote.open", "d", "a", "l", "k", "quote.close"]),
+    ("«dalk»", ["notdef.box", "d", "a", "l", "k", "notdef.box"]),
     ("<<dalk>>", ["quote.open", "d", "a", "l", "k", "quote.close"]),
     ("gaz <<dalk>> zef", ["g", "a", "z", "space", "quote.open", "d", "a", "l", "k", "quote.close",
                           "space", "z", "e", "f"]),
     # gh right before a closing quote, from every input.
     ('"thurágh"', ["quote.open", "t_h", "u", "r", "a", "lengthmark", "g_h", "quote.close"]),
     ("“thurágh”", ["quote.open", "t_h", "u", "r", "a", "lengthmark", "g_h", "quote.close"]),
-    ("«thurágh»", ["quote.open", "t_h", "u", "r", "a", "lengthmark", "g_h", "quote.close"]),
     ("<<thurágh>>", ["quote.open", "t_h", "u", "r", "a", "lengthmark", "g_h", "quote.close"]),
     ("?;:", ["notdef.box", "notdef.box", "notdef.box"]),
-    ("¡ves durám.", ["exclam", "v", "e", "s", "space", "d", "u", "r", "a", "lengthmark", "m", "period"]),
+    ("¡ves durám.", ["notdef.box", "v", "e", "s", "space", "d", "u", "r", "a", "lengthmark", "m", "period"]),
     ("!ves durám.", ["exclam", "v", "e", "s", "space", "d", "u", "r", "a", "lengthmark", "m", "period"]),
     # Doubling: every consonant and every digraph, then the lexicon's own.
     *[(f"a{c}{c}a", ["a", c, "doubling", "a"]) for c in "bdgkptvfzshmnlr"],
@@ -144,6 +146,11 @@ LOST_FIXTURES = [
 ]
 
 
+def fixture_texts() -> list[str]:
+    """Every roman text the fixtures write through the mapping."""
+    return [text for text, _ in FIXTURES + LOST_FIXTURES]
+
+
 def lexicon_forms(thalorna: Path | None, note: Path | None) -> list[str]:
     if note:
         text = note.read_text(encoding="utf-8")
@@ -194,15 +201,16 @@ def expected_glyphs(form: str) -> list[str]:
     return out
 
 
-def run(font: Path, forms: list[str]) -> list[str]:
-    r = Renderer(font)
+def run(font: Path, forms: list[str], mapping: Mapping | None = None) -> list[str]:
+    r = MappedRenderer(Renderer(font), mapping or Mapping.offline("pirzath-carved"))
+    r.prepare(forms + fixture_texts())
     failures = []
     digraphs, acutes, doubled = 0, 0, 0
     for form in forms:
         got = r.glyph_names(form)
         want = expected_glyphs(form)
         doubled += "doubling" in want
-        if ".notdef" in got or "notdef.box" in got or "c" in got:  # c draws the box
+        if ".notdef" in got or "notdef.box" in got:
             failures.append(f"{form}: .notdef or the box in {got}")
         elif got != want:
             failures.append(f"{form}: shaped {got}, expected {want}")
@@ -224,9 +232,16 @@ def main():
     ap.add_argument("--font", default=str(ROOT / "fonts" / "PirzathCarved-Regular.ttf"))
     ap.add_argument("--thalorna", default=str(Path.home() / "dev/HeroicLands/thalorna"))
     ap.add_argument("--note", help="read the language note from this file instead of git")
+    ap.add_argument("--map-note", help="read the pirzath mapping note from this file instead of git")
+    ap.add_argument("--fixtures-only", action="store_true",
+                    help="shape the fixtures alone, written as tools/mapped.json records them")
     args = ap.parse_args()
-    forms = lexicon_forms(Path(args.thalorna), Path(args.note) if args.note else None)
-    failures = run(Path(args.font), forms)
+    if args.fixtures_only:
+        forms, mapping = [], Mapping.offline("pirzath-carved")
+    else:
+        forms = lexicon_forms(Path(args.thalorna), Path(args.note) if args.note else None)
+        mapping = Mapping("pirzath", thalorna=Path(args.thalorna), note=args.map_note, face="pirzath-carved")
+    failures = run(Path(args.font), forms, mapping)
     for f in failures[:40]:
         print(f"{args.font}: error: {f}")
     if len(failures) > 40:

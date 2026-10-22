@@ -6,3 +6,53 @@ languagesystem DFLT dflt;
 feature ccmp {
   sub ignorable by ignorable.sub;
 } ccmp;
+
+# A catch before a sign, or before a doubled sign, is drawn as one form: three
+# reed dabs over the sign. HarfBuzz shapes these code points in visual order,
+# because they belong to no script, so the catch stands after its sign in the run.
+feature rlig {
+  sub l catch by l.catch;
+  sub r catch by r.catch;
+  sub t catch by t.catch;
+  sub d catch by d.catch;
+  sub z catch by z.catch;
+  sub s catch by s.catch;
+  sub g catch by g.catch;
+  sub k catch by k.catch;
+  sub n catch by n.catch;
+  sub th catch by th.catch;
+  sub m catch by m.catch;
+  sub q catch by q.catch;
+  sub kh catch by kh.catch;
+  sub gh catch by gh.catch;
+  sub h catch by h.catch;
+  sub sh catch by sh.catch;
+  sub p catch by p.catch;
+  sub b catch by b.catch;
+  sub f catch by f.catch;
+  sub w catch by w.catch;
+  sub y catch by y.catch;
+  sub tj catch by tj.catch;
+  sub l.dbl catch by l.dbl.catch;
+  sub r.dbl catch by r.dbl.catch;
+  sub t.dbl catch by t.dbl.catch;
+  sub d.dbl catch by d.dbl.catch;
+  sub z.dbl catch by z.dbl.catch;
+  sub s.dbl catch by s.dbl.catch;
+  sub g.dbl catch by g.dbl.catch;
+  sub k.dbl catch by k.dbl.catch;
+  sub n.dbl catch by n.dbl.catch;
+  sub th.dbl catch by th.dbl.catch;
+  sub m.dbl catch by m.dbl.catch;
+  sub q.dbl catch by q.dbl.catch;
+  sub kh.dbl catch by kh.dbl.catch;
+  sub gh.dbl catch by gh.dbl.catch;
+  sub h.dbl catch by h.dbl.catch;
+  sub sh.dbl catch by sh.dbl.catch;
+  sub p.dbl catch by p.dbl.catch;
+  sub b.dbl catch by b.dbl.catch;
+  sub f.dbl catch by f.dbl.catch;
+  sub w.dbl catch by w.dbl.catch;
+  sub y.dbl catch by y.dbl.catch;
+  sub tj.dbl catch by tj.dbl.catch;
+} rlig;

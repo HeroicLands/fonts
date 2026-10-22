@@ -1,8 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <glyph name="uacute" format="2">
   <advance width="428"/>
-  <unicode hex="00DA"/>
-  <unicode hex="00FA"/>
   <outline>
     <contour>
       <point x="393" y="282" type="line"/>

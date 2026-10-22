@@ -1,38 +1,33 @@
 # Copyright (c) 2026 Tom Rodriguez ("Toasty") — <toasty@heroiclands.org>
 # SPDX-License-Identifier: OFL-1.1
-"""Convert every Khelathi lexicon form to Qalezu and assert the font shapes it rightly.
+"""Write every Khelathi lexicon form in Qalezu and assert the font shapes it rightly.
 
     .venv/bin/python tools/qalezu-hand/guard.py [--font fonts/QalezuHand-Regular.ttf]
                                          [--thalorna ~/dev/HeroicLands/thalorna | --note FILE]
+                                         [--map-note FILE | --fixtures-only]
 
 The forms come from the ``words`` forms and the ``names`` of the frontmatter of
 ``assets/content/Skills/Languages/Khelathi.md`` on the thalorna repository's
-``origin/main``. The converter from a Latin Khelathi word to the string of Qalezu
-code points is ``convert.mjs`` beside it, called through ``node`` in one
-batch, and the rules live there alone:
+``origin/main``. Each form is written in Qalezu's code points by thalorna's
+``qalezu`` mapping note (``assets/content/Lore/Scripts/Qalezu_Spelling.md`` on
+``origin/main``, or the file ``--map-note`` names), as a run marked
+``map=qalezu`` is, and the result is shaped right to left.
 
-- a consonant letter is its sign, and ``th``, ``sh``, ``kh``, ``gh`` and ``ch``
-  or ``tj`` are one sign each, ``ch`` and ``tj`` the same sign;
-- ``'`` is the catch;
-- a vowel at the start of a word, or after a space, a hyphen or other mark, is the
-  catch, and every other vowel draws nothing;
-- a catch whose next sign, with the silent vowels skipped, is a consonant sign or a
-  doubled sign is written with that sign as one character, its catch-before form
-  (``<sign>.catch``, three reed dabs in a triangle over the sign); any other catch
-  (at the end of a word, before a mark, before another catch, or in a word with
-  no consonant after it) is the standalone catch;
-- a consonant written twice with no vowel between is that sign's doubled form, one
-  character, and so is a letter doubled before a digraph that begins with it
-  (``tth``);
-- a hyphen is a word space: ``Gar-Qethar`` is two words, and a hyphen with nothing after
-  it, as in the prefix forms ``Gar-`` and ``Lut-``, writes nothing;
-- digits, ``.`` and ``,`` are their own signs, and case is ignored.
+The font draws each code point as its sign, with one contextual form: a catch
+followed by a consonant sign or a doubled sign is drawn as that sign's
+catch-before form (``<sign>.catch``, three reed dabs in a triangle over the
+sign), which has no code point of its own. Two identical consonant signs stay
+two signs; a doubled consonant is its own character, which the mapping writes.
+So the glyphs a form must shape to follow from the code points the mapping
+wrote, with each catch and the sign after it fused, in reverse order for the
+visual run, and none ``.notdef`` or the box.
 
-A letter with no sign (``c`` outside ``ch``, ``j``, ``v``, ``x``, or any other
-character) is never invented a mapping: the converter refuses it, and the guard
-lists the form with the letter. Every other form is shaped right to left, and
-the glyphs must be the signs the converter wrote, in reverse order for the
-visual run, with none ``.notdef`` or box. Targets come from ``encoding.json``.
+The fixtures in ``fixtures.json`` give a roman spelling and the signs it is
+drawn with, in reading order, and are written through the mapping and shaped
+too, so the guard checks the mapping and the face together. A character the
+mapping has no row for (``c`` outside ``ch``, ``x``, or a mark the script lacks)
+passes through it and prints the box: the guard lists the forms that hold one,
+and its ``unmappable`` fixtures assert both. Targets come from ``encoding.json``.
 """
 
 import argparse
@@ -44,59 +39,50 @@ from pathlib import Path
 import yaml
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+from mapped import Mapping  # noqa: E402
 from render import Renderer  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent.parent
 NOTE = "assets/content/Skills/Languages/Khelathi.md"
 ENCODING = Path(__file__).resolve().parent / "encoding.json"
 FIXTURE_FILE = Path(__file__).resolve().parent / "fixtures.json"
-CONVERTER = ROOT / "tools" / "convert_batch.mjs"
-
-
-class Unmappable(Exception):
-    def __init__(self, letter: str):
-        super().__init__(letter)
-        self.letter = letter
+FACE = "qalezu-hand"
+BOX = "notdef.box"
 
 
 def load_encoding():
     enc = json.loads(ENCODING.read_text(encoding="utf-8"))
-    point, name_of = {}, {}
-    for g in enc["glyphs"]:
-        cp = int(g["codepoint"][2:], 16)
-        point[g["glyph"]] = chr(cp)
-        name_of[chr(cp)] = g["glyph"]
-    return point, name_of
+    name_of = {chr(int(g["codepoint"][2:], 16)): g["glyph"] for g in enc["glyphs"]}
+    fused = {f["base"]: f["glyph"] for f in enc["forms"]}
+    catch = next(g["glyph"] for g in enc["glyphs"] if "'" in g.get("typing", []))
+    return name_of, fused, catch
 
 
-POINT, NAME_OF = load_encoding()
+NAME_OF, FUSED, CATCH = load_encoding()
 SPACE = " "
 
 
-def convert_all(words: list[str]) -> list[str | Unmappable]:
-    """The Qalezu code points of each Latin word, or the Unmappable naming its letter.
-
-    One ``node`` process converts the whole list through ``convert.mjs``.
-    """
-    result = subprocess.run(
-        ["node", str(CONVERTER), "Qalezu Hand"],
-        input=json.dumps(words),
-        check=True,
-        capture_output=True,
-        text=True,
-    )
-    return [Unmappable(r["letter"]) if "letter" in r else r["text"] for r in json.loads(result.stdout)]
+def drawn(text: str) -> list[str]:
+    """The glyphs, in reading order, that the face draws for a string of code points."""
+    names = ["space" if c == SPACE else NAME_OF.get(c, BOX) for c in text]
+    out: list[str] = []
+    for name in names:
+        if out and out[-1] == CATCH and name in FUSED:
+            out[-1] = FUSED[name]
+        else:
+            out.append(name)
+    return out
 
 
-def glyphs_of(text: str) -> list[str]:
-    return ["space" if c == SPACE else NAME_OF[c] for c in text]
-
-
-# Each fixture: the Latin and the signs it writes, in reading order. The fixtures and the
-# characters the alphabet has no sign for are data, shared with the converter's own tests.
+# Each fixture: the roman spelling and the signs it is drawn with, in reading order.
 _fixtures = json.loads(FIXTURE_FILE.read_text(encoding="utf-8"))
 FIXTURES = [(f["latin"], f["signs"]) for f in _fixtures["fixtures"]]
 UNMAPPABLE = [(f["latin"], f["letter"]) for f in _fixtures["unmappable"]]
+
+
+def fixture_texts() -> list[str]:
+    """Every roman text the fixtures write through the mapping."""
+    return [t for t, _ in FIXTURES] + [t for t, _ in UNMAPPABLE]
 
 
 def lexicon(thalorna: Path | None, note: Path | None) -> dict:
@@ -125,49 +111,51 @@ def lexicon_forms(thalorna: Path | None, note: Path | None) -> list[str]:
     return forms
 
 
-def run(font: Path, forms: list[str]) -> list[str]:
+def run(font: Path, forms: list[str], mapping: Mapping | None = None) -> list[str]:
     r = Renderer(font)
+    m = mapping or Mapping.offline(FACE)
+    records = m.records(forms + fixture_texts())
+    # The space has no row: it passes through, and the face draws it.
+    for rec in records:
+        if rec.get("unmapped"):
+            rec["unmapped"] = [c for c in rec["unmapped"] if c != SPACE]
+    written = dict(zip(forms + fixture_texts(), records))
     failures = []
-    converted, signs, unmappable = 0, 0, []
-    fixture_words = [latin for latin, _ in FIXTURES]
-    refused_words = [latin for latin, _ in UNMAPPABLE]
-    results = convert_all(forms + fixture_words + refused_words)
-    form_results = results[: len(forms)]
-    fixture_results = results[len(forms) : len(forms) + len(fixture_words)]
-    refused_results = results[len(forms) + len(fixture_words) :]
-    for form, text in zip(forms, form_results):
-        if isinstance(text, Unmappable):
-            unmappable.append((form, text.letter))
+    shaped, signs, unmapped = 0, 0, []
+    for form in forms:
+        rec = written[form]
+        if rec.get("unmapped"):
+            unmapped.append((form, rec["unmapped"]))
             continue
-        want = glyphs_of(text)
-        got = r.glyph_names(text, direction="rtl")
-        converted += 1
-        signs += len(text)
-        if ".notdef" in got or "notdef.box" in got:
+        want = drawn(rec["text"])
+        got = r.glyph_names(rec["text"], direction="rtl")
+        shaped += 1
+        signs += len(want)
+        if ".notdef" in got or BOX in got:
             failures.append(f"{form}: .notdef or the box in {got}")
-        elif len(got) != len(text):
-            failures.append(f"{form}: {len(got)} glyphs for {len(text)} signs")
         elif got != want[::-1]:
             failures.append(f"{form}: shaped {got}, expected {want[::-1]}")
-    for (latin, want), text in zip(FIXTURES, fixture_results):
-        if isinstance(text, Unmappable):
-            failures.append(f"{latin!r}: refused {text.letter!r}, expected {want}")
+    for latin, want in FIXTURES:
+        rec = written[latin]
+        if rec.get("unmapped"):
+            failures.append(f"{latin!r}: the mapping has no row for {rec['unmapped']}, expected {want}")
             continue
-        if glyphs_of(text) != want:
-            failures.append(f"{latin!r}: converted to {glyphs_of(text)}, expected {want}")
-        got = r.glyph_names(text, direction="rtl")
+        if drawn(rec["text"]) != want:
+            failures.append(f"{latin!r}: written as {drawn(rec['text'])}, expected {want}")
+        got = r.glyph_names(rec["text"], direction="rtl")
         if got != want[::-1]:
             failures.append(f"{latin!r}: shaped {got}, expected {want[::-1]}")
-    for (latin, letter), text in zip(UNMAPPABLE, refused_results):
-        if not isinstance(text, Unmappable):
-            failures.append(f"{latin!r}: converted, expected no sign for {letter!r}")
-        elif text.letter != letter:
-            failures.append(f"{latin!r}: refused {text.letter!r}, expected {letter!r}")
-    for form, letter in unmappable:
-        print(f"{NOTE}: warning: the form {form!r} has the letter {letter!r}, which Qalezu has no sign for")
+    for latin, letter in UNMAPPABLE:
+        rec = written[latin]
+        if letter not in rec.get("unmapped", []):
+            failures.append(f"{latin!r}: written as {drawn(rec['text'])}, expected no row for {letter!r}")
+        elif BOX not in r.glyph_names(rec["text"], direction="rtl"):
+            failures.append(f"{latin!r}: {letter!r} does not print the box")
+    for form, letters in unmapped:
+        print(f"{NOTE}: warning: the form {form!r} has {', '.join(map(repr, letters))}, which the qalezu mapping does not write")
     print(
-        f"{font}: {len(forms)} forms, {converted} converted and shaped with {signs} signs, "
-        f"{len(unmappable)} with a letter Qalezu has no sign for, {len(FIXTURES)} fixtures, "
+        f"{font}: {len(forms)} forms, {shaped} written and shaped with {signs} signs, "
+        f"{len(unmapped)} with a character the mapping does not write, {len(FIXTURES) + len(UNMAPPABLE)} fixtures, "
         f"{len(failures)} failures"
     )
     return failures
@@ -178,9 +166,16 @@ def main():
     ap.add_argument("--font", default=str(ROOT / "fonts" / "QalezuHand-Regular.ttf"))
     ap.add_argument("--thalorna", default=str(Path.home() / "dev/HeroicLands/thalorna"))
     ap.add_argument("--note", help="read the language note from this file instead of git")
+    ap.add_argument("--map-note", help="read the qalezu mapping note from this file instead of git")
+    ap.add_argument("--fixtures-only", action="store_true",
+                    help="shape the fixtures alone, written as tools/mapped.json records them")
     args = ap.parse_args()
-    forms = lexicon_forms(Path(args.thalorna), Path(args.note) if args.note else None)
-    failures = run(Path(args.font), forms)
+    if args.fixtures_only:
+        forms, mapping = [], Mapping.offline(FACE)
+    else:
+        forms = lexicon_forms(Path(args.thalorna), Path(args.note) if args.note else None)
+        mapping = Mapping("qalezu", thalorna=Path(args.thalorna), note=args.map_note, face=FACE)
+    failures = run(Path(args.font), forms, mapping)
     for f in failures[:40]:
         print(f"{args.font}: error: {f}")
     if len(failures) > 40:

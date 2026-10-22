@@ -19,6 +19,7 @@ from pathlib import Path
 from PIL import Image, ImageDraw
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+from mapped import Mapping, MappedRenderer  # noqa: E402
 from render import Renderer, label_font  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent.parent
@@ -53,7 +54,7 @@ CHART = [
     ("á", "á"), ("é", "é"), ("í", "í"), ("ó", "ó"), ("ú", "ú"), ("ll (doubled)", "ll"),
     ("tth (doubled)", "tth"), ("kk (doubled)", "kk"),
     *CARVED.LOST_LETTERS,
-    ("- dash", "-"), (". sentence end", "."), (", pause", ","), ("! or ¡", "!"),
+    ("- dash", "-"), (". sentence end", "."), (", pause", ","), ("! exclamation", "!"),
     ('" opening', '"'), ('" closing', 'a"'), (".notdef", "?"),
     *[(f"{v} ({k})", k) for v, k in enumerate("0123456789@#$%^&")],
 ]
@@ -211,10 +212,12 @@ def main():
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     ap.add_argument("--font", default=str(ROOT / "fonts" / "PirzathHand-Regular.ttf"))
     ap.add_argument("--out", default=str(ROOT / "specimens" / "pirzath-hand"))
+    ap.add_argument("--thalorna", default=str(Path.home() / "dev/HeroicLands/thalorna"),
+                    help="the checkout whose mapping notes write the roman texts")
     args = ap.parse_args()
     out = Path(args.out)
     out.mkdir(parents=True, exist_ok=True)
-    r = Renderer(Path(args.font))
+    r = MappedRenderer(Renderer(Path(args.font)), Mapping("pirzath", thalorna=Path(args.thalorna), face="pirzath-hand"))
     glyph_chart(r, out / "01-glyph-chart.png")
     texts(r, out / "02-texts.png")
     owner_alphabet(r, out / "03-owner-alphabet.png")

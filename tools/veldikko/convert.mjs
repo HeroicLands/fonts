@@ -8,7 +8,7 @@
  *     convertVeldikko("nuuva");
  *
  * An internal tool of the Veldikko guard, not shipped; `convert("Veldikko",
- * text)` in `../qalezu-hand/convert.mjs` reaches it. The code points come from
+ * text)` in `../convert.mjs` reaches it. The code points come from
  * `encoding.json` beside it. The rules are the Sinale mapping:
  *
  * - a consonant is its letter, and `dh` and `ng` are one letter each; `n` before
@@ -34,7 +34,7 @@ import { readFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
-import { Unmappable } from "../qalezu-hand/convert.mjs";
+import { Unmappable } from "../convert.mjs";
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const VOWELS = new Set(["a", "e", "i", "o", "u", "y", "ë"]);

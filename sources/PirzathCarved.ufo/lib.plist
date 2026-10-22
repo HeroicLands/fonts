@@ -50,11 +50,6 @@
       <string>ei</string>
       <string>oi</string>
       <string>ou</string>
-      <string>aacute</string>
-      <string>uacute</string>
-      <string>iacute</string>
-      <string>eacute</string>
-      <string>oacute</string>
       <string>lengthmark</string>
       <string>doubling</string>
       <string>num.0</string>
@@ -79,10 +74,6 @@
       <string>comma</string>
       <string>quote.open</string>
       <string>quote.close</string>
-      <string>quotedbl</string>
-      <string>less</string>
-      <string>greater</string>
-      <string>c</string>
     </array>
     <key>public.openTypeCategories</key>
     <dict>
@@ -90,15 +81,11 @@
       <string>base</string>
       <key>a</key>
       <string>base</string>
-      <key>aacute</key>
-      <string>base</string>
       <key>ai</key>
       <string>base</string>
       <key>au</key>
       <string>base</string>
       <key>b</key>
-      <string>base</string>
-      <key>c</key>
       <string>base</string>
       <key>catch</key>
       <string>base</string>
@@ -114,8 +101,6 @@
       <string>mark</string>
       <key>e</key>
       <string>base</string>
-      <key>eacute</key>
-      <string>base</string>
       <key>ei</key>
       <string>base</string>
       <key>exclam</key>
@@ -126,8 +111,6 @@
       <string>base</string>
       <key>g_h</key>
       <string>base</string>
-      <key>greater</key>
-      <string>base</string>
       <key>h</key>
       <string>base</string>
       <key>hl</key>
@@ -135,8 +118,6 @@
       <key>hyphen</key>
       <string>base</string>
       <key>i</key>
-      <string>base</string>
-      <key>iacute</key>
       <string>base</string>
       <key>ignorable</key>
       <string>base</string>
@@ -152,8 +133,6 @@
       <string>base</string>
       <key>lengthmark</key>
       <string>mark</string>
-      <key>less</key>
-      <string>base</string>
       <key>m</key>
       <string>base</string>
       <key>n</key>
@@ -198,8 +177,6 @@
       <string>base</string>
       <key>o</key>
       <string>base</string>
-      <key>oacute</key>
-      <string>base</string>
       <key>oi</key>
       <string>base</string>
       <key>ou</key>
@@ -213,8 +190,6 @@
       <key>quote.close</key>
       <string>base</string>
       <key>quote.open</key>
-      <string>base</string>
-      <key>quotedbl</key>
       <string>base</string>
       <key>r</key>
       <string>base</string>
@@ -231,8 +206,6 @@
       <key>ts</key>
       <string>base</string>
       <key>u</key>
-      <string>base</string>
-      <key>uacute</key>
       <string>base</string>
       <key>v</key>
       <string>base</string>

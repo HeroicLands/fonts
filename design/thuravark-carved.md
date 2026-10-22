@@ -32,22 +32,29 @@ No stave has more than two branches meeting at one point.
 Each stave stands at its ink with 34 units of white a side, the font's spacing
 rule (see `design/making-fonts.md`), and carries its own room: the font has no
 kerning and no mark positioning. The branch of each stave is in the guard's table, `tools/thuravark-carved/guard.py`, which
-follows the inventory table row for row; the typed input of each stave is in the
-specimen table in `tools/thuravark-carved/specimens.py`.
+follows the inventory table row for row.
 
-| Typed                                          | Draws                                             |
-| ---------------------------------------------- | ------------------------------------------------- |
-| the 22 single letters, and `th dh kh gh ng hl` | their stave; the six digraphs are ligatures       |
-| `ngh`                                          | n and gh                                          |
-| `j`, and `y` before a vowel                    | the glide, a half branch rising from the middle   |
-| `y` anywhere else                              | the stave i                                       |
-| `á é í ó ú`, or a vowel then U+0301            | the vowel stave twice                             |
-| a doubled vowel letter                         | the stave twice                                   |
-| a doubled consonant, `tth ddh kkh ggh hhl nng` | two staves, two digraph staves                    |
-| `0`-`9`                                        | the numerals                                      |
-| `.`                                            | a short horizontal dash, the row's one horizontal |
-| space and `-`                                  | nothing; the hyphen breaks a ligature             |
-| `c q x` and every other punctuation key        | the box, a copy of `.notdef`                      |
+The face draws each stave, numeral and mark from its own code point, U+F0100 to
+U+F01FF, and from nothing else: a Latin letter, digit or mark draws the box. Its
+one contextual form is the acute mark after a vowel, which draws that vowel's
+stave again (`a.acute`), so a long vowel is the stave twice. A note writes
+Nordmal in roman, and thalorna's `thuravark` mapping note turns the spelling
+into these code points:
+
+| Spelled                                        | Written                                             |
+| ---------------------------------------------- | --------------------------------------------------- |
+| the 22 single letters, and `th dh kh gh ng hl` | their stave; each of the six digraphs is one stave  |
+| `ngh`                                          | n and gh                                            |
+| `j`, and `y` before a vowel                    | the glide, a half branch rising from the middle     |
+| `y` anywhere else                              | the stave i                                         |
+| `á é í ó ú`                                    | the vowel and the acute mark: the vowel stave twice |
+| a doubled vowel letter                         | the stave twice                                     |
+| a doubled consonant, `tth ddh kkh ggh hhl nng` | two staves, two digraph staves                      |
+| `q`, `ë`                                       | the staves k and e                                  |
+| `0`-`9`                                        | the numerals                                        |
+| `.`                                            | a short horizontal dash, the row's one horizontal   |
+| `-`                                            | nothing; the space draws nothing too                |
+| `c x` and every other punctuation key          | passed through, so the face prints the box          |
 
 ## Numerals
 
@@ -60,14 +67,15 @@ a cup no value makes and no stave has.
 
 ## Checks
 
-`tools/thuravark-carved/guard.py` shapes every Nordmal form on thalorna `origin/main` (words,
-affixes, elements, given and clan names) and a set of fixtures, and asserts the
+`tools/thuravark-carved/guard.py` writes every Nordmal form on thalorna `origin/main` (words,
+affixes, elements, given and clan names) and a set of fixtures through the `thuravark`
+mapping note, shapes them and asserts the glyphs the spelling demands, and asserts the
 stave design: 28 distinct branch sets, no horizontal edge in any stave,
 numerals taller than staves, and every pair of staves at least 20 pixels apart
 at 36 px. `tools/thuravark-carved/check_font.py`
-checks the cmap, the empty glyphs, the name table and the `.woff2`.
-`tools/prove_guards.py` removes the GSUB table from the built
-font, which drops the ligatures and decomposition, and the guard must fail on it.
+checks the cmap, Latin text on the box, the empty glyphs, the name table and the
+`.woff2`. `tools/prove_guards.py` removes the GSUB table from the built font, which
+drops the acute mark's stave, and the guard must fail on it.
 
 ## The visual loop
 

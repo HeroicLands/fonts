@@ -1,7 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <glyph name="tj.catch" format="2">
   <advance width="635"/>
-  <unicode hex="1ECD5"/>
   <outline>
     <component base="tj"/>
     <component base="catchdots" xOffset="318" yOffset="769"/>

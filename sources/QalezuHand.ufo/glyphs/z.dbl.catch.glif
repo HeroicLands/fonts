@@ -1,7 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <glyph name="z.dbl.catch" format="2">
   <advance width="396"/>
-  <unicode hex="1ECDA"/>
   <outline>
     <component base="s"/>
     <component base="dab" xOffset="198" yOffset="579"/>

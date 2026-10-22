@@ -10,8 +10,9 @@ name: CI
 # fonts.css and fonts.json must match a fresh build byte for byte: a file left
 # unrebuilt fails here.
 #
-# The lexicon guards are not run here. They read the lexicon from a local
-# thalorna checkout, and thalorna is private to this CI.
+# The lexicon guards run on their fixtures alone here, written through the
+# mapping notes as tools/mapped.json records them. The lexicons and the mapping
+# notes are read from a local thalorna checkout, and thalorna is private to this CI.
 
 on:
     push:
@@ -79,6 +80,11 @@ jobs:
                   .venv/bin/python tools/teng-chou/stroke_mix.py
                   .venv/bin/python tools/veldikko/check_font.py
                   .venv/bin/python tools/veldikko/guard.py --fixtures-only
+                  .venv/bin/python tools/pirzath/guard.py --fixtures-only
+                  .venv/bin/python tools/pirzath-hand/guard.py --fixtures-only
+                  .venv/bin/python tools/thuravark-carved/guard.py --fixtures-only
+                  .venv/bin/python tools/qalezu-hand/guard.py --fixtures-only
+                  .venv/bin/python tools/semaron-kuriale/guard.py --fixtures-only
                   .venv/bin/python tools/notdef_box.py
                   .venv/bin/python tools/font_names.py
                   .venv/bin/python tools/codepoints.py

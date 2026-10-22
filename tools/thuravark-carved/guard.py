@@ -4,22 +4,30 @@
 
     .venv/bin/python tools/thuravark-carved/guard.py [--font fonts/ThuravarkCarved-Regular.ttf]
                                             [--thalorna ~/dev/HeroicLands/thalorna | --note FILE]
+                                            [--map-note FILE | --fixtures-only]
 
 The forms come from the frontmatter of ``assets/content/Skills/Languages/Nordmal.md``
 on the thalorna repository's ``origin/main``: the ``words``, ``affixes`` and
-``elements`` forms and every given name and clan name. The expected glyph
-sequence is derived from the spelling by the rules below, written here and not
-read from the font source:
+``elements`` forms and every given name and clan name. Each form is written in
+Thuravark's code points by thalorna's ``thuravark`` mapping note
+(``assets/content/Lore/Scripts/Thuravark_Spelling.md`` on ``origin/main``, or the
+file ``--map-note`` names), as a run marked ``map=thuravark`` is, and the result
+is shaped. The expected glyph sequence is derived from the spelling by the rules
+below, written here and read neither from the font source nor from the mapping:
 
 - a digraph (th dh kh gh ng hl) is one stave, and ngh is n and gh;
-- an acute vowel, and a doubled vowel letter, is the stave twice;
+- an acute vowel is the vowel and the acute mark, which the face draws as the
+  stave again (``a.acute``), and a doubled vowel letter is the stave twice;
 - a doubled consonant is two staves, a doubled digraph two digraph staves;
 - j, and y before a vowel, is the glide; any other y is the vowel i;
-- the space and the hyphen draw nothing, and the full stop draws the dash;
-- every other punctuation key, and c q x, draws the box;
+- q is the stave k, and ë is e;
+- the space draws nothing, the hyphen-minus is written as nothing, and the full
+  stop draws the dash;
+- every other punctuation key, c and x draw the box;
 - nothing is .notdef.
 
-Fixtures cover the fillers, the numerals, the full stop and the empty keys. A
+Fixtures, written through the mapping and shaped too, cover the fillers, the
+numerals, the full stop and the empty keys. A
 geometry section asserts the stave design: 28 distinct staves, no horizontal
 edge in any stave, numerals taller than the staves, and every pair of staves
 visibly apart at reading size.
@@ -37,7 +45,8 @@ from fontTools.ttLib import TTFont
 from PIL import Image
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
-from render import Renderer  # noqa: E402
+from mapped import Mapping, MappedRenderer  # noqa: E402
+from render import Renderer, Shaped  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent.parent
 NOTE = "assets/content/Skills/Languages/Nordmal.md"
@@ -80,7 +89,7 @@ STAVES = ("a e i o u p b f v t d th dh k g kh gh s z h l r hl m n ng j w").split
 DIGRAPHS = ("th", "dh", "kh", "gh", "ng", "hl")
 VOWELS = "aeiou"
 ACUTE = {"á": "a", "é": "e", "í": "i", "ó": "o", "ú": "u"}
-NOTHING = {"space", "hyphen"}
+NOTHING = {"space"}
 
 FIXTURES = [
     # Every stave from its typed input.
@@ -93,12 +102,11 @@ FIXTURES = [
     ("ey", ["e", "i"]),
     ("by", ["b", "i"]),
     ("yy", ["i", "i"]),
-    # Long vowels: the stave twice, three ways.
-    ("á", ["a", "a"]), ("é", ["e", "e"]), ("í", ["i", "i"]), ("ó", ["o", "o"]), ("ú", ["u", "u"]),
-    ("Á", ["a", "a"]),
+    # Long vowels: the vowel and the acute mark, or the vowel letter doubled.
+    ("á", ["a", "a.acute"]), ("é", ["e", "e.acute"]), ("í", ["i", "i.acute"]), ("ó", ["o", "o.acute"]),
+    ("ú", ["u", "u.acute"]), ("Á", ["a", "a.acute"]),
     ("aa", ["a", "a"]), ("ii", ["i", "i"]), ("uu", ["u", "u"]),
-    ("á", ["a", "a"]),
-    ("rún", ["r", "u", "u", "n"]),
+    ("rún", ["r", "u", "u.acute", "n"]),
     # Doubled consonants: two staves.
     ("nn", ["n", "n"]), ("ll", ["l", "l"]), ("tt", ["t", "t"]), ("kk", ["k", "k"]),
     ("rr", ["r", "r"]), ("pp", ["p", "p"]),
@@ -109,15 +117,16 @@ FIXTURES = [
     # The fillers: staves Nordmal does not write.
     ("dh", ["dh"]), ("kh", ["kh"]), ("gh", ["gh"]), ("z", ["z"]), ("w", ["w"]),
     ("ddh", ["dh", "dh"]), ("kkh", ["kh", "kh"]),
-    # The hyphen draws nothing and breaks a ligature.
-    ("skald-hringr", ["s", "k", "a", "l", "d", "hyphen", "h", "r", "i", "ng", "r"]),
-    ("t-h", ["t", "hyphen", "h"]),
+    # The hyphen is written as nothing and breaks a digraph.
+    ("skald-hringr", ["s", "k", "a", "l", "d", "h", "r", "i", "ng", "r"]),
+    ("t-h", ["t", "h"]),
+    ("t‐h", ["t", "notdef.box", "h"]),
     # Numerals.
     ("0123456789", [f"num.{i}" for i in range(10)]),
     ("128", ["num.1", "num.2", "num.8"]),
     ("0i0", ["num.0", "i", "num.0"]),
     # The full stop draws the dash, the space draws nothing, and other punctuation draws the box.
-    ("rún.", ["r", "u", "u", "n", "period"]),
+    ("rún.", ["r", "u", "u.acute", "n", "period"]),
     ("a b", ["a", "space", "b"]),
     ("a b", ["a", "space", "b"]),
     (",!?;:", ["notdef.box"] * 5),
@@ -126,9 +135,15 @@ FIXTURES = [
     ("a«b»", ["a", "notdef.box", "b", "notdef.box"]),
     ("<>[]", ["notdef.box"] * 4),
     ("@#$%^&", ["notdef.box"] * 6),
-    # No stave: the box, never .notdef.
-    ("cqx", ["notdef.box", "notdef.box", "notdef.box"]),
+    # No stave: the box, never .notdef; q is k and ë is e.
+    ("cqx", ["notdef.box", "k", "notdef.box"]),
+    ("ë", ["e"]),
 ]
+
+
+def fixture_texts() -> list[str]:
+    """Every roman text the fixtures write through the mapping."""
+    return [text for text, _ in FIXTURES]
 
 
 def forms_of(front) -> list[str]:
@@ -164,20 +179,24 @@ def expected_glyphs(form: str) -> list[str]:
     while i < len(s):
         ch = s[i]
         if ch in ACUTE:
-            out += [ACUTE[ch]] * 2
+            out += [ACUTE[ch], ACUTE[ch] + ".acute"]
             i += 1
             continue
         if ch == "y":
             out.append("j" if i + 1 < len(s) and s[i + 1] in VOWELS + "áéíóú" else "i")
             i += 1
             continue
-        if ch in "-‐‑":
-            out.append("hyphen")
+        if ch == "-":
+            pass
         elif ch == " ":
             out.append("space")
         elif ch == ".":
             out.append("period")
-        elif ch in "cqx":
+        elif ch == "q":
+            out.append("k")
+        elif ch == "ë":
+            out.append("e")
+        elif ch in "cx":
             out.append("notdef.box")
         elif s[i : i + 3] == "nng":
             out += ["ng", "ng"]
@@ -199,15 +218,16 @@ def expected_glyphs(form: str) -> list[str]:
     return out
 
 
-def shaping(font: Path, forms: list[str]) -> list[str]:
-    r = Renderer(font)
+def shaping(font: Path, forms: list[str], mapping: Mapping | None = None) -> list[str]:
+    r = MappedRenderer(Renderer(font), mapping or Mapping.offline("thuravark-carved"))
+    r.prepare(forms + fixture_texts())
     failures = []
     digraphs = long_vowels = doubled = 0
     for form in forms:
         got = r.glyph_names(form)
         want = expected_glyphs(form)
         digraphs += sum(1 for g in want if g in DIGRAPHS)
-        long_vowels += sum(1 for a, b in zip(want, want[1:]) if a == b and a in VOWELS)
+        long_vowels += sum(1 for a, b in zip(want, want[1:]) if (a == b or b == a + ".acute") and a in VOWELS)
         doubled += sum(1 for a, b in zip(want, want[1:]) if a == b and a not in VOWELS)
         if ".notdef" in got or "notdef.box" in got:
             failures.append(f"{form}: .notdef or the box in {got}")
@@ -261,7 +281,7 @@ def geometry(path: Path) -> list[str]:
             problems.append(f"{name} has more than four branches")
     font = TTFont(str(path))
     # No stave runs along the line of text.
-    for name in STAVES + ["y"]:
+    for name in STAVES:
         for e in edges(font, name):
             if e[1] == e[3]:
                 problems.append(f"{name}: a horizontal edge")
@@ -306,7 +326,7 @@ def stem_x(name: str) -> float:
         return BEARING + NUMERAL_LIMB_RUN
     back = [
         LONG_RUN if {b[1], b[2]} == {"T", "0"} else HALF_RUN
-        for b in BRANCHES.get(name, BRANCHES["j"] if name == "y" else "").split()
+        for b in BRANCHES.get(name, "").split()
         if b[0] == "B"
     ]
     return BEARING + max(back + [STEM_W / 2])
@@ -314,8 +334,8 @@ def stem_x(name: str) -> float:
 
 def ink(r: Renderer, name: str, size: int):
     """The glyph's ink at `size`, with its stem on a fixed column."""
-    key = "0" if name == "num.0" else name
-    shaped = r.shape(key)
+    gid = r.order.index(name)
+    shaped = Shaped([(gid, 0, 0, r.tt["hmtx"][name][0])], r.tt["hmtx"][name][0])
     img = Image.new("RGB", (160, 100), "white")
     r.draw(img, 60 - stem_x(name) * size / r.upem, 80, shaped, size, "black")
     return img.convert("L").point(lambda v: 1 if v < 128 else 0)
@@ -332,10 +352,17 @@ def main():
     ap.add_argument("--font", default=str(ROOT / "fonts" / "ThuravarkCarved-Regular.ttf"))
     ap.add_argument("--thalorna", default=str(Path.home() / "dev/HeroicLands/thalorna"))
     ap.add_argument("--note", help="read the language note from this file instead of git")
+    ap.add_argument("--map-note", help="read the thuravark mapping note from this file instead of git")
+    ap.add_argument("--fixtures-only", action="store_true",
+                    help="shape the fixtures alone, written as tools/mapped.json records them")
     args = ap.parse_args()
-    forms = lexicon_forms(Path(args.thalorna), Path(args.note) if args.note else None)
+    if args.fixtures_only:
+        forms, mapping = [], Mapping.offline("thuravark-carved")
+    else:
+        forms = lexicon_forms(Path(args.thalorna), Path(args.note) if args.note else None)
+        mapping = Mapping("thuravark", thalorna=Path(args.thalorna), note=args.map_note, face="thuravark-carved")
     font = Path(args.font)
-    failures = shaping(font, forms) + geometry(font)
+    failures = shaping(font, forms, mapping) + geometry(font)
     for f in failures[:40]:
         print(f"{font}: error: {f}")
     if len(failures) > 40:

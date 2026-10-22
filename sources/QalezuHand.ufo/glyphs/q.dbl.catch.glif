@@ -1,7 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <glyph name="q.dbl.catch" format="2">
   <advance width="559"/>
-  <unicode hex="1ECE1"/>
   <outline>
     <component base="q"/>
     <component base="doubling" xOffset="279" yOffset="-79"/>

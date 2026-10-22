@@ -6,7 +6,9 @@
 
 The broken Pirzath and Thuravark fonts are the built .ttf with the GSUB table
 removed, so no ligature, decomposition or contextual rule applies. The broken
-Qalezu Hand font has one sign, the th, removed from its cmap. Khelathi Zethu Glyphs is broken
+Qalezu Hand font has one sign, the th, removed from its cmap; its guard and its font
+check are also each proved on it with the GSUB table removed, so that no catch fuses
+with the sign after it. Khelathi Zethu Glyphs is broken
 twice: once with one sign, the crocodile-hunt house 11-001, removed from its cmap,
 and once with the GSUB table removed so that no second or third form is reachable. Its
 quadrat guard (tools/khelathi-zethu-glyphs/quadrats.py) is proved four times: with the
@@ -31,8 +33,9 @@ mark removed from the cmap, and with it pointed at glyph 0. The name guard
 (tools/font_names.py) is proved on every font twice: with the Macintosh full name
 removed, and with the Basic Latin range declared. The vertical guard (tools/vertical.py) is proved on every font three times: with the hhea ascent changed,
 with USE_TYPO_METRICS cleared, and with one glyph lifted out of the band. The code-point guard (tools/codepoints.py)
-is proved on every font with the first code point of its fonts.json table removed from the cmap, and on every left-to-right font
-with an entry in the Basic Multilingual Plane's Private Use Area. Its key rules are proved
+is proved on every font with the first code point of its fonts.json table removed from the cmap, with the Latin a mapped
+to its first character, and with a ligature that writes its third character from its first two, a spelling rule; and on
+every left-to-right font with an entry in the Basic Multilingual Plane's Private Use Area. Its key rules are proved
 on altered fonts.json tables: a Khelathi Zethu Glyphs sign without a key, two signs on one key, and a key on a character of a script
 typed by sound. Its block registry is proved on a code point outside its family's blocks, two overlapping blocks and a README table that
 differs from the registry. The spacing guard (tools/spacing.py) is proved on every font with every advance widened by 120 units,
@@ -47,7 +50,8 @@ lowercase name and with a Zethu name that is not its code point's position. The 
 (tools/khelathi-zethu-glyphs/paint_guard.py) is proved on a map without the 11-001 sign's entry and on a
 map with a seed of 01-008 moved onto its outline, on a map with one region of the oxen 05-004
 left without a seed, and on a map without the closing segments of the river 10-001. The guards run on their
-fixtures alone, so the proof needs no lexicon.
+fixtures alone, written through the mappings as tools/mapped.json records them, so the proof needs no lexicon
+and no thalorna checkout.
 """
 
 import copy
@@ -153,6 +157,40 @@ def without_codepoint(font: Path, out: Path) -> Path:
     f = TTFont(str(font))
     for table in f["cmap"].tables:
         table.cmap.pop(int(first[2:], 16), None)
+    f.save(str(out))
+    return out
+
+
+def _listed(font: Path) -> list[dict]:
+    return next(f for f in json.loads((ROOT / "fonts.json").read_text(encoding="utf-8"))["families"]
+                if Path(f["files"]["ttf"]).name == font.name)["codepoints"]
+
+
+def latin_drawn(font: Path, out: Path) -> Path:
+    """The Latin letter a mapped to the face's first character, as a typing rule would."""
+    glyph = _listed(font)[0]["glyph"]
+    f = TTFont(str(font))
+    for table in f["cmap"].tables:
+        if table.isUnicode():
+            table.cmap[0x61] = glyph
+    f.save(str(out))
+    return out
+
+
+def spelling_rule(font: Path, out: Path) -> Path:
+    """A ligature that writes the face's third character from its first two, a spelling rule."""
+    from fontTools.otlLib.builder import buildLigatureSubstSubtable, buildLookup
+
+    rows = [r for r in _listed(font) if r["kind"] != "control"]
+    a, b, c = (r["glyph"] for r in rows[:3])
+    f = TTFont(str(font))
+    gsub = f["GSUB"].table
+    gsub.LookupList.Lookup.append(buildLookup([buildLigatureSubstSubtable({(a, b): c})]))
+    gsub.LookupList.LookupCount = len(gsub.LookupList.Lookup)
+    index = len(gsub.LookupList.Lookup) - 1
+    for record in gsub.FeatureList.FeatureRecord:
+        record.Feature.LookupListIndex.append(index)
+        record.Feature.LookupCount = len(record.Feature.LookupListIndex)
     f.save(str(out))
     return out
 
@@ -638,6 +676,20 @@ def main():
             "without the th sign",
         ),
         (
+            "Qalezu Hand",
+            ROOT / "fonts" / "QalezuHand-Regular.ttf",
+            lambda p: qalezu.run(p, []),
+            stripped,
+            "without GSUB, so that no catch fuses with its sign",
+        ),
+        (
+            "Qalezu Hand",
+            ROOT / "fonts" / "QalezuHand-Regular.ttf",
+            load("qalezu_check", ROOT / "tools" / "qalezu-hand" / "check_font.py").check,
+            stripped,
+            "without GSUB, so that no catch fuses with its sign",
+        ),
+        (
             "Semaron Kuriale",
             ROOT / "fonts" / "SemaronKuriale-Regular.ttf",
             lambda p: semaron.run(p, []),
@@ -679,6 +731,8 @@ def main():
     for font in sorted((ROOT / "fonts").glob("*-Regular.ttf")):
         label = font.name.split("-")[0]
         cases.append((label, font, codepoints.check, without_codepoint, "with its first code point unmapped"))
+        cases.append((label, font, codepoints.check, latin_drawn, "with the Latin a drawn as its first character"))
+        cases.append((label, font, codepoints.check, spelling_rule, "with a ligature that writes one character from two"))
         if font.name.split("-")[0] in ("PirzathCarved", "PirzathHand", "ThuravarkCarved", "SemaronKuriale"):
             cases.append((label, font, codepoints.check, with_bmp_private, "with an entry in the BMP Private Use Area"))
         cases.append((label, font, notdef.check, ignorable_drawn, "with the glyph of the ignorables drawing the box"))

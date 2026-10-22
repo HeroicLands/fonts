@@ -2,9 +2,9 @@
 // SPDX-License-Identifier: OFL-1.1
 
 /**
- * Converts many words in one process, for the Python guards.
+ * Converts many words in one process, for the Python guards and specimens.
  *
- *     node tools/convert_batch.mjs "Qalezu Hand" < words.json > results.json
+ *     node tools/convert_batch.mjs Veldikko < words.json > results.json
  *
  * Reads a JSON array of strings from standard input and writes a JSON array with
  * one record per string: `{"text": "..."}`, or `{"letter": "x", "index": 0}`
@@ -15,7 +15,7 @@
 
 import { readFileSync } from "node:fs";
 
-import { convert, Unmappable } from "./qalezu-hand/convert.mjs";
+import { convert, Unmappable } from "./convert.mjs";
 
 const family = process.argv[2];
 const words = JSON.parse(readFileSync(0, "utf8"));

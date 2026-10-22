@@ -15,6 +15,8 @@ These are the fonts for the [HeroicLands Thalorna](https://www.heroiclands.org/t
 
 **Download.** Every font is available as TrueType and WOFF2 from the [latest release](https://github.com/HeroicLands/fonts/releases/latest). Programs and sites take them from npm instead; see [Installing and using the fonts](#installing-and-using-the-fonts).
 
+Each font draws only its own characters, on code points of its own, and anything else draws as an empty box. Roman text becomes a script through a keyboard layout or a mapping in the consuming build; see [Typing in the fonts](#typing-in-the-fonts).
+
 ## Code point blocks
 
 Every script draws on a block of code points of its own, and every face of a script draws its script's block: Pirzath Carved, Pirzath Hand and Pirzath Hand Lifted share the Pirzath block, so changing the face changes only the look. The blocks are registered in `BLOCKS` in `tools/codepoint_order.py`; `tools/codepoints.py` checks that every face's code points lie in its registered blocks, that no two blocks overlap, and that this table is the registry's.
@@ -25,7 +27,6 @@ Every script draws on a block of code points of its own, and every face of a scr
 | U+1E960–U+1E9FF   | Khelathi Zethu Glyphs, overflow beyond its main block                                                     | right to left |
 | U+1EA00–U+1EA3F   | Qalezu: signs, digits and punctuation                                                                     | right to left |
 | U+1EA40–U+1EC6F   | Khelathi Zethu Glyphs: signs, and its format controls at U+1EC60–U+1EC6F                                  | right to left |
-| U+1ECC0–U+1ECFF   | Qalezu: a sign with a catch before it                                                                     | right to left |
 | U+1ED50–U+1EDFF   | Veldikko: letters, vowel marks and the signs of length, pitch, emphasis and doubling                      | right to left |
 | U+F0000–U+F00FF   | Pirzath                                                                                                   | left to right |
 | U+F0100–U+F01FF   | Thuravark                                                                                                 | left to right |
@@ -37,7 +38,7 @@ Every script draws on a block of code points of its own, and every face of a scr
 | U+100000–U+10FFFD | Plane 16, unassigned                                                                                      | –             |
 
 - **Left-to-right scripts** (Pirzath, Thuravark, Semaron) sit in plane 15, the Supplementary Private Use Area-A, whose characters are left to right by default. Each takes 256 code points. U+F0300 to U+F0FFF is reserved for the remaining alphabets and syllabaries, 256 code points each as they are assigned. Teng Chou takes U+F1000 to U+F2FFF: its characters from U+F1000, one per morpheme in the order they are added so that none is renumbered, its Jurthati syllabary from U+F2000, and the rest reserved. Teng Chou is written in columns; its characters are left to right where an inline span sets them along a line.
-- **Right-to-left scripts** (Qalezu, Khelathi Zethu Glyphs and Veldikko) sit in unassigned code points of plane 1 whose default bidi class is right to left. That is why their text runs right to left in any editor, browser or typesetter, mixed with English and with no controls. Because the code points are unassigned rather than private, Unicode could in principle assign them to a script later. Qalezu takes U+1EA00 to U+1EA3F for its signs, digits and punctuation and U+1ECC0 to U+1ECFF for a sign with a catch before it. Khelathi Zethu Glyphs takes U+1EA40 to U+1EC6F with U+1E960 to U+1E9FF as overflow, 720 code points together. Veldikko takes U+1ED50 to U+1EDFF: its letters from U+1ED50, its vowel marks from U+1ED70 and its signs of length, pitch, emphasis and doubling from U+1ED78.
+- **Right-to-left scripts** (Qalezu, Khelathi Zethu Glyphs and Veldikko) sit in unassigned code points of plane 1 whose default bidi class is right to left. That is why their text runs right to left in any editor, browser or typesetter, mixed with English and with no controls. Because the code points are unassigned rather than private, Unicode could in principle assign them to a script later. Qalezu takes U+1EA00 to U+1EA3F for its signs, doubled consonants, digits and punctuation. Khelathi Zethu Glyphs takes U+1EA40 to U+1EC6F with U+1E960 to U+1E9FF as overflow, 720 code points together. Veldikko takes U+1ED50 to U+1EDFF: its letters from U+1ED50, its vowel marks from U+1ED70 and its signs of length, pitch, emphasis and doubling from U+1ED78.
 - **Plane 16** is unassigned.
 
 ## Licence
@@ -176,13 +177,18 @@ Check the built fonts, render the specimens, and prove that each guard fails a b
 .venv/bin/python tools/teng-chou/check_font.py
 .venv/bin/python tools/veldikko/check_font.py
 .venv/bin/python tools/veldikko/guard.py --fixtures-only   # the converter's fixtures join and carry their marks
+.venv/bin/python tools/pirzath/guard.py --fixtures-only        # each lexicon guard's fixtures, written as tools/mapped.json records them
+.venv/bin/python tools/pirzath-hand/guard.py --fixtures-only
+.venv/bin/python tools/thuravark-carved/guard.py --fixtures-only
+.venv/bin/python tools/qalezu-hand/guard.py --fixtures-only
+.venv/bin/python tools/semaron-kuriale/guard.py --fixtures-only
 .venv/bin/python tools/teng-chou/syllabary_distinct.py   # the Jurthati signs stay distinct at body size
 .venv/bin/python tools/teng-chou/stroke_mix.py   # every character's body is strokes, dabs a minority
 .venv/bin/python tools/notdef_box.py
 .venv/bin/python tools/vertical.py
 .venv/bin/python tools/spacing.py                 # every face is set at a natural spacing; --report prints the measures
 .venv/bin/python tools/font_names.py
-.venv/bin/python tools/codepoints.py
+.venv/bin/python tools/codepoints.py              # each face draws its own code points and states no spelling
 .venv/bin/python tools/keyboards_guard.py --fixtures-only   # the layouts type each sound's output, and nothing else
 .venv/bin/python tools/charts_guard.py            # every character is on its sheet; unnamed rows are listed
 .venv/bin/python tools/khelathi-zethu-glyphs/quadrats.py   # quadrats and cartouches land where the layout puts them
@@ -201,7 +207,9 @@ Check the built fonts, render the specimens, and prove that each guard fails a b
 .venv/bin/python tools/prove_guards.py
 ```
 
-Each guard shapes every form of its lexicon and asserts the font renders it rightly; the Pirzath guards read the Khazari lexicon, the Thuravark guard the Nordmal one, Semaron Kuriale's the Vylari one, Teng Chou's the Tantsou one (each form cut into morphemes and set one character to each, along a line and down a column), Qalezu's converts the Khelathi lexicon from Latin first, through `tools/qalezu-hand/convert.mjs`, an internal tool of that guard, under `node`, and Veldikko's converts the Sinale lexicon the same way, through `tools/veldikko/convert.mjs`, and asserts each letter's form and where each mark stands. Each reads its lexicon from the `origin/main` of a local thalorna checkout, `~/dev/HeroicLands/thalorna` by default:
+`tools/codepoints.py` is the code-point guard. Every face, shaped from its own code points, must yield exactly the glyphs `fonts.json` lists for them, and its cmap may map nothing else but the space (U+0020 and U+00A0), the default-ignorables and the box, so every other code point, Latin included, prints the box. No substitution may write a character it did not read: a face's substitutions are its contextual forms and marks, never a spelling rule that turns one character into another. A few sequences that a spelling rule would rewrite, such as Pirzath's glide _y_ before a vowel pair and Semaron's _i_ twice, must shape as written.
+
+Each lexicon guard shapes every form of its lexicon and asserts the font renders it rightly; the Pirzath guards read the Khazari lexicon, the Thuravark guard the Nordmal one, Semaron Kuriale's the Vylari one, Qalezu's the Khelathi one, Teng Chou's the Tantsou one (each form cut into morphemes and set one character to each, along a line and down a column), and Veldikko's converts the Sinale lexicon through `tools/veldikko/convert.mjs` and asserts each letter's form and where each mark stands. The Semaron, Pirzath, Thuravark and Qalezu guards first write each form in the script's code points by its mapping note on thalorna's `origin/main` (`assets/content/Lore/Scripts/<Script>_Spelling.md`), with package-build's own mapping rules, through `tools/mapping.mjs` under `node`; `--map-note FILE` reads the note from a file instead. Each reads its lexicon from the `origin/main` of a local thalorna checkout, `~/dev/HeroicLands/thalorna` by default:
 
 ```sh
 .venv/bin/python tools/pirzath/guard.py --thalorna /path/to/thalorna
@@ -213,13 +221,22 @@ Each guard shapes every form of its lexicon and asserts the font renders it righ
 .venv/bin/python tools/veldikko/guard.py --thalorna /path/to/thalorna
 ```
 
+The guards' fixtures, and the sample lines of the specimens that `tools/spacing.py` measures, are written once through the mapping notes into `tools/mapped.json`, so that `--fixtures-only`, `tools/prove_guards.py` and `tools/spacing.py` need no thalorna checkout. `tools/mapped.py` writes the file, and without `--write` checks it against thalorna's mapping notes and lists every text they now write differently:
+
+```sh
+.venv/bin/python tools/mapped.py --thalorna /path/to/thalorna --write
+.venv/bin/python tools/mapped.py --thalorna /path/to/thalorna
+```
+
+The specimens of the Semaron, Pirzath and Thuravark faces and of Qalezu Hand write their roman texts through the same mapping notes, so they take `--thalorna` too.
+
 `tools/keyboards_guard.py` checks the key map (no key or chord carries two sounds, every sound has a key, a capital sits on Shift and its small sound's key) and reads every layout and input method back: each key must type exactly the code points `keyboards/sounds.json` gives its sound in the script, or nothing where the script does not write the sound or the platform cannot carry it, and no key may type a character below U+0080. Without `--fixtures-only` it also writes `keyboards/sounds.json` afresh from thalorna's mapping notes, through `tools/sounds.mjs` under `node`, and fails where the committed file differs.
 
 ```sh
 .venv/bin/python tools/keyboards_guard.py --thalorna /path/to/thalorna
 ```
 
-Qalezu's character map follows from `encoding.json`; after editing that file, `.venv/bin/python tools/qalezu-hand/apply_encoding.py` rewrites the UFO's code points, and `--check` reports a disagreement.
+Qalezu's character map, its doubled and catch-before composites and the `rlig` substitution that draws a catch and its sign as the catch-before form follow from `encoding.json`; after editing that file, `.venv/bin/python tools/qalezu-hand/apply_encoding.py` rewrites them in the UFO, and `--check` reports a disagreement.
 
 Khelathi Zethu Glyphs is the temple hieroglyphs of the Khelathi, on U+1EA40 to U+1EC6F and written right to left. Its guard reads no lexicon: it shapes the sample inscriptions kept in `tools/khelathi-zethu-glyphs/samples.json`.
 

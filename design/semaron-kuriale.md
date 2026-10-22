@@ -1,9 +1,9 @@
 # Semaron Kuriale — design notes
 
 The first hand of Semaron, the Vylarian alphabet: _Kuriale_, the chancery hand of
-the court and the schools. The font draws the Vylari spelling in majuscules and
-minuscules, a stave per letter, written with one broad nib. Text stays Latin
-spelling, and a passage switches to the script by its font alone.
+the court and the schools. The font draws the Vylari letters in majuscules and
+minuscules, a stave per letter, written with one broad nib, each from a code point
+of its own.
 
 ## The system
 
@@ -86,36 +86,44 @@ arm.
   2, 1 (back); nought is the stem with a closed ring at its foot.
 - **The box** is `.notdef` and `notdef.box`: a stem between two points.
 
-## The typing
+## The characters
 
-Latin spelling, shaped by GSUB (`ccmp`) and GPOS (`mark`):
+The face draws each letter, long vowel, numeral, the point and the catch from its
+own code point, U+F0200 to U+F02FF, and from nothing else: a Latin letter, digit or
+mark draws the box. The long vowels are letters in their own right, the curl drawn
+into each. The catch is a mark, set by GPOS (`mark`) over the letter before it;
+with no letter before it, a `ccmp` substitution draws it as the box. The
+default-ignorables map to an empty glyph and draw nothing.
 
-| Typed                                           | Gives                                                                      |
-| ----------------------------------------------- | -------------------------------------------------------------------------- |
-| `A`, `a`                                        | The majuscule, the minuscule; case follows Latin case.                     |
-| `th`, `Th`, `TH`                                | The one letter _th_, or its majuscule when the first letter is capital.    |
-| `ch`                                            | The letters _t_, _s_ and _h_, because the script has no _c_.               |
-| `aa`, `ii`, `uu`                                | The long vowel with its curl; the first letter's case picks the majuscule. |
-| `ee`, `oo`                                      | Two plain vowels.                                                          |
-| `á é í ó ú`                                     | The plain vowel: Semaron writes no stress.                                 |
-| `y` before a vowel                              | The glide _y_. Anywhere else it is the vowel _i_.                          |
-| `'`, `’`, `` ` ``, `-`, `‐`, `‑` after a letter | The catch on that letter. With no letter before, the box.                  |
-| `.` `,` `;` `:` `—` `–`                         | The point.                                                                 |
-| `0`–`9`                                         | The numerals.                                                              |
-| `c`, `q`, `x`, `"`, `“ ”`, `« »`, `?`, `!`, `¡` | The box, as is every other character the script lacks.                     |
+A note writes Vylari in roman, and thalorna's `semaron` mapping note turns the
+spelling into these code points:
 
-The letters _c_ and _C_ are glyphs that draw the box and take part in the
-substitution that spells _ch_. The default-ignorables map to an empty glyph and
-draw nothing. The private-use block U+F0200 is reserved.
+| Spelled                                    | Written                                                                   |
+| ------------------------------------------ | ------------------------------------------------------------------------- |
+| `A`, `a`                                   | The majuscule, the minuscule; case follows roman case.                    |
+| `th`, `Th`, `TH`                           | The one letter _th_, or its majuscule when the first letter is capital.   |
+| `ch`                                       | The letters _t_, _s_ and _h_, because the script has no _c_.              |
+| `aa`, `ii`, `uu`                           | The long vowel; the first letter's case picks the majuscule.              |
+| `ee`, `oo`                                 | Two plain vowels.                                                         |
+| `á é í ó ú`, `ë`                           | The plain vowel: Semaron writes no stress.                                |
+| `q`                                        | The letter _k_.                                                           |
+| `y` before a vowel                         | The glide _y_. Anywhere else it is the vowel _i_.                         |
+| `'`, `’`, `` ` ``, `-`                     | The catch, set on the letter before it. With no letter before, the box.   |
+| `.` `,` `;` `:` `—` `–`                    | The point.                                                                |
+| `0`–`9`                                    | The numerals.                                                             |
+| `c`, `x`, `"`, `“ ”`, `« »`, `?`, `!`, `¡` | Passed through, so the face prints the box, as for every other character. |
 
 ## The checks
 
 - `tools/semaron-kuriale/check_font.py` loads the built font and confirms the
   character map, the outlines, the names, the box rule, the catch's mark class
   and anchors, the win metrics and the `.woff2`.
-- `tools/semaron-kuriale/guard.py` shapes every form of the Vylari lexicon, read
+- `tools/semaron-kuriale/guard.py` writes every form of the Vylari lexicon, read
   from the frontmatter of the language note, and a set of fixtures for each
-  typing rule, and asserts the glyph sequences.
+  spelling rule through the `semaron` mapping note, shapes them, and asserts the
+  glyph sequences. `tools/codepoints.py` checks that the face draws its own code
+  points and nothing else, and that no substitution turns one character into
+  another: _i_ written twice is two _i_.
 - `tools/prove_guards.py` proves the guard fails the font with its GSUB removed,
   and with its GPOS removed.
 - `tools/notdef_box.py` and `tools/font_names.py` run on the font as on every

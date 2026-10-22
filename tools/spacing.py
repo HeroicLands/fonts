@@ -24,8 +24,9 @@ not the word space ``SPACING`` in tools/respace.py states for the face.
 
 The sample lines are the texts of each face's specimens: the Khazari texts for
 the Pirzath faces, the Nordmal lines for Thuravark Carved and the Vylari texts for
-Semaron Kuriale; Qalezu Hand's converter fixtures, written in the glyphs the
-fixtures name; the sample inscriptions of Khelathi Zethu Glyphs, set as one
+Semaron Kuriale, each written in the face's code points as tools/mapped.json
+records it from thalorna's mapping notes; Qalezu Hand's fixtures, written in the
+signs the fixtures name, a catch-before form as the catch and its sign; the sample inscriptions of Khelathi Zethu Glyphs, set as one
 strip of signs; Teng Chou's Tantsou and Jurthati passages, each line one run
 of characters; and Veldikko's converter fixtures, written in the letters
 and marks the fixtures name. A joined face (Pirzath Hand with ``ss01``, and Veldikko
@@ -61,34 +62,45 @@ def _load(name: str, path: Path):
     return module
 
 
-def _pirzath_lines() -> list[str]:
+def _pirzath_texts() -> list[str]:
     texts = _load("pirzath_specimens", TOOLS / "pirzath" / "specimens.py").TEXTS
     return [line for _, lines in texts for line in lines]
 
 
-def _thuravark_lines() -> list[str]:
+def _thuravark_texts() -> list[str]:
     return [line for _, line in _load("thuravark_specimens", TOOLS / "thuravark-carved" / "specimens.py").LINES]
 
 
-def _semaron_lines() -> list[str]:
+def _semaron_texts() -> list[str]:
     return [line for _, line in _load("semaron_specimens", TOOLS / "semaron-kuriale" / "specimens.py").TEXTS]
+
+
+def _written(face: str, texts: list[str]) -> list[str]:
+    """The roman sample lines in the face's code points, as tools/mapped.json records them."""
+    from mapped import Mapping
+
+    return Mapping.offline(face).write(texts)
+
+
+def _pirzath_lines(face: str = "pirzath-carved") -> list[str]:
+    return _written(face, _pirzath_texts())
+
+
+def _thuravark_lines() -> list[str]:
+    return _written("thuravark-carved", _thuravark_texts())
+
+
+def _semaron_lines() -> list[str]:
+    return _written("semaron-kuriale", _semaron_texts())
 
 
 def _qalezu_lines() -> list[str]:
     enc = json.loads((TOOLS / "qalezu-hand" / "encoding.json").read_text(encoding="utf-8"))
-    by_glyph = {}
-
-    def walk(node):
-        if isinstance(node, dict):
-            if "glyph" in node and "codepoint" in node:
-                by_glyph[node["glyph"]] = chr(int(node["codepoint"][2:], 16))
-            for v in node.values():
-                walk(v)
-        elif isinstance(node, list):
-            for v in node:
-                walk(v)
-
-    walk(enc)
+    by_glyph = {g["glyph"]: chr(int(g["codepoint"][2:], 16)) for g in enc["glyphs"]}
+    catch = next(g["glyph"] for g in enc["glyphs"] if "'" in g.get("typing", []))
+    # A catch-before form has no code point: the catch and its sign are drawn as it.
+    for form in enc["forms"]:
+        by_glyph[form["glyph"]] = by_glyph[catch] + by_glyph[form["base"]]
     fixtures = json.loads((TOOLS / "qalezu-hand" / "fixtures.json").read_text(encoding="utf-8"))["fixtures"]
     words = ["".join(by_glyph[g] for g in f["signs"]) for f in fixtures if f["signs"] and all(g in by_glyph for g in f["signs"])]
     return [" ".join(words[i:i + 8]) for i in range(0, len(words), 8)]

@@ -1,91 +1,20 @@
 languagesystem DFLT dflt;
 languagesystem latn dflt;
 
-# Everything a closing quotation mark can follow: any glyph but a space or
-# another quotation mark.
-@AFTER = [p b f v m t d t_h d_h n k g k_h g_h h s z l r a e i o u aacute eacute iacute oacute uacute sh zh ch ts j q ng ny hl catch w y ai au ei oi ou p_p b_b f_f v_v m_m t_t d_d t_h_t_h d_h_d_h n_n k_k g_g k_h_k_h g_h_g_h h_h s_s z_z l_l r_r sh_sh zh_zh ch_ch ts_ts j_j q_q ng_ng ny_ny hl_hl catch_catch w_w y_y period comma hyphen exclam num.0 num.1 num.2 num.3 num.4 num.5 num.6 num.7 num.8 num.9 num.10 num.11 num.12 num.13 num.14 num.15 less greater c lengthmark .notdef];
-
-# The vowels a glide y stands before.
-@VOWEL = [a u i e o];
-
-# A straight quotation mark opens after a space or at the start of the text,
-# and closes elsewhere.
-feature calt {
-  sub @AFTER quotedbl' by quote.close;
-  sub quotedbl' by quote.open;
-} calt;
-
-# HarfBuzz replaces a default-ignorable character the font maps directly with
-# the space glyph, which is visible here. A glyph that a lookup substitutes is
-# left alone, so each ignorable is substituted once, to a second empty glyph.
-# A long vowel is taken apart into the vowel and its length mark, so the vowel
-# pairs read through the mark; the first letter of a doubled digraph is the
-# digraph itself, so that the ligature and the doubling rule see two of one letter.
+# The face draws each character from its own code point. HarfBuzz replaces a
+# default-ignorable character the font maps directly with the space glyph, which
+# is visible here. A glyph that a lookup substitutes is left alone, so each
+# ignorable is substituted once, to a second empty glyph.
 feature ccmp {
 lookup ccmp_ignorable {
   sub ignorable by ignorable.sub;
 } ccmp_ignorable;
-lookup ccmp_long {
-  sub aacute by a lengthmark;
-  sub eacute by e lengthmark;
-  sub iacute by i lengthmark;
-  sub oacute by o lengthmark;
-  sub uacute by u lengthmark;
-} ccmp_long;
-lookup ccmp_doubled {
-  sub t' t h by t_h;
-  sub d' d h by d_h;
-  sub g' g h by g_h;
-  sub k' k h by k_h;
-  sub s' s h by sh;
-  sub z' z h by zh;
-  sub c' c h by ch;
-  sub t' t s by ts;
-  ignore sub n' n g h;
-  sub n' n g by ng;
-  sub n' n y by ny;
-  sub h' h l by hl;
-} ccmp_doubled;
 } ccmp;
 
-# The lookups run in order, so the longest spelling wins. The four digraphs
-# come first, which makes ngh the letter n and gh; << and >> are the quotation
-# marks. Then the lost consonants, then a y not before a vowel becomes the
-# vowel i, then the five vowel pairs, which read through a length mark between
-# their vowels; ay, ey and oy are the pairs ai, ei and oi. A length mark left
-# on a single vowel makes the long vowel; one left on a pair is drawn above it.
+# A vowel and the length mark after it are drawn as the long vowel; a length
+# mark on a vowel pair is drawn above the pair.
 feature liga {
-lookup liga_digraphs {
-  sub t h by t_h;
-  sub d h by d_h;
-  sub g h by g_h;
-  sub k h by k_h;
-  sub less less by quote.open;
-  sub greater greater by quote.close;
-} liga_digraphs;
-lookup liga_lost {
-  sub s h by sh;
-  sub z h by zh;
-  sub c h by ch;
-  sub t s by ts;
-  sub n g by ng;
-  sub n y by ny;
-  sub h l by hl;
-} liga_lost;
-lookup liga_y {
-  ignore sub y' @VOWEL;
-  sub y' by i;
-} liga_y;
-lookup liga_pairs {
-  lookupflag IgnoreMarks;
-  sub a i by ai;
-  sub a u by au;
-  sub e i by ei;
-  sub o i by oi;
-  sub o u by ou;
-} liga_pairs;
 lookup liga_long {
-  lookupflag 0;
   sub a lengthmark by aacute;
   sub e lengthmark by eacute;
   sub i lengthmark by iacute;
@@ -130,7 +59,7 @@ feature rlig {
 } rlig;
 
 table GDEF {
-  GlyphClassDef [.notdef notdef.box space p b f v m t d t_h d_h n k g k_h g_h h s z l r a e i o u aacute eacute iacute oacute uacute sh zh ch ts j q ng ny hl catch w y ai au ei oi ou p_p b_b f_f v_v m_m t_t d_d t_h_t_h d_h_d_h n_n k_k g_g k_h_k_h g_h_g_h h_h s_s z_z l_l r_r sh_sh zh_zh ch_ch ts_ts j_j q_q ng_ng ny_ny hl_hl catch_catch w_w y_y period comma hyphen exclam quote.open quote.close num.0 num.1 num.2 num.3 num.4 num.5 num.6 num.7 num.8 num.9 num.10 num.11 num.12 num.13 num.14 num.15 quotedbl less greater c p.init b.init f.init v.init m.init t.init d.init t_h.init d_h.init n.init k.init g.init k_h.init g_h.init h.init s.init z.init l.init r.init a.init e.init i.init o.init u.init aacute.init eacute.init iacute.init oacute.init uacute.init sh.init zh.init ch.init ts.init j.init q.init ng.init ny.init hl.init catch.init w.init y.init ai.init au.init ei.init oi.init ou.init p_p.init b_b.init f_f.init v_v.init m_m.init t_t.init d_d.init t_h_t_h.init d_h_d_h.init n_n.init k_k.init g_g.init k_h_k_h.init g_h_g_h.init h_h.init s_s.init z_z.init l_l.init r_r.init sh_sh.init zh_zh.init ch_ch.init ts_ts.init j_j.init q_q.init ng_ng.init ny_ny.init hl_hl.init catch_catch.init w_w.init y_y.init p.medi b.medi f.medi v.medi m.medi t.medi d.medi t_h.medi d_h.medi n.medi k.medi g.medi k_h.medi g_h.medi h.medi s.medi z.medi l.medi r.medi a.medi e.medi i.medi o.medi u.medi aacute.medi eacute.medi iacute.medi oacute.medi uacute.medi sh.medi zh.medi ch.medi ts.medi j.medi q.medi ng.medi ny.medi hl.medi catch.medi w.medi y.medi ai.medi au.medi ei.medi oi.medi ou.medi p_p.medi b_b.medi f_f.medi v_v.medi m_m.medi t_t.medi d_d.medi t_h_t_h.medi d_h_d_h.medi n_n.medi k_k.medi g_g.medi k_h_k_h.medi g_h_g_h.medi h_h.medi s_s.medi z_z.medi l_l.medi r_r.medi sh_sh.medi zh_zh.medi ch_ch.medi ts_ts.medi j_j.medi q_q.medi ng_ng.medi ny_ny.medi hl_hl.medi catch_catch.medi w_w.medi y_y.medi p.fina b.fina f.fina v.fina m.fina t.fina d.fina t_h.fina d_h.fina n.fina k.fina g.fina k_h.fina g_h.fina h.fina s.fina z.fina l.fina r.fina a.fina e.fina i.fina o.fina u.fina aacute.fina eacute.fina iacute.fina oacute.fina uacute.fina sh.fina zh.fina ch.fina ts.fina j.fina q.fina ng.fina ny.fina hl.fina catch.fina w.fina y.fina ai.fina au.fina ei.fina oi.fina ou.fina p_p.fina b_b.fina f_f.fina v_v.fina m_m.fina t_t.fina d_d.fina t_h_t_h.fina d_h_d_h.fina n_n.fina k_k.fina g_g.fina k_h_k_h.fina g_h_g_h.fina h_h.fina s_s.fina z_z.fina l_l.fina r_r.fina sh_sh.fina zh_zh.fina ch_ch.fina ts_ts.fina j_j.fina q_q.fina ng_ng.fina ny_ny.fina hl_hl.fina catch_catch.fina w_w.fina y_y.fina], , [lengthmark], ;
+  GlyphClassDef [.notdef notdef.box space p b f v m t d t_h d_h n k g k_h g_h h s z l r a e i o u aacute eacute iacute oacute uacute sh zh ch ts j q ng ny hl catch w y ai au ei oi ou p_p b_b f_f v_v m_m t_t d_d t_h_t_h d_h_d_h n_n k_k g_g k_h_k_h g_h_g_h h_h s_s z_z l_l r_r sh_sh zh_zh ch_ch ts_ts j_j q_q ng_ng ny_ny hl_hl catch_catch w_w y_y period comma hyphen exclam quote.open quote.close num.0 num.1 num.2 num.3 num.4 num.5 num.6 num.7 num.8 num.9 num.10 num.11 num.12 num.13 num.14 num.15 p.init b.init f.init v.init m.init t.init d.init t_h.init d_h.init n.init k.init g.init k_h.init g_h.init h.init s.init z.init l.init r.init a.init e.init i.init o.init u.init aacute.init eacute.init iacute.init oacute.init uacute.init sh.init zh.init ch.init ts.init j.init q.init ng.init ny.init hl.init catch.init w.init y.init ai.init au.init ei.init oi.init ou.init p_p.init b_b.init f_f.init v_v.init m_m.init t_t.init d_d.init t_h_t_h.init d_h_d_h.init n_n.init k_k.init g_g.init k_h_k_h.init g_h_g_h.init h_h.init s_s.init z_z.init l_l.init r_r.init sh_sh.init zh_zh.init ch_ch.init ts_ts.init j_j.init q_q.init ng_ng.init ny_ny.init hl_hl.init catch_catch.init w_w.init y_y.init p.medi b.medi f.medi v.medi m.medi t.medi d.medi t_h.medi d_h.medi n.medi k.medi g.medi k_h.medi g_h.medi h.medi s.medi z.medi l.medi r.medi a.medi e.medi i.medi o.medi u.medi aacute.medi eacute.medi iacute.medi oacute.medi uacute.medi sh.medi zh.medi ch.medi ts.medi j.medi q.medi ng.medi ny.medi hl.medi catch.medi w.medi y.medi ai.medi au.medi ei.medi oi.medi ou.medi p_p.medi b_b.medi f_f.medi v_v.medi m_m.medi t_t.medi d_d.medi t_h_t_h.medi d_h_d_h.medi n_n.medi k_k.medi g_g.medi k_h_k_h.medi g_h_g_h.medi h_h.medi s_s.medi z_z.medi l_l.medi r_r.medi sh_sh.medi zh_zh.medi ch_ch.medi ts_ts.medi j_j.medi q_q.medi ng_ng.medi ny_ny.medi hl_hl.medi catch_catch.medi w_w.medi y_y.medi p.fina b.fina f.fina v.fina m.fina t.fina d.fina t_h.fina d_h.fina n.fina k.fina g.fina k_h.fina g_h.fina h.fina s.fina z.fina l.fina r.fina a.fina e.fina i.fina o.fina u.fina aacute.fina eacute.fina iacute.fina oacute.fina uacute.fina sh.fina zh.fina ch.fina ts.fina j.fina q.fina ng.fina ny.fina hl.fina catch.fina w.fina y.fina ai.fina au.fina ei.fina oi.fina ou.fina p_p.fina b_b.fina f_f.fina v_v.fina m_m.fina t_t.fina d_d.fina t_h_t_h.fina d_h_d_h.fina n_n.fina k_k.fina g_g.fina k_h_k_h.fina g_h_g_h.fina h_h.fina s_s.fina z_z.fina l_l.fina r_r.fina sh_sh.fina zh_zh.fina ch_ch.fina ts_ts.fina j_j.fina q_q.fina ng_ng.fina ny_ny.fina hl_hl.fina catch_catch.fina w_w.fina y_y.fina], , [lengthmark], ;
 } GDEF;
 
 markClass lengthmark <anchor 0 0> @LEN;

@@ -12,10 +12,10 @@ starts on a fixed code point and the gaps between groups leave room for later le
 writes the resulting table to fonts.json, and tools/codepoints.py checks the built
 fonts against it.
 
-A glyph the face substitutes for a spelling is not a character and has no code point:
-joined, initial and doubled forms, the doubling mark, precomposed long vowels in
-Pirzath and Thuravark, the letters c and C that only spell ch, y in Thuravark, and the
-straight quotation mark. The space stays U+0020.
+A contextual form a face draws from the characters around it is not a character and
+has no code point: joined and doubled forms, the doubling mark, Pirzath Hand's long
+vowels drawn from a vowel and its length mark, Thuravark's acute mark drawn as a
+second stave, and Qalezu Hand's catch-before forms. The space stays U+0020.
 
 A row also carries a ``name``, in Unicode's style, read from the script's name table in
 ``tools/names/<script>.json`` (see ``names``). A row the table does not name has no ``name``.
@@ -98,13 +98,6 @@ BLOCKS = [
         "use": "Khelathi Zethu Glyphs: signs, and its format controls at U+1EC60–U+1EC6F",
         "direction": "right to left",
         "families": ["Khelathi Zethu Glyphs"],
-    },
-    {
-        "start": 0x1ECC0,
-        "end": 0x1ECFF,
-        "use": "Qalezu: a sign with a catch before it",
-        "direction": "right to left",
-        "families": ["Qalezu Hand"],
     },
     {
         "start": 0x1ED50,

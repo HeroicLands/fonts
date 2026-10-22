@@ -1,7 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <glyph name="k.dbl.catch" format="2">
   <advance width="302"/>
-  <unicode hex="1ECDD"/>
   <outline>
     <component base="k"/>
     <component base="doubling" xOffset="152" yOffset="-79"/>

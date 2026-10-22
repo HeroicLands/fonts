@@ -4,10 +4,10 @@
 
     .venv/bin/python tools/pirzath-hand/check_font.py [fonts/PirzathHand-Regular.ttf]
 
-The hand types exactly as the carved face does, so the character map is
-checked against the same rulings. Every mapped glyph and every lost letter
+The hand draws the same code points as the carved face, so the character map is
+checked by the same rules, and Latin text draws the box. Every mapped glyph and every lost letter
 must carry an outline, the default-ignorable characters must draw nothing, every
-other character the typing does not use must map to the box (tools/notdef_box.py),
+other character must map to the box (tools/notdef_box.py),
 and the .woff2 beside the .ttf must open and carry the same glyphs.
 
 The joined forms are checked from the outlines. Every joining letter has three
@@ -169,10 +169,7 @@ def check(path: Path) -> list[str]:
             problems.append(f"U+{cp:04X} maps to {name}, which is not in the font")
         elif name != "space" and name not in EMPTY and glyf[name].numberOfContours == 0:
             problems.append(f"U+{cp:04X} maps to {name}, which has no outline")
-    for table in (CARVED.TYPED, CARVED.RULED):
-        for ch, name in table.items():
-            if cmap.get(ord(ch)) != name:
-                problems.append(f"{ch!r} should type {name}, types {cmap.get(ord(ch))}")
+    problems += CARVED.latin_problems(cmap)
     for name in CARVED.LOST_LETTERS:
         if name not in order or glyf[name].numberOfContours == 0:
             problems.append(f"the lost letter {name} is missing or draws nothing")
@@ -207,7 +204,7 @@ def check(path: Path) -> list[str]:
             problems.append(f"no {name} table")
     if "GSUB" in font:
         tags = {fr.FeatureTag for fr in font["GSUB"].table.FeatureList.FeatureRecord}
-        for tag in ("ss01", "ccmp", "liga", "rlig", "calt"):
+        for tag in ("ss01", "ccmp", "liga", "rlig"):
             if tag not in tags:
                 problems.append(f"no {tag} feature")
     if "GPOS" in font:

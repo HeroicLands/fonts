@@ -4,8 +4,10 @@
 
     .venv/bin/python tools/pirzath-hand/guard.py [--font fonts/PirzathHand-Regular.ttf]
                                               [--thalorna ~/dev/HeroicLands/thalorna | --note FILE]
+                                              [--map-note FILE | --fixtures-only]
 
-The hand types exactly as the carved face does, so the lexicon, the expected
+The hand draws the same code points as the carved face, and every form is
+written through the same ``pirzath`` mapping note, so the lexicon, the expected
 spelling of each form and the carved face's fixtures (numerals, quotation
 marks, the marks between words, doubling and the seventeen lost letters) come
 from ``tools/pirzath/guard.py`` and must shape here the same way. The hand
@@ -21,7 +23,7 @@ same letters, each joining letter in the form that its neighbours call for:
 and the plain letter, short at both ends, when neither does; nothing else
 changes. The hand's own fixtures cover the joined look across the length mark
 of a pair, the marks between words, numerals and quotation marks breaking the
-line, ``¡`` and the lost letters joined, the default-ignorable characters, and
+line, the box breaking it, the lost letters joined, the default-ignorable characters, and
 the position of the length mark above a pair.
 """
 
@@ -33,6 +35,7 @@ from pathlib import Path
 from fontTools.pens.boundsPen import BoundsPen
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+from mapped import Mapping, MappedRenderer  # noqa: E402
 from render import Renderer  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent.parent
@@ -126,14 +129,14 @@ SS01_CARVED = [
     ("gaz dalk.", ["g", C, "a", C, "z", "space", "d", C, "a", C, "l", C, "k", "period"]),
     ("gaz.dalk", ["g", C, "a", C, "z", "period", "d", C, "a", C, "l", C, "k"]),
     ("dalk, bant!", ["d", C, "a", C, "l", C, "k", "comma", "space", "b", C, "a", C, "n", C, "t", "exclam"]),
-    ("¡ves durám.", ["exclam", "v", C, "e", C, "s", "space", "d", C, "u", C, "r", C, "a", C, "lengthmark", "m",
+    ("¡ves durám.", ["notdef.box", "v", C, "e", C, "s", "space", "d", C, "u", C, "r", C, "a", C, "lengthmark", "m",
                      "period"]),
     ("!ves", ["exclam", "v", C, "e", C, "s"]),
     ('"dalk"', ["quote.open", "d", C, "a", C, "l", C, "k", "quote.close"]),
-    ("«thurágh»", ["quote.open", "t_h", C, "u", C, "r", C, "a", C, "lengthmark", "g_h", "quote.close"]),
+    ("“thurágh”", ["quote.open", "t_h", C, "u", C, "r", C, "a", C, "lengthmark", "g_h", "quote.close"]),
     ("girm 10 bep", ["g", C, "i", C, "r", C, "m", "space", "num.1", "num.0", "space", "b", C, "e", C, "p"]),
     ("dalk1", ["d", C, "a", C, "l", C, "k", "num.1"]),
-    ("tanvc", ["t", C, "a", C, "n", C, "v", "c"]),
+    ("tanvc", ["t", C, "a", C, "n", C, "v", "notdef.box"]),
     ("shalmai", ["sh", C, "a", C, "l", C, "m", C, "ai"]),
     ("jorqen", ["j", C, "o", C, "r", C, "q", C, "e", C, "n"]),
     ("ya'ath", ["y", C, "a", C, "catch", C, "a", C, "t_h"]),
@@ -186,11 +189,16 @@ def mark_failures(r: Renderer) -> list[str]:
 IGNORABLE_FIXTURES = ["da\u200bk", "da\u200dk", "d\u2066a\u2069k", "\ufeffdalk"]
 
 
+def bare(text: str) -> str:
+    """The text without its default-ignorable characters."""
+    return "".join(ch for ch in text if not (0x200B <= ord(ch) <= 0x200F or 0x2066 <= ord(ch) <= 0x2069
+                                             or ord(ch) == 0xFEFF))
+
+
 def ignorable_failures(r: Renderer) -> list[str]:
     failures = []
     for text in IGNORABLE_FIXTURES:
-        plain = "".join(ch for ch in text if not (0x200B <= ord(ch) <= 0x200F or 0x2066 <= ord(ch) <= 0x2069
-                                                   or ord(ch) == 0xFEFF))
+        plain = bare(text)
         for feats in (None, SS01):
             shaped = r.shape(text, feats)
             names = [r.order[g[0]] for g in shaped.glyphs]
@@ -199,14 +207,21 @@ def ignorable_failures(r: Renderer) -> list[str]:
             if "space" in names or ".notdef" in names or "notdef.box" in names:
                 failures.append(f"{text!r}: shaped {names}, which draws a space, .notdef or the box")
             kept = [n for n in names if n not in EMPTY]
-            bare = [r.order[g[0]] for g in r.shape(plain, feats).glyphs]
-            if feats is None and kept != bare:
-                failures.append(f"{text!r}: shaped {kept}, expected {bare}")
+            alone = [r.order[g[0]] for g in r.shape(plain, feats).glyphs]
+            if feats is None and kept != alone:
+                failures.append(f"{text!r}: shaped {kept}, expected {alone}")
     return failures
 
 
-def run(font: Path, forms: list[str]) -> list[str]:
-    r = Renderer(font)
+def fixture_texts() -> list[str]:
+    """Every roman text the fixtures write through the mapping."""
+    return ([t for t, _ in CARVED.FIXTURES + CARVED.LOST_FIXTURES + SS01_FIXTURES]
+            + [t for t, _, _ in MARK_FIXTURES] + IGNORABLE_FIXTURES + [bare(t) for t in IGNORABLE_FIXTURES])
+
+
+def run(font: Path, forms: list[str], mapping: Mapping | None = None) -> list[str]:
+    r = MappedRenderer(Renderer(font), mapping or Mapping.offline("pirzath-hand"))
+    r.prepare(forms + fixture_texts())
     failures = []
     digraphs = acutes = doubled = 0
     for form in forms:
@@ -214,7 +229,7 @@ def run(font: Path, forms: list[str]) -> list[str]:
         want = collapse(carved)
         got = r.glyph_names(form)
         doubled += "doubling" in carved
-        if ".notdef" in got or "notdef.box" in got or "c" in got:
+        if ".notdef" in got or "notdef.box" in got:
             failures.append(f"{form}: .notdef or the box in {got}")
         elif got != want:
             failures.append(f"{form}: shaped {got}, expected {want}")
@@ -255,9 +270,16 @@ def main():
     ap.add_argument("--font", default=str(ROOT / "fonts" / "PirzathHand-Regular.ttf"))
     ap.add_argument("--thalorna", default=str(Path.home() / "dev/HeroicLands/thalorna"))
     ap.add_argument("--note", help="read the language note from this file instead of git")
+    ap.add_argument("--map-note", help="read the pirzath mapping note from this file instead of git")
+    ap.add_argument("--fixtures-only", action="store_true",
+                    help="shape the fixtures alone, written as tools/mapped.json records them")
     args = ap.parse_args()
-    forms = CARVED.lexicon_forms(Path(args.thalorna), Path(args.note) if args.note else None)
-    failures = run(Path(args.font), forms)
+    if args.fixtures_only:
+        forms, mapping = [], Mapping.offline("pirzath-hand")
+    else:
+        forms = CARVED.lexicon_forms(Path(args.thalorna), Path(args.note) if args.note else None)
+        mapping = Mapping("pirzath", thalorna=Path(args.thalorna), note=args.map_note, face="pirzath-hand")
+    failures = run(Path(args.font), forms, mapping)
     for f in failures[:40]:
         print(f"{args.font}: error: {f}")
     if len(failures) > 40:

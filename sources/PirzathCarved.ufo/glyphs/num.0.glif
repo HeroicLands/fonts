@@ -1,7 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <glyph name="num.0" format="2">
   <advance width="160"/>
-  <unicode hex="0030"/>
   <unicode hex="F0040"/>
   <outline>
     <contour>

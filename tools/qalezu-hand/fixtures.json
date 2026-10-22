@@ -367,6 +367,20 @@
                 "four",
                 "period"
             ]
+        },
+        {
+            "latin": "jal",
+            "signs": [
+                "tj",
+                "l"
+            ]
+        },
+        {
+            "latin": "val",
+            "signs": [
+                "f",
+                "l"
+            ]
         }
     ],
     "unmappable": [
@@ -377,14 +391,6 @@
         {
             "latin": "cal",
             "letter": "c"
-        },
-        {
-            "latin": "jal",
-            "letter": "j"
-        },
-        {
-            "latin": "val",
-            "letter": "v"
         },
         {
             "latin": "xal",

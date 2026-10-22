@@ -18,6 +18,7 @@ from pathlib import Path
 from PIL import Image, ImageDraw
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+from mapped import Mapping, MappedRenderer  # noqa: E402
 from render import Renderer, label_font  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent.parent
@@ -221,11 +222,13 @@ def main():
     ap.add_argument("--font", default=str(ROOT / "fonts" / "ThuravarkCarved-Regular.ttf"))
     ap.add_argument("--pirzath", default=str(ROOT / "fonts" / "PirzathCarved-Regular.ttf"))
     ap.add_argument("--out", default=str(ROOT / "specimens" / "thuravark-carved"))
+    ap.add_argument("--thalorna", default=str(Path.home() / "dev/HeroicLands/thalorna"),
+                    help="the checkout whose mapping notes write the roman texts")
     args = ap.parse_args()
     out = Path(args.out)
     out.mkdir(parents=True, exist_ok=True)
-    r = Renderer(Path(args.font))
-    p = Renderer(Path(args.pirzath))
+    r = MappedRenderer(Renderer(Path(args.font)), Mapping("thuravark", thalorna=Path(args.thalorna), face="thuravark-carved"))
+    p = MappedRenderer(Renderer(Path(args.pirzath)), Mapping("pirzath", thalorna=Path(args.thalorna), face="pirzath-carved"))
     glyph_chart(r, out / "01-glyph-chart.png")
     texts(r, out / "02-nordmal.png")
     numerals(r, out / "03-numerals.png")

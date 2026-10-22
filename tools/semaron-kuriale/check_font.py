@@ -9,11 +9,9 @@ vowels with their majuscules, the numerals, the point and the catch. The checks:
 
 - every letter, long vowel, numeral and the point has an outline, and the space
   and the default-ignorables draw nothing;
-- the typed characters reach the glyphs the typing names: the letters in both
-  cases, the acute vowels the plain vowel, the pauses the point, the catch inputs
-  the catch, and the numerals their glyphs;
-- every other character of the box ranges maps to the box (tools/notdef_box.py),
-  and c and C, which spell ``ch``, draw the box;
+- the space is U+0020 and U+00A0, and every other character of the box ranges,
+  Latin text included, maps to the box (tools/notdef_box.py): the face draws its
+  own code points alone, which tools/codepoints.py checks;
 - the names, the OS/2 declarations (tools/font_names.py) and the win metrics
   (tools/notdef_box.py) pass, and the win metrics also enclose the catch where
   it stands on its base;
@@ -40,23 +38,13 @@ LETTERS = ["a", "b", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o",
 LETTERS += [n.upper() for n in LETTERS]
 LONGS = [f"{v}.long" for v in "aeiou"] + [f"{v.upper()}.long" for v in "aeiou"]
 NUMERALS = [f"num.{i}" for i in range(10)]
-DRAWN = LETTERS + LONGS + NUMERALS + ["point", "grave", ".notdef", "c", "C"]
+DRAWN = LETTERS + LONGS + NUMERALS + ["point", "grave", ".notdef"]
 BASES = LETTERS + LONGS
 EMPTY = {"ignorable", "ignorable.sub", "space"}
 IGNORABLES = [*range(0x200B, 0x2010), *range(0x202A, 0x202F), *range(0x2066, 0x206A), 0xFEFF]
 
-# What the typing reaches, by character.
-TYPED = {
-    **{ch: ch for ch in "abdefghijklmnoprstuvwyz"},
-    **{ch.upper(): ch.upper() for ch in "abdefghijklmnoprstuvwyz"},
-    **{ch: p for ch, p in zip("áéíóúÁÉÍÓÚ", "aeiouAEIOU")},
-    **{str(i): f"num.{i}" for i in range(10)},
-    **{ch: "point" for ch in ".,;:—–"},
-    **{ch: "grave" for ch in "'’`-‐‑"},
-    " ": "space", " ": "space", "c": "c", "C": "C",
-}
-# Characters the script lacks, which must print the box.
-BOXED = "qxQX?!¡\"“”«»()[]<>"
+# Latin text, which must print the box: the face draws its own code points alone.
+BOXED = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZáéíóúÁÉÍÓÚ0123456789.,;:—–'’`-‐‑?!¡\"“”«»()[]<>"
 
 
 def check(path: Path) -> list[str]:
@@ -73,15 +61,12 @@ def check(path: Path) -> list[str]:
     for name in DRAWN:
         if name not in order or glyf[name].numberOfContours == 0:
             problems.append(f"{name} is missing or draws nothing")
-    for ch, name in TYPED.items():
-        if cmap.get(ord(ch)) != name:
-            problems.append(f"{ch!r} should type {name}, types {cmap.get(ord(ch))}")
+    for code in (0x20, 0xA0):
+        if cmap.get(code) != "space":
+            problems.append(f"U+{code:04X} maps to {cmap.get(code)}, not space")
     for ch in BOXED:
         if cmap.get(ord(ch)) != notdef_box.BOX:
             problems.append(f"{ch!r} is {cmap.get(ord(ch))}; it must be {notdef_box.BOX}")
-    for name in ("c", "C"):
-        if name in order and notdef_box.outline(font, name) != notdef_box.outline(font, ".notdef"):
-            problems.append(f"{name} must draw the box")
     hmtx = font["hmtx"]
     if "space" not in order or glyf["space"].numberOfContours != 0:
         problems.append("the space must be in the font and draw nothing")

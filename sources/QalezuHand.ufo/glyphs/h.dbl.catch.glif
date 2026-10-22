@@ -1,7 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <glyph name="h.dbl.catch" format="2">
   <advance width="476"/>
-  <unicode hex="1ECE4"/>
   <outline>
     <component base="h"/>
     <component base="doubling" xOffset="237" yOffset="-83"/>

@@ -2,8 +2,7 @@
 // SPDX-License-Identifier: OFL-1.1
 
 /**
- * Tests `convert.mjs`: the Qalezu fixtures, the letters Qalezu has no sign for,
- * the Khelathi Zethu sign lookup, the Veldikko fixtures and the letters the
+ * Tests `convert.mjs`: the Khelathi Zethu sign lookup, the Veldikko fixtures and the letters the
  * Veldikko has no sign for, and `fonts.json`.
  *
  *     npm test
@@ -17,38 +16,10 @@ import { dirname, join } from "node:path";
 import { test } from "node:test";
 import { fileURLToPath } from "node:url";
 
-import { convert, Unmappable, zethuSign } from "./qalezu-hand/convert.mjs";
+import { convert, Unmappable, zethuSign } from "./convert.mjs";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const readJson = (...path) => JSON.parse(readFileSync(join(ROOT, ...path), "utf8"));
-
-const QALEZU = "Qalezu Hand";
-const encoding = readJson("tools", "qalezu-hand", "encoding.json");
-const nameOf = new Map(
-    encoding.glyphs.map((glyph) => [
-        String.fromCodePoint(parseInt(glyph.codepoint.slice(2), 16)),
-        glyph.glyph,
-    ]),
-);
-const glyphsOf = (text) => Array.from(text, (char) => (char === " " ? "space" : nameOf.get(char)));
-
-const { fixtures, unmappable } = readJson("tools", "qalezu-hand", "fixtures.json");
-
-test("each Qalezu fixture converts to its signs", () => {
-    for (const { latin, signs } of fixtures) {
-        assert.deepEqual(glyphsOf(convert(QALEZU, latin)), signs, latin);
-    }
-});
-
-test("a letter with no sign is refused, naming the letter", () => {
-    for (const { latin, letter } of unmappable) {
-        assert.throws(
-            () => convert(QALEZU, latin),
-            (error) => error instanceof Unmappable && error.letter === letter,
-            latin,
-        );
-    }
-});
 
 test("a Khelathi Zethu id is its code point", () => {
     assert.equal(zethuSign("01-002"), "\u{1EA41}");
@@ -100,7 +71,7 @@ test("fonts.json names the families of the built fonts", () => {
     assert.deepEqual(byName.get("Pirzath Hand").features, ["ss01"]);
     assert.equal(byName.get("Pirzath Hand Lifted").class, "hl-pirzath-hand-lifted");
     assert.deepEqual(byName.get("Pirzath Hand Lifted").features, []);
-    assert.equal(byName.get(QALEZU).direction, "rtl");
+    assert.equal(byName.get("Qalezu Hand").direction, "rtl");
     assert.equal(byName.get("Semaron Kuriale").direction, "ltr");
     assert.equal(byName.get(VELDIKKO).direction, "rtl");
 });

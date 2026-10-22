@@ -1,7 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <glyph name="s.catch" format="2">
   <advance width="396"/>
-  <unicode hex="1ECC5"/>
   <outline>
     <component base="s"/>
     <component base="catchdots" xOffset="198" yOffset="578"/>

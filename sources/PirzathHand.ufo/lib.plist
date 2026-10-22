@@ -106,10 +106,6 @@
       <string>num.13</string>
       <string>num.14</string>
       <string>num.15</string>
-      <string>quotedbl</string>
-      <string>less</string>
-      <string>greater</string>
-      <string>c</string>
       <string>lengthmark</string>
       <string>ignorable</string>
       <string>ignorable.sub</string>
@@ -397,8 +393,6 @@
       <string>base</string>
       <key>b_b.medi</key>
       <string>base</string>
-      <key>c</key>
-      <string>base</string>
       <key>catch</key>
       <string>base</string>
       <key>catch.fina</key>
@@ -539,8 +533,6 @@
       <string>base</string>
       <key>g_h_g_h.medi</key>
       <string>base</string>
-      <key>greater</key>
-      <string>base</string>
       <key>h</key>
       <string>base</string>
       <key>h.fina</key>
@@ -661,8 +653,6 @@
       <string>base</string>
       <key>lengthmark</key>
       <string>mark</string>
-      <key>less</key>
-      <string>base</string>
       <key>m</key>
       <string>base</string>
       <key>m.fina</key>
@@ -830,8 +820,6 @@
       <key>quote.close</key>
       <string>base</string>
       <key>quote.open</key>
-      <string>base</string>
-      <key>quotedbl</key>
       <string>base</string>
       <key>r</key>
       <string>base</string>

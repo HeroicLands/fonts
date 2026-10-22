@@ -8,17 +8,17 @@ A missing cmap entry makes a browser, Foundry or Typst fall back to the next fon
 in the stack, and an entry that points at glyph 0 is treated as missing, so a
 stray character prints as an ordinary Latin glyph. Each font therefore carries
 the glyph ``notdef.box``, a copy of ``.notdef``, and maps to it every code point
-of these ranges that its typing does not use:
+of these ranges that it does not draw:
 
 - U+0021-007E Basic Latin;
 - U+00A1-00FF Latin-1 Supplement;
 - U+0100-017F Latin Extended-A;
 - U+2010-205E General Punctuation.
 
-The typing is read from the font: a code point is used when its cmap entry reaches
-a glyph other than the box. A used code point must reach a glyph that draws, except
-the glyphs that deliberately draw nothing: the one the font gives space, the one it
-gives the default-ignorables, and the one it gives the hyphen-minus.
+What a font draws is read from the font: a code point is drawn when its cmap entry
+reaches a glyph other than the box. A drawn code point must reach a glyph that
+draws, except the glyphs that deliberately draw nothing: the one the font gives
+space and the one it gives the default-ignorables.
 
 A font fails when
 
@@ -31,8 +31,7 @@ A font fails when
   shaped alone, yields a glyph that draws or an advance other than zero. HarfBuzz
   replaces a mapped ignorable with the font's space glyph unless a ``ccmp``
   substitution changes it, and Pirzath's space is a visible dot;
-- a used code point reaches a glyph that draws nothing and is none of the three
-  exceptions;
+- a drawn code point reaches a glyph that draws nothing and is neither exception;
 - the OS/2 winAscent or winDescent is smaller than the highest or lowest ink of any
   glyph, which Windows clips.
 """
@@ -55,7 +54,6 @@ IGNORABLE = range(0x202A, 0x202F)
 # Every default-ignorable character a font must render as nothing.
 IGNORABLES = [*range(0x200B, 0x2010), *range(0x202A, 0x202F), *range(0x2066, 0x206A), 0xFEFF]
 SPACE = 0x20
-HYPHEN = 0x2D
 
 
 def codepoints() -> list[int]:
@@ -89,7 +87,7 @@ def check(path: Path) -> list[str]:
             problems.append(f"{path}: error: {BOX} and .notdef differ in outline")
         if not draws(font, BOX):
             problems.append(f"{path}: error: {BOX} draws nothing")
-    quiet = {cmap.get(SPACE), cmap.get(HYPHEN)} - {None}
+    quiet = {cmap.get(SPACE)} - {None}
     unmapped, glyph0, empty_ignorable, silent = [], [], [], []
     for cp in codepoints():
         name = cmap.get(cp)
@@ -106,7 +104,7 @@ def check(path: Path) -> list[str]:
         ("is unmapped, so a fallback font draws it", unmapped),
         ("maps to glyph 0, which engines treat as missing", glyph0),
         ("is a default-ignorable that draws", empty_ignorable),
-        ("is used by the typing but draws nothing", silent),
+        ("is drawn by the font but draws nothing", silent),
     ):
         for cp in found:
             problems.append(f"{path}: error: U+{cp:04X} {label}")
@@ -157,7 +155,7 @@ def summary(path: Path) -> str:
     cmap = font.getBestCmap()
     cps = codepoints()
     boxed = sum(1 for cp in cps if cmap.get(cp) == BOX)
-    return f"{path}: {len(cps)} code points walked, {boxed} on {BOX}, {len(cps) - boxed} used by the typing"
+    return f"{path}: {len(cps)} code points walked, {boxed} on {BOX}, {len(cps) - boxed} drawn by the font"
 
 
 def main():

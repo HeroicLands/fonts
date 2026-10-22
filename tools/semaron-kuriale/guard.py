@@ -4,29 +4,38 @@
 
     .venv/bin/python tools/semaron-kuriale/guard.py [--font fonts/SemaronKuriale-Regular.ttf]
                                                  [--thalorna ~/dev/HeroicLands/thalorna | --note FILE]
+                                                 [--map-note FILE | --fixtures-only]
 
 The forms come from the ``words`` list in the frontmatter of
 ``assets/content/Skills/Languages/Vylari.md`` on the thalorna repository's
-``origin/main``; the body of the note is never read. For each form the expected
-glyph sequence is derived from the typing rules below, which the guard owns and
-which do not read the font:
+``origin/main``; the body of the note is never read. Each form is written in
+Semaron's code points by thalorna's ``semaron`` mapping note
+(``assets/content/Lore/Scripts/Semaron_Spelling.md`` on ``origin/main``, or the
+file ``--map-note`` names), as a run marked ``map=semaron`` is, and the result is
+shaped. The expected glyph sequence is derived from the spelling rules below,
+which the guard owns and which read neither the font nor the mapping:
 
 - the case of the typed letter picks the majuscule or the minuscule, and ``th``
   is one letter, ``Th`` and ``TH`` its majuscule;
 - ``ch`` types the letters t, s and h, because the script has no c;
 - a doubled ``a``, ``i`` or ``u`` is the long vowel, and the first letter's case
   picks its majuscule; ``ee`` and ``oo`` are two plain vowels;
-- an acute vowel is the plain vowel, because Semaron writes no stress;
+- an acute vowel is the plain vowel, because Semaron writes no stress, and ``ë``
+  is ``e``;
+- ``q`` is ``k``, because the script has no q;
 - ``y`` before a vowel is the glide y, and anywhere else the vowel i;
 - ``.``, ``,``, ``;``, ``:`` and the two dashes are the one point;
-- ``'``, ``’``, a grave accent and a hyphen after a letter are the catch, a mark
-  that takes no room; with no letter before them they print the box;
-- ``c``, ``q``, ``x``, the quotation marks, ``?``, ``!``, ``¡`` and every other
-  character the script lacks print the box;
+- ``'``, ``’``, a grave accent and a hyphen-minus after a letter are the catch, a mark
+  that takes no room; with no letter before them they print the box, and the
+  Unicode hyphens U+2010 and U+2011 are characters the script lacks;
+- ``c``, ``x``, the quotation marks, ``?``, ``!``, ``¡`` and every other
+  character the script lacks pass through the mapping and print the box;
 - only the default-ignorable characters draw nothing.
 
 Fixtures cover each rule, the catch on an x-height letter, a tall letter and
-after a long vowel, the numerals, and the sample lines of the specimens.
+after a long vowel, the numerals, and the sample lines of the specimens. They
+are written through the mapping and shaped too, so the guard checks the mapping
+and the face together.
 """
 
 import argparse
@@ -38,22 +47,23 @@ import yaml
 from fontTools.pens.boundsPen import BoundsPen
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+from mapped import Mapping  # noqa: E402
 from render import Renderer  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent.parent
 NOTE = "assets/content/Skills/Languages/Vylari.md"
 
 BOX = "notdef.box"
-# The glyphs that draw the box: the box itself and the copies of it that c and C type.
-BOX_GLYPHS = {BOX, "c", "C"}
+BOX_GLYPHS = {BOX}
 EMPTY = {"ignorable", "ignorable.sub"}
 
 LETTERS = "abdefghijklmnoprstuvwz"
 VOWELS = "aeiou"
 LONG_VOWELS = "aiu"
-ACUTES = {"á": "a", "é": "e", "í": "i", "ó": "o", "ú": "u", "Á": "A", "É": "E", "Í": "I", "Ó": "O", "Ú": "U"}
+ACUTES = {"á": "a", "é": "e", "í": "i", "ó": "o", "ú": "u", "Á": "A", "É": "E", "Í": "I", "Ó": "O", "Ú": "U",
+          "ë": "e", "Ë": "E", "q": "k", "Q": "K"}
 PAUSES = "., ; : — –".replace(" ", "")
-CATCHES = "'’`-‐‑"
+CATCHES = "'’`-"
 SILENT = "​‌‍‎‏‪‫‬‭‮⁦⁧⁨⁩﻿"
 NUMERALS = [f"num.{i}" for i in range(10)]
 # The glyphs a catch can sit on.
@@ -64,7 +74,7 @@ BASES = {
 
 
 def expected_glyphs(text: str) -> list[str]:
-    """The glyph names a line must shape to, from the typing rules alone."""
+    """The glyph names a line must shape to, from the spelling rules alone."""
     t = "".join(ACUTES.get(ch, ch) for ch in text)
     out: list[str] = []
     i = 0
@@ -157,16 +167,17 @@ FIXTURES: list[tuple[str, list[str]]] = [
     ("a'", ["a", "grave"]),
     ("Au'Khelathu", ["A", "u", "grave", "K", "h", "e", "l", "a", "th", "u"]),
     ("Zeghet'Nelgu", ["Z", "e", "g", "h", "e", "t", "grave", "N", "e", "l", "g", "u"]),
-    ("Amqel'Uqa", ["A", "m", BOX, "e", "l", "grave", "U", BOX, "a"]),
+    ("Amqel'Uqa", ["A", "m", "k", "e", "l", "grave", "U", "k", "a"]),
     ("selth-kelmeza", ["s", "e", "l", "th", "grave", "k", "e", "l", "m", "e", "z", "a"]),
     # every pause is the one point
     *[(c, ["point"]) for c in PAUSES],
     ("Daimela, vethor: orfenamen — theson.",
      ["D", "a", "i", "m", "e", "l", "a", "point", "space", "v", "e", "th", "o", "r", "point", "space",
       "o", "r", "f", "e", "n", "a", "m", "e", "n", "space", "point", "space", "th", "e", "s", "o", "n", "point"]),
-    # the marks the script lacks, c, q and x print the box
+    # the marks the script lacks, c and x print the box; q is k and ë is e
     *[(c, [BOX]) for c in '"“”«»?!¡()[]<>@#$%&*+=/\\|_{}~^‘…'],
-    *[(c, [BOX]) for c in "cqxCQX"],
+    *[(c, [BOX]) for c in "cxCX"],
+    ("a‐", ["a", BOX]), ("a‑", ["a", BOX]), ("q", ["k"]), ("Q", ["K"]), ("Meqes", ["M", "e", "k", "e", "s"]), ("ë", ["e"]), ("Ë", ["E"]),
     ("Eza a' daimela falvator.",
      ["E", "z", "a", "space", "a", "grave", "space", "d", "a", "i", "m", "e", "l", "a", "space", "f", "a", "l",
       "v", "a", "t", "o", "r", "point"]),
@@ -191,6 +202,11 @@ MARK_FIXTURES = ["a'", "e'", "o'", "k'", "m'", "v'", "l'", "h'", "t'", "th'", "A
                  "uu'", "Aa'", "k-a", "a’k"]
 
 
+def fixture_texts() -> list[str]:
+    """Every roman text the fixtures write through the mapping."""
+    return [t for t, _ in FIXTURES] + [t for pair in WIDTH_PAIRS for t in pair] + MARK_FIXTURES
+
+
 def lexicon_forms(thalorna: Path | None, note: Path | None) -> list[str]:
     if note:
         text = note.read_text(encoding="utf-8")
@@ -208,12 +224,12 @@ def lexicon_forms(thalorna: Path | None, note: Path | None) -> list[str]:
     return forms
 
 
-def mark_failures(r: Renderer) -> list[str]:
+def mark_failures(r: Renderer, m: Mapping) -> list[str]:
     """Each catch takes no room and stands on its base."""
     failures = []
     glyphset = r.tt.getGlyphSet()
     for text in MARK_FIXTURES:
-        shaped = r.shape(text)
+        shaped = r.shape(m.one(text))
         names = [r.order[g[0]] for g in shaped.glyphs]
         pen_x = 0
         base = None
@@ -238,13 +254,15 @@ def mark_failures(r: Renderer) -> list[str]:
     return failures
 
 
-def run(font: Path, forms: list[str]) -> list[str]:
+def run(font: Path, forms: list[str], mapping: Mapping | None = None) -> list[str]:
     r = Renderer(font)
+    m = mapping or Mapping.offline("semaron-kuriale")
+    m.write(forms + fixture_texts())
     failures = []
     digraphs = longs = catches = 0
     for form in forms:
         want = expected_glyphs(form)
-        got = normalized([r.order[g[0]] for g in r.shape(form).glyphs])
+        got = normalized([r.order[g[0]] for g in r.shape(m.one(form)).glyphs])
         if BOX in got and BOX not in want:
             failures.append(f"{form}: the box in {got}")
         elif got != want:
@@ -256,13 +274,14 @@ def run(font: Path, forms: list[str]) -> list[str]:
         derived = expected_glyphs(text)
         if derived != want:
             failures.append(f"{text!r}: the guard derives {derived} but the fixture says {want}")
-        got = normalized([r.order[g[0]] for g in r.shape(text).glyphs])
+        got = normalized([r.order[g[0]] for g in r.shape(m.one(text)).glyphs])
         if got != want:
             failures.append(f"{text!r}: shaped {got}, expected {want}")
     for text, plain in WIDTH_PAIRS:
-        if r.shape(text).advance != r.shape(plain).advance:
-            failures.append(f"{text!r} sets {r.shape(text).advance} wide, {plain!r} sets {r.shape(plain).advance}")
-    failures += mark_failures(r)
+        wide, narrow = r.shape(m.one(text)).advance, r.shape(m.one(plain)).advance
+        if wide != narrow:
+            failures.append(f"{text!r} sets {wide} wide, {plain!r} sets {narrow}")
+    failures += mark_failures(r, m)
     print(
         f"{font}: {len(forms)} forms shaped, {digraphs} th, {longs} long vowels and {catches} catches expected, "
         f"{len(FIXTURES)} fixtures, {len(WIDTH_PAIRS)} width pairs, {len(MARK_FIXTURES)} mark placements, "
@@ -276,12 +295,19 @@ def main():
     ap.add_argument("--font", default=str(ROOT / "fonts" / "SemaronKuriale-Regular.ttf"))
     ap.add_argument("--thalorna", default=str(Path.home() / "dev/HeroicLands/thalorna"))
     ap.add_argument("--note", help="read the language note from this file instead of git")
+    ap.add_argument("--map-note", help="read the semaron mapping note from this file instead of git")
+    ap.add_argument("--fixtures-only", action="store_true",
+                    help="shape the fixtures alone, written as tools/mapped.json records them")
     args = ap.parse_args()
     if not Path(args.font).exists():
         print(f"{args.font}: error: the font does not exist")
         sys.exit(1)
-    forms = lexicon_forms(Path(args.thalorna), Path(args.note) if args.note else None)
-    failures = run(Path(args.font), forms)
+    if args.fixtures_only:
+        forms, mapping = [], Mapping.offline("semaron-kuriale")
+    else:
+        forms = lexicon_forms(Path(args.thalorna), Path(args.note) if args.note else None)
+        mapping = Mapping("semaron", thalorna=Path(args.thalorna), note=args.map_note, face="semaron-kuriale")
+    failures = run(Path(args.font), forms, mapping)
     for f in failures[:40]:
         print(f"{args.font}: error: {f}")
     if len(failures) > 40:

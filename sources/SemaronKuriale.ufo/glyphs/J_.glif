@@ -1,7 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <glyph name="J" format="2">
   <advance width="650"/>
-  <unicode hex="004A"/>
   <unicode hex="F0208"/>
   <anchor x="438" y="577" name="top"/>
   <outline>

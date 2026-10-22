@@ -1,8 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <glyph name="exclam" format="2">
   <advance width="322"/>
-  <unicode hex="0021"/>
-  <unicode hex="00A1"/>
   <unicode hex="F0052"/>
   <outline>
     <contour>

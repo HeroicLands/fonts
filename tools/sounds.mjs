@@ -23,44 +23,21 @@
  * @module
  */
 
-import { execFileSync } from "node:child_process";
 import { readFileSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
-import { splitFrontmatter } from "@heroiclands/package-build/engine/diagnostics";
-import { applyMap, compileMap } from "@heroiclands/package-build/engine/text-maps";
-import YAML from "yaml";
+import { applyMap } from "@heroiclands/package-build/engine/text-maps";
+
+import { NOTES, readMap, SCRIPTS } from "./mapping.mjs";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const OUT = join(ROOT, "keyboards", "sounds.json");
 
-/** The scripts with a layout, by the key `tools/keyboards.py` uses, and their mapping notes. */
-export const SCRIPTS = [
-    ["semaron", "Semaron_Spelling.md"],
-    ["pirzath", "Pirzath_Spelling.md"],
-    ["thuravark", "Thuravark_Spelling.md"],
-    ["qalezu", "Qalezu_Spelling.md"],
-];
-const NOTES = "assets/content/Lore/Scripts";
+export { SCRIPTS };
 
 const hex = (text) =>
     Array.from(text, (c) => `U+${c.codePointAt(0).toString(16).toUpperCase().padStart(4, "0")}`);
-
-/** A mapping note's `data.map`, read from the checkout's `origin/main`. */
-function readMap(thalorna, file) {
-    const raw = execFileSync("git", ["-C", thalorna, "show", `origin/main:${NOTES}/${file}`], {
-        encoding: "utf8",
-        maxBuffer: 64 * 1024 * 1024,
-    });
-    const split = splitFrontmatter(raw);
-    if (!split) throw new Error(`${NOTES}/${file}: no frontmatter`);
-    const data = YAML.parse(split.yaml)?.data;
-    const map = compileMap(data?.map);
-    if (!map) throw new Error(`${NOTES}/${file}: no data.map`);
-    const faces = (data.map.fonts ?? []).map((f) => f.font);
-    return { map, name: data.map.name, faces: faces.length ? faces : [undefined] };
-}
 
 /** `{codepoints}` or `{unmapped}` for one sound under one face. */
 function spell(map, face, sound) {
@@ -84,7 +61,7 @@ function spell(map, face, sound) {
 export function build(thalorna) {
     const keys = JSON.parse(readFileSync(join(ROOT, "tools", "sound_keys.json"), "utf8"));
     const maps = Object.fromEntries(
-        SCRIPTS.map(([script, file]) => [script, { file, ...readMap(thalorna, file) }]),
+        SCRIPTS.map(([script, file]) => [script, { file, ...readMap({ thalorna }, file) }]),
     );
     const sounds = keys.sounds.map((sound) => {
         const scripts = {};

@@ -6,7 +6,7 @@ Each font has a sheet of every character it draws: a code chart laid out like Un
 - [Pirzath Carved](pirzath.md): 64 characters on 1 chart page
 - [Pirzath Hand](pirzath-hand.md): 64 characters on 1 chart page
 - [Pirzath Hand Lifted](pirzath-hand-lifted.md): 64 characters on 1 chart page
-- [Qalezu Hand](qalezu-hand.md): 101 characters on 2 chart pages
+- [Qalezu Hand](qalezu-hand.md): 57 characters on 1 chart page
 - [Semaron Kuriale](semaron-kuriale.md): 70 characters on 1 chart page
 - [Teng Chou](teng-chou.md): 305 characters on 3 chart pages
 - [Thuravark Carved](thuravark-carved.md): 40 characters on 1 chart page

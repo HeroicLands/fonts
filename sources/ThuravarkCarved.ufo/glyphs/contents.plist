@@ -6,8 +6,8 @@
     <string>_notdef.glif</string>
     <key>a</key>
     <string>a.glif</string>
-    <key>aacute</key>
-    <string>aacute.glif</string>
+    <key>a.acute</key>
+    <string>a.acute.glif</string>
     <key>acutecomb</key>
     <string>acutecomb.glif</string>
     <key>b</key>
@@ -18,8 +18,8 @@
     <string>dh.glif</string>
     <key>e</key>
     <string>e.glif</string>
-    <key>eacute</key>
-    <string>eacute.glif</string>
+    <key>e.acute</key>
+    <string>e.acute.glif</string>
     <key>f</key>
     <string>f.glif</string>
     <key>g</key>
@@ -30,12 +30,10 @@
     <string>h.glif</string>
     <key>hl</key>
     <string>hl.glif</string>
-    <key>hyphen</key>
-    <string>hyphen.glif</string>
     <key>i</key>
     <string>i.glif</string>
-    <key>iacute</key>
-    <string>iacute.glif</string>
+    <key>i.acute</key>
+    <string>i.acute.glif</string>
     <key>ignorable</key>
     <string>ignorable.glif</string>
     <key>ignorable.sub</key>
@@ -78,8 +76,8 @@
     <string>num.9.glif</string>
     <key>o</key>
     <string>o.glif</string>
-    <key>oacute</key>
-    <string>oacute.glif</string>
+    <key>o.acute</key>
+    <string>o.acute.glif</string>
     <key>p</key>
     <string>p.glif</string>
     <key>period</key>
@@ -96,14 +94,12 @@
     <string>th.glif</string>
     <key>u</key>
     <string>u.glif</string>
-    <key>uacute</key>
-    <string>uacute.glif</string>
+    <key>u.acute</key>
+    <string>u.acute.glif</string>
     <key>v</key>
     <string>v.glif</string>
     <key>w</key>
     <string>w.glif</string>
-    <key>y</key>
-    <string>y.glif</string>
     <key>z</key>
     <string>z.glif</string>
   </dict>

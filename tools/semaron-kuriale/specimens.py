@@ -20,6 +20,7 @@ from pathlib import Path
 from PIL import Image
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+from mapped import Mapping, MappedRenderer  # noqa: E402
 from render import Renderer, label_font  # noqa: E402
 from PIL import ImageDraw  # noqa: E402
 
@@ -85,7 +86,7 @@ def glyph_chart(r: Renderer, out: Path):
         ("Numerals", [(str(i), None) for i in range(10)]),
         ("Marks: the point types . , ; : and the dashes; the catch follows a letter", [
             (". ,", None), ("a'", None), ("l'", None), ("k-", None), ("Aa'", None), ("th'", None), ("'", None),
-            ("q?", None)]),
+            ("x?", None)]),
     ]
     rows = sum((len(items) + cols - 1) // cols for _, items in groups)
     img = Image.new("RGB", (cols * cell_w + 80, rows * cell_h + len(groups) * 50 + 100), PAPER)
@@ -140,10 +141,12 @@ def main():
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     ap.add_argument("--font", default=str(ROOT / "fonts" / "SemaronKuriale-Regular.ttf"))
     ap.add_argument("--out", default=str(ROOT / "specimens" / "semaron-kuriale"))
+    ap.add_argument("--thalorna", default=str(Path.home() / "dev/HeroicLands/thalorna"),
+                    help="the checkout whose mapping notes write the roman texts")
     args = ap.parse_args()
     out = Path(args.out)
     out.mkdir(parents=True, exist_ok=True)
-    r = Renderer(Path(args.font))
+    r = MappedRenderer(Renderer(Path(args.font)), Mapping("semaron", thalorna=Path(args.thalorna), face="semaron-kuriale"))
     capitals(r, out)
     glyph_chart(r, out)
     texts(r, out)

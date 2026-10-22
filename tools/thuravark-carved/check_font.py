@@ -6,7 +6,8 @@
 
 Every code point in the cmap must name a glyph in the glyph order, and the glyph
 must carry an outline unless it is one of the few that draw nothing by design.
-Every character the typing does not use must map to the box (tools/notdef_box.py).
+Every other character, Latin included, must map to the box (tools/notdef_box.py):
+the face draws its own code points alone, which tools/codepoints.py checks.
 The name table must carry the family, version and licence, and the .woff2 beside
 the .ttf must open and carry the same glyphs.
 """
@@ -21,28 +22,12 @@ sys.path.insert(0, str(ROOT / "tools"))
 import font_names  # noqa: E402
 import notdef_box  # noqa: E402
 
-EMPTY_BY_DESIGN = {"space", "hyphen", "acutecomb", "ignorable", "ignorable.sub"}
+EMPTY_BY_DESIGN = {"space", "acutecomb", "ignorable", "ignorable.sub"}
 IGNORABLES = [*range(0x200B, 0x2010), *range(0x202A, 0x202F), *range(0x2066, 0x206A), 0xFEFF]
 
-# What the owner's rulings say these keys type, independent of the glyph source.
-RULED = {
-    **{str(i): f"num.{i}" for i in range(10)},
-    " ": "space",
-    "-": "hyphen",
-    ".": "period",
-    **{k: notdef_box.BOX for k in ",!?;:\"'()<>[]@#$%^&"},
-    "j": "j",
-    "y": "y",
-    "J": "j",
-    "Y": "y",
-    "w": "w",
-    "c": notdef_box.BOX,
-    "q": notdef_box.BOX,
-    "x": notdef_box.BOX,
-    "́": "acutecomb",
-    **dict(zip("áéíóú", ["aacute", "eacute", "iacute", "oacute", "uacute"])),
-}
-RULED.update({ch: ch for ch in "abdefghiklmnoprstuvz"})
+# Latin text is not the face's: every Latin letter, digit and mark draws the box,
+# and the space is the only character the face shares with it.
+LATIN = "0123456789-.,!?;:\"'()<>[]@#$%^&abdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZáéíóú"
 STAVES = ("a e i o u p b f v t d th dh k g kh gh s z h l r hl m n ng j w").split()
 
 
@@ -59,9 +44,11 @@ def check(path: Path) -> list[str]:
             problems.append(f"U+{cp:04X} maps to {name}, which is not in the font")
         elif name not in EMPTY_BY_DESIGN and glyf[name].numberOfContours == 0:
             problems.append(f"U+{cp:04X} maps to {name}, which has no outline")
-    for ch, name in RULED.items():
-        if cmap.get(ord(ch)) != name:
-            problems.append(f"{ch!r} should type {name}, types {cmap.get(ord(ch))}")
+    if cmap.get(0x20) != "space":
+        problems.append(f"U+0020 maps to {cmap.get(0x20)}, not space")
+    for ch in LATIN:
+        if cmap.get(ord(ch)) != notdef_box.BOX:
+            problems.append(f"{ch!r} maps to {cmap.get(ord(ch))}; Latin text draws {notdef_box.BOX}")
     for name in STAVES:
         if name not in order or glyf[name].numberOfContours == 0:
             problems.append(f"the stave {name} is missing or draws nothing")
@@ -71,7 +58,7 @@ def check(path: Path) -> list[str]:
         elif glyf[name].numberOfContours != 0:
             problems.append(f"{name} draws something")
     hmtx = font["hmtx"]
-    for name in ("space", "hyphen", "ignorable", "ignorable.sub"):
+    for name in ("space", "acutecomb", "ignorable", "ignorable.sub"):
         if hmtx[name][0] != 0:
             problems.append(f"{name} has width {hmtx[name][0]}, expected 0")
     for cp in IGNORABLES:

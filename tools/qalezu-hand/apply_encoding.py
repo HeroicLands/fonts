@@ -4,15 +4,17 @@
 
     .venv/bin/python tools/qalezu-hand/apply_encoding.py [--check]
 
-Three things follow from the encoding, and nothing else in the UFO is touched, so
-no drawn outline changes: each glyph's <unicode> lines; one composite ``<sign>.dbl``
-per doubled consonant, the sign with the ``doubling`` component set at the sign's
+These follow from the encoding, and nothing else in the UFO is touched, so no drawn
+outline changes: each glyph's <unicode> lines; one composite ``<sign>.dbl`` per
+doubled consonant, the sign with the ``doubling`` component set at the sign's
 ``doubling`` anchor; one composite ``<sign>.catch`` and ``<sign>.dbl.catch`` per
 consonant, the sign or doubled sign with the ``catchdots`` component set at the
-sign's ``catch`` anchor; the two empty glyphs that default-ignorable characters
-map to with their ``ccmp`` substitution; and the code points of ``notdef.box``,
-which are every code point of the ranges in tools/notdef_box.py that the encoding
-leaves free. The box glyph itself comes from tools/apply_notdef_box.py.
+sign's ``catch`` anchor, each a form of the encoding's ``forms`` with no code point
+of its own; the ``rlig`` substitution that draws the catch and the sign after it as
+that form, read in visual order; the two empty glyphs that default-ignorable characters map to with their
+``ccmp`` substitution; and the code points of ``notdef.box``, which are every code
+point of the ranges in tools/notdef_box.py that the encoding leaves free. The box
+glyph itself comes from tools/apply_notdef_box.py.
 
 --check reports a disagreement and writes nothing.
 """
@@ -43,6 +45,12 @@ FEATURES = """languagesystem DFLT dflt;
 feature ccmp {{
   sub {ignorable} by {substitute};
 }} ccmp;
+
+# A catch before a sign, or before a doubled sign, is drawn as one form: three
+# reed dabs over the sign. HarfBuzz shapes these code points in visual order,
+# because they belong to no script, so the catch stands after its sign in the run.
+feature rlig {{
+{fusion}}} rlig;
 """
 
 
@@ -56,7 +64,7 @@ def load():
     taken = {cp for cps in unicodes.values() for cp in cps}
     unicodes[notdef_box.BOX] = [cp for cp in notdef_box.codepoints() if cp not in taken]
     doubled = {g["glyph"]: g["base"] for g in enc["glyphs"] if g["kind"] == "doubled"}
-    before = {g["glyph"]: g["base"] for g in enc["glyphs"] if g["kind"] == "catchbefore"}
+    before = {f["glyph"]: f["base"] for f in enc["forms"]}
     return enc, unicodes, doubled, before
 
 
@@ -128,9 +136,7 @@ def main():
         outputs[GLYPHS / f"{name}.glif"] = composite(name, base, ["doubling"], unicodes[name])
     for name, base in before.items():
         marks = ["doubling", "catchdots"] if base in doubled else ["catchdots"]
-        outputs[GLYPHS / f"{name}.glif"] = composite(
-            name, doubled.get(base, base), marks, unicodes[name]
-        )
+        outputs[GLYPHS / f"{name}.glif"] = composite(name, doubled.get(base, base), marks, [])
     for name in empties:
         outputs[GLYPHS / f"{name}.glif"] = with_unicodes(empty(name), unicodes[name])
 
@@ -156,8 +162,10 @@ def main():
     lib["public.openTypeCategories"] = dict(sorted(cats.items()))
     outputs[UFO / "lib.plist"] = plist_text(lib)
 
+    catch = next(g["glyph"] for g in enc["glyphs"] if "'" in g.get("typing", []))
+    fusion = "".join(f"  sub {base} {catch} by {name};\n" for name, base in before.items())
     outputs[UFO / "features.fea"] = FEATURES.format(
-        ignorable=ign["glyph"], substitute=ign["substitute"]
+        ignorable=ign["glyph"], substitute=ign["substitute"], fusion=fusion
     )
 
     status = 0

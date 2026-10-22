@@ -52,8 +52,6 @@
     <string>b_b.init.glif</string>
     <key>b_b.medi</key>
     <string>b_b.medi.glif</string>
-    <key>c</key>
-    <string>c.glif</string>
     <key>catch</key>
     <string>catch.glif</string>
     <key>catch.fina</key>
@@ -194,8 +192,6 @@
     <string>g_h_g_h.init.glif</string>
     <key>g_h_g_h.medi</key>
     <string>g_h_g_h.medi.glif</string>
-    <key>greater</key>
-    <string>greater.glif</string>
     <key>h</key>
     <string>h.glif</string>
     <key>h.fina</key>
@@ -316,8 +312,6 @@
     <string>l_l.medi.glif</string>
     <key>lengthmark</key>
     <string>lengthmark.glif</string>
-    <key>less</key>
-    <string>less.glif</string>
     <key>m</key>
     <string>m.glif</string>
     <key>m.fina</key>
@@ -486,8 +480,6 @@
     <string>quote.close.glif</string>
     <key>quote.open</key>
     <string>quote.open.glif</string>
-    <key>quotedbl</key>
-    <string>quotedbl.glif</string>
     <key>r</key>
     <string>r.glif</string>
     <key>r.fina</key>

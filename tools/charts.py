@@ -67,7 +67,6 @@ GROUPS = {
     "digraph": "Digraphs",
     "diphthong": "Diphthongs",
     "doubled": "Doubled letters",
-    "catchbefore": "Letters after a catch",
     "numeral": "Digits",
     "point": "Punctuation",
     "mark": "Marks",

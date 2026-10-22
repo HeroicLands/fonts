@@ -4,52 +4,14 @@ languagesystem latn dflt;
 # The glyphs a catch can stand on.
 @BASE = [a b d e f g h i j k l m n o p r s t th u v w y z A B D E F G H I J K L M N O P R S T TH U V W Y Z a.long e.long i.long o.long u.long A.long E.long I.long O.long U.long];
 
-# The vowels a glide y stands before.
-@VOWEL = [a e i o u A E I O U a.long e.long i.long o.long u.long A.long E.long I.long O.long U.long];
-
-# ch is the letters t, s and h: the script has no c.
-lookup ch_split {
-  sub c by t s;
-  sub C by T s;
-} ch_split;
-
-lookup ch_aspirate {
-  sub H by h;
-} ch_aspirate;
-
-# Everything here runs in one feature, in order: the longest spelling first. ch becomes t, s, h;
-# th is one letter; a doubled a, i or u is the long vowel; a y not before a vowel is the vowel i;
-# a catch with no letter before it is the box. HarfBuzz replaces a default-ignorable character the
-# font maps directly with the space glyph, so each ignorable is substituted once, to a second empty
-# glyph.
+# The face draws each character from its own code point. HarfBuzz replaces a
+# default-ignorable character the font maps directly with the space glyph, so each
+# ignorable is substituted once, to a second empty glyph; and a catch with no
+# letter before it is the box.
 feature ccmp {
 lookup ccmp_ignorable {
   sub ignorable by ignorable.sub;
 } ccmp_ignorable;
-lookup ccmp_ch_aspirate {
-  sub [c C] H' lookup ch_aspirate;
-} ccmp_ch_aspirate;
-lookup ccmp_ch {
-  sub [c C]' lookup ch_split h;
-} ccmp_ch;
-lookup ccmp_th {
-  sub t [h H] by th;
-  sub T [h H] by TH;
-} ccmp_th;
-lookup ccmp_long {
-  sub a [a A] by a.long;
-  sub A [a A] by A.long;
-  sub i [i I] by i.long;
-  sub I [i I] by I.long;
-  sub u [u U] by u.long;
-  sub U [u U] by U.long;
-} ccmp_long;
-lookup ccmp_y {
-  ignore sub y' @VOWEL;
-  sub y' by i;
-  ignore sub Y' @VOWEL;
-  sub Y' by I;
-} ccmp_y;
 lookup ccmp_catch {
   ignore sub @BASE grave';
   sub grave' by notdef.box;
@@ -57,7 +19,7 @@ lookup ccmp_catch {
 } ccmp;
 
 table GDEF {
-  GlyphClassDef [.notdef space a A b B d D e E f F g G h H i I j J k K l L m M n N o O p P r R s S t T th TH u U v V w W y Y z Z a.long e.long i.long o.long u.long A.long E.long I.long O.long U.long num.0 num.1 num.2 num.3 num.4 num.5 num.6 num.7 num.8 num.9 point c C ignorable ignorable.sub notdef.box], , [grave], ;
+  GlyphClassDef [.notdef space a A b B d D e E f F g G h H i I j J k K l L m M n N o O p P r R s S t T th TH u U v V w W y Y z Z a.long e.long i.long o.long u.long A.long E.long I.long O.long U.long num.0 num.1 num.2 num.3 num.4 num.5 num.6 num.7 num.8 num.9 point ignorable ignorable.sub notdef.box], , [grave], ;
 } GDEF;
 
 markClass grave <anchor 0 0> @CATCH;

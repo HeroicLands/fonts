@@ -1,8 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <glyph name="u" format="2">
   <advance width="488"/>
-  <unicode hex="0075"/>
-  <unicode hex="00FA"/>
   <unicode hex="F0242"/>
   <anchor x="495" y="490" name="top"/>
   <outline>

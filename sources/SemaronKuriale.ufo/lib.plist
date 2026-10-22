@@ -77,8 +77,6 @@
       <string>num.9</string>
       <string>point</string>
       <string>grave</string>
-      <string>c</string>
-      <string>C</string>
       <string>ignorable</string>
       <string>ignorable.sub</string>
     </array>
@@ -91,8 +89,6 @@
       <key>A.long</key>
       <string>base</string>
       <key>B</key>
-      <string>base</string>
-      <key>C</key>
       <string>base</string>
       <key>D</key>
       <string>base</string>
@@ -151,8 +147,6 @@
       <key>a.long</key>
       <string>base</string>
       <key>b</key>
-      <string>base</string>
-      <key>c</key>
       <string>base</string>
       <key>d</key>
       <string>base</string>

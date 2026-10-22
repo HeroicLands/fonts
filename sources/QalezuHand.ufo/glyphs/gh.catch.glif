@@ -1,7 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <glyph name="gh.catch" format="2">
   <advance width="301"/>
-  <unicode hex="1ECCD"/>
   <outline>
     <component base="kh"/>
     <component base="dab" xOffset="150" yOffset="579"/>

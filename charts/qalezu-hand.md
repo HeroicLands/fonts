@@ -1,11 +1,10 @@
 # Qalezu Hand
 
-101 characters, U+1EA00 to U+1ECEB, in the font `Qalezu Hand`.
+57 characters, U+1EA00 to U+1EA38, in the font `Qalezu Hand`.
 
 ## Code chart
 
 ![Qalezu Hand, code chart 1](qalezu-hand/chart-1.png)
-![Qalezu Hand, code chart 2](qalezu-hand/chart-2.png)
 
 ## Characters
 
@@ -85,52 +84,3 @@
 | --- | --- | --- | --- | --- |
 | QALEZU SENTENCE END | ![U+1EA37](qalezu-hand/glyphs/U+1EA37.svg) | U+1EA37 | `&#125495;` | `&#x1EA37;` |
 | QALEZU PAUSE | ![U+1EA38](qalezu-hand/glyphs/U+1EA38.svg) | U+1EA38 | `&#125496;` | `&#x1EA38;` |
-
-### Letters after a catch
-
-| Character Name | Character | Code Point | Entity | Hex Entity |
-| --- | --- | --- | --- | --- |
-| QALEZU LETTER LAGUN WITH CATCH | ![U+1ECC0](qalezu-hand/glyphs/U+1ECC0.svg) | U+1ECC0 | `&#126144;` | `&#x1ECC0;` |
-| QALEZU LETTER RETHU WITH CATCH | ![U+1ECC1](qalezu-hand/glyphs/U+1ECC1.svg) | U+1ECC1 | `&#126145;` | `&#x1ECC1;` |
-| QALEZU LETTER TULAZ WITH CATCH | ![U+1ECC2](qalezu-hand/glyphs/U+1ECC2.svg) | U+1ECC2 | `&#126146;` | `&#x1ECC2;` |
-| QALEZU LETTER DURAS WITH CATCH | ![U+1ECC3](qalezu-hand/glyphs/U+1ECC3.svg) | U+1ECC3 | `&#126147;` | `&#x1ECC3;` |
-| QALEZU LETTER ZAGUL WITH CATCH | ![U+1ECC4](qalezu-hand/glyphs/U+1ECC4.svg) | U+1ECC4 | `&#126148;` | `&#x1ECC4;` |
-| QALEZU LETTER SELQUR WITH CATCH | ![U+1ECC5](qalezu-hand/glyphs/U+1ECC5.svg) | U+1ECC5 | `&#126149;` | `&#x1ECC5;` |
-| QALEZU LETTER GITHAR WITH CATCH | ![U+1ECC6](qalezu-hand/glyphs/U+1ECC6.svg) | U+1ECC6 | `&#126150;` | `&#x1ECC6;` |
-| QALEZU LETTER KA WITH CATCH | ![U+1ECC7](qalezu-hand/glyphs/U+1ECC7.svg) | U+1ECC7 | `&#126151;` | `&#x1ECC7;` |
-| QALEZU LETTER NELGIR WITH CATCH | ![U+1ECC8](qalezu-hand/glyphs/U+1ECC8.svg) | U+1ECC8 | `&#126152;` | `&#x1ECC8;` |
-| QALEZU LETTER THELQEN WITH CATCH | ![U+1ECC9](qalezu-hand/glyphs/U+1ECC9.svg) | U+1ECC9 | `&#126153;` | `&#x1ECC9;` |
-| QALEZU LETTER MELNU WITH CATCH | ![U+1ECCA](qalezu-hand/glyphs/U+1ECCA.svg) | U+1ECCA | `&#126154;` | `&#x1ECCA;` |
-| QALEZU LETTER QENUWA WITH CATCH | ![U+1ECCB](qalezu-hand/glyphs/U+1ECCB.svg) | U+1ECCB | `&#126155;` | `&#x1ECCB;` |
-| QALEZU LETTER KHA WITH CATCH | ![U+1ECCC](qalezu-hand/glyphs/U+1ECCC.svg) | U+1ECCC | `&#126156;` | `&#x1ECCC;` |
-| QALEZU LETTER GHA WITH CATCH | ![U+1ECCD](qalezu-hand/glyphs/U+1ECCD.svg) | U+1ECCD | `&#126157;` | `&#x1ECCD;` |
-| QALEZU LETTER HALZI WITH CATCH | ![U+1ECCE](qalezu-hand/glyphs/U+1ECCE.svg) | U+1ECCE | `&#126158;` | `&#x1ECCE;` |
-| QALEZU LETTER SHENULET WITH CATCH | ![U+1ECCF](qalezu-hand/glyphs/U+1ECCF.svg) | U+1ECCF | `&#126159;` | `&#x1ECCF;` |
-| QALEZU LETTER PA WITH CATCH | ![U+1ECD0](qalezu-hand/glyphs/U+1ECD0.svg) | U+1ECD0 | `&#126160;` | `&#x1ECD0;` |
-| QALEZU LETTER BA WITH CATCH | ![U+1ECD1](qalezu-hand/glyphs/U+1ECD1.svg) | U+1ECD1 | `&#126161;` | `&#x1ECD1;` |
-| QALEZU LETTER FA WITH CATCH | ![U+1ECD2](qalezu-hand/glyphs/U+1ECD2.svg) | U+1ECD2 | `&#126162;` | `&#x1ECD2;` |
-| QALEZU LETTER WALIR WITH CATCH | ![U+1ECD3](qalezu-hand/glyphs/U+1ECD3.svg) | U+1ECD3 | `&#126163;` | `&#x1ECD3;` |
-| QALEZU LETTER YA WITH CATCH | ![U+1ECD4](qalezu-hand/glyphs/U+1ECD4.svg) | U+1ECD4 | `&#126164;` | `&#x1ECD4;` |
-| QALEZU LETTER TJA WITH CATCH | ![U+1ECD5](qalezu-hand/glyphs/U+1ECD5.svg) | U+1ECD5 | `&#126165;` | `&#x1ECD5;` |
-| QALEZU LETTER LAGUN DOUBLED WITH CATCH | ![U+1ECD6](qalezu-hand/glyphs/U+1ECD6.svg) | U+1ECD6 | `&#126166;` | `&#x1ECD6;` |
-| QALEZU LETTER RETHU DOUBLED WITH CATCH | ![U+1ECD7](qalezu-hand/glyphs/U+1ECD7.svg) | U+1ECD7 | `&#126167;` | `&#x1ECD7;` |
-| QALEZU LETTER TULAZ DOUBLED WITH CATCH | ![U+1ECD8](qalezu-hand/glyphs/U+1ECD8.svg) | U+1ECD8 | `&#126168;` | `&#x1ECD8;` |
-| QALEZU LETTER DURAS DOUBLED WITH CATCH | ![U+1ECD9](qalezu-hand/glyphs/U+1ECD9.svg) | U+1ECD9 | `&#126169;` | `&#x1ECD9;` |
-| QALEZU LETTER ZAGUL DOUBLED WITH CATCH | ![U+1ECDA](qalezu-hand/glyphs/U+1ECDA.svg) | U+1ECDA | `&#126170;` | `&#x1ECDA;` |
-| QALEZU LETTER SELQUR DOUBLED WITH CATCH | ![U+1ECDB](qalezu-hand/glyphs/U+1ECDB.svg) | U+1ECDB | `&#126171;` | `&#x1ECDB;` |
-| QALEZU LETTER GITHAR DOUBLED WITH CATCH | ![U+1ECDC](qalezu-hand/glyphs/U+1ECDC.svg) | U+1ECDC | `&#126172;` | `&#x1ECDC;` |
-| QALEZU LETTER KA DOUBLED WITH CATCH | ![U+1ECDD](qalezu-hand/glyphs/U+1ECDD.svg) | U+1ECDD | `&#126173;` | `&#x1ECDD;` |
-| QALEZU LETTER NELGIR DOUBLED WITH CATCH | ![U+1ECDE](qalezu-hand/glyphs/U+1ECDE.svg) | U+1ECDE | `&#126174;` | `&#x1ECDE;` |
-| QALEZU LETTER THELQEN DOUBLED WITH CATCH | ![U+1ECDF](qalezu-hand/glyphs/U+1ECDF.svg) | U+1ECDF | `&#126175;` | `&#x1ECDF;` |
-| QALEZU LETTER MELNU DOUBLED WITH CATCH | ![U+1ECE0](qalezu-hand/glyphs/U+1ECE0.svg) | U+1ECE0 | `&#126176;` | `&#x1ECE0;` |
-| QALEZU LETTER QENUWA DOUBLED WITH CATCH | ![U+1ECE1](qalezu-hand/glyphs/U+1ECE1.svg) | U+1ECE1 | `&#126177;` | `&#x1ECE1;` |
-| QALEZU LETTER KHA DOUBLED WITH CATCH | ![U+1ECE2](qalezu-hand/glyphs/U+1ECE2.svg) | U+1ECE2 | `&#126178;` | `&#x1ECE2;` |
-| QALEZU LETTER GHA DOUBLED WITH CATCH | ![U+1ECE3](qalezu-hand/glyphs/U+1ECE3.svg) | U+1ECE3 | `&#126179;` | `&#x1ECE3;` |
-| QALEZU LETTER HALZI DOUBLED WITH CATCH | ![U+1ECE4](qalezu-hand/glyphs/U+1ECE4.svg) | U+1ECE4 | `&#126180;` | `&#x1ECE4;` |
-| QALEZU LETTER SHENULET DOUBLED WITH CATCH | ![U+1ECE5](qalezu-hand/glyphs/U+1ECE5.svg) | U+1ECE5 | `&#126181;` | `&#x1ECE5;` |
-| QALEZU LETTER PA DOUBLED WITH CATCH | ![U+1ECE6](qalezu-hand/glyphs/U+1ECE6.svg) | U+1ECE6 | `&#126182;` | `&#x1ECE6;` |
-| QALEZU LETTER BA DOUBLED WITH CATCH | ![U+1ECE7](qalezu-hand/glyphs/U+1ECE7.svg) | U+1ECE7 | `&#126183;` | `&#x1ECE7;` |
-| QALEZU LETTER FA DOUBLED WITH CATCH | ![U+1ECE8](qalezu-hand/glyphs/U+1ECE8.svg) | U+1ECE8 | `&#126184;` | `&#x1ECE8;` |
-| QALEZU LETTER WALIR DOUBLED WITH CATCH | ![U+1ECE9](qalezu-hand/glyphs/U+1ECE9.svg) | U+1ECE9 | `&#126185;` | `&#x1ECE9;` |
-| QALEZU LETTER YA DOUBLED WITH CATCH | ![U+1ECEA](qalezu-hand/glyphs/U+1ECEA.svg) | U+1ECEA | `&#126186;` | `&#x1ECEA;` |
-| QALEZU LETTER TJA DOUBLED WITH CATCH | ![U+1ECEB](qalezu-hand/glyphs/U+1ECEB.svg) | U+1ECEB | `&#126187;` | `&#x1ECEB;` |

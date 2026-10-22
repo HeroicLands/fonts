@@ -19,15 +19,23 @@ name and kind of every character the face draws. A font fails when
 - a character's code point lies outside every block that the registry
   (``BLOCKS`` in tools/codepoint_order.py) lists for its family, or two registered
   blocks overlap, or the README's "Code point blocks" table is not the registry's;
+- the cmap maps a code point to anything but its listed glyph, the space, the empty
+  glyph of the default-ignorables or the box: U+0020 and U+00A0 are the only spaces,
+  and every other character a face does not list, Latin included, draws the box;
+- a GSUB substitution writes a listed glyph it does not read, so that one character
+  becomes another (a spelling rule): what a face substitutes is a contextual form only, such as a
+  joined, doubled or fused form, a mark's form, the box for a catch with no letter
+  before it, or the empty glyph of an ignorable;
+- a sequence of characters that a spelling rule once rewrote does not shape as
+  written (``SEQUENCES``);
 - the Pirzath Carved and Pirzath Hand tables differ;
 - a Khelathi Zethu Glyphs sign has no key, its key is not a sign id, or two signs
   share a key, or one of its format controls carries a key; or a character of a script
   typed by sound (tools/sound_keys.json) carries a key of its own.
 
 Text is shaped with the font's default features, so an optional style such as
-joining stays off. A few glyphs are reshaped by a typing rule when they stand alone,
-so they are shaped in the context the face draws them in: a ``y`` before a vowel, and
-Semaron's catch after a letter. A format control of Khelathi Zethu Glyphs is laid out
+joining stays off. Semaron's catch with no letter before it draws the box, so it is
+shaped after a letter. A format control of Khelathi Zethu Glyphs is laid out
 by the quadrat or cartouche it stands in, so only its cmap entry is checked.
 """
 
@@ -45,40 +53,38 @@ from render import Renderer  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
 
-# Glyphs a typing rule reshapes alone, with the glyph that stands before and after them.
-# The rule exists only while the face still reads Latin spellings.
+# Glyphs a contextual rule reshapes alone, with the glyph that stands before and after them.
 CONTEXT = {
-    "y": ("", "a"),
-    "Y": ("", "a"),
     "grave": ("a", ""),
 }
 
+# Sequences of listed glyphs, by family stem, that must shape exactly as written: each
+# was once rewritten by a spelling rule.
+SEQUENCES = {
+    "PirzathCarved-Regular": [["y", "ai"], ["y", "a", "i"], ["t", "h"], ["a", "i"], ["n", "g", "h"]],
+    "PirzathHand-Regular": [["y", "ai"], ["y", "a", "i"], ["t", "h"], ["a", "i"], ["n", "g", "h"]],
+    "SemaronKuriale-Regular": [["i", "i"], ["a", "a"], ["t", "h"], ["y", "t"], ["Y"]],
+    "ThuravarkCarved-Regular": [["t", "h"], ["n", "g"], ["i"], ["j", "t"]],
+}
+
+# The only code points that draw the space.
+SPACES = (0x20, 0xA0)
+# The default-ignorable characters, which draw an empty glyph.
+IGNORABLES = {*range(0x200B, 0x2010), *range(0x202A, 0x202F), *range(0x2066, 0x206A), 0xFEFF}
+BOX = "notdef.box"
+
 # Glyphs that are not characters, by family stem, with the reason.
 NOT_CHARACTERS = {
-    "SemaronKuriale-Regular": {
-        "c": "spells ch",
-        "C": "spells ch",
-    },
+    "SemaronKuriale-Regular": {},
     "PirzathCarved-Regular": {
-        "c": "spells ch",
-        "less": "spells the opening quotation mark",
-        "greater": "spells the closing quotation mark",
-        "quotedbl": "becomes the opening or closing quotation mark",
         "doubling": "the mark a doubled consonant is drawn with",
-        **{f"{v}acute": "a vowel and its length mark" for v in "aeiou"},
     },
     "PirzathHand-Regular": {
-        "c": "spells ch",
-        "less": "spells the opening quotation mark",
-        "greater": "spells the closing quotation mark",
-        "quotedbl": "becomes the opening or closing quotation mark",
-        **{f"{v}acute": "a vowel and its length mark" for v in "aeiou"},
+        **{f"{v}acute": "a vowel and its length mark, drawn as one" for v in "aeiou"},
     },
     "TengChou-Regular": {},
     "ThuravarkCarved-Regular": {
-        "y": "becomes i or j",
-        "hyphen": "draws nothing",
-        **{f"{v}acute": "a vowel and its acute mark" for v in "aeiou"},
+        **{f"{v}.acute": "the acute mark after a vowel, drawn as its stave again" for v in "aeiou"},
     },
 }
 
@@ -190,6 +196,68 @@ def shape(renderer: Renderer, text: str, family: dict) -> list[str]:
     return list(reversed(names)) if direction == "rtl" else names
 
 
+def cmap_problems(font: Path, cmap: dict[int, str], listed: dict[int, str]) -> list[str]:
+    """Every cmap entry is a listed character, a space, an ignorable or the box."""
+    space = cmap.get(0x20)
+    ignorable = {cmap[c] for c in IGNORABLES if c in cmap}
+    problems = []
+    for code, glyph in sorted(cmap.items()):
+        if code in listed:
+            continue
+        if code in SPACES:
+            ok = glyph == space
+        elif code in IGNORABLES:
+            ok = glyph in ignorable and glyph != BOX
+        else:
+            ok = glyph == BOX
+        if not ok:
+            problems.append(f"{font}: error: U+{code:04X} maps to {glyph}; only the face's own characters draw")
+    if space != "space":
+        problems.append(f"{font}: error: U+0020 maps to {space}, not space")
+    return problems
+
+
+def substitution_rules(gsub):
+    """Each GSUB substitution as (lookup index, glyphs read, glyphs written)."""
+    if gsub is None:
+        return
+    for index, lookup in enumerate(gsub.table.LookupList.Lookup):
+        for sub in lookup.SubTable:
+            kind = lookup.LookupType
+            if kind == 7:
+                kind, sub = sub.ExtSubTable.LookupType, sub.ExtSubTable
+            if kind == 1:
+                for g, h in sub.mapping.items():
+                    yield index, [g], [h]
+            elif kind == 2:
+                for g, seq in sub.mapping.items():
+                    yield index, [g], list(seq)
+            elif kind == 3:
+                for g, alts in sub.alternates.items():
+                    yield index, [g], list(alts)
+            elif kind == 4:
+                for first, ligs in sub.ligatures.items():
+                    for lig in ligs:
+                        yield index, [first, *lig.Component], [lig.LigGlyph]
+            elif kind == 8:
+                for g, h in zip(sub.Coverage.glyphs, sub.Substitute):
+                    yield index, [g], [h]
+
+
+def substitution_problems(font: Path, tt: TTFont, listed: set[str]) -> list[str]:
+    """No substitution writes a character it did not read: one character never becomes another."""
+    found: dict[str, set[int]] = {}
+    for index, read, written in substitution_rules(tt.get("GSUB")):
+        for g in written:
+            if g in listed and g not in read:
+                found.setdefault(g, set()).add(index)
+    return [
+        f"{font}: error: {', '.join(f'lookup {i}' for i in sorted(found[g]))} writes {g}, a character, "
+        "from other glyphs, so it is a spelling rule"
+        for g in sorted(found)
+    ]
+
+
 def check(font: Path) -> list[str]:
     stem = font.stem
     problems = []
@@ -197,7 +265,11 @@ def check(font: Path) -> list[str]:
     if not found:
         return [f"{font}: error: no family in fonts.json names this file"]
     renderer = Renderer(font)
-    cmap = TTFont(str(font)).getBestCmap()
+    tt = TTFont(str(font))
+    cmap = tt.getBestCmap()
+    listed = {cp(r["codepoint"]): r["glyph"] for f in found for r in f.get("codepoints") or []}
+    problems += cmap_problems(font, cmap, listed)
+    problems += substitution_problems(font, tt, set(listed.values()))
     for family in found:
         label = family["name"]
         rows = family.get("codepoints")
@@ -232,6 +304,11 @@ def check(font: Path) -> list[str]:
             got = shape(renderer, text, family)
             if got != want:
                 problems.append(f"{font}: error: {label}: {row['codepoint']} shapes to {got}, not {want}")
+        by_glyph = {r["glyph"]: cp(r["codepoint"]) for r in rows}
+        for sequence in SEQUENCES.get(stem, []):
+            got = shape(renderer, "".join(chr(by_glyph[g]) for g in sequence), family)
+            if got != sequence:
+                problems.append(f"{font}: error: {label}: {' '.join(sequence)} shapes to {got}, not as written")
         if stem in codepoint_order.LTR:
             start, end = codepoint_order.block(stem)
             for row in rows:

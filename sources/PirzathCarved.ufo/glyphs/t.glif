@@ -1,8 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <glyph name="t" format="2">
   <advance width="642"/>
-  <unicode hex="0054"/>
-  <unicode hex="0074"/>
   <unicode hex="F000A"/>
   <outline>
     <contour>

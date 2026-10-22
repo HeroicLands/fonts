@@ -90,7 +90,7 @@ window metrics clear them.
 - The numerals 0 to 15 are a stem standing off the line with tally ticks: 8 high
   on the fore side, 4 lower on the fore side, 2 on the back side and 1 at the
   back of the foot; the bare stem is nought.
-- `.notdef`, and the box that every character the typing does not use maps to, is the cursive _l_ between two dots.
+- `.notdef`, and the box that every character the face does not draw maps to, is the cursive _l_ between two dots.
 
 ## The joined forms
 
@@ -115,42 +115,35 @@ to within about one unit, with the whole-unit advances the only difference.
 Letters that stand off the line — the marks, the quotation marks, the numerals,
 the space and the box — have no joined forms and break the join.
 
-## The typing
+## The characters and the forms
 
-The hand types as the carved face does, in the Latin spelling of the setting: _ngh_ is _n_ and _gh_, _ay_, _ey_ and _oy_ are the vowel pairs, and a length mark on a pair is a dot positioned over the pair.
+The hand draws the same characters, on the same code points, as the carved face,
+and nothing else: a Latin letter, digit or mark draws the box. A note writes
+Pirzath in roman, and thalorna's `pirzath` mapping note turns the spelling into
+these code points, by the same rows for the three faces. What the hand draws
+beyond its characters is contextual:
 
-- Digraphs read longest first: _th_, _dh_, _kh_, _gh_, then _sh_, _zh_, _ch_,
-  _ts_, _ng_, _ny_, _hl_. A _gh_ wins over _ng_ before an _h_, so _ngh_ is _n_
-  and _gh_.
-- An acute vowel is the long-vowel glyph, from the precomposed letter or the
-  vowel with a combining acute. An acute left on a vowel pair is a separate
-  length mark above the pair.
-- A consonant or digraph written twice is its doubled glyph; the first letter of
-  a doubled digraph (_tth_, _ddh_, _kkh_, _ggh_, _ssh_, _zzh_, _cch_, _tts_,
-  _nng_, _nny_, _hhl_) counts as the digraph.
-- _y_ is the glide before a vowel and the vowel _i_ elsewhere; _ay_, _ey_ and
-  _oy_ are the pairs _ai_, _ei_ and _oi_. `'` and `’` are the catch.
-- `"` opens after a space or at the start and closes elsewhere; `[`, `«`, `“` and
-  `<<` open; `]`, `»`, `”` and `>>` close. `!` and `¡` are the imperative.
-- `0`–`9` and `@ # $ % ^ &` are the numerals 0–15. `?`, `;` and `:` draw the
-  box, as does every other character the typing does not use.
+- A vowel and the length mark after it are drawn as one long-vowel glyph. A
+  length mark on a vowel pair is a separate mark above the pair.
+- A consonant or digraph letter written twice is its doubled glyph.
+- With `ss01`, every joining letter takes its joined form from its neighbours.
 - The default-ignorable characters draw nothing: they map to an empty glyph,
   and a `ccmp` substitution turns that into a second empty glyph, so the
   shaper does not replace them with the visible space.
 
 The sentence end stands with no space on either side; the next sentence begins
 straight after it. That is how Pirzath is written, not a rule of the font: a
-space typed there is drawn.
+space written there is drawn.
 
 ## The checks
 
-- `tools/pirzath-hand/check_font.py` confirms the character map against the
-  carved face's rulings, the outlines of every mapped glyph, the empty
+- `tools/pirzath-hand/check_font.py` confirms the character map by the carved
+  face's rules, Latin text on the box, the outlines of every mapped glyph, the empty
   ignorables, the zero-advance length mark, the name table, the line metrics
   and, for every joining letter, the four forms with one advance and one
   connector face at the advance edge.
-- `tools/pirzath-hand/guard.py` shapes every Khazari lexicon form and the
-  fixtures, lifted and joined, and asserts the glyph sequence and the joined
+- `tools/pirzath-hand/guard.py` writes every Khazari lexicon form and the
+  fixtures through the `pirzath` mapping note and shapes them, lifted and joined, and asserts the glyph sequence and the joined
   form of each letter.
 - `tools/prove_guards.py` proves the guard fails the font without its layout.
 - `tools/pirzath-hand/specimens.py` renders the glyph chart, the texts lifted

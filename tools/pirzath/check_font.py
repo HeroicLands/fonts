@@ -7,7 +7,8 @@
 Every code point in the cmap must name a glyph in the glyph order, and the
 glyph must carry an outline unless it is one of the few that draw nothing by
 design. The default-ignorable characters map to an empty glyph with no advance, and
-every other character the typing does not use maps to the box (tools/notdef_box.py).
+every other character, Latin included, maps to the box (tools/notdef_box.py): the
+face draws its own code points alone, which tools/codepoints.py checks.
 The .woff2 beside the .ttf must open and carry the same glyphs.
 """
 
@@ -23,56 +24,19 @@ import notdef_box  # noqa: E402
 IGNORABLES = [*range(0x200B, 0x2010), *range(0x202A, 0x202F), *range(0x2066, 0x206A), 0xFEFF]
 EMPTY_BY_DESIGN = {"ignorable", "ignorable.sub"}
 
-# What the owner's rulings say these keys type, independent of the glyph source.
-RULED = {
-    **{str(i): f"num.{i}" for i in range(10)},
-    "@": "num.10",
-    "#": "num.11",
-    "$": "num.12",
-    "%": "num.13",
-    "^": "num.14",
-    "&": "num.15",
-    '"': "quotedbl",
-    "“": "quote.open",
-    "”": "quote.close",
-    "«": "quote.open",
-    "»": "quote.close",
-    "[": "quote.open",
-    "]": "quote.close",
-    "<": "less",
-    ">": "greater",
-    " ": "space",
-    ".": "period",
-    "!": "exclam",
-    "¡": "exclam",
-    ",": "comma",
-    "-": "hyphen",
-    "a": "a",
-    "b": "b",
-    "c": "c",
-    "d": "d",
-    "e": "e",
-    "f": "f",
-    "j": "j",
-    "q": "q",
-    "w": "w",
-    "y": "y",
-    "J": "j",
-    "Q": "q",
-    "W": "w",
-    "Y": "y",
-    "'": "catch",
-    "\u2019": "catch",
-}
+# Latin text is not the face's: every Latin letter, digit and mark draws the box,
+# and the space is the only character the face shares with it.
+LATIN = "0123456789@#$%^&\"“”«»[]<>.!¡,-'’" + "bdgkptvfzshmnlrcaeiouyjqwxBDGKPTVFZSHMNLRCAEIOUYJQWX" + "áéíóúÁÉÍÓÚ"
 
-# Letters typed in both cases, the long vowels, the length mark and the lost keys.
-TYPED = {}
-for _ch in "bdgkptvfzshmnlrcaeiouyjqw":
-    TYPED[_ch] = TYPED[_ch.upper()] = _ch
-for _ch, _name in zip("áéíóú", ["aacute", "eacute", "iacute", "oacute", "uacute"]):
-    TYPED[_ch] = TYPED[_ch.upper()] = _name
-TYPED["\u0301"] = "lengthmark"
-TYPED["\u2019"] = TYPED["'"] = "catch"
+
+def latin_problems(cmap: dict[int, str]) -> list[str]:
+    """Every Latin character draws the box."""
+    return [
+        f"{ch!r} maps to {cmap.get(ord(ch))}; Latin text draws {notdef_box.BOX}"
+        for ch in LATIN
+        if cmap.get(ord(ch)) != notdef_box.BOX
+    ]
+
 
 # The seventeen lost letters, each of which must be in the font with an outline.
 LOST_LETTERS = [
@@ -94,12 +58,7 @@ def check(path: Path) -> list[str]:
             problems.append(f"U+{cp:04X} maps to {name}, which is not in the font")
         elif name not in EMPTY_BY_DESIGN and glyf[name].numberOfContours == 0:
             problems.append(f"U+{cp:04X} maps to {name}, which has no outline")
-    for ch, name in TYPED.items():
-        if cmap.get(ord(ch)) != name:
-            problems.append(f"{ch!r} should type {name}, types {cmap.get(ord(ch))}")
-    for ch, name in RULED.items():
-        if cmap.get(ord(ch)) != name:
-            problems.append(f"{ch!r} should type {name}, types {cmap.get(ord(ch))}")
+    problems += latin_problems(cmap)
     for name in LOST_LETTERS:
         if name not in order or glyf[name].numberOfContours == 0:
             problems.append(f"the lost letter {name} is missing or draws nothing")
