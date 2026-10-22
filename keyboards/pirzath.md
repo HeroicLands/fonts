@@ -162,8 +162,8 @@ HL Pirzath types Pirzath Carved, Pirzath Hand, Pirzath Hand Lifted by sound. The
 | `option+shift+u` | `\U` | `Ú` | ![U+F0004](../charts/pirzath/glyphs/U+F0004.svg) ![U+F0060](../charts/pirzath/glyphs/U+F0060.svg) | U+F0004 U+F0060 | PIRZATH LETTER U; PIRZATH LENGTH MARK |
 | `option+;` | `\;` | `ä` |  | none: the mapping has no row for it |  |
 | `option+shift+;` | `\:` | `Ä` |  | none: the mapping has no row for it |  |
-| `option+'` | `\'` | `ë` |  | none: the mapping has no row for it |  |
-| `option+shift+'` | `\"` | `Ë` |  | none: the mapping has no row for it |  |
+| `option+'` | `\'` | `ë` | ![U+F0001](../charts/pirzath/glyphs/U+F0001.svg) | U+F0001 | PIRZATH LETTER E |
+| `option+shift+'` | `\"` | `Ë` | ![U+F0001](../charts/pirzath/glyphs/U+F0001.svg) | U+F0001 | PIRZATH LETTER E |
 | `option+,` | `\,` | `ï` |  | none: the mapping has no row for it |  |
 | `option+shift+,` | `\<` | `Ï` |  | none: the mapping has no row for it |  |
 | `option+.` | `\.` | `ö` |  | none: the mapping has no row for it |  |

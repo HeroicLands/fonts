@@ -48,8 +48,8 @@ HL Qalezu types Qalezu Hand by sound. The keys are the shared sound keys of [the
 | `shift+h` | `H` | `H` | ![U+1EA0E](../charts/qalezu-hand/glyphs/U+1EA0E.svg) | U+1EA0E | QALEZU LETTER HALZI |
 | `i` | `i` | `i` |  | none: the mapping writes it as nothing |  |
 | `shift+i` | `I` | `I` |  | none: the mapping writes it as nothing |  |
-| `j` | `j` | `j` |  | none: the mapping has no row for it |  |
-| `shift+j` | `J` | `J` |  | none: the mapping has no row for it |  |
+| `j` | `j` | `j` | ![U+1EA16](../charts/qalezu-hand/glyphs/U+1EA16.svg) | U+1EA16 | QALEZU LETTER TJA |
+| `shift+j` | `J` | `J` | ![U+1EA16](../charts/qalezu-hand/glyphs/U+1EA16.svg) | U+1EA16 | QALEZU LETTER TJA |
 | `k` | `k` | `k` | ![U+1EA07](../charts/qalezu-hand/glyphs/U+1EA07.svg) | U+1EA07 | QALEZU LETTER KA |
 | `shift+k` | `K` | `K` | ![U+1EA07](../charts/qalezu-hand/glyphs/U+1EA07.svg) | U+1EA07 | QALEZU LETTER KA |
 | `l` | `l` | `l` | ![U+1EA00](../charts/qalezu-hand/glyphs/U+1EA00.svg) | U+1EA00 | QALEZU LETTER LAGUN |
@@ -72,8 +72,8 @@ HL Qalezu types Qalezu Hand by sound. The keys are the shared sound keys of [the
 | `shift+t` | `T` | `T` | ![U+1EA02](../charts/qalezu-hand/glyphs/U+1EA02.svg) | U+1EA02 | QALEZU LETTER TULAZ |
 | `u` | `u` | `u` |  | none: the mapping writes it as nothing |  |
 | `shift+u` | `U` | `U` |  | none: the mapping writes it as nothing |  |
-| `v` | `v` | `v` |  | none: the mapping has no row for it |  |
-| `shift+v` | `V` | `V` |  | none: the mapping has no row for it |  |
+| `v` | `v` | `v` | ![U+1EA12](../charts/qalezu-hand/glyphs/U+1EA12.svg) | U+1EA12 | QALEZU LETTER FA |
+| `shift+v` | `V` | `V` | ![U+1EA12](../charts/qalezu-hand/glyphs/U+1EA12.svg) | U+1EA12 | QALEZU LETTER FA |
 | `w` | `w` | `w` | ![U+1EA13](../charts/qalezu-hand/glyphs/U+1EA13.svg) | U+1EA13 | QALEZU LETTER WALIR |
 | `shift+w` | `W` | `W` | ![U+1EA13](../charts/qalezu-hand/glyphs/U+1EA13.svg) | U+1EA13 | QALEZU LETTER WALIR |
 | `y` | `y` | `y` | ![U+1EA14](../charts/qalezu-hand/glyphs/U+1EA14.svg) | U+1EA14 | QALEZU LETTER YA |
@@ -146,8 +146,8 @@ HL Qalezu types Qalezu Hand by sound. The keys are the shared sound keys of [the
 | `option+shift+u` | `\U` | `Ú` |  | none: the mapping has no row for it |  |
 | `option+;` | `\;` | `ä` |  | none: the mapping has no row for it |  |
 | `option+shift+;` | `\:` | `Ä` |  | none: the mapping has no row for it |  |
-| `option+'` | `\'` | `ë` |  | none: the mapping has no row for it |  |
-| `option+shift+'` | `\"` | `Ë` |  | none: the mapping has no row for it |  |
+| `option+'` | `\'` | `ë` |  | none: the mapping writes it as nothing |  |
+| `option+shift+'` | `\"` | `Ë` |  | none: the mapping writes it as nothing |  |
 | `option+,` | `\,` | `ï` |  | none: the mapping has no row for it |  |
 | `option+shift+,` | `\<` | `Ï` |  | none: the mapping has no row for it |  |
 | `option+.` | `\.` | `ö` |  | none: the mapping has no row for it |  |

@@ -96,8 +96,8 @@ HL Thuravark types Thuravark Carved by sound. The keys are the shared sound keys
 | `shift+o` | `O` | `O` | ![U+F0103](../charts/thuravark-carved/glyphs/U+F0103.svg) | U+F0103 | THURAVARK LETTER ODEL |
 | `p` | `p` | `p` | ![U+F010F](../charts/thuravark-carved/glyphs/U+F010F.svg) | U+F010F | THURAVARK LETTER PA |
 | `shift+p` | `P` | `P` | ![U+F010F](../charts/thuravark-carved/glyphs/U+F010F.svg) | U+F010F | THURAVARK LETTER PA |
-| `q` | `q` | `q` |  | none: the mapping has no row for it |  |
-| `shift+q` | `Q` | `Q` |  | none: the mapping has no row for it |  |
+| `q` | `q` | `q` | ![U+F010B](../charts/thuravark-carved/glyphs/U+F010B.svg) | U+F010B | THURAVARK LETTER KNERV |
+| `shift+q` | `Q` | `Q` | ![U+F010B](../charts/thuravark-carved/glyphs/U+F010B.svg) | U+F010B | THURAVARK LETTER KNERV |
 | `r` | `r` | `r` | ![U+F0110](../charts/thuravark-carved/glyphs/U+F0110.svg) | U+F0110 | THURAVARK LETTER RELTH |
 | `shift+r` | `R` | `R` | ![U+F0110](../charts/thuravark-carved/glyphs/U+F0110.svg) | U+F0110 | THURAVARK LETTER RELTH |
 | `s` | `s` | `s` | ![U+F0111](../charts/thuravark-carved/glyphs/U+F0111.svg) | U+F0111 | THURAVARK LETTER SVELD |
@@ -180,8 +180,8 @@ HL Thuravark types Thuravark Carved by sound. The keys are the shared sound keys
 | `option+shift+u` | `\U` | `Ú` | ![U+F0104](../charts/thuravark-carved/glyphs/U+F0104.svg) ![U+F0148](../charts/thuravark-carved/glyphs/U+F0148.svg) | U+F0104 U+F0148 | THURAVARK LETTER U; THURAVARK ACUTE |
 | `option+;` | `\;` | `ä` |  | none: the mapping has no row for it |  |
 | `option+shift+;` | `\:` | `Ä` |  | none: the mapping has no row for it |  |
-| `option+'` | `\'` | `ë` |  | none: the mapping has no row for it |  |
-| `option+shift+'` | `\"` | `Ë` |  | none: the mapping has no row for it |  |
+| `option+'` | `\'` | `ë` | ![U+F0101](../charts/thuravark-carved/glyphs/U+F0101.svg) | U+F0101 | THURAVARK LETTER E |
+| `option+shift+'` | `\"` | `Ë` | ![U+F0101](../charts/thuravark-carved/glyphs/U+F0101.svg) | U+F0101 | THURAVARK LETTER E |
 | `option+,` | `\,` | `ï` |  | none: the mapping has no row for it |  |
 | `option+shift+,` | `\<` | `Ï` |  | none: the mapping has no row for it |  |
 | `option+.` | `\.` | `ö` |  | none: the mapping has no row for it |  |

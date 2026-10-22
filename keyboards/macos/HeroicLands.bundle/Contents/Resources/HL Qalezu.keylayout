@@ -45,6 +45,7 @@
             <key code="4" output="&#x1EA0E;"/>
             <key code="5" output="&#x1EA06;"/>
             <key code="6" output="&#x1EA04;"/>
+            <key code="9" output="&#x1EA12;"/>
             <key code="11" output="&#x1EA11;"/>
             <key code="12" output="&#x1EA0B;"/>
             <key code="13" output="&#x1EA13;"/>
@@ -67,6 +68,7 @@
             <key code="35" output="&#x1EA10;"/>
             <key code="36" output="&#x000D;"/>
             <key code="37" output="&#x1EA00;"/>
+            <key code="38" output="&#x1EA16;"/>
             <key code="39" output="&#x1EA15;"/>
             <key code="40" output="&#x1EA07;"/>
             <key code="42" output="&#x005C;"/>
@@ -98,6 +100,7 @@
             <key code="4" output="&#x1EA0E;"/>
             <key code="5" output="&#x1EA06;"/>
             <key code="6" output="&#x1EA04;"/>
+            <key code="9" output="&#x1EA12;"/>
             <key code="11" output="&#x1EA11;"/>
             <key code="12" output="&#x1EA0B;"/>
             <key code="13" output="&#x1EA13;"/>
@@ -113,6 +116,7 @@
             <key code="35" output="&#x1EA10;"/>
             <key code="36" output="&#x000D;"/>
             <key code="37" output="&#x1EA00;"/>
+            <key code="38" output="&#x1EA16;"/>
             <key code="40" output="&#x1EA07;"/>
             <key code="41" output="&#x003A;"/>
             <key code="42" output="&#x007C;"/>

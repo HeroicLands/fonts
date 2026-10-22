@@ -189,6 +189,7 @@
             <key code="34" output="&#xF0002;&#xF0060;"/>
             <key code="35" output="&#xF0005;&#xF0011;"/>
             <key code="36" output="&#x000D;"/>
+            <key code="39" output="&#xF0001;"/>
             <key code="40" output="&#xF0022;"/>
             <key code="45" output="&#xF0028;"/>
             <key code="48" output="&#x0009;"/>
@@ -239,6 +240,7 @@
             <key code="34" output="&#xF0002;&#xF0060;"/>
             <key code="35" output="&#xF0005;&#xF0011;"/>
             <key code="36" output="&#x000D;"/>
+            <key code="39" output="&#xF0001;"/>
             <key code="40" output="&#xF0022;"/>
             <key code="45" output="&#xF0028;"/>
             <key code="48" output="&#x0009;"/>

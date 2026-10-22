@@ -40,7 +40,7 @@ xkb_symbols "basic" {
     key <AC04> { type[Group1] = "FOUR_LEVEL", symbols[Group1] = [ U1EA12, U1EA12, VoidSymbol, VoidSymbol ] };
     key <AC05> { type[Group1] = "FOUR_LEVEL", symbols[Group1] = [ U1EA06, U1EA06, U1EA0D, U1EA0D ] };
     key <AC06> { type[Group1] = "FOUR_LEVEL", symbols[Group1] = [ U1EA0E, U1EA0E, VoidSymbol, VoidSymbol ] };
-    key <AC07> { type[Group1] = "FOUR_LEVEL", symbols[Group1] = [ VoidSymbol, VoidSymbol, VoidSymbol, VoidSymbol ] };
+    key <AC07> { type[Group1] = "FOUR_LEVEL", symbols[Group1] = [ U1EA16, U1EA16, VoidSymbol, VoidSymbol ] };
     key <AC08> { type[Group1] = "FOUR_LEVEL", symbols[Group1] = [ U1EA07, U1EA07, U1EA0C, U1EA0C ] };
     key <AC09> { type[Group1] = "FOUR_LEVEL", symbols[Group1] = [ U1EA00, U1EA00, VoidSymbol, VoidSymbol ] };
     key <AC10> { type[Group1] = "FOUR_LEVEL", symbols[Group1] = [ VoidSymbol, colon, VoidSymbol, VoidSymbol ] };
@@ -48,7 +48,7 @@ xkb_symbols "basic" {
     key <AB01> { type[Group1] = "FOUR_LEVEL", symbols[Group1] = [ U1EA04, U1EA04, VoidSymbol, VoidSymbol ] };
     key <AB02> { type[Group1] = "FOUR_LEVEL", symbols[Group1] = [ VoidSymbol, VoidSymbol, VoidSymbol, VoidSymbol ] };
     key <AB03> { type[Group1] = "FOUR_LEVEL", symbols[Group1] = [ VoidSymbol, VoidSymbol, U1EA16, U1EA16 ] };
-    key <AB04> { type[Group1] = "FOUR_LEVEL", symbols[Group1] = [ VoidSymbol, VoidSymbol, VoidSymbol, VoidSymbol ] };
+    key <AB04> { type[Group1] = "FOUR_LEVEL", symbols[Group1] = [ U1EA12, U1EA12, VoidSymbol, VoidSymbol ] };
     key <AB05> { type[Group1] = "FOUR_LEVEL", symbols[Group1] = [ U1EA11, U1EA11, VoidSymbol, VoidSymbol ] };
     key <AB06> { type[Group1] = "FOUR_LEVEL", symbols[Group1] = [ U1EA08, U1EA08, VoidSymbol, VoidSymbol ] };
     key <AB07> { type[Group1] = "FOUR_LEVEL", symbols[Group1] = [ U1EA0A, U1EA0A, VoidSymbol, VoidSymbol ] };

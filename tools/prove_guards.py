@@ -431,7 +431,7 @@ def prove_keyboards() -> int:
     macos = layouts["macos"].replace(ch, "&#xF0241;", 1)
     linux = "\n".join(line for line in layouts["linux"].split("\n") if "<AC03>" not in line)
     emacs = "\n".join(line for line in layouts["emacs"].split("\n") if not line.startswith(' ("q" '))
-    windows = layouts["windows"].decode("utf-16").replace("\r\n10\tQ\t\t0\t-1", "\r\n10\tQ\t\t0\t0071")
+    windows = layouts["windows"].decode("utf-16").replace("\r\n2e\tC\t\t0\t-1", "\r\n2e\tC\t\t0\t0063")
     windows = b"\xff\xfe" + windows.encode("utf-16-le")
     def quotes_old(rows):
         entry(rows, "open quote")["key"] = "["

@@ -94,8 +94,8 @@ HL Semaron types Semaron Kuriale by sound. The keys are the shared sound keys of
 | `shift+o` | `O` | `O` | ![U+F020D](../charts/semaron-kuriale/glyphs/U+F020D.svg) | U+F020D | SEMARON CAPITAL LETTER ORNETHE |
 | `p` | `p` | `p` | ![U+F023E](../charts/semaron-kuriale/glyphs/U+F023E.svg) | U+F023E | SEMARON SMALL LETTER POZERA |
 | `shift+p` | `P` | `P` | ![U+F020E](../charts/semaron-kuriale/glyphs/U+F020E.svg) | U+F020E | SEMARON CAPITAL LETTER POZERA |
-| `q` | `q` | `q` |  | none: the mapping has no row for it |  |
-| `shift+q` | `Q` | `Q` |  | none: the mapping has no row for it |  |
+| `q` | `q` | `q` | ![U+F0239](../charts/semaron-kuriale/glyphs/U+F0239.svg) | U+F0239 | SEMARON SMALL LETTER KALPEZA |
+| `shift+q` | `Q` | `Q` | ![U+F0209](../charts/semaron-kuriale/glyphs/U+F0209.svg) | U+F0209 | SEMARON CAPITAL LETTER KALPEZA |
 | `r` | `r` | `r` | ![U+F023F](../charts/semaron-kuriale/glyphs/U+F023F.svg) | U+F023F | SEMARON SMALL LETTER RONETHOS |
 | `shift+r` | `R` | `R` | ![U+F020F](../charts/semaron-kuriale/glyphs/U+F020F.svg) | U+F020F | SEMARON CAPITAL LETTER RONETHOS |
 | `s` | `s` | `s` | ![U+F0240](../charts/semaron-kuriale/glyphs/U+F0240.svg) | U+F0240 | SEMARON SMALL LETTER SIRETHA |
@@ -178,8 +178,8 @@ HL Semaron types Semaron Kuriale by sound. The keys are the shared sound keys of
 | `option+shift+u` | `\U` | `Ú` | ![U+F0212](../charts/semaron-kuriale/glyphs/U+F0212.svg) | U+F0212 | SEMARON CAPITAL LETTER ULMERA |
 | `option+;` | `\;` | `ä` |  | none: the mapping has no row for it |  |
 | `option+shift+;` | `\:` | `Ä` |  | none: the mapping has no row for it |  |
-| `option+'` | `\'` | `ë` |  | none: the mapping has no row for it |  |
-| `option+shift+'` | `\"` | `Ë` |  | none: the mapping has no row for it |  |
+| `option+'` | `\'` | `ë` | ![U+F0233](../charts/semaron-kuriale/glyphs/U+F0233.svg) | U+F0233 | SEMARON SMALL LETTER ELZA |
+| `option+shift+'` | `\"` | `Ë` | ![U+F0203](../charts/semaron-kuriale/glyphs/U+F0203.svg) | U+F0203 | SEMARON CAPITAL LETTER ELZA |
 | `option+,` | `\,` | `ï` |  | none: the mapping has no row for it |  |
 | `option+shift+,` | `\<` | `Ï` |  | none: the mapping has no row for it |  |
 | `option+.` | `\.` | `ö` |  | none: the mapping has no row for it |  |

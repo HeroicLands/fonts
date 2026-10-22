@@ -44,7 +44,7 @@ xkb_symbols "basic" {
     key <AC08> { type[Group1] = "FOUR_LEVEL", symbols[Group1] = [ UF000D, UF000D, UF0022, UF0022 ] };
     key <AC09> { type[Group1] = "FOUR_LEVEL", symbols[Group1] = [ UF0012, UF0012, VoidSymbol, VoidSymbol ] };
     key <AC10> { type[Group1] = "FOUR_LEVEL", symbols[Group1] = [ VoidSymbol, colon, VoidSymbol, VoidSymbol ] };
-    key <AC11> { type[Group1] = "FOUR_LEVEL", symbols[Group1] = [ UF0018, VoidSymbol, VoidSymbol, VoidSymbol ] };
+    key <AC11> { type[Group1] = "FOUR_LEVEL", symbols[Group1] = [ UF0018, VoidSymbol, UF0001, UF0001 ] };
     key <AB01> { type[Group1] = "FOUR_LEVEL", symbols[Group1] = [ UF0010, UF0010, UF0025, UF0025 ] };
     key <AB02> { type[Group1] = "FOUR_LEVEL", symbols[Group1] = [ VoidSymbol, VoidSymbol, UF0026, UF0026 ] };
     key <AB03> { type[Group1] = "FOUR_LEVEL", symbols[Group1] = [ VoidSymbol, VoidSymbol, UF0027, UF0027 ] };
