@@ -12,7 +12,8 @@ the capitals' reed. The outlines are fitted with cubic curves by Teng Chou's
 and this script is run after it, before ``build.sh`` compiles the UFO. The
 character names, ``tools/names/helonika.json``, are written beside it.
 
-**Spacing.** Every glyph's advance is its ink and ``strokes.BEARING`` either side;
+**Spacing.** Every glyph's advance is its ink and ``strokes.BEARING`` either side, except
+the raised dot, whose advance is a space plus its ink, centred;
 the accent has no advance.
 
 **The features.** ``ccmp`` empties the default-ignorables. ``rclt`` draws the
@@ -133,6 +134,9 @@ def _curve_points(start, segs, steps=8):
     return out
 
 
+DOT_INK = 82  # the raised dot's drawn width, which its advance adds to the space
+
+
 def polygons(name: str):
     """The sign's outline as polygons, moved so its left ink stands at the bearing; and
     the middle of its ink, after the move."""
@@ -143,6 +147,12 @@ def polygons(name: str):
     if name == "accent":
         mid = (lo + hi) / 2
         return [[(x - mid, y) for x, y in p] for p in polys], 0.0, 0
+    if name == "raisedDot":
+        # The dot stands where the space after a sentence stood: its advance is a
+        # space plus its ink, the ink centred.
+        width = round(S.SPACE + DOT_INK)
+        dx = width / 2 - (lo + hi) / 2
+        return [[(x + dx, y) for x, y in p] for p in polys], (lo + hi) / 2 + dx, width
     dx = S.BEARING - lo
     return [[(x + dx, y) for x, y in p] for p in polys], (lo + hi) / 2 + dx, round(hi - lo + 2 * S.BEARING)
 

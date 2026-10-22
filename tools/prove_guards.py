@@ -63,7 +63,9 @@ lowercase name and with a Zethu name that is not its code point's position. The 
 map with a seed of 01-008 moved onto its outline, on a map with one region of the oxen 05-004
 left without a seed, and on a map without the closing segments of the river 10-001. The guards run on their
 fixtures alone, written through the mappings as tools/mapped.json records them, so the proof needs no lexicon
-and no thalorna checkout.
+and no thalorna checkout. The specimen-page check (tools/specimen_pages.py --check) is proved on
+Qalezu Hand's page with a line's roman spelling changed, with a line's code points changed, on a family
+with no page, and with its README sample cell an unlinked relative image.
 """
 
 import copy
@@ -746,6 +748,58 @@ def prove_stroke_mix() -> int:
     return 0
 
 
+def prove_specimen_pages() -> int:
+    """Prove that the specimen-page check fails a page or image out of date with its texts,
+    a family with no page, and a README sample cell that is not the absolute URL linked to its page."""
+    pages = load("specimen_pages", ROOT / "tools" / "specimen_pages.py")
+    texts = json.loads(pages.TEXTS.read_text(encoding="utf-8"))
+    family = next(f for f in pages.manifest() if f["class"] == "hl-qalezu-hand")
+    real_rows = pages.readme_rows
+
+    def count(families, altered=texts):
+        return len(pages.check(families, altered))
+
+    def roman_changed():
+        altered = copy.deepcopy(texts)
+        altered["families"]["hl-qalezu-hand"]["lines"][0]["roman"] = "Shelmu zetem"
+        return count([family], altered)
+
+    def script_changed():
+        altered = copy.deepcopy(texts)
+        line = altered["families"]["hl-qalezu-hand"]["lines"][0]
+        line["script"] = altered["families"]["hl-qalezu-hand"]["lines"][1]["script"]
+        return count([family], altered)
+
+    def no_page():
+        extra = {**family, "class": "hl-qalezu-proof"}
+        altered = copy.deepcopy(texts)
+        altered["families"]["hl-qalezu-proof"] = altered["families"]["hl-qalezu-hand"]
+        return count([extra], altered)
+
+    def relative_cell():
+        rows = real_rows()
+        rows[family["name"]][3] = f"![{family['name']}](specimens/readme/{family['class']}.png)"
+        pages.readme_rows = lambda: rows
+        try:
+            return count([family])
+        finally:
+            pages.readme_rows = real_rows
+
+    good = count([family])
+    status = 0
+    for how, bad in (
+        ("with a line's roman spelling changed", roman_changed()),
+        ("with a line's code points changed", script_changed()),
+        ("with a family that has no page", no_page()),
+        ("with a README sample cell by relative path, unlinked", relative_cell()),
+    ):
+        print(f"specimen pages: {good} failures on the pages, {bad} on the pages {how}")
+        if good or not bad:
+            print("tools/specimen_pages.py: error: the specimen-page check must pass the pages and fail the altered ones")
+            status = 1
+    return status
+
+
 def main():
     pirzath = load("pirzath_guard", ROOT / "tools" / "pirzath" / "guard.py")
     hand = load("pirzath_hand_guard", ROOT / "tools" / "pirzath-hand" / "guard.py")
@@ -921,6 +975,7 @@ def main():
     status |= prove_charts()
     status |= prove_paint()
     status |= prove_stroke_mix()
+    status |= prove_specimen_pages()
     pirzath_font = ROOT / "fonts" / "PirzathCarved-Regular.ttf"
     with tempfile.TemporaryDirectory() as tmp:
         good, bad = notdef.check(pirzath_font), notdef.check(stripped(pirzath_font, Path(tmp) / pirzath_font.name))

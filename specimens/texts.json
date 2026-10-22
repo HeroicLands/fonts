@@ -1,0 +1,530 @@
+{
+    "families": {
+        "hl-pirzath-carved": {
+            "tongue": "Khazari",
+            "source": {
+                "note": "assets/content/Skills/Languages/Khazari.md",
+                "title": "Khazari Language",
+                "section": "Sample Phrases"
+            },
+            "lines": [
+                {
+                    "script": "U+F0008 U+F0003 U+F000E U+0020 U+F000B U+F0000 U+F0012 U+F000D U+F0002 U+F0013 U+F0051 U+0020 U+F0008 U+F0003 U+F000E U+0020 U+F0013 U+F0004 U+F0009 U+F0009 U+F0000 U+F0060 U+F000D U+0020 U+F0013 U+F0000 U+F0009 U+F000D",
+                    "roman": "Vog dalkir, vog rummák ramk",
+                    "english": "He is a mason; he lays the course as a master does"
+                },
+                {
+                    "script": "U+F0020 U+F0000 U+F0009 U+F0013 U+F0051 U+0020 U+F000B U+F0000 U+F000C U+F000D U+F0050 U+0020 U+F0008 U+F0000 U+F0012 U+F000B U+F0051 U+0020 U+F0008 U+F0000 U+F0013 U+F000C U+F0050",
+                    "roman": "Thamr, dank. Vald, varn.",
+                    "english": "The blow, the hammer-fall; the binding, the true line"
+                },
+                {
+                    "script": "U+F000B U+F0000 U+F0012 U+F000D U+F0002 U+F0013 U+0020 U+F000F U+F0004 U+F0009 U+F0000 U+F0060 U+F000E U+0020 U+F000B U+F0000 U+F0012 U+F000D U+F0051 U+0020 U+F000B U+F0000 U+F0012 U+F000D U+F0002 U+F0013 U+0020 U+F0022 U+F0004 U+F000F U+F0000 U+F0060 U+F0005",
+                    "roman": "Dalkir sumág dalk, dalkir khusáp",
+                    "english": "The mason listens to the stone; the mason cuts little"
+                },
+                {
+                    "script": "U+F0013 U+F0000 U+F0009 U+F000D U+0020 U+F000F U+F0000 U+F0009 U+F0002 U+F0060 U+F000B U+F0051 U+0020 U+F0013 U+F0000 U+F0009 U+F000D U+0020 U+F0020 U+F0000 U+F0009 U+F0002 U+F0060 U+F0013",
+                    "roman": "Ramk samíd, ramk thamír",
+                    "english": "The course is raised; the course is struck"
+                },
+                {
+                    "script": "U+F000B U+F0000 U+F0012 U+F0002 U+F0060 U+F000D U+0020 U+F0006 U+F0000 U+F000C U+F000A U+F0051 U+0020 U+F0009 U+F0000 U+F0013 U+F0002 U+F0060 U+F000E U+0020 U+F0006 U+F0000 U+F000C U+F000A",
+                    "roman": "Dalík bant, maríg bant",
+                    "english": "Oath of stone, oath of bone"
+                }
+            ],
+            "marks_note": "The length mark is typed after its vowel and stands over it.",
+            "marks": [
+                {
+                    "label": "a with the length mark",
+                    "script": "U+F0000 U+F0060"
+                },
+                {
+                    "label": "i with the length mark",
+                    "script": "U+F0002 U+F0060"
+                },
+                {
+                    "label": "u with the length mark",
+                    "script": "U+F0004 U+F0060"
+                },
+                {
+                    "label": "o with the length mark",
+                    "script": "U+F0003 U+F0060"
+                }
+            ]
+        },
+        "hl-pirzath-hand": {
+            "tongue": "Khazari",
+            "source": {
+                "note": "assets/content/Skills/Languages/Khazari.md",
+                "title": "Khazari Language",
+                "section": "Sample Phrases"
+            },
+            "lines": [
+                {
+                    "script": "U+F0008 U+F0003 U+F000E U+0020 U+F000B U+F0000 U+F0012 U+F000D U+F0002 U+F0013 U+F0051 U+0020 U+F0008 U+F0003 U+F000E U+0020 U+F0013 U+F0004 U+F0009 U+F0009 U+F0000 U+F0060 U+F000D U+0020 U+F0013 U+F0000 U+F0009 U+F000D",
+                    "roman": "Vog dalkir, vog rummák ramk",
+                    "english": "He is a mason; he lays the course as a master does"
+                },
+                {
+                    "script": "U+F0020 U+F0000 U+F0009 U+F0013 U+F0051 U+0020 U+F000B U+F0000 U+F000C U+F000D U+F0050 U+0020 U+F0008 U+F0000 U+F0012 U+F000B U+F0051 U+0020 U+F0008 U+F0000 U+F0013 U+F000C U+F0050",
+                    "roman": "Thamr, dank. Vald, varn.",
+                    "english": "The blow, the hammer-fall; the binding, the true line"
+                },
+                {
+                    "script": "U+F000B U+F0000 U+F0012 U+F000D U+F0002 U+F0013 U+0020 U+F000F U+F0004 U+F0009 U+F0000 U+F0060 U+F000E U+0020 U+F000B U+F0000 U+F0012 U+F000D U+F0051 U+0020 U+F000B U+F0000 U+F0012 U+F000D U+F0002 U+F0013 U+0020 U+F0022 U+F0004 U+F000F U+F0000 U+F0060 U+F0005",
+                    "roman": "Dalkir sumág dalk, dalkir khusáp",
+                    "english": "The mason listens to the stone; the mason cuts little"
+                },
+                {
+                    "script": "U+F0013 U+F0000 U+F0009 U+F000D U+0020 U+F000F U+F0000 U+F0009 U+F0002 U+F0060 U+F000B U+F0051 U+0020 U+F0013 U+F0000 U+F0009 U+F000D U+0020 U+F0020 U+F0000 U+F0009 U+F0002 U+F0060 U+F0013",
+                    "roman": "Ramk samíd, ramk thamír",
+                    "english": "The course is raised; the course is struck"
+                },
+                {
+                    "script": "U+F000B U+F0000 U+F0012 U+F0002 U+F0060 U+F000D U+0020 U+F0006 U+F0000 U+F000C U+F000A U+F0051 U+0020 U+F0009 U+F0000 U+F0013 U+F0002 U+F0060 U+F000E U+0020 U+F0006 U+F0000 U+F000C U+F000A",
+                    "roman": "Dalík bant, maríg bant",
+                    "english": "Oath of stone, oath of bone"
+                }
+            ],
+            "marks_note": "The length mark is typed after its vowel and stands over it.",
+            "marks": [
+                {
+                    "label": "a with the length mark",
+                    "script": "U+F0000 U+F0060"
+                },
+                {
+                    "label": "i with the length mark",
+                    "script": "U+F0002 U+F0060"
+                },
+                {
+                    "label": "u with the length mark",
+                    "script": "U+F0004 U+F0060"
+                },
+                {
+                    "label": "o with the length mark",
+                    "script": "U+F0003 U+F0060"
+                }
+            ]
+        },
+        "hl-thuravark-carved": {
+            "tongue": "Nordmal",
+            "source": {
+                "note": "assets/content/Skills/Languages/Nordmal.md",
+                "title": "Nordmal Language",
+                "section": "Sample Phrases"
+            },
+            "lines": [
+                {
+                    "script": "U+F0109 U+F0101 U+F0110 U+F0111 U+F0113 U+F0100 U+F010C U+F0106 U+0020 U+F010B U+F0100 U+F010C U+F010C U+F0100 U+F0110 U+0020 U+F0112 U+F0102 U+F0125 U+F0102 U+F0112 U+F0140",
+                    "roman": "Hersvald kallar tingit.",
+                    "english": "The host-wielder calls the assembly."
+                },
+                {
+                    "script": "U+F0113 U+F0101 U+F0110 U+0020 U+F0108 U+F0100 U+F0125 U+F0104 U+F010D U+0020 U+F0102 U+F0148 U+0020 U+F0107 U+F0110 U+F0102 U+F0106 U+F0102 U+F0140",
+                    "roman": "Ver gangum í fridi.",
+                    "english": "We come in peace."
+                },
+                {
+                    "script": "U+F0120 U+F0110 U+F0104 U+F010E U+F0113 U+F0100 U+F010C U+F0106 U+0020 U+F0113 U+F0100 U+F010B U+F0102 U+F0110 U+0020 U+F0104 U+F010C U+F0107 U+F0100 U+F0110 U+0020 U+F0120 U+F0102 U+F0110 U+F0111 U+F0112 U+F0100",
+                    "roman": "Thrunvald vakir, ulfar thyrsta!",
+                    "english": "The Thunder-Wielder wakes, the wolves thirst!"
+                },
+                {
+                    "script": "U+F0112 U+F0113 U+F0100 U+F0104 U+0020 U+F0111 U+F010B U+F0102 U+F010F U+0020 U+F0101 U+F0102 U+F010E U+0020 U+F0107 U+F0101 U+F0110 U+F0106 U+F0140",
+                    "roman": "Tvau skip, ein ferd.",
+                    "english": "Two ships, one voyage."
+                },
+                {
+                    "script": "U+F0111 U+F0112 U+F0103 U+F0148 U+F0110 U+F0100 U+F010C U+F0106 U+F0102 U+F0112 U+0020 U+F010C U+F0102 U+F0107 U+F0102 U+F0110 U+0020 U+F0102 U+F0148 U+0020 U+F0111 U+F0112 U+F0101 U+F0102 U+F010E U+F0102 U+0020 U+F0103 U+F010B U+0020 U+F0102 U+F0148 U+0020 U+F010D U+F0102 U+F010E U+F010E U+F0102 U+F0140",
+                    "roman": "Stóraldit lifir í steini ok í minni.",
+                    "english": "The saga lives in stone and in memory."
+                }
+            ],
+            "marks_note": "A vowel with the acute is cut as its stave twice. The crown open and crown close frame the name of a god between them.",
+            "marks": [
+                {
+                    "label": "i with the acute",
+                    "script": "U+F0102 U+F0148"
+                },
+                {
+                    "label": "o with the acute",
+                    "script": "U+F0103 U+F0148"
+                },
+                {
+                    "label": "a with the acute",
+                    "script": "U+F0100 U+F0148"
+                },
+                {
+                    "label": "Thrunvald, crowned",
+                    "script": "U+F0150 U+F0120 U+F0110 U+F0104 U+F010E U+F0113 U+F0100 U+F010C U+F0106 U+F0151"
+                }
+            ]
+        },
+        "hl-semaron-kuriale": {
+            "tongue": "Vylari",
+            "source": {
+                "note": "assets/content/Lore/Cultures/Vylarian/The_Walking_of_the_Line.md",
+                "title": "The Walking of the Line",
+                "section": "lines 1–4"
+            },
+            "lines": [
+                {
+                    "script": "U+F0251 U+F0237 U+F023F U+F0242 U+F0250 U+F023F U+F0237 U+F023B U+F0230 U+F023C U+0020 U+F0240 U+F023D U+F023F U+F0237 U+F023B U+F0230 U+F023B U+F0233 U+F023C U+F0268",
+                    "roman": "Thiruthriman sorimamen,",
+                    "english": "The hallowed boundary I sing,"
+                },
+                {
+                    "script": "U+F0242 U+F023A U+0020 U+F0230 U+F023A U+F0230 U+F0250 U+F0230 U+F0240 U+0020 U+F0239 U+F0233 U+F0232 U+F0237 U+F0240 U+0020 U+F0230 U+F023A U+F0230 U+F0250 U+F0230 U+0020 U+F0243 U+F0230 U+F023A U+F023B U+F0230 U+F0246 U+F023D U+F023F U+F0268 U+0020 U+F0242 U+F023A U+0020 U+F0241 U+F0230 U+F023A U+F023D U+F0250 U+F023D U+F0237",
+                    "roman": "ul alathas kedis alatha valmazor, ul talothoi",
+                    "english": "and the one who walked it, and the stones"
+                },
+                {
+                    "script": "U+F023A U+F0233 U+F023C U+F0232 U+F0250 U+F023D U+F0237 U+0020 U+F0237 U+F023F U+0020 U+F0245 U+F023D U+F023F U+F023B U+F0230 U+F023A U+F0237 U+F0240 U+0020 U+F023D U+F023A U+0020 U+F0240 U+F0233 U+F023A U+F0250 U+F0242 U+F023F U+0020 U+F023B U+F0230 U+F023A U+F0239 U+F023D U+F0250 U+F023D U+F0237",
+                    "roman": "lendthoi ir yormalis ol selthur malkothoi",
+                    "english": "set down in the grass of the six hills"
+                },
+                {
+                    "script": "U+F023E U+F023F U+F0230 U+0020 U+F0239 U+F0233 U+F023B U+F0231 U+F023D U+F0250 U+F023D U+F0240 U+0020 U+F0242 U+F0240 U+0020 U+F0242 U+F023F U+F0239 U+F0237 U+F0240 U+0020 U+F023D U+F023A U+0020 U+F0230 U+F023A U+F0230 U+F0250 U+F023D U+F0237 U+0020 U+F0250 U+F0230 U+F023A U+F0233 U+F0246 U+F023D U+F023F U+F0268",
+                    "roman": "pra kembothos us urkis ol alathoi thalezor.",
+                    "english": "before a wall stood on any of them."
+                }
+            ],
+            "marks_note": "The catch, a glottal stop, is a grave stroke over the letter it follows.",
+            "marks": [
+                {
+                    "label": "a with the catch",
+                    "script": "U+F0230 U+F0270"
+                },
+                {
+                    "label": "o with the catch",
+                    "script": "U+F023D U+F0270"
+                },
+                {
+                    "label": "e with the catch",
+                    "script": "U+F0233 U+F0270"
+                },
+                {
+                    "label": "u with the catch",
+                    "script": "U+F0242 U+F0270"
+                }
+            ]
+        },
+        "hl-helonika-book": {
+            "tongue": "Helonic",
+            "source": {
+                "note": "assets/content/Skills/Languages/Helonic.md",
+                "title": "Helonic Language",
+                "section": "Sample Phrases"
+            },
+            "lines": [
+                {
+                    "script": "U+F0312 U+F033E U+F0344 U+F0338 U+F0341 U+F0330 U+0020 U+F0333 U+F0342 U+F0330 U+F0341 U+F0338 U+F033D U+0020 U+F0330 U+F0341 U+F033A U+F0337 U+F0338 U+F0332 U+F0337 U+F0338 U+F033D U+0020 U+F0340 U+F033B U+F0345 U+F033C U+F033E U+F033D",
+                    "roman": "Sothira ésarin arkhidhin plumon",
+                    "english": "Wisdom is the beginning of all things"
+                },
+                {
+                    "script": "U+F0300 U+F0344 U+0020 U+F033A U+F0333 U+F033B U+F0338 U+F0341 U+F0330 U+F033D U+0020 U+F0344 U+F0333 U+F0341 U+F0330 U+F0332 U+F0337 U+F0338 U+F033D U+0020 U+F0333 U+F0342 U+F0330 U+F0341 U+F0338 U+F033D U+0020 U+F0344 U+F0330 U+F0342 U+F0338 U+F0341 U+F033E U+F033D",
+                    "roman": "Ath kéliran théradhin ésarin thásiron",
+                    "english": "To behold beauty is divine"
+                },
+                {
+                    "script": "U+F0311 U+F0337 U+F0333 U+F0344 U+F0330 U+F0342 U+F0338 U+F033D U+0020 U+F0332 U+F0337 U+F0338 U+F0332 U+F0330 U+F033A U+F0337 U+F0338 U+F0341",
+                    "roman": "Rhéthasin, dhidakhir!",
+                    "english": "Speak, teach!"
+                },
+                {
+                    "script": "U+F030C U+F0333 U+F0344 U+F0330 U+F0341 U+F0338 U+F033D U+0020 U+F0344 U+F033E U+F0338 U+F0341 U+0020 U+F0340 U+F033B U+F0345 U+F033C U+F033E U+F033D U+0020 U+F0333 U+F0342 U+F0330 U+F0341 U+F0338 U+F033D U+0020 U+F0330 U+F033D U+F0344 U+F0338 U+F033C U+F033E U+F0341",
+                    "roman": "Métharin thoir plumon ésarin ánthimor",
+                    "english": "Man is the measure of all things"
+                },
+                {
+                    "script": "U+F030E U+F033B U+F0330 U+F0342 U+F0338 U+F033D U+0020 U+F033A U+F033E U+F0342 U+F0330 U+F033C U+F0338 U+F0341 U+0020 U+F0338 U+F033D U+0020 U+F033B U+F0333 U+F033A U+F0337 U+F0338 U+F0342 U+F0338 U+F0341",
+                    "roman": "Olasin kosamir in lékhisir",
+                    "english": "The entire cosmos in a single word"
+                }
+            ],
+            "marks_note": "The accent stands over the vowel before it; the long vowels carry their length bar as letters of their own.",
+            "marks": [
+                {
+                    "label": "a with the accent",
+                    "script": "U+F0330 U+F0378"
+                },
+                {
+                    "label": "e with the accent",
+                    "script": "U+F0333 U+F0378"
+                },
+                {
+                    "label": "o with the accent",
+                    "script": "U+F033E U+F0378"
+                },
+                {
+                    "label": "long a, i and u, with the length bar",
+                    "script": "U+F0350 U+F0351 U+F0352"
+                },
+                {
+                    "label": "long e and long o",
+                    "script": "U+F0334 U+F033F"
+                }
+            ]
+        },
+        "hl-vedyakshara-classical": {
+            "tongue": "Vedyari",
+            "source": {
+                "note": "assets/content/Skills/Languages/Vedyari.md",
+                "title": "Vedyari Language",
+                "section": "Sample Phrases"
+            },
+            "lines": [
+                {
+                    "script": "U+F0420 U+F0402 U+F0410 U+F040A U+0020 U+F0409 U+F0433 U+F0411 U+F0430 U+F040B U+F0408 U+F0430 U+F0450 U+0020 U+F0412 U+F040A U+F0438 U+F0409 U+F0430 U+F0400 U+F040A",
+                    "roman": "Agarana dulipati, vandikana",
+                    "english": "Honored elder, I show respect"
+                },
+                {
+                    "script": "U+F0412 U+F0431 U+F0409 U+F0438 U+F040F U+F0410 U+F040E U+F0438 U+0020 U+F0408 U+F0430 U+F0412 U+F040F U+F0433 U+F0450 U+0020 U+F0408 U+F0410 U+F0406 U+F0430 U+F0414 U+F0433 U+F040E U+F0438",
+                    "roman": "Vedyaram tivayu, tarajisum",
+                    "english": "I dwell in Vedyaram, by birthright"
+                },
+                {
+                    "script": "U+F040D U+F0400 U+F0438 U+F0408 U+F0430 U+F0410 U+F0438 U+0020 U+F0422 U+F0413 U+F0438 U+F0408 U+F040E U+F0430 U+0020 U+F0409 U+F0433 U+F0411 U+F0430 U+F0408 U+F0410",
+                    "roman": "Bhaktir ushtami dulitara",
+                    "english": "I hold devotion as my highest path"
+                },
+                {
+                    "script": "U+F0412 U+F0414 U+F0438 U+F0408 U+F0433 U+F040A U+0020 U+F0400 U+F0410 U+F0438 U+F040E U+F0408 U+0020 U+F0412 U+F040A U+F0430 U+F0414",
+                    "roman": "Vastuna karmata vanisa?",
+                    "english": "May the transaction bring prosperity?"
+                },
+                {
+                    "script": "U+F0410 U+F0430 U+F0408 U+F0433 U+F0408 U+0020 U+F0414 U+F040E U+F0410 U+F0438 U+F0412 U+F040A U+0020 U+F0422 U+F0413 U+F0438 U+F0408 U+F0430",
+                    "roman": "Rituta samarvana ushti",
+                    "english": "The observance is offered to the sacred order"
+                }
+            ],
+            "marks_note": "A consonant carries the vowel a; a vowel sign gives it another vowel, and the cut takes the vowel away.",
+            "marks": [
+                {
+                    "label": "ka",
+                    "script": "U+F0400"
+                },
+                {
+                    "label": "ki",
+                    "script": "U+F0400 U+F0430"
+                },
+                {
+                    "label": "ke",
+                    "script": "U+F0400 U+F0431"
+                },
+                {
+                    "label": "kai",
+                    "script": "U+F0400 U+F0432"
+                },
+                {
+                    "label": "ku",
+                    "script": "U+F0400 U+F0433"
+                },
+                {
+                    "label": "ko",
+                    "script": "U+F0400 U+F0434"
+                },
+                {
+                    "label": "kau",
+                    "script": "U+F0400 U+F0435"
+                },
+                {
+                    "label": "k, with the cut",
+                    "script": "U+F0400 U+F0438"
+                },
+                {
+                    "label": "fa, pa with the soft dot",
+                    "script": "U+F040B U+F0439"
+                }
+            ]
+        },
+        "hl-veldikko": {
+            "tongue": "Sinale",
+            "source": {
+                "note": "assets/content/Skills/Languages/Sinale.md",
+                "title": "Sinale Language",
+                "section": "Sample Phrases"
+            },
+            "lines": [
+                {
+                    "script": "U+1ED5B U+1ED72 U+1ED78 U+1ED5C U+1ED71 U+0020 U+1ED55 U+1ED72 U+1ED78 U+1ED51 U+1ED70 U+0020 U+1ED5B U+1ED74 U+1ED54 U+1ED73 U+1ED5C U+1ED74 U+1ED59 U+1ED71",
+                    "roman": "Luuro nuuva liseriho",
+                    "english": "Starlight sings on still water"
+                },
+                {
+                    "script": "U+1ED5B U+1ED74 U+0020 U+1ED54 U+1ED73 U+1ED53 U+1ED7C U+1ED75 U+0020 U+1ED5B U+1ED73 U+1ED55 U+1ED53 U+1ED74 U+0020 U+1ED53 U+1ED70 U+1ED5B U+1ED51 U+1ED73 U+1ED59 U+1ED71",
+                    "roman": "Li-setty lenti talveho",
+                    "english": "The tall grass stands in the low fog, as it always does"
+                },
+                {
+                    "script": "U+1ED59 U+1ED70 U+0020 U+1ED53 U+1ED72 U+1ED50 U+1ED73 U+0020 U+1ED53 U+1ED74 U+1ED5B U+1ED51 U+1ED70 U+1ED74 U+0020 U+1ED59 U+1ED75 U+1ED54 U+1ED7C U+1ED73 U+1ED55",
+                    "roman": "Ha-tupe tilvai hyssen",
+                    "english": "The seam of light has held the breath"
+                },
+                {
+                    "script": "U+1ED50 U+1ED73 U+1ED59 U+1ED73 U+1ED58 U+1ED70 U+0020 U+1ED59 U+1ED72 U+1ED71 U+1ED52 U+1ED70 U+1ED55 U+0020 U+1ED50 U+1ED73 U+1ED59 U+1ED73 U+1ED58 U+1ED70 U+0020 U+1ED55 U+1ED75 U+1ED5B U+1ED58 U+1ED74 U+1ED55",
+                    "roman": "Peheka huoman, peheka nylkin",
+                    "english": "Give warmth, give root"
+                },
+                {
+                    "script": "U+1ED5B U+1ED72 U+1ED78 U+1ED5C U+1ED71 U+0020 U+1ED5D U+1ED74 U+1ED5B U+1ED73 U+1ED51 U+1ED70 U+0020 U+1ED5B U+1ED72 U+1ED78 U+1ED5C U+1ED71 U+0020 U+1ED5C U+1ED74 U+1ED51 U+1ED75",
+                    "roman": "Luuro ileva, luuro rivy",
+                    "english": "The clear place sings, the turning leaf sings"
+                }
+            ],
+            "marks_note": "Each vowel is a mark floating over its letter, with its signs of length, pitch and emphasis folded into it.",
+            "marks": [
+                {
+                    "label": "ta",
+                    "script": "U+1ED53 U+1ED70"
+                },
+                {
+                    "label": "to",
+                    "script": "U+1ED53 U+1ED71"
+                },
+                {
+                    "label": "tuu, with the long sign",
+                    "script": "U+1ED53 U+1ED72 U+1ED78"
+                },
+                {
+                    "label": "le, with the rise",
+                    "script": "U+1ED5B U+1ED73 U+1ED79"
+                },
+                {
+                    "label": "ni, with the fall",
+                    "script": "U+1ED55 U+1ED74 U+1ED7A"
+                },
+                {
+                    "label": "tty, with the doubling bar",
+                    "script": "U+1ED53 U+1ED7C U+1ED75"
+                },
+                {
+                    "label": "a on the carrier",
+                    "script": "U+1ED5D U+1ED70"
+                }
+            ]
+        },
+        "hl-qalezu-hand": {
+            "tongue": "Khelathi",
+            "source": {
+                "note": "assets/content/Skills/Languages/Khelathi.md",
+                "title": "Khelathi Language",
+                "section": "Sample Phrases"
+            },
+            "lines": [
+                {
+                    "script": "U+1EA0C U+1EA00 U+1EA09 U+0020 U+1EA15 U+1EA00 U+0020 U+1EA15 U+1EA08 U+1EA00 U+1EA0D",
+                    "roman": "Khelathu elu anlagh",
+                    "english": "the Khelathi way upon life"
+                },
+                {
+                    "script": "U+1EA15 U+1EA0B U+1EA15 U+1EA38 U+0020 U+1EA0B U+1EA0A U+1EA04 U+1EA02 U+0020 U+1EA15 U+1EA04 U+0020 U+1EA06 U+1EA04 U+1EA00 U+1EA02",
+                    "roman": "Uqa'a, qamzet ezu gazlet",
+                    "english": "Sun-lord, hidden in the sanctuary"
+                },
+                {
+                    "script": "U+1EA15 U+1EA01 U+1EA00 U+1EA0A U+0020 U+1EA15 U+1EA04 U+0020 U+1EA00 U+1EA04 U+1EA02",
+                    "roman": "Erlem ez luzet",
+                    "english": "I am bound to the throne"
+                },
+                {
+                    "script": "U+1EA04 U+1EA11 U+0020 U+1EA0A U+1EA00 U+1EA02 U+0020 U+1EA15 U+1EA06 U+0020 U+1EA0C U+1EA00 U+1EA09",
+                    "roman": "Zab melet agu khelath",
+                    "english": "The lord's goods shall prosper"
+                },
+                {
+                    "script": "U+1EA0F U+1EA00 U+1EA0A U+0020 U+1EA04 U+1EA02 U+1EA0A",
+                    "roman": "Shelmu zetem",
+                    "english": "Let the followers hear"
+                }
+            ],
+            "marks_note": "A catch before a consonant is drawn as three reed dabs over it; a doubled consonant carries a bar beneath.",
+            "marks": [
+                {
+                    "label": "q",
+                    "script": "U+1EA0B"
+                },
+                {
+                    "label": "catch before q",
+                    "script": "U+1EA15 U+1EA0B"
+                },
+                {
+                    "label": "r",
+                    "script": "U+1EA01"
+                },
+                {
+                    "label": "catch before r",
+                    "script": "U+1EA15 U+1EA01"
+                },
+                {
+                    "label": "doubled l",
+                    "script": "U+1EA17"
+                },
+                {
+                    "label": "catch before doubled l",
+                    "script": "U+1EA15 U+1EA17"
+                }
+            ]
+        },
+        "hl-teng-chou": {
+            "tongue": "Tantsou",
+            "source": {
+                "note": "assets/content/Skills/Languages/Tantsou.md",
+                "title": "Tantsou Language",
+                "section": "Grammar Notes"
+            },
+            "lines": [
+                {
+                    "script": "U+F1009 U+F1050",
+                    "roman": "You cheng.",
+                    "english": "The moon rises."
+                },
+                {
+                    "script": "U+F1046 U+F1013 U+F1050",
+                    "roman": "Zho teng cheng.",
+                    "english": "The dragon ascends the sky."
+                },
+                {
+                    "script": "U+F1033 U+F1053",
+                    "roman": "Lei wa.",
+                    "english": "The spirit answers."
+                },
+                {
+                    "script": "U+F1003 U+F1051",
+                    "roman": "Shou jong.",
+                    "english": "The water falls."
+                },
+                {
+                    "script": "U+F1054 U+F101F U+F102A U+F1053",
+                    "roman": "Dao chen tsou wa.",
+                    "english": "The people answer the great emperor."
+                }
+            ]
+        },
+        "hl-khelathi-zethu-glyphs": {
+            "tongue": "Khelathi",
+            "source": {
+                "note": "utils/banner-meqes/sign-sequence.md",
+                "title": "the Meqes VI memorial",
+                "section": "The English text",
+                "image": "assets/images/banners/khelathubnr.webp"
+            },
+            "banner": {
+                "sha256": "2ec180ad9e08c8a838084a23f787daebd122e9d42f9ff33cf0881a570a00b6b0"
+            },
+            "english": [
+                "**The heading** (register 1). Year 1 of the Gar-Au ⟨Meqes, the seventh of the name⟩, {living, enduring, strong}. Went to the West the Gar-Au ⟨Meqes, the sixth of the name⟩, [Lord of the River and of the Two Banks], beloved of Uqa'a, {fire of Uqa'a upon the mound, who stood, who was crowned, lord of the count, whose seal is on the granary, whose grain the barges carry}, [given life like the sun forever], in his twenty-seventh year. His account is read.",
+                "**Birth and crowning** (register 2). Shaped him Uzn'era [in the womb], a child of the house of Zu'Meku. Stood he upon the mound [at Yath-Telgu]; {set the priesthood of Uqa'a the crown on him, and gave him his name, ⟨Meqes⟩; by this name every contract of the year is dated.} Qe'aret set truth in his mouth, and Reth'Sa'ar wrote his name [in the house of books]. The gods gave him life and dominion, like the sun.",
+                "**The war of the west** (registers 3, 4). Came down His Majesty, {the Gar-Au ⟨Meqes⟩, beloved of Uqa'a, Lord of the River and of the Two Banks, given life like the sun forever,} upon the hill-men of the western margins, and Chaq'ur raged before him like the storm. Smote he their chieftains, [took he their herds,] and brought back their princes bound [beneath his sandals]. {The margins were the Gar-Au's.}",
+                "**The war of the north and the tribute** (registers 5, 6). Sailed he, {the Gar-Au ⟨Meqes⟩, beloved of Uqa'a, given life like the sun forever,} against the raiders of the northern sea, and the fire of Uqa'a went out against their ships. The river was at peace, and the barges came up laden: gold, cedar, horses [and slaves]. {The river was the Gar-Au's.}",
+                "**The great hunt and the lean years** (registers 7, 8). Rode he out, {the Gar-Au ⟨Meqes⟩, beloved of Uqa'a, Lord of the River and of the Two Banks,} against the lions and the river-horses that ravaged the herds and the fields, and the beasts taken were counted. In the years of the low river he opened the god's granaries under his seal, which he had filled in the years of the flood, and none of his people hungered.",
+                "**His works, the god's answer, and the weighing** (registers 9, 10). {The Gar-Au ⟨Meqes⟩, beloved of Uqa'a,} built anew the house of Uqa'a, gave it altars of gold, and endowed it with fields and herds. [He raised his Way at the head of the death-road at Zu-Gezer.] [Words spoken by Uqa'a, {fire on the first ground, lord of the dry ink, who comes up the road}: “My beloved son, I give you every land, every foreign country bowed beneath your sandals; I give you the years of the sun upon the throne of the mound.”] Before the gods the tablets lay level on the beam: what he owed was closed, and nothing remained; what was owed to him stood open. He went down owed."
+            ]
+        }
+    }
+}

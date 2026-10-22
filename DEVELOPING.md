@@ -164,6 +164,7 @@ Check the built fonts, render the specimens, and prove that each guard fails a b
 .venv/bin/python tools/veldikko/font_sheets.py        # specimens/veldikko/forms.png, joined.png, verse.png, sizes.png and beside.png
 .venv/bin/python tools/vedyakshara/font_sheets.py     # specimens/vedyakshara/text.png
 .venv/bin/python tools/helonika/font_sheets.py        # specimens/helonika/text.png
+.venv/bin/python tools/specimen_pages.py --check   # every font's specimen page and README cell match the fonts and specimens/texts.json
 .venv/bin/python tools/prove_guards.py
 ```
 
@@ -246,6 +247,16 @@ typst compile --font-path node_modules/@heroiclands/fonts/fonts book.typ
 
 The jsDelivr form is `https://cdn.jsdelivr.net/npm/@heroiclands/fonts@<version>/<file>`. A rule's URLs are relative, so every file resolves beside the stylesheet.
 
-## README samples
+## README samples and specimen pages
 
-`tools/readme_samples.py` writes the one-line sample image of each font that the README shows, to `specimens/readme/`. It runs in `build.sh`. A font added to `fonts.json` gets its sample on the next build; the README then needs one row in its table.
+`tools/readme_samples.py` writes the one-line sample image of each font that the README shows, to `specimens/readme/`. The README names each image by its absolute URL on the GitHub mirror, `https://raw.githubusercontent.com/HeroicLands/fonts/main/specimens/readme/<class>.png`, because Gitea and npm resolve no relative image inside a table, and links it to the font's specimen page.
+
+Each font has a specimen page, `specimens/<class>.md`, that shows the script at work: its letters, a sample of its marks on a few letters, and a passage of thalorna in the script, its lines numbered, with each line's English and its roman spelling under it. Teng Chou and Khelathi Zethu Glyphs show a sample of their characters and link the full chart, and Khelathi Zethu Glyphs shows the Khelathu banner with its English text in place of a passage. `tools/specimen_pages.py` renders the images into `specimens/pages/` from the built fonts, shaping every line with HarfBuzz, writes the pages, and writes each font's Sample cell in the README; a README it rewrites wants `npm run format` to align the table. The texts are `specimens/texts.json`: each font's source note and, for each line, its code points, roman spelling and English. They are written once from a thalorna checkout, each roman line through the script's mapping note on `origin/main` as `tools/mapped.py` writes its fixtures, and every roman and English line must stand in its source note as written; the passages chosen are in `PASSAGES` in the tool. Building the pages needs no thalorna checkout:
+
+```sh
+.venv/bin/python tools/specimen_pages.py --write-texts --thalorna /path/to/thalorna
+.venv/bin/python tools/specimen_pages.py            # the pages, their images and the README cells
+.venv/bin/python tools/specimen_pages.py --check    # fails on a missing or out-of-date page, image or README cell
+```
+
+Both scripts run in `build.sh`. A font added to `fonts.json` gets its sample on the next build; the README then needs one row in its table, and `PASSAGES` an entry for its page. The pages and their images are not in the npm package; the README on npm links to them on GitHub.

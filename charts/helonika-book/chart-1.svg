@@ -416,7 +416,7 @@
 <rect class="undrawn" x="578" y="1666" width="88" height="104" fill="url(#hatch)"/>
 <g class="drawn" id="cp-F0370" transform="translate(666 106)">
 <title>HELONIKA RAISED DOT U+F0370</title>
-<g fill="#161412"><path transform="translate(40.72 59.28) scale(0.05200 -0.05200)" d="M93 450Q83 447 62.5 443.0Q42 439 31 441Q27 455 23.5 474.0Q20 493 33 500Q44 503 64.5 507.0Q85 511 95 509Q100 496 103.5 476.5Q107 457 93 450Z"/></g>
+<g fill="#161412"><path transform="translate(36.67 59.28) scale(0.05200 -0.05200)" d="M171 450Q161 447 140.0 443.0Q119 439 109 441Q105 455 101.5 474.0Q98 493 111 500Q122 503 142.5 507.0Q163 511 173 509Q178 496 181.5 476.5Q185 457 171 450Z"/></g>
 <text x="44.0" y="95" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#6b665f">F0370</text>
 </g>
 <g class="drawn" id="cp-F0371" transform="translate(666 210)">

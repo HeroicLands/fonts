@@ -1,5 +1,5 @@
 #!/bin/sh
-# Build every font from their UFO sources into fonts/, then write fonts.css, fonts.json, keyboards/, charts/ and the README samples.
+# Build every font from their UFO sources into fonts/, then write fonts.css, fonts.json, keyboards/, charts/, the README samples and the specimen pages.
 # Khelathi Zethu Glyphs then takes its quadrat and cartouche layout from tools/khelathi-zethu-glyphs/layout.py,
 # and Thuravark Carved its crowned frame from tools/thuravark-carved/crown.py.
 # Teng Chou's UFO is generated from its data by tools/teng-chou/build_ufo.py, run by hand
@@ -53,3 +53,4 @@ python tools/write_css.py
 python tools/keyboards.py
 python tools/charts.py
 python tools/readme_samples.py
+python tools/specimen_pages.py

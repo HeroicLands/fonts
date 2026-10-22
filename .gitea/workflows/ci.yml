@@ -96,8 +96,9 @@ jobs:
                   .venv/bin/python tools/spacing.py
                   .venv/bin/python tools/keyboards_guard.py --fixtures-only
                   .venv/bin/python tools/khelathi-zethu-glyphs/paint_guard.py
+                  .venv/bin/python tools/specimen_pages.py --check
                   .venv/bin/python tools/prove_guards.py
-            - name: Committed fonts, stylesheet and manifest match the build
+            - name: Committed fonts, stylesheet, manifest and specimen pages match the build
               run: |
-                  git diff --exit-code -- fonts/ fonts.css fonts.json
-                  test -z "$(git ls-files --others --exclude-standard -- fonts.css fonts.json)"
+                  git diff --exit-code -- fonts/ fonts.css fonts.json specimens/pages/ specimens/*.md README.md
+                  test -z "$(git ls-files --others --exclude-standard -- fonts.css fonts.json specimens/pages/ specimens/)"
