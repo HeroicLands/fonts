@@ -1,8 +1,57 @@
-.claude/
+# Dependency directories
+/node_modules/
+
+# dotenv environment variables file
+/.env
+/.env.test
+/.env.local
+
+# AI
+/.claude/
 CLAUDE.md
 AI.md
-nogit/
+
+# Visual Studio
+/.vscode/
+/*.code-workspace
+
+# GitHub
+.github/copilot-instructions.md
+
+# Obsidian (assets/content is opened as a vault; local UI state only)
+assets/content/.obsidian/
+
+# macOS specific files
+# general
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Thumbnails
+._*
+
+# Files that might appear in the root of a volume
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
+# Build files
+/build/
+/coverage/
+/css/
+
+# Hidden files
+/nogit/
+*.wip
+
+# Symlinked into worktrees from the parent checkout.
+/node_modules
+*.el
+
+# Python files
 .venv/
-build/
 __pycache__/
-node_modules/

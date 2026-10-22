@@ -1,16 +1,19 @@
-# fonts
+# Thalorna Fonts
 
-Fonts for the scripts of the HeroicLands settings, drawn from scratch so that a setting's inscriptions can be shown in their own letters on the sites, in the books and in Foundry.
+These are the fonts for the [HeroicLands Thalorna](https://www.heroiclands.org/thalorna/) setting. This includes the following fonts:
 
-Pirzath Carved and Thuravark Carved draw their script over the setting's Latin spelling. Text stays plain, readable and searchable, and a passage switches to the script by its font alone. A letter pair that the spelling uses for one sound, such as _th_ or _kh_, draws the single letter for that sound.
+| Font Name | Description | Direction |
+|--- |--- |
+| Pirzath Carved | Khazari (dwarven) Runic Lapidary | Left to Right |
+| Pirzath Hand | Khazari (dwarven) Common Hand (modern script) | Left to Right |
+| Veldikko | Sinale (elvish) Joined (cursive) Calligraphic Hand | Right to Left |
+| Khelathi Zethu Glyphs | Au'Khelathu Temple Heiroglyphics | Right to Left |
+| Qalezu Hand | Au'Khelathu Merchant's Script | Right to Left |
+| Thurvark Carved | Proto-Pelwar (human) Runic Lapidary (derived from Pirzath) | Left to Right |
+| Semaron Kuriale | Vylarian (human) Chancery Hand | Left to Right |
+| Teng Chou | Tantsou (human) Logographic Script | Vertical (top to bottom) |
 
-Semaron Kuriale, the Vylarian chancery hand, draws the Vylari spelling in majuscules and minuscules: a doubled vowel types the long vowel's curl, a catch after a letter types the grave over it, and every pause types the one point.
-
-Each left-to-right face also draws every one of its characters on a code point of its own in plane 15, the Supplementary Private Use Area-A: the Pirzath faces on U+F0000, Thuravark Carved on U+F0100, Semaron Kuriale on U+F0200, and Teng Chou's characters on U+F1000 and its Jurthati syllabary on U+F2000 (see [Code point blocks](#code-point-blocks)). `fonts.json` lists each face's characters under `codepoints`, and `specimens/<face>/codepoints.png` charts them.
-
-Teng Chou, the Celestial Record of Tantsou and Jenchai, writes one character per Tantsou morpheme, and the Jurthati syllabary beside them for the island tongue's particles and endings. It is written in columns, read from the right: every character takes exactly one em down a column, so a column of N characters is N em tall and a page set in vertical text stands on an even grid, and an inline span sets the characters left to right. Its characters are generated from strokes, components and layouts, not drawn one by one; `design/teng-chou.md` gives the system.
-
-Qalezu, the Khelathi alphabet, is written right to left on code points of its own, U+1EA00 to U+1EA3F, with the catch-before forms in U+1ECC0 to U+1ECFF. A converter turns Latin Khelathi into those code points, and the font draws them; `tools/qalezu-hand/encoding.json` is the one table of what each code point is, its sound and the Latin that types it.
+All of these fonts are available in the Releases section.
 
 Veldikko is the starlight-hand of the Sinale, in which both the Sinale and the Áelendi write: a flowing calligraphy written right to left, its letters joined by hairlines along the line and its vowels marks floating above, in one face for both tongues. It is written on code points of its own, U+1ED50 to U+1EDFF: a letter, then the length bar if the consonant is doubled, then each vowel mark, each followed by its signs of length, pitch and emphasis. The font joins each letter to its neighbours, folds a vowel and its signs into one mark and stands the marks over their letter. Its bowls stand at the x-height Semaron Kuriale and Latin text stand at, and its risers and tails reach well beyond, so a block of Veldikko wants a line height of about 2.4 em from the page's style sheet; a Veldikko word inside an English line leaves the line spacing even. `tools/veldikko/encoding.json` is the one table of what each code point is, and `tools/veldikko/convert.mjs` turns romanized Sinale into those code points; `design/veldikko.md` gives the system.
 
