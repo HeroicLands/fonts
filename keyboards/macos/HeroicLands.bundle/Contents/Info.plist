@@ -9,9 +9,9 @@
 	<key>CFBundlePackageType</key>
 	<string>BNDL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>0.1.2</string>
+	<string>0.1.3</string>
 	<key>CFBundleVersion</key>
-	<string>0.1.2</string>
+	<string>0.1.3</string>
 	<key>KLInfo_HL Semaron</key>
 	<dict>
 		<key>TISInputSourceID</key>

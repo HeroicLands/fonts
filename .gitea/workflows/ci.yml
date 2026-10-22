@@ -73,6 +73,10 @@ jobs:
                   .venv/bin/python tools/qalezu-hand/check_font.py
                   .venv/bin/python tools/khelathi-zethu-glyphs/check_font.py
                   .venv/bin/python tools/semaron-kuriale/check_font.py
+                  .venv/bin/python tools/teng-chou/check_font.py
+                  .venv/bin/python tools/teng-chou/guard.py --fixtures-only
+                  .venv/bin/python tools/teng-chou/syllabary_distinct.py
+                  .venv/bin/python tools/teng-chou/stroke_mix.py
                   .venv/bin/python tools/notdef_box.py
                   .venv/bin/python tools/font_names.py
                   .venv/bin/python tools/codepoints.py

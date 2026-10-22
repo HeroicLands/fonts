@@ -66,6 +66,11 @@ FAMILIES = {
         "direction": "ltr",
         "features": [],
     },
+    "TengChou-Regular": {
+        "slug": "teng-chou",
+        "direction": "ltr",
+        "features": [],
+    },
     "ThuravarkCarved-Regular": {
         "slug": "thuravark-carved",
         "direction": "ltr",

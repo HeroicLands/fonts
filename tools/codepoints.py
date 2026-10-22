@@ -74,6 +74,7 @@ NOT_CHARACTERS = {
         "quotedbl": "becomes the opening or closing quotation mark",
         **{f"{v}acute": "a vowel and its length mark" for v in "aeiou"},
     },
+    "TengChou-Regular": {},
     "ThuravarkCarved-Regular": {
         "y": "becomes i or j",
         "hyphen": "draws nothing",

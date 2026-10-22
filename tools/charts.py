@@ -71,6 +71,8 @@ GROUPS = {
     "point": "Punctuation",
     "mark": "Marks",
     "sign": "Signs",
+    "character": "Characters",
+    "syllable": "Syllables",
     "control": "Controls",
 }
 
@@ -147,8 +149,8 @@ def place(face: Face, name: str, box_w: float, box_h: float, em: float, centred:
 
 
 def centred(entry: dict) -> bool:
-    """Signs drawn in a square are centred on their ink; letters keep a common baseline."""
-    return entry["codepoints"][0]["kind"] == "sign"
+    """Signs and characters drawn in a square are centred on their ink; letters keep a common baseline."""
+    return entry["codepoints"][0]["kind"] in ("sign", "character")
 
 
 def glyph_svg(face: Face, row: dict) -> str:

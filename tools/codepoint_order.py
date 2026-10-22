@@ -4,7 +4,8 @@
 
 A left-to-right face draws each of its characters on a code point of its own in a
 block of plane 15, the Supplementary Private Use Area-A: Pirzath from U+F0000,
-Thuravark from U+F0100 and Semaron from U+F0200. Within a block, characters are
+Thuravark from U+F0100, Semaron from U+F0200, and Teng Chou's characters from
+U+F1000 and its Jurthati syllabary from U+F2000. Within a block, characters are
 assigned in groups: capitals (each followed by its own long-vowel group where the face
 has one), small letters, digraphs, diphthongs, numerals, points, and marks. A group
 starts on a fixed code point and the gaps between groups leave room for later letters. tools/write_css.py
@@ -53,7 +54,21 @@ BLOCKS = [
         "direction": "left to right",
         "families": [],
     },
-    {"start": 0xF1000, "end": 0xF2FFF, "use": "Reserved for Teng Chou", "direction": "left to right", "families": []},
+    {
+        "start": 0xF1000,
+        "end": 0xF1FFF,
+        "use": "Teng Chou: characters, one per morpheme, in the order they are added",
+        "direction": "left to right",
+        "families": ["Teng Chou"],
+    },
+    {
+        "start": 0xF2000,
+        "end": 0xF20FF,
+        "use": "Teng Chou: the Jurthati syllabary",
+        "direction": "left to right",
+        "families": ["Teng Chou"],
+    },
+    {"start": 0xF2100, "end": 0xF2FFF, "use": "Reserved for Teng Chou", "direction": "left to right", "families": []},
     {
         "start": 0x1E960,
         "end": 0x1E9FF,
@@ -143,12 +158,35 @@ THURAVARK = (
     ],
 )
 
+def _teng_chou():
+    """Teng Chou's characters from U+F1000, in the order of tools/teng-chou/characters.py
+    and then the five stages of the tally (tools/teng-chou/tally.py), and the Jurthati
+    signs from U+F2000, in the order of tools/teng-chou/syllabary.py. A character or sign
+    is added at the end of its list, so none is renumbered."""
+    sys.path.insert(0, str(ROOT / "tools" / "teng-chou"))
+    import characters  # noqa: E402
+    import syllabary  # noqa: E402
+    import tally  # noqa: E402
+
+    return (
+        0xF1000,
+        0xF20FF,
+        [
+            ("character", 0xF1000, [c.glyph for c in characters.CHARACTERS] + [s.glyph for s in tally.STAGES.values()]),
+            ("syllable", 0xF2000, [s.glyph for s in syllabary.SIGNS]),
+        ],
+    )
+
+
+TENGCHOU = _teng_chou()
+
 # Font file stem -> block. Pirzath Hand and Pirzath Hand Lifted are one file.
 LTR = {
     "SemaronKuriale-Regular": SEMARON,
     "PirzathCarved-Regular": PIRZATH,
     "PirzathHand-Regular": PIRZATH,
     "ThuravarkCarved-Regular": THURAVARK,
+    "TengChou-Regular": TENGCHOU,
 }
 
 
@@ -210,6 +248,7 @@ SCRIPTS = {
     "ThuravarkCarved-Regular": "thuravark",
     "QalezuHand-Regular": "qalezu",
     "KhelathiZethuGlyphs-Regular": "zethu",
+    "TengChou-Regular": "tengchou",
 }
 
 

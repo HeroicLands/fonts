@@ -1,6 +1,8 @@
 #!/bin/sh
 # Build every font from their UFO sources into fonts/, then write fonts.css, fonts.json, keyboards/ and charts/.
 # Khelathi Zethu Glyphs then takes its quadrat and cartouche layout from tools/khelathi-zethu-glyphs/layout.py.
+# Teng Chou's UFO is generated from its data by tools/teng-chou/build_ufo.py, run by hand
+# after a data change, so the build compiles the committed source on every platform alike.
 # The timestamp is fixed, so a build is byte-for-byte reproducible. fontmake writes
 # the Windows name records only, so tools/add_mac_names.py adds the Macintosh ones.
 #
@@ -26,6 +28,7 @@ build sources/ThuravarkCarved.ufo fonts/ThuravarkCarved-Regular.ttf
 build sources/QalezuHand.ufo fonts/QalezuHand-Regular.ttf
 build sources/KhelathiZethuGlyphs.ufo fonts/KhelathiZethuGlyphs-Regular.ttf
 build sources/SemaronKuriale.ufo fonts/SemaronKuriale-Regular.ttf
+build sources/TengChou.ufo fonts/TengChou-Regular.ttf
 
 python tools/write_css.py
 python tools/keyboards.py

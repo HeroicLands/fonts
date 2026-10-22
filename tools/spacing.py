@@ -27,8 +27,9 @@ pass.
 The sample lines are the texts of each face's specimens: the Khazari texts for
 the Pirzath faces, the Nordmal lines for Thuravark Carved and the Vylari texts for
 Semaron Kuriale; Qalezu Hand's converter fixtures, written in the glyphs the
-fixtures name; and the sample inscriptions of Khelathi Zethu Glyphs, set as one
-strip of signs. None needs a thalorna checkout.
+fixtures name; the sample inscriptions of Khelathi Zethu Glyphs, set as one
+strip of signs; and Teng Chou's Tantsou and Jurthati passages, each line one run
+of characters. None needs a thalorna checkout.
 """
 
 import importlib.util
@@ -100,6 +101,10 @@ def _zethu_lines() -> list[str]:
     return ["".join(cp[i] for i in ids if i in cp) for _, ids in guard.sample_lists()]
 
 
+def _teng_chou_lines() -> list[str]:
+    return _load("teng_chou_texts", TOOLS / "teng-chou" / "texts.py").lines()
+
+
 # Each face: its sample lines, its direction and the features its class turns on.
 FACES = {
     "PirzathCarved": (_pirzath_lines, "ltr", {}),
@@ -108,6 +113,7 @@ FACES = {
     "SemaronKuriale": (_semaron_lines, "ltr", {}),
     "QalezuHand": (_qalezu_lines, "rtl", {}),
     "KhelathiZethuGlyphs": (_zethu_lines, "rtl", {}),
+    "TengChou": (_teng_chou_lines, "ltr", {}),
 }
 
 

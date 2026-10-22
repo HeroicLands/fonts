@@ -4786,6 +4786,1849 @@
             ]
         },
         {
+            "name": "Teng Chou",
+            "family": "Teng Chou",
+            "class": "hl-teng-chou",
+            "files": {
+                "woff2": "fonts/TengChou-Regular.woff2",
+                "ttf": "fonts/TengChou-Regular.ttf"
+            },
+            "direction": "ltr",
+            "features": [],
+            "codepoints": [
+                {
+                    "codepoint": "U+F1000",
+                    "name": "TENG CHOU CHARACTER HO",
+                    "glyph": "tc.ho",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F1001",
+                    "name": "TENG CHOU CHARACTER JING",
+                    "glyph": "tc.jing",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F1002",
+                    "name": "TENG CHOU CHARACTER MOU",
+                    "glyph": "tc.mou",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F1003",
+                    "name": "TENG CHOU CHARACTER SHOU",
+                    "glyph": "tc.shou",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F1004",
+                    "name": "TENG CHOU CHARACTER TOU",
+                    "glyph": "tc.tou",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F1005",
+                    "name": "TENG CHOU CHARACTER WENG",
+                    "glyph": "tc.weng",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F1006",
+                    "name": "TENG CHOU CHARACTER CHAI",
+                    "glyph": "tc.chai",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F1007",
+                    "name": "TENG CHOU CHARACTER YAN",
+                    "glyph": "tc.yan",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F1008",
+                    "name": "TENG CHOU CHARACTER ZHI",
+                    "glyph": "tc.zhi",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F1009",
+                    "name": "TENG CHOU CHARACTER YOU",
+                    "glyph": "tc.you",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F100A",
+                    "name": "TENG CHOU CHARACTER LUO",
+                    "glyph": "tc.luo",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F100B",
+                    "name": "TENG CHOU CHARACTER NOU",
+                    "glyph": "tc.nou",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F100C",
+                    "name": "TENG CHOU CHARACTER WONG",
+                    "glyph": "tc.wong",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F100D",
+                    "name": "TENG CHOU CHARACTER ZHEN",
+                    "glyph": "tc.zhen",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F100E",
+                    "name": "TENG CHOU CHARACTER CHUEN",
+                    "glyph": "tc.chuen",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F100F",
+                    "name": "TENG CHOU CHARACTER RAO",
+                    "glyph": "tc.rao",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F1010",
+                    "name": "TENG CHOU CHARACTER LA",
+                    "glyph": "tc.la",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F1011",
+                    "name": "TENG CHOU CHARACTER TUI",
+                    "glyph": "tc.tui",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F1012",
+                    "name": "TENG CHOU CHARACTER WEI",
+                    "glyph": "tc.wei",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F1013",
+                    "name": "TENG CHOU CHARACTER TENG",
+                    "glyph": "tc.teng",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F1014",
+                    "name": "TENG CHOU CHARACTER TAN",
+                    "glyph": "tc.tan",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F1015",
+                    "name": "TENG CHOU CHARACTER MUO",
+                    "glyph": "tc.muo",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F1016",
+                    "name": "TENG CHOU CHARACTER ZHOU",
+                    "glyph": "tc.zhou",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F1017",
+                    "name": "TENG CHOU CHARACTER RIN",
+                    "glyph": "tc.rin",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F1018",
+                    "name": "TENG CHOU CHARACTER BUI",
+                    "glyph": "tc.bui",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F1019",
+                    "name": "TENG CHOU CHARACTER HA",
+                    "glyph": "tc.ha",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F101A",
+                    "name": "TENG CHOU CHARACTER LENG",
+                    "glyph": "tc.leng",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F101B",
+                    "name": "TENG CHOU CHARACTER JEN",
+                    "glyph": "tc.jen",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F101C",
+                    "name": "TENG CHOU CHARACTER WUEN",
+                    "glyph": "tc.wuen",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F101D",
+                    "name": "TENG CHOU CHARACTER WAI",
+                    "glyph": "tc.wai",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F101E",
+                    "name": "TENG CHOU CHARACTER RONG",
+                    "glyph": "tc.rong",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F101F",
+                    "name": "TENG CHOU CHARACTER CHEN",
+                    "glyph": "tc.chen",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F1020",
+                    "name": "TENG CHOU CHARACTER ZHUO",
+                    "glyph": "tc.zhuo",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F1021",
+                    "name": "TENG CHOU CHARACTER NEI",
+                    "glyph": "tc.nei",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F1022",
+                    "name": "TENG CHOU CHARACTER GUI",
+                    "glyph": "tc.gui",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F1023",
+                    "name": "TENG CHOU CHARACTER GEN",
+                    "glyph": "tc.gen",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F1024",
+                    "name": "TENG CHOU CHARACTER WUO",
+                    "glyph": "tc.wuo",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F1025",
+                    "name": "TENG CHOU CHARACTER CHEI",
+                    "glyph": "tc.chei",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F1026",
+                    "name": "TENG CHOU CHARACTER YAI",
+                    "glyph": "tc.yai",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F1027",
+                    "name": "TENG CHOU CHARACTER ZHEI",
+                    "glyph": "tc.zhei",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F1028",
+                    "name": "TENG CHOU CHARACTER NONG",
+                    "glyph": "tc.nong",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F1029",
+                    "name": "TENG CHOU CHARACTER NUI",
+                    "glyph": "tc.nui",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F102A",
+                    "name": "TENG CHOU CHARACTER TSOU",
+                    "glyph": "tc.tsou",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F102B",
+                    "name": "TENG CHOU CHARACTER ZHAO",
+                    "glyph": "tc.zhao",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F102C",
+                    "name": "TENG CHOU CHARACTER KEN",
+                    "glyph": "tc.ken",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F102D",
+                    "name": "TENG CHOU CHARACTER SHUO",
+                    "glyph": "tc.shuo",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F102E",
+                    "name": "TENG CHOU CHARACTER JA",
+                    "glyph": "tc.ja",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F102F",
+                    "name": "TENG CHOU CHARACTER HUO",
+                    "glyph": "tc.huo",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F1030",
+                    "name": "TENG CHOU CHARACTER WEN",
+                    "glyph": "tc.wen",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F1031",
+                    "name": "TENG CHOU CHARACTER WOU",
+                    "glyph": "tc.wou",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F1032",
+                    "name": "TENG CHOU CHARACTER WO",
+                    "glyph": "tc.wo",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F1033",
+                    "name": "TENG CHOU CHARACTER LEI",
+                    "glyph": "tc.lei",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F1034",
+                    "name": "TENG CHOU CHARACTER SEI",
+                    "glyph": "tc.sei",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F1035",
+                    "name": "TENG CHOU CHARACTER LOU",
+                    "glyph": "tc.lou",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F1036",
+                    "name": "TENG CHOU CHARACTER DOU",
+                    "glyph": "tc.dou",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F1037",
+                    "name": "TENG CHOU CHARACTER HOU",
+                    "glyph": "tc.hou",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F1038",
+                    "name": "TENG CHOU CHARACTER TSAI",
+                    "glyph": "tc.tsai",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F1039",
+                    "name": "TENG CHOU CHARACTER HUEN",
+                    "glyph": "tc.huen",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F103A",
+                    "name": "TENG CHOU CHARACTER SING",
+                    "glyph": "tc.sing",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F103B",
+                    "name": "TENG CHOU CHARACTER ZHA",
+                    "glyph": "tc.zha",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F103C",
+                    "name": "TENG CHOU CHARACTER NUO",
+                    "glyph": "tc.nuo",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F103D",
+                    "name": "TENG CHOU CHARACTER FA",
+                    "glyph": "tc.fa",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F103E",
+                    "name": "TENG CHOU CHARACTER CHOU",
+                    "glyph": "tc.chou",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F103F",
+                    "name": "TENG CHOU CHARACTER DUO",
+                    "glyph": "tc.duo",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F1040",
+                    "name": "TENG CHOU CHARACTER RUI",
+                    "glyph": "tc.rui",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F1041",
+                    "name": "TENG CHOU CHARACTER JUI",
+                    "glyph": "tc.jui",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F1042",
+                    "name": "TENG CHOU CHARACTER TSEI",
+                    "glyph": "tc.tsei",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F1043",
+                    "name": "TENG CHOU CHARACTER WAN",
+                    "glyph": "tc.wan",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F1044",
+                    "name": "TENG CHOU CHARACTER NIE",
+                    "glyph": "tc.nie",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F1045",
+                    "name": "TENG CHOU CHARACTER MEI",
+                    "glyph": "tc.mei",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F1046",
+                    "name": "TENG CHOU CHARACTER ZHO",
+                    "glyph": "tc.zho",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F1047",
+                    "name": "TENG CHOU CHARACTER HEN",
+                    "glyph": "tc.hen",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F1048",
+                    "name": "TENG CHOU CHARACTER ZHAI",
+                    "glyph": "tc.zhai",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F1049",
+                    "name": "TENG CHOU CHARACTER GWO",
+                    "glyph": "tc.gwo",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F104A",
+                    "name": "TENG CHOU CHARACTER SOU",
+                    "glyph": "tc.sou",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F104B",
+                    "name": "TENG CHOU CHARACTER MAI",
+                    "glyph": "tc.mai",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F104C",
+                    "name": "TENG CHOU CHARACTER BEI",
+                    "glyph": "tc.bei",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F104D",
+                    "name": "TENG CHOU CHARACTER ZHIN",
+                    "glyph": "tc.zhin",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F104E",
+                    "name": "TENG CHOU CHARACTER YO",
+                    "glyph": "tc.yo",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F104F",
+                    "name": "TENG CHOU CHARACTER JEI",
+                    "glyph": "tc.jei",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F1050",
+                    "name": "TENG CHOU CHARACTER CHENG",
+                    "glyph": "tc.cheng",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F1051",
+                    "name": "TENG CHOU CHARACTER JONG",
+                    "glyph": "tc.jong",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F1052",
+                    "name": "TENG CHOU CHARACTER CHIAO",
+                    "glyph": "tc.chiao",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F1053",
+                    "name": "TENG CHOU CHARACTER WA",
+                    "glyph": "tc.wa",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F1054",
+                    "name": "TENG CHOU CHARACTER DAO",
+                    "glyph": "tc.dao",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F1055",
+                    "name": "TENG CHOU CHARACTER KUO",
+                    "glyph": "tc.kuo",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F1056",
+                    "name": "TENG CHOU CHARACTER SHUI",
+                    "glyph": "tc.shui",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F1057",
+                    "name": "TENG CHOU CHARACTER HING",
+                    "glyph": "tc.hing",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F1058",
+                    "name": "TENG CHOU CHARACTER JIE",
+                    "glyph": "tc.jie",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F1059",
+                    "name": "TENG CHOU CHARACTER TEN",
+                    "glyph": "tc.ten",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F105A",
+                    "name": "TENG CHOU CHARACTER YONG",
+                    "glyph": "tc.yong",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F105B",
+                    "name": "TENG CHOU CHARACTER SIN",
+                    "glyph": "tc.sin",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F105C",
+                    "name": "TENG CHOU CHARACTER FAI",
+                    "glyph": "tc.fai",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F105D",
+                    "name": "TENG CHOU CHARACTER TSIE",
+                    "glyph": "tc.tsie",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F105E",
+                    "name": "TENG CHOU CHARACTER RUO",
+                    "glyph": "tc.ruo",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F105F",
+                    "name": "TENG CHOU CHARACTER GAI",
+                    "glyph": "tc.gai",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F1060",
+                    "name": "TENG CHOU CHARACTER TSEN",
+                    "glyph": "tc.tsen",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F1061",
+                    "name": "TENG CHOU CHARACTER HIN",
+                    "glyph": "tc.hin",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F1062",
+                    "name": "TENG CHOU CHARACTER YEI",
+                    "glyph": "tc.yei",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F1063",
+                    "name": "TENG CHOU CHARACTER HAO",
+                    "glyph": "tc.hao",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F1064",
+                    "name": "TENG CHOU CHARACTER SAO",
+                    "glyph": "tc.sao",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F1065",
+                    "name": "TENG CHOU CHARACTER LAN",
+                    "glyph": "tc.lan",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F1066",
+                    "name": "TENG CHOU CHARACTER CHING",
+                    "glyph": "tc.ching",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F1067",
+                    "name": "TENG CHOU CHARACTER LUI",
+                    "glyph": "tc.lui",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F1068",
+                    "name": "TENG CHOU CHARACTER FONG",
+                    "glyph": "tc.fong",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F1069",
+                    "name": "TENG CHOU CHARACTER TSONG",
+                    "glyph": "tc.tsong",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F106A",
+                    "name": "TENG CHOU CHARACTER GA",
+                    "glyph": "tc.ga",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F106B",
+                    "name": "TENG CHOU CHARACTER LIE",
+                    "glyph": "tc.lie",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F106C",
+                    "name": "TENG CHOU CHARACTER BENG",
+                    "glyph": "tc.beng",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F106D",
+                    "name": "TENG CHOU CHARACTER KONG",
+                    "glyph": "tc.kong",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F106E",
+                    "name": "TENG CHOU CHARACTER BIN",
+                    "glyph": "tc.bin",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F106F",
+                    "name": "TENG CHOU CHARACTER JENG",
+                    "glyph": "tc.jeng",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F1070",
+                    "name": "TENG CHOU CHARACTER TING",
+                    "glyph": "tc.ting",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F1071",
+                    "name": "TENG CHOU CHARACTER HONG",
+                    "glyph": "tc.hong",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F1072",
+                    "name": "TENG CHOU CHARACTER NEN",
+                    "glyph": "tc.nen",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F1073",
+                    "name": "TENG CHOU CHARACTER TUO",
+                    "glyph": "tc.tuo",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F1074",
+                    "name": "TENG CHOU CHARACTER SHAI",
+                    "glyph": "tc.shai",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F1075",
+                    "name": "TENG CHOU CHARACTER KUEN",
+                    "glyph": "tc.kuen",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F1076",
+                    "name": "TENG CHOU CHARACTER JO",
+                    "glyph": "tc.jo",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F1077",
+                    "name": "TENG CHOU CHARACTER DAI",
+                    "glyph": "tc.dai",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F1078",
+                    "name": "TENG CHOU CHARACTER LO",
+                    "glyph": "tc.lo",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F1079",
+                    "name": "TENG CHOU CHARACTER KO",
+                    "glyph": "tc.ko",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F107A",
+                    "name": "TENG CHOU CHARACTER CHUI",
+                    "glyph": "tc.chui",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F107B",
+                    "name": "TENG CHOU CHARACTER MUEN",
+                    "glyph": "tc.muen",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F107C",
+                    "name": "TENG CHOU CHARACTER MI",
+                    "glyph": "tc.mi",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F107D",
+                    "name": "TENG CHOU CHARACTER CHAN",
+                    "glyph": "tc.chan",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F107E",
+                    "name": "TENG CHOU CHARACTER SHO",
+                    "glyph": "tc.sho",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F107F",
+                    "name": "TENG CHOU CHARACTER TA",
+                    "glyph": "tc.ta",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F1080",
+                    "name": "TENG CHOU CHARACTER HUI",
+                    "glyph": "tc.hui",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F1081",
+                    "name": "TENG CHOU CHARACTER SA",
+                    "glyph": "tc.sa",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F1082",
+                    "name": "TENG CHOU CHARACTER FOU",
+                    "glyph": "tc.fou",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F1083",
+                    "name": "TENG CHOU CHARACTER MIN",
+                    "glyph": "tc.min",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F1084",
+                    "name": "TENG CHOU CHARACTER LIAO",
+                    "glyph": "tc.liao",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F1085",
+                    "name": "TENG CHOU CHARACTER BOU",
+                    "glyph": "tc.bou",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F1086",
+                    "name": "TENG CHOU CHARACTER JIN",
+                    "glyph": "tc.jin",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F1087",
+                    "name": "TENG CHOU CHARACTER GAN",
+                    "glyph": "tc.gan",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F1088",
+                    "name": "TENG CHOU CHARACTER TONG",
+                    "glyph": "tc.tong",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F1089",
+                    "name": "TENG CHOU CHARACTER ZHENG",
+                    "glyph": "tc.zheng",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F108A",
+                    "name": "TENG CHOU CHARACTER ZHUEN",
+                    "glyph": "tc.zhuen",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F108B",
+                    "name": "TENG CHOU CHARACTER ZHONG",
+                    "glyph": "tc.zhong",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F108C",
+                    "name": "TENG CHOU CHARACTER SEN",
+                    "glyph": "tc.sen",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F108D",
+                    "name": "TENG CHOU CHARACTER KIN",
+                    "glyph": "tc.kin",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F108E",
+                    "name": "TENG CHOU CHARACTER LING",
+                    "glyph": "tc.ling",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F108F",
+                    "name": "TENG CHOU CHARACTER GWOU",
+                    "glyph": "tc.gwou",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F1090",
+                    "name": "TENG CHOU CHARACTER RAI",
+                    "glyph": "tc.rai",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F1091",
+                    "name": "TENG CHOU CHARACTER BAN",
+                    "glyph": "tc.ban",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F1092",
+                    "name": "TENG CHOU CHARACTER SHEN",
+                    "glyph": "tc.shen",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F1093",
+                    "name": "TENG CHOU CHARACTER TSI",
+                    "glyph": "tc.tsi",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F1094",
+                    "name": "TENG CHOU CHARACTER LEN",
+                    "glyph": "tc.len",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F1095",
+                    "name": "TENG CHOU CHARACTER TAO",
+                    "glyph": "tc.tao",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F1096",
+                    "name": "TENG CHOU CHARACTER FEI",
+                    "glyph": "tc.fei",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F1097",
+                    "name": "TENG CHOU CHARACTER JOU",
+                    "glyph": "tc.jou",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F1098",
+                    "name": "TENG CHOU CHARACTER TAI",
+                    "glyph": "tc.tai",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F1099",
+                    "name": "TENG CHOU CHARACTER MO",
+                    "glyph": "tc.mo",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F109A",
+                    "name": "TENG CHOU CHARACTER GOU",
+                    "glyph": "tc.gou",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F109B",
+                    "name": "TENG CHOU CHARACTER KENG",
+                    "glyph": "tc.keng",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F109C",
+                    "name": "TENG CHOU CHARACTER CHUO",
+                    "glyph": "tc.chuo",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F109D",
+                    "name": "TENG CHOU CHARACTER TSAN",
+                    "glyph": "tc.tsan",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F109E",
+                    "name": "TENG CHOU CHARACTER CHONG",
+                    "glyph": "tc.chong",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F109F",
+                    "name": "TENG CHOU CHARACTER BO",
+                    "glyph": "tc.bo",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F10A0",
+                    "name": "TENG CHOU CHARACTER MONG",
+                    "glyph": "tc.mong",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F10A1",
+                    "name": "TENG CHOU CHARACTER JAO",
+                    "glyph": "tc.jao",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F10A2",
+                    "name": "TENG CHOU CHARACTER KUI",
+                    "glyph": "tc.kui",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F10A3",
+                    "name": "TENG CHOU CHARACTER JAN",
+                    "glyph": "tc.jan",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F10A4",
+                    "name": "TENG CHOU CHARACTER NA",
+                    "glyph": "tc.na",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F10A5",
+                    "name": "TENG CHOU CHARACTER TO",
+                    "glyph": "tc.to",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F10A6",
+                    "name": "TENG CHOU CHARACTER DONG",
+                    "glyph": "tc.dong",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F10A7",
+                    "name": "TENG CHOU CHARACTER NIN",
+                    "glyph": "tc.nin",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F10A8",
+                    "name": "TENG CHOU CHARACTER DEI",
+                    "glyph": "tc.dei",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F10A9",
+                    "name": "TENG CHOU CHARACTER KAI",
+                    "glyph": "tc.kai",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F10AA",
+                    "name": "TENG CHOU CHARACTER ROU",
+                    "glyph": "tc.rou",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F10AB",
+                    "name": "TENG CHOU CHARACTER NAO",
+                    "glyph": "tc.nao",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F10AC",
+                    "name": "TENG CHOU CHARACTER ZHAN",
+                    "glyph": "tc.zhan",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F10AD",
+                    "name": "TENG CHOU CHARACTER DUI",
+                    "glyph": "tc.dui",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F10AE",
+                    "name": "TENG CHOU CHARACTER SHAO",
+                    "glyph": "tc.shao",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F10AF",
+                    "name": "TENG CHOU CHARACTER TSIAO",
+                    "glyph": "tc.tsiao",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F10B0",
+                    "name": "TENG CHOU CHARACTER YA",
+                    "glyph": "tc.ya",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F10B1",
+                    "name": "TENG CHOU CHARACTER TSUEN",
+                    "glyph": "tc.tsuen",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F10B2",
+                    "name": "TENG CHOU CHARACTER TSING",
+                    "glyph": "tc.tsing",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F10B3",
+                    "name": "TENG CHOU CHARACTER SAI",
+                    "glyph": "tc.sai",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F10B4",
+                    "name": "TENG CHOU CHARACTER SHAN",
+                    "glyph": "tc.shan",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F10B5",
+                    "name": "TENG CHOU CHARACTER FEN",
+                    "glyph": "tc.fen",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F10B6",
+                    "name": "TENG CHOU CHARACTER TUEN",
+                    "glyph": "tc.tuen",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F10B7",
+                    "name": "TENG CHOU CHARACTER RUEN",
+                    "glyph": "tc.ruen",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F10B8",
+                    "name": "TENG CHOU CHARACTER DEN",
+                    "glyph": "tc.den",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F10B9",
+                    "name": "TENG CHOU CHARACTER KI",
+                    "glyph": "tc.ki",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F10BA",
+                    "name": "TENG CHOU CHARACTER YUEN",
+                    "glyph": "tc.yuen",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F10BB",
+                    "name": "TENG CHOU CHARACTER GWEN",
+                    "glyph": "tc.gwen",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F10BC",
+                    "name": "TENG CHOU CHARACTER HAI",
+                    "glyph": "tc.hai",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F10BD",
+                    "name": "TENG CHOU CHARACTER RA",
+                    "glyph": "tc.ra",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F10BE",
+                    "name": "TENG CHOU CHARACTER ZHING",
+                    "glyph": "tc.zhing",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F10BF",
+                    "name": "TENG CHOU CHARACTER SHIN",
+                    "glyph": "tc.shin",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F10C0",
+                    "name": "TENG CHOU CHARACTER KA",
+                    "glyph": "tc.ka",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F10C1",
+                    "name": "TENG CHOU CHARACTER SENG",
+                    "glyph": "tc.seng",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F10C2",
+                    "name": "TENG CHOU CHARACTER CHAO",
+                    "glyph": "tc.chao",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F10C3",
+                    "name": "TENG CHOU CHARACTER LUEN",
+                    "glyph": "tc.luen",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F10C4",
+                    "name": "TENG CHOU CHARACTER SI",
+                    "glyph": "tc.si",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F10C5",
+                    "name": "TENG CHOU CHARACTER DO",
+                    "glyph": "tc.do",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F10C6",
+                    "name": "TENG CHOU CHARACTER RI",
+                    "glyph": "tc.ri",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F10C7",
+                    "name": "TENG CHOU CHARACTER MA",
+                    "glyph": "tc.ma",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F10C8",
+                    "name": "TENG CHOU CHARACTER DA",
+                    "glyph": "tc.da",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F10C9",
+                    "name": "TENG CHOU CHARACTER REI",
+                    "glyph": "tc.rei",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F10CA",
+                    "name": "TENG CHOU CHARACTER DI",
+                    "glyph": "tc.di",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F10CB",
+                    "name": "TENG CHOU CHARACTER TEI",
+                    "glyph": "tc.tei",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F10CC",
+                    "name": "TENG CHOU CHARACTER GO",
+                    "glyph": "tc.go",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F10CD",
+                    "name": "TENG CHOU CHARACTER TI",
+                    "glyph": "tc.ti",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F10CE",
+                    "name": "TENG CHOU CHARACTER RO",
+                    "glyph": "tc.ro",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F10CF",
+                    "name": "TENG CHOU CHARACTER NI",
+                    "glyph": "tc.ni",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F10D0",
+                    "name": "TENG CHOU CHARACTER BA",
+                    "glyph": "tc.ba",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F10D1",
+                    "name": "TENG CHOU CHARACTER LI",
+                    "glyph": "tc.li",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F10D2",
+                    "name": "TENG CHOU CHARACTER NO",
+                    "glyph": "tc.no",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F10D3",
+                    "name": "TENG CHOU CHARACTER RAN",
+                    "glyph": "tc.ran",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F10D4",
+                    "name": "TENG CHOU CHARACTER SHI",
+                    "glyph": "tc.shi",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F10D5",
+                    "name": "TENG CHOU TALLY ONE",
+                    "glyph": "tc.tally1",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F10D6",
+                    "name": "TENG CHOU TALLY TWO",
+                    "glyph": "tc.tally2",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F10D7",
+                    "name": "TENG CHOU TALLY THREE",
+                    "glyph": "tc.tally3",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F10D8",
+                    "name": "TENG CHOU TALLY FOUR",
+                    "glyph": "tc.tally4",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F10D9",
+                    "name": "TENG CHOU TALLY FIVE",
+                    "glyph": "tc.tally5",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F2000",
+                    "name": "TENG CHOU SYLLABLE A",
+                    "glyph": "js.a",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F2001",
+                    "name": "TENG CHOU SYLLABLE I",
+                    "glyph": "js.i",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F2002",
+                    "name": "TENG CHOU SYLLABLE U",
+                    "glyph": "js.u",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F2003",
+                    "name": "TENG CHOU SYLLABLE E",
+                    "glyph": "js.e",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F2004",
+                    "name": "TENG CHOU SYLLABLE O",
+                    "glyph": "js.o",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F2005",
+                    "name": "TENG CHOU SYLLABLE KA",
+                    "glyph": "js.ka",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F2006",
+                    "name": "TENG CHOU SYLLABLE KI",
+                    "glyph": "js.ki",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F2007",
+                    "name": "TENG CHOU SYLLABLE KU",
+                    "glyph": "js.ku",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F2008",
+                    "name": "TENG CHOU SYLLABLE KE",
+                    "glyph": "js.ke",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F2009",
+                    "name": "TENG CHOU SYLLABLE KO",
+                    "glyph": "js.ko",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F200A",
+                    "name": "TENG CHOU SYLLABLE GA",
+                    "glyph": "js.ga",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F200B",
+                    "name": "TENG CHOU SYLLABLE GI",
+                    "glyph": "js.gi",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F200C",
+                    "name": "TENG CHOU SYLLABLE GU",
+                    "glyph": "js.gu",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F200D",
+                    "name": "TENG CHOU SYLLABLE GE",
+                    "glyph": "js.ge",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F200E",
+                    "name": "TENG CHOU SYLLABLE GO",
+                    "glyph": "js.go",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F200F",
+                    "name": "TENG CHOU SYLLABLE SA",
+                    "glyph": "js.sa",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F2010",
+                    "name": "TENG CHOU SYLLABLE SI",
+                    "glyph": "js.si",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F2011",
+                    "name": "TENG CHOU SYLLABLE SU",
+                    "glyph": "js.su",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F2012",
+                    "name": "TENG CHOU SYLLABLE SE",
+                    "glyph": "js.se",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F2013",
+                    "name": "TENG CHOU SYLLABLE SO",
+                    "glyph": "js.so",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F2014",
+                    "name": "TENG CHOU SYLLABLE SHA",
+                    "glyph": "js.sha",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F2015",
+                    "name": "TENG CHOU SYLLABLE SHI",
+                    "glyph": "js.shi",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F2016",
+                    "name": "TENG CHOU SYLLABLE SHU",
+                    "glyph": "js.shu",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F2017",
+                    "name": "TENG CHOU SYLLABLE SHE",
+                    "glyph": "js.she",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F2018",
+                    "name": "TENG CHOU SYLLABLE SHO",
+                    "glyph": "js.sho",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F2019",
+                    "name": "TENG CHOU SYLLABLE ZA",
+                    "glyph": "js.za",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F201A",
+                    "name": "TENG CHOU SYLLABLE ZI",
+                    "glyph": "js.zi",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F201B",
+                    "name": "TENG CHOU SYLLABLE ZU",
+                    "glyph": "js.zu",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F201C",
+                    "name": "TENG CHOU SYLLABLE ZE",
+                    "glyph": "js.ze",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F201D",
+                    "name": "TENG CHOU SYLLABLE ZO",
+                    "glyph": "js.zo",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F201E",
+                    "name": "TENG CHOU SYLLABLE JA",
+                    "glyph": "js.ja",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F201F",
+                    "name": "TENG CHOU SYLLABLE JI",
+                    "glyph": "js.ji",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F2020",
+                    "name": "TENG CHOU SYLLABLE JU",
+                    "glyph": "js.ju",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F2021",
+                    "name": "TENG CHOU SYLLABLE JE",
+                    "glyph": "js.je",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F2022",
+                    "name": "TENG CHOU SYLLABLE JO",
+                    "glyph": "js.jo",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F2023",
+                    "name": "TENG CHOU SYLLABLE TA",
+                    "glyph": "js.ta",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F2024",
+                    "name": "TENG CHOU SYLLABLE TI",
+                    "glyph": "js.ti",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F2025",
+                    "name": "TENG CHOU SYLLABLE TE",
+                    "glyph": "js.te",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F2026",
+                    "name": "TENG CHOU SYLLABLE TO",
+                    "glyph": "js.to",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F2027",
+                    "name": "TENG CHOU SYLLABLE TSA",
+                    "glyph": "js.tsa",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F2028",
+                    "name": "TENG CHOU SYLLABLE TSU",
+                    "glyph": "js.tsu",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F2029",
+                    "name": "TENG CHOU SYLLABLE TSE",
+                    "glyph": "js.tse",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F202A",
+                    "name": "TENG CHOU SYLLABLE TSO",
+                    "glyph": "js.tso",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F202B",
+                    "name": "TENG CHOU SYLLABLE CHA",
+                    "glyph": "js.cha",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F202C",
+                    "name": "TENG CHOU SYLLABLE CHI",
+                    "glyph": "js.chi",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F202D",
+                    "name": "TENG CHOU SYLLABLE CHU",
+                    "glyph": "js.chu",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F202E",
+                    "name": "TENG CHOU SYLLABLE CHE",
+                    "glyph": "js.che",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F202F",
+                    "name": "TENG CHOU SYLLABLE CHO",
+                    "glyph": "js.cho",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F2030",
+                    "name": "TENG CHOU SYLLABLE DA",
+                    "glyph": "js.da",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F2031",
+                    "name": "TENG CHOU SYLLABLE DI",
+                    "glyph": "js.di",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F2032",
+                    "name": "TENG CHOU SYLLABLE DU",
+                    "glyph": "js.du",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F2033",
+                    "name": "TENG CHOU SYLLABLE DE",
+                    "glyph": "js.de",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F2034",
+                    "name": "TENG CHOU SYLLABLE DO",
+                    "glyph": "js.do",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F2035",
+                    "name": "TENG CHOU SYLLABLE NA",
+                    "glyph": "js.na",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F2036",
+                    "name": "TENG CHOU SYLLABLE NI",
+                    "glyph": "js.ni",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F2037",
+                    "name": "TENG CHOU SYLLABLE NU",
+                    "glyph": "js.nu",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F2038",
+                    "name": "TENG CHOU SYLLABLE NE",
+                    "glyph": "js.ne",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F2039",
+                    "name": "TENG CHOU SYLLABLE NO",
+                    "glyph": "js.no",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F203A",
+                    "name": "TENG CHOU SYLLABLE HA",
+                    "glyph": "js.ha",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F203B",
+                    "name": "TENG CHOU SYLLABLE HI",
+                    "glyph": "js.hi",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F203C",
+                    "name": "TENG CHOU SYLLABLE HE",
+                    "glyph": "js.he",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F203D",
+                    "name": "TENG CHOU SYLLABLE HO",
+                    "glyph": "js.ho",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F203E",
+                    "name": "TENG CHOU SYLLABLE FA",
+                    "glyph": "js.fa",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F203F",
+                    "name": "TENG CHOU SYLLABLE FU",
+                    "glyph": "js.fu",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F2040",
+                    "name": "TENG CHOU SYLLABLE BA",
+                    "glyph": "js.ba",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F2041",
+                    "name": "TENG CHOU SYLLABLE BI",
+                    "glyph": "js.bi",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F2042",
+                    "name": "TENG CHOU SYLLABLE BU",
+                    "glyph": "js.bu",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F2043",
+                    "name": "TENG CHOU SYLLABLE BE",
+                    "glyph": "js.be",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F2044",
+                    "name": "TENG CHOU SYLLABLE BO",
+                    "glyph": "js.bo",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F2045",
+                    "name": "TENG CHOU SYLLABLE MA",
+                    "glyph": "js.ma",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F2046",
+                    "name": "TENG CHOU SYLLABLE MI",
+                    "glyph": "js.mi",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F2047",
+                    "name": "TENG CHOU SYLLABLE MU",
+                    "glyph": "js.mu",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F2048",
+                    "name": "TENG CHOU SYLLABLE ME",
+                    "glyph": "js.me",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F2049",
+                    "name": "TENG CHOU SYLLABLE MO",
+                    "glyph": "js.mo",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F204A",
+                    "name": "TENG CHOU SYLLABLE YA",
+                    "glyph": "js.ya",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F204B",
+                    "name": "TENG CHOU SYLLABLE YU",
+                    "glyph": "js.yu",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F204C",
+                    "name": "TENG CHOU SYLLABLE YO",
+                    "glyph": "js.yo",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F204D",
+                    "name": "TENG CHOU SYLLABLE RA",
+                    "glyph": "js.ra",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F204E",
+                    "name": "TENG CHOU SYLLABLE RI",
+                    "glyph": "js.ri",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F204F",
+                    "name": "TENG CHOU SYLLABLE RU",
+                    "glyph": "js.ru",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F2050",
+                    "name": "TENG CHOU SYLLABLE RE",
+                    "glyph": "js.re",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F2051",
+                    "name": "TENG CHOU SYLLABLE RO",
+                    "glyph": "js.ro",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F2052",
+                    "name": "TENG CHOU SYLLABLE WA",
+                    "glyph": "js.wa",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F2053",
+                    "name": "TENG CHOU SYLLABLE WU",
+                    "glyph": "js.wu",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F2054",
+                    "name": "TENG CHOU SYLLABLE WE",
+                    "glyph": "js.we",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F2055",
+                    "name": "TENG CHOU SYLLABLE WO",
+                    "glyph": "js.wo",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F2056",
+                    "name": "TENG CHOU SYLLABLE N",
+                    "glyph": "js.n",
+                    "kind": "syllable"
+                }
+            ]
+        },
+        {
             "name": "Thuravark Carved",
             "family": "Thuravark Carved",
             "class": "hl-thuravark-carved",

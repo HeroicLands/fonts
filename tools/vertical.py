@@ -28,6 +28,18 @@ font fails when
 
 Each face has one set of typical letters for each of the two heights; a script with
 a single height uses one set for both.
+
+A face written in columns (``COLUMNS``: Teng Chou) also carries vertical metrics, and
+fails when
+
+- it has no ``vhea`` or ``vmtx`` table;
+- its ``vhea`` ascent and descent together are not one em, or a character's or
+  sign's vertical advance is not exactly one em, so a column of N characters
+  would not be N em tall;
+- its vertical origin, the top of its ink plus its top side bearing, differs from
+  the other glyphs', so the characters would not stand evenly down a column;
+- its ink is not centred, within 2 units, on its horizontal advance, which is the
+  column's axis, or its ink leaves the square it stands in.
 """
 
 import json
@@ -57,6 +69,7 @@ SCALES = {
     "ThuravarkCarved": 0.99,
     "QalezuHand": 0.99,
     "KhelathiZethuGlyphs": 0.77,
+    "TengChou": 0.81,
 }
 
 CONSONANTS = (
@@ -78,6 +91,7 @@ FACES = {
     "ThuravarkCarved": {"x": THURAVARK, "cap": THURAVARK, "target": "cap"},
     "QalezuHand": {"x": QALEZU, "cap": QALEZU, "target": "x"},
     "KhelathiZethuGlyphs": {"x": None, "cap": None, "target": "cap"},
+    "TengChou": {"x": "characters", "cap": "characters", "target": "cap"},
 }
 
 # Glyphs allowed to leave the band, by face: the first part of the glyph name, before
@@ -115,8 +129,18 @@ def median_height(ink: dict[str, tuple], names: list[str]) -> float:
     return statistics.median(found) if found else 0.0
 
 
+def teng_chou_characters() -> list[str]:
+    """Teng Chou's characters, which fill the square; the syllabary sits smaller."""
+    sys.path.insert(0, str(ROOT / "tools"))
+    import codepoint_order
+
+    return [r["glyph"] for r in codepoint_order.ltr_table("TengChou-Regular") if r["kind"] == "character"]
+
+
 def typical(face: str, kind: str) -> list[str]:
     names = FACES[face][kind]
+    if names == "characters":
+        return teng_chou_characters()
     return standing_signs() if names is None else names
 
 
@@ -185,7 +209,52 @@ def check(path: Path) -> list[str]:
             err(f"{name} reaches y {high:g}, above the ascent {ASCENT}")
         if low < DESCENT:
             err(f"{name} reaches y {low:g}, below the descent {DESCENT}")
+    problems += column_problems(path, font)
     return problems
+
+
+# Faces written in vertical columns, with the prefixes of the glyphs that stand in them.
+COLUMNS = {"TengChou": ("tc.", "js.")}
+
+
+def column_problems(path: Path, font: TTFont) -> list[str]:
+    """What is wrong with the vertical metrics of a face written in columns."""
+    face = stem(path)
+    if face not in COLUMNS:
+        return []
+    if "vhea" not in font or "vmtx" not in font:
+        return [f"{path}: error: a face written in columns has no vhea or vmtx table"]
+    out = []
+    vhea, vmtx, glyf, hmtx = font["vhea"], font["vmtx"], font["glyf"], font["hmtx"]
+    ink = bounds(font)
+    upem = font["head"].unitsPerEm
+    square = vhea.ascent - vhea.descent
+    if square != upem:
+        out.append(f"{path}: error: the vhea ascent and descent span {square} units, not the em, {upem}")
+    origins = {}
+    for name in font.getGlyphOrder():
+        if not name.startswith(COLUMNS[face]):
+            continue
+        g = glyf[name]
+        height, tsb = vmtx[name]
+        if height != upem:
+            out.append(f"{path}: error: {name} has the vertical advance {height}, not one em, {upem}")
+        if not g.numberOfContours:
+            continue
+        origins[name] = g.yMax + tsb
+        width = hmtx[name][0]
+        left, low, right, _ = ink[name]
+        if abs(left - (width - right)) > 2:
+            out.append(f"{path}: error: {name} is not centred on its advance: {left:.0f} left, {width - right:.0f} right")
+        top = g.yMax + tsb
+        if low < top - upem:
+            out.append(f"{path}: error: {name} reaches below the square it stands in")
+    if origins:
+        common = statistics.mode(origins.values())
+        for name, origin in origins.items():
+            if origin != common:
+                out.append(f"{path}: error: {name} has its vertical origin at {origin}, not {common}")
+    return out
 
 
 def main():

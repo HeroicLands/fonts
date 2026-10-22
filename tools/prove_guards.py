@@ -13,6 +13,13 @@ quadrat guard (tools/khelathi-zethu-glyphs/quadrats.py) is proved four times: wi
 lookup that sums a row's widths taken out of the features, with the GPOS table removed,
 with the vertical joiner in the font's own block unmapped, and with the lookup that lays
 the cord along a cartouche taken out.
+Teng Chou is broken three times: its lexicon guard (tools/teng-chou/guard.py) and its font
+check (tools/teng-chou/check_font.py) on the font with the character for teng removed from
+its cmap, and the font check on the font without its vertical metrics; and the vertical
+guard is proved on its columns with one character's vertical advance off the em, and with
+every vertical advance 825 units, even but not one em. Its
+stroke-mix guard (tools/teng-chou/stroke_mix.py) is proved on its data with water written in
+six dabs, and with the syllabary sign ka kept to one stroke.
 Semaron Kuriale is broken twice: with the GSUB table removed, so that no
 th, long vowel or spelled-out ch applies, and with the GPOS table removed, so that no catch stands on its
 base. The box guard (tools/notdef_box.py) is proved on every font twice: with the question
@@ -142,6 +149,44 @@ def without_codepoint(font: Path, out: Path) -> Path:
     f = TTFont(str(font))
     for table in f["cmap"].tables:
         table.cmap.pop(int(first[2:], 16), None)
+    f.save(str(out))
+    return out
+
+
+def without_vmtx(font: Path, out: Path) -> Path:
+    """The font without its vertical metrics, so it no longer stands in a column."""
+    f = TTFont(str(font))
+    del f["vmtx"]
+    del f["vhea"]
+    f.save(str(out))
+    return out
+
+
+def off_column(font: Path, out: Path) -> Path:
+    """One character's vertical advance one unit longer than the em."""
+    f = TTFont(str(font))
+    height, tsb = f["vmtx"]["tc.teng"]
+    f["vmtx"]["tc.teng"] = (height + 1, tsb)
+    f.save(str(out))
+    return out
+
+
+def column_825(font: Path, out: Path) -> Path:
+    """Every vertical advance and the vhea span 825 units: even columns, but not one em."""
+    f = TTFont(str(font))
+    for name, (height, tsb) in list(f["vmtx"].metrics.items()):
+        f["vmtx"][name] = (825, tsb - 88)
+    f["vhea"].ascent, f["vhea"].descent = 412, -413
+    f.save(str(out))
+    return out
+
+
+def without_teng(font: Path, out: Path) -> Path:
+    """The character for teng, heaven, removed from the cmap."""
+    f = TTFont(str(font))
+    for table in f["cmap"].tables:
+        for code in [c for c, g in table.cmap.items() if g == "tc.teng"]:
+            del table.cmap[code]
     f.save(str(out))
     return out
 
@@ -499,6 +544,43 @@ def prove_paint() -> int:
     return status
 
 
+STROKE_MIX_PROOF = """
+import sys
+sys.path.insert(0, "tools/teng-chou")
+import characters, components, stroke_mix, syllabary
+good = stroke_mix.run()
+water = components.COMPONENTS["water"].forms["S"]
+water.strokes = [components.Stroke.parse(f"dot {x} {y} l=100") for x, y in
+                 ((200, 800), (500, 900), (700, 800), (300, 500), (600, 450), (450, 250))]
+dabbed = stroke_mix.run([characters.BY_MORPHEME["shou"]], [])
+sign = syllabary.BY_SYLLABLE["ka"]
+sign.picks = (0,)
+speck = stroke_mix.run([], [sign])
+print(len(good), len(dabbed), len(speck))
+"""
+
+
+def prove_stroke_mix() -> int:
+    """The stroke-mix guard passes the data and fails water written in dabs, and a
+    syllabary sign kept to one stroke. It runs in its own interpreter, since the Teng
+    Chou modules share names with other faces' tools."""
+    import subprocess
+
+    result = subprocess.run([sys.executable, "-c", STROKE_MIX_PROOF], cwd=ROOT, capture_output=True, text=True)
+    try:
+        good, dabbed, speck = map(int, result.stdout.split())
+    except ValueError:
+        print(result.stderr)
+        print("tools/teng-chou/stroke_mix.py: error: the proof did not run")
+        return 1
+    print(f"Teng Chou stroke mix: {good} failures on the data, {dabbed} with water written in dabs, "
+          f"{speck} with the sign ka kept to one stroke")
+    if good or not dabbed or not speck:
+        print("tools/teng-chou/stroke_mix.py: error: the guard must pass the data and fail the altered data")
+        return 1
+    return 0
+
+
 def main():
     pirzath = load("pirzath_guard", ROOT / "tools" / "pirzath" / "guard.py")
     hand = load("pirzath_hand_guard", ROOT / "tools" / "pirzath-hand" / "guard.py")
@@ -507,6 +589,9 @@ def main():
     zethu = load("zethu_guard", ROOT / "tools" / "khelathi-zethu-glyphs" / "guard.py")
     quadrats = load("zethu_quadrats", ROOT / "tools" / "khelathi-zethu-glyphs" / "quadrats.py")
     semaron = load("semaron_guard", ROOT / "tools" / "semaron-kuriale" / "guard.py")
+    teng_chou = load("teng_chou_guard", ROOT / "tools" / "teng-chou" / "guard.py")
+    teng_chou_check = load("teng_chou_check", ROOT / "tools" / "teng-chou" / "check_font.py")
+    teng_chou_font = ROOT / "fonts" / "TengChou-Regular.ttf"
     zethu_font = ROOT / "fonts" / "KhelathiZethuGlyphs-Regular.ttf"
     cases = [
         (
@@ -551,6 +636,13 @@ def main():
             without_gpos,
             "without GPOS",
         ),
+        ("Teng Chou", teng_chou_font, lambda p: teng_chou.run(p, []), without_teng, "without the character teng"),
+        ("Teng Chou", teng_chou_font, teng_chou_check.check, without_teng, "without the character teng"),
+        ("Teng Chou", teng_chou_font, teng_chou_check.check, without_vmtx, "without vertical metrics"),
+        ("Teng Chou columns", teng_chou_font, load("vertical_columns", ROOT / "tools" / "vertical.py").check, off_column,
+         "with one character's vertical advance off the em"),
+        ("Teng Chou columns", teng_chou_font, load("vertical_em", ROOT / "tools" / "vertical.py").check, column_825,
+         "with every vertical advance 825 units"),
         ("Khelathi Zethu Glyphs", zethu_font, zethu.run, without_sign, "without the 11-001 sign"),
         ("Khelathi Zethu Glyphs", zethu_font, zethu.run, stripped, "without GSUB"),
         ("Khelathi Zethu Glyphs quadrats", zethu_font, quadrats.run, without_lookup("qxf0.p"), "without the lookup that sums a row's widths"),
@@ -594,6 +686,7 @@ def main():
     status |= prove_keyboards()
     status |= prove_charts()
     status |= prove_paint()
+    status |= prove_stroke_mix()
     pirzath_font = ROOT / "fonts" / "PirzathCarved-Regular.ttf"
     with tempfile.TemporaryDirectory() as tmp:
         good, bad = notdef.check(pirzath_font), notdef.check(stripped(pirzath_font, Path(tmp) / pirzath_font.name))

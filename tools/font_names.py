@@ -43,6 +43,7 @@ FAMILIES = {
     "QalezuHand-Regular.ttf": "Qalezu Hand",
     "KhelathiZethuGlyphs-Regular.ttf": "Khelathi Zethu Glyphs",
     "SemaronKuriale-Regular.ttf": "Semaron Kuriale",
+    "TengChou-Regular.ttf": "Teng Chou",
 }
 
 WINDOWS = (3, 1, 0x409)
