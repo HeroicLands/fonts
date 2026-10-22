@@ -1,5 +1,30 @@
 # @heroiclands/fonts
 
+## 1.0.0
+
+### Major Changes
+
+- The fonts reach their first stable release. Within a major version a character keeps its code point, so text typed in these fonts keeps its meaning across updates.
+
+### Minor Changes
+
+- **Helonika Book** is a new font for the Helónika, the eastern alphabet of Helonic, Bizarian and Bethuan: upright geometric capitals over a round, flowing book minuscule.
+- It has its own digits, the raised dot that ends a sentence, and an accent that sits over its vowel.
+- The HL Helónika keyboard layout types it by sound on macOS, Windows, Linux and Emacs.
+- **Vedyakshara Classical** is a new font for the Vedyari syllabary: every sign hangs from a headline, with half forms, fused clusters, final forms and vowel signs drawn as the text is typed.
+- The HL Vedyakshara keyboard layout types it by sound on macOS, Windows, Linux and Emacs.
+
+### Patch Changes
+
+- Every keyboard layout has a printable cheatsheet: a picture of the keyboard showing the character each key types plain, with Shift, with Option (AltGr) and with both, and a table of each key's glyph, code points and name.
+- The README walks through downloading a font, installing it and each keyboard layout on macOS, Windows and Linux, and using the fonts in Word, LibreOffice and Pages.
+- Teng Chou and Khelathi Zethu Glyphs, which have no keyboard, are explained with how to insert their characters by code point.
+- The README shows a sample of every font.
+- Thuravark Carved writes the Tharavarkon, imperial Vylaria's carved recension, with staves for the diphthongs _ai_, _au_ and _oi_.
+- A pair of crown marks cuts a frame of straight grooves around the name of a god, a founder or an emperor.
+- Bound runes set a common pair of staves on one stem; they sit behind the stylistic set `ss01`, which the class `hl-thuravark-carved-bound` turns on, so plain Thuravark text is unchanged.
+- A Veldikko keyboard layout, HL Veldikko, types the Sinale hand by sound on macOS, Windows, Linux and in Emacs, with keys for the carrier, the long sign, the doubling bar, the rise, the fall and the emphasis.
+
 ## 0.2.0
 
 ### Minor Changes
