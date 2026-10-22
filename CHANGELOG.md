@@ -1,5 +1,18 @@
 # @heroiclands/fonts
 
+## 0.2.0
+
+### Minor Changes
+
+- Typing roman text in a script font no longer converts it: each script font draws only its own characters, and every other character, Latin included, prints the box.
+- Roman text is written in a script through thalorna's mapping notes, as a passage marked with a mapping is, or typed with the keyboard layouts.
+- Qalezu Hand draws a catch before a sign as that sign's catch-before form from the two characters, so the catch-before forms no longer have characters of their own.
+
+### Patch Changes
+
+- The Semaron, Pirzath, Thuravark and Qalezu keyboards type the letters j, q, v and ë wherever the script spells them: q and ë in Semaron and Thuravark, ë in Pirzath, and j and v in Qalezu.
+- Every release offers each font to download from GitHub, as TrueType and WOFF2.
+
 ## 0.1.5
 
 ### Patch Changes
