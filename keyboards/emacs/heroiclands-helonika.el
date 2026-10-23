@@ -21,13 +21,24 @@ does not write types nothing. The characters of markup type themselves, and a
 backslash is \\\\. Option has no Emacs key: Option+x is \\ and
 then the key that x types, so Option+t (th) is \\t and Option+Shift+t (Th) is \\T.
 Register-mark is \\R.
+Kh letter is \\q.
+Kh letter is \\Q.
+Zh letter is \\j.
+Zh letter is \\J.
+Long a is \\v.
+Long a is \\V.
+Long i is \\`.
+Long i is \\~.
+Long u is c.
+Long u is C.
+Accent is \\M.
 The cheatsheet keyboards/index.md lists every key."
  nil t nil nil nil nil nil nil nil nil t)
 
 (quail-define-rules
  ("\\" [""])
- ("\\`" [""])
- ("\\~" [""])
+ ("\\`" #xF0351)
+ ("\\~" #xF0321)
  ("1" #xF0361)
  ("!" [""])
  ("\\1" ["\U000F0330\U000F0330"])
@@ -73,8 +84,8 @@ The cheatsheet keyboards/index.md lists every key."
  ("\\+" ["\U000F0315\U000F033E"])
  ("q" #xF033A)
  ("Q" #xF030A)
- ("\\q" [""])
- ("\\Q" [""])
+ ("\\q" #xF0348)
+ ("\\Q" #xF0318)
  ("w" #xF0345)
  ("W" #xF0315)
  ("\\w" [""])
@@ -143,8 +154,8 @@ The cheatsheet keyboards/index.md lists every key."
  ("\\H" ["\U000F0307\U000F033B"])
  ("j" #xF0339)
  ("J" #xF0309)
- ("\\j" [""])
- ("\\J" [""])
+ ("\\j" #xF0349)
+ ("\\J" #xF0319)
  ("k" #xF033A)
  ("K" #xF030A)
  ("\\k" ["\U000F033A\U000F0337"])
@@ -168,14 +179,14 @@ The cheatsheet keyboards/index.md lists every key."
  ("X" [""])
  ("\\x" ["\U000F0343\U000F0342"])
  ("\\X" ["\U000F0313\U000F0342"])
- ("c" [""])
- ("C" [""])
+ ("c" #xF0352)
+ ("C" #xF0322)
  ("\\c" ["\U000F0343\U000F0342\U000F0337"])
  ("\\C" ["\U000F0313\U000F0342\U000F0337"])
  ("v" #xF0346)
  ("V" #xF0316)
- ("\\v" [""])
- ("\\V" [""])
+ ("\\v" #xF0350)
+ ("\\V" #xF0320)
  ("b" #xF0331)
  ("B" #xF0301)
  ("\\b" ["\U000F0331\U000F0337"])
@@ -187,7 +198,7 @@ The cheatsheet keyboards/index.md lists every key."
  ("m" #xF033C)
  ("M" #xF030C)
  ("\\m" [""])
- ("\\M" [""])
+ ("\\M" #xF0378)
  ("," [""])
  ("<" [""])
  ("\\," #xF0338)

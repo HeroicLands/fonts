@@ -50,7 +50,11 @@ FACES = {
     "qalezu-hand": "qalezu",
     "vedyakshara-classical": "vedyakshara",
     "helonika-book": "helonika",
+    "helonika-bizarian": "bizarian",
+    "helonika-bethuan": "bethuan",
 }
+# A cache key that is a face written by another tongue's mapping note: the face it is drawn in.
+DRAWN_IN = {"helonika-bizarian": "helonika-book", "helonika-bethuan": "helonika-book"}
 
 
 class Mapping:
@@ -154,6 +158,8 @@ def wanted() -> dict[str, list[str]]:
         "qalezu-hand": qalezu.fixture_texts(),
         "vedyakshara-classical": vedyakshara.fixture_texts() + lines._vedyakshara_texts(),
         "helonika-book": helonika.fixture_texts() + lines._helonika_texts(),
+        "helonika-bizarian": helonika.fixture_texts("bizarian"),
+        "helonika-bethuan": helonika.fixture_texts("bethuan"),
     }
 
 
@@ -164,7 +170,7 @@ def build(thalorna: Path, notes: dict[str, Path] | None = None) -> dict:
     faces = {}
     for face, texts in wanted().items():
         texts = sorted(set(texts))
-        m = Mapping(FACES[face], thalorna=thalorna, note=notes.get(FACES[face]), face=face)
+        m = Mapping(FACES[face], thalorna=thalorna, note=notes.get(FACES[face]), face=DRAWN_IN.get(face, face))
         faces[face] = dict(zip(texts, m.records(texts)))
     source = {face: f"{NOTES}/{script.capitalize()}_Spelling.md" for face, script in FACES.items()}
     return {"source": source, "faces": faces}

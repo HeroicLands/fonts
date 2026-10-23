@@ -516,7 +516,9 @@ SIGN = "#9a4a14"  # a sign, which only one layout types
 SHORT = {"catch": "'", "stop": ".", "pause": ",", "open quote": "“", "close quote": "”",
          "ten": "10", "eleven": "11", "twelve": "12", "thirteen": "13", "fourteen": "14", "fifteen": "15"}  # fmt: skip
 
-SIGN_SHORT = {"carrier": "carr.", "long sign": "long", "emphasis": "brow", "register-mark": "reg."}
+SIGN_SHORT = {"carrier": "carr.", "long sign": "long", "emphasis": "brow", "register-mark": "reg.",
+              "kh letter": "kh", "Kh letter": "Kh", "zh letter": "zh", "Zh letter": "Zh", "long a": "ā", "Long A": "Ā",
+              "long i": "ī", "Long I": "Ī", "long u": "ū", "Long U": "Ū", "accent": "acc."}  # fmt: skip
 
 # The ANSI rows: (base key or a label, width in units).
 ROWS = [
@@ -588,7 +590,7 @@ def diagram_svg(keymap: list[dict]) -> str:
         o.append(text(lx, y + 24, f"{a} · {b}", 14, fill))
         lx += 15 * UNIT / 2 - 40
     o.append(text(PAD, y + 46, "markup: the key types itself, as plain ASCII, in every layout", 14, MUTED))
-    o.append(text(PAD + 8 * UNIT, y + 46, "sign: only the layout of its script types it (HL Veldikko)", 14, SIGN))
+    o.append(text(PAD + 8 * UNIT, y + 46, "sign: only the layout of its script types it (HL Veldikko, HL Helónika)", 14, SIGN))
     o.append("</svg>")
     return "\n".join(o) + "\n"
 

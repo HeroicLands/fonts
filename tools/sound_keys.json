@@ -12,7 +12,7 @@
     "Qalezu writes consonants only, so its vowel keys type nothing; a vowel at the start of a word is written with the catch.",
     "Vedyakshara's consonant carries the vowel a, so in HL Vedyakshara a consonant is spelled before an a and its key types the bare consonant; the a key types nothing, another vowel key types its vowel sign, and a capital vowel types the vowel's own sign.",
     "Markup types itself. The characters Markdown and similar markup need sit at their U.S. positions and type plain ASCII in every layout, so formatting is written without switching layouts, and no script draws them. No sound shares a key with markup; # is not markup because Shift+3 is Pirzath's eleven.",
-    "A sign that is not a sound sits on a key of its own and types in the one layout whose script writes it, as the quote keys do outside Pirzath. HL Veldikko's six: the carrier on x, and on Option the long sign on L, the bar of a doubled consonant on W, the rise on R, the fall on F and the emphasis on M. No sound shares a key with a sign, and a sign types nothing in the other layouts.",
+    "A sign that is not a sound sits on a key of its own and types in the one layout whose script writes it, as the quote keys do outside Pirzath. HL Veldikko's six: the carrier on x, and on Option the long sign on L, the bar of a doubled consonant on W, the rise on R, the fall on F and the emphasis on M. No sound shares a key with a sign, and a sign types nothing in the other layouts. HL Helónika's eleven are the letters its sound keys cannot type, since a sound key types kh as k and h: the kh and zh letters on Option+Q and Option+J, the barred long vowels on Option+V, Option+` and C, each with its capital on Shift, and the accent on Option+Shift+M.",
     "Control chords and function keys carry nothing: the four layers above hold every sound, and no platform types reliably from them."
   ],
   "markup": [
@@ -73,6 +73,72 @@
       "script": "helonika",
       "key": "option+shift+r",
       "codepoint": "U+F0371"
+    },
+    {
+      "sign": "kh letter",
+      "script": "helonika",
+      "key": "option+q",
+      "codepoint": "U+F0348"
+    },
+    {
+      "sign": "Kh letter",
+      "script": "helonika",
+      "key": "option+shift+q",
+      "codepoint": "U+F0318"
+    },
+    {
+      "sign": "zh letter",
+      "script": "helonika",
+      "key": "option+j",
+      "codepoint": "U+F0349"
+    },
+    {
+      "sign": "Zh letter",
+      "script": "helonika",
+      "key": "option+shift+j",
+      "codepoint": "U+F0319"
+    },
+    {
+      "sign": "long a",
+      "script": "helonika",
+      "key": "option+v",
+      "codepoint": "U+F0350"
+    },
+    {
+      "sign": "Long A",
+      "script": "helonika",
+      "key": "option+shift+v",
+      "codepoint": "U+F0320"
+    },
+    {
+      "sign": "long i",
+      "script": "helonika",
+      "key": "option+`",
+      "codepoint": "U+F0351"
+    },
+    {
+      "sign": "Long I",
+      "script": "helonika",
+      "key": "option+shift+`",
+      "codepoint": "U+F0321"
+    },
+    {
+      "sign": "long u",
+      "script": "helonika",
+      "key": "c",
+      "codepoint": "U+F0352"
+    },
+    {
+      "sign": "Long U",
+      "script": "helonika",
+      "key": "shift+c",
+      "codepoint": "U+F0322"
+    },
+    {
+      "sign": "accent",
+      "script": "helonika",
+      "key": "option+shift+m",
+      "codepoint": "U+F0378"
     }
   ],
   "sounds": [

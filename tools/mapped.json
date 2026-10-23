@@ -1,5 +1,5 @@
 {
-  "source": {"semaron-kuriale": "assets/content/Lore/Scripts/Semaron_Spelling.md", "pirzath-carved": "assets/content/Lore/Scripts/Pirzath_Spelling.md", "pirzath-hand": "assets/content/Lore/Scripts/Pirzath_Spelling.md", "thuravark-carved": "assets/content/Lore/Scripts/Thuravark_Spelling.md", "qalezu-hand": "assets/content/Lore/Scripts/Qalezu_Spelling.md", "vedyakshara-classical": "assets/content/Lore/Scripts/Vedyakshara_Spelling.md", "helonika-book": "assets/content/Lore/Scripts/Helonika_Spelling.md"},
+  "source": {"semaron-kuriale": "assets/content/Lore/Scripts/Semaron_Spelling.md", "pirzath-carved": "assets/content/Lore/Scripts/Pirzath_Spelling.md", "pirzath-hand": "assets/content/Lore/Scripts/Pirzath_Spelling.md", "thuravark-carved": "assets/content/Lore/Scripts/Thuravark_Spelling.md", "qalezu-hand": "assets/content/Lore/Scripts/Qalezu_Spelling.md", "vedyakshara-classical": "assets/content/Lore/Scripts/Vedyakshara_Spelling.md", "helonika-book": "assets/content/Lore/Scripts/Helonika_Spelling.md", "helonika-bizarian": "assets/content/Lore/Scripts/Bizarian_Spelling.md", "helonika-bethuan": "assets/content/Lore/Scripts/Bethuan_Spelling.md"},
   "faces": {
     "semaron-kuriale": {
       " '": {"text": " 󰉰", "unmapped": [" "]},
@@ -835,6 +835,24 @@
       "teikhir": {"text": "󰍃󰌴󰌺󰌷󰌸󰍁"},
       "vesmor 1066": {"text": "󰍆󰌳󰍂󰌼󰌾󰍁 󰍡󰍠󰍦󰍦", "unmapped": [" "]},
       "§ 4": {"text": "§ 󰍤", "unmapped": ["§", " "]}
+    },
+    "helonika-bizarian": {
+      "Iisa": {"text": "󰌡󰍂󰌰"},
+      "Khalon": {"text": "󰌘󰌰󰌻󰌾󰌽"},
+      "Zhéra": {"text": "󰌙󰌳󰍸󰍁󰌰"},
+      "boum": {"text": "󰌱󰌿󰌼"},
+      "dokhan": {"text": "󰌲󰌾󰍈󰌰󰌽"},
+      "eiros": {"text": "󰌳󰌸󰍁󰌾󰍂"},
+      "kaar": {"text": "󰌺󰍐󰍁"},
+      "ozhar": {"text": "󰌾󰍉󰌰󰍁"}
+    },
+    "helonika-bethuan": {
+      "Khéiron": {"text": "󰌘󰌴󰍸󰍁󰌾󰌽"},
+      "Uuná": {"text": "󰌢󰌽󰌰󰍸"},
+      "dómissa": {"text": "󰌲󰌾󰍸󰌼󰌸󰍂󰍂󰌰"},
+      "kaar": {"text": "󰌺󰍐󰍁"},
+      "ukhir": {"text": "󰍅󰍈󰌸󰍁"},
+      "zhar": {"text": "󰍇󰌷󰌰󰍁"}
     }
   }
 }

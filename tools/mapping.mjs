@@ -8,7 +8,7 @@
  *     node tools/mapping.mjs --thalorna ~/dev/HeroicLands/thalorna <script> [<face>] < words.json
  *     node tools/mapping.mjs --note Qalezu_Spelling.md <script> [<face>] < words.json
  *
- * `<script>` is `semaron`, `pirzath`, `thuravark`, `qalezu`, `veldikko` or `vedyakshara`. The mapping note is
+ * `<script>` is `semaron`, `pirzath`, `thuravark`, `qalezu`, `veldikko`, `vedyakshara`, `helonika`, `bizarian` or `bethuan`. The mapping note is
  * `assets/content/Lore/Scripts/<Script>_Spelling.md` on the thalorna checkout's
  * `origin/main`, or the file `--note` names. Standard input is a JSON array of
  * strings; standard output is a JSON array with one record per string:
@@ -37,6 +37,12 @@ export const SCRIPTS = [
     ["veldikko", "Veldikko_Spelling.md"],
     ["vedyakshara", "Vedyakshara_Spelling.md"],
     ["helonika", "Helonika_Spelling.md"],
+];
+
+/** The mapping notes the Helónika guard also reads: the same face, written by another tongue's rules. */
+export const TONGUE_MAPS = [
+    ["bizarian", "Bizarian_Spelling.md"],
+    ["bethuan", "Bethuan_Spelling.md"],
 ];
 export const NOTES = "assets/content/Lore/Scripts";
 
@@ -90,7 +96,7 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
         else rest.push(args[i]);
     }
     const [script, face] = rest;
-    const entry = SCRIPTS.find(([key]) => key === script);
+    const entry = [...SCRIPTS, ...TONGUE_MAPS].find(([key]) => key === script);
     if (!entry || !(source.thalorna || source.note)) {
         console.error(
             "tools/mapping.mjs: error: usage: --thalorna <path> | --note <file>, then <script> [<face>]",

@@ -30,6 +30,17 @@ These keys type no sound. They type in HL Helónika alone.
 | Key | Emacs | Sign | Layout | Glyph | Code point | Name |
 | --- | --- | --- | --- | --- | --- | --- |
 | `option+shift+r` | `\R` | register-mark | HL Helónika | ![U+F0371](../charts/helonika-book/glyphs/U+F0371.svg) | U+F0371 | HELONIKA REGISTER MARK |
+| `option+q` | `\q` | kh letter | HL Helónika | ![U+F0348](../charts/helonika-book/glyphs/U+F0348.svg) | U+F0348 | HELONIKA SMALL LETTER KH |
+| `option+shift+q` | `\Q` | Kh letter | HL Helónika | ![U+F0318](../charts/helonika-book/glyphs/U+F0318.svg) | U+F0318 | HELONIKA CAPITAL LETTER KH |
+| `option+j` | `\j` | zh letter | HL Helónika | ![U+F0349](../charts/helonika-book/glyphs/U+F0349.svg) | U+F0349 | HELONIKA SMALL LETTER ZH |
+| `option+shift+j` | `\J` | Zh letter | HL Helónika | ![U+F0319](../charts/helonika-book/glyphs/U+F0319.svg) | U+F0319 | HELONIKA CAPITAL LETTER ZH |
+| `option+v` | `\v` | long a | HL Helónika | ![U+F0350](../charts/helonika-book/glyphs/U+F0350.svg) | U+F0350 | HELONIKA SMALL LETTER A WITH LENGTH BAR |
+| `option+shift+v` | `\V` | Long A | HL Helónika | ![U+F0320](../charts/helonika-book/glyphs/U+F0320.svg) | U+F0320 | HELONIKA CAPITAL LETTER A WITH LENGTH BAR |
+| `` option+` `` | `` \` `` | long i | HL Helónika | ![U+F0351](../charts/helonika-book/glyphs/U+F0351.svg) | U+F0351 | HELONIKA SMALL LETTER I WITH LENGTH BAR |
+| `` option+shift+` `` | `\~` | Long I | HL Helónika | ![U+F0321](../charts/helonika-book/glyphs/U+F0321.svg) | U+F0321 | HELONIKA CAPITAL LETTER I WITH LENGTH BAR |
+| `c` | `c` | long u | HL Helónika | ![U+F0352](../charts/helonika-book/glyphs/U+F0352.svg) | U+F0352 | HELONIKA SMALL LETTER U WITH LENGTH BAR |
+| `shift+c` | `C` | Long U | HL Helónika | ![U+F0322](../charts/helonika-book/glyphs/U+F0322.svg) | U+F0322 | HELONIKA CAPITAL LETTER U WITH LENGTH BAR |
+| `option+shift+m` | `\M` | accent | HL Helónika | ![U+F0378](../charts/helonika-book/glyphs/U+F0378.svg) | U+F0378 | HELONIKA COMBINING ACCENT |
 
 ## Keys a platform cannot carry
 

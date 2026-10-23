@@ -30,5 +30,27 @@
     {"latin": "kosamir?", "letter": "?"},
     {"latin": "§ 4", "letter": "§"},
     {"latin": "Moira's", "letter": "'"}
-  ]
+  ],
+  "bizarian": {
+    "fixtures": [
+      {"latin": "Khalon", "glyphs": ["KH", "a", "l", "o", "n"]},
+      {"latin": "dokhan", "glyphs": ["d", "o", "kh", "a", "n"]},
+      {"latin": "Zhéra", "glyphs": ["ZH", "e", "accent", "r", "a"]},
+      {"latin": "ozhar", "glyphs": ["o", "zh", "a", "r"]},
+      {"latin": "kaar", "glyphs": ["k", "a.macron", "r"]},
+      {"latin": "Iisa", "glyphs": ["I.macron", "s", "a"]},
+      {"latin": "boum", "glyphs": ["b", "o.long", "m"]},
+      {"latin": "eiros", "glyphs": ["e", "i", "r", "o", "s"]}
+    ]
+  },
+  "bethuan": {
+    "fixtures": [
+      {"latin": "ukhir", "glyphs": ["u", "kh", "i", "r"]},
+      {"latin": "Khéiron", "glyphs": ["KH", "e.long", "accent", "r", "o", "n"]},
+      {"latin": "kaar", "glyphs": ["k", "a.macron", "r"]},
+      {"latin": "Uuná", "glyphs": ["U.macron", "n", "a", "accent"]},
+      {"latin": "zhar", "glyphs": ["z", "h", "a", "r"]},
+      {"latin": "dómissa", "glyphs": ["d", "o", "accent", "m", "i", "s", "s", "a"]}
+    ]
+  }
 }

@@ -37,8 +37,8 @@ removed, so that no form is drawn, and its font check (tools/vedyakshara/check_f
 with the GSUB table removed and with the GPOS table removed, so that no vowel sign
 stands on its anchor; and the vertical guard is proved on it with its Windows ascent and
 descent cut to the shared line box, so that its hooks would be clipped. Helonika Book's
-guard (tools/helonika/guard.py) is proved with the small letter th removed from the cmap,
-and its font check (tools/helonika/check_font.py) with the GSUB table removed, so that a
+guard (tools/helonika/guard.py) is proved with the small letter th removed from the cmap, and again
+with the small letter kh removed, which Bizarian and Bethuan fixtures write, and its font check (tools/helonika/check_font.py) with the GSUB table removed, so that a
 stray accent is not the box, and with the GPOS table removed, so that the accent does
 not stand over its vowel. The box guard (tools/notdef_box.py) is proved on every font twice: with the question
 mark removed from the cmap, and with it pointed at glyph 0. The name guard
@@ -285,6 +285,16 @@ def without_th(font: Path, out: Path) -> Path:
     f = TTFont(str(font))
     for table in f["cmap"].tables:
         for code in [c for c, g in table.cmap.items() if g == "th"]:
+            del table.cmap[code]
+    f.save(str(out))
+    return out
+
+
+def without_kh(font: Path, out: Path) -> Path:
+    """Helonika Book's small letter kh removed from the cmap, so a Bizarian or Bethuan word with it prints the box."""
+    f = TTFont(str(font))
+    for table in f["cmap"].tables:
+        for code in [c for c, g in table.cmap.items() if g == "kh"]:
             del table.cmap[code]
     f.save(str(out))
     return out
@@ -917,7 +927,8 @@ def main():
         ("Vedyakshara Classical", vedyakshara_font, vedyakshara_check.check, without_gpos, "without GPOS"),
         ("Vedyakshara Classical", vedyakshara_font, load("vertical_ved", ROOT / "tools" / "vertical.py").check,
          win_to_line_box, "with its Windows ascent and descent cut to the shared line box, inside its hooks"),
-        ("Helonika Book", helonika_font, lambda p: helonika.run(p, []), without_th, "without the small letter th"),
+        ("Helonika Book", helonika_font, lambda p: helonika.run(p, {}), without_th, "without the small letter th"),
+        ("Helonika Book", helonika_font, lambda p: helonika.run(p, {}), without_kh, "without the small letter kh, which Bizarian and Bethuan write"),
         ("Helonika Book", helonika_font, helonika_check.check, stripped, "without GSUB"),
         ("Helonika Book", helonika_font, helonika_check.check, without_gpos, "without GPOS"),
         ("Teng Chou", teng_chou_font, lambda p: teng_chou.run(p, []), without_teng, "without the character teng"),
@@ -967,6 +978,10 @@ def main():
             if not ok:
                 print(f"{font}: error: the guard must pass the font and fail the broken font")
                 status = 1
+    bare = helonika.map_notes(["Helonika_Spelling.md", "bizarian=Bizarian_Spelling.md"])
+    if bare != {"helonika": "Helonika_Spelling.md", "bizarian": "Bizarian_Spelling.md"}:
+        print(f"{ROOT / 'tools' / 'helonika' / 'guard.py'}: error: a bare --map-note FILE must read the helonika map, got {bare}")
+        status = 1
     status |= prove_keys(codepoints)
     status |= prove_registry(codepoints)
     # --map-note SCRIPT=FILE reads a script's mapping note from a file, as the keyboard guard does

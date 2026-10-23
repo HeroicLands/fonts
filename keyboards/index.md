@@ -26,7 +26,7 @@ HL Semaron, HL Pirzath, HL Thuravark, HL Qalezu, HL Veldikko, HL Vedyakshara and
 - Qalezu writes consonants only, so its vowel keys type nothing; a vowel at the start of a word is written with the catch.
 - Vedyakshara's consonant carries the vowel a, so in HL Vedyakshara a consonant is spelled before an a and its key types the bare consonant; the a key types nothing, another vowel key types its vowel sign, and a capital vowel types the vowel's own sign.
 - Markup types itself. The characters Markdown and similar markup need sit at their U.S. positions and type plain ASCII in every layout, so formatting is written without switching layouts, and no script draws them. No sound shares a key with markup; # is not markup because Shift+3 is Pirzath's eleven.
-- A sign that is not a sound sits on a key of its own and types in the one layout whose script writes it, as the quote keys do outside Pirzath. HL Veldikko's six: the carrier on x, and on Option the long sign on L, the bar of a doubled consonant on W, the rise on R, the fall on F and the emphasis on M. No sound shares a key with a sign, and a sign types nothing in the other layouts.
+- A sign that is not a sound sits on a key of its own and types in the one layout whose script writes it, as the quote keys do outside Pirzath. HL Veldikko's six: the carrier on x, and on Option the long sign on L, the bar of a doubled consonant on W, the rise on R, the fall on F and the emphasis on M. No sound shares a key with a sign, and a sign types nothing in the other layouts. HL Helónika's eleven are the letters its sound keys cannot type, since a sound key types kh as k and h: the kh and zh letters on Option+Q and Option+J, the barred long vowels on Option+V, Option+` and C, each with its capital on Shift, and the accent on Option+Shift+M.
 - Control chords and function keys carry nothing: the four layers above hold every sound, and no platform types reliably from them.
 
 ## Markup
@@ -63,6 +63,17 @@ A sign is not a sound. It sits on a key of its own, types in the one layout whos
 | `option+f` | `\f` | fall | HL Veldikko | ![U+1ED7A](../charts/veldikko/glyphs/U+1ED7A.svg) | U+1ED7A | VELDIKKO SIGN FALL |
 | `option+m` | `\m` | emphasis | HL Veldikko | ![U+1ED7B](../charts/veldikko/glyphs/U+1ED7B.svg) | U+1ED7B | VELDIKKO SIGN EMPHASIS |
 | `option+shift+r` | `\R` | register-mark | HL Helónika | ![U+F0371](../charts/helonika-book/glyphs/U+F0371.svg) | U+F0371 | HELONIKA REGISTER MARK |
+| `option+q` | `\q` | kh letter | HL Helónika | ![U+F0348](../charts/helonika-book/glyphs/U+F0348.svg) | U+F0348 | HELONIKA SMALL LETTER KH |
+| `option+shift+q` | `\Q` | Kh letter | HL Helónika | ![U+F0318](../charts/helonika-book/glyphs/U+F0318.svg) | U+F0318 | HELONIKA CAPITAL LETTER KH |
+| `option+j` | `\j` | zh letter | HL Helónika | ![U+F0349](../charts/helonika-book/glyphs/U+F0349.svg) | U+F0349 | HELONIKA SMALL LETTER ZH |
+| `option+shift+j` | `\J` | Zh letter | HL Helónika | ![U+F0319](../charts/helonika-book/glyphs/U+F0319.svg) | U+F0319 | HELONIKA CAPITAL LETTER ZH |
+| `option+v` | `\v` | long a | HL Helónika | ![U+F0350](../charts/helonika-book/glyphs/U+F0350.svg) | U+F0350 | HELONIKA SMALL LETTER A WITH LENGTH BAR |
+| `option+shift+v` | `\V` | Long A | HL Helónika | ![U+F0320](../charts/helonika-book/glyphs/U+F0320.svg) | U+F0320 | HELONIKA CAPITAL LETTER A WITH LENGTH BAR |
+| `` option+` `` | `` \` `` | long i | HL Helónika | ![U+F0351](../charts/helonika-book/glyphs/U+F0351.svg) | U+F0351 | HELONIKA SMALL LETTER I WITH LENGTH BAR |
+| `` option+shift+` `` | `\~` | Long I | HL Helónika | ![U+F0321](../charts/helonika-book/glyphs/U+F0321.svg) | U+F0321 | HELONIKA CAPITAL LETTER I WITH LENGTH BAR |
+| `c` | `c` | long u | HL Helónika | ![U+F0352](../charts/helonika-book/glyphs/U+F0352.svg) | U+F0352 | HELONIKA SMALL LETTER U WITH LENGTH BAR |
+| `shift+c` | `C` | Long U | HL Helónika | ![U+F0322](../charts/helonika-book/glyphs/U+F0322.svg) | U+F0322 | HELONIKA CAPITAL LETTER U WITH LENGTH BAR |
+| `option+shift+m` | `\M` | accent | HL Helónika | ![U+F0378](../charts/helonika-book/glyphs/U+F0378.svg) | U+F0378 | HELONIKA COMBINING ACCENT |
 
 ## Keys a platform cannot carry
 

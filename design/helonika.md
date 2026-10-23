@@ -421,8 +421,9 @@ own, Option+Shift+R.
 - `tools/helonika/check_font.py` confirms the character map, the outlines, the
   accent over every vowel and the box after anything else, the ignorables, the name
   table and the `.woff2`.
-- `tools/helonika/guard.py` writes every Helonic and Valtari lexicon form through the
-  mapping note, shapes it, and asserts the glyphs, with no notdef or box;
+- `tools/helonika/guard.py` writes every Helonic, Valtari, Bizarian and Bethuan lexicon
+  form through its mapping note, shapes it, and asserts the glyphs, with no notdef or
+  box; `--note` takes language note files, so a pull request's own notes are checked;
   `tools/helonika/fixtures.json` holds a fixture for each spelling rule.
 - `tools/prove_guards.py` proves the guard fails the font with the small letter _th_
   removed, and the font check fails it with its GSUB removed and with its GPOS
