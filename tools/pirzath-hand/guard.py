@@ -1,6 +1,6 @@
 # Copyright (c) 2026 Tom Rodriguez ("Toasty") — <toasty@heroiclands.org>
 # SPDX-License-Identifier: OFL-1.1
-"""Shape every Khazari lexicon form in the hand, lifted and joined, and assert the result.
+"""Shape every Khazari lexicon form in the hand and assert the result.
 
     .venv/bin/python tools/pirzath-hand/guard.py [--font fonts/PirzathHand-Regular.ttf]
                                               [--thalorna ~/dev/HeroicLands/thalorna | --note FILE]
@@ -16,15 +16,11 @@ sequence ``vowel, lengthmark`` is the long-vowel glyph and ``consonant,
 doubling`` is the doubled glyph (``p_p``, ``t_h_t_h``). A length mark left on a
 vowel pair stays a separate mark above the pair.
 
-The hand adds the joined look. With ``ss01`` on, every form must shape to the
-same letters, each joining letter in the form that its neighbours call for:
-``.init`` (a long exit) when the next letter, skipping marks, also joins,
-``.fina`` (a long entry) when the previous one does, ``.medi`` when both do,
-and the plain letter, short at both ends, when neither does; nothing else
-changes. The hand's own fixtures cover the joined look across the length mark
-of a pair, the marks between words, numerals and quotation marks breaking the
-line, the box breaking it, the lost letters joined, the default-ignorable characters, and
-the position of the length mark above a pair.
+The hand is one printed face: every letter is drawn as itself, whatever stands
+beside it, and no feature joins letters. The hand's own fixtures cover the marks
+between words, numerals and quotation marks, the box, the lost letters, the long
+vowels and doubled letters in a word, the default-ignorable characters, and the
+position of the length mark above a pair.
 """
 
 import argparse
@@ -50,45 +46,17 @@ def _carved_guard():
 
 CARVED = _carved_guard()
 
-LETTERS = [
-    "p", "b", "f", "v", "m", "t", "d", "t_h", "d_h", "n", "k", "g", "k_h", "g_h", "s", "z", "h", "l", "r",
-    "sh", "zh", "ts", "ch", "j", "q", "ng", "ny", "catch", "w", "y", "hl",
-]
 VOWELS = {"a": "aacute", "e": "eacute", "i": "iacute", "o": "oacute", "u": "uacute"}
-PAIRS = ["ai", "au", "ei", "oi", "ou"]
-JOINING = {*LETTERS, *(f"{c}_{c}" for c in LETTERS), *VOWELS, *VOWELS.values(), *PAIRS}
-MARKS = {"lengthmark"}
 EMPTY = {"ignorable", "ignorable.sub"}
-SS01 = {"ss01": True}
-C = "+"  # in a fixture: the letter before joins the next letter
-
-
-def form(g: str, entry: bool, exit_: bool) -> str:
-    """The joined form of a joining letter with a long entry and/or a long exit."""
-    return g + {(False, True): ".init", (True, True): ".medi", (True, False): ".fina"}.get((entry, exit_), "")
-
-
-def joined(glyphs: list[str]) -> list[str]:
-    """The glyphs in their joined forms: each joining letter takes a long exit when the next
-    non-mark glyph joins and a long entry when the previous one does."""
-    out = []
-    for i, g in enumerate(glyphs):
-        if g not in JOINING:
-            out.append(g)
-            continue
-        nxt = next((h for h in glyphs[i + 1:] if h not in MARKS), None)
-        prv = next((h for h in reversed(glyphs[:i]) if h not in MARKS), None)
-        out.append(form(g, prv in JOINING, nxt in JOINING))
-    return out
 
 
 def collapse(glyphs: list[str]) -> list[str]:
-    """The hand's glyphs for a carved sequence or fixture: a vowel and its length mark are the long-vowel
-    glyph, a consonant and its doubling mark are the doubled glyph, and a join token stays where it is."""
+    """The hand's glyphs for a carved sequence or fixture: a vowel and its length mark are the
+    long-vowel glyph, and a consonant and its doubling mark are the doubled glyph."""
     out: list[str] = []
     for g in glyphs:
         if g in ("lengthmark", "doubling"):
-            k = max(i for i, h in enumerate(out) if h != C)
+            k = len(out) - 1
             if g == "doubling":
                 out[k] = f"{out[k]}_{out[k]}"
             elif out[k] in VOWELS:
@@ -100,58 +68,39 @@ def collapse(glyphs: list[str]) -> list[str]:
     return out
 
 
-def spelled(fixture: list[str]) -> list[str]:
-    """A fixture's joined glyphs: a letter followed by C takes a long exit, and the next letter
-    after it, skipping marks, a long entry."""
-    out, entry = [], False
-    for i, g in enumerate(fixture):
-        if g == C:
-            continue
-        if g in MARKS or g not in JOINING:
-            out.append(g)
-            if g not in MARKS:
-                entry = False
-            continue
-        exit_ = i + 1 < len(fixture) and fixture[i + 1] == C
-        out.append(form(g, entry, exit_))
-        entry = exit_
-    return out
-
-
-# The joined look, spelled out: C marks each join. The carved spelling is written as the carved face
-# shapes it, with a separate length mark and doubling mark, and collapse() turns it into the hand's glyphs.
-SS01_CARVED = [
-    ("dalk", ["d", C, "a", C, "l", C, "k"]),
-    ("dulák", ["d", C, "u", C, "l", C, "a", C, "lengthmark", "k"]),
-    ("dullák", ["d", C, "u", C, "l", C, "doubling", "a", C, "lengthmark", "k"]),
-    ("putthák", ["p", C, "u", C, "t_h", C, "doubling", "a", C, "lengthmark", "k"]),
-    ("Dalk-thumár", ["d", C, "a", C, "l", C, "k", "hyphen", "t_h", C, "u", C, "m", C, "a", C, "lengthmark", "r"]),
-    ("gaz dalk.", ["g", C, "a", C, "z", "space", "d", C, "a", C, "l", C, "k", "period"]),
-    ("gaz.dalk", ["g", C, "a", C, "z", "period", "d", C, "a", C, "l", C, "k"]),
-    ("dalk, bant!", ["d", C, "a", C, "l", C, "k", "comma", "space", "b", C, "a", C, "n", C, "t", "exclam"]),
-    ("¡ves durám.", ["notdef.box", "v", C, "e", C, "s", "space", "d", C, "u", C, "r", C, "a", C, "lengthmark", "m",
-                     "period"]),
-    ("!ves", ["exclam", "v", C, "e", C, "s"]),
-    ('"dalk"', ["quote.open", "d", C, "a", C, "l", C, "k", "quote.close"]),
-    ("“thurágh”", ["quote.open", "t_h", C, "u", C, "r", C, "a", C, "lengthmark", "g_h", "quote.close"]),
-    ("girm 10 bep", ["g", C, "i", C, "r", C, "m", "space", "num.1", "num.0", "space", "b", C, "e", C, "p"]),
-    ("dalk1", ["d", C, "a", C, "l", C, "k", "num.1"]),
-    ("tanvc", ["t", C, "a", C, "n", C, "v", "notdef.box"]),
-    ("shalmai", ["sh", C, "a", C, "l", C, "m", C, "ai"]),
-    ("jorqen", ["j", C, "o", C, "r", C, "q", C, "e", C, "n"]),
-    ("ya'ath", ["y", C, "a", C, "catch", C, "a", C, "t_h"]),
-    ("hlanoi", ["hl", C, "a", C, "n", C, "oi"]),
-    ("tsaleik", ["ts", C, "a", C, "l", C, "ei", C, "k"]),
-    ("nyolwen", ["ny", C, "o", C, "l", C, "w", C, "e", C, "n"]),
-    ("zhoulin", ["zh", C, "ou", C, "l", C, "i", C, "n"]),
-    ("chembai", ["ch", C, "e", C, "m", C, "b", C, "ai"]),
-    ("ngathu", ["ng", C, "a", C, "t_h", C, "u"]),
-    ("báy", ["b", C, "ai", "lengthmark"]),
-    ("báyk", ["b", C, "ai", C, "lengthmark", "k"]),
-    ("annghab", ["a", C, "n", C, "doubling", "g_h", C, "a", C, "b"]),
-    ("akka", ["a", C, "k", C, "doubling", "a"]),
+# The hand's own fixtures, written as the carved face shapes them, with a separate length mark
+# and doubling mark; collapse() turns each into the hand's glyphs.
+HAND_CARVED = [
+    ("dalk", ["d", "a", "l", "k"]),
+    ("dulák", ["d", "u", "l", "a", "lengthmark", "k"]),
+    ("dullák", ["d", "u", "l", "doubling", "a", "lengthmark", "k"]),
+    ("putthák", ["p", "u", "t_h", "doubling", "a", "lengthmark", "k"]),
+    ("Dalk-thumár", ["d", "a", "l", "k", "hyphen", "t_h", "u", "m", "a", "lengthmark", "r"]),
+    ("gaz dalk.", ["g", "a", "z", "space", "d", "a", "l", "k", "period"]),
+    ("gaz.dalk", ["g", "a", "z", "period", "d", "a", "l", "k"]),
+    ("dalk, bant!", ["d", "a", "l", "k", "comma", "space", "b", "a", "n", "t", "exclam"]),
+    ("¡ves durám.", ["notdef.box", "v", "e", "s", "space", "d", "u", "r", "a", "lengthmark", "m", "period"]),
+    ("!ves", ["exclam", "v", "e", "s"]),
+    ('"dalk"', ["quote.open", "d", "a", "l", "k", "quote.close"]),
+    ("“thurágh”", ["quote.open", "t_h", "u", "r", "a", "lengthmark", "g_h", "quote.close"]),
+    ("girm 10 bep", ["g", "i", "r", "m", "space", "num.1", "num.0", "space", "b", "e", "p"]),
+    ("dalk1", ["d", "a", "l", "k", "num.1"]),
+    ("tanvc", ["t", "a", "n", "v", "notdef.box"]),
+    ("shalmai", ["sh", "a", "l", "m", "ai"]),
+    ("jorqen", ["j", "o", "r", "q", "e", "n"]),
+    ("ya'ath", ["y", "a", "catch", "a", "t_h"]),
+    ("hlanoi", ["hl", "a", "n", "oi"]),
+    ("tsaleik", ["ts", "a", "l", "ei", "k"]),
+    ("nyolwen", ["ny", "o", "l", "w", "e", "n"]),
+    ("zhoulin", ["zh", "ou", "l", "i", "n"]),
+    ("chembai", ["ch", "e", "m", "b", "ai"]),
+    ("ngathu", ["ng", "a", "t_h", "u"]),
+    ("báy", ["b", "ai", "lengthmark"]),
+    ("báyk", ["b", "ai", "lengthmark", "k"]),
+    ("annghab", ["a", "n", "doubling", "g_h", "a", "b"]),
+    ("akka", ["a", "k", "doubling", "a"]),
 ]
-SS01_FIXTURES = [(text, collapse(fixture)) for text, fixture in SS01_CARVED]
+HAND_FIXTURES = [(text, collapse(fixture)) for text, fixture in HAND_CARVED]
 
 # Mark positions: (text, index of the mark in the lifted glyphs, index of its base). A length mark
 # on a vowel pair is the one mark the hand still draws apart from its base.
@@ -199,23 +148,22 @@ def ignorable_failures(r: Renderer) -> list[str]:
     failures = []
     for text in IGNORABLE_FIXTURES:
         plain = bare(text)
-        for feats in (None, SS01):
-            shaped = r.shape(text, feats)
-            names = [r.order[g[0]] for g in shaped.glyphs]
-            if any(g[3] for n, g in zip(names, shaped.glyphs) if n in EMPTY):
-                failures.append(f"{text!r}: an ignorable has an advance")
-            if "space" in names or ".notdef" in names or "notdef.box" in names:
-                failures.append(f"{text!r}: shaped {names}, which draws a space, .notdef or the box")
-            kept = [n for n in names if n not in EMPTY]
-            alone = [r.order[g[0]] for g in r.shape(plain, feats).glyphs]
-            if feats is None and kept != alone:
-                failures.append(f"{text!r}: shaped {kept}, expected {alone}")
+        shaped = r.shape(text)
+        names = [r.order[g[0]] for g in shaped.glyphs]
+        if any(g[3] for n, g in zip(names, shaped.glyphs) if n in EMPTY):
+            failures.append(f"{text!r}: an ignorable has an advance")
+        if "space" in names or ".notdef" in names or "notdef.box" in names:
+            failures.append(f"{text!r}: shaped {names}, which draws a space, .notdef or the box")
+        kept = [n for n in names if n not in EMPTY]
+        alone = [r.order[g[0]] for g in r.shape(plain).glyphs]
+        if kept != alone:
+            failures.append(f"{text!r}: shaped {kept}, expected {alone}")
     return failures
 
 
 def fixture_texts() -> list[str]:
     """Every roman text the fixtures write through the mapping."""
-    return ([t for t, _ in CARVED.FIXTURES + CARVED.LOST_FIXTURES + SS01_FIXTURES]
+    return ([t for t, _ in CARVED.FIXTURES + CARVED.LOST_FIXTURES + HAND_FIXTURES]
             + [t for t, _, _ in MARK_FIXTURES] + IGNORABLE_FIXTURES + [bare(t) for t in IGNORABLE_FIXTURES])
 
 
@@ -233,33 +181,18 @@ def run(font: Path, forms: list[str], mapping: Mapping | None = None) -> list[st
             failures.append(f"{form}: .notdef or the box in {got}")
         elif got != want:
             failures.append(f"{form}: shaped {got}, expected {want}")
-        got_j = [r.order[g[0]] for g in r.shape(form, SS01).glyphs]
-        if got_j != joined(want):
-            failures.append(f"{form} (ss01): shaped {got_j}, expected {joined(want)}")
         digraphs += sum(1 for g in carved if g in CARVED.DIGRAPHS.values())
         acutes += carved.count("lengthmark")
-    carved_fixtures = CARVED.FIXTURES + CARVED.LOST_FIXTURES
-    for text, want in carved_fixtures:
-        want = collapse(want)
+    fixtures = [(t, collapse(w)) for t, w in CARVED.FIXTURES + CARVED.LOST_FIXTURES] + HAND_FIXTURES
+    for text, want in fixtures:
         got = r.glyph_names(text)
         if got != want:
             failures.append(f"{text!r}: shaped {got}, expected {want}")
-        got_j = [r.order[g[0]] for g in r.shape(text, SS01).glyphs]
-        if got_j != joined(want):
-            failures.append(f"{text!r} (ss01): shaped {got_j}, expected {joined(want)}")
-    for text, fixture in SS01_FIXTURES:
-        want = spelled(fixture)
-        got = [r.order[g[0]] for g in r.shape(text, SS01).glyphs]
-        if got != want:
-            failures.append(f"{text!r} (ss01): shaped {got}, expected {want}")
-        lifted = [g for g in fixture if g != C]
-        if r.glyph_names(text) != lifted:
-            failures.append(f"{text!r}: shaped {r.glyph_names(text)}, expected {lifted}")
     failures += mark_failures(r)
     failures += ignorable_failures(r)
-    total = len(carved_fixtures) + len(SS01_FIXTURES) + len(MARK_FIXTURES) + len(IGNORABLE_FIXTURES)
+    total = len(fixtures) + len(MARK_FIXTURES) + len(IGNORABLE_FIXTURES)
     print(
-        f"{font}: {len(forms)} forms shaped lifted and joined, {digraphs} digraphs, {acutes} long vowels and "
+        f"{font}: {len(forms)} forms shaped, {digraphs} digraphs, {acutes} long vowels and "
         f"{doubled} doubled forms expected, {total} fixtures, {len(failures)} failures"
     )
     return failures

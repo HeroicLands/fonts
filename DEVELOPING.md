@@ -4,7 +4,7 @@ How the fonts are built, checked and published. Users of the fonts want [the REA
 
 ## Code point blocks
 
-Every script draws on a block of code points of its own, and every face of a script draws its script's block: Pirzath Carved, Pirzath Hand and Pirzath Hand Lifted share the Pirzath block, so changing the face changes only the look. The blocks are registered in `BLOCKS` in `tools/codepoint_order.py`; `tools/codepoints.py` checks that every face's code points lie in its registered blocks, that no two blocks overlap, and that this table is the registry's.
+Every script draws on a block of code points of its own, and every face of a script draws its script's block: Pirzath Carved and Pirzath Hand share the Pirzath block, so changing the face changes only the look. The blocks are registered in `BLOCKS` in `tools/codepoint_order.py`; `tools/codepoints.py` checks that every face's code points lie in its registered blocks, that no two blocks overlap, and that this table is the registry's.
 
 | Range             | Use                                                                                                                             | Direction     |
 | ----------------- | ------------------------------------------------------------------------------------------------------------------------------- | ------------- |
@@ -95,7 +95,7 @@ python3.13 -m venv .venv
 .venv/bin/pip install -r requirements.txt
 ```
 
-The source of each font is a UFO under `sources/`: `PirzathCarved.ufo`, `PirzathHand.ufo`, `ThuravarkCarved.ufo`, `QalezuHand.ufo`, `KhelathiZethuGlyphs.ufo`, `SemaronKuriale.ufo`, `TengChou.ufo`, `Veldikko.ufo`, `VedyaksharaClassical.ufo` and `HelonikaBook.ufo`. Open one in FontForge, Glyphs or RoboFont to edit it. `TengChou.ufo` is generated from its data by `tools/teng-chou/build_ufo.py`: an edit to a Teng Chou character belongs in `tools/teng-chou/`, and the script is run after it, before the build. `Veldikko.ufo` is generated the same way by `tools/veldikko/build_ufo.py`, from the letters and the joining in `tools/veldikko/`, `VedyaksharaClassical.ufo` by `tools/vedyakshara/build_ufo.py`, from the signs in `tools/vedyakshara/`, and `HelonikaBook.ufo` by `tools/helonika/build_ufo.py`, from the letters in `tools/helonika/`. The UFO carries the outlines, the character map, the metrics and `features.fea`, which holds every OpenType feature. Every glyph's advance is its ink width plus one sidebearing a side, the same across its face; `tools/respace.py` sets a UFO to that rule, and `design/making-fonts.md` gives each face's sidebearing.
+The source of each font is a UFO under `sources/`: `PirzathCarved.ufo`, `PirzathHand.ufo`, `ThuravarkCarved.ufo`, `QalezuHand.ufo`, `KhelathiZethuGlyphs.ufo`, `SemaronKuriale.ufo`, `TengChou.ufo`, `Veldikko.ufo`, `VedyaksharaClassical.ufo` and `HelonikaBook.ufo`. Open one in FontForge, Glyphs or RoboFont to edit it. `TengChou.ufo` is generated from its data by `tools/teng-chou/build_ufo.py`: an edit to a Teng Chou character belongs in `tools/teng-chou/`, and the script is run after it, before the build. `Veldikko.ufo` is generated the same way by `tools/veldikko/build_ufo.py`, from the letters and the joining in `tools/veldikko/`, `VedyaksharaClassical.ufo` by `tools/vedyakshara/build_ufo.py`, from the signs in `tools/vedyakshara/`, `HelonikaBook.ufo` by `tools/helonika/build_ufo.py`, from the letters in `tools/helonika/`, and `PirzathHand.ufo` by `tools/pirzath-hand/build_ufo.py`, from the signs in `tools/pirzath-hand/`. The UFO carries the outlines, the character map, the metrics and `features.fea`, which holds every OpenType feature. Every glyph's advance is its ink width plus one sidebearing a side, the same across its face; `tools/respace.py` sets a UFO to that rule, and `design/making-fonts.md` gives each face's sidebearing.
 
 Build the fonts into `fonts/`. The build is reproducible, so the committed fonts match a fresh build byte for byte:
 
@@ -152,7 +152,8 @@ Check the built fonts, render the specimens, and prove that each guard fails a b
 .venv/bin/python tools/khelathi-zethu-glyphs/quadrats.py   # quadrats and cartouches land where the layout puts them
 .venv/bin/python tools/codepoints_chart.py         # specimens/<face>/codepoints.png
 .venv/bin/python tools/pirzath/specimens.py       # specimens/pirzath/
-.venv/bin/python tools/pirzath-hand/specimens.py  # specimens/pirzath-hand/
+.venv/bin/python tools/pirzath-hand/strokes_sheet.py   # specimens/pirzath-hand/strokes.png, the strokes
+.venv/bin/python tools/pirzath-hand/letter_sheets.py   # specimens/pirzath-hand/letters.png, the signs
 .venv/bin/python tools/thuravark-carved/specimens.py     # specimens/thuravark-carved/
 .venv/bin/python tools/qalezu-hand/specimens.py        # specimens/qalezu-hand/
 .venv/bin/python tools/khelathi-zethu-glyphs/specimens.py         # specimens/khelathi-zethu-glyphs/
@@ -164,6 +165,7 @@ Check the built fonts, render the specimens, and prove that each guard fails a b
 .venv/bin/python tools/veldikko/font_sheets.py        # specimens/veldikko/forms.png, joined.png, verse.png, sizes.png and beside.png
 .venv/bin/python tools/vedyakshara/font_sheets.py     # specimens/vedyakshara/text.png
 .venv/bin/python tools/helonika/font_sheets.py        # specimens/helonika/text.png
+.venv/bin/python tools/pirzath-hand/font_sheets.py    # specimens/pirzath-hand/text.png
 .venv/bin/python tools/specimen_pages.py --check   # every font's specimen page and README cell match the fonts and specimens/texts.json
 .venv/bin/python tools/prove_guards.py
 ```

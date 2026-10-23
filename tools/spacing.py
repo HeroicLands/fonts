@@ -20,7 +20,10 @@ Two measures are taken from each built font:
 
 A font fails when its median blank share is above ``MAX_BLANK``, its mean gap
 above ``MAX_MEAN_GAP`` or its largest gap above ``MAX_GAP``, or when its space is
-not the word space ``SPACING`` in tools/respace.py states for the face.
+not the word space ``SPACING`` in tools/respace.py states for the face. A face set
+open on purpose takes its own limits in ``OPEN``: Pirzath Hand is a printed working
+hand, read in poor light, and stands every letter clear of the next, with 70 units of
+white either side; its largest gap is held to the shared limit.
 
 The sample lines are the texts of each face's specimens: the Khazari texts for
 the Pirzath faces, the Nordmal lines for Thuravark Carved and the Vylari texts for
@@ -30,7 +33,7 @@ signs the fixtures name, a catch-before form as the catch and its sign; the samp
 strip of signs; Teng Chou's Tantsou and Jurthati passages, each line one run
 of characters; and Veldikko's converter fixtures, written in the letters
 and marks the fixtures name; and Vedyakshara Classical's and Helonika Book's guard
-fixtures, written as tools/mapped.json records them. A joined face (Pirzath Hand with ``ss01``, and Veldikko
+fixtures, written as tools/mapped.json records them. A joined face (Veldikko
 Sinale) meets its neighbours at the join, and Vedyakshara's signs meet in one headline,
 so their gaps are at most zero. None needs a thalorna checkout.
 """
@@ -53,6 +56,8 @@ import respace  # noqa: E402
 MAX_BLANK = 0.14
 MAX_MEAN_GAP = 0.08
 MAX_GAP = 0.22
+# Faces set open on purpose: (median blank share, mean gap), in place of the shared limits.
+OPEN = {"PirzathHand": (0.30, 0.15)}
 
 SKIP = {".notdef", "notdef.box"}
 
@@ -151,7 +156,7 @@ def _teng_chou_lines() -> list[str]:
 # Each face: its sample lines, its direction and the features its class turns on.
 FACES = {
     "PirzathCarved": (_pirzath_lines, "ltr", {}),
-    "PirzathHand": (_pirzath_lines, "ltr", {"ss01": True}),
+    "PirzathHand": (lambda: _pirzath_lines("pirzath-hand"), "ltr", {}),
     "ThuravarkCarved": (_thuravark_lines, "ltr", {}),
     "SemaronKuriale": (_semaron_lines, "ltr", {}),
     "QalezuHand": (_qalezu_lines, "rtl", {}),
@@ -259,10 +264,11 @@ def describe(m: dict) -> str:
 def check(path: Path) -> list[str]:
     m = measure(path)
     out = []
-    if m["blank"] > MAX_BLANK:
-        out.append(f"{path}: error: the median blank share is {m['blank']:.1%}, above {MAX_BLANK:.0%}")
-    if m["mean_gap"] > MAX_MEAN_GAP:
-        out.append(f"{path}: error: the mean gap between signs is {m['mean_gap']:.3f} em, above {MAX_MEAN_GAP} em")
+    max_blank, max_mean = OPEN.get(path.name.split("-")[0], (MAX_BLANK, MAX_MEAN_GAP))
+    if m["blank"] > max_blank:
+        out.append(f"{path}: error: the median blank share is {m['blank']:.1%}, above {max_blank:.0%}")
+    if m["mean_gap"] > max_mean:
+        out.append(f"{path}: error: the mean gap between signs is {m['mean_gap']:.3f} em, above {max_mean} em")
     if m["max_gap"] > MAX_GAP:
         out.append(f"{path}: error: the largest gap between signs is {m['max_gap']:.3f} em, above {MAX_GAP} em")
     want = respace.SPACING.get(path.name.split("-")[0], {}).get("space")

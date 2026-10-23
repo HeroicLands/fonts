@@ -61,7 +61,7 @@ BUNDLE_ID = "org.heroiclands.keyboardlayout"
 SCRIPTS = [
     {"key": "semaron", "title": "Semaron", "faces": ["Semaron Kuriale"], "chart": "semaron-kuriale",
      "layout": "HL Semaron", "klc": "hlsemaro", "id": -26101},
-    {"key": "pirzath", "title": "Pirzath", "faces": ["Pirzath Carved", "Pirzath Hand", "Pirzath Hand Lifted"],
+    {"key": "pirzath", "title": "Pirzath", "faces": ["Pirzath Carved", "Pirzath Hand"],
      "chart": "pirzath", "layout": "HL Pirzath", "klc": "hlpirzat", "id": -26102},
     {"key": "thuravark", "title": "Thuravark", "faces": ["Thuravark Carved", "Thuravark Carved Bound"], "chart": "thuravark-carved",
      "layout": "HL Thuravark", "klc": "hlthurav", "id": -26103},

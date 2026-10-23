@@ -47,14 +47,7 @@ FAMILIES = {
     "PirzathHand-Regular": {
         "slug": "pirzath-hand",
         "direction": "ltr",
-        "features": ["ss01"],
-        "variants": [
-            {
-                "name": "Pirzath Hand Lifted",
-                "slug": "pirzath-hand-lifted",
-                "features": [],
-            },
-        ],
+        "features": [],
     },
     "QalezuHand-Regular": {
         "slug": "qalezu-hand",

@@ -68,9 +68,8 @@ test("fonts.json names the families of the built fonts", () => {
     assert.equal(manifest.version, 1);
     const byName = new Map(manifest.families.map((entry) => [entry.name, entry]));
     assert.equal(byName.get("Pirzath Hand").class, "hl-pirzath-hand");
-    assert.deepEqual(byName.get("Pirzath Hand").features, ["ss01"]);
-    assert.equal(byName.get("Pirzath Hand Lifted").class, "hl-pirzath-hand-lifted");
-    assert.deepEqual(byName.get("Pirzath Hand Lifted").features, []);
+    assert.deepEqual(byName.get("Pirzath Hand").features, []);
+    assert.equal(byName.has("Pirzath Hand Lifted"), false);
     assert.equal(byName.get("Qalezu Hand").direction, "rtl");
     assert.equal(byName.get("Semaron Kuriale").direction, "ltr");
     assert.equal(byName.get(VELDIKKO).direction, "rtl");

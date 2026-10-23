@@ -3,7 +3,7 @@
 HL Semaron, HL Pirzath, HL Thuravark, HL Qalezu, HL Veldikko, HL Vedyakshara and HL Helónika type by sound. Each sound sits on one key or chord, the same in every script, and the key types that script's own characters for the sound, as many as the script spells it with. A key whose sound a script does not write types nothing in that script, and no key types a roman letter, apart from the keys of markup, which type themselves. Each script also has a sheet of its own, linked below, with a printable keyboard picture. [The README](../README.md#installing-a-keyboard-layout) says how to install the layouts.
 
 - [Semaron](semaron.md): HL Semaron, for Semaron Kuriale.
-- [Pirzath](pirzath.md): HL Pirzath, for Pirzath Carved, Pirzath Hand, Pirzath Hand Lifted.
+- [Pirzath](pirzath.md): HL Pirzath, for Pirzath Carved, Pirzath Hand.
 - [Thuravark](thuravark.md): HL Thuravark, for Thuravark Carved, Thuravark Carved Bound.
 - [Qalezu](qalezu.md): HL Qalezu, for Qalezu Hand.
 - [Veldikko](veldikko.md): HL Veldikko, for Veldikko.

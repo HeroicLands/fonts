@@ -6,8 +6,7 @@
 
 Everything is read from the ``codepoints`` tables of fonts.json and the committed font
 files. A glyph is the outline the font draws for its code point, shaped with the
-font's OpenType ``features`` (Pirzath Hand Lifted is Pirzath Hand with ``ss01`` off),
-so no font has to be installed to view a sheet.
+font's OpenType ``features``, so no font has to be installed to view a sheet.
 
 - ``charts/<face folder>/chart-<n>.svg`` and ``chart-<n>.png``: the code chart, laid
   out like Unicode's charts. Columns are headed by the code point without its last
@@ -44,7 +43,6 @@ OUT = ROOT / "charts"
 # faces that have none.
 FOLDERS = {
     **LTR_FOLDERS,
-    "hl-pirzath-hand-lifted": "pirzath-hand-lifted",
     "hl-thuravark-carved-bound": "thuravark-carved-bound",
     "hl-qalezu-hand": "qalezu-hand",
     "hl-khelathi-zethu-glyphs": "khelathi-zethu-glyphs",
@@ -101,8 +99,6 @@ class Face:
         self.hb = hb.Font(hb.Face(self.path.read_bytes()))
         self.hb.scale = (self.upem, self.upem)
         self.features = {tag: True for tag in entry["features"]}
-        if entry["name"] == "Pirzath Hand Lifted":
-            self.features = {"ss01": False}
         self.direction = entry["direction"]
 
     def shape(self, row: dict) -> str:
@@ -260,11 +256,6 @@ def sheet_markdown(entry: dict, folder: str, table: list[dict], npages: int) -> 
         "## Code chart",
         "",
     ]
-    if entry["name"] == "Pirzath Hand Lifted":
-        out[2] = (
-            f"{len(table)} characters, U+{first:04X} to U+{last:04X}, in the font `{entry['family']}` "
-            "with the OpenType feature `ss01` off."
-        )
     out += [f"![{entry['name']}, code chart {n}]({folder}/chart-{n}.png)" for n in range(1, npages + 1)]
     out += ["", "## Characters", ""]
     kinds: dict[str, list[dict]] = {}

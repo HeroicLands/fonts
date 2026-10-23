@@ -1,29 +1,26 @@
 # Copyright (c) 2026 Tom Rodriguez ("Toasty") — <toasty@heroiclands.org>
 # SPDX-License-Identifier: OFL-1.1
-"""Load the built hand font and confirm its character map, names, outlines and joined forms.
+"""Load the built hand font and confirm its character map, names, outlines and spacing.
 
     .venv/bin/python tools/pirzath-hand/check_font.py [fonts/PirzathHand-Regular.ttf]
 
 The hand draws the same code points as the carved face, so the character map is
-checked by the same rules, and Latin text draws the box. Every mapped glyph and every lost letter
-must carry an outline, the default-ignorable characters must draw nothing, every
-other character must map to the box (tools/notdef_box.py),
-and the .woff2 beside the .ttf must open and carry the same glyphs.
+checked by the same rules, and Latin text draws the box. Every mapped glyph and every
+lost letter must carry an outline, the default-ignorable characters must draw nothing,
+every other character must map to the box (tools/notdef_box.py), and the .woff2
+beside the .ttf must open and carry the same glyphs.
 
-The joined forms are checked from the outlines. Every joining letter has three
-joined forms beside its plain one, with the same advance: .init with a long
-exit, .fina with a long entry and .medi with both. The long ends are the two
-halves of one connector cut at the advance edge, so the ink where a long exit
-meets the edge is the ink where a long entry leaves it: one stroke, at the
-same height in every letter. A short end, the plain letter's at both ends,
-leaves the edge clear on the join line, so the lifted look keeps its gap.
+The hand is one printed face. It carries no joined forms and no ``ss01``, no
+kerning, and no glyph named for a joined form. Every glyph with ink and an advance
+stands at its ink with ``SB`` units of white either side; the length mark has no
+advance; the notdef and the box keep their own width; and the space is ``SPACE``.
+Each long vowel and each doubled consonant is drawn.
 """
 
 import importlib.util
 import sys
 from pathlib import Path
 
-from fontTools.pens.recordingPen import RecordingPen
 from fontTools.ttLib import TTFont
 
 ROOT = Path(__file__).resolve().parent.parent.parent
@@ -49,110 +46,35 @@ CONSONANTS = [
 ]
 VOWELS = ["a", "e", "i", "o", "u", "aacute", "eacute", "iacute", "oacute", "uacute", "ai", "au", "ei", "oi", "ou"]
 DOUBLED = [f"{c}_{c}" for c in CONSONANTS]
-# The letters that take the connector. Everything else stands off the line.
-JOINING = CONSONANTS + VOWELS + DOUBLED
 MARKS = ["lengthmark"]
-FORMS = {".init": (False, True), ".medi": (True, True), ".fina": (True, False)}
+JOINED_SUFFIXES = (".init", ".medi", ".fina")
 IGNORABLES = [*range(0x200B, 0x2010), *range(0x202A, 0x202F), *range(0x2066, 0x206A), 0xFEFF]
 EMPTY = {"ignorable", "ignorable.sub"}
-
-# The connector crosses the advance edge about this high. Its cut face is one stroke, THICKNESS thick.
-MID = 83
-THICKNESS = 54
-TOLERANCE = 1.5  # units: the most the two cut faces of a connector may differ in height
-PROBE = 0.5  # how far in from the advance edge a face is read
-REACH = 20  # units: how far past the advance edge a short exit may run
+SB = 70  # the white either side of every sign's ink
+SPACE = 500  # the word space
+KEEP_WIDTH = {".notdef", "notdef.box", "space", *EMPTY, *MARKS}
 
 
-def contours(glyphset, name):
-    pen = RecordingPen()
-    glyphset[name].draw(pen)
-    out, cur = [], []
-    for op, args in pen.value:
-        if op == "moveTo":
-            cur = [args[0]]
-        elif op == "lineTo":
-            cur.append(args[0])
-        elif op == "qCurveTo":
-            offs, end = list(args[:-1]), args[-1]
-            ons = [((a[0] + b[0]) / 2, (a[1] + b[1]) / 2) for a, b in zip(offs, offs[1:])] + [end]
-            p0 = cur[-1]
-            for c, p1 in zip(offs, ons):
-                for s in range(1, 17):
-                    t, u = s / 16, 1 - s / 16
-                    cur.append((u * u * p0[0] + 2 * u * t * c[0] + t * t * p1[0],
-                                u * u * p0[1] + 2 * u * t * c[1] + t * t * p1[1]))
-                p0 = p1
-        elif op in ("closePath", "endPath") and cur:
-            out.append(cur)
-            cur = []
-    return out
+def spacing_problems(font: TTFont) -> list[str]:
+    """Every glyph with ink and an advance stands at its ink, SB either side."""
+    from fontTools.pens.boundsPen import BoundsPen
 
-
-def ink_on(cs, x):
-    """The heights at which the vertical line at x is inside the glyph, as [(low, high)] by winding."""
-    crossings = []
-    for c in cs:
-        for (x1, y1), (x2, y2) in zip(c, c[1:] + c[:1]):
-            if (x1 <= x < x2) or (x2 <= x < x1):
-                y = y1 + (y2 - y1) * (x - x1) / (x2 - x1)
-                crossings.append((y, 1 if x2 > x1 else -1))
-    crossings.sort()
-    out, wind, start = [], 0, 0.0
-    for y, d in crossings:
-        if wind == 0:
-            start = y
-        wind += d
-        if wind == 0:
-            out.append((start, y))
-    return out
-
-
-def face(cs, x):
-    """The ink of the connector's cut face at x: the interval across the join height, or None."""
-    for lo, hi in ink_on(cs, x):
-        if lo <= MID <= hi:
-            return (lo, hi)
-    return None
-
-
-def join_problems(font: TTFont) -> list[str]:
     problems = []
     glyphset = font.getGlyphSet()
     hmtx = font["hmtx"]
-    order = set(font.getGlyphOrder())
-    faces = {}
-    for name in JOINING:
-        if name not in order:
-            problems.append(f"{name}: the letter is missing")
+    for name in font.getGlyphOrder():
+        if name in KEEP_WIDTH:
             continue
+        pen = BoundsPen(glyphset)
+        glyphset[name].draw(pen)
+        if pen.bounds is None:
+            continue
+        x0, _, x1, _ = pen.bounds
         adv = hmtx[name][0]
-        for suffix, (entry, exit_) in [("", (False, False))] + list(FORMS.items()):
-            g = name + suffix
-            if g not in order:
-                problems.append(f"{g}: the joined form is missing")
-                continue
-            if hmtx[g][0] != adv:
-                problems.append(f"{g}: its advance {hmtx[g][0]} differs from {name}'s {adv}")
-            cs = contours(glyphset, g)
-            for long_, x, what in ((exit_, adv - PROBE, "exit"), (entry, PROBE, "entry")):
-                f = face(cs, x)
-                if long_:
-                    if f is None:
-                        problems.append(f"{g}: the long {what} has no ink on the join line at the advance edge")
-                    else:
-                        faces[g, what] = f
-                elif what == "entry" and f is not None:
-                    problems.append(f"{g}: the short entry reaches the advance edge")
-            if not exit_ and face(cs, adv + REACH) is not None:
-                problems.append(f"{g}: the short exit runs more than {REACH} units past the advance edge")
-    if faces:
-        lows = sorted(f[0] for f in faces.values())
-        highs = sorted(f[1] for f in faces.values() if f[1] - f[0] < THICKNESS)
-        low, high = lows[len(lows) // 2], highs[len(highs) // 2]
-        for (g, what), f in faces.items():
-            if abs(f[0] - low) > TOLERANCE or (f[1] - f[0] < THICKNESS and abs(f[1] - high) > TOLERANCE):
-                problems.append(f"{g}: the {what} face spans {f[0]:.1f}..{f[1]:.1f}, the connector's is {low:.1f}..{high:.1f}")
+        if abs(x0 - SB) > 1 or abs(adv - x1 - SB) > 1:
+            problems.append(f"{name}: its ink stands {x0:.0f} and {adv - x1:.0f} from its edges, not {SB}")
+    if hmtx["space"][0] != SPACE:
+        problems.append(f"the space is {hmtx['space'][0]} units, not {SPACE}")
     return problems
 
 
@@ -173,8 +95,8 @@ def check(path: Path) -> list[str]:
     for name in CARVED.LOST_LETTERS:
         if name not in order or glyf[name].numberOfContours == 0:
             problems.append(f"the lost letter {name} is missing or draws nothing")
-    for name in JOINING + ["period", "exclam", "comma", "hyphen", "quote.open", "quote.close", ".notdef"] + \
-            [f"num.{i}" for i in range(16)]:
+    for name in CONSONANTS + VOWELS + DOUBLED + ["period", "exclam", "comma", "hyphen", "quote.open", "quote.close",
+                                                ".notdef"] + [f"num.{i}" for i in range(16)]:
         if name not in order or glyf[name].numberOfContours == 0:
             problems.append(f"{name} is missing or draws nothing")
     if "space" not in order or glyf["space"].numberOfContours != 0:
@@ -204,32 +126,37 @@ def check(path: Path) -> list[str]:
             problems.append(f"no {name} table")
     if "GSUB" in font:
         tags = {fr.FeatureTag for fr in font["GSUB"].table.FeatureList.FeatureRecord}
-        for tag in ("ss01", "ccmp", "liga", "rlig"):
+        for tag in ("ccmp", "liga", "rlig"):
             if tag not in tags:
                 problems.append(f"no {tag} feature")
+        if "ss01" in tags:
+            problems.append("an ss01 feature is present; the hand is one printed face")
     if "GPOS" in font:
         tags = {fr.FeatureTag for fr in font["GPOS"].table.FeatureList.FeatureRecord}
         if "kern" in tags:
-            problems.append("a kern feature is present; no kerning moves a join point")
+            problems.append("a kern feature is present; every sign stands at its own spacing")
+        if "mark" not in tags:
+            problems.append("no mark feature for the length mark over a vowel pair")
+    joined = [g for g in order if g.endswith(JOINED_SUFFIXES)]
+    if joined:
+        problems.append(f"{len(joined)} joined forms are present, among them {sorted(joined)[0]}")
+    if font["post"].italicAngle != 0:
+        problems.append(f"the italic angle is {font['post'].italicAngle}; the hand stands upright")
     if font["head"].unitsPerEm != 1000:
         problems.append(f"units per em is {font['head'].unitsPerEm}, expected 1000")
     top = max(b for g in glyf.keys() if glyf[g].numberOfContours for b in [glyf[g].yMax])
     bottom = min(glyf[g].yMin for g in glyf.keys() if glyf[g].numberOfContours)
-    # The accepted overshoot of tools/vertical.py reaches past the line metrics.
-    band = min(
-        glyf[g].yMin
-        for g in glyf.keys()
-        if glyf[g].numberOfContours and g.split(".")[0] not in vertical.OVERSHOOT["PirzathHand"]
-    )
     hhea, os2 = font["hhea"], font["OS/2"]
-    if hhea.ascent < top or hhea.descent > band:
-        problems.append(f"the line metrics {hhea.ascent}/{hhea.descent} do not clear the ink {top}/{band}")
+    if hhea.ascent < top or hhea.descent > bottom:
+        problems.append(f"the line metrics {hhea.ascent}/{hhea.descent} do not clear the ink {top}/{bottom}")
+    if (hhea.ascent, hhea.descent, hhea.lineGap) != (vertical.ASCENT, vertical.DESCENT, vertical.LINE_GAP):
+        problems.append(f"the line metrics are {hhea.ascent}/{hhea.descent}/{hhea.lineGap}, not the shared ones")
     if os2.usWinAscent < top or os2.usWinDescent < -bottom:
         problems.append("the Windows metrics do not clear the ink")
     names = {n.nameID: n.toUnicode() for n in font["name"].names if n.platformID == 3}
     expect = {
         1: "Pirzath Hand",
-        5: "Version 0.2",
+        5: "Version 0.3",
         13: "SIL Open Font License 1.1",
         14: "https://openfontlicense.org",
     }
@@ -240,7 +167,7 @@ def check(path: Path) -> list[str]:
         problems.append("name table carries a trademark")
     if not names.get(0, "").startswith("Copyright"):
         problems.append("name table carries no copyright line")
-    problems += join_problems(font)
+    problems += spacing_problems(font)
 
     woff2 = path.with_suffix(".woff2")
     if not woff2.exists():
@@ -250,7 +177,7 @@ def check(path: Path) -> list[str]:
         if w.getGlyphOrder() != font.getGlyphOrder():
             problems.append("woff2 glyph order differs from the ttf")
     print(f"{path}: {len(cmap)} code points mapped over {len(order)} glyphs, "
-          f"{len(JOINING)} joining letters in {len(JOINING) * (len(FORMS) + 1)} forms with matching connector faces")
+          f"{len(DOUBLED)} doubled consonants and {len(VOWELS) - 10} long vowels drawn, every sign {SB} units clear")
     return problems
 
 

@@ -51,7 +51,7 @@ BLOCKS = [
         "end": 0xF00FF,
         "use": "Pirzath",
         "direction": "left to right",
-        "families": ["Pirzath Carved", "Pirzath Hand", "Pirzath Hand Lifted"],
+        "families": ["Pirzath Carved", "Pirzath Hand"],
     },
     {
         "start": 0xF0100,
@@ -251,7 +251,7 @@ def _helonika():
 
 HELONIKA = _helonika()
 
-# Font file stem -> block. Pirzath Hand and Pirzath Hand Lifted are one file.
+# Font file stem -> block.
 LTR = {
     "SemaronKuriale-Regular": SEMARON,
     "PirzathCarved-Regular": PIRZATH,

@@ -23,8 +23,7 @@ font fails when
 - its OS/2 sxHeight or sCapHeight differs by more than 2 units from the median
   height of its typical x-height letters or capitals;
 - a glyph's ink leaves the band between the ascent and the descent, other than
-  the accepted overshoot: Pirzath Hand's ``j`` and ``ng`` and their doubled and
-  joined forms, Semaron Kuriale's ``f j p s g``, whose descenders reach below
+  the accepted overshoot: Semaron Kuriale's ``f j p s g``, whose descenders reach below
   it, and Veldikko's raised stops, its riser _l_ and its nasals in every form,
   whose stems and tails reach past both edges, and its length bar: Veldikko's
   bowls, not its extenders, stand at the x-height. Vedyakshara Classical's hooks,
@@ -35,6 +34,11 @@ font fails when
 
 Each face has one set of typical letters for each of the two heights; a script with
 a single height uses one set for both.
+
+A script with no capitals is measured against the height a line of Latin is read at.
+Pirzath Hand has no capitals and few extenders, so nearly all of its ink stands in
+one band: its consonants are its typical letters and stand at the cap height, as
+Pirzath Carved's consonants do, and its vowels are its x-height letters.
 
 A face written in columns (``COLUMNS``: Teng Chou) also carries vertical metrics, and
 fails when
@@ -72,7 +76,7 @@ TYPO_METRICS_BIT = 1 << 7
 SCALES = {
     "SemaronKuriale": 1.02,
     "PirzathCarved": 1.04,
-    "PirzathHand": 1.19,
+    "PirzathHand": 1.0,
     "ThuravarkCarved": 0.99,
     "QalezuHand": 0.99,
     "KhelathiZethuGlyphs": 0.77,
@@ -85,7 +89,10 @@ SCALES = {
 CONSONANTS = (
     "b d f g h hl j k l m n ng ny p q r s sh t ts v w y z zh ch".split()
 )
-HAND_CONSONANTS = CONSONANTS
+# Pirzath Hand's consonants that stand from the line to the body, with no extender and
+# no arm worn short, and its vowels that stand from the line to the vowel height.
+HAND_CONSONANTS = "p b f v t d k g m n s sh z zh r ts ch q".split()
+HAND_VOWELS = "a e i u".split()
 VOWELS = "a aacute ai au e ei i o oi ou u".split()
 SEMARON_MINUSCULES = "a b c d e g i j k m n o p r s w y z".split()
 SEMARON_CAPITALS = "A B C D E F G H I J K L M N O P R S T TH U V W Y Z".split()
@@ -113,7 +120,7 @@ def vedyakshara_low() -> set[str]:
 FACES = {
     "SemaronKuriale": {"x": SEMARON_MINUSCULES, "cap": SEMARON_CAPITALS, "target": "x"},
     "PirzathCarved": {"x": VOWELS, "cap": CONSONANTS, "target": "cap"},
-    "PirzathHand": {"x": HAND_CONSONANTS, "cap": HAND_CONSONANTS, "target": "x"},
+    "PirzathHand": {"x": HAND_VOWELS, "cap": HAND_CONSONANTS, "target": "cap"},
     "ThuravarkCarved": {"x": THURAVARK, "cap": THURAVARK, "target": "cap"},
     "QalezuHand": {"x": QALEZU, "cap": QALEZU, "target": "x"},
     "KhelathiZethuGlyphs": {"x": None, "cap": None, "target": "cap"},
@@ -126,7 +133,6 @@ FACES = {
 # Glyphs allowed to leave the band, by face: the first part of the glyph name, before
 # any ``.init``, ``.medi`` or ``.fina`` suffix.
 OVERSHOOT = {
-    "PirzathHand": {"j", "ng", "j_j", "ng_ng"},
     "SemaronKuriale": {"f", "j", "p", "s", "g"},
     # the raised stems, the riser and the nasals' tails reach well past Semaron's
     # extenders by design; the bowls stand at the x-height

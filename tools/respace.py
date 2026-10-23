@@ -31,8 +31,8 @@ A source whose glyphs already all stand at the sidebearing is left as it is, apa
 from its space, because a second run would tighten its kerning again. The files are edited as text, so
 everything else in the source is untouched.
 
-``SPACING`` holds each face's sidebearing, tightening and word space. Pirzath Hand is not
-respaced: its joined letters meet at the advance edge.
+``SPACING`` holds each face's sidebearing, tightening and word space. Pirzath Hand's
+generator, tools/pirzath-hand/build_ufo.py, spaces it at the sidebearing given here.
 """
 
 import argparse
@@ -56,6 +56,7 @@ SPACING = {
     "ThuravarkCarved": {"sidebearing": 34, "tighten": 0},
     "PirzathCarved": {"sidebearing": 26, "tighten": 60},
     "SemaronKuriale": {"sidebearing": 12, "tighten": 0},
+    "PirzathHand": {"sidebearing": 70, "tighten": 0, "space": 500},
 }
 
 KEEP = {".notdef", "notdef.box", "space"}

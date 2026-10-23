@@ -89,12 +89,6 @@
 
 .hl-pirzath-hand {
     font-family: "Pirzath Hand";
-    font-feature-settings: "ss01";
-    font-synthesis: none;
-}
-
-.hl-pirzath-hand-lifted {
-    font-family: "Pirzath Hand";
     font-feature-settings: normal;
     font-synthesis: none;
 }

@@ -1,6 +1,6 @@
 # HL Pirzath cheatsheet
 
-HL Pirzath types Pirzath Carved, Pirzath Hand and Pirzath Hand Lifted by sound. It is a US keyboard that writes the Pirzath script: the key for a sound types that sound's Pirzath character, so `t` types the script's t, Option+T types its th, and Shift makes a capital. You type the sounds of a word one after another, as you would in English.
+HL Pirzath types Pirzath Carved and Pirzath Hand by sound. It is a US keyboard that writes the Pirzath script: the key for a sound types that sound's Pirzath character, so `t` types the script's t, Option+T types its th, and Shift makes a capital. You type the sounds of a word one after another, as you would in English.
 
 ![HL Pirzath on an ANSI keyboard](pirzath.png)
 

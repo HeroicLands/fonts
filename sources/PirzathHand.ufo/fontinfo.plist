@@ -5,15 +5,13 @@
     <key>ascender</key>
     <integer>945</integer>
     <key>capHeight</key>
-    <integer>514</integer>
+    <integer>730</integer>
     <key>copyright</key>
     <string>Copyright (c) 2026 Tom Rodriguez ("Toasty") — &lt;toasty@heroiclands.org&gt;</string>
     <key>descender</key>
     <integer>-200</integer>
     <key>familyName</key>
     <string>Pirzath Hand</string>
-    <key>italicAngle</key>
-    <integer>-12</integer>
     <key>openTypeHeadCreated</key>
     <string>2026/01/01 00:00:00</string>
     <key>openTypeHeadFlags</key>
@@ -25,24 +23,20 @@
     <integer>3</integer>
     <key>openTypeHheaAscender</key>
     <integer>945</integer>
-    <key>openTypeHheaCaretSlopeRise</key>
-    <integer>1000</integer>
-    <key>openTypeHheaCaretSlopeRun</key>
-    <integer>213</integer>
     <key>openTypeHheaDescender</key>
     <integer>-200</integer>
     <key>openTypeHheaLineGap</key>
     <integer>100</integer>
     <key>openTypeNameDescription</key>
-    <string>The hand form of Pirzath, the everyday written script of the Khazari of thalorna.</string>
+    <string>Pirzath Hand, the everyday printed hand of Pirzath, the script of the Khazari of thalorna: plain separate letters in an even stroke, written left to right with chalk or a carpenter's pencil.</string>
     <key>openTypeNameLicense</key>
     <string>SIL Open Font License 1.1</string>
     <key>openTypeNameLicenseURL</key>
     <string>https://openfontlicense.org</string>
     <key>openTypeNameUniqueID</key>
-    <string>PirzathHand-Regular;0.2</string>
+    <string>PirzathHand-Regular;0.3</string>
     <key>openTypeNameVersion</key>
-    <string>Version 0.2</string>
+    <string>Version 0.3</string>
     <key>openTypeOS2CodePageRanges</key>
     <array/>
     <key>openTypeOS2Selection</key>
@@ -64,11 +58,11 @@
     <key>openTypeOS2WinAscent</key>
     <integer>945</integer>
     <key>openTypeOS2WinDescent</key>
-    <integer>378</integer>
+    <integer>250</integer>
     <key>postscriptFontName</key>
     <string>PirzathHand-Regular</string>
     <key>postscriptUnderlinePosition</key>
-    <integer>-95</integer>
+    <integer>-100</integer>
     <key>postscriptUnderlineThickness</key>
     <integer>40</integer>
     <key>styleMapFamilyName</key>
@@ -82,8 +76,8 @@
     <key>versionMajor</key>
     <integer>0</integer>
     <key>versionMinor</key>
-    <integer>200</integer>
+    <integer>300</integer>
     <key>xHeight</key>
-    <integer>514</integer>
+    <integer>460</integer>
   </dict>
 </plist>

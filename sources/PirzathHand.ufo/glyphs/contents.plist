@@ -6,360 +6,102 @@
     <string>_notdef.glif</string>
     <key>a</key>
     <string>a.glif</string>
-    <key>a.fina</key>
-    <string>a.fina.glif</string>
-    <key>a.init</key>
-    <string>a.init.glif</string>
-    <key>a.medi</key>
-    <string>a.medi.glif</string>
     <key>aacute</key>
     <string>aacute.glif</string>
-    <key>aacute.fina</key>
-    <string>aacute.fina.glif</string>
-    <key>aacute.init</key>
-    <string>aacute.init.glif</string>
-    <key>aacute.medi</key>
-    <string>aacute.medi.glif</string>
     <key>ai</key>
     <string>ai.glif</string>
-    <key>ai.fina</key>
-    <string>ai.fina.glif</string>
-    <key>ai.init</key>
-    <string>ai.init.glif</string>
-    <key>ai.medi</key>
-    <string>ai.medi.glif</string>
     <key>au</key>
     <string>au.glif</string>
-    <key>au.fina</key>
-    <string>au.fina.glif</string>
-    <key>au.init</key>
-    <string>au.init.glif</string>
-    <key>au.medi</key>
-    <string>au.medi.glif</string>
     <key>b</key>
     <string>b.glif</string>
-    <key>b.fina</key>
-    <string>b.fina.glif</string>
-    <key>b.init</key>
-    <string>b.init.glif</string>
-    <key>b.medi</key>
-    <string>b.medi.glif</string>
     <key>b_b</key>
     <string>b_b.glif</string>
-    <key>b_b.fina</key>
-    <string>b_b.fina.glif</string>
-    <key>b_b.init</key>
-    <string>b_b.init.glif</string>
-    <key>b_b.medi</key>
-    <string>b_b.medi.glif</string>
     <key>catch</key>
     <string>catch.glif</string>
-    <key>catch.fina</key>
-    <string>catch.fina.glif</string>
-    <key>catch.init</key>
-    <string>catch.init.glif</string>
-    <key>catch.medi</key>
-    <string>catch.medi.glif</string>
     <key>catch_catch</key>
     <string>catch_catch.glif</string>
-    <key>catch_catch.fina</key>
-    <string>catch_catch.fina.glif</string>
-    <key>catch_catch.init</key>
-    <string>catch_catch.init.glif</string>
-    <key>catch_catch.medi</key>
-    <string>catch_catch.medi.glif</string>
     <key>ch</key>
     <string>ch.glif</string>
-    <key>ch.fina</key>
-    <string>ch.fina.glif</string>
-    <key>ch.init</key>
-    <string>ch.init.glif</string>
-    <key>ch.medi</key>
-    <string>ch.medi.glif</string>
     <key>ch_ch</key>
     <string>ch_ch.glif</string>
-    <key>ch_ch.fina</key>
-    <string>ch_ch.fina.glif</string>
-    <key>ch_ch.init</key>
-    <string>ch_ch.init.glif</string>
-    <key>ch_ch.medi</key>
-    <string>ch_ch.medi.glif</string>
     <key>comma</key>
     <string>comma.glif</string>
     <key>d</key>
     <string>d.glif</string>
-    <key>d.fina</key>
-    <string>d.fina.glif</string>
-    <key>d.init</key>
-    <string>d.init.glif</string>
-    <key>d.medi</key>
-    <string>d.medi.glif</string>
     <key>d_d</key>
     <string>d_d.glif</string>
-    <key>d_d.fina</key>
-    <string>d_d.fina.glif</string>
-    <key>d_d.init</key>
-    <string>d_d.init.glif</string>
-    <key>d_d.medi</key>
-    <string>d_d.medi.glif</string>
     <key>d_h</key>
     <string>d_h.glif</string>
-    <key>d_h.fina</key>
-    <string>d_h.fina.glif</string>
-    <key>d_h.init</key>
-    <string>d_h.init.glif</string>
-    <key>d_h.medi</key>
-    <string>d_h.medi.glif</string>
     <key>d_h_d_h</key>
     <string>d_h_d_h.glif</string>
-    <key>d_h_d_h.fina</key>
-    <string>d_h_d_h.fina.glif</string>
-    <key>d_h_d_h.init</key>
-    <string>d_h_d_h.init.glif</string>
-    <key>d_h_d_h.medi</key>
-    <string>d_h_d_h.medi.glif</string>
     <key>e</key>
     <string>e.glif</string>
-    <key>e.fina</key>
-    <string>e.fina.glif</string>
-    <key>e.init</key>
-    <string>e.init.glif</string>
-    <key>e.medi</key>
-    <string>e.medi.glif</string>
     <key>eacute</key>
     <string>eacute.glif</string>
-    <key>eacute.fina</key>
-    <string>eacute.fina.glif</string>
-    <key>eacute.init</key>
-    <string>eacute.init.glif</string>
-    <key>eacute.medi</key>
-    <string>eacute.medi.glif</string>
     <key>ei</key>
     <string>ei.glif</string>
-    <key>ei.fina</key>
-    <string>ei.fina.glif</string>
-    <key>ei.init</key>
-    <string>ei.init.glif</string>
-    <key>ei.medi</key>
-    <string>ei.medi.glif</string>
     <key>exclam</key>
     <string>exclam.glif</string>
     <key>f</key>
     <string>f.glif</string>
-    <key>f.fina</key>
-    <string>f.fina.glif</string>
-    <key>f.init</key>
-    <string>f.init.glif</string>
-    <key>f.medi</key>
-    <string>f.medi.glif</string>
     <key>f_f</key>
     <string>f_f.glif</string>
-    <key>f_f.fina</key>
-    <string>f_f.fina.glif</string>
-    <key>f_f.init</key>
-    <string>f_f.init.glif</string>
-    <key>f_f.medi</key>
-    <string>f_f.medi.glif</string>
     <key>g</key>
     <string>g.glif</string>
-    <key>g.fina</key>
-    <string>g.fina.glif</string>
-    <key>g.init</key>
-    <string>g.init.glif</string>
-    <key>g.medi</key>
-    <string>g.medi.glif</string>
     <key>g_g</key>
     <string>g_g.glif</string>
-    <key>g_g.fina</key>
-    <string>g_g.fina.glif</string>
-    <key>g_g.init</key>
-    <string>g_g.init.glif</string>
-    <key>g_g.medi</key>
-    <string>g_g.medi.glif</string>
     <key>g_h</key>
     <string>g_h.glif</string>
-    <key>g_h.fina</key>
-    <string>g_h.fina.glif</string>
-    <key>g_h.init</key>
-    <string>g_h.init.glif</string>
-    <key>g_h.medi</key>
-    <string>g_h.medi.glif</string>
     <key>g_h_g_h</key>
     <string>g_h_g_h.glif</string>
-    <key>g_h_g_h.fina</key>
-    <string>g_h_g_h.fina.glif</string>
-    <key>g_h_g_h.init</key>
-    <string>g_h_g_h.init.glif</string>
-    <key>g_h_g_h.medi</key>
-    <string>g_h_g_h.medi.glif</string>
     <key>h</key>
     <string>h.glif</string>
-    <key>h.fina</key>
-    <string>h.fina.glif</string>
-    <key>h.init</key>
-    <string>h.init.glif</string>
-    <key>h.medi</key>
-    <string>h.medi.glif</string>
     <key>h_h</key>
     <string>h_h.glif</string>
-    <key>h_h.fina</key>
-    <string>h_h.fina.glif</string>
-    <key>h_h.init</key>
-    <string>h_h.init.glif</string>
-    <key>h_h.medi</key>
-    <string>h_h.medi.glif</string>
     <key>hl</key>
     <string>hl.glif</string>
-    <key>hl.fina</key>
-    <string>hl.fina.glif</string>
-    <key>hl.init</key>
-    <string>hl.init.glif</string>
-    <key>hl.medi</key>
-    <string>hl.medi.glif</string>
     <key>hl_hl</key>
     <string>hl_hl.glif</string>
-    <key>hl_hl.fina</key>
-    <string>hl_hl.fina.glif</string>
-    <key>hl_hl.init</key>
-    <string>hl_hl.init.glif</string>
-    <key>hl_hl.medi</key>
-    <string>hl_hl.medi.glif</string>
     <key>hyphen</key>
     <string>hyphen.glif</string>
     <key>i</key>
     <string>i.glif</string>
-    <key>i.fina</key>
-    <string>i.fina.glif</string>
-    <key>i.init</key>
-    <string>i.init.glif</string>
-    <key>i.medi</key>
-    <string>i.medi.glif</string>
     <key>iacute</key>
     <string>iacute.glif</string>
-    <key>iacute.fina</key>
-    <string>iacute.fina.glif</string>
-    <key>iacute.init</key>
-    <string>iacute.init.glif</string>
-    <key>iacute.medi</key>
-    <string>iacute.medi.glif</string>
     <key>ignorable</key>
     <string>ignorable.glif</string>
     <key>ignorable.sub</key>
     <string>ignorable.sub.glif</string>
     <key>j</key>
     <string>j.glif</string>
-    <key>j.fina</key>
-    <string>j.fina.glif</string>
-    <key>j.init</key>
-    <string>j.init.glif</string>
-    <key>j.medi</key>
-    <string>j.medi.glif</string>
     <key>j_j</key>
     <string>j_j.glif</string>
-    <key>j_j.fina</key>
-    <string>j_j.fina.glif</string>
-    <key>j_j.init</key>
-    <string>j_j.init.glif</string>
-    <key>j_j.medi</key>
-    <string>j_j.medi.glif</string>
     <key>k</key>
     <string>k.glif</string>
-    <key>k.fina</key>
-    <string>k.fina.glif</string>
-    <key>k.init</key>
-    <string>k.init.glif</string>
-    <key>k.medi</key>
-    <string>k.medi.glif</string>
     <key>k_h</key>
     <string>k_h.glif</string>
-    <key>k_h.fina</key>
-    <string>k_h.fina.glif</string>
-    <key>k_h.init</key>
-    <string>k_h.init.glif</string>
-    <key>k_h.medi</key>
-    <string>k_h.medi.glif</string>
     <key>k_h_k_h</key>
     <string>k_h_k_h.glif</string>
-    <key>k_h_k_h.fina</key>
-    <string>k_h_k_h.fina.glif</string>
-    <key>k_h_k_h.init</key>
-    <string>k_h_k_h.init.glif</string>
-    <key>k_h_k_h.medi</key>
-    <string>k_h_k_h.medi.glif</string>
     <key>k_k</key>
     <string>k_k.glif</string>
-    <key>k_k.fina</key>
-    <string>k_k.fina.glif</string>
-    <key>k_k.init</key>
-    <string>k_k.init.glif</string>
-    <key>k_k.medi</key>
-    <string>k_k.medi.glif</string>
     <key>l</key>
     <string>l.glif</string>
-    <key>l.fina</key>
-    <string>l.fina.glif</string>
-    <key>l.init</key>
-    <string>l.init.glif</string>
-    <key>l.medi</key>
-    <string>l.medi.glif</string>
     <key>l_l</key>
     <string>l_l.glif</string>
-    <key>l_l.fina</key>
-    <string>l_l.fina.glif</string>
-    <key>l_l.init</key>
-    <string>l_l.init.glif</string>
-    <key>l_l.medi</key>
-    <string>l_l.medi.glif</string>
     <key>lengthmark</key>
     <string>lengthmark.glif</string>
     <key>m</key>
     <string>m.glif</string>
-    <key>m.fina</key>
-    <string>m.fina.glif</string>
-    <key>m.init</key>
-    <string>m.init.glif</string>
-    <key>m.medi</key>
-    <string>m.medi.glif</string>
     <key>m_m</key>
     <string>m_m.glif</string>
-    <key>m_m.fina</key>
-    <string>m_m.fina.glif</string>
-    <key>m_m.init</key>
-    <string>m_m.init.glif</string>
-    <key>m_m.medi</key>
-    <string>m_m.medi.glif</string>
     <key>n</key>
     <string>n.glif</string>
-    <key>n.fina</key>
-    <string>n.fina.glif</string>
-    <key>n.init</key>
-    <string>n.init.glif</string>
-    <key>n.medi</key>
-    <string>n.medi.glif</string>
     <key>n_n</key>
     <string>n_n.glif</string>
-    <key>n_n.fina</key>
-    <string>n_n.fina.glif</string>
-    <key>n_n.init</key>
-    <string>n_n.init.glif</string>
-    <key>n_n.medi</key>
-    <string>n_n.medi.glif</string>
     <key>ng</key>
     <string>ng.glif</string>
-    <key>ng.fina</key>
-    <string>ng.fina.glif</string>
-    <key>ng.init</key>
-    <string>ng.init.glif</string>
-    <key>ng.medi</key>
-    <string>ng.medi.glif</string>
     <key>ng_ng</key>
     <string>ng_ng.glif</string>
-    <key>ng_ng.fina</key>
-    <string>ng_ng.fina.glif</string>
-    <key>ng_ng.init</key>
-    <string>ng_ng.init.glif</string>
-    <key>ng_ng.medi</key>
-    <string>ng_ng.medi.glif</string>
     <key>notdef.box</key>
     <string>notdef.box.glif</string>
     <key>num.0</key>
@@ -396,283 +138,79 @@
     <string>num.9.glif</string>
     <key>ny</key>
     <string>ny.glif</string>
-    <key>ny.fina</key>
-    <string>ny.fina.glif</string>
-    <key>ny.init</key>
-    <string>ny.init.glif</string>
-    <key>ny.medi</key>
-    <string>ny.medi.glif</string>
     <key>ny_ny</key>
     <string>ny_ny.glif</string>
-    <key>ny_ny.fina</key>
-    <string>ny_ny.fina.glif</string>
-    <key>ny_ny.init</key>
-    <string>ny_ny.init.glif</string>
-    <key>ny_ny.medi</key>
-    <string>ny_ny.medi.glif</string>
     <key>o</key>
     <string>o.glif</string>
-    <key>o.fina</key>
-    <string>o.fina.glif</string>
-    <key>o.init</key>
-    <string>o.init.glif</string>
-    <key>o.medi</key>
-    <string>o.medi.glif</string>
     <key>oacute</key>
     <string>oacute.glif</string>
-    <key>oacute.fina</key>
-    <string>oacute.fina.glif</string>
-    <key>oacute.init</key>
-    <string>oacute.init.glif</string>
-    <key>oacute.medi</key>
-    <string>oacute.medi.glif</string>
     <key>oi</key>
     <string>oi.glif</string>
-    <key>oi.fina</key>
-    <string>oi.fina.glif</string>
-    <key>oi.init</key>
-    <string>oi.init.glif</string>
-    <key>oi.medi</key>
-    <string>oi.medi.glif</string>
     <key>ou</key>
     <string>ou.glif</string>
-    <key>ou.fina</key>
-    <string>ou.fina.glif</string>
-    <key>ou.init</key>
-    <string>ou.init.glif</string>
-    <key>ou.medi</key>
-    <string>ou.medi.glif</string>
     <key>p</key>
     <string>p.glif</string>
-    <key>p.fina</key>
-    <string>p.fina.glif</string>
-    <key>p.init</key>
-    <string>p.init.glif</string>
-    <key>p.medi</key>
-    <string>p.medi.glif</string>
     <key>p_p</key>
     <string>p_p.glif</string>
-    <key>p_p.fina</key>
-    <string>p_p.fina.glif</string>
-    <key>p_p.init</key>
-    <string>p_p.init.glif</string>
-    <key>p_p.medi</key>
-    <string>p_p.medi.glif</string>
     <key>period</key>
     <string>period.glif</string>
     <key>q</key>
     <string>q.glif</string>
-    <key>q.fina</key>
-    <string>q.fina.glif</string>
-    <key>q.init</key>
-    <string>q.init.glif</string>
-    <key>q.medi</key>
-    <string>q.medi.glif</string>
     <key>q_q</key>
     <string>q_q.glif</string>
-    <key>q_q.fina</key>
-    <string>q_q.fina.glif</string>
-    <key>q_q.init</key>
-    <string>q_q.init.glif</string>
-    <key>q_q.medi</key>
-    <string>q_q.medi.glif</string>
     <key>quote.close</key>
     <string>quote.close.glif</string>
     <key>quote.open</key>
     <string>quote.open.glif</string>
     <key>r</key>
     <string>r.glif</string>
-    <key>r.fina</key>
-    <string>r.fina.glif</string>
-    <key>r.init</key>
-    <string>r.init.glif</string>
-    <key>r.medi</key>
-    <string>r.medi.glif</string>
     <key>r_r</key>
     <string>r_r.glif</string>
-    <key>r_r.fina</key>
-    <string>r_r.fina.glif</string>
-    <key>r_r.init</key>
-    <string>r_r.init.glif</string>
-    <key>r_r.medi</key>
-    <string>r_r.medi.glif</string>
     <key>s</key>
     <string>s.glif</string>
-    <key>s.fina</key>
-    <string>s.fina.glif</string>
-    <key>s.init</key>
-    <string>s.init.glif</string>
-    <key>s.medi</key>
-    <string>s.medi.glif</string>
     <key>s_s</key>
     <string>s_s.glif</string>
-    <key>s_s.fina</key>
-    <string>s_s.fina.glif</string>
-    <key>s_s.init</key>
-    <string>s_s.init.glif</string>
-    <key>s_s.medi</key>
-    <string>s_s.medi.glif</string>
     <key>sh</key>
     <string>sh.glif</string>
-    <key>sh.fina</key>
-    <string>sh.fina.glif</string>
-    <key>sh.init</key>
-    <string>sh.init.glif</string>
-    <key>sh.medi</key>
-    <string>sh.medi.glif</string>
     <key>sh_sh</key>
     <string>sh_sh.glif</string>
-    <key>sh_sh.fina</key>
-    <string>sh_sh.fina.glif</string>
-    <key>sh_sh.init</key>
-    <string>sh_sh.init.glif</string>
-    <key>sh_sh.medi</key>
-    <string>sh_sh.medi.glif</string>
     <key>space</key>
     <string>space.glif</string>
     <key>t</key>
     <string>t.glif</string>
-    <key>t.fina</key>
-    <string>t.fina.glif</string>
-    <key>t.init</key>
-    <string>t.init.glif</string>
-    <key>t.medi</key>
-    <string>t.medi.glif</string>
     <key>t_h</key>
     <string>t_h.glif</string>
-    <key>t_h.fina</key>
-    <string>t_h.fina.glif</string>
-    <key>t_h.init</key>
-    <string>t_h.init.glif</string>
-    <key>t_h.medi</key>
-    <string>t_h.medi.glif</string>
     <key>t_h_t_h</key>
     <string>t_h_t_h.glif</string>
-    <key>t_h_t_h.fina</key>
-    <string>t_h_t_h.fina.glif</string>
-    <key>t_h_t_h.init</key>
-    <string>t_h_t_h.init.glif</string>
-    <key>t_h_t_h.medi</key>
-    <string>t_h_t_h.medi.glif</string>
     <key>t_t</key>
     <string>t_t.glif</string>
-    <key>t_t.fina</key>
-    <string>t_t.fina.glif</string>
-    <key>t_t.init</key>
-    <string>t_t.init.glif</string>
-    <key>t_t.medi</key>
-    <string>t_t.medi.glif</string>
     <key>ts</key>
     <string>ts.glif</string>
-    <key>ts.fina</key>
-    <string>ts.fina.glif</string>
-    <key>ts.init</key>
-    <string>ts.init.glif</string>
-    <key>ts.medi</key>
-    <string>ts.medi.glif</string>
     <key>ts_ts</key>
     <string>ts_ts.glif</string>
-    <key>ts_ts.fina</key>
-    <string>ts_ts.fina.glif</string>
-    <key>ts_ts.init</key>
-    <string>ts_ts.init.glif</string>
-    <key>ts_ts.medi</key>
-    <string>ts_ts.medi.glif</string>
     <key>u</key>
     <string>u.glif</string>
-    <key>u.fina</key>
-    <string>u.fina.glif</string>
-    <key>u.init</key>
-    <string>u.init.glif</string>
-    <key>u.medi</key>
-    <string>u.medi.glif</string>
     <key>uacute</key>
     <string>uacute.glif</string>
-    <key>uacute.fina</key>
-    <string>uacute.fina.glif</string>
-    <key>uacute.init</key>
-    <string>uacute.init.glif</string>
-    <key>uacute.medi</key>
-    <string>uacute.medi.glif</string>
     <key>v</key>
     <string>v.glif</string>
-    <key>v.fina</key>
-    <string>v.fina.glif</string>
-    <key>v.init</key>
-    <string>v.init.glif</string>
-    <key>v.medi</key>
-    <string>v.medi.glif</string>
     <key>v_v</key>
     <string>v_v.glif</string>
-    <key>v_v.fina</key>
-    <string>v_v.fina.glif</string>
-    <key>v_v.init</key>
-    <string>v_v.init.glif</string>
-    <key>v_v.medi</key>
-    <string>v_v.medi.glif</string>
     <key>w</key>
     <string>w.glif</string>
-    <key>w.fina</key>
-    <string>w.fina.glif</string>
-    <key>w.init</key>
-    <string>w.init.glif</string>
-    <key>w.medi</key>
-    <string>w.medi.glif</string>
     <key>w_w</key>
     <string>w_w.glif</string>
-    <key>w_w.fina</key>
-    <string>w_w.fina.glif</string>
-    <key>w_w.init</key>
-    <string>w_w.init.glif</string>
-    <key>w_w.medi</key>
-    <string>w_w.medi.glif</string>
     <key>y</key>
     <string>y.glif</string>
-    <key>y.fina</key>
-    <string>y.fina.glif</string>
-    <key>y.init</key>
-    <string>y.init.glif</string>
-    <key>y.medi</key>
-    <string>y.medi.glif</string>
     <key>y_y</key>
     <string>y_y.glif</string>
-    <key>y_y.fina</key>
-    <string>y_y.fina.glif</string>
-    <key>y_y.init</key>
-    <string>y_y.init.glif</string>
-    <key>y_y.medi</key>
-    <string>y_y.medi.glif</string>
     <key>z</key>
     <string>z.glif</string>
-    <key>z.fina</key>
-    <string>z.fina.glif</string>
-    <key>z.init</key>
-    <string>z.init.glif</string>
-    <key>z.medi</key>
-    <string>z.medi.glif</string>
     <key>z_z</key>
     <string>z_z.glif</string>
-    <key>z_z.fina</key>
-    <string>z_z.fina.glif</string>
-    <key>z_z.init</key>
-    <string>z_z.init.glif</string>
-    <key>z_z.medi</key>
-    <string>z_z.medi.glif</string>
     <key>zh</key>
     <string>zh.glif</string>
-    <key>zh.fina</key>
-    <string>zh.fina.glif</string>
-    <key>zh.init</key>
-    <string>zh.init.glif</string>
-    <key>zh.medi</key>
-    <string>zh.medi.glif</string>
     <key>zh_zh</key>
     <string>zh_zh.glif</string>
-    <key>zh_zh.fina</key>
-    <string>zh_zh.fina.glif</string>
-    <key>zh_zh.init</key>
-    <string>zh_zh.init.glif</string>
-    <key>zh_zh.medi</key>
-    <string>zh_zh.medi.glif</string>
   </dict>
 </plist>

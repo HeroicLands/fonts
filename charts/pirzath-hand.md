@@ -1,6 +1,6 @@
 # Pirzath Hand
 
-64 characters, U+F0000 to U+F0060, in the font `Pirzath Hand` with the OpenType feature `ss01` on.
+64 characters, U+F0000 to U+F0060, in the font `Pirzath Hand`.
 
 ## Code chart
 

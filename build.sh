@@ -5,9 +5,9 @@
 # Teng Chou's UFO is generated from its data by tools/teng-chou/build_ufo.py, run by hand
 # after a data change, so the build compiles the committed source on every platform alike;
 # Veldikko's is generated from its letters and joining by tools/veldikko/build_ufo.py,
-# Vedyakshara Classical's from its signs by tools/vedyakshara/build_ufo.py, and Helonika
-# Book's from its letters by tools/helonika/build_ufo.py, in the
-# same way.
+# Vedyakshara Classical's from its signs by tools/vedyakshara/build_ufo.py, Helonika
+# Book's from its letters by tools/helonika/build_ufo.py, and Pirzath Hand's from its
+# signs by tools/pirzath-hand/build_ufo.py, in the same way.
 # The timestamp is fixed, so a build is byte-for-byte reproducible. fontmake writes
 # the Windows name records only, so tools/add_mac_names.py adds the Macintosh ones.
 #

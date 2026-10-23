@@ -5,7 +5,9 @@
     .venv/bin/python tools/prove_guards.py [--map-note SCRIPT=FILE]
 
 The broken Pirzath and Thuravark fonts are the built .ttf with the GSUB table
-removed, so no ligature, decomposition or contextual rule applies. Thuravark's
+removed, so no ligature, decomposition or contextual rule applies. Pirzath Hand's
+font check (tools/pirzath-hand/check_font.py) is proved with the GPOS table removed,
+so that no length mark stands over its vowel pair. Thuravark's
 guard is also proved without the lookup that frames a crowned name, without the
 bound runes of ``ss01``, and with the bound runes on in plain text; its font check
 is proved without ``ss01``. The broken
@@ -845,6 +847,13 @@ def main():
             lambda p: hand.run(p, []),
             stripped,
             "without GSUB",
+        ),
+        (
+            "Pirzath Hand",
+            ROOT / "fonts" / "PirzathHand-Regular.ttf",
+            load("pirzath_hand_check", ROOT / "tools" / "pirzath-hand" / "check_font.py").check,
+            without_gpos,
+            "without GPOS, so that no length mark stands over its pair",
         ),
         (
             "Thuravark Carved",

@@ -155,7 +155,7 @@ half-finished diagnosis.
 
 - `./build.sh` — builds every font from its UFO under `sources/`
 - `python tools/pirzath/check_font.py` — checks the built Pirzath Carved font
-- `python tools/pirzath-hand/check_font.py` — checks the built Pirzath Hand font and its join line
+- `python tools/pirzath-hand/check_font.py` — checks the built Pirzath Hand font and its spacing
 - `python tools/thuravark-carved/check_font.py` — checks the built Thuravark Carved font
 - `python tools/khelathi-zethu-glyphs/check_font.py` — checks the built Khelathi Zethu Glyphs font against `tools/khelathi-zethu-glyphs/encoding.json`
 - `python tools/qalezu-hand/check_font.py` — checks the built Qalezu Hand font against `tools/qalezu-hand/encoding.json`

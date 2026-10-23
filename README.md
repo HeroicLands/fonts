@@ -37,7 +37,7 @@ Choose the font by its name, such as `Pirzath Carved`, in the font box of your w
 - **Web apps such as Google Docs cannot use a font installed on your computer.** Use a desktop app, or put the text in a picture.
 - **Right-to-left scripts** (Veldikko, Qalezu Hand and Khelathi Zethu Glyphs) run right to left on their own, mixed with English, with no setting to change.
 - **Veldikko** has tall risers and long tails. Set its paragraphs to a line height of about 2.4 times the font size so lines do not collide.
-- **Pirzath Hand and Thuravark Carved** each have an optional form, the OpenType stylistic set `ss01`. Turned on, Pirzath Hand draws a joining line under its letters and Thuravark Carved binds common pairs of staves onto one stem. In LibreOffice, write the font name as `Pirzath Hand:ss01` or `Thuravark Carved:ss01`.
+- **Thuravark Carved** has an optional form, the OpenType stylistic set `ss01`. Turned on, it binds common pairs of staves onto one stem. In LibreOffice, write the font name as `Thuravark Carved:ss01`.
 - **Teng Chou** is written in columns. Set it as ordinary text on a line, or use your app's vertical text direction for columns.
 
 ## Type in a script
