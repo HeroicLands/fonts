@@ -1,5 +1,16 @@
 # @heroiclands/fonts
 
+## 1.1.0
+
+### Minor Changes
+
+- Pirzath Hand is redrawn as a plain printed hand that reads at a glance: separate, even-weight letters as tall as Latin capitals, with sixteen new digits that cannot be mistaken for one another.
+- Pirzath Hand Lifted and the joining line are gone; Pirzath Hand is one printed face with no stylistic set.
+
+### Patch Changes
+
+The HL Helónika keyboard types the _kh_ and _zh_ letters, the long vowels and the accent, on keys of their own.
+
 ## 1.0.1
 
 ### Patch Changes
