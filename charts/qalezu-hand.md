@@ -1,6 +1,6 @@
 # Qalezu Hand
 
-57 characters, U+1EA00 to U+1EA38, in the font `Qalezu Hand`.
+58 characters, U+1EA00 to U+1EA39, in the font `Qalezu Hand`.
 
 ## Code chart
 
@@ -84,3 +84,4 @@
 | --- | --- | --- | --- | --- |
 | QALEZU SENTENCE END | ![U+1EA37](qalezu-hand/glyphs/U+1EA37.svg) | U+1EA37 | `&#125495;` | `&#x1EA37;` |
 | QALEZU PAUSE | ![U+1EA38](qalezu-hand/glyphs/U+1EA38.svg) | U+1EA38 | `&#125496;` | `&#x1EA38;` |
+| QALEZU VERSE END | ![U+1EA39](qalezu-hand/glyphs/U+1EA39.svg) | U+1EA39 | `&#125497;` | `&#x1EA39;` |

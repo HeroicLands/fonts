@@ -194,6 +194,8 @@
     <string>tj.dbl.catch.glif</string>
     <key>two</key>
     <string>two.glif</string>
+    <key>verseEnd</key>
+    <string>verseEnd.glif</string>
     <key>w</key>
     <string>w.glif</string>
     <key>w.catch</key>

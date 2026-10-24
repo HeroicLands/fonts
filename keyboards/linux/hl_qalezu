@@ -37,7 +37,7 @@ xkb_symbols "basic" {
     key <AC01> { type[Group1] = "FOUR_LEVEL", symbols[Group1] = [ VoidSymbol, VoidSymbol, VoidSymbol, VoidSymbol ] };
     key <AC02> { type[Group1] = "FOUR_LEVEL", symbols[Group1] = [ U1EA05, U1EA05, U1EA0F, U1EA0F ] };
     key <AC03> { type[Group1] = "FOUR_LEVEL", symbols[Group1] = [ U1EA03, U1EA03, VoidSymbol, VoidSymbol ] };
-    key <AC04> { type[Group1] = "FOUR_LEVEL", symbols[Group1] = [ U1EA12, U1EA12, VoidSymbol, VoidSymbol ] };
+    key <AC04> { type[Group1] = "FOUR_LEVEL", symbols[Group1] = [ U1EA12, U1EA12, VoidSymbol, U1EA39 ] };
     key <AC05> { type[Group1] = "FOUR_LEVEL", symbols[Group1] = [ U1EA06, U1EA06, U1EA0D, U1EA0D ] };
     key <AC06> { type[Group1] = "FOUR_LEVEL", symbols[Group1] = [ U1EA0E, U1EA0E, VoidSymbol, VoidSymbol ] };
     key <AC07> { type[Group1] = "FOUR_LEVEL", symbols[Group1] = [ U1EA16, U1EA16, VoidSymbol, VoidSymbol ] };

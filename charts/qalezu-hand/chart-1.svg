@@ -311,7 +311,11 @@
 <g fill="#161412"><path transform="translate(35.94 59.28) scale(0.05200 -0.05200)" d="M154 26H35Q30 26 28.5 31.5Q27 37 31 39L105 82Q106 82 107.0 82.5Q108 83 109 83H227Q235 83 243.5 85.5Q252 88 259 91Q263 94 267 95Q271 97 275.5 98.0Q280 99 282 94Q284 88 279 85L205 43Q193 37 180.5 31.5Q168 26 154 26Z"/></g>
 <text x="44.0" y="95" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#6b665f">1EA38</text>
 </g>
-<rect class="undrawn" x="314" y="1042" width="88" height="104" fill="url(#hatch)"/>
+<g class="drawn" id="cp-1EA39" transform="translate(314 1042)">
+<title>QALEZU VERSE END U+1EA39</title>
+<g fill="#161412"><path transform="translate(35.86 59.28) scale(0.05200 -0.05200)" d="M120 726 81 780Q79 782 80.5 785.0Q82 788 85 789L181 835Q188 839 193 832L232 777Q234 775 232.5 772.0Q231 769 228 768L132 722Q125 718 120 726Z"/></g>
+<text x="44.0" y="95" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#6b665f">1EA39</text>
+</g>
 <rect class="undrawn" x="314" y="1146" width="88" height="104" fill="url(#hatch)"/>
 <rect class="undrawn" x="314" y="1250" width="88" height="104" fill="url(#hatch)"/>
 <rect class="undrawn" x="314" y="1354" width="88" height="104" fill="url(#hatch)"/>

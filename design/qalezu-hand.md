@@ -85,7 +85,7 @@ No sign needs mark positioning. HarfBuzz, and so Chrome, Foundry and Typst, shap
 
 ## The encoding
 
-`tools/qalezu-hand/encoding.json` is the one table: for each character its glyph name, its code point in U+1EA00–U+1EA3F, its sound and the roman spelling of it, and under `forms` each catch-before form. The signs run from U+1EA00 (the catch is U+1EA15 and `tj` U+1EA16), their doubled forms from U+1EA17, the digits from U+1EA2D and the punctuation from U+1EA37, and the rest of the block is free. Each doubled entry names its sign in a `base` field.
+`tools/qalezu-hand/encoding.json` is the one table: for each character its glyph name, its code point in U+1EA00–U+1EA3F, its sound and the roman spelling of it, and under `forms` each catch-before form. The signs run from U+1EA00 (the catch is U+1EA15 and `tj` U+1EA16), their doubled forms from U+1EA17, the digits from U+1EA2D and punctuation from U+1EA37 through U+1EA39; the remaining code points in the block are free. Each doubled entry names its sign in a `base` field.
 
 The catch-before forms have no code point. The 22 consonant signs' forms are listed in sign order, and their doubled signs' forms follow; each entry's `base` names the sign or doubled sign it carries the triangle over. The space stays U+0020. Everything else reads the table: `tools/qalezu-hand/apply_encoding.py` writes the UFO's character map, the composites and the `rlig` substitution that draws a catch and its sign as the form, `check_font.py` compares the built cmap with it and shapes each catch and sign, and `guard.py` takes the glyph of each code point and each form from it. Every Latin character, the apostrophe included, maps to the box, so stray text prints boxes.
 
@@ -106,10 +106,11 @@ Base ten, place order, ten independent signs from the counting-house tradition, 
 | Mark  | Role          | Shape                                                |
 | ----- | ------------- | ---------------------------------------------------- |
 | `.`   | sentence end  | a short stroke on the line, hooking down at its end  |
+| `·`   | verse end     | a heavy reed-formed dot high in the character space  |
 | `,`   | pause         | a short low dash                                     |
 | space | word division | 200 units, a gap several times the gap between signs |
 
-There is no hyphen, exclamation mark, question mark, semicolon, colon or quotation mark. A hyphen between the parts of a name is written as the space between two words.
+The low sentence-end stroke and the high verse-end dot are separate punctuation. Roman spelling uses U+00B7 MIDDLE DOT (`·`) for the verse end; a physical line break alone does not add it. There is no hyphen, exclamation mark, question mark, semicolon, colon or quotation mark. A hyphen between the parts of a name is written as the space between two words.
 
 ## Building and checking
 

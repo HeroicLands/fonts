@@ -4127,6 +4127,12 @@
                     "name": "QALEZU PAUSE",
                     "glyph": "comma",
                     "kind": "point"
+                },
+                {
+                    "codepoint": "U+1EA39",
+                    "name": "QALEZU VERSE END",
+                    "glyph": "verseEnd",
+                    "kind": "point"
                 }
             ]
         },

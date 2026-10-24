@@ -14,6 +14,8 @@ A printable copy is [qalezu.svg](qalezu.svg) and [qalezu.png](qalezu.png).
 - Character names and code points identify each character exactly, for a program or a character viewer.
 - The Emacs column is what to type in the Emacs input method `heroiclands-qalezu`, where Option is a backslash.
 
+In Roman spelling, U+00B7 MIDDLE DOT (`·`) writes the verse-end dot. `option+shift+f` types it directly in HL Qalezu; a physical line break does not add it.
+
 ## Installing the layout
 
 The layout is a file per platform, named below. [The README](../README.md#installing-a-keyboard-layout) walks through installing each.
@@ -22,6 +24,14 @@ The layout is a file per platform, named below. [The README](../README.md#instal
 - Windows: `keyboards/windows/qalezu.klc`, the Microsoft Keyboard Layout Creator source of **HL Qalezu**.
 - Linux: `keyboards/linux/hl_qalezu`, the XKB symbols of **HL Qalezu**.
 - Emacs: `keyboards/emacs/heroiclands-qalezu.el`, the input method `heroiclands-qalezu`.
+
+## Signs
+
+These keys type no sound. They type in HL Qalezu alone.
+
+| Key | Emacs | Sign | Layout | Glyph | Code point | Name |
+| --- | --- | --- | --- | --- | --- | --- |
+| `option+shift+f` | `\F` | verse end | HL Qalezu | ![U+1EA39](../charts/qalezu-hand/glyphs/U+1EA39.svg) | U+1EA39 | QALEZU VERSE END |
 
 ## Keys a platform cannot carry
 

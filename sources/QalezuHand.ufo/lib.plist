@@ -45,6 +45,7 @@
       <string>nine</string>
       <string>period</string>
       <string>comma</string>
+      <string>verseEnd</string>
       <string>ignorable</string>
       <string>ignorable.sub</string>
       <string>l.dbl</string>
@@ -307,6 +308,8 @@
       <key>tj.dbl.catch</key>
       <string>base</string>
       <key>two</key>
+      <string>base</string>
+      <key>verseEnd</key>
       <string>base</string>
       <key>w</key>
       <string>base</string>

@@ -24,6 +24,7 @@ HL Semaron, HL Pirzath, HL Thuravark, HL Qalezu, HL Veldikko, HL Vedyakshara and
 - The catch sits on ', the stop on ., the pause on , and the open and close quotes on Shift+, and Shift+., the keys of < and >. Vedyari writes no catch, and its mapping note writes an apostrophe as the cut, so in HL Vedyakshara ' types the cut. Only Pirzath writes quotation marks, so those two keys type nothing in the other scripts.
 - Digits sit on the digit row. Pirzath counts in sixteens, and its numerals ten to fifteen sit on Shift+2 to Shift+7, the keys of @ # $ % ^ &, the characters on those keys.
 - Qalezu writes consonants only, so its vowel keys type nothing; a vowel at the start of a word is written with the catch.
+- Qalezu’s high verse-end dot is a sign typed by Option+Shift+F in HL Qalezu. Its Roman input is U+00B7 MIDDLE DOT; a physical newline does not add it.
 - Vedyakshara's consonant carries the vowel a, so in HL Vedyakshara a consonant is spelled before an a and its key types the bare consonant; the a key types nothing, another vowel key types its vowel sign, and a capital vowel types the vowel's own sign.
 - Markup types itself. The characters Markdown and similar markup need sit at their U.S. positions and type plain ASCII in every layout, so formatting is written without switching layouts, and no script draws them. No sound shares a key with markup; # is not markup because Shift+3 is Pirzath's eleven.
 - A sign that is not a sound sits on a key of its own and types in the one layout whose script writes it, as the quote keys do outside Pirzath. HL Veldikko's six: the carrier on x, and on Option the long sign on L, the bar of a doubled consonant on W, the rise on R, the fall on F and the emphasis on M. No sound shares a key with a sign, and a sign types nothing in the other layouts. HL Helónika's eleven are the letters its sound keys cannot type, since a sound key types kh as k and h: the kh and zh letters on Option+Q and Option+J, the barred long vowels on Option+V, Option+` and C, each with its capital on Shift, and the accent on Option+Shift+M.
@@ -74,6 +75,7 @@ A sign is not a sound. It sits on a key of its own, types in the one layout whos
 | `c` | `c` | long u | HL Helónika | ![U+F0352](../charts/helonika-book/glyphs/U+F0352.svg) | U+F0352 | HELONIKA SMALL LETTER U WITH LENGTH BAR |
 | `shift+c` | `C` | Long U | HL Helónika | ![U+F0322](../charts/helonika-book/glyphs/U+F0322.svg) | U+F0322 | HELONIKA CAPITAL LETTER U WITH LENGTH BAR |
 | `option+shift+m` | `\M` | accent | HL Helónika | ![U+F0378](../charts/helonika-book/glyphs/U+F0378.svg) | U+F0378 | HELONIKA COMBINING ACCENT |
+| `option+shift+f` | `\F` | verse end | HL Qalezu | ![U+1EA39](../charts/qalezu-hand/glyphs/U+1EA39.svg) | U+1EA39 | QALEZU VERSE END |
 
 ## Keys a platform cannot carry
 

@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<glyph name="verseEnd" format="2">
+  <advance width="313" />
+  <unicode hex="1EA39" />
+  <outline>
+    <contour>
+      <point x="120" y="726" type="line" smooth="yes" />
+      <point x="123" y="721" />
+      <point x="128" y="720" />
+      <point x="132" y="722" type="curve" smooth="yes" />
+      <point x="228" y="768" type="line" smooth="yes" />
+      <point x="232" y="769" />
+      <point x="234" y="774" />
+      <point x="232" y="777" type="curve" smooth="yes" />
+      <point x="193" y="832" type="line" smooth="yes" />
+      <point x="190" y="836" />
+      <point x="185" y="837" />
+      <point x="181" y="835" type="curve" smooth="yes" />
+      <point x="85" y="789" type="line" smooth="yes" />
+      <point x="81" y="788" />
+      <point x="78" y="783" />
+      <point x="81" y="780" type="curve" smooth="yes" />
+    </contour>
+  </outline>
+</glyph>
