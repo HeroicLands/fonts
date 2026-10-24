@@ -176,7 +176,7 @@ File where the diff will land, not where the symptom shows.
 | --------------------------------------------------------------------- | --------------------------------- |
 | A glyph, ligature, mark, kerning, a specimen, the build or its checks | **here**                          |
 | A script's letter inventory, its canon, or the text of a note         | `HeroicLands/thalorna`            |
-| The shared build, the Hugo theme or the way a site loads a font       | `HeroicLands/package-build`       |
+| The shared build, the site theme or the way a site loads a font       | `HeroicLands/package-build`       |
 | System code, sheets, rules automation                                 | `Song-of-Heroic-Lands-FoundryVTT` |
 
 A letter drawn wrongly is **here**; a letter that is missing from the script, or
