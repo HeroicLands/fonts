@@ -1,5 +1,11 @@
 # @heroiclands/fonts
 
+## 1.2.0
+
+### Minor Changes
+
+- Add a high verse-ending dot to Qalezu Hand.
+
 ## 1.1.0
 
 ### Minor Changes
