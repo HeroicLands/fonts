@@ -20,6 +20,10 @@ Chalish Pilam Common has no encoding of spelling, since its glyphs record meanin
 spelling. Its page shows the committed sheets of ``specimens/chalish-pilam/`` (the glyphs
 and the night's entry set through the font) and lists the entry phrase by phrase; its
 ``texts.json`` entry is written from ``tools/chalish-pilam/glyphs.py`` by ``--write-texts``.
+Chalish Pilam Ceremonial's page shows the canon sheet of the ceremonial hand and the
+passage that ``tools/chalish-pilam/ceremonial_passage.py`` renders through the font, both
+committed in ``specimens/chalish-pilam/``, with the passage's codage block by block and its
+English; its ``texts.json`` entry is written from that tool by ``--write-texts``.
 
 Khelathi Zethu Glyphs' page also shows the Khelathu banner, ``<class>-banner.webp``,
 with its English text.
@@ -307,6 +311,10 @@ PASSAGES = {
 
 CHALISH = "hl-chalish-pilam-common"
 CHALISH_IMAGES = {"glyphs": "chalish-pilam/glyphs.png", "text": "chalish-pilam/text.png"}
+CEREMONIAL = "hl-chalish-pilam-ceremonial"
+CEREMONIAL_IMAGES = {"glyphs": "chalish-pilam/ceremonial.png", "text": "chalish-pilam/ceremonial-passage.png"}
+# The families whose pages show committed sheets rather than images this tool renders.
+COMMITTED = {CHALISH, CEREMONIAL}
 
 # The pages' sample of Teng Chou: its first characters and syllables, in code point order.
 TENG_CHOU_SAMPLE = {"character": 40, "syllable": 16}
@@ -607,6 +615,28 @@ def page_markdown(family: dict, texts: dict, row: list[str], images: dict[str, s
         out += [f"{i}. {line['english']}" for i, line in enumerate(texts["lines"], 1)]
         out.append("")
         return "\n".join(out)
+    if klass == CEREMONIAL:
+        out += [
+            "## The glyphs",
+            "",
+            "Each glyph is carved whole, and glyphs are composed into blocks: a main sign with a number, syllable signs "
+            "or both set beside it, over it or under it. A block is written as its codes joined by `*`, which sets two "
+            "items side by side, and `:`, which stacks the first over the second, and the font lays the block out from "
+            f"those joiners. The [chart]({chart}) lists every glyph with its code point.",
+            "",
+            f"![The canon sheet of {name}]({texts['images']['glyphs']})",
+            "",
+            "## A lord's seating",
+            "",
+            "Sixteen blocks in paired columns, read across each pair and down: A1, B1, A2, B2. Each block is written "
+            "in the Chalish Ceremonial Codage and set through the font.",
+            "",
+            f"![A lord's seating in {name}]({texts['images']['text']})",
+            "",
+        ]
+        out += [f"{i}. {line['english']}  \n{' ' * len(f'{i}. ')}`{line['codage']}`" for i, line in enumerate(texts["lines"], 1)]
+        out += ["", texts["english"], ""]
+        return "\n".join(out)
     out += ["## The letters", ""]
     if klass == "hl-teng-chou":
         counts = {k: sum(1 for r in family["codepoints"] if r["kind"] == k) for k in TENG_CHOU_SAMPLE}
@@ -652,7 +682,7 @@ def render(families: list[dict], texts: dict, problems: list[str]) -> dict[Path,
         if family["name"] not in rows:
             problems.append(f"README.md: error: the font table has no row for {family['name']}")
             continue
-        if klass == CHALISH:
+        if klass in COMMITTED:
             out[SPECIMENS / f"{klass}.md"] = page_markdown(family, data, rows[family["name"]], {}).encode("utf-8")
             for image in data["images"].values():
                 if not (SPECIMENS / image).exists():
@@ -786,6 +816,24 @@ def chalish_entry(family: dict) -> dict:
     return {"tongue": "Ki'ich'chik", "images": CHALISH_IMAGES, "lines": lines}
 
 
+def ceremonial_entry() -> dict:
+    """The texts.json entry of Chalish Pilam Ceremonial: the passage, one block to a line."""
+    here = str(Path(__file__).resolve().parent / "chalish-pilam")
+    sys.path.insert(0, here)
+    for name in ("ceremonial_passage", "strokes_sheet", "strokes"):
+        sys.modules.pop(name, None)
+    try:
+        import ceremonial_passage as P
+
+        lines = [{"codage": code, "english": gloss} for code, gloss in P.PASSAGE]
+        english = P.ENGLISH
+    finally:
+        sys.path.remove(here)
+        for name in ("ceremonial_passage", "strokes_sheet", "strokes"):
+            sys.modules.pop(name, None)
+    return {"tongue": "Ki'ich'chik", "images": CEREMONIAL_IMAGES, "lines": lines, "english": english}
+
+
 def banner_english(md: str) -> list[str]:
     section = re.search(r"^## The English text\n(.*?)(?=^## )", md, re.M | re.S).group(1)
     return [m.group(1).strip() for m in re.finditer(r"^\d+\. (.+)$", section, re.M)]
@@ -833,6 +881,7 @@ def write_texts(thalorna: Path, files: dict[str, str]) -> None:
             ]
         doc["families"][klass] = entry
     doc["families"][CHALISH] = chalish_entry(families[CHALISH])
+    doc["families"][CEREMONIAL] = ceremonial_entry()
     TEXTS.write_text(json.dumps(doc, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(f"{TEXTS.relative_to(ROOT)}: written")
 

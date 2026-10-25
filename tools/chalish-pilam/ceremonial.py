@@ -144,6 +144,9 @@ def bead(cx, cy, r=34.0):
 
 
 def ear_spool(cx, cy, r=70.0):
+    # a small spool has no room to cut round a centre stone, and is a plain ring
+    if r - DETAIL.full - 2 * GAP < 12:
+        return S.ring(cx, cy, r)
     return S.ring(cx, cy, r) + S.dot(cx, cy, max(r * 0.2, 12))
 
 
@@ -220,25 +223,27 @@ def head(x0=CX0, y0=CY0, x1=CX1, y1=CY1, eye_kind="open", tooth=False, spool=Tru
     """A whole head in its box: the profile outline and its features, drawn large. A living
     face has an almond eye under its brow, two lips and a headband across the crown."""
     w, h = x1 - x0, y1 - y0
+    m = min(w, h)  # features are sized by the head's shorter side, so a long head keeps its proportions
     X = lambda u: x0 + u * w  # noqa: E731
     Y = lambda v: y0 + v * h  # noqa: E731
     contour = profile(x0, y0, x1, y1)
     detail = []
-    detail += S.arc(X(0.3), Y(0.6), w * 0.17, h * 0.1, 25, 160)  # the brow
+    ey = Y(0.56)  # the eye's centre; the brow and lids are placed from it by the head's shorter side
+    detail += S.arc(X(0.29), min(ey + m * 0.14, Y(0.68)), m * 0.17, m * 0.1, 25, 160)  # the brow, a groove clear of the eye
     if eye_kind == "open":
-        detail += S.arc(X(0.29), Y(0.5), w * 0.12, h * 0.12, 25, 155) + S.arc(X(0.29), Y(0.62), w * 0.12, h * 0.12, 205, 335)
-        detail += S.dot(X(0.25), Y(0.62) - h * 0.1, w * 0.032)  # the pupil hangs from the upper lid
+        detail += S.arc(X(0.29), ey - m * 0.06, m * 0.12, m * 0.12, 25, 155) + S.arc(X(0.29), ey + m * 0.06, m * 0.12, m * 0.12, 205, 335)
+        detail += S.dot(X(0.29) - m * 0.04, ey - m * 0.04, m * 0.032)  # the pupil hangs from the upper lid
     elif eye_kind == "closed":
-        detail += S.arc(X(0.29), Y(0.6), w * 0.1, h * 0.07, 200, 340)
+        detail += S.arc(X(0.29), ey + m * 0.04, m * 0.1, m * 0.07, 200, 340)
     else:
-        detail += curl(X(0.29), Y(0.56), w * 0.1, turns=1.4)
-    detail += S.arc(X(0.11), Y(0.44), w * 0.06, h * 0.04, 120, 330)  # the upper lip
-    detail += S.arc(X(0.12), Y(0.3), w * 0.06, h * 0.045, 30, 240)  # the lower lip
+        detail += curl(X(0.29), ey - m * 0.02, m * 0.1, turns=1.4)
+    detail += S.arc(X(0.11), Y(0.44), m * 0.06, h * 0.04, 120, 330)  # the upper lip
+    detail += S.arc(X(0.12), Y(0.27), m * 0.06, h * 0.045, 30, 240)  # the lower lip
     if tooth:
         detail += S.poly([(X(0.08), Y(0.37)), (X(0.12), Y(0.27)), (X(0.16), Y(0.37))])
-    detail += curl(X(0.4), Y(0.34), w * 0.08, turns=1.3, clockwise=True)  # the cheek
+    detail += curl(X(0.29) + m * 0.11, Y(0.34), m * 0.08, turns=1.3, clockwise=True)  # the cheek
     if spool:
-        detail += ear_spool(X(0.68), Y(0.46), w * 0.12)
+        detail += ear_spool(X(0.68), Y(0.46), m * 0.12)
     if band:
         detail += S.arc(X(0.62), Y(0.5), w * 0.33, h * 0.42, 60, 128)
         detail += dotted_arc(X(0.62), Y(0.5), w * 0.33 - 46, h * 0.42 - 46, 66, 122)
@@ -253,85 +258,207 @@ class Glyph:
     name: str
     meaning: str
     sound: str  # a sound the glyph may write; several ceremonial glyphs write the same sound
-    draw: Callable[[], list]  # [(pen, parts), ...]
+    draw: Callable[[], list]  # [(pen, parts), ...], drawn in a box WIDTH[footprint] wide and BLOCK high
+    footprint: str = "full"  # half, full or double: how much of the block grid the glyph fills
+
+
+# A block is drawn BLOCK high and set in the font this many times larger, so that it spans
+# the line from Latin's descender to its ascender: a dense picture wants more height than
+# a letter's cap height gives it.
+FONT_SCALE = 1.5
+# Where the block's foot sits in the font, so it reaches into the descent.
+FONT_DROP = -180.0
+
+# The width each footprint draws in; the height is always the block's.
+WIDTH = {"half": B / 2, "full": B, "double": 2 * B}
+
+
+# -- conforming affixes: shaped by the sign they attach to ------------------------------------------
+
+
+def edge(box, side, lo=0.12, hi=0.88, square=3.0):
+    """Points along one side of a cushion, in order: ``left`` and ``right`` bottom to top,
+    ``top`` and ``bottom`` from the line's start to its end; ``lo`` and ``hi`` trim the run
+    to the middle of the side, as shares of its length."""
+    x0, y0, x1, y1 = box
+    cx, cy = (x0 + x1) / 2, (y0 + y1) / 2
+    pts = cushion(x0, y0, x1, y1, square)[0].pts
+    if side in ("left", "right"):
+        keep = [p for p in pts if (p[0] < cx if side == "left" else p[0] > cx)]
+        keep.sort(key=lambda p: p[1])
+        a, b = y0 + (y1 - y0) * lo, y0 + (y1 - y0) * hi
+        return [p for p in keep if a <= p[1] <= b]
+    keep = [p for p in pts if (p[1] > cy if side == "top" else p[1] < cy)]
+    keep.sort(key=lambda p: p[0])
+    a, b = x0 + (x1 - x0) * lo, x0 + (x1 - x0) * hi
+    return [p for p in keep if a <= p[0] <= b]
+
+
+def _swell(t):
+    return math.sin(math.pi * t) ** 0.6
+
+
+def prefix_on(box, width, n=3, kind="bars", square=3.0):
+    """A prefix grown from the main sign's leading edge: the main sign's own outline is its
+    inner side, and only its outer curve is drawn, swelling out and closing back onto the
+    main sign at both ends. Bars cross it, or beads stand down it."""
+    inner = edge(box, "left", square=square)
+    outer = [(x - width * _swell(k / (len(inner) - 1)), y) for k, (x, y) in enumerate(inner)]
+    out = [S.Track(outer)]
+    for k in range(n):
+        t = (k + 1) / (n + 1)
+        i = round(t * (len(inner) - 1))
+        (xi, y), (xo, _) = inner[i], outer[i]
+        if kind == "bars":
+            out += S.bar(xo, y, xi, y)
+        else:
+            out += S.dot((xi + xo) / 2, y, max(12.0, (xi - xo) * 0.2))
+    return out
+
+
+def superfix_on(box, height, kind="dots", square=3.0):
+    """A superfix lying along the main sign's top, its lower side the main sign's own
+    outline, its upper curve swelling over it."""
+    inner = edge(box, "top", lo=0.1, hi=0.9, square=square)
+    outer = [(x, y + height * _swell(k / (len(inner) - 1))) for k, (x, y) in enumerate(inner)]
+    out = [S.Track(outer)]
+    marks = 4
+    for k in range(marks):
+        t = (k + 0.5) / marks
+        i = round(t * (len(inner) - 1))
+        (x, yi), (_, yo) = inner[i], outer[i]
+        if kind == "dots":
+            out += S.dot(x, (yi + yo) / 2, 13)
+        elif kind == "x":
+            out += x_mark(x, (yi + yo) / 2, min(28.0, (yo - yi) * 0.28))
+        elif kind == "bars":
+            out += S.bar(x, yi, x, yo)
+    return out
+
+
+def fringe_on(box, h=44.0, square=3.0):
+    """The comb fringe hung from the main sign's own lower edge, its scallops touching."""
+    run = edge(box, "bottom", lo=0.14, hi=0.86, square=square)
+    xa, xb = run[0][0], run[-1][0]
+    n = max(3, round((xb - xa) / 70))
+    w = (xb - xa) / n
+    out = []
+    for k in range(n):
+        cx = xa + (k + 0.5) * w
+        y = min(run, key=lambda p: abs(p[0] - cx))[1]
+        out += S.arc(cx, y, w * 0.5, h, 180, 360)
+    return out
+
+
+def roofed(x0, y0, x1, y1, ridge, eave=0.74):
+    """A cushion whose top rises to a ridge: the house's roof become the block's crown. The
+    cushion is kept below ``eave`` (a share of its height), and the roof springs from there."""
+    w, h = x1 - x0, y1 - y0
+    cx, cy = (x0 + x1) / 2, y0 + h / 2
+    cut = y0 + h * eave
+    run = [p for p in cushion(x0, y0, x1, y1, square=3.2)[0].pts if p[1] <= cut]
+    run.sort(key=lambda p: (math.atan2(p[1] - cy, p[0] - cx) - math.pi / 2) % (2 * math.pi))
+    le, re = run[0], run[-1]
+    roof_r = S._bezier(re, (re[0], re[1] + 40), (cx + w * 0.15, ridge - 30), (cx, ridge))
+    roof_l = S._bezier((cx, ridge), (cx - w * 0.15, ridge - 30), (le[0], le[1] + 40), le)
+    return [S.Track(run + roof_r[1:] + roof_l[1:], closed=True)], (le, re)
+
+
+# -- the pilot glyphs ----------------------------------------------------------------------------
 
 
 def _lord():
-    # a lord's head in profile: the beaded headband, a headdress of plumes rising over the
-    # crown, netted hair at the back of the head, a jewelled ear spool with its pendant,
-    # a bead at the nose, and the fringe under the chin
-    x0, y0, x1, y1 = 190, CY0 + 60, CX1, CY1 - 90
-    contour, detail = head(x0, y0, x1, y1)
+    # a lord's head in profile under his headdress: a band of beads along the crown, plumes
+    # rising from it; netted hair, a jewelled ear spool with its pendant, a bead at the nose
+    box = (60, CY0 + 20, CX1, CY1 - 120)
+    contour, detail = head(*box, band=False)
+    x0, y0, x1, y1 = box
     w, h = x1 - x0, y1 - y0
     X = lambda u: x0 + u * w  # noqa: E731
     Y = lambda v: y0 + v * h  # noqa: E731
-    hair = []
-    for k in range(3):
-        hair += S.arc(X(0.62), Y(0.5), w * 0.36 - 44 * (k + 1), h * 0.46 - 44 * (k + 1), 18, 52)
+    crown = [(X(0.62) + w * 0.38 * math.cos(math.radians(a)), Y(0.5) + h * 0.5 * math.sin(math.radians(a)))
+             for a in range(40, 131, 3)]
+    band = [S.Track([(x, y + 70 * _swell(k / (len(crown) - 1))) for k, (x, y) in enumerate(crown)])]
+    beads = []
+    for k in range(5):
+        x, y = crown[round((k + 0.5) / 5 * (len(crown) - 1))]
+        beads += S.dot(x, y + 36 * _swell((k + 0.5) / 5), 12)
     plumes = []
-    for k, u in enumerate((0.3, 0.5, 0.7, 0.9)):
-        plumes += S.arc(X(u) + 30, CY1 - 50, 55, 70, 180, 360 if k % 2 else 300)
-        plumes += curl(X(u), CY1 - 20, 32, turns=1.1, clockwise=bool(k % 2))
-    pendant = S.bar(X(0.68), Y(0.46) - w * 0.12, X(0.68), Y(0.12)) + bead(X(0.68), Y(0.08), 22)
-    jaw = dotted_arc(X(0.4), Y(0.42), w * 0.32, h * 0.36, 215, 300, r=10, step=36)
-    return [(CONTOUR, contour + prefix(CX0, CY0 + 80, 178, CY1 - 100, "bars")
-             + S.arc(X(0.6), CY1 - 70, w * 0.42, 60, 0, 180)),
-            (DETAIL, detail + hair + plumes + pendant + jaw + bead(X(0.0) - 8, Y(0.5), 18)
-             + fringe(x0 + 40, x1 - 60, y0 + 6, h=44))]
+    for k, t in enumerate((0.15, 0.4, 0.65, 0.9)):
+        x, y = crown[round(t * (len(crown) - 1))]
+        plumes += curl(x - 10, y + 105, 44, turns=1.0, clockwise=bool(k % 2))
+    hair = []
+    for k in range(1):
+        hair += S.arc(X(0.62), Y(0.5), w * 0.38 - 60, h * 0.5 - 60, 8, 38)
+    pendant = S.bar(X(0.68), Y(0.46) - w * 0.12, X(0.68), Y(0.16)) + bead(X(0.68), Y(0.1), 24)
+    return [(CONTOUR, contour + band), (DETAIL, detail + beads + plumes + hair + pendant + bead(X(0.0) - 6, Y(0.5), 20))]
+
+
+def _patriarch():
+    # the patriarch, MAN, HIGH and HOUSE made one: the house's roof is the block's crown, the
+    # elder fills the house under it, the HIGH point a bead at the ridge, one line of thatch
+    x0, y0, x1, y1 = CX0, CY0, CX1, CY1 - 20
+    outline, (le, re) = roofed(x0, y0, x1, y1, ridge=y1 + 40)
+    thatch = S.bar(le[0] + 95, le[1] + 22, C, y1 + 40 - 95) + S.bar(re[0] - 95, re[1] + 22, C, y1 + 40 - 95)
+    eaves = S.bar(le[0] + 10, le[1], re[0] - 10, re[1])
+    # the elder's chin rests on the house's floor: the two share one outline there
+    contour, detail = head(135, y0, x1 - 85, le[1] - 22, band=False, spool=True)
+    crest = S.dot(C, y1 - 30, 24)
+    return [(CONTOUR, outline + contour + eaves), (DETAIL, detail + thatch + crest)]
 
 
 def _jaguar():
-    contour, detail = head(CX0, CY0, CX1, CY1, eye_kind="spiral", tooth=False, spool=False, band=False)
+    contour, detail = head(CX0, CY0, CX1, CY1 - 60, eye_kind="spiral", tooth=False, spool=False, band=False)
     spots = []
-    for u, v in ((0.62, 0.78), (0.8, 0.62), (0.84, 0.34), (0.64, 0.24), (0.55, 0.5)):
-        x, y = CX0 + u * CW, CY0 + v * CH
+    for u, v in ((0.62, 0.76), (0.8, 0.6), (0.78, 0.32), (0.6, 0.22), (0.55, 0.5)):
+        x, y = CX0 + u * CW, CY0 + v * (CH - 60)
         spots += S.ring(x, y, 48) + S.dot(x, y, 12)
-    fangs = S.poly([(CX0 + 0.12 * CW, CY0 + 0.34 * CH), (CX0 + 0.16 * CW, CY0 + 0.2 * CH),
-                    (CX0 + 0.2 * CW, CY0 + 0.34 * CH)])
-    ear = S.arc(CX0 + 0.55 * CW, CY1 - 10, 70, 70, 10, 170)
-    return [(CONTOUR, contour + ear), (DETAIL, detail + spots + fangs)]
+    fangs = S.poly([(CX0 + 0.1 * CW, CY0 + 0.3 * CH), (CX0 + 0.14 * CW, CY0 + 0.16 * CH),
+                    (CX0 + 0.18 * CW, CY0 + 0.3 * CH)])
+    ears = []
+    for u in (0.52, 0.74):
+        x = CX0 + u * CW
+        ears += S.arc(x, CY1 - 70, 52, 62, 10, 170)
+    return [(CONTOUR, contour + ears), (DETAIL, detail + spots + fangs)]
 
 
 def _sun():
-    # the sun: a disk inside a ring of beads, wrapped in curling rays, over the fringe, with
-    # its bead prefix; at its heart the burning eye
-    cx, cy = C + 50, C + 40
-    rays = [t for k in range(10) for t in curl(cx + 205 * math.cos(math.radians(18 + k * 36)),
-                                                    cy + 172 * math.sin(math.radians(18 + k * 36)), 28, turns=1.1)]
-    return [(CONTOUR, cushion(140, CY0 + 70, CX1, CY1) + prefix(CX0, CY0 + 120, 152, CY1 - 50, "beads")),
-            (DETAIL, S.ring(cx, cy, 160) + dotted_arc(cx, cy, 112, 112, 0, 360) + curl(cx, cy, 70, turns=1.6) + rays
-             + fringe(170, CX1 - 30, CY0 + 76, h=44))]
+    box = (170, CY0 + 60, CX1, CY1)
+    cx, cy = (box[0] + box[2]) / 2, (box[1] + box[3]) / 2 + 10
+    rays = [t for k in range(10) for t in curl(cx + 190 * math.cos(math.radians(18 + k * 36)),
+                                                  cy + 160 * math.sin(math.radians(18 + k * 36)), 26, turns=1.0)]
+    return [(CONTOUR, cushion(*box) + prefix_on(box, 120, n=3, kind="beads")),
+            (DETAIL, S.ring(cx, cy, 145) + dotted_arc(cx, cy, 100, 100, 0, 360) + curl(cx, cy, 62, turns=1.6)
+             + rays + fringe_on(box, h=46))]
 
 
 def _moon():
-    main = cushion(CX0, CY0, CX1, CY1 - 120)
-    return [(CONTOUR, main + superfix(CX0 + 60, CY1 - 110, CX1 - 60, CY1, "dots")),
-            (DETAIL, S.arc(C - 40, C - 70, 210, 190, 75, 285) + S.arc(C + 50, C - 70, 160, 160, 90, 270)
-             + net(C - 220, C - 170, 120, 200, n=4) + curl(C + 190, C - 30, 60, turns=1.3)
-             + R_dotted_line([(C + 120, CY0 + 70), (CX1 - 60, CY0 + 70)]))]
+    box = (CX0, CY0, CX1, CY1 - 110)
+    return [(CONTOUR, cushion(*box) + superfix_on(box, 100, "dots")),
+            (DETAIL, S.arc(C - 40, C - 60, 210, 190, 75, 285) + S.arc(C + 50, C - 60, 160, 160, 90, 270)
+             + net(C - 220, C - 140, 90, 160) + curl(C + 190, C - 30, 62, turns=1.3)
+             + dotted([(C + 110, CY0 + 70), (CX1 - 70, CY0 + 70)]))]
 
 
 def _water():
-    main = cushion(150, CY0, CX1, CY1)
-    return [(CONTOUR, main + prefix(CX0, CY0 + 40, 162, CY1 - 40, "beads")),
-            (DETAIL, S.wave(200, C + 160, CX1 - 50, 40, 1.5) + dotted([(210, C + 80), (CX1 - 60, C + 80)])
-             + S.wave(200, C, CX1 - 50, 40, 1.5) + curl(310, C - 160, 75, turns=1.3)
-             + curl(560, C - 160, 75, turns=1.3, clockwise=True) + S.dot(435, C - 150, 24))]
+    box = (165, CY0, CX1, CY1)
+    return [(CONTOUR, cushion(*box) + prefix_on(box, 115, n=4, kind="bars")),
+            (DETAIL, S.wave(215, C + 160, CX1 - 50, 40, 1.5) + dotted([(225, C + 80), (CX1 - 60, C + 80)])
+             + S.wave(215, C, CX1 - 50, 40, 1.5) + curl(320, C - 160, 75, turns=1.3)
+             + curl(560, C - 160, 75, turns=1.3, clockwise=True) + S.dot(440, C - 150, 24))]
 
 
 def _peak():
-    # the sacred peak: a stepped pyramid with its shrine, smoke curling from the shrine,
-    # each terrace marked, under a superfix of netting
+    box = (CX0, CY0, CX1, CY1 - 110)
     steps = [(CX0 + 80, CY0 + 60), (CX0 + 80, CY0 + 150), (CX0 + 170, CY0 + 150), (CX0 + 170, CY0 + 240),
              (CX0 + 260, CY0 + 240), (CX0 + 260, CY0 + 330), (CX1 - 260, CY0 + 330), (CX1 - 260, CY0 + 240),
              (CX1 - 170, CY0 + 240), (CX1 - 170, CY0 + 150), (CX1 - 80, CY0 + 150), (CX1 - 80, CY0 + 60)]
     terraces = []
     for y, x0, x1 in ((CY0 + 105, CX0 + 130, CX1 - 130), (CY0 + 195, CX0 + 220, CX1 - 220), (CY0 + 285, CX0 + 310, CX1 - 310)):
-        terraces += dotted([(x0, y), (x1, y)], r=9, step=40)
-    stair = []
-    smoke = curl(C - 40, CY0 + 470, 48, turns=1.3) + curl(C + 50, CY0 + 500, 40, turns=1.3, clockwise=True)
-    return [(CONTOUR, cushion(CX0, CY0, CX1, CY1 - 130) + superfix(CX0 + 40, CY1 - 120, CX1 - 40, CY1, "net")),
-            (DETAIL, S.poly(steps) + S.bar(CX0 + 50, CY0 + 60, CX1 - 50, CY0 + 60) + terraces + stair
+        terraces += dotted([(x0, y), (x1, y)])
+    smoke = curl(C - 40, CY0 + 460, 50, turns=1.2) + curl(C + 50, CY0 + 490, 42, turns=1.2, clockwise=True)
+    return [(CONTOUR, cushion(*box) + superfix_on(box, 110, "x")),
+            (DETAIL, S.poly(steps) + S.bar(CX0 + 50, CY0 + 60, CX1 - 50, CY0 + 60) + terraces
              + S.poly([(C - 60, CY0 + 330), (C - 60, CY0 + 410), (C + 60, CY0 + 410), (C + 60, CY0 + 330)])
              + S.ring(C, CY0 + 370, 16) + smoke)]
 
@@ -340,20 +467,63 @@ def R_dotted_line(points):
     return dotted(points, r=10, step=34)
 
 
-def _bar_dot(n):
+def _coefficient(n):
+    """A number set before the sign it counts: half a block wide, in no frame, its bars
+    upright beside the sign and its dots stacked up the column before them."""
     def draw():
         out = []
         bars, dots = divmod(n, 5)
-        y = CY0 + 40
+        x = WIDTH["half"] - 70
         for _ in range(bars):
-            out.append(S.Fill(S._capsule(CX0 + 60, y + 35, CX1 - 60, y + 35, 35)))
-            y += 110
+            out.append(S.Fill(S._capsule(x, CY0 + 50, x, CY1 - 50, 32)))
+            x -= 100
         if dots:
-            gap = 120
-            x0 = C - (dots - 1) * gap / 2
-            out += [f for i in range(dots) for f in S.dot(x0 + i * gap, y + 50, 46)]
+            gap = (CY1 - CY0 - 120) / max(dots - 1, 1) if dots > 1 else 0
+            y0 = C - (dots - 1) * min(gap, 120) / 2
+            out += [f for i in range(dots) for f in S.dot(x + 10, y0 + i * min(gap, 120), 40)]
         return [(CONTOUR, out)]
     return draw
+
+
+def cartouche(cx=C, cy=C - 5, r=None):
+    """The round cartouche, kept for the days of the count."""
+    r = r or (CY1 - CY0) / 2 + 10
+    return S.ring(cx, cy, r)
+
+
+def _tqan():
+    # the 260-day count in its round cartouche: a sleeping face, its lashes down, a wavering
+    # mouth, and the points of the count about it
+    cx, cy = C, C - 5
+    lashes = S.arc(cx - 30, cy + 70, 130, 60, 200, 340)
+    for a in (220, 250, 280, 310):
+        t = math.radians(a)
+        lashes += S.tick(cx - 30 + 130 * math.cos(t), cy + 70 + 60 * math.sin(t), 34, angle=a)
+    mouth = S.wave(cx - 150, cy - 110, cx + 110, 22, 1.5)
+    return [(CONTOUR, cartouche(cx, cy)),
+            (DETAIL, lashes + mouth + S.dot(cx + 170, cy + 120, 14) + S.dot(cx + 210, cy + 40, 14)
+             + S.dot(cx + 190, cy - 40, 14) + curl(cx + 140, cy - 190, 40, turns=1.0))]
+
+
+def _serpent():
+    # the serpent, double-wide: a long head in profile, its jaw lined with teeth and a fang,
+    # the spiral eye under a heavy brow, scales down its back, its tongue curling out
+    x0, y0, x1, y1 = CX0, CY0 + 30, 2 * B - 20, CY1 - 50
+    contour, detail = head(x0, y0, x1, y1, eye_kind="spiral", tooth=False, spool=False, band=False)
+    w, h = x1 - x0, y1 - y0
+    X = lambda u: x0 + u * w  # noqa: E731
+    Y = lambda v: y0 + v * h  # noqa: E731
+    teeth = []
+    for k in range(5):
+        x = X(0.14 + k * 0.045)
+        teeth += S.poly([(x - 18, Y(0.36)), (x, Y(0.28)), (x + 18, Y(0.36))])
+    scales = []
+    for k in range(5):
+        cx, cy = X(0.52 + k * 0.09), Y(0.66 - 0.06 * (k % 2))
+        scales += S.ring(cx, cy, 48) + S.dot(cx, cy, 12)
+    tongue = curl(X(0.0) - 30, Y(0.33), 46, turns=1.0, clockwise=True)
+    belly = dotted([(X(0.42), Y(0.18)), (X(0.9), Y(0.22))])
+    return [(CONTOUR, contour), (DETAIL, detail + teeth + scales + tongue + belly)]
 
 
 SUN = Glyph("SUN", "the sun", "tse", _sun)
@@ -362,15 +532,41 @@ WATER = Glyph("WATER", "water", "ne", _water)
 JAGUAR = Glyph("JAGUAR", "the jaguar", "i", _jaguar)
 LORD = Glyph("LORD", "a lord", "ma", _lord)
 PEAK = Glyph("PEAK", "the sacred peak", "ku", _peak)
-THIRTEEN = Glyph("N13", "thirteen", "o", _bar_dot(13))
+PATRIARCH = Glyph("PATRIARCH", "the patriarch: MAN, HIGH and HOUSE made one", "che", _patriarch)
+THIRTEEN = Glyph("N13", "thirteen, a coefficient", "o", _coefficient(13), "half")
+TQAN = Glyph("TQ'AN", "the 260-day count, a day in its cartouche", "qa", _tqan)
+SERPENT = Glyph("SERPENT", "the serpent", "cha", _serpent, "double")
 
-PILOT = [LORD, JAGUAR, SUN, MOON, WATER, PEAK, THIRTEEN]
+PILOT = [LORD, PATRIARCH, JAGUAR, SUN, MOON, WATER, PEAK, THIRTEEN, TQAN, SERPENT]
+
+
+def _ink_one(part, pen) -> pathops.Path:
+    """One part's ink. A long track the simplifier rejects is inked in two halves that share
+    a point and joined, which draws the same ink."""
+    try:
+        return S.ink([part], pen)
+    except pathops.PathOpsError:
+        if isinstance(part, S.Fill) or len(part.pts) < 4:
+            raise
+        m = len(part.pts) // 2
+        a = S.Track(part.pts[: m + 1], weight=part.weight)
+        b = S.Track(part.pts[m:] + (part.pts[:1] if part.closed else []), weight=part.weight)
+        return pathops.op(_ink_one(a, pen), _ink_one(b, pen), pathops.PathOp.UNION)
 
 
 def ink(parts, seed=0) -> pathops.Path:
     """The union of every part, each drawn by its own brush, the brush wandering a little."""
     out = pathops.Path()
     for pen, ps in parts:
-        p = S.ink(wobble(ps, seed), pen)
+        drawn = wobble(ps, seed)
+        try:
+            p = S.ink(drawn, pen)
+        except pathops.PathOpsError:
+            # The simplifier can reject a union of many parts that it accepts one at a
+            # time; join them one by one, which draws the same ink.
+            p = pathops.Path()
+            for part in drawn:
+                q = _ink_one(part, pen)
+                p = pathops.op(p, q, pathops.PathOp.UNION) if list(p) else q
         out = pathops.op(out, p, pathops.PathOp.UNION) if list(out) else p
     return out

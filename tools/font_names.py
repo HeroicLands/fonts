@@ -45,6 +45,7 @@ FAMILIES = {
     "SemaronKuriale-Regular.ttf": "Semaron Kuriale",
     "TengChou-Regular.ttf": "Teng Chou",
     "ChalishPilamCommon-Regular.ttf": "Chalish Pilam Common",
+    "ChalishPilamCeremonial-Regular.ttf": "Chalish Pilam Ceremonial",
     "Veldikko-Regular.ttf": "Veldikko",
     "VedyaksharaClassical-Regular.ttf": "Vedyakshara Classical",
     "HelonikaBook-Regular.ttf": "Helonika Book",

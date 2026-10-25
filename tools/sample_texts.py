@@ -40,6 +40,7 @@ def wanted() -> dict[str, list[str]]:
     vedyakshara = _load("vedyakshara_guard", tools / "vedyakshara" / "guard.py")
     helonika = _load("helonika_guard", tools / "helonika" / "guard.py")
     lines = _load("spacing", tools / "spacing.py")
+    ceremonial = _load("ceremonial_passage", tools / "chalish-pilam" / "ceremonial_passage.py")
     return {
         "semaron-kuriale": semaron.fixture_texts() + lines._semaron_texts(),
         "pirzath-carved": pirzath.fixture_texts() + lines._pirzath_texts(),
@@ -50,6 +51,7 @@ def wanted() -> dict[str, list[str]]:
         "helonika-book": helonika.fixture_texts() + lines._helonika_texts(),
         "helonika-bizarian": helonika.fixture_texts("bizarian"),
         "helonika-bethuan": helonika.fixture_texts("bethuan"),
+        "chalish-pilam-ceremonial": [ceremonial.codage()],
     }
 
 

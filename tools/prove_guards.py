@@ -30,6 +30,9 @@ six dabs, and with the syllabary sign ka kept to one stroke.
 Chalish Pilam Common is broken three times: its guard (tools/chalish-pilam/guard.py) and its
 font check (tools/chalish-pilam/check_font.py) on the font with the glyph for the sun removed
 from its cmap, and the font check on the font with one glyph's advance off the cell.
+Chalish Pilam Ceremonial's font check (tools/chalish-pilam/check_ceremonial_font.py) is
+broken twice: with the glyph for the sun removed from its cmap, and with one glyph's
+advance off its block's.
 Semaron Kuriale is broken twice: with the GSUB table removed, so that no
 th, long vowel or spelled-out ch applies, and with the GPOS table removed, so that no catch stands on its
 base. Veldikko's guard (tools/veldikko/guard.py) and its font check
@@ -217,6 +220,15 @@ def without_sun(font: Path, out: Path) -> Path:
 
 def off_cell(font: Path, out: Path) -> Path:
     """One glyph of Chalish Pilam Common given an advance other than the cell's."""
+    f = TTFont(str(font))
+    width, bearing = f["hmtx"]["moon"]
+    f["hmtx"]["moon"] = (width + 10, bearing)
+    f.save(str(out))
+    return out
+
+
+def off_block(font: Path, out: Path) -> Path:
+    """One glyph of Chalish Pilam Ceremonial given an advance other than its block's."""
     f = TTFont(str(font))
     width, bearing = f["hmtx"]["moon"]
     f["hmtx"]["moon"] = (width + 10, bearing)
@@ -860,6 +872,17 @@ def main():
     chalish = load("chalish_guard", ROOT / "tools" / "chalish-pilam" / "guard.py")
     chalish_check = load("chalish_check", ROOT / "tools" / "chalish-pilam" / "check_font.py")
     chalish_font = ROOT / "fonts" / "ChalishPilamCommon-Regular.ttf"
+    # The ceremonial hand's modules share names such as strokes and syllabary with other
+    # scripts' tools, so its font check is loaded with no script's modules cached, and
+    # theirs are put back after.
+    scripts = ROOT / "tools"
+    shared = {
+        n: sys.modules.pop(n) for n, m in list(sys.modules.items())
+        if Path(getattr(m, "__file__", None) or "/").parent.parent == scripts
+    }
+    ceremonial_check = load("ceremonial_check", ROOT / "tools" / "chalish-pilam" / "check_ceremonial_font.py")
+    sys.modules.update(shared)
+    ceremonial_font = ROOT / "fonts" / "ChalishPilamCeremonial-Regular.ttf"
     helonika = load("helonika_guard", ROOT / "tools" / "helonika" / "guard.py")
     helonika_check = load("helonika_check", ROOT / "tools" / "helonika" / "check_font.py")
     helonika_font = ROOT / "fonts" / "HelonikaBook-Regular.ttf"
@@ -981,6 +1004,9 @@ def main():
         ("Chalish Pilam Common", chalish_font, chalish.run, without_sun, "without the glyph sun"),
         ("Chalish Pilam Common", chalish_font, chalish_check.check, without_sun, "without the glyph sun"),
         ("Chalish Pilam Common", chalish_font, chalish_check.check, off_cell, "with the advance of moon off the cell"),
+        ("Chalish Pilam Ceremonial", ceremonial_font, ceremonial_check.check, without_sun, "without the glyph sun"),
+        ("Chalish Pilam Ceremonial", ceremonial_font, ceremonial_check.check, off_block,
+         "with the advance of moon off its block"),
         ("Khelathi Zethu Glyphs", zethu_font, zethu.run, without_sign, "without the 11-001 sign"),
         ("Khelathi Zethu Glyphs", zethu_font, zethu.run, stripped, "without GSUB"),
         ("Khelathi Zethu Glyphs quadrats", zethu_font, quadrats.run, without_lookup("qxf0.p"), "without the lookup that sums a row's widths"),

@@ -602,6 +602,80 @@
                     "english": "the priest writes"
                 }
             ]
+        },
+        "hl-chalish-pilam-ceremonial": {
+            "tongue": "Ki'ich'chik",
+            "images": {
+                "glyphs": "chalish-pilam/ceremonial.png",
+                "text": "chalish-pilam/ceremonial-passage.png"
+            },
+            "lines": [
+                {
+                    "codage": "n13*TQAN",
+                    "english": "on 13 [day]"
+                },
+                {
+                    "codage": "DAWN",
+                    "english": "at dawn"
+                },
+                {
+                    "codage": "n3*JAGUAR:tso1",
+                    "english": "Ish'bal Ts'o-"
+                },
+                {
+                    "codage": "ma1*li1",
+                    "english": "-malil"
+                },
+                {
+                    "codage": "ki1*ni1",
+                    "english": "K'ini"
+                },
+                {
+                    "codage": "LORD",
+                    "english": "a lord"
+                },
+                {
+                    "codage": "SEATING",
+                    "english": "was seated"
+                },
+                {
+                    "codage": "KANKUL",
+                    "english": "at K'ankul"
+                },
+                {
+                    "codage": "WAR",
+                    "english": "made war"
+                },
+                {
+                    "codage": "CAPTURE",
+                    "english": "took captives"
+                },
+                {
+                    "codage": "TRIBUTE",
+                    "english": "tribute brought"
+                },
+                {
+                    "codage": "PRIEST",
+                    "english": "the priest"
+                },
+                {
+                    "codage": "OFFERING",
+                    "english": "made the offering"
+                },
+                {
+                    "codage": "SUN_PRIEST",
+                    "english": "the sun priest"
+                },
+                {
+                    "codage": "SOLAR_COUNT",
+                    "english": "kept the count"
+                },
+                {
+                    "codage": "ERA_BEGINS",
+                    "english": "an era begins"
+                }
+            ],
+            "english": "On 13 [day], at dawn, Ish'bal Ts'omalil K'ini, the third of the name, a lord, was seated at K'ankul. He made war, he took captives, tribute was brought. The priest made the offering, and the sun priest kept the count. An era begins."
         }
     }
 }

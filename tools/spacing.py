@@ -24,14 +24,16 @@ not the word space ``SPACING`` in tools/respace.py states for the face. A face s
 open on purpose takes its own limits in ``OPEN``: Pirzath Hand is a printed working
 hand, read in poor light, and stands every letter clear of the next, with 70 units of
 white either side; its largest gap is held to the shared limit. Chalish Pilam Common sets every glyph in one
-fixed cell and takes a largest gap of its own.
+fixed cell and takes a largest gap of its own, and so does Chalish Pilam Ceremonial, which sets every sign
+in its block's advance.
 
 The sample lines are the texts of each face's specimens: the Khazari texts for
 the Pirzath faces, the Nordmal lines for Thuravark Carved and the Vylari texts for
 Semaron Kuriale, each written in the face's code points by its encoding; Qalezu Hand's fixtures, written in the
 signs the fixtures name, a catch-before form as the catch and its sign; the sample inscriptions of Khelathi Zethu Glyphs, set as one
 strip of signs; Teng Chou's Tantsou and Jurthati passages, each line one run
-of characters; Chalish Pilam Common's night entry, each phrase one word; and Veldikko's converter fixtures, written in the letters
+of characters; Chalish Pilam Common's night entry, each phrase one word; the codes of Chalish Pilam
+Ceremonial's passage, each glyph in its plain form, set as one strip; and Veldikko's converter fixtures, written in the letters
 and marks the fixtures name; and Vedyakshara Classical's and Helonika Book's guard
 fixtures, written by their encodings. A joined face (Veldikko
 Sinale) meets its neighbours at the join, and Vedyakshara's signs meet in one headline,
@@ -40,6 +42,7 @@ so their gaps are at most zero. None needs a thalorna checkout.
 
 import importlib.util
 import json
+import re
 import statistics
 import sys
 from pathlib import Path
@@ -59,7 +62,14 @@ MAX_GAP = 0.22
 # Faces set open on purpose: (median blank share, mean gap), in place of the shared limits,
 # and optionally a largest gap in place of MAX_GAP. Chalish Pilam Common sets every glyph
 # in one fixed cell with a gutter either side, so a narrow glyph leaves white beside it.
-OPEN = {"PirzathHand": (0.30, 0.15), "ChalishPilamCommon": (0.25, 0.25, 0.40)}
+# Chalish Pilam Ceremonial sets every sign in its block's advance, so a number or a flat
+# syllable sign standing alone, outside the block it is composed into, leaves most of the
+# block white.
+OPEN = {
+    "PirzathHand": (0.30, 0.15),
+    "ChalishPilamCommon": (0.25, 0.25, 0.40),
+    "ChalishPilamCeremonial": (0.36, 0.35, 1.05),
+}
 
 SKIP = {".notdef", "notdef.box"}
 
@@ -174,6 +184,19 @@ def _chalish_lines() -> list[str]:
             sys.modules.pop(name, None)
 
 
+def _ceremonial_lines() -> list[str]:
+    """The codes of the passage of tools/chalish-pilam/ceremonial_passage.py, written by its
+    encoding with no joiner, so each glyph stands in its own plain form, set as one strip
+    as an inscription runs on. A composed block sets its affixes with no advance of their
+    own, so the strip measures the signs themselves."""
+    sys.path.insert(0, str(ROOT))
+    import encode
+
+    passage = _load("ceremonial_passage", TOOLS / "chalish-pilam" / "ceremonial_passage.py")
+    codes = re.split(r"[*: ]", passage.codage())
+    return ["".join(encode.encode(str(ROOT / "encodings" / "chalish-ceremonial.json"), c) for c in codes)]
+
+
 # Each face: its sample lines, its direction and the features its class turns on.
 FACES = {
     "PirzathCarved": (_pirzath_lines, "ltr", {}),
@@ -184,6 +207,7 @@ FACES = {
     "KhelathiZethuGlyphs": (_zethu_lines, "rtl", {}),
     "TengChou": (_teng_chou_lines, "ltr", {}),
     "ChalishPilamCommon": (_chalish_lines, "ltr", {}),
+    "ChalishPilamCeremonial": (_ceremonial_lines, "ltr", {}),
     "Veldikko": (_veldikko_lines, "rtl", {}),
     "VedyaksharaClassical": (_vedyakshara_lines, "ltr", {}),
     "HelonikaBook": (_helonika_lines, "ltr", {}),

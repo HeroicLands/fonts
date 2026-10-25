@@ -2,6 +2,7 @@
 
 Each font has a sheet of every character it draws: a code chart laid out like Unicode's, and a table of each character's name, glyph and code point.
 
+- [Chalish Pilam Ceremonial](chalish-pilam-ceremonial.md): 271 characters on 4 chart pages
 - [Chalish Pilam Common](chalish-pilam.md): 95 characters on 1 chart page
 - [Helonika Book](helonika-book.md): 71 characters on 1 chart page
 - [Khelathi Zethu Glyphs](khelathi-zethu-glyphs.md): 364 characters on 6 chart pages

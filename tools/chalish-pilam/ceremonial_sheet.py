@@ -6,7 +6,7 @@
 
 The sheet has four parts: the kit, each recurring part drawn alone in a block; the
 pilot glyphs large; the pilot set as an inscription in paired columns, read A1, B1,
-A2, B2; and the blocks at 48 and 24 px beside Monaspace Neon.
+A2, B2; and the blocks at 48 and 24 px beside Courier New.
 """
 
 import argparse
@@ -19,8 +19,17 @@ HERE = Path(__file__).resolve().parent
 ROOT = HERE.parent.parent
 sys.path.insert(0, str(HERE))
 import ceremonial as R  # noqa: E402
+import gods as G  # noqa: E402
+import ranks as T  # noqa: E402
+import events as E  # noqa: E402
+import blocks as Q  # noqa: E402
+import syllabary as Y  # noqa: E402
+import cosmos as K  # noqa: E402
+import places as PL  # noqa: E402
+import core as Z  # noqa: E402
+import compounds as X  # noqa: E402
 import strokes as S  # noqa: E402
-from strokes_sheet import BLUE, GREY, INK, RED, Sheet, svg_path  # noqa: E402
+from strokes_sheet import BLUE, FAINT, GREY, INK, RED, Sheet, svg_path  # noqa: E402
 
 B = S.BLOCK
 
@@ -84,42 +93,183 @@ def main():
         sh.text(x, base + 40, gloss, 12, GREY)
     sh.y += cw + 70
 
-    sh.heading("The pilot glyphs")
-    sc = 0.36
-    cw = B * sc
-    for i, g in enumerate(R.PILOT):
-        x = 40 + i * (cw + 60)
-        base = sh.y + cw + 10
+    sh.heading("The pilot glyphs: full, half and double footprints; cushion, round cartouche and free silhouette")
+    sc = 0.27
+    x = 40
+    base = sh.y + B * sc + 10
+    for g in R.PILOT:
+        w = R.WIDTH[g.footprint] * sc
+        if x + w > W - 40:
+            x = 40
+            base += B * sc + 90
         sh.glyph(g.name, g.draw, x, base, sc)
         sh.text(x, base + 24, g.name, 15, INK, weight="bold")
-        sh.text(x + cw - 4, base + 24, g.sound, 17, RED, weight="bold", anchor="end")
-        sh.text(x, base + 42, g.meaning, 12, GREY)
-    sh.y += cw + 80
+        sh.text(x + max(w, 150) - 4, base + 24, g.sound, 17, RED, weight="bold", anchor="end")
+        sh.text(x, base + 42, f"{g.meaning} · {g.footprint}", 12, GREY)
+        x += max(w, 160) + 70
+    sh.y = base + 80
 
-    sh.heading("An inscription in paired columns: read A1, B1, A2, B2, down the pair")
-    sc = 0.3
-    cw = B * sc
-    order = [R.LORD, R.JAGUAR, R.THIRTEEN, R.SUN, R.PEAK, R.MOON, R.WATER, R.SUN]
-    for i, g in enumerate(order):
-        row, col = divmod(i, 2)
-        x = 60 + col * (cw + 18)
-        base = sh.y + (row + 1) * (cw + 18)
+    sh.heading("The core concepts (with SUN, MOON and WATER above)")
+    sc = 0.24
+    per = 11
+    pitch = (W - 80) / per
+    for i, g in enumerate(Z.CORE):
+        col, row = i % per, i // per
+        x = 40 + col * pitch
+        base = sh.y + (row + 1) * (B * sc + 60) - 50
         sh.glyph(g.name, g.draw, x, base, sc)
-        sh.text(x + cw / 2, base + 16, f"{'AB'[col]}{row + 1}", 12, RED, anchor="middle")
-    sh.text(60 + 2 * (cw + 18) + 40, sh.y + 60, "a lord, the jaguar, on the thirteenth;", 16, GREY)
-    sh.text(60 + 2 * (cw + 18) + 40, sh.y + 84, "the sun over the sacred peak; the moon on the water; the sun", 16, GREY)
-    sh.y += 4 * (cw + 18) + 50
+        sh.text(x, base + 22, g.name, 13, INK, weight="bold")
+        sh.text(x, base + 40, g.sound, 12, RED)
+    sh.y += ((len(Z.CORE) - 1) // per + 1) * (B * sc + 60) + 10
 
-    sh.heading("Blocks beside Monaspace Neon at 48 and 24 px")
+    sh.heading("Precomposed concepts: what the common hand writes with two or three glyphs, drawn as one")
+    sc = 0.24
+    per = 11
+    pitch = (W - 80) / per
+    for i, g in enumerate([R.PATRIARCH] + X.COMPOUNDS):
+        col, row = i % per, i // per
+        x = 40 + col * pitch
+        base = sh.y + (row + 1) * (B * sc + 60) - 50
+        sh.glyph(g.name, g.draw, x, base, sc)
+        sh.text(x, base + 22, g.name, 11, INK, weight="bold")
+    sh.y += ((len(X.COMPOUNDS)) // per + 1) * (B * sc + 60) + 10
+
+    sh.heading("The gods: one glyph each, as complicated as it needs to be")
+    sc = 0.3
+    x = 40
+    base = sh.y + B * sc + 10
+    for g in G.GODS:
+        w = R.WIDTH[g.footprint] * sc
+        if x + w > W - 40:
+            x = 40
+            base += B * sc + 80
+        sh.glyph(g.name, g.draw, x, base, sc)
+        sh.text(x, base + 24, g.name, 14, INK, weight="bold")
+        sh.text(x, base + 42, f"{g.meaning} · {g.sound}", 12, GREY)
+        x += max(w, 200) + 60
+    sh.y = base + 70
+
+    sh.heading("Rank and office: a head wearing the regalia of its office")
+    sc = 0.27
+    x = 40
+    base = sh.y + B * sc + 10
+    for g in T.RANKS:
+        w = R.WIDTH[g.footprint] * sc
+        if x + w > W - 40:
+            x = 40
+            base += B * sc + 80
+        sh.glyph(g.name, g.draw, x, base, sc)
+        sh.text(x, base + 24, g.name, 13, INK, weight="bold")
+        sh.text(x, base + 42, f"{g.meaning.split(',')[0]} · {g.sound}", 12, GREY)
+        x += max(w, 200) + 50
+    sh.y = base + 70
+
+    sh.heading("The cosmos and the counts")
+    sc = 0.27
+    x = 40
+    base = sh.y + B * sc + 10
+    for g in K.COSMOS:
+        sh.glyph(g.name, g.draw, x, base, sc)
+        sh.text(x, base + 24, g.name, 13, INK, weight="bold")
+        sh.text(x, base + 42, f"{g.meaning.split(',')[0]} · {g.sound}", 12, GREY)
+        x += B * sc + 120
+    sh.y = base + 70
+
+    sh.heading("The city-states: each city's emblem, its picture with the beaded seat of rule; the unruled land has none")
+    sc = 0.27
+    x = 40
+    base = sh.y + B * sc + 10
+    for g in PL.PLACES:
+        sh.glyph(g.name, g.draw, x, base, sc)
+        sh.text(x, base + 24, g.name, 13, INK, weight="bold")
+        sh.text(x, base + 42, g.meaning.split(",")[0], 12, GREY)
+        x += B * sc + 90
+    sh.y = base + 70
+
+    sh.heading("The events of the record")
+    sc = 0.27
+    x = 40
+    base = sh.y + B * sc + 10
+    for g in E.EVENTS:
+        w = R.WIDTH[g.footprint] * sc
+        if x + w > W - 40:
+            x = 40
+            base += B * sc + 80
+        sh.glyph(g.name, g.draw, x, base, sc)
+        sh.text(x, base + 24, g.name, 13, INK, weight="bold")
+        sh.text(x, base + 42, f"{g.meaning} · {g.sound}", 12, GREY)
+        x += max(w, 200) + 50
+    sh.y = base + 70
+
+    sh.heading("The syllabary: every syllable's signs, flat (above or below a sign) and tall (before or after it); red: traditional sounds")
+    sc = 0.3
+    fw, fh = B * Y.SPAN * sc, B * Y.AFFIX * sc
+    tw, th = B * Y.AFFIX * sc, B * Y.SPAN * sc
+    per = 6
+    pitch = (W - 80) / per
+    items = list(Y.SIGNS.items())
+    for i, (code, sg) in enumerate(items):
+        col, row = i % per, i // per
+        x = 40 + col * pitch
+        base = sh.y + row * (th + 46) + th
+        sh.glyph(code + ".tall", sg.tall, x, base, sc)
+        sh.glyph(code + ".flat", sg.flat, x + tw + 16, base - (th - fh) / 2, sc)
+        sh.text(x, base + 18, code, 13, RED if sg.traditional else INK, weight="bold")
+        sh.text(x + 50, base + 18, sg.source[:30], 11, GREY)
+    sh.y += ((len(items) - 1) // per + 1) * (th + 46) + 20
+
+    sh.heading("Composed blocks: a name is a house emblem, syllable signs and a coefficient, written in codage")
+    sc = 0.32
+    x = 40
+    base = sh.y + B * sc + 10
+    for code, gloss in (("JAGUAR", "the emblem alone, full form"), ("n3*la1:JAGUAR", "three; la over the emblem, compact"),
+                        ("sho1*bi1", "the name runs on: sho, bi"), ("la1:JAGUAR:bi1", "la over, bi under; squeezed"),
+                        ("n13*JAGUAR", "thirteen before the emblem")):
+        sh.cell(x, base, sc)
+        sh.glyph(code, lambda code=code: Q.compose(code), x, base, sc)
+        sh.text(x, base + 22, code, 13, INK, weight="bold")
+        sh.text(x, base + 40, gloss, 12, GREY)
+        x += B * sc + 150
+    sh.y = base + 70
+
+    sh.heading("An inscription in paired columns, packed by footprint as a page wraps it: two blocks to a row")
+    sc = 0.27
+    order = [R.LORD, R.PATRIARCH, R.THIRTEEN, R.TQAN, R.SERPENT, R.SUN, R.PEAK, R.MOON, R.WATER, R.JAGUAR]
+    rows, cur, used = [], [], 0.0
+    for g in order:
+        span = R.WIDTH[g.footprint] / B
+        if used + span > 2 and cur:
+            rows.append(cur)
+            cur, used = [], 0.0
+        cur.append(g)
+        used += span
+    rows.append(cur)
+    gap = 18
+    for r, row in enumerate(rows):
+        base = sh.y + (r + 1) * (B * sc + gap)
+        x = 60
+        for g in row:
+            sh.glyph(g.name, g.draw, x, base, sc)
+            x += R.WIDTH[g.footprint] * sc + gap
+    tx = 60 + 2 * B * sc + 2 * gap + 40
+    for k, line in enumerate(["the lord, the patriarch;", "on the thirteenth day of the count;", "the serpent;",
+                              "the sun, the sacred peak;", "the moon, the water;", "the jaguar"]):
+        sh.text(tx, sh.y + 60 + k * 24, line, 16, GREY)
+    sh.y += len(rows) * (B * sc + gap) + 50
+
+    sh.heading("Blocks beside Courier New at 48 and 24 px, set as the font sets them: spanning descender to ascender")
     for px in (48, 24):
         sc = px / 1000
-        base = sh.y + px
+        gs = sc * R.FONT_SCALE
+        base = sh.y + px * 1.2
+        sh.rule(40, W - 40, base - 945 * sc, FAINT)
+        sh.rule(40, W - 40, base + 200 * sc, FAINT)
         x = 40 + sh.latin(40, base, "The stela reads ", px, BLUE)
         for g in order:
-            sh.glyph(g.name, g.draw, x, base, sc)
-            x += (B + 60) * sc
-        sh.latin(x + px * 0.3, base, "and the sun.", px, BLUE)
-        sh.y += px * 1.6
+            sh.glyph(g.name, g.draw, x, base - R.FONT_DROP * sc, gs)
+            x += (R.WIDTH[g.footprint] + 60) * gs
+        sh.latin(x + px * 0.3, base, "and the jaguar.", px, BLUE)
+        sh.y += px * 1.9
 
     height = int(sh.y + 40)
     svg_file = out.with_suffix(".svg")

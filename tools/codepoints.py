@@ -14,7 +14,8 @@ name and kind of every character the face draws. A font fails when
   Basic Multilingual Plane (U+E000 to U+F8FF);
 - a glyph of a left-to-right face is neither listed nor one of the glyphs that are
   not characters (the spelling helpers, the joined and doubled forms, the
-  precomposed vowels, the box, the empty glyphs and the space), or a listed glyph is
+  precomposed vowels, the forms a ceremonial sign takes in a block, the box, the empty
+  glyphs and the space), or a listed glyph is
   one of those;
 - a character's code point lies outside every block that the registry
   (``BLOCKS`` in tools/codepoint_order.py) lists for its family, or two registered
@@ -86,6 +87,7 @@ NOT_CHARACTERS = {
     },
     "TengChou-Regular": {},
     "ChalishPilamCommon-Regular": {},
+    "ChalishPilamCeremonial-Regular": {},
     "HelonikaBook-Regular": {},
     "ThuravarkCarved-Regular": {
         **{f"{v}.acute": "the acute mark after a vowel, drawn as its stave again" for v in "aeiou"},
@@ -121,10 +123,33 @@ def not_character(stem: str, glyph: str, excluded: dict[str, str]) -> bool:
     return glyph in excluded
 
 
+def _ceremonial_forms(order: list[str]) -> dict[str, str]:
+    """Chalish Pilam Ceremonial's glyphs that are not characters: the form a sign takes
+    for its place in a block, named ``<sign>.<role>`` by tools/chalish-pilam/ceremonial_layout.py."""
+    # The layout imports the hand's own modules, such as strokes, whose names other
+    # scripts' tools share, so it is imported against a clean module table.
+    saved, path = dict(sys.modules), list(sys.path)
+    sys.path.insert(0, str(ROOT / "tools" / "chalish-pilam"))
+    for name in [n for n, m in sys.modules.items() if "/tools/" in str(getattr(m, "__file__", "") or "")]:
+        del sys.modules[name]
+    try:
+        import ceremonial_layout
+
+        roles = set(ceremonial_layout.BY_SUFFIX)
+    finally:
+        sys.modules.clear()
+        sys.modules.update(saved)
+        sys.path[:] = path
+    return {g: "a sign's form for its place in a block" for g in order if g.rpartition(".")[2] in roles}
+
+
 def not_characters(stem: str, order: list[str]) -> dict[str, str]:
-    """The glyphs of a face that are not characters: NOT_CHARACTERS, and for Thuravark
-    Carved the crowned frame's glyphs, which tools/thuravark-carved/crown.py adds."""
+    """The glyphs of a face that are not characters: NOT_CHARACTERS, for Chalish Pilam
+    Ceremonial the forms of its signs in a block, and for Thuravark Carved the crowned
+    frame's glyphs, which tools/thuravark-carved/crown.py adds."""
     excluded = dict(NOT_CHARACTERS[stem])
+    if stem == "ChalishPilamCeremonial-Regular":
+        excluded.update(_ceremonial_forms(order))
     if stem == "ThuravarkCarved-Regular":
         import importlib.util
 

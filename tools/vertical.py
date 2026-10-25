@@ -35,6 +35,11 @@ font fails when
 Each face has one set of typical letters for each of the two heights; a script with
 a single height uses one set for both.
 
+Chalish Pilam Ceremonial sets a block from the descent to the ascent, so its typical
+glyphs, the concept glyphs that fill a full block, are measured against the height of the
+block's cushion in the font rather than against a Latin height. The headdresses of its
+king and overlord rise above the ascent.
+
 A script with no capitals is measured against the height a line of Latin is read at.
 Pirzath Hand has no capitals and few extenders, so nearly all of its ink stands in
 one band: its consonants are its typical letters and stand at the cap height, as
@@ -132,6 +137,7 @@ FACES = {
     "VedyaksharaClassical": {"x": VEDYAKSHARA_DIGITS, "cap": VEDYAKSHARA_SIGNS, "target": "x"},
     "HelonikaBook": {"x": HELONIKA_X, "cap": HELONIKA_CAPS, "target": "x"},
     "ChalishPilamCommon": {"x": CHALISH_TYPICAL, "cap": CHALISH_TYPICAL, "target": "cap"},
+    "ChalishPilamCeremonial": {"x": "ceremonial", "cap": "ceremonial", "cushion": "ceremonial", "target": "cushion"},
 }
 
 # Glyphs allowed to leave the band, by face: the first part of the glyph name, before
@@ -145,6 +151,8 @@ OVERSHOOT = {
     "VedyaksharaClassical": vedyakshara_low(),
     # the tails of the descending minuscules turn back a little below the descent
     "HelonikaBook": {"f", "g", "j"},
+    # the headdresses of the king and the overlord rise above the block
+    "ChalishPilamCeremonial": {"king", "overlord"},
 }
 
 
@@ -183,14 +191,45 @@ def teng_chou_characters() -> list[str]:
     return [r["glyph"] for r in codepoint_order.ltr_table("TengChou-Regular") if r["kind"] == "character"]
 
 
+def ceremonial_typical() -> list[str]:
+    """Chalish Pilam Ceremonial's concept glyphs that fill a full block, most of them
+    standing in its cushion."""
+    enc = json.loads((ROOT / "tools" / "chalish-pilam" / "ceremonial_encoding.json").read_text(encoding="utf-8"))
+    return [e["glyph"] for e in enc["glyphs"]
+            if e["kind"] == "concept" and e.get("footprint") == "full" and not e.get("retired")]
+
+
+def cushion_units() -> float:
+    """The height of Chalish Pilam Ceremonial's cushion in the font: the cushion drawn in
+    the block and its contour brush, scaled as the font sets a block. The hand's drawing
+    modules share names such as strokes with other scripts' tools, so they are imported
+    against a clean module table."""
+    saved, path = dict(sys.modules), list(sys.path)
+    sys.path.insert(0, str(ROOT / "tools" / "chalish-pilam"))
+    for name in [n for n, m in sys.modules.items() if "/tools/" in str(getattr(m, "__file__", "") or "")]:
+        del sys.modules[name]
+    try:
+        import ceremonial
+
+        return (ceremonial.CH + ceremonial.CONTOUR.full) * ceremonial.FONT_SCALE
+    finally:
+        sys.modules.clear()
+        sys.modules.update(saved)
+        sys.path[:] = path
+
+
 def typical(face: str, kind: str) -> list[str]:
     names = FACES[face][kind]
     if names == "characters":
         return teng_chou_characters()
+    if names == "ceremonial":
+        return ceremonial_typical()
     return standing_signs() if names is None else names
 
 
 def target_units(face: str, upem: int) -> float:
+    if FACES[face]["target"] == "cushion":
+        return cushion_units()
     return (X_HEIGHT if FACES[face]["target"] == "x" else CAP_HEIGHT) * upem
 
 

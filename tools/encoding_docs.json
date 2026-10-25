@@ -88,6 +88,14 @@
       "Khelathi Zethu Glyphs is a right-to-left script of signs, one sign to a word. This encoding writes the named code of a sign, in capitals, as its code point."
     ]
   },
+  "chalish-ceremonial": {
+    "title": "chalish-ceremonial encoding",
+    "example": "n13*TQAN DAWN",
+    "intro": [
+      "Chalish Pilam Ceremonial is the carved hand of Ch'alish P'ilam, a logographic script whose glyphs compose into blocks. This encoding writes the named code of a glyph as its code point: a concept glyph by its name in capitals (`SUN`), a syllable sign by its syllable and number (`ka1`), and a number by `n` and its value (`n13`).",
+      "Inside a block, `*` writes the joiner that sets two items side by side and `:` the joiner that stacks the first over the second; the font lays the block out from them. A block ends wherever no joiner follows, so `-` and a space each write only their invisible mark. Zero and the places of the count have code points and no ceremonial drawing, so they print the box."
+    ]
+  },
   "chalish-common": {
     "title": "chalish-common encoding",
     "example": "n1",

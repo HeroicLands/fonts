@@ -1,0 +1,2189 @@
+{
+  "glyphs": [
+    {
+      "glyph": "n0",
+      "codepoint": "U+F4000",
+      "code": "n0",
+      "kind": "number",
+      "concept": "0",
+      "pending": true
+    },
+    {
+      "glyph": "n1",
+      "codepoint": "U+F4001",
+      "code": "n1",
+      "kind": "number",
+      "concept": "1"
+    },
+    {
+      "glyph": "n2",
+      "codepoint": "U+F4002",
+      "code": "n2",
+      "kind": "number",
+      "concept": "2"
+    },
+    {
+      "glyph": "n3",
+      "codepoint": "U+F4003",
+      "code": "n3",
+      "kind": "number",
+      "concept": "3"
+    },
+    {
+      "glyph": "n4",
+      "codepoint": "U+F4004",
+      "code": "n4",
+      "kind": "number",
+      "concept": "4"
+    },
+    {
+      "glyph": "n5",
+      "codepoint": "U+F4005",
+      "code": "n5",
+      "kind": "number",
+      "concept": "5"
+    },
+    {
+      "glyph": "n6",
+      "codepoint": "U+F4006",
+      "code": "n6",
+      "kind": "number",
+      "concept": "6"
+    },
+    {
+      "glyph": "n7",
+      "codepoint": "U+F4007",
+      "code": "n7",
+      "kind": "number",
+      "concept": "7"
+    },
+    {
+      "glyph": "n8",
+      "codepoint": "U+F4008",
+      "code": "n8",
+      "kind": "number",
+      "concept": "8"
+    },
+    {
+      "glyph": "n9",
+      "codepoint": "U+F4009",
+      "code": "n9",
+      "kind": "number",
+      "concept": "9"
+    },
+    {
+      "glyph": "n10",
+      "codepoint": "U+F400A",
+      "code": "n10",
+      "kind": "number",
+      "concept": "10"
+    },
+    {
+      "glyph": "n11",
+      "codepoint": "U+F400B",
+      "code": "n11",
+      "kind": "number",
+      "concept": "11"
+    },
+    {
+      "glyph": "n12",
+      "codepoint": "U+F400C",
+      "code": "n12",
+      "kind": "number",
+      "concept": "12"
+    },
+    {
+      "glyph": "n13",
+      "codepoint": "U+F400D",
+      "code": "n13",
+      "kind": "number",
+      "concept": "13"
+    },
+    {
+      "glyph": "n14",
+      "codepoint": "U+F400E",
+      "code": "n14",
+      "kind": "number",
+      "concept": "14"
+    },
+    {
+      "glyph": "n15",
+      "codepoint": "U+F400F",
+      "code": "n15",
+      "kind": "number",
+      "concept": "15"
+    },
+    {
+      "glyph": "n16",
+      "codepoint": "U+F4010",
+      "code": "n16",
+      "kind": "number",
+      "concept": "16"
+    },
+    {
+      "glyph": "n17",
+      "codepoint": "U+F4011",
+      "code": "n17",
+      "kind": "number",
+      "concept": "17"
+    },
+    {
+      "glyph": "n18",
+      "codepoint": "U+F4012",
+      "code": "n18",
+      "kind": "number",
+      "concept": "18"
+    },
+    {
+      "glyph": "n19",
+      "codepoint": "U+F4013",
+      "code": "n19",
+      "kind": "number",
+      "concept": "19"
+    },
+    {
+      "glyph": "n20",
+      "codepoint": "U+F4014",
+      "code": "n20",
+      "kind": "number",
+      "concept": "20",
+      "pending": true
+    },
+    {
+      "glyph": "n400",
+      "codepoint": "U+F4015",
+      "code": "n400",
+      "kind": "number",
+      "concept": "400",
+      "pending": true
+    },
+    {
+      "glyph": "n8000",
+      "codepoint": "U+F4016",
+      "code": "n8000",
+      "kind": "number",
+      "concept": "8,000",
+      "pending": true
+    },
+    {
+      "glyph": "n160000",
+      "codepoint": "U+F4017",
+      "code": "n160000",
+      "kind": "number",
+      "concept": "160,000",
+      "pending": true
+    },
+    {
+      "glyph": "lord",
+      "codepoint": "U+F4020",
+      "code": "LORD",
+      "kind": "concept",
+      "concept": "a lord",
+      "footprint": "full"
+    },
+    {
+      "glyph": "patriarch",
+      "codepoint": "U+F4021",
+      "code": "PATRIARCH",
+      "kind": "concept",
+      "concept": "the patriarch: MAN, HIGH and HOUSE made one",
+      "footprint": "full"
+    },
+    {
+      "glyph": "jaguar",
+      "codepoint": "U+F4022",
+      "code": "JAGUAR",
+      "kind": "concept",
+      "concept": "the jaguar",
+      "footprint": "full"
+    },
+    {
+      "glyph": "sun",
+      "codepoint": "U+F4023",
+      "code": "SUN",
+      "kind": "concept",
+      "concept": "the sun",
+      "footprint": "full"
+    },
+    {
+      "glyph": "moon",
+      "codepoint": "U+F4024",
+      "code": "MOON",
+      "kind": "concept",
+      "concept": "the moon",
+      "footprint": "full"
+    },
+    {
+      "glyph": "water",
+      "codepoint": "U+F4025",
+      "code": "WATER",
+      "kind": "concept",
+      "concept": "water",
+      "footprint": "full"
+    },
+    {
+      "glyph": "peak",
+      "codepoint": "U+F4026",
+      "code": "PEAK",
+      "kind": "concept",
+      "concept": "the sacred peak",
+      "footprint": "full"
+    },
+    {
+      "glyph": "tqan",
+      "codepoint": "U+F4027",
+      "code": "TQAN",
+      "kind": "concept",
+      "concept": "the 260-day count, a day in its cartouche",
+      "footprint": "full"
+    },
+    {
+      "glyph": "serpent",
+      "codepoint": "U+F4028",
+      "code": "SERPENT",
+      "kind": "concept",
+      "concept": "the serpent",
+      "footprint": "double"
+    },
+    {
+      "glyph": "sun_at_the_edge",
+      "codepoint": "U+F4029",
+      "code": "SUN_AT_THE_EDGE",
+      "kind": "concept",
+      "concept": "Ts'en'ul Tq'an, order",
+      "footprint": "full"
+    },
+    {
+      "glyph": "death_jaguar",
+      "codepoint": "U+F402A",
+      "code": "DEATH_JAGUAR",
+      "kind": "concept",
+      "concept": "Ts'uqil Ish'bal, death",
+      "footprint": "full"
+    },
+    {
+      "glyph": "storm_serpent",
+      "codepoint": "U+F402B",
+      "code": "STORM_SERPENT",
+      "kind": "concept",
+      "concept": "P'uqil Ch'akun, storms",
+      "footprint": "double"
+    },
+    {
+      "glyph": "sacred_star",
+      "codepoint": "U+F402C",
+      "code": "SACRED_STAR",
+      "kind": "concept",
+      "concept": "Ish'ilan Ch'alish, knowledge",
+      "footprint": "full"
+    },
+    {
+      "glyph": "golden_giver",
+      "codepoint": "U+F402D",
+      "code": "GOLDEN_GIVER",
+      "kind": "concept",
+      "concept": "K'anish Ha'kan, prosperity",
+      "footprint": "full"
+    },
+    {
+      "glyph": "sacred_flame",
+      "codepoint": "U+F402E",
+      "code": "SACRED_FLAME",
+      "kind": "concept",
+      "concept": "K'ayik Ch'alish, fire",
+      "footprint": "full"
+    },
+    {
+      "glyph": "peak_builder",
+      "codepoint": "U+F402F",
+      "code": "PEAK_BUILDER",
+      "kind": "concept",
+      "concept": "P'iqal Kul'qat, creation",
+      "footprint": "full"
+    },
+    {
+      "glyph": "path_walker",
+      "codepoint": "U+F4030",
+      "code": "PATH_WALKER",
+      "kind": "concept",
+      "concept": "Shilan Ish'lan, voyages",
+      "footprint": "full"
+    },
+    {
+      "glyph": "moon_dreamer",
+      "codepoint": "U+F4031",
+      "code": "MOON_DREAMER",
+      "kind": "concept",
+      "concept": "Nal'ik Ts'uqal, dreams",
+      "footprint": "full"
+    },
+    {
+      "glyph": "living_blossom",
+      "codepoint": "U+F4032",
+      "code": "LIVING_BLOSSOM",
+      "kind": "concept",
+      "concept": "Shaq'ik Ha'nal, fertility",
+      "footprint": "full"
+    },
+    {
+      "glyph": "fallen_owl",
+      "codepoint": "U+F4033",
+      "code": "FALLEN_OWL",
+      "kind": "concept",
+      "concept": "Pik'ul Ts'umaq, the fallen",
+      "footprint": "full"
+    },
+    {
+      "glyph": "overlord",
+      "codepoint": "U+F4034",
+      "code": "OVERLORD",
+      "kind": "concept",
+      "concept": "Q'emulmah, the supreme lord",
+      "footprint": "full"
+    },
+    {
+      "glyph": "king",
+      "codepoint": "U+F4035",
+      "code": "KING",
+      "kind": "concept",
+      "concept": "Ts'enmah, Lord of the Sun",
+      "footprint": "full"
+    },
+    {
+      "glyph": "prince",
+      "codepoint": "U+F4036",
+      "code": "PRINCE",
+      "kind": "concept",
+      "concept": "Ts'enilbal, heir to the sun",
+      "footprint": "full"
+    },
+    {
+      "glyph": "seated_lord",
+      "codepoint": "U+F4037",
+      "code": "SEATED_LORD",
+      "kind": "concept",
+      "concept": "Kulmah, lord of a seat",
+      "footprint": "full"
+    },
+    {
+      "glyph": "lady",
+      "codepoint": "U+F4038",
+      "code": "LADY",
+      "kind": "concept",
+      "concept": "Ish'kanmah, golden noblewoman",
+      "footprint": "full"
+    },
+    {
+      "glyph": "landholder",
+      "codepoint": "U+F4039",
+      "code": "LANDHOLDER",
+      "kind": "concept",
+      "concept": "Ha'nalmah, lord of the land",
+      "footprint": "full"
+    },
+    {
+      "glyph": "knight",
+      "codepoint": "U+F403A",
+      "code": "KNIGHT",
+      "kind": "concept",
+      "concept": "Ts'omilbal, servant of the bond",
+      "footprint": "full"
+    },
+    {
+      "glyph": "war_leader",
+      "codepoint": "U+F403B",
+      "code": "WAR_LEADER",
+      "kind": "concept",
+      "concept": "Shok'almah, the war-leader",
+      "footprint": "full"
+    },
+    {
+      "glyph": "sun_priest",
+      "codepoint": "U+F403C",
+      "code": "SUN_PRIEST",
+      "kind": "concept",
+      "concept": "Ts'enbal, keeper of the count",
+      "footprint": "full"
+    },
+    {
+      "glyph": "priest",
+      "codepoint": "U+F403D",
+      "code": "PRIEST",
+      "kind": "concept",
+      "concept": "Ch'alishbal, servant of the sacred",
+      "footprint": "full"
+    },
+    {
+      "glyph": "scribe",
+      "codepoint": "U+F403E",
+      "code": "SCRIBE",
+      "kind": "concept",
+      "concept": "P'ilambal, servant of the glyphs",
+      "footprint": "full"
+    },
+    {
+      "glyph": "herald",
+      "codepoint": "U+F403F",
+      "code": "HERALD",
+      "kind": "concept",
+      "concept": "Ch'umts'om, the speaking link",
+      "footprint": "full"
+    },
+    {
+      "glyph": "master_merchant",
+      "codepoint": "U+F4040",
+      "code": "MASTER_MERCHANT",
+      "kind": "concept",
+      "concept": "P'ik'ulmah, lord of the trade",
+      "footprint": "full"
+    },
+    {
+      "glyph": "guildsman",
+      "codepoint": "U+F4041",
+      "code": "GUILDSMAN",
+      "kind": "concept",
+      "concept": "P'ik'ulbal, keeper of a craft",
+      "footprint": "full"
+    },
+    {
+      "glyph": "freeman",
+      "codepoint": "U+F4042",
+      "code": "FREEMAN",
+      "kind": "concept",
+      "concept": "Nal'ikbal, the independent one",
+      "footprint": "full"
+    },
+    {
+      "glyph": "serf",
+      "codepoint": "U+F4043",
+      "code": "SERF",
+      "kind": "concept",
+      "concept": "Ch'ulmaqbal, the bound one",
+      "footprint": "full"
+    },
+    {
+      "glyph": "slave",
+      "codepoint": "U+F4044",
+      "code": "SLAVE",
+      "kind": "concept",
+      "concept": "Ts'ik'ibal, the shadowed one",
+      "footprint": "full"
+    },
+    {
+      "glyph": "birth",
+      "codepoint": "U+F4045",
+      "code": "BIRTH",
+      "kind": "concept",
+      "concept": "nal'tel, a birth",
+      "footprint": "full"
+    },
+    {
+      "glyph": "seating",
+      "codepoint": "U+F4046",
+      "code": "SEATING",
+      "kind": "concept",
+      "concept": "a lord seated: accession",
+      "footprint": "full"
+    },
+    {
+      "glyph": "death",
+      "codepoint": "U+F4047",
+      "code": "DEATH",
+      "kind": "concept",
+      "concept": "ts'uqel, a death",
+      "footprint": "full"
+    },
+    {
+      "glyph": "burial",
+      "codepoint": "U+F4048",
+      "code": "BURIAL",
+      "kind": "concept",
+      "concept": "a burial, going into the earth",
+      "footprint": "full"
+    },
+    {
+      "glyph": "marriage",
+      "codepoint": "U+F4049",
+      "code": "MARRIAGE",
+      "kind": "concept",
+      "concept": "ashtsom, a marriage",
+      "footprint": "full"
+    },
+    {
+      "glyph": "capture",
+      "codepoint": "U+F404A",
+      "code": "CAPTURE",
+      "kind": "concept",
+      "concept": "a captive taken",
+      "footprint": "full"
+    },
+    {
+      "glyph": "war",
+      "codepoint": "U+F404B",
+      "code": "WAR",
+      "kind": "concept",
+      "concept": "shok'al, a war",
+      "footprint": "full"
+    },
+    {
+      "glyph": "conquest",
+      "codepoint": "U+F404C",
+      "code": "CONQUEST",
+      "kind": "concept",
+      "concept": "a city overthrown",
+      "footprint": "full"
+    },
+    {
+      "glyph": "tribute",
+      "codepoint": "U+F404D",
+      "code": "TRIBUTE",
+      "kind": "concept",
+      "concept": "tribute brought",
+      "footprint": "full"
+    },
+    {
+      "glyph": "foundation",
+      "codepoint": "U+F404E",
+      "code": "FOUNDATION",
+      "kind": "concept",
+      "concept": "Kul'qat Tik'il, a foundation laid",
+      "footprint": "full"
+    },
+    {
+      "glyph": "dedication",
+      "codepoint": "U+F404F",
+      "code": "DEDICATION",
+      "kind": "concept",
+      "concept": "Kul'qat Ts'apel, a dedication",
+      "footprint": "full"
+    },
+    {
+      "glyph": "offering",
+      "codepoint": "U+F4050",
+      "code": "OFFERING",
+      "kind": "concept",
+      "concept": "an offering of blood",
+      "footprint": "full"
+    },
+    {
+      "glyph": "eclipse",
+      "codepoint": "U+F4051",
+      "code": "ECLIPSE",
+      "kind": "concept",
+      "concept": "ts'anish, an eclipse",
+      "footprint": "full"
+    },
+    {
+      "glyph": "pilgrimage",
+      "codepoint": "U+F4052",
+      "code": "PILGRIMAGE",
+      "kind": "concept",
+      "concept": "a pilgrimage made",
+      "footprint": "full"
+    },
+    {
+      "glyph": "eras_end",
+      "codepoint": "U+F4053",
+      "code": "ERAS_END",
+      "kind": "concept",
+      "concept": "an era ends",
+      "footprint": "full"
+    },
+    {
+      "glyph": "ball_game",
+      "codepoint": "U+F4054",
+      "code": "BALL_GAME",
+      "kind": "concept",
+      "concept": "the ball game played",
+      "footprint": "full"
+    },
+    {
+      "glyph": "sky",
+      "codepoint": "U+F4055",
+      "code": "SKY",
+      "kind": "concept",
+      "concept": "the sky, the heavens",
+      "footprint": "full"
+    },
+    {
+      "glyph": "star",
+      "codepoint": "U+F4056",
+      "code": "STAR",
+      "kind": "concept",
+      "concept": "a star",
+      "footprint": "full"
+    },
+    {
+      "glyph": "fire",
+      "codepoint": "U+F4057",
+      "code": "FIRE",
+      "kind": "concept",
+      "concept": "fire",
+      "footprint": "full"
+    },
+    {
+      "glyph": "earth",
+      "codepoint": "U+F4058",
+      "code": "EARTH",
+      "kind": "concept",
+      "concept": "earth, soil",
+      "footprint": "full"
+    },
+    {
+      "glyph": "stone",
+      "codepoint": "U+F4059",
+      "code": "STONE",
+      "kind": "concept",
+      "concept": "stone, the mountain",
+      "footprint": "full"
+    },
+    {
+      "glyph": "man",
+      "codepoint": "U+F405A",
+      "code": "MAN",
+      "kind": "concept",
+      "concept": "a person, a man",
+      "footprint": "full"
+    },
+    {
+      "glyph": "woman",
+      "codepoint": "U+F405B",
+      "code": "WOMAN",
+      "kind": "concept",
+      "concept": "a woman",
+      "footprint": "full"
+    },
+    {
+      "glyph": "plant",
+      "codepoint": "U+F405C",
+      "code": "PLANT",
+      "kind": "concept",
+      "concept": "vegetation",
+      "footprint": "full"
+    },
+    {
+      "glyph": "beast",
+      "codepoint": "U+F405D",
+      "code": "BEAST",
+      "kind": "concept",
+      "concept": "an animal",
+      "footprint": "full"
+    },
+    {
+      "glyph": "east",
+      "codepoint": "U+F405E",
+      "code": "EAST",
+      "kind": "concept",
+      "concept": "the east, sunrise; birth",
+      "footprint": "full"
+    },
+    {
+      "glyph": "west",
+      "codepoint": "U+F405F",
+      "code": "WEST",
+      "kind": "concept",
+      "concept": "the west, sunset; death",
+      "footprint": "full"
+    },
+    {
+      "glyph": "south",
+      "codepoint": "U+F4060",
+      "code": "SOUTH",
+      "kind": "concept",
+      "concept": "the south, the nadir; the world below",
+      "footprint": "full"
+    },
+    {
+      "glyph": "high",
+      "codepoint": "U+F4061",
+      "code": "HIGH",
+      "kind": "concept",
+      "concept": "above, greater",
+      "footprint": "full"
+    },
+    {
+      "glyph": "low",
+      "codepoint": "U+F4062",
+      "code": "LOW",
+      "kind": "concept",
+      "concept": "below, lesser",
+      "footprint": "full"
+    },
+    {
+      "glyph": "inside",
+      "codepoint": "U+F4063",
+      "code": "INSIDE",
+      "kind": "concept",
+      "concept": "within",
+      "footprint": "full"
+    },
+    {
+      "glyph": "outside",
+      "codepoint": "U+F4064",
+      "code": "OUTSIDE",
+      "kind": "concept",
+      "concept": "beyond",
+      "footprint": "full"
+    },
+    {
+      "glyph": "house",
+      "codepoint": "U+F4065",
+      "code": "HOUSE",
+      "kind": "concept",
+      "concept": "a house, shelter",
+      "footprint": "full"
+    },
+    {
+      "glyph": "hand",
+      "codepoint": "U+F4066",
+      "code": "HAND",
+      "kind": "concept",
+      "concept": "a hand",
+      "footprint": "full"
+    },
+    {
+      "glyph": "eye",
+      "codepoint": "U+F4067",
+      "code": "EYE",
+      "kind": "concept",
+      "concept": "the eye",
+      "footprint": "full"
+    },
+    {
+      "glyph": "mouth",
+      "codepoint": "U+F4068",
+      "code": "MOUTH",
+      "kind": "concept",
+      "concept": "the mouth",
+      "footprint": "full"
+    },
+    {
+      "glyph": "underworld",
+      "codepoint": "U+F4069",
+      "code": "UNDERWORLD",
+      "kind": "concept",
+      "concept": "Ch'al Ts'umaq, the world below",
+      "footprint": "full"
+    },
+    {
+      "glyph": "heaven",
+      "codepoint": "U+F406A",
+      "code": "HEAVEN",
+      "kind": "concept",
+      "concept": "the sacred realm above",
+      "footprint": "full"
+    },
+    {
+      "glyph": "fifth_age",
+      "codepoint": "U+F406B",
+      "code": "FIFTH_AGE",
+      "kind": "concept",
+      "concept": "the Fifth Age, the present age of the world",
+      "footprint": "full"
+    },
+    {
+      "glyph": "living_flame",
+      "codepoint": "U+F406C",
+      "code": "LIVING_FLAME",
+      "kind": "concept",
+      "concept": "K'ayik Kul'al, the new fire of fifty-two years",
+      "footprint": "full"
+    },
+    {
+      "glyph": "solar_count",
+      "codepoint": "U+F406D",
+      "code": "SOLAR_COUNT",
+      "kind": "concept",
+      "concept": "the Ts'en, the count of 365 days",
+      "footprint": "full"
+    },
+    {
+      "glyph": "lunar_count",
+      "codepoint": "U+F406E",
+      "code": "LUNAR_COUNT",
+      "kind": "concept",
+      "concept": "the Ts'uqal, the lunar count",
+      "footprint": "full"
+    },
+    {
+      "glyph": "stellar_count",
+      "codepoint": "U+F406F",
+      "code": "STELLAR_COUNT",
+      "kind": "concept",
+      "concept": "the Ish'ilan, the stellar count",
+      "footprint": "full"
+    },
+    {
+      "glyph": "ishilankul",
+      "codepoint": "U+F4070",
+      "code": "ISHILANKUL",
+      "kind": "concept",
+      "concept": "Ish'ilankul, the Seat of the Stars",
+      "footprint": "full"
+    },
+    {
+      "glyph": "kankul",
+      "codepoint": "U+F4071",
+      "code": "KANKUL",
+      "kind": "concept",
+      "concept": "K'ankul, the golden seat",
+      "footprint": "full"
+    },
+    {
+      "glyph": "shelem",
+      "codepoint": "U+F4072",
+      "code": "SHELEM",
+      "kind": "concept",
+      "concept": "Shelem, the land of the bird",
+      "footprint": "full"
+    },
+    {
+      "glyph": "ishbal_tsaku",
+      "codepoint": "U+F4073",
+      "code": "ISHBAL_TSAKU",
+      "kind": "concept",
+      "concept": "Ish'bal Tsa'ku, the Jaguar's House",
+      "footprint": "full"
+    },
+    {
+      "glyph": "kushi_ishbal",
+      "codepoint": "U+F4074",
+      "code": "KUSHI_ISHBAL",
+      "kind": "concept",
+      "concept": "K'ushi Ish'bal, the far south",
+      "footprint": "full"
+    },
+    {
+      "glyph": "qaptel_tsakul",
+      "codepoint": "U+F4075",
+      "code": "QAPTEL_TSAKUL",
+      "kind": "concept",
+      "concept": "Q'aptel Tsa'kul, the border",
+      "footprint": "full"
+    },
+    {
+      "glyph": "shelem_ishbal",
+      "codepoint": "U+F4076",
+      "code": "SHELEM_ISHBAL",
+      "kind": "concept",
+      "concept": "Shelem Ish'bal, the Land of the Dead Jaguar, unruled",
+      "footprint": "full"
+    },
+    {
+      "glyph": "matriarch",
+      "codepoint": "U+F4077",
+      "code": "MATRIARCH",
+      "kind": "concept",
+      "concept": "the matriarch: WOMAN, HIGH and HOUSE made one",
+      "footprint": "full"
+    },
+    {
+      "glyph": "son",
+      "codepoint": "U+F4078",
+      "code": "SON",
+      "kind": "concept",
+      "concept": "a son: MAN, LOW and HOUSE made one",
+      "footprint": "full"
+    },
+    {
+      "glyph": "daughter",
+      "codepoint": "U+F4079",
+      "code": "DAUGHTER",
+      "kind": "concept",
+      "concept": "a daughter: WOMAN, LOW and HOUSE made one",
+      "footprint": "full"
+    },
+    {
+      "glyph": "family",
+      "codepoint": "U+F407A",
+      "code": "FAMILY",
+      "kind": "concept",
+      "concept": "a family: MAN, WOMAN and HOUSE made one",
+      "footprint": "full"
+    },
+    {
+      "glyph": "birth_of_a_boy",
+      "codepoint": "U+F407B",
+      "code": "BIRTH_OF_A_BOY",
+      "kind": "concept",
+      "concept": "the birth of a boy: MAN and EAST made one",
+      "footprint": "full"
+    },
+    {
+      "glyph": "birth_of_a_girl",
+      "codepoint": "U+F407C",
+      "code": "BIRTH_OF_A_GIRL",
+      "kind": "concept",
+      "concept": "the birth of a girl: WOMAN and EAST made one",
+      "footprint": "full"
+    },
+    {
+      "glyph": "death_of_a_man",
+      "codepoint": "U+F407D",
+      "code": "DEATH_OF_A_MAN",
+      "kind": "concept",
+      "concept": "the death of a man: MAN and WEST made one",
+      "footprint": "full"
+    },
+    {
+      "glyph": "death_of_a_woman",
+      "codepoint": "U+F407E",
+      "code": "DEATH_OF_A_WOMAN",
+      "kind": "concept",
+      "concept": "the death of a woman: WOMAN and WEST made one",
+      "footprint": "full"
+    },
+    {
+      "glyph": "household_founded",
+      "codepoint": "U+F407F",
+      "code": "HOUSEHOLD_FOUNDED",
+      "kind": "concept",
+      "concept": "a household founded: HOUSE and EAST made one",
+      "footprint": "full"
+    },
+    {
+      "glyph": "household_ended",
+      "codepoint": "U+F4080",
+      "code": "HOUSEHOLD_ENDED",
+      "kind": "concept",
+      "concept": "a household ended: HOUSE and WEST made one",
+      "footprint": "full"
+    },
+    {
+      "glyph": "north",
+      "codepoint": "U+F4081",
+      "code": "NORTH",
+      "kind": "concept",
+      "concept": "the north, the zenith; the world above",
+      "footprint": "full"
+    },
+    {
+      "glyph": "noble_lord",
+      "codepoint": "U+F4082",
+      "code": "NOBLE_LORD",
+      "kind": "concept",
+      "concept": "K'anulmah, a noble of the court",
+      "footprint": "full"
+    },
+    {
+      "glyph": "neok_baate",
+      "codepoint": "U+F4083",
+      "code": "NEOK_BAATE",
+      "kind": "concept",
+      "concept": "Ne'ok Ba'ate, between north and south",
+      "footprint": "full"
+    },
+    {
+      "glyph": "dawn",
+      "codepoint": "U+F4084",
+      "code": "DAWN",
+      "kind": "concept",
+      "concept": "dawn: SUN and EAST made one",
+      "footprint": "full"
+    },
+    {
+      "glyph": "sunset",
+      "codepoint": "U+F4085",
+      "code": "SUNSET",
+      "kind": "concept",
+      "concept": "sunset: SUN and WEST made one",
+      "footprint": "full"
+    },
+    {
+      "glyph": "noon",
+      "codepoint": "U+F4086",
+      "code": "NOON",
+      "kind": "concept",
+      "concept": "noon: SUN and NORTH made one",
+      "footprint": "full"
+    },
+    {
+      "glyph": "midnight",
+      "codepoint": "U+F4087",
+      "code": "MIDNIGHT",
+      "kind": "concept",
+      "concept": "midnight: SUN and SOUTH made one",
+      "footprint": "full"
+    },
+    {
+      "glyph": "germination",
+      "codepoint": "U+F4088",
+      "code": "GERMINATION",
+      "kind": "concept",
+      "concept": "germination: PLANT and EAST made one",
+      "footprint": "full"
+    },
+    {
+      "glyph": "harvest",
+      "codepoint": "U+F4089",
+      "code": "HARVEST",
+      "kind": "concept",
+      "concept": "harvest, withering: PLANT and WEST made one",
+      "footprint": "full"
+    },
+    {
+      "glyph": "seed_sown",
+      "codepoint": "U+F408A",
+      "code": "SEED_SOWN",
+      "kind": "concept",
+      "concept": "a seed sown: PLANT and SOUTH made one",
+      "footprint": "full"
+    },
+    {
+      "glyph": "lifetime",
+      "codepoint": "U+F408B",
+      "code": "LIFETIME",
+      "kind": "concept",
+      "concept": "a lifetime: EAST and WEST made one",
+      "footprint": "full"
+    },
+    {
+      "glyph": "rebirth",
+      "codepoint": "U+F408C",
+      "code": "REBIRTH",
+      "kind": "concept",
+      "concept": "rebirth: WEST and EAST made one",
+      "footprint": "full"
+    },
+    {
+      "glyph": "era_begins",
+      "codepoint": "U+F408D",
+      "code": "ERA_BEGINS",
+      "kind": "concept",
+      "concept": "an era begins: EAST and HIGH made one",
+      "footprint": "full"
+    },
+    {
+      "glyph": "passage_of_the_dead",
+      "codepoint": "U+F408E",
+      "code": "PASSAGE_OF_THE_DEAD",
+      "kind": "concept",
+      "concept": "the passage of the dead: WEST and SOUTH made one",
+      "footprint": "full"
+    },
+    {
+      "glyph": "out_of_the_trials",
+      "codepoint": "U+F408F",
+      "code": "OUT_OF_THE_TRIALS",
+      "kind": "concept",
+      "concept": "coming out of the trials: SOUTH and EAST made one",
+      "footprint": "full"
+    },
+    {
+      "glyph": "whole_round",
+      "codepoint": "U+F4090",
+      "code": "WHOLE_ROUND",
+      "kind": "concept",
+      "concept": "the whole round, the sun's day and the soul's existence: EAST, NORTH, WEST and SOUTH made one",
+      "footprint": "full"
+    },
+    {
+      "glyph": "kinsman",
+      "codepoint": "U+F4091",
+      "code": "KINSMAN",
+      "kind": "concept",
+      "concept": "a kinsman: MAN and INSIDE made one",
+      "footprint": "full"
+    },
+    {
+      "glyph": "stranger",
+      "codepoint": "U+F4092",
+      "code": "STRANGER",
+      "kind": "concept",
+      "concept": "a stranger: MAN and OUTSIDE made one",
+      "footprint": "full"
+    },
+    {
+      "glyph": "home",
+      "codepoint": "U+F4093",
+      "code": "HOME",
+      "kind": "concept",
+      "concept": "a home: HOUSE and INSIDE made one",
+      "footprint": "full"
+    },
+    {
+      "glyph": "village",
+      "codepoint": "U+F4094",
+      "code": "VILLAGE",
+      "kind": "concept",
+      "concept": "a village: HOUSE and OUTSIDE made one",
+      "footprint": "full"
+    },
+    {
+      "glyph": "boy",
+      "codepoint": "U+F4095",
+      "code": "BOY",
+      "kind": "concept",
+      "concept": "a boy, a servant: MAN and LOW made one",
+      "footprint": "full"
+    },
+    {
+      "glyph": "girl",
+      "codepoint": "U+F4096",
+      "code": "GIRL",
+      "kind": "concept",
+      "concept": "a girl, a servant: WOMAN and LOW made one",
+      "footprint": "full"
+    },
+    {
+      "glyph": "elder",
+      "codepoint": "U+F4097",
+      "code": "ELDER",
+      "kind": "concept",
+      "concept": "an elder, a chief: MAN and HIGH made one",
+      "footprint": "full"
+    },
+    {
+      "glyph": "elder_woman",
+      "codepoint": "U+F4098",
+      "code": "ELDER_WOMAN",
+      "kind": "concept",
+      "concept": "an elder woman: WOMAN and HIGH made one",
+      "footprint": "full"
+    },
+    {
+      "glyph": "people",
+      "codepoint": "U+F4099",
+      "code": "PEOPLE",
+      "kind": "concept",
+      "concept": "a people, everyone: MAN and MAN made one",
+      "footprint": "full"
+    },
+    {
+      "glyph": "women",
+      "codepoint": "U+F409A",
+      "code": "WOMEN",
+      "kind": "concept",
+      "concept": "women: WOMAN and WOMAN made one",
+      "footprint": "full"
+    },
+    {
+      "glyph": "god",
+      "codepoint": "U+F409B",
+      "code": "GOD",
+      "kind": "concept",
+      "concept": "a god, an exalted ancestor raised to the sky: MAN, HIGH and SKY made one",
+      "footprint": "full"
+    },
+    {
+      "glyph": "exalted_ancestor",
+      "codepoint": "U+F409C",
+      "code": "EXALTED_ANCESTOR",
+      "kind": "concept",
+      "concept": "an ancestor in the world above: MAN and NORTH made one",
+      "footprint": "full"
+    },
+    {
+      "glyph": "soul_among_the_dead",
+      "codepoint": "U+F409D",
+      "code": "SOUL_AMONG_THE_DEAD",
+      "kind": "concept",
+      "concept": "a soul in the world below: MAN and SOUTH made one",
+      "footprint": "full"
+    },
+    {
+      "glyph": "memory",
+      "codepoint": "U+F409E",
+      "code": "MEMORY",
+      "kind": "concept",
+      "concept": "memory: EYE and INSIDE made one",
+      "footprint": "full"
+    },
+    {
+      "glyph": "observation",
+      "codepoint": "U+F409F",
+      "code": "OBSERVATION",
+      "kind": "concept",
+      "concept": "observation: EYE and OUTSIDE made one",
+      "footprint": "full"
+    },
+    {
+      "glyph": "secret",
+      "codepoint": "U+F40A0",
+      "code": "SECRET",
+      "kind": "concept",
+      "concept": "a secret: MOUTH and INSIDE made one",
+      "footprint": "full"
+    },
+    {
+      "glyph": "proclamation",
+      "codepoint": "U+F40A1",
+      "code": "PROCLAMATION",
+      "kind": "concept",
+      "concept": "proclamation: MOUTH and OUTSIDE made one",
+      "footprint": "full"
+    },
+    {
+      "glyph": "the_unknown",
+      "codepoint": "U+F40A2",
+      "code": "THE_UNKNOWN",
+      "kind": "concept",
+      "concept": "the unknown beyond creation: SKY and OUTSIDE made one",
+      "footprint": "full"
+    },
+    {
+      "glyph": "writing",
+      "codepoint": "U+F40A3",
+      "code": "WRITING",
+      "kind": "concept",
+      "concept": "writing, craft: HAND and EYE made one",
+      "footprint": "full"
+    },
+    {
+      "glyph": "prayer",
+      "codepoint": "U+F40A4",
+      "code": "PRAYER",
+      "kind": "concept",
+      "concept": "prayer, prophecy: MOUTH and SKY made one",
+      "footprint": "full"
+    },
+    {
+      "glyph": "cenote",
+      "codepoint": "U+F40A5",
+      "code": "CENOTE",
+      "kind": "concept",
+      "concept": "a cenote, the sacred well: WATER and SOUTH made one",
+      "footprint": "full"
+    },
+    {
+      "glyph": "caution",
+      "codepoint": "U+F40A6",
+      "code": "CAUTION",
+      "kind": "concept",
+      "concept": "caution: DANGER and LOW made one",
+      "footprint": "full"
+    },
+    {
+      "glyph": "a1",
+      "codepoint": "U+F4400",
+      "code": "a1",
+      "kind": "syllable",
+      "syllable": "a",
+      "source": "ashtsom, marriage"
+    },
+    {
+      "glyph": "a2",
+      "codepoint": "U+F4401",
+      "code": "a2",
+      "kind": "syllable",
+      "syllable": "a",
+      "source": "ashal, affection"
+    },
+    {
+      "glyph": "i1",
+      "codepoint": "U+F4402",
+      "code": "i1",
+      "kind": "syllable",
+      "syllable": "i",
+      "source": "ish'uqal, the moon"
+    },
+    {
+      "glyph": "i2",
+      "codepoint": "U+F4403",
+      "code": "i2",
+      "kind": "syllable",
+      "syllable": "i",
+      "source": "ish'ilan, a star"
+    },
+    {
+      "glyph": "i3",
+      "codepoint": "U+F4404",
+      "code": "i3",
+      "kind": "syllable",
+      "syllable": "i",
+      "source": "ish'bal, the jaguar"
+    },
+    {
+      "glyph": "o1",
+      "codepoint": "U+F4405",
+      "code": "o1",
+      "kind": "syllable",
+      "syllable": "o",
+      "source": "olek', ten"
+    },
+    {
+      "glyph": "u1",
+      "codepoint": "U+F4406",
+      "code": "u1",
+      "kind": "syllable",
+      "syllable": "u",
+      "source": "ul'om, maize"
+    },
+    {
+      "glyph": "ka1",
+      "codepoint": "U+F4407",
+      "code": "ka1",
+      "kind": "syllable",
+      "syllable": "ka",
+      "source": "k'ayik, a flame"
+    },
+    {
+      "glyph": "ka2",
+      "codepoint": "U+F4408",
+      "code": "ka2",
+      "kind": "syllable",
+      "syllable": "ka",
+      "source": "k'aykulak, a coal"
+    },
+    {
+      "glyph": "ka3",
+      "codepoint": "U+F4409",
+      "code": "ka3",
+      "kind": "syllable",
+      "syllable": "ka",
+      "source": "k'ayikash, the eye"
+    },
+    {
+      "glyph": "ke1",
+      "codepoint": "U+F440A",
+      "code": "ke1",
+      "kind": "syllable",
+      "syllable": "ke",
+      "source": "kesh, all"
+    },
+    {
+      "glyph": "ke2",
+      "codepoint": "U+F440B",
+      "code": "ke2",
+      "kind": "syllable",
+      "syllable": "ke",
+      "source": "k'eshik, a key"
+    },
+    {
+      "glyph": "ki1",
+      "codepoint": "U+F440C",
+      "code": "ki1",
+      "kind": "syllable",
+      "syllable": "ki",
+      "source": "k'inish, sunlight"
+    },
+    {
+      "glyph": "ko1",
+      "codepoint": "U+F440D",
+      "code": "ko1",
+      "kind": "syllable",
+      "syllable": "ko",
+      "source": "k'otsik, cord"
+    },
+    {
+      "glyph": "ko2",
+      "codepoint": "U+F440E",
+      "code": "ko2",
+      "kind": "syllable",
+      "syllable": "ko",
+      "source": "k'otsel, the knotted records"
+    },
+    {
+      "glyph": "ku1",
+      "codepoint": "U+F440F",
+      "code": "ku1",
+      "kind": "syllable",
+      "syllable": "ku",
+      "source": "kulum, stone"
+    },
+    {
+      "glyph": "ku2",
+      "codepoint": "U+F4410",
+      "code": "ku2",
+      "kind": "syllable",
+      "syllable": "ku",
+      "source": "kul'qat, the sacred peak"
+    },
+    {
+      "glyph": "ku3",
+      "codepoint": "U+F4411",
+      "code": "ku3",
+      "kind": "syllable",
+      "syllable": "ku",
+      "source": "kulam, the heart"
+    },
+    {
+      "glyph": "cha1",
+      "codepoint": "U+F4412",
+      "code": "cha1",
+      "kind": "syllable",
+      "syllable": "cha",
+      "source": "ch'akun, a serpent"
+    },
+    {
+      "glyph": "cha2",
+      "codepoint": "U+F4413",
+      "code": "cha2",
+      "kind": "syllable",
+      "syllable": "cha",
+      "source": "ch'alik, low"
+    },
+    {
+      "glyph": "che1",
+      "codepoint": "U+F4414",
+      "code": "che1",
+      "kind": "syllable",
+      "syllable": "che",
+      "source": "ch'ekum, an animal"
+    },
+    {
+      "glyph": "che2",
+      "codepoint": "U+F4415",
+      "code": "che2",
+      "kind": "syllable",
+      "syllable": "che",
+      "source": "ch'eknal, a worm"
+    },
+    {
+      "glyph": "chi1",
+      "codepoint": "U+F4416",
+      "code": "chi1",
+      "kind": "syllable",
+      "syllable": "chi",
+      "source": "ch'imik, a hill"
+    },
+    {
+      "glyph": "chi2",
+      "codepoint": "U+F4417",
+      "code": "chi2",
+      "kind": "syllable",
+      "syllable": "chi",
+      "source": "ch'imel, a gift"
+    },
+    {
+      "glyph": "chu1",
+      "codepoint": "U+F4418",
+      "code": "chu1",
+      "kind": "syllable",
+      "syllable": "chu",
+      "source": "ch'umel, the voice"
+    },
+    {
+      "glyph": "chu2",
+      "codepoint": "U+F4419",
+      "code": "chu2",
+      "kind": "syllable",
+      "syllable": "chu",
+      "source": "ch'ul, toward"
+    },
+    {
+      "glyph": "tsa1",
+      "codepoint": "U+F441A",
+      "code": "tsa1",
+      "kind": "syllable",
+      "syllable": "tsa",
+      "source": "ts'amal, the shell"
+    },
+    {
+      "glyph": "tsa2",
+      "codepoint": "U+F441B",
+      "code": "tsa2",
+      "kind": "syllable",
+      "syllable": "tsa",
+      "source": "ts'anul, a roof"
+    },
+    {
+      "glyph": "tse1",
+      "codepoint": "U+F441C",
+      "code": "tse1",
+      "kind": "syllable",
+      "syllable": "tse",
+      "source": "ts'en, the sun"
+    },
+    {
+      "glyph": "tse2",
+      "codepoint": "U+F441D",
+      "code": "tse2",
+      "kind": "syllable",
+      "syllable": "tse",
+      "source": "ts'ena, a day"
+    },
+    {
+      "glyph": "tsi1",
+      "codepoint": "U+F441E",
+      "code": "tsi1",
+      "kind": "syllable",
+      "syllable": "tsi",
+      "source": "ts'ikel, a drink"
+    },
+    {
+      "glyph": "tsi2",
+      "codepoint": "U+F441F",
+      "code": "tsi2",
+      "kind": "syllable",
+      "syllable": "tsi",
+      "source": "ts'ik, above"
+    },
+    {
+      "glyph": "tso1",
+      "codepoint": "U+F4420",
+      "code": "tso1",
+      "kind": "syllable",
+      "syllable": "tso",
+      "source": "ts'okum, a coyote"
+    },
+    {
+      "glyph": "tso2",
+      "codepoint": "U+F4421",
+      "code": "tso2",
+      "kind": "syllable",
+      "syllable": "tso",
+      "source": "ts'obel, a number"
+    },
+    {
+      "glyph": "tsu1",
+      "codepoint": "U+F4422",
+      "code": "tsu1",
+      "kind": "syllable",
+      "syllable": "tsu",
+      "source": "ts'umulal, blood"
+    },
+    {
+      "glyph": "tsu2",
+      "codepoint": "U+F4423",
+      "code": "tsu2",
+      "kind": "syllable",
+      "syllable": "tsu",
+      "source": "ts'uqal, moonlight"
+    },
+    {
+      "glyph": "pa1",
+      "codepoint": "U+F4424",
+      "code": "pa1",
+      "kind": "syllable",
+      "syllable": "pa",
+      "source": "p'ashel, the quetzal"
+    },
+    {
+      "glyph": "pa2",
+      "codepoint": "U+F4425",
+      "code": "pa2",
+      "kind": "syllable",
+      "syllable": "pa",
+      "source": "pakul, a table"
+    },
+    {
+      "glyph": "pe1",
+      "codepoint": "U+F4426",
+      "code": "pe1",
+      "kind": "syllable",
+      "syllable": "pe",
+      "source": "p'enqal, a grassland"
+    },
+    {
+      "glyph": "pe2",
+      "codepoint": "U+F4427",
+      "code": "pe2",
+      "kind": "syllable",
+      "syllable": "pe",
+      "source": "pel'ush, four hundred"
+    },
+    {
+      "glyph": "pi1",
+      "codepoint": "U+F4428",
+      "code": "pi1",
+      "kind": "syllable",
+      "syllable": "pi",
+      "source": "p'ishum, the hand"
+    },
+    {
+      "glyph": "pi2",
+      "codepoint": "U+F4429",
+      "code": "pi2",
+      "kind": "syllable",
+      "syllable": "pi",
+      "source": "p'ikul, clay"
+    },
+    {
+      "glyph": "pi3",
+      "codepoint": "U+F442A",
+      "code": "pi3",
+      "kind": "syllable",
+      "syllable": "pi",
+      "source": "p'ilik, a needle"
+    },
+    {
+      "glyph": "po1",
+      "codepoint": "U+F442B",
+      "code": "po1",
+      "kind": "syllable",
+      "syllable": "po",
+      "source": "p'o, five"
+    },
+    {
+      "glyph": "pu1",
+      "codepoint": "U+F442C",
+      "code": "pu1",
+      "kind": "syllable",
+      "syllable": "pu",
+      "source": "p'uqal, night"
+    },
+    {
+      "glyph": "pu2",
+      "codepoint": "U+F442D",
+      "code": "pu2",
+      "kind": "syllable",
+      "syllable": "pu",
+      "source": "pu'uts, a mesa"
+    },
+    {
+      "glyph": "qa1",
+      "codepoint": "U+F442E",
+      "code": "qa1",
+      "kind": "syllable",
+      "syllable": "qa",
+      "source": "tq'an, the edge"
+    },
+    {
+      "glyph": "qa2",
+      "codepoint": "U+F442F",
+      "code": "qa2",
+      "kind": "syllable",
+      "syllable": "qa",
+      "source": "q'aptel, the border"
+    },
+    {
+      "glyph": "qe1",
+      "codepoint": "U+F4430",
+      "code": "qe1",
+      "kind": "syllable",
+      "syllable": "qe",
+      "source": "q'emul, supreme"
+    },
+    {
+      "glyph": "qi1",
+      "codepoint": "U+F4431",
+      "code": "qi1",
+      "kind": "syllable",
+      "syllable": "qi",
+      "source": "q'ishe, eight"
+    },
+    {
+      "glyph": "qo1",
+      "codepoint": "U+F4432",
+      "code": "qo1",
+      "kind": "syllable",
+      "syllable": "qo",
+      "source": "q'o, two"
+    },
+    {
+      "glyph": "qu1",
+      "codepoint": "U+F4433",
+      "code": "qu1",
+      "kind": "syllable",
+      "syllable": "qu",
+      "source": "q'umpel, eight thousand"
+    },
+    {
+      "glyph": "ti1",
+      "codepoint": "U+F4434",
+      "code": "ti1",
+      "kind": "syllable",
+      "syllable": "ti",
+      "source": "ti, you"
+    },
+    {
+      "glyph": "to1",
+      "codepoint": "U+F4435",
+      "code": "to1",
+      "kind": "syllable",
+      "syllable": "to",
+      "source": "toshal, the south"
+    },
+    {
+      "glyph": "sha1",
+      "codepoint": "U+F4436",
+      "code": "sha1",
+      "kind": "syllable",
+      "syllable": "sha",
+      "source": "sh'akan, earth"
+    },
+    {
+      "glyph": "sha2",
+      "codepoint": "U+F4437",
+      "code": "sha2",
+      "kind": "syllable",
+      "syllable": "sha",
+      "source": "shak'nal, an eagle"
+    },
+    {
+      "glyph": "she1",
+      "codepoint": "U+F4438",
+      "code": "she1",
+      "kind": "syllable",
+      "syllable": "she",
+      "source": "shelem, a bird"
+    },
+    {
+      "glyph": "shi1",
+      "codepoint": "U+F4439",
+      "code": "shi1",
+      "kind": "syllable",
+      "syllable": "shi",
+      "source": "shikik, a seed"
+    },
+    {
+      "glyph": "shi2",
+      "codepoint": "U+F443A",
+      "code": "shi2",
+      "kind": "syllable",
+      "syllable": "shi",
+      "source": "shikmah, a tree"
+    },
+    {
+      "glyph": "sho1",
+      "codepoint": "U+F443B",
+      "code": "sho1",
+      "kind": "syllable",
+      "syllable": "sho",
+      "source": "shok'al, war"
+    },
+    {
+      "glyph": "sho2",
+      "codepoint": "U+F443C",
+      "code": "sho2",
+      "kind": "syllable",
+      "syllable": "sho",
+      "source": "shots'em, a door"
+    },
+    {
+      "glyph": "shu1",
+      "codepoint": "U+F443D",
+      "code": "shu1",
+      "kind": "syllable",
+      "syllable": "shu",
+      "source": "sh'ulum, a house"
+    },
+    {
+      "glyph": "shu2",
+      "codepoint": "U+F443E",
+      "code": "shu2",
+      "kind": "syllable",
+      "syllable": "shu",
+      "source": "sh'ulik, a room"
+    },
+    {
+      "glyph": "li1",
+      "codepoint": "U+F443F",
+      "code": "li1",
+      "kind": "syllable",
+      "syllable": "li",
+      "source": "lishe, three"
+    },
+    {
+      "glyph": "lu1",
+      "codepoint": "U+F4440",
+      "code": "lu1",
+      "kind": "syllable",
+      "syllable": "lu",
+      "source": "lu'she, a pot"
+    },
+    {
+      "glyph": "ma1",
+      "codepoint": "U+F4441",
+      "code": "ma1",
+      "kind": "syllable",
+      "syllable": "ma",
+      "source": "mah, a lord"
+    },
+    {
+      "glyph": "mu1",
+      "codepoint": "U+F4442",
+      "code": "mu1",
+      "kind": "syllable",
+      "syllable": "mu",
+      "source": "mushe, four"
+    },
+    {
+      "glyph": "na1",
+      "codepoint": "U+F4443",
+      "code": "na1",
+      "kind": "syllable",
+      "syllable": "na",
+      "source": "nalak, the mouth"
+    },
+    {
+      "glyph": "na2",
+      "codepoint": "U+F4444",
+      "code": "na2",
+      "kind": "syllable",
+      "syllable": "na",
+      "source": "nal'bish, the womb"
+    },
+    {
+      "glyph": "ne1",
+      "codepoint": "U+F4445",
+      "code": "ne1",
+      "kind": "syllable",
+      "syllable": "ne",
+      "source": "ne', water"
+    },
+    {
+      "glyph": "ne2",
+      "codepoint": "U+F4446",
+      "code": "ne2",
+      "kind": "syllable",
+      "syllable": "ne",
+      "source": "ne'lum, a jar"
+    },
+    {
+      "glyph": "ni1",
+      "codepoint": "U+F4447",
+      "code": "ni1",
+      "kind": "syllable",
+      "syllable": "ni",
+      "source": "ni, the self"
+    },
+    {
+      "glyph": "no1",
+      "codepoint": "U+F4448",
+      "code": "no1",
+      "kind": "syllable",
+      "syllable": "no",
+      "source": "no'kin, a bear"
+    },
+    {
+      "glyph": "no2",
+      "codepoint": "U+F4449",
+      "code": "no2",
+      "kind": "syllable",
+      "syllable": "no",
+      "source": "no'tun, a mountain range"
+    },
+    {
+      "glyph": "nu1",
+      "codepoint": "U+F444A",
+      "code": "nu1",
+      "kind": "syllable",
+      "syllable": "nu",
+      "source": "nukal, the north"
+    },
+    {
+      "glyph": "nu2",
+      "codepoint": "U+F444B",
+      "code": "nu2",
+      "kind": "syllable",
+      "syllable": "nu",
+      "source": "nuq'el, seven"
+    },
+    {
+      "glyph": "ha1",
+      "codepoint": "U+F444C",
+      "code": "ha1",
+      "kind": "syllable",
+      "syllable": "ha",
+      "source": "ha'nal, a river"
+    },
+    {
+      "glyph": "ha2",
+      "codepoint": "U+F444D",
+      "code": "ha2",
+      "kind": "syllable",
+      "syllable": "ha",
+      "source": "ha'tan, a bowl"
+    },
+    {
+      "glyph": "ha3",
+      "codepoint": "U+F444E",
+      "code": "ha3",
+      "kind": "syllable",
+      "syllable": "ha",
+      "source": "ha'kin, a mirror"
+    },
+    {
+      "glyph": "hu1",
+      "codepoint": "U+F444F",
+      "code": "hu1",
+      "kind": "syllable",
+      "syllable": "hu",
+      "source": "h'ulal, the sky"
+    },
+    {
+      "glyph": "hu2",
+      "codepoint": "U+F4450",
+      "code": "hu2",
+      "kind": "syllable",
+      "syllable": "hu",
+      "source": "h'ul, air"
+    },
+    {
+      "glyph": "la1",
+      "codepoint": "U+F4451",
+      "code": "la1",
+      "kind": "syllable",
+      "syllable": "la",
+      "source": "jade"
+    },
+    {
+      "glyph": "la2",
+      "codepoint": "U+F4452",
+      "code": "la2",
+      "kind": "syllable",
+      "syllable": "la",
+      "source": "the Fifth Age"
+    },
+    {
+      "glyph": "ba1",
+      "codepoint": "U+F4453",
+      "code": "ba1",
+      "kind": "syllable",
+      "syllable": "ba",
+      "source": "obsidian"
+    },
+    {
+      "glyph": "ba2",
+      "codepoint": "U+F4454",
+      "code": "ba2",
+      "kind": "syllable",
+      "syllable": "ba",
+      "source": "the obsidian mirror"
+    },
+    {
+      "glyph": "ta1",
+      "codepoint": "U+F4455",
+      "code": "ta1",
+      "kind": "syllable",
+      "syllable": "ta",
+      "source": "a feather"
+    },
+    {
+      "glyph": "ta2",
+      "codepoint": "U+F4456",
+      "code": "ta2",
+      "kind": "syllable",
+      "syllable": "ta",
+      "source": "the plume of rank"
+    },
+    {
+      "glyph": "le1",
+      "codepoint": "U+F4457",
+      "code": "le1",
+      "kind": "syllable",
+      "syllable": "le",
+      "source": "a drum"
+    },
+    {
+      "glyph": "le2",
+      "codepoint": "U+F4458",
+      "code": "le2",
+      "kind": "syllable",
+      "syllable": "le",
+      "source": "a rattle"
+    },
+    {
+      "glyph": "me1",
+      "codepoint": "U+F4459",
+      "code": "me1",
+      "kind": "syllable",
+      "syllable": "me",
+      "source": "a turtle"
+    },
+    {
+      "glyph": "me2",
+      "codepoint": "U+F445A",
+      "code": "me2",
+      "kind": "syllable",
+      "syllable": "me",
+      "source": "the turtle's shell"
+    },
+    {
+      "glyph": "mi1",
+      "codepoint": "U+F445B",
+      "code": "mi1",
+      "kind": "syllable",
+      "syllable": "mi",
+      "source": "a canoe"
+    },
+    {
+      "glyph": "mi2",
+      "codepoint": "U+F445C",
+      "code": "mi2",
+      "kind": "syllable",
+      "syllable": "mi",
+      "source": "a pilgrimage"
+    },
+    {
+      "glyph": "yi1",
+      "codepoint": "U+F445D",
+      "code": "yi1",
+      "kind": "syllable",
+      "syllable": "yi",
+      "source": "incense"
+    },
+    {
+      "glyph": "yi2",
+      "codepoint": "U+F445E",
+      "code": "yi2",
+      "kind": "syllable",
+      "syllable": "yi",
+      "source": "the censer"
+    },
+    {
+      "glyph": "yu1",
+      "codepoint": "U+F445F",
+      "code": "yu1",
+      "kind": "syllable",
+      "syllable": "yu",
+      "source": "the mat"
+    },
+    {
+      "glyph": "yu2",
+      "codepoint": "U+F4460",
+      "code": "yu2",
+      "kind": "syllable",
+      "syllable": "yu",
+      "source": "the throne"
+    },
+    {
+      "glyph": "tu1",
+      "codepoint": "U+F4461",
+      "code": "tu1",
+      "kind": "syllable",
+      "syllable": "tu",
+      "source": "salt"
+    },
+    {
+      "glyph": "tu2",
+      "codepoint": "U+F4462",
+      "code": "tu2",
+      "kind": "syllable",
+      "syllable": "tu",
+      "source": "tribute"
+    },
+    {
+      "glyph": "te1",
+      "codepoint": "U+F4463",
+      "code": "te1",
+      "kind": "syllable",
+      "syllable": "te",
+      "source": "the ball"
+    },
+    {
+      "glyph": "te2",
+      "codepoint": "U+F4464",
+      "code": "te2",
+      "kind": "syllable",
+      "syllable": "te",
+      "source": "the ballcourt"
+    },
+    {
+      "glyph": "ya1",
+      "codepoint": "U+F4465",
+      "code": "ya1",
+      "kind": "syllable",
+      "syllable": "ya",
+      "source": "a monkey"
+    },
+    {
+      "glyph": "ya2",
+      "codepoint": "U+F4466",
+      "code": "ya2",
+      "kind": "syllable",
+      "syllable": "ya",
+      "source": "the arts"
+    },
+    {
+      "glyph": "ye1",
+      "codepoint": "U+F4467",
+      "code": "ye1",
+      "kind": "syllable",
+      "syllable": "ye",
+      "source": "a bat"
+    },
+    {
+      "glyph": "ye2",
+      "codepoint": "U+F4468",
+      "code": "ye2",
+      "kind": "syllable",
+      "syllable": "ye",
+      "source": "a burial"
+    },
+    {
+      "glyph": "bi1",
+      "codepoint": "U+F4469",
+      "code": "bi1",
+      "kind": "syllable",
+      "syllable": "bi",
+      "source": "a net"
+    },
+    {
+      "glyph": "bi2",
+      "codepoint": "U+F446A",
+      "code": "bi2",
+      "kind": "syllable",
+      "syllable": "bi",
+      "source": "a capture"
+    },
+    {
+      "glyph": "lo1",
+      "codepoint": "U+F446B",
+      "code": "lo1",
+      "kind": "syllable",
+      "syllable": "lo",
+      "source": "a hummingbird"
+    },
+    {
+      "glyph": "lo2",
+      "codepoint": "U+F446C",
+      "code": "lo2",
+      "kind": "syllable",
+      "syllable": "lo",
+      "source": "the warrior's soul"
+    },
+    {
+      "glyph": "hi1",
+      "codepoint": "U+F446D",
+      "code": "hi1",
+      "kind": "syllable",
+      "syllable": "hi",
+      "source": "a shield"
+    },
+    {
+      "glyph": "hi2",
+      "codepoint": "U+F446E",
+      "code": "hi2",
+      "kind": "syllable",
+      "syllable": "hi",
+      "source": "a conquest"
+    },
+    {
+      "glyph": "he1",
+      "codepoint": "U+F446F",
+      "code": "he1",
+      "kind": "syllable",
+      "syllable": "he",
+      "source": "a deer"
+    },
+    {
+      "glyph": "he2",
+      "codepoint": "U+F4470",
+      "code": "he2",
+      "kind": "syllable",
+      "syllable": "he",
+      "source": "an antler"
+    },
+    {
+      "glyph": "be1",
+      "codepoint": "U+F4471",
+      "code": "be1",
+      "kind": "syllable",
+      "syllable": "be",
+      "source": "a mask"
+    },
+    {
+      "glyph": "be2",
+      "codepoint": "U+F4472",
+      "code": "be2",
+      "kind": "syllable",
+      "syllable": "be",
+      "source": "the era's end"
+    },
+    {
+      "glyph": "join_beside",
+      "codepoint": "U+F4FF0",
+      "code": "*",
+      "kind": "joiner"
+    },
+    {
+      "glyph": "join_stack",
+      "codepoint": "U+F4FF1",
+      "code": ":",
+      "kind": "joiner"
+    }
+  ]
+}

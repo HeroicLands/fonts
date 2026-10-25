@@ -7,13 +7,13 @@ every sign is a picture of its own.
 
 ## The two hands
 
-|              | Common hand                                                                                                     | Ceremonial hand                                                                   |
-| ------------ | --------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
-| Construction | Strokes make components; components combine into signs, as Teng Chou's do                                       | Every sign an individual picture, as Khelathi Zethu Glyphs' are                   |
-| The cell     | Square, and never drawn: the spacing implies it                                                                 | Square, and always drawn: every sign stands in its box                            |
-| Line         | One even line; weight never tells two signs apart                                                               | Meticulous, painted or carved; the picture is the point                           |
-| Writers      | Priests and scribes write it; miners and craftsmen know its numbers and the signs of their work                 | Priests and scribes                                                               |
-| Surfaces     | Chalk on a shaft wall or a slate, a point on a wooden palette, a stylus on bark paper, a pen or brush on vellum | Temple walls, monuments, pyramids, posts around a village common, painted codices |
+|              | Common hand                                                                                                     | Ceremonial hand                                                                                                                |
+| ------------ | --------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
+| Construction | Strokes make components; components combine into signs, as Teng Chou's do                                       | Every sign an individual picture, as Khelathi Zethu Glyphs' are                                                                |
+| The cell     | Square, and never drawn: the spacing implies it                                                                 | A grid of square blocks; a glyph fills a half, full or double footprint, in a cushion, a round cartouche or its own silhouette |
+| Line         | One even line; weight never tells two signs apart                                                               | Meticulous, painted or carved; the picture is the point                                                                        |
+| Writers      | Priests and scribes write it; miners and craftsmen know its numbers and the signs of their work                 | Priests and scribes                                                                                                            |
+| Surfaces     | Chalk on a shaft wall or a slate, a point on a wooden palette, a stylus on bark paper, a pen or brush on vellum | Temple walls, monuments, pyramids, posts around a village common, painted codices                                              |
 
 A scribe writing the common hand on vellum writes it as calligraphy, neat and
 even. That is a finer version of the same signs, not a different set.
@@ -169,6 +169,10 @@ death of a man, the rising of the moon over the sacred peak are each one picture
 block's prefix, superfix, fringe and beads are parts of that one glyph's picture, not
 signs of their own.
 
+**Two things at once.** In poetry above all, a scribe's art is to say two things at
+once: one by a run's pictures, another by its sounds. No mapping can write that, and
+none is kept: a passage in either hand is composed by its writer.
+
 **Precomposed.** A ceremonial glyph is built from components the hand shares, the
 heads, eyes, curls, beads, netting, fringes and affixes, but they are not laid over
 one another. Each is moved, shifted and reshaped to work with the others as a single
@@ -191,14 +195,68 @@ survive a chisel:
 narrower than a groove that forms a channel, as opposed to the tip of a wedge where two
 strokes meet at an angle, which every carving has.
 
-**The canon.** Every glyph stands inside a cushion that is always drawn, a rounded
-oblong a little wider than tall. The contour brush draws the cushion and the main
-outlines at about 4% of the block, the detail brush everything inside at about 2.5%,
-and a slight seeded wobble keeps any two strokes from being mechanically alike. Heads
-face the line's start, and the outline itself is the profile: brow, nose, lips and
-chin. A kit of recurring parts gives the hand its look: the comb fringe, rows of dots
-tracing an outline, cross-hatched netting, beads, the ear spool, the X, curls, and
-the narrow prefix and flattened superfix. `tools/chalish-pilam/ceremonial.py` draws
+**Footprints on the grid.** Inscriptions are laid out on a grid of square blocks,
+read in paired columns, and every glyph occupies a footprint on it: a **full** block,
+a **half** block (tall and narrow), or a **double** block (wide). In the font these are
+three advances.
+
+**Size.** A ceremonial block is a dense picture and wants more height than a letter, so
+in the font it spans the whole line, from Latin's descender to its ascender: half again
+the common hand's cap height (`FONT_SCALE` and `FONT_DROP` in `ceremonial.py`).
+
+**Outlines.** A glyph's outline is one of three:
+
+- a **cushion**, the rounded oblong most signs stand in;
+- a **round cartouche**, kept for one class of sign, the days of the count;
+- **its own silhouette**, for heads and animals: snout, jaw and crest are the outline,
+  with no frame round them.
+
+**Numbers stand free.** A number counting a sign is set before it as a half-width
+coefficient, its dots stacked up the column and its bars upright, in no frame.
+
+**A concept and its syllable signs.** Any ceremonial glyph may carry syllable signs, as
+Maya glyphs carry phonetic complements, and a name is built this way. The house's emblem
+is the concept glyph of the name's first element, its house name (a jaguar for the
+house of Ish'bal, an eagle for Shak'nal). Syllable signs set round it give the rest of
+the person's name, and a coefficient before it counts their descent with that name: the
+third of the name, the fourth. All of it stands in one block.
+
+**The syllabary.** The ceremonial hand has a syllabary of its own, laid out as consonant
+against vowel. Each of the syllables Ki'i'chek uses is written by one or more signs, and
+the signs are mostly shaped as affixes: flat oblongs to set above or below a main sign,
+tall strips to set before or after it, and a few full signs and heads.
+
+The syllabary is drawn in `tools/chalish-pilam/syllabary.py`: each sign is one motif,
+the reduced picture of its source, fitted into a flat oblong three fifths of the block
+wide and a third of it high, or a tall one the same turned on end. A picture lies along
+its slot, stretched by up to 1.8. A narrow slot has room for fewer parallel strokes, so a
+sign of legs, fingers or rays keeps two or three. `tools/chalish-pilam/syllabary_distinct.py`
+checks that no two signs of different syllables look alike, and every form passes the
+carving check.
+
+**Composed blocks.** A name's syllables cannot be known ahead of time, so a block of a
+concept glyph, its syllable signs and a coefficient is composed in the font from format
+controls typed between the signs, as Khelathi Zethu Glyphs composes its quadrats. A
+concept that is always written the same way stays one precomposed glyph.
+
+**How a block is shared.** A main sign that shares its block takes its compact form, and
+is squeezed to fill the room its affixes leave, as Maya scribes squeezed a sign rather
+than shrinking it evenly, up to 1.6 times out of its own proportions. A flat affix takes
+under a third of the block's height and a tall one under a third of its width. A
+coefficient stands upright before the sign it counts. `tools/chalish-pilam/blocks.py`
+lays a block out from its codage; the font's layout follows the same geometry, and the
+carving check covers composed blocks as well as single glyphs.
+
+**Interlocking stays inside a glyph.** A precomposed glyph may be built of parts that
+wrap round one another; two separate glyphs never interlock.
+
+**The canon.** The contour brush draws outlines and the main forms at about 4% of the
+block, the detail brush everything inside at about 2.5%, and a slight seeded wobble
+keeps any two strokes from being mechanically alike. Heads face the line's start, and
+a head's outline is its profile: brow, nose, lips and chin. A kit of recurring parts
+gives the hand its look: the comb fringe, rows of dots tracing an outline,
+cross-hatched netting, beads, the ear spool, the X, curls, and prefixes and superfixes
+grown from the sign they attach to. `tools/chalish-pilam/ceremonial.py` draws
 the canon and the kit, and `tools/chalish-pilam/ceremonial_sheet.py` renders
 `specimens/chalish-pilam/ceremonial.png`.
 
@@ -217,3 +275,70 @@ and beasts, and signs drawn in batches while looking at their renders.
 Originality follows `design/making-fonts.md`: people and animals may follow
 their real-world model closely; objects, symbols and religious emblems are the
 setting's own; no sign copies a real glyph.
+
+### The font
+
+Chalish Pilam Ceremonial is generated by `tools/chalish-pilam/build_ceremonial_ufo.py`
+into `sources/ChalishPilamCeremonial.ufo`, which `build.sh` compiles with the other
+fonts; `tools/chalish-pilam/build_ceremonial.sh` regenerates the UFO and compiles it
+alone. It is written on code points of its own, U+F4000 to U+F4FFF, from
+`tools/chalish-pilam/ceremonial_encoding.json`: the numbers and the places of the count
+from U+F4000, the concept glyphs from U+F4020, the syllable signs from U+F4400 and the
+two joiners at U+F4FF0 and U+F4FF1. Zero and the places of the count have code points
+and no ceremonial drawing, so they print the box. A glyph's advance is its footprint's
+width and a 60-unit gutter each side.
+
+Every main sign and syllable sign carries a form for each place it can take in a block,
+named `<sign>.<role>` by `tools/chalish-pilam/ceremonial_layout.py`, which also writes
+the GSUB lookups that pick them from the joiners. `tools/chalish-pilam/ceremonial_guard.py`
+shapes blocks in every layout through the font and compares each with the block
+`blocks.py` lays out; `carving.py`, `compact_sweep.py` and `compact_distinct.py` check
+the drawings, and `syllabary_distinct.py` the syllable signs.
+
+`tools/chalish-pilam/ceremonial_passage.py` writes a lord's seating in sixteen blocks
+through the encoding, shapes it with HarfBuzz and renders
+`specimens/chalish-pilam/ceremonial-passage.png` in paired columns.
+
+## Codage
+
+The roman transliteration writes how a word sounds, and it has no single writing in
+either hand: one sound has many glyphs, and a glyph is chosen for its meaning. Text is
+put into the script with a **codage**, a notation of ASCII codes in the manner of Zethu
+Codage and the Manuel de Codage: one code names one glyph, so a sequence of codes always
+gives the same glyphs, and the codage is what a Markdown note stores.
+
+**Codes are names.** They are meant to be written and read back by people and by
+language models, so they say what the glyph is:
+
+| Writes                       | Code                               | Example                                               |
+| ---------------------------- | ---------------------------------- | ----------------------------------------------------- |
+| A concept glyph              | its name in capitals               | `SUN`, `MAN`, `HOUSE`, `PATRIARCH`, `SUN_AT_THE_EDGE` |
+| A number                     | `n` and its value                  | `n13`, `n20`, `n400`                                  |
+| A syllable sign (ceremonial) | the syllable and the sign's number | `ka1`, `ka2`, `la1`                                   |
+
+Codes are separated by spaces, and carry no hyphen, since `-` ends a ceremonial block,
+and no apostrophe. A space draws nothing in either hand, since neither has word spaces. The same name may write different glyphs in the two hands; each hand has a
+map of its own.
+
+**Blocks (ceremonial).** The ceremonial hand takes Zethu Codage's joiners, so one
+convention serves both temple scripts:
+
+| Typed | Means                                                                                                            |
+| ----- | ---------------------------------------------------------------------------------------------------------------- |
+| `-`   | the end of a block; the next code begins the next block                                                          |
+| `:`   | stacks: what is before it stands over what follows, a superfix over its main sign or a main sign over its subfix |
+| `*`   | sets side by side: a prefix before its main sign, or a postfix after it                                          |
+
+A coefficient is the first item of its block. A block holds a main sign and at most two
+affixes; anything more runs on into the following blocks. `n3*la1:JAGUAR-sho1*bi1` is a
+name: the jaguar, the house emblem of Ish'bal, with its coefficient, three, and _la_ over it, then the
+rest of the name in the next block. The font composes each block, and a main sign that
+shares its block takes its compact form.
+
+Each hand's codage is an encoding: `tools/chalish-pilam/codage.py` writes the common
+hand's, `encodings/chalish-common.json`, from `encoding.json`, and
+`tools/chalish-pilam/ceremonial_codage.py` writes the ceremonial hand's,
+`encodings/chalish-ceremonial.json`, from `ceremonial_encoding.json`, and prints its rows
+for thalorna's mapping note, so neither map drifts from its font. In both, a space writes
+its invisible mark, and in the ceremonial hand `-` writes its own, so decoding gives the
+codage back as typed.

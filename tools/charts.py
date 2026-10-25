@@ -49,6 +49,7 @@ FOLDERS = {
     "hl-veldikko": "veldikko",
     "hl-vedyakshara-classical": "vedyakshara-classical",
     "hl-helonika-book": "helonika-book",
+    "hl-chalish-pilam-ceremonial": "chalish-pilam-ceremonial",
 }
 
 COLUMNS = 8

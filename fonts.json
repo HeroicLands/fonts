@@ -2,6 +2,1645 @@
     "version": 1,
     "families": [
         {
+            "name": "Chalish Pilam Ceremonial",
+            "family": "Chalish Pilam Ceremonial",
+            "class": "hl-chalish-pilam-ceremonial",
+            "files": {
+                "woff2": "fonts/ChalishPilamCeremonial-Regular.woff2",
+                "ttf": "fonts/ChalishPilamCeremonial-Regular.ttf"
+            },
+            "direction": "ltr",
+            "features": [],
+            "codepoints": [
+                {
+                    "codepoint": "U+F4001",
+                    "name": "CHALISH CEREMONIAL NUMBER 1",
+                    "glyph": "n1",
+                    "kind": "numeral"
+                },
+                {
+                    "codepoint": "U+F4002",
+                    "name": "CHALISH CEREMONIAL NUMBER 2",
+                    "glyph": "n2",
+                    "kind": "numeral"
+                },
+                {
+                    "codepoint": "U+F4003",
+                    "name": "CHALISH CEREMONIAL NUMBER 3",
+                    "glyph": "n3",
+                    "kind": "numeral"
+                },
+                {
+                    "codepoint": "U+F4004",
+                    "name": "CHALISH CEREMONIAL NUMBER 4",
+                    "glyph": "n4",
+                    "kind": "numeral"
+                },
+                {
+                    "codepoint": "U+F4005",
+                    "name": "CHALISH CEREMONIAL NUMBER 5",
+                    "glyph": "n5",
+                    "kind": "numeral"
+                },
+                {
+                    "codepoint": "U+F4006",
+                    "name": "CHALISH CEREMONIAL NUMBER 6",
+                    "glyph": "n6",
+                    "kind": "numeral"
+                },
+                {
+                    "codepoint": "U+F4007",
+                    "name": "CHALISH CEREMONIAL NUMBER 7",
+                    "glyph": "n7",
+                    "kind": "numeral"
+                },
+                {
+                    "codepoint": "U+F4008",
+                    "name": "CHALISH CEREMONIAL NUMBER 8",
+                    "glyph": "n8",
+                    "kind": "numeral"
+                },
+                {
+                    "codepoint": "U+F4009",
+                    "name": "CHALISH CEREMONIAL NUMBER 9",
+                    "glyph": "n9",
+                    "kind": "numeral"
+                },
+                {
+                    "codepoint": "U+F400A",
+                    "name": "CHALISH CEREMONIAL NUMBER 10",
+                    "glyph": "n10",
+                    "kind": "numeral"
+                },
+                {
+                    "codepoint": "U+F400B",
+                    "name": "CHALISH CEREMONIAL NUMBER 11",
+                    "glyph": "n11",
+                    "kind": "numeral"
+                },
+                {
+                    "codepoint": "U+F400C",
+                    "name": "CHALISH CEREMONIAL NUMBER 12",
+                    "glyph": "n12",
+                    "kind": "numeral"
+                },
+                {
+                    "codepoint": "U+F400D",
+                    "name": "CHALISH CEREMONIAL NUMBER 13",
+                    "glyph": "n13",
+                    "kind": "numeral"
+                },
+                {
+                    "codepoint": "U+F400E",
+                    "name": "CHALISH CEREMONIAL NUMBER 14",
+                    "glyph": "n14",
+                    "kind": "numeral"
+                },
+                {
+                    "codepoint": "U+F400F",
+                    "name": "CHALISH CEREMONIAL NUMBER 15",
+                    "glyph": "n15",
+                    "kind": "numeral"
+                },
+                {
+                    "codepoint": "U+F4010",
+                    "name": "CHALISH CEREMONIAL NUMBER 16",
+                    "glyph": "n16",
+                    "kind": "numeral"
+                },
+                {
+                    "codepoint": "U+F4011",
+                    "name": "CHALISH CEREMONIAL NUMBER 17",
+                    "glyph": "n17",
+                    "kind": "numeral"
+                },
+                {
+                    "codepoint": "U+F4012",
+                    "name": "CHALISH CEREMONIAL NUMBER 18",
+                    "glyph": "n18",
+                    "kind": "numeral"
+                },
+                {
+                    "codepoint": "U+F4013",
+                    "name": "CHALISH CEREMONIAL NUMBER 19",
+                    "glyph": "n19",
+                    "kind": "numeral"
+                },
+                {
+                    "codepoint": "U+F4020",
+                    "name": "CHALISH CEREMONIAL GLYPH LORD",
+                    "glyph": "lord",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F4021",
+                    "name": "CHALISH CEREMONIAL GLYPH PATRIARCH",
+                    "glyph": "patriarch",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F4022",
+                    "name": "CHALISH CEREMONIAL GLYPH JAGUAR",
+                    "glyph": "jaguar",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F4023",
+                    "name": "CHALISH CEREMONIAL GLYPH SUN",
+                    "glyph": "sun",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F4024",
+                    "name": "CHALISH CEREMONIAL GLYPH MOON",
+                    "glyph": "moon",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F4025",
+                    "name": "CHALISH CEREMONIAL GLYPH WATER",
+                    "glyph": "water",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F4026",
+                    "name": "CHALISH CEREMONIAL GLYPH PEAK",
+                    "glyph": "peak",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F4027",
+                    "name": "CHALISH CEREMONIAL GLYPH TQAN",
+                    "glyph": "tqan",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F4028",
+                    "name": "CHALISH CEREMONIAL GLYPH SERPENT",
+                    "glyph": "serpent",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F4029",
+                    "name": "CHALISH CEREMONIAL GLYPH SUN AT THE EDGE",
+                    "glyph": "sun_at_the_edge",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F402A",
+                    "name": "CHALISH CEREMONIAL GLYPH DEATH JAGUAR",
+                    "glyph": "death_jaguar",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F402B",
+                    "name": "CHALISH CEREMONIAL GLYPH STORM SERPENT",
+                    "glyph": "storm_serpent",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F402C",
+                    "name": "CHALISH CEREMONIAL GLYPH SACRED STAR",
+                    "glyph": "sacred_star",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F402D",
+                    "name": "CHALISH CEREMONIAL GLYPH GOLDEN GIVER",
+                    "glyph": "golden_giver",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F402E",
+                    "name": "CHALISH CEREMONIAL GLYPH SACRED FLAME",
+                    "glyph": "sacred_flame",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F402F",
+                    "name": "CHALISH CEREMONIAL GLYPH PEAK BUILDER",
+                    "glyph": "peak_builder",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F4030",
+                    "name": "CHALISH CEREMONIAL GLYPH PATH WALKER",
+                    "glyph": "path_walker",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F4031",
+                    "name": "CHALISH CEREMONIAL GLYPH MOON DREAMER",
+                    "glyph": "moon_dreamer",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F4032",
+                    "name": "CHALISH CEREMONIAL GLYPH LIVING BLOSSOM",
+                    "glyph": "living_blossom",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F4033",
+                    "name": "CHALISH CEREMONIAL GLYPH FALLEN OWL",
+                    "glyph": "fallen_owl",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F4034",
+                    "name": "CHALISH CEREMONIAL GLYPH OVERLORD",
+                    "glyph": "overlord",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F4035",
+                    "name": "CHALISH CEREMONIAL GLYPH KING",
+                    "glyph": "king",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F4036",
+                    "name": "CHALISH CEREMONIAL GLYPH PRINCE",
+                    "glyph": "prince",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F4037",
+                    "name": "CHALISH CEREMONIAL GLYPH SEATED LORD",
+                    "glyph": "seated_lord",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F4038",
+                    "name": "CHALISH CEREMONIAL GLYPH LADY",
+                    "glyph": "lady",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F4039",
+                    "name": "CHALISH CEREMONIAL GLYPH LANDHOLDER",
+                    "glyph": "landholder",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F403A",
+                    "name": "CHALISH CEREMONIAL GLYPH KNIGHT",
+                    "glyph": "knight",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F403B",
+                    "name": "CHALISH CEREMONIAL GLYPH WAR LEADER",
+                    "glyph": "war_leader",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F403C",
+                    "name": "CHALISH CEREMONIAL GLYPH SUN PRIEST",
+                    "glyph": "sun_priest",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F403D",
+                    "name": "CHALISH CEREMONIAL GLYPH PRIEST",
+                    "glyph": "priest",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F403E",
+                    "name": "CHALISH CEREMONIAL GLYPH SCRIBE",
+                    "glyph": "scribe",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F403F",
+                    "name": "CHALISH CEREMONIAL GLYPH HERALD",
+                    "glyph": "herald",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F4040",
+                    "name": "CHALISH CEREMONIAL GLYPH MASTER MERCHANT",
+                    "glyph": "master_merchant",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F4041",
+                    "name": "CHALISH CEREMONIAL GLYPH GUILDSMAN",
+                    "glyph": "guildsman",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F4042",
+                    "name": "CHALISH CEREMONIAL GLYPH FREEMAN",
+                    "glyph": "freeman",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F4043",
+                    "name": "CHALISH CEREMONIAL GLYPH SERF",
+                    "glyph": "serf",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F4044",
+                    "name": "CHALISH CEREMONIAL GLYPH SLAVE",
+                    "glyph": "slave",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F4045",
+                    "name": "CHALISH CEREMONIAL GLYPH BIRTH",
+                    "glyph": "birth",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F4046",
+                    "name": "CHALISH CEREMONIAL GLYPH SEATING",
+                    "glyph": "seating",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F4047",
+                    "name": "CHALISH CEREMONIAL GLYPH DEATH",
+                    "glyph": "death",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F4048",
+                    "name": "CHALISH CEREMONIAL GLYPH BURIAL",
+                    "glyph": "burial",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F4049",
+                    "name": "CHALISH CEREMONIAL GLYPH MARRIAGE",
+                    "glyph": "marriage",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F404A",
+                    "name": "CHALISH CEREMONIAL GLYPH CAPTURE",
+                    "glyph": "capture",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F404B",
+                    "name": "CHALISH CEREMONIAL GLYPH WAR",
+                    "glyph": "war",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F404C",
+                    "name": "CHALISH CEREMONIAL GLYPH CONQUEST",
+                    "glyph": "conquest",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F404D",
+                    "name": "CHALISH CEREMONIAL GLYPH TRIBUTE",
+                    "glyph": "tribute",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F404E",
+                    "name": "CHALISH CEREMONIAL GLYPH FOUNDATION",
+                    "glyph": "foundation",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F404F",
+                    "name": "CHALISH CEREMONIAL GLYPH DEDICATION",
+                    "glyph": "dedication",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F4050",
+                    "name": "CHALISH CEREMONIAL GLYPH OFFERING",
+                    "glyph": "offering",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F4051",
+                    "name": "CHALISH CEREMONIAL GLYPH ECLIPSE",
+                    "glyph": "eclipse",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F4052",
+                    "name": "CHALISH CEREMONIAL GLYPH PILGRIMAGE",
+                    "glyph": "pilgrimage",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F4053",
+                    "name": "CHALISH CEREMONIAL GLYPH ERAS END",
+                    "glyph": "eras_end",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F4054",
+                    "name": "CHALISH CEREMONIAL GLYPH BALL GAME",
+                    "glyph": "ball_game",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F4055",
+                    "name": "CHALISH CEREMONIAL GLYPH SKY",
+                    "glyph": "sky",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F4056",
+                    "name": "CHALISH CEREMONIAL GLYPH STAR",
+                    "glyph": "star",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F4057",
+                    "name": "CHALISH CEREMONIAL GLYPH FIRE",
+                    "glyph": "fire",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F4058",
+                    "name": "CHALISH CEREMONIAL GLYPH EARTH",
+                    "glyph": "earth",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F4059",
+                    "name": "CHALISH CEREMONIAL GLYPH STONE",
+                    "glyph": "stone",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F405A",
+                    "name": "CHALISH CEREMONIAL GLYPH MAN",
+                    "glyph": "man",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F405B",
+                    "name": "CHALISH CEREMONIAL GLYPH WOMAN",
+                    "glyph": "woman",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F405C",
+                    "name": "CHALISH CEREMONIAL GLYPH PLANT",
+                    "glyph": "plant",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F405D",
+                    "name": "CHALISH CEREMONIAL GLYPH BEAST",
+                    "glyph": "beast",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F405E",
+                    "name": "CHALISH CEREMONIAL GLYPH EAST",
+                    "glyph": "east",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F405F",
+                    "name": "CHALISH CEREMONIAL GLYPH WEST",
+                    "glyph": "west",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F4060",
+                    "name": "CHALISH CEREMONIAL GLYPH SOUTH",
+                    "glyph": "south",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F4061",
+                    "name": "CHALISH CEREMONIAL GLYPH HIGH",
+                    "glyph": "high",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F4062",
+                    "name": "CHALISH CEREMONIAL GLYPH LOW",
+                    "glyph": "low",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F4063",
+                    "name": "CHALISH CEREMONIAL GLYPH INSIDE",
+                    "glyph": "inside",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F4064",
+                    "name": "CHALISH CEREMONIAL GLYPH OUTSIDE",
+                    "glyph": "outside",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F4065",
+                    "name": "CHALISH CEREMONIAL GLYPH HOUSE",
+                    "glyph": "house",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F4066",
+                    "name": "CHALISH CEREMONIAL GLYPH HAND",
+                    "glyph": "hand",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F4067",
+                    "name": "CHALISH CEREMONIAL GLYPH EYE",
+                    "glyph": "eye",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F4068",
+                    "name": "CHALISH CEREMONIAL GLYPH MOUTH",
+                    "glyph": "mouth",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F4069",
+                    "name": "CHALISH CEREMONIAL GLYPH UNDERWORLD",
+                    "glyph": "underworld",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F406A",
+                    "name": "CHALISH CEREMONIAL GLYPH HEAVEN",
+                    "glyph": "heaven",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F406B",
+                    "name": "CHALISH CEREMONIAL GLYPH FIFTH AGE",
+                    "glyph": "fifth_age",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F406C",
+                    "name": "CHALISH CEREMONIAL GLYPH LIVING FLAME",
+                    "glyph": "living_flame",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F406D",
+                    "name": "CHALISH CEREMONIAL GLYPH SOLAR COUNT",
+                    "glyph": "solar_count",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F406E",
+                    "name": "CHALISH CEREMONIAL GLYPH LUNAR COUNT",
+                    "glyph": "lunar_count",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F406F",
+                    "name": "CHALISH CEREMONIAL GLYPH STELLAR COUNT",
+                    "glyph": "stellar_count",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F4070",
+                    "name": "CHALISH CEREMONIAL GLYPH ISHILANKUL",
+                    "glyph": "ishilankul",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F4071",
+                    "name": "CHALISH CEREMONIAL GLYPH KANKUL",
+                    "glyph": "kankul",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F4072",
+                    "name": "CHALISH CEREMONIAL GLYPH SHELEM",
+                    "glyph": "shelem",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F4073",
+                    "name": "CHALISH CEREMONIAL GLYPH ISHBAL TSAKU",
+                    "glyph": "ishbal_tsaku",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F4074",
+                    "name": "CHALISH CEREMONIAL GLYPH KUSHI ISHBAL",
+                    "glyph": "kushi_ishbal",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F4075",
+                    "name": "CHALISH CEREMONIAL GLYPH QAPTEL TSAKUL",
+                    "glyph": "qaptel_tsakul",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F4076",
+                    "name": "CHALISH CEREMONIAL GLYPH SHELEM ISHBAL",
+                    "glyph": "shelem_ishbal",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F4077",
+                    "name": "CHALISH CEREMONIAL GLYPH MATRIARCH",
+                    "glyph": "matriarch",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F4078",
+                    "name": "CHALISH CEREMONIAL GLYPH SON",
+                    "glyph": "son",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F4079",
+                    "name": "CHALISH CEREMONIAL GLYPH DAUGHTER",
+                    "glyph": "daughter",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F407A",
+                    "name": "CHALISH CEREMONIAL GLYPH FAMILY",
+                    "glyph": "family",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F407B",
+                    "name": "CHALISH CEREMONIAL GLYPH BIRTH OF A BOY",
+                    "glyph": "birth_of_a_boy",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F407C",
+                    "name": "CHALISH CEREMONIAL GLYPH BIRTH OF A GIRL",
+                    "glyph": "birth_of_a_girl",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F407D",
+                    "name": "CHALISH CEREMONIAL GLYPH DEATH OF A MAN",
+                    "glyph": "death_of_a_man",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F407E",
+                    "name": "CHALISH CEREMONIAL GLYPH DEATH OF A WOMAN",
+                    "glyph": "death_of_a_woman",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F407F",
+                    "name": "CHALISH CEREMONIAL GLYPH HOUSEHOLD FOUNDED",
+                    "glyph": "household_founded",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F4080",
+                    "name": "CHALISH CEREMONIAL GLYPH HOUSEHOLD ENDED",
+                    "glyph": "household_ended",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F4081",
+                    "name": "CHALISH CEREMONIAL GLYPH NORTH",
+                    "glyph": "north",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F4082",
+                    "name": "CHALISH CEREMONIAL GLYPH NOBLE LORD",
+                    "glyph": "noble_lord",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F4083",
+                    "name": "CHALISH CEREMONIAL GLYPH NEOK BAATE",
+                    "glyph": "neok_baate",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F4084",
+                    "name": "CHALISH CEREMONIAL GLYPH DAWN",
+                    "glyph": "dawn",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F4085",
+                    "name": "CHALISH CEREMONIAL GLYPH SUNSET",
+                    "glyph": "sunset",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F4086",
+                    "name": "CHALISH CEREMONIAL GLYPH NOON",
+                    "glyph": "noon",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F4087",
+                    "name": "CHALISH CEREMONIAL GLYPH MIDNIGHT",
+                    "glyph": "midnight",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F4088",
+                    "name": "CHALISH CEREMONIAL GLYPH GERMINATION",
+                    "glyph": "germination",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F4089",
+                    "name": "CHALISH CEREMONIAL GLYPH HARVEST",
+                    "glyph": "harvest",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F408A",
+                    "name": "CHALISH CEREMONIAL GLYPH SEED SOWN",
+                    "glyph": "seed_sown",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F408B",
+                    "name": "CHALISH CEREMONIAL GLYPH LIFETIME",
+                    "glyph": "lifetime",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F408C",
+                    "name": "CHALISH CEREMONIAL GLYPH REBIRTH",
+                    "glyph": "rebirth",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F408D",
+                    "name": "CHALISH CEREMONIAL GLYPH ERA BEGINS",
+                    "glyph": "era_begins",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F408E",
+                    "name": "CHALISH CEREMONIAL GLYPH PASSAGE OF THE DEAD",
+                    "glyph": "passage_of_the_dead",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F408F",
+                    "name": "CHALISH CEREMONIAL GLYPH OUT OF THE TRIALS",
+                    "glyph": "out_of_the_trials",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F4090",
+                    "name": "CHALISH CEREMONIAL GLYPH WHOLE ROUND",
+                    "glyph": "whole_round",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F4091",
+                    "name": "CHALISH CEREMONIAL GLYPH KINSMAN",
+                    "glyph": "kinsman",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F4092",
+                    "name": "CHALISH CEREMONIAL GLYPH STRANGER",
+                    "glyph": "stranger",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F4093",
+                    "name": "CHALISH CEREMONIAL GLYPH HOME",
+                    "glyph": "home",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F4094",
+                    "name": "CHALISH CEREMONIAL GLYPH VILLAGE",
+                    "glyph": "village",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F4095",
+                    "name": "CHALISH CEREMONIAL GLYPH BOY",
+                    "glyph": "boy",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F4096",
+                    "name": "CHALISH CEREMONIAL GLYPH GIRL",
+                    "glyph": "girl",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F4097",
+                    "name": "CHALISH CEREMONIAL GLYPH ELDER",
+                    "glyph": "elder",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F4098",
+                    "name": "CHALISH CEREMONIAL GLYPH ELDER WOMAN",
+                    "glyph": "elder_woman",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F4099",
+                    "name": "CHALISH CEREMONIAL GLYPH PEOPLE",
+                    "glyph": "people",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F409A",
+                    "name": "CHALISH CEREMONIAL GLYPH WOMEN",
+                    "glyph": "women",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F409B",
+                    "name": "CHALISH CEREMONIAL GLYPH GOD",
+                    "glyph": "god",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F409C",
+                    "name": "CHALISH CEREMONIAL GLYPH EXALTED ANCESTOR",
+                    "glyph": "exalted_ancestor",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F409D",
+                    "name": "CHALISH CEREMONIAL GLYPH SOUL AMONG THE DEAD",
+                    "glyph": "soul_among_the_dead",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F409E",
+                    "name": "CHALISH CEREMONIAL GLYPH MEMORY",
+                    "glyph": "memory",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F409F",
+                    "name": "CHALISH CEREMONIAL GLYPH OBSERVATION",
+                    "glyph": "observation",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F40A0",
+                    "name": "CHALISH CEREMONIAL GLYPH SECRET",
+                    "glyph": "secret",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F40A1",
+                    "name": "CHALISH CEREMONIAL GLYPH PROCLAMATION",
+                    "glyph": "proclamation",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F40A2",
+                    "name": "CHALISH CEREMONIAL GLYPH THE UNKNOWN",
+                    "glyph": "the_unknown",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F40A3",
+                    "name": "CHALISH CEREMONIAL GLYPH WRITING",
+                    "glyph": "writing",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F40A4",
+                    "name": "CHALISH CEREMONIAL GLYPH PRAYER",
+                    "glyph": "prayer",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F40A5",
+                    "name": "CHALISH CEREMONIAL GLYPH CENOTE",
+                    "glyph": "cenote",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F40A6",
+                    "name": "CHALISH CEREMONIAL GLYPH CAUTION",
+                    "glyph": "caution",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F4400",
+                    "name": "CHALISH CEREMONIAL SYLLABLE A-1",
+                    "glyph": "a1",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F4401",
+                    "name": "CHALISH CEREMONIAL SYLLABLE A-2",
+                    "glyph": "a2",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F4402",
+                    "name": "CHALISH CEREMONIAL SYLLABLE I-1",
+                    "glyph": "i1",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F4403",
+                    "name": "CHALISH CEREMONIAL SYLLABLE I-2",
+                    "glyph": "i2",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F4404",
+                    "name": "CHALISH CEREMONIAL SYLLABLE I-3",
+                    "glyph": "i3",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F4405",
+                    "name": "CHALISH CEREMONIAL SYLLABLE O-1",
+                    "glyph": "o1",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F4406",
+                    "name": "CHALISH CEREMONIAL SYLLABLE U-1",
+                    "glyph": "u1",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F4407",
+                    "name": "CHALISH CEREMONIAL SYLLABLE KA-1",
+                    "glyph": "ka1",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F4408",
+                    "name": "CHALISH CEREMONIAL SYLLABLE KA-2",
+                    "glyph": "ka2",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F4409",
+                    "name": "CHALISH CEREMONIAL SYLLABLE KA-3",
+                    "glyph": "ka3",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F440A",
+                    "name": "CHALISH CEREMONIAL SYLLABLE KE-1",
+                    "glyph": "ke1",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F440B",
+                    "name": "CHALISH CEREMONIAL SYLLABLE KE-2",
+                    "glyph": "ke2",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F440C",
+                    "name": "CHALISH CEREMONIAL SYLLABLE KI-1",
+                    "glyph": "ki1",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F440D",
+                    "name": "CHALISH CEREMONIAL SYLLABLE KO-1",
+                    "glyph": "ko1",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F440E",
+                    "name": "CHALISH CEREMONIAL SYLLABLE KO-2",
+                    "glyph": "ko2",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F440F",
+                    "name": "CHALISH CEREMONIAL SYLLABLE KU-1",
+                    "glyph": "ku1",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F4410",
+                    "name": "CHALISH CEREMONIAL SYLLABLE KU-2",
+                    "glyph": "ku2",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F4411",
+                    "name": "CHALISH CEREMONIAL SYLLABLE KU-3",
+                    "glyph": "ku3",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F4412",
+                    "name": "CHALISH CEREMONIAL SYLLABLE CHA-1",
+                    "glyph": "cha1",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F4413",
+                    "name": "CHALISH CEREMONIAL SYLLABLE CHA-2",
+                    "glyph": "cha2",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F4414",
+                    "name": "CHALISH CEREMONIAL SYLLABLE CHE-1",
+                    "glyph": "che1",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F4415",
+                    "name": "CHALISH CEREMONIAL SYLLABLE CHE-2",
+                    "glyph": "che2",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F4416",
+                    "name": "CHALISH CEREMONIAL SYLLABLE CHI-1",
+                    "glyph": "chi1",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F4417",
+                    "name": "CHALISH CEREMONIAL SYLLABLE CHI-2",
+                    "glyph": "chi2",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F4418",
+                    "name": "CHALISH CEREMONIAL SYLLABLE CHU-1",
+                    "glyph": "chu1",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F4419",
+                    "name": "CHALISH CEREMONIAL SYLLABLE CHU-2",
+                    "glyph": "chu2",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F441A",
+                    "name": "CHALISH CEREMONIAL SYLLABLE TSA-1",
+                    "glyph": "tsa1",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F441B",
+                    "name": "CHALISH CEREMONIAL SYLLABLE TSA-2",
+                    "glyph": "tsa2",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F441C",
+                    "name": "CHALISH CEREMONIAL SYLLABLE TSE-1",
+                    "glyph": "tse1",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F441D",
+                    "name": "CHALISH CEREMONIAL SYLLABLE TSE-2",
+                    "glyph": "tse2",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F441E",
+                    "name": "CHALISH CEREMONIAL SYLLABLE TSI-1",
+                    "glyph": "tsi1",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F441F",
+                    "name": "CHALISH CEREMONIAL SYLLABLE TSI-2",
+                    "glyph": "tsi2",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F4420",
+                    "name": "CHALISH CEREMONIAL SYLLABLE TSO-1",
+                    "glyph": "tso1",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F4421",
+                    "name": "CHALISH CEREMONIAL SYLLABLE TSO-2",
+                    "glyph": "tso2",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F4422",
+                    "name": "CHALISH CEREMONIAL SYLLABLE TSU-1",
+                    "glyph": "tsu1",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F4423",
+                    "name": "CHALISH CEREMONIAL SYLLABLE TSU-2",
+                    "glyph": "tsu2",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F4424",
+                    "name": "CHALISH CEREMONIAL SYLLABLE PA-1",
+                    "glyph": "pa1",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F4425",
+                    "name": "CHALISH CEREMONIAL SYLLABLE PA-2",
+                    "glyph": "pa2",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F4426",
+                    "name": "CHALISH CEREMONIAL SYLLABLE PE-1",
+                    "glyph": "pe1",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F4427",
+                    "name": "CHALISH CEREMONIAL SYLLABLE PE-2",
+                    "glyph": "pe2",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F4428",
+                    "name": "CHALISH CEREMONIAL SYLLABLE PI-1",
+                    "glyph": "pi1",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F4429",
+                    "name": "CHALISH CEREMONIAL SYLLABLE PI-2",
+                    "glyph": "pi2",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F442A",
+                    "name": "CHALISH CEREMONIAL SYLLABLE PI-3",
+                    "glyph": "pi3",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F442B",
+                    "name": "CHALISH CEREMONIAL SYLLABLE PO-1",
+                    "glyph": "po1",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F442C",
+                    "name": "CHALISH CEREMONIAL SYLLABLE PU-1",
+                    "glyph": "pu1",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F442D",
+                    "name": "CHALISH CEREMONIAL SYLLABLE PU-2",
+                    "glyph": "pu2",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F442E",
+                    "name": "CHALISH CEREMONIAL SYLLABLE QA-1",
+                    "glyph": "qa1",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F442F",
+                    "name": "CHALISH CEREMONIAL SYLLABLE QA-2",
+                    "glyph": "qa2",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F4430",
+                    "name": "CHALISH CEREMONIAL SYLLABLE QE-1",
+                    "glyph": "qe1",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F4431",
+                    "name": "CHALISH CEREMONIAL SYLLABLE QI-1",
+                    "glyph": "qi1",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F4432",
+                    "name": "CHALISH CEREMONIAL SYLLABLE QO-1",
+                    "glyph": "qo1",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F4433",
+                    "name": "CHALISH CEREMONIAL SYLLABLE QU-1",
+                    "glyph": "qu1",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F4434",
+                    "name": "CHALISH CEREMONIAL SYLLABLE TI-1",
+                    "glyph": "ti1",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F4435",
+                    "name": "CHALISH CEREMONIAL SYLLABLE TO-1",
+                    "glyph": "to1",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F4436",
+                    "name": "CHALISH CEREMONIAL SYLLABLE SHA-1",
+                    "glyph": "sha1",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F4437",
+                    "name": "CHALISH CEREMONIAL SYLLABLE SHA-2",
+                    "glyph": "sha2",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F4438",
+                    "name": "CHALISH CEREMONIAL SYLLABLE SHE-1",
+                    "glyph": "she1",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F4439",
+                    "name": "CHALISH CEREMONIAL SYLLABLE SHI-1",
+                    "glyph": "shi1",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F443A",
+                    "name": "CHALISH CEREMONIAL SYLLABLE SHI-2",
+                    "glyph": "shi2",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F443B",
+                    "name": "CHALISH CEREMONIAL SYLLABLE SHO-1",
+                    "glyph": "sho1",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F443C",
+                    "name": "CHALISH CEREMONIAL SYLLABLE SHO-2",
+                    "glyph": "sho2",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F443D",
+                    "name": "CHALISH CEREMONIAL SYLLABLE SHU-1",
+                    "glyph": "shu1",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F443E",
+                    "name": "CHALISH CEREMONIAL SYLLABLE SHU-2",
+                    "glyph": "shu2",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F443F",
+                    "name": "CHALISH CEREMONIAL SYLLABLE LI-1",
+                    "glyph": "li1",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F4440",
+                    "name": "CHALISH CEREMONIAL SYLLABLE LU-1",
+                    "glyph": "lu1",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F4441",
+                    "name": "CHALISH CEREMONIAL SYLLABLE MA-1",
+                    "glyph": "ma1",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F4442",
+                    "name": "CHALISH CEREMONIAL SYLLABLE MU-1",
+                    "glyph": "mu1",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F4443",
+                    "name": "CHALISH CEREMONIAL SYLLABLE NA-1",
+                    "glyph": "na1",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F4444",
+                    "name": "CHALISH CEREMONIAL SYLLABLE NA-2",
+                    "glyph": "na2",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F4445",
+                    "name": "CHALISH CEREMONIAL SYLLABLE NE-1",
+                    "glyph": "ne1",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F4446",
+                    "name": "CHALISH CEREMONIAL SYLLABLE NE-2",
+                    "glyph": "ne2",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F4447",
+                    "name": "CHALISH CEREMONIAL SYLLABLE NI-1",
+                    "glyph": "ni1",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F4448",
+                    "name": "CHALISH CEREMONIAL SYLLABLE NO-1",
+                    "glyph": "no1",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F4449",
+                    "name": "CHALISH CEREMONIAL SYLLABLE NO-2",
+                    "glyph": "no2",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F444A",
+                    "name": "CHALISH CEREMONIAL SYLLABLE NU-1",
+                    "glyph": "nu1",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F444B",
+                    "name": "CHALISH CEREMONIAL SYLLABLE NU-2",
+                    "glyph": "nu2",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F444C",
+                    "name": "CHALISH CEREMONIAL SYLLABLE HA-1",
+                    "glyph": "ha1",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F444D",
+                    "name": "CHALISH CEREMONIAL SYLLABLE HA-2",
+                    "glyph": "ha2",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F444E",
+                    "name": "CHALISH CEREMONIAL SYLLABLE HA-3",
+                    "glyph": "ha3",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F444F",
+                    "name": "CHALISH CEREMONIAL SYLLABLE HU-1",
+                    "glyph": "hu1",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F4450",
+                    "name": "CHALISH CEREMONIAL SYLLABLE HU-2",
+                    "glyph": "hu2",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F4451",
+                    "name": "CHALISH CEREMONIAL SYLLABLE LA-1",
+                    "glyph": "la1",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F4452",
+                    "name": "CHALISH CEREMONIAL SYLLABLE LA-2",
+                    "glyph": "la2",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F4453",
+                    "name": "CHALISH CEREMONIAL SYLLABLE BA-1",
+                    "glyph": "ba1",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F4454",
+                    "name": "CHALISH CEREMONIAL SYLLABLE BA-2",
+                    "glyph": "ba2",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F4455",
+                    "name": "CHALISH CEREMONIAL SYLLABLE TA-1",
+                    "glyph": "ta1",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F4456",
+                    "name": "CHALISH CEREMONIAL SYLLABLE TA-2",
+                    "glyph": "ta2",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F4457",
+                    "name": "CHALISH CEREMONIAL SYLLABLE LE-1",
+                    "glyph": "le1",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F4458",
+                    "name": "CHALISH CEREMONIAL SYLLABLE LE-2",
+                    "glyph": "le2",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F4459",
+                    "name": "CHALISH CEREMONIAL SYLLABLE ME-1",
+                    "glyph": "me1",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F445A",
+                    "name": "CHALISH CEREMONIAL SYLLABLE ME-2",
+                    "glyph": "me2",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F445B",
+                    "name": "CHALISH CEREMONIAL SYLLABLE MI-1",
+                    "glyph": "mi1",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F445C",
+                    "name": "CHALISH CEREMONIAL SYLLABLE MI-2",
+                    "glyph": "mi2",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F445D",
+                    "name": "CHALISH CEREMONIAL SYLLABLE YI-1",
+                    "glyph": "yi1",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F445E",
+                    "name": "CHALISH CEREMONIAL SYLLABLE YI-2",
+                    "glyph": "yi2",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F445F",
+                    "name": "CHALISH CEREMONIAL SYLLABLE YU-1",
+                    "glyph": "yu1",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F4460",
+                    "name": "CHALISH CEREMONIAL SYLLABLE YU-2",
+                    "glyph": "yu2",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F4461",
+                    "name": "CHALISH CEREMONIAL SYLLABLE TU-1",
+                    "glyph": "tu1",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F4462",
+                    "name": "CHALISH CEREMONIAL SYLLABLE TU-2",
+                    "glyph": "tu2",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F4463",
+                    "name": "CHALISH CEREMONIAL SYLLABLE TE-1",
+                    "glyph": "te1",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F4464",
+                    "name": "CHALISH CEREMONIAL SYLLABLE TE-2",
+                    "glyph": "te2",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F4465",
+                    "name": "CHALISH CEREMONIAL SYLLABLE YA-1",
+                    "glyph": "ya1",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F4466",
+                    "name": "CHALISH CEREMONIAL SYLLABLE YA-2",
+                    "glyph": "ya2",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F4467",
+                    "name": "CHALISH CEREMONIAL SYLLABLE YE-1",
+                    "glyph": "ye1",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F4468",
+                    "name": "CHALISH CEREMONIAL SYLLABLE YE-2",
+                    "glyph": "ye2",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F4469",
+                    "name": "CHALISH CEREMONIAL SYLLABLE BI-1",
+                    "glyph": "bi1",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F446A",
+                    "name": "CHALISH CEREMONIAL SYLLABLE BI-2",
+                    "glyph": "bi2",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F446B",
+                    "name": "CHALISH CEREMONIAL SYLLABLE LO-1",
+                    "glyph": "lo1",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F446C",
+                    "name": "CHALISH CEREMONIAL SYLLABLE LO-2",
+                    "glyph": "lo2",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F446D",
+                    "name": "CHALISH CEREMONIAL SYLLABLE HI-1",
+                    "glyph": "hi1",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F446E",
+                    "name": "CHALISH CEREMONIAL SYLLABLE HI-2",
+                    "glyph": "hi2",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F446F",
+                    "name": "CHALISH CEREMONIAL SYLLABLE HE-1",
+                    "glyph": "he1",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F4470",
+                    "name": "CHALISH CEREMONIAL SYLLABLE HE-2",
+                    "glyph": "he2",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F4471",
+                    "name": "CHALISH CEREMONIAL SYLLABLE BE-1",
+                    "glyph": "be1",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F4472",
+                    "name": "CHALISH CEREMONIAL SYLLABLE BE-2",
+                    "glyph": "be2",
+                    "kind": "syllable"
+                },
+                {
+                    "codepoint": "U+F4FF0",
+                    "name": "CHALISH CEREMONIAL JOINER BESIDE",
+                    "glyph": "join_beside",
+                    "kind": "control"
+                },
+                {
+                    "codepoint": "U+F4FF1",
+                    "name": "CHALISH CEREMONIAL JOINER STACK",
+                    "glyph": "join_stack",
+                    "kind": "control"
+                }
+            ]
+        },
+        {
             "name": "Chalish Pilam Common",
             "family": "Chalish Pilam Common",
             "class": "hl-chalish-pilam-common",

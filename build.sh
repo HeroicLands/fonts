@@ -7,8 +7,9 @@
 # after a data change, so the build compiles the committed source on every platform alike;
 # Veldikko's is generated from its letters and joining by tools/veldikko/build_ufo.py,
 # Vedyakshara Classical's from its signs by tools/vedyakshara/build_ufo.py, Helonika
-# Book's from its letters by tools/helonika/build_ufo.py, and Pirzath Hand's from its
-# signs by tools/pirzath-hand/build_ufo.py, in the same way.
+# Book's from its letters by tools/helonika/build_ufo.py, Pirzath Hand's from its
+# signs by tools/pirzath-hand/build_ufo.py, and Chalish Pilam Ceremonial's from its
+# drawings and block layout by tools/chalish-pilam/build_ceremonial_ufo.py, in the same way.
 # The timestamp is fixed, so a build is byte-for-byte reproducible. fontmake writes
 # the Windows name records only, so tools/add_mac_names.py adds the Macintosh ones.
 #
@@ -47,6 +48,7 @@ build sources/KhelathiZethuGlyphs.ufo fonts/KhelathiZethuGlyphs-Regular.ttf
 build sources/SemaronKuriale.ufo fonts/SemaronKuriale-Regular.ttf
 build sources/TengChou.ufo fonts/TengChou-Regular.ttf
 build sources/ChalishPilamCommon.ufo fonts/ChalishPilamCommon-Regular.ttf
+build sources/ChalishPilamCeremonial.ufo fonts/ChalishPilamCeremonial-Regular.ttf
 build sources/Veldikko.ufo fonts/Veldikko-Regular.ttf
 build sources/VedyaksharaClassical.ufo fonts/VedyaksharaClassical-Regular.ttf
 build sources/HelonikaBook.ufo fonts/HelonikaBook-Regular.ttf

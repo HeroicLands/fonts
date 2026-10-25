@@ -6,8 +6,9 @@ A left-to-right face draws each of its characters on a code point of its own in 
 block of plane 15, the Supplementary Private Use Area-A: Pirzath from U+F0000,
 Thuravark from U+F0100, Semaron from U+F0200, Helónika from U+F0300, Vedyakshara
 from U+F0400, Teng
-Chou's characters from U+F1000 and its Jurthati syllabary from U+F2000, and Chalish
-Pilam Common's numbers and glyphs from U+F3000. Within a block, characters are
+Chou's characters from U+F1000 and its Jurthati syllabary from U+F2000, Chalish
+Pilam Common's numbers and glyphs from U+F3000, and Chalish Pilam Ceremonial's numbers,
+glyphs, syllable signs and joiners from U+F4000. Within a block, characters are
 assigned in groups: capitals (each followed by its own long-vowel group where the face
 has one), small letters, digraphs, diphthongs, numerals, points, marks, and format
 controls. A group
@@ -104,6 +105,13 @@ BLOCKS = [
         "use": "Chalish Pilam Common: the numbers and the places of the count, then the glyphs, in the order they are added",
         "direction": "left to right",
         "families": ["Chalish Pilam Common"],
+    },
+    {
+        "start": 0xF4000,
+        "end": 0xF4FFF,
+        "use": "Chalish Pilam Ceremonial: the numbers, the concept glyphs, the syllable signs from U+F4400 and the joiners at U+F4FF0",
+        "direction": "left to right",
+        "families": ["Chalish Pilam Ceremonial"],
     },
     {
         "start": 0x1E960,
@@ -282,6 +290,30 @@ def _chalish():
 
 CHALISH = _chalish()
 
+CEREMONIAL_KINDS = {"number": "numeral", "concept": "character", "syllable": "syllable", "joiner": "control"}
+
+
+def _ceremonial():
+    """Chalish Pilam Ceremonial's block from tools/chalish-pilam/ceremonial_encoding.json:
+    each run of consecutive code points of one kind is a group. A pending row (zero and the
+    places of the count) keeps its code point and has no drawing, so it draws the box and
+    is not listed."""
+    enc = json.loads((ROOT / "tools" / "chalish-pilam" / "ceremonial_encoding.json").read_text(encoding="utf-8"))
+    groups = []
+    for e in enc["glyphs"]:
+        if e.get("retired") or e.get("pending"):
+            continue
+        point, kind = int(e["codepoint"][2:], 16), CEREMONIAL_KINDS[e["kind"]]
+        last = groups[-1] if groups else None
+        if last and last[0] == kind and last[1] + len(last[2]) == point:
+            last[2].append(e["glyph"])
+        else:
+            groups.append((kind, point, [e["glyph"]]))
+    return 0xF4000, 0xF4FFF, groups
+
+
+CEREMONIAL = _ceremonial()
+
 # Font file stem -> block.
 LTR = {
     "SemaronKuriale-Regular": SEMARON,
@@ -290,6 +322,7 @@ LTR = {
     "ThuravarkCarved-Regular": THURAVARK,
     "TengChou-Regular": TENGCHOU,
     "ChalishPilamCommon-Regular": CHALISH,
+    "ChalishPilamCeremonial-Regular": CEREMONIAL,
     "VedyaksharaClassical-Regular": VEDYAKSHARA,
     "HelonikaBook-Regular": HELONIKA,
 }
@@ -365,6 +398,7 @@ SCRIPTS = {
     "KhelathiZethuGlyphs-Regular": "zethu",
     "TengChou-Regular": "tengchou",
     "ChalishPilamCommon-Regular": "chalish",
+    "ChalishPilamCeremonial-Regular": "chalishceremonial",
     "Veldikko-Regular": "veldikko",
     "VedyaksharaClassical-Regular": "vedyakshara",
     "HelonikaBook-Regular": "helonika",

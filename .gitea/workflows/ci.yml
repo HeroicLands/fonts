@@ -73,6 +73,7 @@ jobs:
                   python3.13 tools/encoding_docs.py --check
                   python3.13 tools/khelathi-zethu-glyphs/encoding_file.py --check
                   .venv/bin/python tools/chalish-pilam/codage.py --check
+                  .venv/bin/python tools/chalish-pilam/ceremonial_codage.py --check
             - name: Build the fonts
               run: PATH="$PWD/.venv/bin:$PATH" ./build.sh
             - name: Check the fonts
@@ -89,6 +90,12 @@ jobs:
                   .venv/bin/python tools/teng-chou/stroke_mix.py
                   .venv/bin/python tools/chalish-pilam/check_font.py
                   .venv/bin/python tools/chalish-pilam/guard.py --fixtures-only
+                  .venv/bin/python tools/chalish-pilam/check_ceremonial_font.py
+                  .venv/bin/python tools/chalish-pilam/ceremonial_guard.py
+                  .venv/bin/python tools/chalish-pilam/carving.py
+                  .venv/bin/python tools/chalish-pilam/compact_sweep.py
+                  .venv/bin/python tools/chalish-pilam/compact_distinct.py
+                  .venv/bin/python tools/chalish-pilam/syllabary_distinct.py
                   .venv/bin/python tools/veldikko/check_font.py
                   .venv/bin/python tools/veldikko/guard.py --fixtures-only
                   .venv/bin/python tools/vedyakshara/check_font.py

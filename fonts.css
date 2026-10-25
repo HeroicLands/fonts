@@ -1,4 +1,11 @@
 @font-face {
+    font-family: "Chalish Pilam Ceremonial";
+    src: url("fonts/ChalishPilamCeremonial-Regular.woff2") format("woff2"),
+        url("fonts/ChalishPilamCeremonial-Regular.ttf") format("truetype");
+    font-display: swap;
+}
+
+@font-face {
     font-family: "Chalish Pilam Common";
     src: url("fonts/ChalishPilamCommon-Regular.woff2") format("woff2"),
         url("fonts/ChalishPilamCommon-Regular.ttf") format("truetype");
@@ -73,6 +80,12 @@
     src: url("fonts/Veldikko-Regular.woff2") format("woff2"),
         url("fonts/Veldikko-Regular.ttf") format("truetype");
     font-display: swap;
+}
+
+.hl-chalish-pilam-ceremonial {
+    font-family: "Chalish Pilam Ceremonial";
+    font-feature-settings: normal;
+    font-synthesis: none;
 }
 
 .hl-chalish-pilam-common {
