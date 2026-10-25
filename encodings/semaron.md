@@ -1,6 +1,6 @@
 # semaron encoding
 
-Semaron Kuriale is an alphabet of capital and small letters, written left to right. This encoding writes a roman spelling in its letters: `th` is one letter, `ch` is written with the letters for t, s and h, a doubled `a`, `i` or `u` is a long vowel, `q` is written as `k`, and `y` before a vowel is a glide. An apostrophe or hyphen after a letter writes the catch, a mark on the letter before it.
+Semaron Kuriale is an alphabet of capital and small letters, written left to right. This encoding writes a roman spelling in its letters: `th` is one letter, `ch` is written with the letters for t, s and h, a doubled `a`, `i` or `u` is a long vowel, `q` is written as `k`, and `y` before a vowel is a glide. An apostrophe or hyphen after a letter writes the catch, a mark on the letter before it. An asterisk writes the pause.
 
 ## Fonts
 
@@ -184,7 +184,7 @@ The rows are in the order the file states them.
 | `’` | `󰉰󠅛󠄒󠄐󠄑󠄙󠅝󠇯` | U+F0270 U+E015B U+E0112 U+E0110 U+E0111 U+E0119 U+E015D U+E01EF | always |
 | `` ` `` | `󰉰󠅀󠇯` | U+F0270 U+E0140 U+E01EF | always |
 | `-` | `󰉰󠄍󠇯` | U+F0270 U+E010D U+E01EF | always |
-| `.` | `󰉨` | U+F0268 | always |
+| `*` | `󰉨` | U+F0268 | always |
 | `0` | `󰉘` | U+F0258 | always |
 | `1` | `󰉙` | U+F0259 | always |
 | `2` | `󰉚` | U+F025A | always |

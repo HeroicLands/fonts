@@ -11,7 +11,8 @@ or the file ``--encoding <script>=<file>`` names for a script, by ``encode.py``.
 a ``context`` is encoded inside it (``context: ["t", "t"]`` encodes ``tat`` for ``a``), and its
 output is the pieces that lie within the sound; a piece that runs across the sound's edge is an
 error. A script whose encoding needs another context for a sound names it in the sound's
-``contexts``, keyed by script.
+``contexts``, keyed by script. A script whose roman text spells the sound differently names
+that spelling in the sound's ``spellings``, keyed by script; the key stays where it is.
 
 A sound is unmapped in a script, and its key types nothing there, when a character of it
 passes through the encoding unchanged (``"no row"``) or when the encoding writes it only as
@@ -40,9 +41,10 @@ def hexes(text):
 def spell(enc, face, sound, script):
     """``{"codepoints"}`` or ``{"unmapped"}`` for one sound under one face."""
     before, after = sound.get("contexts", {}).get(script) or sound.get("context") or ["", ""]
+    spelling = sound.get("spellings", {}).get(script, sound["spelling"])
     start = len(before)
-    end = start + len(sound["spelling"])
-    text = before + sound["spelling"] + after
+    end = start + len(spelling)
+    text = before + spelling + after
     within = []
     at = 0
     for source, target, row in E.pieces(enc, text, face):

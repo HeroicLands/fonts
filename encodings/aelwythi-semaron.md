@@ -1,6 +1,6 @@
 # aelwythi-semaron encoding
 
-A second roman spelling for Semaron Kuriale, which draws the same letters as the semaron encoding. It takes each roman letter on its own where semaron joins them: a doubled vowel is two vowels, `c` is written as s before `e`, `i` and `y` and as k elsewhere, and `ch` and `tch` are written with the letters for t, s and h. The apostrophe and the quotation mark draw nothing and are written as invisible marks, and a hyphen draws a space and carries a mark.
+A second roman spelling for Semaron Kuriale, which draws the same letters as the semaron encoding. It takes each roman letter on its own where semaron joins them: a doubled vowel is two vowels, `c` is written as s before `e`, `i` and `y` and as k elsewhere, and `ch` and `tch` are written with the letters for t, s and h. The apostrophe and the quotation mark draw nothing and are written as invisible marks, and a hyphen draws a space and carries a mark. An asterisk writes the pause.
 
 ## Fonts
 
@@ -142,7 +142,7 @@ The rows are in the order the file states them.
 | `7` | `󰉟` | U+F025F |
 | `8` | `󰉠` | U+F0260 |
 | `9` | `󰉡` | U+F0261 |
-| `.` | `󰉨` | U+F0268 |
+| `*` | `󰉨` | U+F0268 |
 | `"` | `󠄂` | U+E0102 |
 | `“` | `󠅛󠄒󠄐󠄑󠅃󠅝` | U+E015B U+E0112 U+E0110 U+E0111 U+E0143 U+E015D |
 | `”` | `󠅛󠄒󠄐󠄑󠅄󠅝` | U+E015B U+E0112 U+E0110 U+E0111 U+E0144 U+E015D |

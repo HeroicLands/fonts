@@ -1583,6 +1583,9 @@
     {
       "sound": "stop",
       "spelling": ".",
+      "spellings": {
+        "semaron": "*"
+      },
       "kind": "punctuation",
       "key": "."
     },

@@ -62,7 +62,7 @@ VOWELS = "aeiou"
 LONG_VOWELS = "aiu"
 ACUTES = {"á": "a", "é": "e", "í": "i", "ó": "o", "ú": "u", "Á": "A", "É": "E", "Í": "I", "Ó": "O", "Ú": "U",
           "ë": "e", "Ë": "E", "q": "k", "Q": "K"}
-PAUSES = "."
+PAUSES = "*"
 CATCHES = "'’`-"
 SILENT = "​‌‍‎‏‪‫‬‭‮⁦⁧⁨⁩﻿"
 NUMERALS = [f"num.{i}" for i in range(10)]
@@ -168,7 +168,7 @@ FIXTURES: list[tuple[str, list[str]]] = [
     *[(c, [BOX]) for c in CATCHES],
     *[(f" {c}", ["space", BOX]) for c in CATCHES],
     *[(f"1{c}", ["num.1", BOX]) for c in CATCHES],
-    *[(f".{c}", ["point", BOX]) for c in CATCHES],
+    *[(f"*{c}", ["point", BOX]) for c in CATCHES],
     ("a''", ["a", "grave", BOX]), ("a'-", ["a", "grave", BOX]), ("c'", [BOX, BOX]),
     # Vylari's precomposed catch keeps its original base and each letter's case.
     ("kàralzon", ["k", "grave", "a", "r", "a", "l", "z", "o", "n"]),
@@ -183,23 +183,23 @@ FIXTURES: list[tuple[str, list[str]]] = [
     ("Zeghet'Nelgu", ["Z", "e", "g", "h", "e", "t", "grave", "N", "e", "l", "g", "u"]),
     ("Amqel'Uqa", ["A", "m", "k", "e", "l", "grave", "U", "k", "a"]),
     ("selth-kelmeza", ["s", "e", "l", "th", "grave", "k", "e", "l", "m", "e", "z", "a"]),
-    # Period alone writes the point; unsupported pause aliases remain visible errors.
+    # The asterisk alone writes the point; a period and the other pause aliases are visible errors.
     *[(c, ["point"]) for c in PAUSES],
-    *[(c, [BOX]) for c in ",;:—–"],
-    ("Daimela vethor orfenamen. theson.",
+    *[(c, [BOX]) for c in ".,;:—–"],
+    ("Daimela vethor orfenamen* theson*",
      ["D", "a", "i", "m", "e", "l", "a", "space", "v", "e", "th", "o", "r", "space",
       "o", "r", "f", "e", "n", "a", "m", "e", "n", "point", "space", "th", "e", "s", "o", "n", "point"]),
     # the marks the script lacks, c and x print the box; q is k and ë is e
-    *[(c, [BOX]) for c in '"“”«»?!¡()[]<>@#$%&*+=/\\|_{}~^‘…'],
+    *[(c, [BOX]) for c in '"“”«»?!¡()[]<>@#$%&+=/\\|_{}~^‘…'],
     *[(c, [BOX]) for c in "cxCX"],
     ("a‐", ["a", BOX]), ("a‑", ["a", BOX]), ("q", ["k"]), ("Q", ["K"]), ("Meqes", ["M", "e", "k", "e", "s"]), ("ë", ["e"]), ("Ë", ["E"]),
-    ("Eza à daimela falvator.",
+    ("Eza à daimela falvator*",
      ["E", "z", "a", "space", "a", "grave", "space", "d", "a", "i", "m", "e", "l", "a", "space", "f", "a", "l",
       "v", "a", "t", "o", "r", "point"]),
     # the numerals
     ("0123456789", NUMERALS),
     ("2026", ["num.2", "num.0", "num.2", "num.6"]),
-    ("Daamela. viir. kuun. 0123456789. 12. 2026.",
+    ("Daamela* viir* kuun* 0123456789* 12* 2026*",
      ["D", "a.long", "m", "e", "l", "a", "point", "space", "v", "i.long", "r", "point", "space", "k", "u.long",
       "n", "point", "space", *NUMERALS, "point", "space", "num.1", "num.2", "point", "space", "num.2", "num.0",
       "num.2", "num.6", "point"]),
