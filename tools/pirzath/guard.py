@@ -45,7 +45,7 @@ LETTERS = {c: c for c in "bdgkptvfzshmnlraeiou"}
 PUNCT_MAP = {
     "-": "hyphen", ".": "period", ",": "comma", "!": "exclam",
     " ": "space", "\u00a0": "space",
-    "\u201c": "quote.open", "\u201d": "quote.close", "[": "quote.open", "]": "quote.close",
+    "\u201c": "quote.open", "\u201d": "quote.close",
 }
 CONSONANT_NAMES = {
     "p", "b", "f", "v", "m", "t", "d", "t_h", "d_h", "n", "k", "g", "k_h", "g_h", "s", "z", "h",
@@ -61,23 +61,24 @@ FIXTURES = [
     ("girm 10 bep tob 1", ["g", "i", "r", "m", "space", "num.1", "num.0", "space", "b", "e", "p",
                            "space", "t", "o", "b", "space", "num.1"]),
     ("abcdef", ["a", "b", "notdef.box", "d", "e", "f"]),
-    ('"dalk"', ["quote.open", "d", "a", "l", "k", "quote.close"]),
-    ('gaz "dalk" zef', ["g", "a", "z", "space", "quote.open", "d", "a", "l", "k", "quote.close",
+    # Only the curly pair writes quotation signs; unsupported aliases pass through as boxes.
+    ('"dalk"', ["notdef.box", "d", "a", "l", "k", "notdef.box"]),
+    ('gaz "dalk" zef', ["g", "a", "z", "space", "notdef.box", "d", "a", "l", "k", "notdef.box",
                         "space", "z", "e", "f"]),
-    ('bant."', ["b", "a", "n", "t", "period", "quote.open"]),
+    ('bant."', ["b", "a", "n", "t", "period", "notdef.box"]),
     ("“dalk”", ["quote.open", "d", "a", "l", "k", "quote.close"]),
     ("dalk“", ["d", "a", "l", "k", "quote.open"]),
     ("”dalk", ["quote.close", "d", "a", "l", "k"]),
-    ("[dalk]", ["quote.open", "d", "a", "l", "k", "quote.close"]),
-    ("gaz [ghulk]", ["g", "a", "z", "space", "quote.open", "g_h", "u", "l", "k", "quote.close"]),
+    ("[dalk]", ["notdef.box", "d", "a", "l", "k", "notdef.box"]),
+    ("gaz [ghulk]", ["g", "a", "z", "space", "notdef.box", "g_h", "u", "l", "k", "notdef.box"]),
     ("«dalk»", ["notdef.box", "d", "a", "l", "k", "notdef.box"]),
-    ("<<dalk>>", ["quote.open", "d", "a", "l", "k", "quote.close"]),
-    ("gaz <<dalk>> zef", ["g", "a", "z", "space", "quote.open", "d", "a", "l", "k", "quote.close",
+    ("<<dalk>>", ["notdef.box", "notdef.box", "d", "a", "l", "k", "notdef.box", "notdef.box"]),
+    ("gaz <<dalk>> zef", ["g", "a", "z", "space", "notdef.box", "notdef.box", "d", "a", "l", "k", "notdef.box", "notdef.box",
                           "space", "z", "e", "f"]),
-    # gh right before a closing quote, from every input.
-    ('"thurágh"', ["quote.open", "t_h", "u", "r", "a", "lengthmark", "g_h", "quote.close"]),
+    # A final gh stays intact beside either the canonical sign or an unsupported alias.
+    ('"thurágh"', ["notdef.box", "t_h", "u", "r", "a", "lengthmark", "g_h", "notdef.box"]),
     ("“thurágh”", ["quote.open", "t_h", "u", "r", "a", "lengthmark", "g_h", "quote.close"]),
-    ("<<thurágh>>", ["quote.open", "t_h", "u", "r", "a", "lengthmark", "g_h", "quote.close"]),
+    ("<<thurágh>>", ["notdef.box", "notdef.box", "t_h", "u", "r", "a", "lengthmark", "g_h", "notdef.box", "notdef.box"]),
     ("?;:", ["notdef.box", "notdef.box", "notdef.box"]),
     ("¡ves durám.", ["notdef.box", "v", "e", "s", "space", "d", "u", "r", "a", "lengthmark", "m", "period"]),
     ("!ves durám.", ["exclam", "v", "e", "s", "space", "d", "u", "r", "a", "lengthmark", "m", "period"]),

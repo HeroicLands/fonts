@@ -52,7 +52,7 @@ CHART = [
     ("a", "a"), ("e", "e"), ("i", "i"), ("o", "o"), ("u", "u"),
     ("á", "á"), ("é", "é"), ("í", "í"), ("ó", "ó"), ("ú", "ú"),
     ("-", "-"), (".", "."), (",", ","), ("!", "!"), ("space", " "),
-    ('" opening', '"'), ('" closing', 'a"'), ("ll (doubled)", "ll"), ("tth (doubled)", "tth"),
+    ('“ opening', '“'), ('” closing', 'a”'), ("ll (doubled)", "ll"), ("tth (doubled)", "tth"),
     ("gh beside closing", "gh”"),
     *LOST_LETTERS,
 ]
@@ -92,10 +92,10 @@ TEXTS = [
         "Dulkun putthák, Rinit dullák.",
     ]),
     ("A record quoting an oath", [
-        'Galdan bunát, "Dalík bant, maríg bant".',
+        'Galdan bunát, “Dalík bant, maríg bant”.',
         "Lukum, “Narv zuvák, vog dubáz”.",
         "Guruz, “Gaz thurágh” gaz munád.",
-        "Rinit, <<!Ves durám>>.",
+        "Rinit, “!Ves durám”.",
         "!Ves durám bep gunádh nuv gaz.",
     ]),
     ("Phrasebook", [

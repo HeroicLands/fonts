@@ -24,7 +24,9 @@ which the guard owns and which read neither the font nor the mapping:
   is ``e``;
 - ``q`` is ``k``, because the script has no q;
 - ``y`` before a vowel is the glide y, and anywhere else the vowel i;
-- ``.``, ``,``, ``;``, ``:`` and the two dashes are the one point;
+- period alone writes the point; commas, colons, semicolons and both dashes print the box;
+- Vylari ``à`` writes a and the catch. After an ancient t, k, d or g, the catch
+  stands on that stop before the a; each letter keeps its case;
 - ``'``, ``’``, a grave accent and a hyphen-minus after a letter are the catch, a mark
   that takes no room; with no letter before them they print the box, and the
   Unicode hyphens U+2010 and U+2011 are characters the script lacks;
@@ -62,7 +64,7 @@ VOWELS = "aeiou"
 LONG_VOWELS = "aiu"
 ACUTES = {"á": "a", "é": "e", "í": "i", "ó": "o", "ú": "u", "Á": "A", "É": "E", "Í": "I", "Ó": "O", "Ú": "U",
           "ë": "e", "Ë": "E", "q": "k", "Q": "K"}
-PAUSES = "., ; : — –".replace(" ", "")
+PAUSES = "."
 CATCHES = "'’`-"
 SILENT = "​‌‍‎‏‪‫‬‭‮⁦⁧⁨⁩﻿"
 NUMERALS = [f"num.{i}" for i in range(10)]
@@ -82,6 +84,14 @@ def expected_glyphs(text: str) -> list[str]:
         ch = t[i]
         low = ch.lower()
         pair = t[i : i + 2].lower()
+        if low in "tkdg" and i + 1 < len(t) and t[i + 1] in "àÀ":
+            out += [ch, "grave", "A" if t[i + 1].isupper() else "a"]
+            i += 2
+            continue
+        if ch in "àÀ":
+            out += ["A" if ch.isupper() else "a", "grave"]
+            i += 1
+            continue
         if pair == "th":
             out.append("TH" if ch.isupper() else "th")
             i += 2
@@ -96,7 +106,7 @@ def expected_glyphs(text: str) -> list[str]:
             continue
         if low == "y":
             following = t[i + 1].lower() if i + 1 < len(t) else ""
-            name = "y" if following and following in VOWELS else "i"
+            name = "y" if following and following in VOWELS + "à" else "i"
             out.append(name.upper() if ch.isupper() else name)
         elif low in LETTERS and ch.isascii():
             out.append(ch)
@@ -162,29 +172,36 @@ FIXTURES: list[tuple[str, list[str]]] = [
     *[(f"1{c}", ["num.1", BOX]) for c in CATCHES],
     *[(f".{c}", ["point", BOX]) for c in CATCHES],
     ("a''", ["a", "grave", BOX]), ("a'-", ["a", "grave", BOX]), ("c'", [BOX, BOX]),
-    # the catch's setting
-    ("k'aralzon", ["k", "grave", "a", "r", "a", "l", "z", "o", "n"]),
-    ("a'", ["a", "grave"]),
+    # Vylari's precomposed catch keeps its original base and each letter's case.
+    ("kàralzon", ["k", "grave", "a", "r", "a", "l", "z", "o", "n"]),
+    ("kàrthorgila", ["k", "grave", "a", "r", "th", "o", "r", "g", "i", "l", "a"]),
+    ("à", ["a", "grave"]), ("À", ["A", "grave"]),
+    ("Kà", ["K", "grave", "a"]), ("kÀ", ["k", "grave", "A"]), ("KÀ", ["K", "grave", "A"]),
+    ("tà", ["t", "grave", "a"]), ("dà", ["d", "grave", "a"]), ("gà", ["g", "grave", "a"]),
+    ("TÀ", ["T", "grave", "A"]), ("DÀ", ["D", "grave", "A"]), ("GÀ", ["G", "grave", "A"]),
+    ("yà", ["y", "a", "grave"]), ("YÀ", ["Y", "A", "grave"]),
+    # Other tongues retain their own catch spellings in the shared mapping.
     ("Au'Khelathu", ["A", "u", "grave", "K", "h", "e", "l", "a", "th", "u"]),
     ("Zeghet'Nelgu", ["Z", "e", "g", "h", "e", "t", "grave", "N", "e", "l", "g", "u"]),
     ("Amqel'Uqa", ["A", "m", "k", "e", "l", "grave", "U", "k", "a"]),
     ("selth-kelmeza", ["s", "e", "l", "th", "grave", "k", "e", "l", "m", "e", "z", "a"]),
-    # every pause is the one point
+    # Period alone writes the point; unsupported pause aliases remain visible errors.
     *[(c, ["point"]) for c in PAUSES],
-    ("Daimela, vethor: orfenamen — theson.",
-     ["D", "a", "i", "m", "e", "l", "a", "point", "space", "v", "e", "th", "o", "r", "point", "space",
-      "o", "r", "f", "e", "n", "a", "m", "e", "n", "space", "point", "space", "th", "e", "s", "o", "n", "point"]),
+    *[(c, [BOX]) for c in ",;:—–"],
+    ("Daimela vethor orfenamen. theson.",
+     ["D", "a", "i", "m", "e", "l", "a", "space", "v", "e", "th", "o", "r", "space",
+      "o", "r", "f", "e", "n", "a", "m", "e", "n", "point", "space", "th", "e", "s", "o", "n", "point"]),
     # the marks the script lacks, c and x print the box; q is k and ë is e
     *[(c, [BOX]) for c in '"“”«»?!¡()[]<>@#$%&*+=/\\|_{}~^‘…'],
     *[(c, [BOX]) for c in "cxCX"],
     ("a‐", ["a", BOX]), ("a‑", ["a", BOX]), ("q", ["k"]), ("Q", ["K"]), ("Meqes", ["M", "e", "k", "e", "s"]), ("ë", ["e"]), ("Ë", ["E"]),
-    ("Eza a' daimela falvator.",
+    ("Eza à daimela falvator.",
      ["E", "z", "a", "space", "a", "grave", "space", "d", "a", "i", "m", "e", "l", "a", "space", "f", "a", "l",
       "v", "a", "t", "o", "r", "point"]),
     # the numerals
     ("0123456789", NUMERALS),
     ("2026", ["num.2", "num.0", "num.2", "num.6"]),
-    ("Daamela, viir, kuun. 0123456789, 12, 2026.",
+    ("Daamela. viir. kuun. 0123456789. 12. 2026.",
      ["D", "a.long", "m", "e", "l", "a", "point", "space", "v", "i.long", "r", "point", "space", "k", "u.long",
       "n", "point", "space", *NUMERALS, "point", "space", "num.1", "num.2", "point", "space", "num.2", "num.0",
       "num.2", "num.6", "point"]),
@@ -195,11 +212,12 @@ FIXTURES: list[tuple[str, list[str]]] = [
 ]
 
 # Pairs of lines the catch must set exactly as wide as the line without it.
-WIDTH_PAIRS = [("k'aralzon", "karalzon"), ("Zeghet'Nelgu", "ZeghetNelgu"), ("selth-kelmeza", "selthkelmeza"),
+WIDTH_PAIRS = [("kàralzon", "karalzon"), ("kàrthorgila", "karthorgila"), ("à", "a"), ("À", "A"),
+               ("Zeghet'Nelgu", "ZeghetNelgu"), ("selth-kelmeza", "selthkelmeza"),
                ("daa'", "daa"), ("a`l’k", "alk")]
 # The catch sits over, beside or at the right of its base: these lines place one.
 MARK_FIXTURES = ["a'", "e'", "o'", "k'", "m'", "v'", "l'", "h'", "t'", "th'", "A'", "E'", "K'", "L'", "aa'", "ii'",
-                 "uu'", "Aa'", "k-a", "a’k"]
+                 "uu'", "Aa'", "k-a", "a’k", "à", "À", "kàralzon", "kàrthorgila", "Kà", "kÀ", "KÀ"]
 
 
 def fixture_texts() -> list[str]:

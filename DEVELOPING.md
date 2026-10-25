@@ -188,6 +188,8 @@ Each lexicon guard shapes every form of its lexicon and asserts the font renders
 .venv/bin/python tools/helonika/guard.py --note Bizarian.md --note Bethuan.md --map-note bizarian=Bizarian_Spelling.md --map-note bethuan=Bethuan_Spelling.md   # a pull request's own language and mapping notes
 ```
 
+The guards use each sign's canonical roman source: Semaron and Helónika write their pause from period alone, and Pirzath writes its quotation pair from `“` and `”`. Unsupported punctuation aliases are negative fixtures: they pass through the mapping and draw the box, so restoring an alias fails the guard. Semaron also checks Vylari `à` and `À`, including the catch on the preceding ancient stop in `kàralzon` and `kàrthorgila`, its zero advance and its placement on the native base. Other tongues' catch inputs remain separate shared-map fixtures; they do not authorize apostrophes in Vylari.
+
 The guards' fixtures, and the sample lines of the specimens that `tools/spacing.py` measures, are written once through the mapping notes into `tools/mapped.json`, so that `--fixtures-only`, `tools/prove_guards.py` and `tools/spacing.py` need no thalorna checkout. `tools/mapped.py` writes the file, and without `--write` checks it against thalorna's mapping notes and lists every text they now write differently:
 
 ```sh

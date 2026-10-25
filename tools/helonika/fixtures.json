@@ -16,7 +16,7 @@
     {"latin": "kaar", "glyphs": ["k", "a", "a", "r"]},
     {"latin": "Zoë", "glyphs": ["Z", "o", "e"]},
     {"latin": "noë-ira", "glyphs": ["n", "o", "e", "i", "r", "a"]},
-    {"latin": "dokhazin, therin; agelon: bulos", "glyphs": ["d", "o", "k", "h", "a", "z", "i", "n", "space", "th", "e", "r", "i", "n", "raisedDot", "a", "g", "e", "l", "o", "n", "raisedDot", "b", "u", "l", "o", "s"]},
+    {"latin": "dokhazin, therin. agelon. bulos", "glyphs": ["d", "o", "k", "h", "a", "z", "i", "n", "space", "th", "e", "r", "i", "n", "raisedDot", "a", "g", "e", "l", "o", "n", "raisedDot", "b", "u", "l", "o", "s"]},
     {"latin": "en-telekas", "glyphs": ["e", "n", "t", "e", "l", "e", "k", "a", "s"]},
     {"latin": "vesmor 1066", "glyphs": ["v", "e", "s", "m", "o", "r", "space", "num.1", "num.0", "num.6", "num.6"]},
     {"latin": "Qeros", "glyphs": ["K", "e", "r", "o", "s"]},
@@ -29,7 +29,9 @@
     {"latin": "Cato", "letter": "C"},
     {"latin": "kosamir?", "letter": "?"},
     {"latin": "§ 4", "letter": "§"},
-    {"latin": "Moira's", "letter": "'"}
+    {"latin": "Moira's", "letter": "'"},
+    {"latin": "a; a", "letter": ";"},
+    {"latin": "a: a", "letter": ":"}
   ],
   "bizarian": {
     "fixtures": [
@@ -40,7 +42,12 @@
       {"latin": "kaar", "glyphs": ["k", "a.macron", "r"]},
       {"latin": "Iisa", "glyphs": ["I.macron", "s", "a"]},
       {"latin": "boum", "glyphs": ["b", "o.long", "m"]},
-      {"latin": "eiros", "glyphs": ["e", "i", "r", "o", "s"]}
+      {"latin": "eiros", "glyphs": ["e", "i", "r", "o", "s"]},
+      {"latin": "a. a", "glyphs": ["a", "raisedDot", "a"]}
+    ],
+    "unmappable": [
+      {"latin": "a; a", "letter": ";"},
+      {"latin": "a: a", "letter": ":"}
     ]
   },
   "bethuan": {
@@ -50,7 +57,12 @@
       {"latin": "kaar", "glyphs": ["k", "a.macron", "r"]},
       {"latin": "Uuná", "glyphs": ["U.macron", "n", "a", "accent"]},
       {"latin": "zhar", "glyphs": ["z", "h", "a", "r"]},
-      {"latin": "dómissa", "glyphs": ["d", "o", "accent", "m", "i", "s", "s", "a"]}
+      {"latin": "dómissa", "glyphs": ["d", "o", "accent", "m", "i", "s", "s", "a"]},
+      {"latin": "a. a", "glyphs": ["a", "raisedDot", "a"]}
+    ],
+    "unmappable": [
+      {"latin": "a; a", "letter": ";"},
+      {"latin": "a: a", "letter": ":"}
     ]
   }
 }

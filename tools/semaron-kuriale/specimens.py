@@ -33,18 +33,19 @@ RULE = (214, 207, 194)
 LETTERS = ["a", "b", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "r", "s", "t", "th", "u",
            "v", "w", "y", "z"]
 TEXTS = [
-    ("The oath", "Ulthandoi okointor denon zaron, ul kalmetharen."),
-    ("The morning call", "Daimela, orfenamen."),
-    ("A question, eza", "Eza a' daimela falvator."),
-    ("A question expecting yes", "Areza a' thelmos lokator."),
+    ("The oath", "Ulthandoi okointor denon zaron ul kalmetharen."),
+    ("The morning call", "Daimela orfenamen."),
+    ("A question, eza", "Eza à daimela falvator."),
+    ("A question expecting yes", "Areza à thelmos lokator."),
     ("A command, voza", "Voza lokathen."),
     ("A prohibition", "Ar voza lokathen."),
-    ("Reported speech, vethor", "Daimela, vethor, orfenamen."),
-    ("An exclamation, aia", "Aia, theson."),
-    ("Names", "Eltheza Solterates, Kalmethis, Hiltheris, Tholmarar."),
-    ("The long vowels and the numerals", "Daamela, viir, kuun. 0123456789, 12, 2026."),
-    ("Every pause is the one point", "Daimela; vethor: orfenamen — theson."),
-    ("The catch, a grave on the letter before it", "k'aralzon, a', Au'Khelathu, Zeghet'Nelgu, Amqel'Uqa, selth-kelmeza."),
+    ("Reported speech, vethor", "Daimela vethor orfenamen."),
+    ("An exclamation, aia", "Aia theson."),
+    ("Names", "Eltheza Solterates. Kalmethis. Hiltheris. Tholmarar."),
+    ("The long vowels and the numerals", "Daamela. viir. kuun. 0123456789. 12. 2026."),
+    ("Period alone writes the pause point", "Daimela vethor orfenamen. theson."),
+    ("The Vylari catch, on its ancient stop or article", "kàralzon. kàrthorgila. à. À."),
+    ("Other tongues' catch spellings", "Au'Khelathu. Zeghet'Nelgu. Amqel'Uqa. selth-kelmeza."),
 ]
 
 
@@ -84,8 +85,8 @@ def glyph_chart(r: Renderer, out: Path):
         ("Letters: majuscule above minuscule", [(n.capitalize(), n) for n in LETTERS]),
         ("Long vowels: a doubled vowel types the curl", [(v.capitalize() + v, v + v) for v in "aiu"]),
         ("Numerals", [(str(i), None) for i in range(10)]),
-        ("Marks: the point types . , ; : and the dashes; the catch follows a letter", [
-            (". ,", None), ("a'", None), ("l'", None), ("k-", None), ("Aa'", None), ("th'", None), ("'", None),
+        ("Marks: period writes the point; the catch stands on its base", [
+            (".", None), ("à", None), ("À", None), ("kà", None), ("l'", None), ("Aa'", None), ("th'", None), ("'", None),
             ("x?", None)]),
     ]
     rows = sum((len(items) + cols - 1) // cols for _, items in groups)
