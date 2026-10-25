@@ -2,7 +2,11 @@
 # SPDX-License-Identifier: OFL-1.1
 """Prove that each guard passes a built font and fails the same font broken.
 
-    .venv/bin/python tools/prove_guards.py [--encoding SCRIPT=FILE]
+    .venv/bin/python tools/prove_guards.py [--encoding SCRIPT=FILE] [--font FONT | --shared]
+
+``--font FONT`` proves only the guards broken on that built font, and ``--shared`` only
+the proofs that break no font, so that the two together, over every font, are the whole
+proof; ``tools/check.py`` runs them that way, in parallel.
 
 The broken Pirzath and Thuravark fonts are the built .ttf with the GSUB table
 removed, so no ligature, decomposition or contextual rule applies. Pirzath Hand's
@@ -1037,16 +1041,30 @@ def main():
         cases.append((label, font, spacing.check, loosened, "with every advance widened by 120 units"))
         if label in ("KhelathiZethuGlyphs", "QalezuHand"):
             cases.append((label, font, spacing.check, wide_space, "with the space widened by 100 units"))
+    only = next((Path(sys.argv[i + 1]).resolve() for i, arg in enumerate(sys.argv[:-1]) if arg == "--font"), None)
+    shared = "--shared" in sys.argv[1:]
+    if only is not None:
+        cases = [case for case in cases if case[1].resolve() == only]
+        if not cases:
+            print(f"{only}: error: no guard is proved on this font")
+            sys.exit(1)
+    if shared:
+        cases = []
     status = 0
     with tempfile.TemporaryDirectory() as tmp:
+        passed = {}  # a guard's findings on an unbroken font, which several breakings share
         for label, font, guard, break_font, how in cases:
-            good = guard(font)
+            if (guard, font) not in passed:
+                passed[(guard, font)] = guard(font)
+            good = passed[(guard, font)]
             bad = guard(break_font(font, Path(tmp) / font.name))
             ok = not good and bad
             print(f"{label}: {len(good)} failures on the font, {len(bad)} on the font {how}")
             if not ok:
                 print(f"{font}: error: the guard must pass the font and fail the broken font")
                 status = 1
+    if only is not None:
+        sys.exit(status)
     bare = helonika.encoding_files(["helonika.json", "bizarian=helonika-bizarian.json"])
     if bare != {"helonika": "helonika.json", "bizarian": "helonika-bizarian.json"}:
         print(f"{ROOT / 'tools' / 'helonika' / 'guard.py'}: error: a bare --encoding FILE must name the helonika encoding, got {bare}")

@@ -149,45 +149,19 @@ npm run check:package
 npm run format:check
 ```
 
-Check the built fonts, render the specimens, and prove that each guard fails a broken font:
+Check the built fonts and prove that each guard fails a broken font:
 
 ```sh
-.venv/bin/python tools/pirzath/check_font.py
-.venv/bin/python tools/pirzath-hand/check_font.py
-.venv/bin/python tools/thuravark-carved/check_font.py
-.venv/bin/python tools/qalezu-hand/check_font.py
-.venv/bin/python tools/khelathi-zethu-glyphs/check_font.py
-.venv/bin/python tools/semaron-kuriale/check_font.py
-.venv/bin/python tools/teng-chou/check_font.py
-.venv/bin/python tools/chalish-pilam/check_font.py
-.venv/bin/python tools/chalish-pilam/guard.py --fixtures-only   # the night entry and every glyph shape to their own glyphs
-.venv/bin/python tools/chalish-pilam/check_ceremonial_font.py
-.venv/bin/python tools/chalish-pilam/ceremonial_guard.py   # every block layout shapes as blocks.py lays it out
-.venv/bin/python tools/chalish-pilam/carving.py            # every ceremonial glyph and composed block can be carved
-.venv/bin/python tools/chalish-pilam/compact_sweep.py      # every compact form stays carvable in every layout
-.venv/bin/python tools/chalish-pilam/compact_distinct.py   # no two compact forms look alike
-.venv/bin/python tools/chalish-pilam/syllabary_distinct.py # no two syllable signs of different syllables look alike
-.venv/bin/python tools/veldikko/check_font.py
-.venv/bin/python tools/veldikko/guard.py --fixtures-only   # the converter's fixtures join and carry their marks
-.venv/bin/python tools/vedyakshara/check_font.py
-.venv/bin/python tools/vedyakshara/guard.py --fixtures-only
-.venv/bin/python tools/helonika/check_font.py
-.venv/bin/python tools/helonika/guard.py --fixtures-only
-.venv/bin/python tools/pirzath/guard.py --fixtures-only        # each lexicon guard's fixtures, written by the encodings
-.venv/bin/python tools/pirzath-hand/guard.py --fixtures-only
-.venv/bin/python tools/thuravark-carved/guard.py --fixtures-only
-.venv/bin/python tools/qalezu-hand/guard.py --fixtures-only
-.venv/bin/python tools/semaron-kuriale/guard.py --fixtures-only
-.venv/bin/python tools/teng-chou/syllabary_distinct.py   # the Jurthati signs stay distinct at body size
-.venv/bin/python tools/teng-chou/stroke_mix.py   # every character's body is strokes, dabs a minority
-.venv/bin/python tools/notdef_box.py
-.venv/bin/python tools/vertical.py
-.venv/bin/python tools/spacing.py                 # every face is set at a natural spacing; --report prints the measures
-.venv/bin/python tools/font_names.py
-.venv/bin/python tools/codepoints.py              # each face draws its own code points and states no spelling
-.venv/bin/python tools/keyboards_guard.py --fixtures-only   # the layouts type each sound's output, and nothing else
-.venv/bin/python tools/charts_guard.py            # every character is on its sheet; unnamed rows are listed
-.venv/bin/python tools/khelathi-zethu-glyphs/quadrats.py   # quadrats and cartouches land where the layout puts them
+.venv/bin/python tools/check.py                              # every check, in parallel
+.venv/bin/python tools/check.py --font ChalishPilamCeremonial  # one font's checks and proof
+.venv/bin/python tools/check.py --list                       # the commands, run nothing
+```
+
+`tools/check.py` holds the one table of checks: each built font's own font check, lexicon guard on its fixtures and other guards, and the checks that read every font (`tools/notdef_box.py`, `tools/vertical.py`, `tools/spacing.py`, `tools/font_names.py`, `tools/codepoints.py`, `tools/keyboards_guard.py`, `tools/charts_guard.py`, `tools/sample_texts.py`, `tools/encodings_guard.py --require-fonts` and `tools/specimen_pages.py --check`). Each font's part of `tools/prove_guards.py` runs as its own command, `--font fonts/<Family>-Regular.ttf`, and the rest as `--shared`. CI runs the script as its check step. It refuses to run when a built font has no entry, when an entry has no built font, or when a font check, guard or distinctness check under `tools/` is in no command, so a new font or a new check is added to its table and nowhere else. Each check also runs alone, as its command in the table.
+
+Render the specimens:
+
+```sh
 .venv/bin/python tools/codepoints_chart.py         # specimens/<face>/codepoints.png
 .venv/bin/python tools/pirzath/specimens.py       # specimens/pirzath/
 .venv/bin/python tools/pirzath-hand/strokes_sheet.py   # specimens/pirzath-hand/strokes.png, the strokes
@@ -195,7 +169,6 @@ Check the built fonts, render the specimens, and prove that each guard fails a b
 .venv/bin/python tools/thuravark-carved/specimens.py     # specimens/thuravark-carved/
 .venv/bin/python tools/qalezu-hand/specimens.py        # specimens/qalezu-hand/
 .venv/bin/python tools/khelathi-zethu-glyphs/specimens.py         # specimens/khelathi-zethu-glyphs/
-.venv/bin/python tools/khelathi-zethu-glyphs/paint_guard.py       # every drawn sign has a paint map
 .venv/bin/python tools/semaron-kuriale/specimens.py     # specimens/semaron-kuriale/
 .venv/bin/python tools/teng-chou/character_specimens.py   # specimens/teng-chou/characters.png
 .venv/bin/python tools/teng-chou/character_specimens.py --name syllabary.png
@@ -209,8 +182,6 @@ Check the built fonts, render the specimens, and prove that each guard fails a b
 .venv/bin/python tools/vedyakshara/font_sheets.py     # specimens/vedyakshara/text.png
 .venv/bin/python tools/helonika/font_sheets.py        # specimens/helonika/text.png
 .venv/bin/python tools/pirzath-hand/font_sheets.py    # specimens/pirzath-hand/text.png
-.venv/bin/python tools/specimen_pages.py --check   # every font's specimen page and README cell match the fonts and specimens/texts.json
-.venv/bin/python tools/prove_guards.py
 ```
 
 `tools/codepoints.py` is the code-point guard. Every face, shaped from its own code points, must yield exactly the glyphs `fonts.json` lists for them, and its cmap may map nothing else but the space (U+0020 and U+00A0), the default-ignorables and the box, so every other code point, Latin included, prints the box. No substitution may write a character it did not read: a face's substitutions are its contextual forms and marks, never a spelling rule that turns one character into another. A few sequences that a spelling rule would rewrite, such as Pirzath's glide _y_ before a vowel pair and Semaron's _i_ twice, must shape as written.

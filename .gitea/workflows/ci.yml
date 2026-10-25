@@ -77,47 +77,7 @@ jobs:
             - name: Build the fonts
               run: PATH="$PWD/.venv/bin:$PATH" ./build.sh
             - name: Check the fonts
-              run: |
-                  .venv/bin/python tools/pirzath/check_font.py
-                  .venv/bin/python tools/pirzath-hand/check_font.py
-                  .venv/bin/python tools/thuravark-carved/check_font.py
-                  .venv/bin/python tools/qalezu-hand/check_font.py
-                  .venv/bin/python tools/khelathi-zethu-glyphs/check_font.py
-                  .venv/bin/python tools/semaron-kuriale/check_font.py
-                  .venv/bin/python tools/teng-chou/check_font.py
-                  .venv/bin/python tools/teng-chou/guard.py --fixtures-only
-                  .venv/bin/python tools/teng-chou/syllabary_distinct.py
-                  .venv/bin/python tools/teng-chou/stroke_mix.py
-                  .venv/bin/python tools/chalish-pilam/check_font.py
-                  .venv/bin/python tools/chalish-pilam/guard.py --fixtures-only
-                  .venv/bin/python tools/chalish-pilam/check_ceremonial_font.py
-                  .venv/bin/python tools/chalish-pilam/ceremonial_guard.py
-                  .venv/bin/python tools/chalish-pilam/carving.py
-                  .venv/bin/python tools/chalish-pilam/compact_sweep.py
-                  .venv/bin/python tools/chalish-pilam/compact_distinct.py
-                  .venv/bin/python tools/chalish-pilam/syllabary_distinct.py
-                  .venv/bin/python tools/veldikko/check_font.py
-                  .venv/bin/python tools/veldikko/guard.py --fixtures-only
-                  .venv/bin/python tools/vedyakshara/check_font.py
-                  .venv/bin/python tools/vedyakshara/guard.py --fixtures-only
-                  .venv/bin/python tools/helonika/check_font.py
-                  .venv/bin/python tools/helonika/guard.py --fixtures-only
-                  .venv/bin/python tools/pirzath/guard.py --fixtures-only
-                  .venv/bin/python tools/pirzath-hand/guard.py --fixtures-only
-                  .venv/bin/python tools/thuravark-carved/guard.py --fixtures-only
-                  .venv/bin/python tools/qalezu-hand/guard.py --fixtures-only
-                  .venv/bin/python tools/semaron-kuriale/guard.py --fixtures-only
-                  .venv/bin/python tools/notdef_box.py
-                  .venv/bin/python tools/encodings_guard.py --require-fonts
-                  .venv/bin/python tools/font_names.py
-                  .venv/bin/python tools/codepoints.py
-                  .venv/bin/python tools/vertical.py
-                  .venv/bin/python tools/spacing.py
-                  .venv/bin/python tools/keyboards_guard.py
-                  .venv/bin/python tools/sample_texts.py
-                  .venv/bin/python tools/khelathi-zethu-glyphs/paint_guard.py
-                  .venv/bin/python tools/specimen_pages.py --check
-                  .venv/bin/python tools/prove_guards.py
+              run: .venv/bin/python tools/check.py
             - name: Committed fonts, stylesheet, manifest and specimen pages match the build
               run: |
                   git diff --exit-code -- fonts/ fonts.css fonts.json specimens/pages/ specimens/*.md README.md

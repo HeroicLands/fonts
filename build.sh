@@ -40,18 +40,22 @@ build() {
     fonttools ttLib.woff2 compress -o "${out%.ttf}.woff2" "$out"
 }
 
-build sources/PirzathCarved.ufo fonts/PirzathCarved-Regular.ttf
-build sources/PirzathHand.ufo fonts/PirzathHand-Regular.ttf
-build sources/ThuravarkCarved.ufo fonts/ThuravarkCarved-Regular.ttf
-build sources/QalezuHand.ufo fonts/QalezuHand-Regular.ttf
-build sources/KhelathiZethuGlyphs.ufo fonts/KhelathiZethuGlyphs-Regular.ttf
-build sources/SemaronKuriale.ufo fonts/SemaronKuriale-Regular.ttf
-build sources/TengChou.ufo fonts/TengChou-Regular.ttf
-build sources/ChalishPilamCommon.ufo fonts/ChalishPilamCommon-Regular.ttf
-build sources/ChalishPilamCeremonial.ufo fonts/ChalishPilamCeremonial-Regular.ttf
-build sources/Veldikko.ufo fonts/Veldikko-Regular.ttf
-build sources/VedyaksharaClassical.ufo fonts/VedyaksharaClassical-Regular.ttf
-build sources/HelonikaBook.ufo fonts/HelonikaBook-Regular.ttf
+# The fonts compile at once, each in its own process; the build fails if any of them does.
+pids=""
+for family in PirzathCarved PirzathHand ThuravarkCarved QalezuHand \
+    KhelathiZethuGlyphs SemaronKuriale TengChou ChalishPilamCommon \
+    ChalishPilamCeremonial Veldikko VedyaksharaClassical HelonikaBook; do
+    build "sources/$family.ufo" "fonts/$family-Regular.ttf" &
+    pids="$pids $!"
+done
+failed=0
+for pid in $pids; do
+    wait "$pid" || failed=1
+done
+if [ "$failed" -ne 0 ]; then
+    echo "build.sh: error: a font failed to build" >&2
+    exit 1
+fi
 
 python tools/write_css.py
 python tools/keyboards.py
