@@ -29,14 +29,14 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
-            - uses: HeroicLands/.github/actions/githooks@f8139e8a0f414a349cd760b4c0bfbd80ab58722a # main
+            - uses: HeroicLands/.github/actions/githooks@d5df169d556decffa602bcfc566f1b391a57ad09 # main
 
     todos:
         name: No TODO or FIXME markers
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
-            - uses: HeroicLands/.github/actions/todos@f8139e8a0f414a349cd760b4c0bfbd80ab58722a # main
+            - uses: HeroicLands/.github/actions/todos@d5df169d556decffa602bcfc566f1b391a57ad09 # main
               with:
                   paths: tools
                   extensions: .py
