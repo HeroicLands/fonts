@@ -85,6 +85,7 @@ NOT_CHARACTERS = {
         **{f"{v}acute": "a vowel and its length mark, drawn as one" for v in "aeiou"},
     },
     "TengChou-Regular": {},
+    "ChalishPilamCommon-Regular": {},
     "HelonikaBook-Regular": {},
     "ThuravarkCarved-Regular": {
         **{f"{v}.acute": "the acute mark after a vowel, drawn as its stave again" for v in "aeiou"},

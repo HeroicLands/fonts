@@ -5,8 +5,9 @@
 A left-to-right face draws each of its characters on a code point of its own in a
 block of plane 15, the Supplementary Private Use Area-A: Pirzath from U+F0000,
 Thuravark from U+F0100, Semaron from U+F0200, Helónika from U+F0300, Vedyakshara
-from U+F0400, and Teng
-Chou's characters from U+F1000 and its Jurthati syllabary from U+F2000. Within a block, characters are
+from U+F0400, Teng
+Chou's characters from U+F1000 and its Jurthati syllabary from U+F2000, and Chalish
+Pilam Common's numbers and glyphs from U+F3000. Within a block, characters are
 assigned in groups: capitals (each followed by its own long-vowel group where the face
 has one), small letters, digraphs, diphthongs, numerals, points, marks, and format
 controls. A group
@@ -97,6 +98,13 @@ BLOCKS = [
         "families": ["Teng Chou"],
     },
     {"start": 0xF2100, "end": 0xF2FFF, "use": "Reserved for Teng Chou", "direction": "left to right", "families": []},
+    {
+        "start": 0xF3000,
+        "end": 0xF3FFF,
+        "use": "Chalish Pilam Common: the numbers and the places of the count, then the glyphs, in the order they are added",
+        "direction": "left to right",
+        "families": ["Chalish Pilam Common"],
+    },
     {
         "start": 0x1E960,
         "end": 0x1E9FF,
@@ -251,6 +259,29 @@ def _helonika():
 
 HELONIKA = _helonika()
 
+CHALISH_KINDS = {"number": "numeral", "concept": "character"}
+
+
+def _chalish():
+    """Chalish Pilam Common's block from tools/chalish-pilam/encoding.json: each run of
+    consecutive code points of one kind is a group. A retired row keeps its code point
+    and draws nothing."""
+    enc = json.loads((ROOT / "tools" / "chalish-pilam" / "encoding.json").read_text(encoding="utf-8"))
+    groups = []
+    for e in enc["glyphs"]:
+        if e.get("retired"):
+            continue
+        point, kind = int(e["codepoint"][2:], 16), CHALISH_KINDS[e["kind"]]
+        last = groups[-1] if groups else None
+        if last and last[0] == kind and last[1] + len(last[2]) == point:
+            last[2].append(e["glyph"])
+        else:
+            groups.append((kind, point, [e["glyph"]]))
+    return 0xF3000, 0xF3FFF, groups
+
+
+CHALISH = _chalish()
+
 # Font file stem -> block.
 LTR = {
     "SemaronKuriale-Regular": SEMARON,
@@ -258,6 +289,7 @@ LTR = {
     "PirzathHand-Regular": PIRZATH,
     "ThuravarkCarved-Regular": THURAVARK,
     "TengChou-Regular": TENGCHOU,
+    "ChalishPilamCommon-Regular": CHALISH,
     "VedyaksharaClassical-Regular": VEDYAKSHARA,
     "HelonikaBook-Regular": HELONIKA,
 }
@@ -332,6 +364,7 @@ SCRIPTS = {
     "QalezuHand-Regular": "qalezu",
     "KhelathiZethuGlyphs-Regular": "zethu",
     "TengChou-Regular": "tengchou",
+    "ChalishPilamCommon-Regular": "chalish",
     "Veldikko-Regular": "veldikko",
     "VedyaksharaClassical-Regular": "vedyakshara",
     "HelonikaBook-Regular": "helonika",

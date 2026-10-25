@@ -102,6 +102,9 @@ VELDIKKO_BODY = ["r"]  # the crozier, the one letter standing at the bowls' heig
 THURAVARK = "a ai au b d dh e f g gh h hl i j k kh l m n ng o oi p r s t th u v w y z".split()
 HELONIKA_X = "b e e.long o s u".split()  # the minuscules that stand on the body, line to x-height, with no tail
 HELONIKA_CAPS = "A B E F G H I J K M N P R S T".split()
+# Chalish Pilam Common's glyphs fill the cell, cap height; the shell for zero and the
+# bar-and-dot numbers sit lower by design and are not typical.
+CHALISH_TYPICAL = "beast pot plant peak p20 p400".split()
 # Vedyakshara's signs hang from a headline above the x-height; its digits stand free of
 # it, exactly as tall as the body, so they are its typical x-height letters.
 VEDYAKSHARA_DIGITS = [f"num.{d}" for d in range(10)]
@@ -128,6 +131,7 @@ FACES = {
     "Veldikko": {"x": VELDIKKO_BODY, "cap": VELDIKKO_STOPS, "target": "x"},
     "VedyaksharaClassical": {"x": VEDYAKSHARA_DIGITS, "cap": VEDYAKSHARA_SIGNS, "target": "x"},
     "HelonikaBook": {"x": HELONIKA_X, "cap": HELONIKA_CAPS, "target": "x"},
+    "ChalishPilamCommon": {"x": CHALISH_TYPICAL, "cap": CHALISH_TYPICAL, "target": "cap"},
 }
 
 # Glyphs allowed to leave the band, by face: the first part of the glyph name, before

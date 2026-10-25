@@ -78,6 +78,8 @@ jobs:
                   .venv/bin/python tools/teng-chou/guard.py --fixtures-only
                   .venv/bin/python tools/teng-chou/syllabary_distinct.py
                   .venv/bin/python tools/teng-chou/stroke_mix.py
+                  .venv/bin/python tools/chalish-pilam/check_font.py
+                  .venv/bin/python tools/chalish-pilam/guard.py --fixtures-only
                   .venv/bin/python tools/veldikko/check_font.py
                   .venv/bin/python tools/veldikko/guard.py --fixtures-only
                   .venv/bin/python tools/vedyakshara/check_font.py

@@ -1,0 +1,876 @@
+{
+  "glyphs": [
+    {
+      "glyph": "n0",
+      "codepoint": "U+F3000",
+      "concept": "zero; the shell, an empty thing; nothing",
+      "word": "ts'amal",
+      "sound": "tsa",
+      "kind": "number",
+      "tier": "general"
+    },
+    {
+      "glyph": "n1",
+      "codepoint": "U+F3001",
+      "concept": "1",
+      "word": "pe'",
+      "sound": "pe",
+      "kind": "number",
+      "tier": "core"
+    },
+    {
+      "glyph": "n2",
+      "codepoint": "U+F3002",
+      "concept": "2",
+      "word": "q'o",
+      "sound": "qo",
+      "kind": "number",
+      "tier": "core"
+    },
+    {
+      "glyph": "n3",
+      "codepoint": "U+F3003",
+      "concept": "3",
+      "word": "lishe",
+      "sound": "li",
+      "kind": "number",
+      "tier": "core"
+    },
+    {
+      "glyph": "n4",
+      "codepoint": "U+F3004",
+      "concept": "4",
+      "word": "mushe",
+      "sound": "mu",
+      "kind": "number",
+      "tier": "core"
+    },
+    {
+      "glyph": "n5",
+      "codepoint": "U+F3005",
+      "concept": "5",
+      "word": "p'o",
+      "sound": "po",
+      "kind": "number",
+      "tier": "core"
+    },
+    {
+      "glyph": "n6",
+      "codepoint": "U+F3006",
+      "concept": "6",
+      "word": "ts'ishe",
+      "sound": "tsi",
+      "kind": "number",
+      "tier": "core"
+    },
+    {
+      "glyph": "n7",
+      "codepoint": "U+F3007",
+      "concept": "7",
+      "word": "nuq'el",
+      "sound": "nu",
+      "kind": "number",
+      "tier": "core"
+    },
+    {
+      "glyph": "n8",
+      "codepoint": "U+F3008",
+      "concept": "8",
+      "word": "q'ishe",
+      "sound": "qi",
+      "kind": "number",
+      "tier": "core"
+    },
+    {
+      "glyph": "n9",
+      "codepoint": "U+F3009",
+      "concept": "9",
+      "word": "pek'ash",
+      "sound": "pe",
+      "kind": "number",
+      "tier": "core"
+    },
+    {
+      "glyph": "n10",
+      "codepoint": "U+F300A",
+      "concept": "10",
+      "word": "olek'",
+      "sound": "o",
+      "kind": "number",
+      "tier": "core"
+    },
+    {
+      "glyph": "n11",
+      "codepoint": "U+F300B",
+      "concept": "11",
+      "word": "olek' pe'",
+      "sound": "o",
+      "kind": "number",
+      "tier": "core"
+    },
+    {
+      "glyph": "n12",
+      "codepoint": "U+F300C",
+      "concept": "12",
+      "word": "olek' q'o",
+      "sound": "o",
+      "kind": "number",
+      "tier": "core"
+    },
+    {
+      "glyph": "n13",
+      "codepoint": "U+F300D",
+      "concept": "13",
+      "word": "olek' lishe",
+      "sound": "o",
+      "kind": "number",
+      "tier": "core"
+    },
+    {
+      "glyph": "n14",
+      "codepoint": "U+F300E",
+      "concept": "14",
+      "word": "olek' mushe",
+      "sound": "o",
+      "kind": "number",
+      "tier": "core"
+    },
+    {
+      "glyph": "n15",
+      "codepoint": "U+F300F",
+      "concept": "15",
+      "word": "olek' p'o",
+      "sound": "o",
+      "kind": "number",
+      "tier": "core"
+    },
+    {
+      "glyph": "n16",
+      "codepoint": "U+F3010",
+      "concept": "16",
+      "word": "olek' ts'ishe",
+      "sound": "o",
+      "kind": "number",
+      "tier": "core"
+    },
+    {
+      "glyph": "n17",
+      "codepoint": "U+F3011",
+      "concept": "17",
+      "word": "olek' nuq'el",
+      "sound": "o",
+      "kind": "number",
+      "tier": "core"
+    },
+    {
+      "glyph": "n18",
+      "codepoint": "U+F3012",
+      "concept": "18",
+      "word": "olek' q'ishe",
+      "sound": "o",
+      "kind": "number",
+      "tier": "core"
+    },
+    {
+      "glyph": "n19",
+      "codepoint": "U+F3013",
+      "concept": "19",
+      "word": "olek' pek'ash",
+      "sound": "o",
+      "kind": "number",
+      "tier": "core"
+    },
+    {
+      "glyph": "p20",
+      "codepoint": "U+F3014",
+      "concept": "20",
+      "word": "ts'ob",
+      "sound": "tso",
+      "kind": "number",
+      "tier": "core"
+    },
+    {
+      "glyph": "p400",
+      "codepoint": "U+F3015",
+      "concept": "400",
+      "word": "pel'ush",
+      "sound": "pe",
+      "kind": "number",
+      "tier": "core"
+    },
+    {
+      "glyph": "p8000",
+      "codepoint": "U+F3016",
+      "concept": "8,000",
+      "word": "q'umpel",
+      "sound": "qu",
+      "kind": "number",
+      "tier": "core"
+    },
+    {
+      "glyph": "p160000",
+      "codepoint": "U+F3017",
+      "concept": "160,000",
+      "word": "sholemash",
+      "sound": "sho",
+      "kind": "number",
+      "tier": "core"
+    },
+    {
+      "glyph": "sun",
+      "codepoint": "U+F3020",
+      "concept": "the sun; light, revelation, authority",
+      "word": "ts'en",
+      "sound": "tse",
+      "kind": "concept",
+      "tier": "core"
+    },
+    {
+      "glyph": "moon",
+      "codepoint": "U+F3021",
+      "concept": "the moon; night, cycles, hidden things",
+      "word": "ish'uqal",
+      "sound": "i",
+      "kind": "concept",
+      "tier": "core"
+    },
+    {
+      "glyph": "sky",
+      "codepoint": "U+F3022",
+      "concept": "the sky, the heavens; divinity",
+      "word": "h'ulal",
+      "sound": "hu",
+      "kind": "concept",
+      "tier": "core"
+    },
+    {
+      "glyph": "star",
+      "codepoint": "U+F3023",
+      "concept": "a star; fate, guidance, destiny",
+      "word": "ish'ilan",
+      "sound": "i",
+      "kind": "concept",
+      "tier": "core"
+    },
+    {
+      "glyph": "water",
+      "codepoint": "U+F3024",
+      "concept": "water; flow, cleansing, change",
+      "word": "ne'",
+      "sound": "ne",
+      "kind": "concept",
+      "tier": "core"
+    },
+    {
+      "glyph": "fire",
+      "codepoint": "U+F3025",
+      "concept": "fire; heat, destruction, purification",
+      "word": "k'ayumel",
+      "sound": "ka",
+      "kind": "concept",
+      "tier": "core"
+    },
+    {
+      "glyph": "earth",
+      "codepoint": "U+F3026",
+      "concept": "earth, soil; fertility, foundation",
+      "word": "sh'akan",
+      "sound": "sha",
+      "kind": "concept",
+      "tier": "core"
+    },
+    {
+      "glyph": "stone",
+      "codepoint": "U+F3027",
+      "concept": "stone, mountain; permanence, strength",
+      "word": "kulum",
+      "sound": "ku",
+      "kind": "concept",
+      "tier": "core"
+    },
+    {
+      "glyph": "man",
+      "codepoint": "U+F3028",
+      "concept": "a person, a man; manhood, fatherhood",
+      "word": "ch'ekbal cham",
+      "sound": "che",
+      "kind": "concept",
+      "tier": "core"
+    },
+    {
+      "glyph": "woman",
+      "codepoint": "U+F3029",
+      "concept": "a woman; womanhood, motherhood",
+      "word": "ch'ekbal ishal",
+      "sound": "che",
+      "kind": "concept",
+      "tier": "core"
+    },
+    {
+      "glyph": "plant",
+      "codepoint": "U+F302A",
+      "concept": "vegetation; growth, cultivation",
+      "word": "shik",
+      "sound": "shi",
+      "kind": "concept",
+      "tier": "core"
+    },
+    {
+      "glyph": "beast",
+      "codepoint": "U+F302B",
+      "concept": "an animal; instinct, wilderness, flesh",
+      "word": "ch'ekum",
+      "sound": "che",
+      "kind": "concept",
+      "tier": "core"
+    },
+    {
+      "glyph": "east",
+      "codepoint": "U+F302C",
+      "concept": "the east, sunrise; birth, beginning",
+      "word": "ts'en ch'ulun",
+      "sound": "tse",
+      "kind": "concept",
+      "tier": "core"
+    },
+    {
+      "glyph": "west",
+      "codepoint": "U+F302D",
+      "concept": "the west, sunset; death, ending",
+      "word": "ts'en ishan",
+      "sound": "tse",
+      "kind": "concept",
+      "tier": "core"
+    },
+    {
+      "glyph": "north",
+      "codepoint": "U+F302E",
+      "concept": "the north, the zenith; the world above, the gods and the honoured dead",
+      "word": "nukal",
+      "sound": "nu",
+      "kind": "concept",
+      "tier": "core"
+    },
+    {
+      "glyph": "south",
+      "codepoint": "U+F302F",
+      "concept": "the south, the nadir; the world below, the underworld and its trials",
+      "word": "toshal",
+      "sound": "to",
+      "kind": "concept",
+      "tier": "core"
+    },
+    {
+      "glyph": "high",
+      "codepoint": "U+F3030",
+      "concept": "above, greater; age, rank",
+      "word": "ts'ikik",
+      "sound": "tsi",
+      "kind": "concept",
+      "tier": "core"
+    },
+    {
+      "glyph": "low",
+      "codepoint": "U+F3031",
+      "concept": "below, lesser; youth, humility",
+      "word": "ch'alik",
+      "sound": "cha",
+      "kind": "concept",
+      "tier": "core"
+    },
+    {
+      "glyph": "inside",
+      "codepoint": "U+F3032",
+      "concept": "within; hidden, belonging",
+      "word": "ch'ikal",
+      "sound": "chi",
+      "kind": "concept",
+      "tier": "core"
+    },
+    {
+      "glyph": "outside",
+      "codepoint": "U+F3033",
+      "concept": "beyond; foreign, exposed",
+      "word": "ts'ikal",
+      "sound": "tsi",
+      "kind": "concept",
+      "tier": "core"
+    },
+    {
+      "glyph": "house",
+      "codepoint": "U+F3034",
+      "concept": "a house, shelter; family, community",
+      "word": "sh'ulum",
+      "sound": "shu",
+      "kind": "concept",
+      "tier": "core"
+    },
+    {
+      "glyph": "hand",
+      "codepoint": "U+F3035",
+      "concept": "a hand; work, action, possession",
+      "word": "p'ishum",
+      "sound": "pi",
+      "kind": "concept",
+      "tier": "core"
+    },
+    {
+      "glyph": "eye",
+      "codepoint": "U+F3036",
+      "concept": "the eye; sight, knowledge, witness",
+      "word": "k'ayikash",
+      "sound": "ka",
+      "kind": "concept",
+      "tier": "core"
+    },
+    {
+      "glyph": "mouth",
+      "codepoint": "U+F3037",
+      "concept": "the mouth; speech, naming",
+      "word": "nalak",
+      "sound": "na",
+      "kind": "concept",
+      "tier": "core"
+    },
+    {
+      "glyph": "river",
+      "codepoint": "U+F3038",
+      "concept": "a river",
+      "word": "ha'nal",
+      "sound": "ha",
+      "kind": "concept",
+      "tier": "general"
+    },
+    {
+      "glyph": "peak",
+      "codepoint": "U+F3039",
+      "concept": "a sacred peak, a pyramid",
+      "word": "kul'qat",
+      "sound": "ku",
+      "kind": "concept",
+      "tier": "sacred"
+    },
+    {
+      "glyph": "steps",
+      "codepoint": "U+F303A",
+      "concept": "a stair; to climb",
+      "word": "pu'tal",
+      "sound": "pu",
+      "kind": "concept",
+      "tier": "general"
+    },
+    {
+      "glyph": "jaguar",
+      "codepoint": "U+F303B",
+      "concept": "a jaguar",
+      "word": "ish'bal",
+      "sound": "i",
+      "kind": "concept",
+      "tier": "general"
+    },
+    {
+      "glyph": "serpent",
+      "codepoint": "U+F303C",
+      "concept": "a serpent",
+      "word": "ch'akun",
+      "sound": "cha",
+      "kind": "concept",
+      "tier": "general"
+    },
+    {
+      "glyph": "pot",
+      "codepoint": "U+F303D",
+      "concept": "a pot",
+      "word": "lu'she",
+      "sound": "lu",
+      "kind": "concept",
+      "tier": "trade:potter"
+    },
+    {
+      "glyph": "wood",
+      "codepoint": "U+F303E",
+      "concept": "wood, a tree",
+      "word": "shikum",
+      "sound": "shi",
+      "kind": "concept",
+      "tier": "trade:carpenter"
+    },
+    {
+      "glyph": "blood",
+      "codepoint": "U+F303F",
+      "concept": "blood; the offering",
+      "word": "ts'umulal",
+      "sound": "tsu",
+      "kind": "concept",
+      "tier": "sacred"
+    },
+    {
+      "glyph": "glyph",
+      "codepoint": "U+F3040",
+      "concept": "a glyph; a codex",
+      "word": "p'ilam",
+      "sound": "pi",
+      "kind": "concept",
+      "tier": "general"
+    },
+    {
+      "glyph": "beside",
+      "codepoint": "U+F3041",
+      "concept": "beside",
+      "word": "p'ishalash",
+      "sound": "pi",
+      "kind": "concept",
+      "tier": "general"
+    },
+    {
+      "glyph": "toward",
+      "codepoint": "U+F3042",
+      "concept": "toward",
+      "word": "ch'ul",
+      "sound": "chu",
+      "kind": "concept",
+      "tier": "general"
+    },
+    {
+      "glyph": "all",
+      "codepoint": "U+F3043",
+      "concept": "all",
+      "word": "kesh",
+      "sound": "ke",
+      "kind": "concept",
+      "tier": "general"
+    },
+    {
+      "glyph": "being",
+      "codepoint": "U+F3044",
+      "concept": "to be",
+      "word": "k'alish",
+      "sound": "ka",
+      "kind": "concept",
+      "tier": "general"
+    },
+    {
+      "glyph": "ok",
+      "codepoint": "U+F3045",
+      "concept": "the ending -ok: having, running with",
+      "word": "-ok",
+      "sound": "o",
+      "kind": "concept",
+      "tier": "general"
+    },
+    {
+      "glyph": "danger",
+      "codepoint": "U+F3046",
+      "concept": "danger; a threat, beware",
+      "word": "shok'ul",
+      "sound": "sho",
+      "kind": "concept",
+      "tier": "general"
+    },
+    {
+      "glyph": "metal",
+      "codepoint": "U+F3047",
+      "concept": "metal; iron, steel",
+      "word": "kulishal",
+      "sound": "ku",
+      "kind": "concept",
+      "tier": "general"
+    },
+    {
+      "glyph": "lord",
+      "codepoint": "U+F3048",
+      "concept": "a lord; sovereignty",
+      "word": "mah",
+      "sound": "ma",
+      "kind": "concept",
+      "tier": "general"
+    },
+    {
+      "glyph": "light",
+      "codepoint": "U+F3049",
+      "concept": "light, brightness",
+      "word": "k'inish",
+      "sound": "ki",
+      "kind": "concept",
+      "tier": "general"
+    },
+    {
+      "glyph": "coyote",
+      "codepoint": "U+F304A",
+      "concept": "a coyote",
+      "word": "ts'okum",
+      "sound": "tso",
+      "kind": "concept",
+      "tier": "trade:hunter"
+    },
+    {
+      "glyph": "edge",
+      "codepoint": "U+F304B",
+      "concept": "an edge, a joining; the 260-day count",
+      "word": "tq'an",
+      "sound": "qa",
+      "kind": "concept",
+      "tier": "sacred"
+    },
+    {
+      "glyph": "self",
+      "codepoint": "U+F304C",
+      "concept": "I, the speaker",
+      "word": "ni",
+      "sound": "ni",
+      "kind": "concept",
+      "tier": "general"
+    },
+    {
+      "glyph": "you",
+      "codepoint": "U+F304D",
+      "concept": "you, the one addressed",
+      "word": "ti",
+      "sound": "ti",
+      "kind": "concept",
+      "tier": "general"
+    },
+    {
+      "glyph": "bird",
+      "codepoint": "U+F304E",
+      "concept": "a bird",
+      "word": "shelem",
+      "sound": "she",
+      "kind": "concept",
+      "tier": "general"
+    },
+    {
+      "glyph": "quetzal",
+      "codepoint": "U+F304F",
+      "concept": "the quetzal; its plumes, rank",
+      "word": "p'ashel",
+      "sound": "pa",
+      "kind": "concept",
+      "tier": "sacred"
+    },
+    {
+      "glyph": "war",
+      "codepoint": "U+F3050",
+      "concept": "war, a campaign",
+      "word": "shok'al",
+      "sound": "sho",
+      "kind": "concept",
+      "tier": "general"
+    },
+    {
+      "glyph": "affection",
+      "codepoint": "U+F3051",
+      "concept": "affection, fondness",
+      "word": "ashal",
+      "sound": "a",
+      "kind": "concept",
+      "tier": "general"
+    },
+    {
+      "glyph": "supreme",
+      "codepoint": "U+F3052",
+      "concept": "supreme; an overlord",
+      "word": "q'emul",
+      "sound": "qe",
+      "kind": "concept",
+      "tier": "general"
+    },
+    {
+      "glyph": "maize",
+      "codepoint": "U+F3053",
+      "concept": "maize",
+      "word": "ul'om",
+      "sound": "u",
+      "kind": "concept",
+      "tier": "general"
+    },
+    {
+      "glyph": "cord",
+      "codepoint": "U+F3054",
+      "concept": "cord; the knotted records",
+      "word": "k'otsik",
+      "sound": "ko",
+      "kind": "concept",
+      "tier": "general"
+    },
+    {
+      "glyph": "bear",
+      "codepoint": "U+F3055",
+      "concept": "a bear",
+      "word": "no'kin",
+      "sound": "no",
+      "kind": "concept",
+      "tier": "trade:hunter"
+    },
+    {
+      "glyph": "jade",
+      "codepoint": "U+F3056",
+      "concept": "jade; the precious, the green",
+      "word": "",
+      "sound": "la",
+      "kind": "concept",
+      "tier": "sacred",
+      "traditional": true
+    },
+    {
+      "glyph": "obsidian",
+      "codepoint": "U+F3057",
+      "concept": "obsidian; the ritual blade, the mirror",
+      "word": "",
+      "sound": "ba",
+      "kind": "concept",
+      "tier": "sacred",
+      "traditional": true
+    },
+    {
+      "glyph": "feather",
+      "codepoint": "U+F3058",
+      "concept": "a feather; lightness, rank",
+      "word": "",
+      "sound": "ta",
+      "kind": "concept",
+      "tier": "general",
+      "traditional": true
+    },
+    {
+      "glyph": "drum",
+      "codepoint": "U+F3059",
+      "concept": "a drum; summons, the dance",
+      "word": "",
+      "sound": "le",
+      "kind": "concept",
+      "tier": "general",
+      "traditional": true
+    },
+    {
+      "glyph": "turtle",
+      "codepoint": "U+F305A",
+      "concept": "a turtle; the earth's shell",
+      "word": "",
+      "sound": "me",
+      "kind": "concept",
+      "tier": "general",
+      "traditional": true
+    },
+    {
+      "glyph": "canoe",
+      "codepoint": "U+F305B",
+      "concept": "a canoe; river travel",
+      "word": "",
+      "sound": "mi",
+      "kind": "concept",
+      "tier": "trade:boatman",
+      "traditional": true
+    },
+    {
+      "glyph": "incense",
+      "codepoint": "U+F305C",
+      "concept": "incense; offering smoke",
+      "word": "",
+      "sound": "yi",
+      "kind": "concept",
+      "tier": "sacred",
+      "traditional": true
+    },
+    {
+      "glyph": "mat",
+      "codepoint": "U+F305D",
+      "concept": "the woven mat; the seat of rule",
+      "word": "",
+      "sound": "yu",
+      "kind": "concept",
+      "tier": "sacred",
+      "traditional": true
+    },
+    {
+      "glyph": "salt",
+      "codepoint": "U+F305E",
+      "concept": "salt",
+      "word": "",
+      "sound": "tu",
+      "kind": "concept",
+      "tier": "trade:merchant",
+      "traditional": true
+    },
+    {
+      "glyph": "ball",
+      "codepoint": "U+F305F",
+      "concept": "the ball; the ball game",
+      "word": "",
+      "sound": "te",
+      "kind": "concept",
+      "tier": "general",
+      "traditional": true
+    },
+    {
+      "glyph": "monkey",
+      "codepoint": "U+F3060",
+      "concept": "a monkey; the arts, mischief",
+      "word": "",
+      "sound": "ya",
+      "kind": "concept",
+      "tier": "general",
+      "traditional": true
+    },
+    {
+      "glyph": "bat",
+      "codepoint": "U+F3061",
+      "concept": "a bat; the night's messenger",
+      "word": "",
+      "sound": "ye",
+      "kind": "concept",
+      "tier": "general",
+      "traditional": true
+    },
+    {
+      "glyph": "net",
+      "codepoint": "U+F3062",
+      "concept": "a net; catching, gathering",
+      "word": "",
+      "sound": "bi",
+      "kind": "concept",
+      "tier": "trade:fisher",
+      "traditional": true
+    },
+    {
+      "glyph": "hummingbird",
+      "codepoint": "U+F3063",
+      "concept": "a hummingbird; the warrior's soul",
+      "word": "",
+      "sound": "lo",
+      "kind": "concept",
+      "tier": "general",
+      "traditional": true
+    },
+    {
+      "glyph": "shield",
+      "codepoint": "U+F3064",
+      "concept": "a shield; defence",
+      "word": "",
+      "sound": "hi",
+      "kind": "concept",
+      "tier": "trade:warrior",
+      "traditional": true
+    },
+    {
+      "glyph": "deer",
+      "codepoint": "U+F3065",
+      "concept": "a deer; the hunt",
+      "word": "",
+      "sound": "he",
+      "kind": "concept",
+      "tier": "trade:hunter",
+      "traditional": true
+    },
+    {
+      "glyph": "mask",
+      "codepoint": "U+F3066",
+      "concept": "a mask; a face put on, a god worn",
+      "word": "",
+      "sound": "be",
+      "kind": "concept",
+      "tier": "sacred",
+      "traditional": true
+    }
+  ]
+}

@@ -64,6 +64,11 @@ FAMILIES = {
         "direction": "ltr",
         "features": [],
     },
+    "ChalishPilamCommon-Regular": {
+        "slug": "chalish-pilam-common",
+        "direction": "ltr",
+        "features": [],
+    },
     "VedyaksharaClassical-Regular": {
         "slug": "vedyakshara-classical",
         "direction": "ltr",

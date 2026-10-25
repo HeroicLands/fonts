@@ -16,6 +16,11 @@ with its images in ``specimens/pages/``:
   right to left for a right-to-left font and in columns for Teng Chou. The page gives
   each line's English with its roman spelling under it.
 
+Chalish Pilam Common has no mapping note, since its glyphs record meaning rather than
+spelling. Its page shows the committed sheets of ``specimens/chalish-pilam/`` (the glyphs
+and the night's entry set through the font) and lists the entry phrase by phrase; its
+``texts.json`` entry is written from ``tools/chalish-pilam/glyphs.py`` by ``--write-texts``.
+
 Khelathi Zethu Glyphs' page also shows the Khelathu banner, ``<class>-banner.webp``,
 with its English text.
 
@@ -300,6 +305,9 @@ PASSAGES = {
     },
 }
 
+CHALISH = "hl-chalish-pilam-common"
+CHALISH_IMAGES = {"glyphs": "chalish-pilam/glyphs.png", "text": "chalish-pilam/text.png"}
+
 # The pages' sample of Teng Chou: its first characters and syllables, in code point order.
 TENG_CHOU_SAMPLE = {"character": 40, "syllable": 16}
 
@@ -551,7 +559,7 @@ def page_markdown(family: dict, texts: dict, row: list[str], images: dict[str, s
     links = [f"[Back to the README](../README.md)", f"[Character chart]({chart})"]
     if keyboard.startswith("["):
         links.append(f"Keyboard cheatsheet: {relink(keyboard)}")
-    src = texts["source"]
+    src = texts.get("source")
     written = "in columns, top to bottom" if direction.startswith("Vertical") else direction.lower()
     out = [f"# {name}", "", f"{what}, written {written}.", "", " · ".join(links), ""]
     if klass == "hl-khelathi-zethu-glyphs":
@@ -576,6 +584,28 @@ def page_markdown(family: dict, texts: dict, row: list[str], images: dict[str, s
             f"![A sample of the signs of {name}]({images['letters']})",
             "",
         ]
+        return "\n".join(out)
+    if klass == CHALISH:
+        out += [
+            "## The glyphs",
+            "",
+            "Each glyph is a concept, built from strokes in one even line. The sheet groups them by who knows them: "
+            f"the core glyphs everyone reads, then those of a trade, the scribes and the priests, then the numbers, the compounds and "
+            f"names written in sounds. The [chart]({chart}) lists every glyph with its code point.",
+            "",
+            f"![The glyphs of {name}]({texts['images']['glyphs']})",
+            "",
+            "## A night's entry",
+            "",
+            "The Faith of Ish'ilan Ch'alish keeps a record of every night at the sighting stones, whether or not anything "
+            "happens. The entry is a record of meaning, not of words: it is set here as text, and the page wraps it two glyphs "
+            "to a row, read down each column.",
+            "",
+            f"![A night's entry in {name}]({texts['images']['text']})",
+            "",
+        ]
+        out += [f"{i}. {line['english']}" for i, line in enumerate(texts["lines"], 1)]
+        out.append("")
         return "\n".join(out)
     out += ["## The letters", ""]
     if klass == "hl-teng-chou":
@@ -621,6 +651,12 @@ def render(families: list[dict], texts: dict, problems: list[str]) -> dict[Path,
             continue
         if family["name"] not in rows:
             problems.append(f"README.md: error: the font table has no row for {family['name']}")
+            continue
+        if klass == CHALISH:
+            out[SPECIMENS / f"{klass}.md"] = page_markdown(family, data, rows[family["name"]], {}).encode("utf-8")
+            for image in data["images"].values():
+                if not (SPECIMENS / image).exists():
+                    problems.append(f"specimens/{image}: error: missing; run the sheet scripts of tools/chalish-pilam")
             continue
         face = Face(family)
         images = {}
@@ -728,6 +764,28 @@ def teng_chou_line(family: dict, roman: str) -> str:
     return "".join(cp[f"tc.{m}"] for m in morphemes)
 
 
+def chalish_entry(family: dict) -> dict:
+    """The texts.json entry of Chalish Pilam Common: the night's entry, one phrase to a line."""
+    here = str(Path(__file__).resolve().parent / "chalish-pilam")
+    sys.path.insert(0, here)
+    for name in ("build_ufo", "glyphs", "strokes"):
+        sys.modules.pop(name, None)
+    try:
+        import build_ufo
+        import glyphs
+
+        cp = {r["glyph"]: char(r) for r in family["codepoints"]}
+        lines = [
+            {"script": points("".join(cp[build_ufo.glyph_name(g)] for g in gs)), "english": gloss}
+            for gloss, gs in glyphs.PASSAGE
+        ]
+    finally:
+        sys.path.remove(here)
+        for name in ("build_ufo", "glyphs", "strokes"):
+            sys.modules.pop(name, None)
+    return {"tongue": "Ki'ich'chik", "images": CHALISH_IMAGES, "lines": lines}
+
+
 def banner_english(md: str) -> list[str]:
     section = re.search(r"^## The English text\n(.*?)(?=^## )", md, re.M | re.S).group(1)
     return [m.group(1).strip() for m in re.finditer(r"^\d+\. (.+)$", section, re.M)]
@@ -775,6 +833,7 @@ def write_texts(thalorna: Path, notes: dict[str, str]) -> None:
                 for label, glyphs in spec["marks"]
             ]
         doc["families"][klass] = entry
+    doc["families"][CHALISH] = chalish_entry(families[CHALISH])
     TEXTS.write_text(json.dumps(doc, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(f"{TEXTS.relative_to(ROOT)}: written")
 

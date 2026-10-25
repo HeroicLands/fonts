@@ -525,6 +525,83 @@
                 "**The great hunt and the lean years** (registers 7, 8). Rode he out, {the Gar-Au ⟨Meqes⟩, beloved of Uqa'a, Lord of the River and of the Two Banks,} against the lions and the river-horses that ravaged the herds and the fields, and the beasts taken were counted. In the years of the low river he opened the god's granaries under his seal, which he had filled in the years of the flood, and none of his people hungered.",
                 "**His works, the god's answer, and the weighing** (registers 9, 10). {The Gar-Au ⟨Meqes⟩, beloved of Uqa'a,} built anew the house of Uqa'a, gave it altars of gold, and endowed it with fields and herds. [He raised his Way at the head of the death-road at Zu-Gezer.] [Words spoken by Uqa'a, {fire on the first ground, lord of the dry ink, who comes up the road}: “My beloved son, I give you every land, every foreign country bowed beneath your sandals; I give you the years of the sun upon the throne of the mound.”] Before the gods the tablets lay level on the beam: what he owed was closed, and nothing remained; what was owed to him stood open. He went down owed."
             ]
+        },
+        "hl-chalish-pilam-common": {
+            "tongue": "Ki'ich'chik",
+            "images": {
+                "glyphs": "chalish-pilam/glyphs.png",
+                "text": "chalish-pilam/text.png"
+            },
+            "lines": [
+                {
+                    "script": "U+F3021 U+F300D",
+                    "english": "night, the thirteenth"
+                },
+                {
+                    "script": "U+F3028 U+F3037 U+F3022 U+F3023",
+                    "english": "the star-priest"
+                },
+                {
+                    "script": "U+F3000 U+F3056 U+F3048",
+                    "english": "Ts'alam, by sound: tsa-la-m(a)"
+                },
+                {
+                    "script": "U+F3027 U+F3036",
+                    "english": "at the sighting stones"
+                },
+                {
+                    "script": "U+F3021 U+F302C",
+                    "english": "the moon rises"
+                },
+                {
+                    "script": "U+F3030 U+F3027",
+                    "english": "over the mountain"
+                },
+                {
+                    "script": "U+F3023 U+F3041 U+F3021",
+                    "english": "a star beside the moon"
+                },
+                {
+                    "script": "U+F3028 U+F3037 U+F3022 U+F3036 U+F3033",
+                    "english": "the priest observes"
+                },
+                {
+                    "script": "U+F3000",
+                    "english": "nothing happens"
+                },
+                {
+                    "script": "U+F3028 U+F3037 U+F3022 U+F3035 U+F3036",
+                    "english": "the priest writes"
+                },
+                {
+                    "script": "U+F303F U+F3035 U+F3036",
+                    "english": "blood on the writing"
+                },
+                {
+                    "script": "U+F3021 U+F300E",
+                    "english": "night, the fourteenth"
+                },
+                {
+                    "script": "U+F3028 U+F3037 U+F3022 U+F3023",
+                    "english": "the star-priest"
+                },
+                {
+                    "script": "U+F3027 U+F3036",
+                    "english": "at the sighting stones"
+                },
+                {
+                    "script": "U+F3021 U+F302C",
+                    "english": "the moon rises"
+                },
+                {
+                    "script": "U+F3000",
+                    "english": "nothing happens"
+                },
+                {
+                    "script": "U+F3028 U+F3037 U+F3022 U+F3035 U+F3036",
+                    "english": "the priest writes"
+                }
+            ]
         }
     }
 }

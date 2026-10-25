@@ -22,6 +22,7 @@ Every script draws on a block of code points of its own, and every face of a scr
 | U+F1000–U+F1FFF   | Teng Chou: characters, one per morpheme, in the order they are added                                                            | left to right |
 | U+F2000–U+F20FF   | Teng Chou: the Jurthati syllabary                                                                                               | left to right |
 | U+F2100–U+F2FFF   | Reserved for Teng Chou                                                                                                          | left to right |
+| U+F3000–U+F3FFF   | Chalish Pilam Common: the numbers and the places of the count, then the glyphs, in the order they are added                     | left to right |
 | U+100000–U+10FFFD | Plane 16, unassigned                                                                                                            | –             |
 
 - **Left-to-right scripts** (Pirzath, Thuravark, Semaron, Helónika, Vedyakshara) sit in plane 15, the Supplementary Private Use Area-A, whose characters are left to right by default. Each takes 256 code points. U+F0500 to U+F0FFF is reserved for the remaining alphabets and syllabaries, 256 code points each as they are assigned. Teng Chou takes U+F1000 to U+F2FFF: its characters from U+F1000, one per morpheme in the order they are added so that none is renumbered, its Jurthati syllabary from U+F2000, and the rest reserved. Teng Chou is written in columns; its characters are left to right where an inline span sets them along a line.
@@ -49,6 +50,10 @@ The fonts are licensed under the SIL Open Font License 1.1, which `LICENSE` carr
 ## Veldikko
 
 **Veldikko.** It is the starlight-hand of the Sinale, in which both the Sinale and the Áelendi write: a flowing calligraphy written right to left, its letters joined by hairlines along the line and its vowel marks floating above, in one face for both tongues. It is written on code points of its own, U+1ED50 to U+1EDFF: a letter, then the length bar if the consonant is doubled, then each vowel mark, each followed by its signs of length, pitch and emphasis. The font joins each letter to its neighbours, folds a vowel and its signs into one mark and stands the marks over their letter. Its bowls stand at the x-height Semaron Kuriale and Latin text stand at, and its risers and tails reach well beyond, so a block of Veldikko wants a line height of about 2.4 em from the page's style sheet; a Veldikko word inside an English line leaves the line spacing even. `tools/veldikko/encoding.json` is the one table of what each code point is, and `tools/veldikko/convert.mjs` turns romanized Sinale into those code points; `design/veldikko.md` gives the system.
+
+## Chalish Pilam Common
+
+**Chalish Pilam Common.** It is the common hand of Ch'alish P'ilam, the Ki'ich'chik writing: a logographic script in which each glyph is a concept, drawn in one even line, written left to right and read two glyphs to a row down a column. Every glyph takes one fixed advance, a square cell and a gutter either side, so a column two advances wide wraps a run into rows of two by ordinary line breaking; the font does nothing else to place them. It has no keyboard layout: glyphs are inserted from [the chart](charts/chalish-pilam.md). It is written on code points of its own, U+F3000 to U+F3FFF: the numbers from zero (the shell) and the places of the count first, then the glyphs, each after the last in the order it is added, so no glyph is renumbered. `tools/chalish-pilam/encoding.json` is the one table of the code points and `design/chalish-pilam.md` gives the system. The font carries meaning, not spelling, so it has no mapping note: `tools/chalish-pilam/build_ufo.py` writes its UFO, and `tools/chalish_names.py` writes its character names from `encoding.json`.
 
 ## Keyboard layouts
 
@@ -95,7 +100,7 @@ python3.13 -m venv .venv
 .venv/bin/pip install -r requirements.txt
 ```
 
-The source of each font is a UFO under `sources/`: `PirzathCarved.ufo`, `PirzathHand.ufo`, `ThuravarkCarved.ufo`, `QalezuHand.ufo`, `KhelathiZethuGlyphs.ufo`, `SemaronKuriale.ufo`, `TengChou.ufo`, `Veldikko.ufo`, `VedyaksharaClassical.ufo` and `HelonikaBook.ufo`. Open one in FontForge, Glyphs or RoboFont to edit it. `TengChou.ufo` is generated from its data by `tools/teng-chou/build_ufo.py`: an edit to a Teng Chou character belongs in `tools/teng-chou/`, and the script is run after it, before the build. `Veldikko.ufo` is generated the same way by `tools/veldikko/build_ufo.py`, from the letters and the joining in `tools/veldikko/`, `VedyaksharaClassical.ufo` by `tools/vedyakshara/build_ufo.py`, from the signs in `tools/vedyakshara/`, `HelonikaBook.ufo` by `tools/helonika/build_ufo.py`, from the letters in `tools/helonika/`, and `PirzathHand.ufo` by `tools/pirzath-hand/build_ufo.py`, from the signs in `tools/pirzath-hand/`. The UFO carries the outlines, the character map, the metrics and `features.fea`, which holds every OpenType feature. Every glyph's advance is its ink width plus one sidebearing a side, the same across its face; `tools/respace.py` sets a UFO to that rule, and `design/making-fonts.md` gives each face's sidebearing.
+The source of each font is a UFO under `sources/`: `PirzathCarved.ufo`, `PirzathHand.ufo`, `ThuravarkCarved.ufo`, `QalezuHand.ufo`, `KhelathiZethuGlyphs.ufo`, `SemaronKuriale.ufo`, `TengChou.ufo`, `ChalishPilamCommon.ufo`, `Veldikko.ufo`, `VedyaksharaClassical.ufo` and `HelonikaBook.ufo`. Open one in FontForge, Glyphs or RoboFont to edit it. `TengChou.ufo` is generated from its data by `tools/teng-chou/build_ufo.py`: an edit to a Teng Chou character belongs in `tools/teng-chou/`, and the script is run after it, before the build. `Veldikko.ufo` is generated the same way by `tools/veldikko/build_ufo.py`, from the letters and the joining in `tools/veldikko/`, `VedyaksharaClassical.ufo` by `tools/vedyakshara/build_ufo.py`, from the signs in `tools/vedyakshara/`, `HelonikaBook.ufo` by `tools/helonika/build_ufo.py`, from the letters in `tools/helonika/`, and `PirzathHand.ufo` by `tools/pirzath-hand/build_ufo.py`, from the signs in `tools/pirzath-hand/`. The UFO carries the outlines, the character map, the metrics and `features.fea`, which holds every OpenType feature. Every glyph's advance is its ink width plus one sidebearing a side, the same across its face; `tools/respace.py` sets a UFO to that rule, and `design/making-fonts.md` gives each face's sidebearing.
 
 Build the fonts into `fonts/`. The build is reproducible, so the committed fonts match a fresh build byte for byte:
 
@@ -129,6 +134,8 @@ Check the built fonts, render the specimens, and prove that each guard fails a b
 .venv/bin/python tools/khelathi-zethu-glyphs/check_font.py
 .venv/bin/python tools/semaron-kuriale/check_font.py
 .venv/bin/python tools/teng-chou/check_font.py
+.venv/bin/python tools/chalish-pilam/check_font.py
+.venv/bin/python tools/chalish-pilam/guard.py --fixtures-only   # the night entry and every glyph shape to their own glyphs
 .venv/bin/python tools/veldikko/check_font.py
 .venv/bin/python tools/veldikko/guard.py --fixtures-only   # the converter's fixtures join and carry their marks
 .venv/bin/python tools/vedyakshara/check_font.py
@@ -162,6 +169,9 @@ Check the built fonts, render the specimens, and prove that each guard fails a b
 .venv/bin/python tools/teng-chou/character_specimens.py   # specimens/teng-chou/characters.png
 .venv/bin/python tools/teng-chou/character_specimens.py --name syllabary.png
 .venv/bin/python tools/teng-chou/text_specimen.py     # specimens/teng-chou/text.png, text-vertical.png and tally.png
+.venv/bin/python tools/chalish-pilam/strokes_sheet.py   # specimens/chalish-pilam/strokes.png
+.venv/bin/python tools/chalish-pilam/glyphs_sheet.py    # specimens/chalish-pilam/glyphs.png
+.venv/bin/python tools/chalish-pilam/font_sheets.py     # specimens/chalish-pilam/text.png
 .venv/bin/python tools/veldikko/font_sheets.py        # specimens/veldikko/forms.png, joined.png, verse.png, sizes.png and beside.png
 .venv/bin/python tools/vedyakshara/font_sheets.py     # specimens/vedyakshara/text.png
 .venv/bin/python tools/helonika/font_sheets.py        # specimens/helonika/text.png

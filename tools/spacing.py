@@ -23,7 +23,8 @@ above ``MAX_MEAN_GAP`` or its largest gap above ``MAX_GAP``, or when its space i
 not the word space ``SPACING`` in tools/respace.py states for the face. A face set
 open on purpose takes its own limits in ``OPEN``: Pirzath Hand is a printed working
 hand, read in poor light, and stands every letter clear of the next, with 70 units of
-white either side; its largest gap is held to the shared limit.
+white either side; its largest gap is held to the shared limit. Chalish Pilam Common sets every glyph in one
+fixed cell and takes a largest gap of its own.
 
 The sample lines are the texts of each face's specimens: the Khazari texts for
 the Pirzath faces, the Nordmal lines for Thuravark Carved and the Vylari texts for
@@ -31,7 +32,7 @@ Semaron Kuriale, each written in the face's code points as tools/mapped.json
 records it from thalorna's mapping notes; Qalezu Hand's fixtures, written in the
 signs the fixtures name, a catch-before form as the catch and its sign; the sample inscriptions of Khelathi Zethu Glyphs, set as one
 strip of signs; Teng Chou's Tantsou and Jurthati passages, each line one run
-of characters; and Veldikko's converter fixtures, written in the letters
+of characters; Chalish Pilam Common's night entry, each phrase one word; and Veldikko's converter fixtures, written in the letters
 and marks the fixtures name; and Vedyakshara Classical's and Helonika Book's guard
 fixtures, written as tools/mapped.json records them. A joined face (Veldikko
 Sinale) meets its neighbours at the join, and Vedyakshara's signs meet in one headline,
@@ -56,8 +57,10 @@ import respace  # noqa: E402
 MAX_BLANK = 0.14
 MAX_MEAN_GAP = 0.08
 MAX_GAP = 0.22
-# Faces set open on purpose: (median blank share, mean gap), in place of the shared limits.
-OPEN = {"PirzathHand": (0.30, 0.15)}
+# Faces set open on purpose: (median blank share, mean gap), in place of the shared limits,
+# and optionally a largest gap in place of MAX_GAP. Chalish Pilam Common sets every glyph
+# in one fixed cell with a gutter either side, so a narrow glyph leaves white beside it.
+OPEN = {"PirzathHand": (0.30, 0.15), "ChalishPilamCommon": (0.25, 0.25, 0.40)}
 
 SKIP = {".notdef", "notdef.box"}
 
@@ -153,6 +156,25 @@ def _teng_chou_lines() -> list[str]:
     return _load("teng_chou_texts", TOOLS / "teng-chou" / "texts.py").lines()
 
 
+def _chalish_lines() -> list[str]:
+    """The night entry of tools/chalish-pilam/glyphs.py, one word to a phrase."""
+    here = str(TOOLS / "chalish-pilam")
+    sys.path.insert(0, here)
+    for name in ("build_ufo", "glyphs", "strokes"):
+        sys.modules.pop(name, None)
+    try:
+        import build_ufo
+        import glyphs
+
+        enc = json.loads((TOOLS / "chalish-pilam" / "encoding.json").read_text(encoding="utf-8"))["glyphs"]
+        point = {e["glyph"]: chr(int(e["codepoint"][2:], 16)) for e in enc}
+        return [" ".join("".join(point[build_ufo.glyph_name(g)] for g in gs) for _, gs in glyphs.PASSAGE)]
+    finally:
+        sys.path.remove(here)
+        for name in ("build_ufo", "glyphs", "strokes"):
+            sys.modules.pop(name, None)
+
+
 # Each face: its sample lines, its direction and the features its class turns on.
 FACES = {
     "PirzathCarved": (_pirzath_lines, "ltr", {}),
@@ -162,6 +184,7 @@ FACES = {
     "QalezuHand": (_qalezu_lines, "rtl", {}),
     "KhelathiZethuGlyphs": (_zethu_lines, "rtl", {}),
     "TengChou": (_teng_chou_lines, "ltr", {}),
+    "ChalishPilamCommon": (_chalish_lines, "ltr", {}),
     "Veldikko": (_veldikko_lines, "rtl", {}),
     "VedyaksharaClassical": (_vedyakshara_lines, "ltr", {}),
     "HelonikaBook": (_helonika_lines, "ltr", {}),
@@ -264,13 +287,14 @@ def describe(m: dict) -> str:
 def check(path: Path) -> list[str]:
     m = measure(path)
     out = []
-    max_blank, max_mean = OPEN.get(path.name.split("-")[0], (MAX_BLANK, MAX_MEAN_GAP))
+    max_blank, max_mean, *rest = OPEN.get(path.name.split("-")[0], (MAX_BLANK, MAX_MEAN_GAP))
+    max_gap = rest[0] if rest else MAX_GAP
     if m["blank"] > max_blank:
         out.append(f"{path}: error: the median blank share is {m['blank']:.1%}, above {max_blank:.0%}")
     if m["mean_gap"] > max_mean:
         out.append(f"{path}: error: the mean gap between signs is {m['mean_gap']:.3f} em, above {max_mean} em")
-    if m["max_gap"] > MAX_GAP:
-        out.append(f"{path}: error: the largest gap between signs is {m['max_gap']:.3f} em, above {MAX_GAP} em")
+    if m["max_gap"] > max_gap:
+        out.append(f"{path}: error: the largest gap between signs is {m['max_gap']:.3f} em, above {max_gap} em")
     want = respace.SPACING.get(path.name.split("-")[0], {}).get("space")
     if want is not None:
         font = TTFont(str(path))

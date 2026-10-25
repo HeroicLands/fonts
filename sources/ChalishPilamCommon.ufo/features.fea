@@ -1,0 +1,6 @@
+# HarfBuzz replaces a default-ignorable character the font maps directly with
+# the space glyph, so it draws nothing only when it is substituted. Each
+# ignorable is substituted once, to a second empty glyph.
+feature ccmp {
+  sub ignorable by ignorable.sub;
+} ccmp;

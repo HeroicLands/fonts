@@ -1,4 +1,11 @@
 @font-face {
+    font-family: "Chalish Pilam Common";
+    src: url("fonts/ChalishPilamCommon-Regular.woff2") format("woff2"),
+        url("fonts/ChalishPilamCommon-Regular.ttf") format("truetype");
+    font-display: swap;
+}
+
+@font-face {
     font-family: "Helonika Book";
     src: url("fonts/HelonikaBook-Regular.woff2") format("woff2"),
         url("fonts/HelonikaBook-Regular.ttf") format("truetype");
@@ -66,6 +73,12 @@
     src: url("fonts/Veldikko-Regular.woff2") format("woff2"),
         url("fonts/Veldikko-Regular.ttf") format("truetype");
     font-display: swap;
+}
+
+.hl-chalish-pilam-common {
+    font-family: "Chalish Pilam Common";
+    font-feature-settings: normal;
+    font-synthesis: none;
 }
 
 .hl-helonika-book {

@@ -27,6 +27,9 @@ guard is proved on its columns with one character's vertical advance off the em,
 every vertical advance 825 units, even but not one em. Its
 stroke-mix guard (tools/teng-chou/stroke_mix.py) is proved on its data with water written in
 six dabs, and with the syllabary sign ka kept to one stroke.
+Chalish Pilam Common is broken three times: its guard (tools/chalish-pilam/guard.py) and its
+font check (tools/chalish-pilam/check_font.py) on the font with the glyph for the sun removed
+from its cmap, and the font check on the font with one glyph's advance off the cell.
 Semaron Kuriale is broken twice: with the GSUB table removed, so that no
 th, long vowel or spelled-out ch applies, and with the GPOS table removed, so that no catch stands on its
 base. Veldikko's guard (tools/veldikko/guard.py) and its font check
@@ -188,6 +191,25 @@ def without_twin(font: Path, out: Path) -> Path:
     f = TTFont(str(font))
     for table in f["cmap"].tables:
         table.cmap.pop(0x1EC60, None)
+    f.save(str(out))
+    return out
+
+
+def without_sun(font: Path, out: Path) -> Path:
+    """Chalish Pilam Common's glyph for the sun removed from the cmap."""
+    f = TTFont(str(font))
+    for table in f["cmap"].tables:
+        for code in [c for c, g in table.cmap.items() if g == "sun"]:
+            del table.cmap[code]
+    f.save(str(out))
+    return out
+
+
+def off_cell(font: Path, out: Path) -> Path:
+    """One glyph of Chalish Pilam Common given an advance other than the cell's."""
+    f = TTFont(str(font))
+    width, bearing = f["hmtx"]["moon"]
+    f["hmtx"]["moon"] = (width + 10, bearing)
     f.save(str(out))
     return out
 
@@ -829,6 +851,9 @@ def main():
     vedyakshara = load("vedyakshara_guard", ROOT / "tools" / "vedyakshara" / "guard.py")
     vedyakshara_check = load("vedyakshara_check", ROOT / "tools" / "vedyakshara" / "check_font.py")
     vedyakshara_font = ROOT / "fonts" / "VedyaksharaClassical-Regular.ttf"
+    chalish = load("chalish_guard", ROOT / "tools" / "chalish-pilam" / "guard.py")
+    chalish_check = load("chalish_check", ROOT / "tools" / "chalish-pilam" / "check_font.py")
+    chalish_font = ROOT / "fonts" / "ChalishPilamCommon-Regular.ttf"
     helonika = load("helonika_guard", ROOT / "tools" / "helonika" / "guard.py")
     helonika_check = load("helonika_check", ROOT / "tools" / "helonika" / "check_font.py")
     helonika_font = ROOT / "fonts" / "HelonikaBook-Regular.ttf"
@@ -947,6 +972,9 @@ def main():
          "with one character's vertical advance off the em"),
         ("Teng Chou columns", teng_chou_font, load("vertical_em", ROOT / "tools" / "vertical.py").check, column_825,
          "with every vertical advance 825 units"),
+        ("Chalish Pilam Common", chalish_font, chalish.run, without_sun, "without the glyph sun"),
+        ("Chalish Pilam Common", chalish_font, chalish_check.check, without_sun, "without the glyph sun"),
+        ("Chalish Pilam Common", chalish_font, chalish_check.check, off_cell, "with the advance of moon off the cell"),
         ("Khelathi Zethu Glyphs", zethu_font, zethu.run, without_sign, "without the 11-001 sign"),
         ("Khelathi Zethu Glyphs", zethu_font, zethu.run, stripped, "without GSUB"),
         ("Khelathi Zethu Glyphs quadrats", zethu_font, quadrats.run, without_lookup("qxf0.p"), "without the lookup that sums a row's widths"),
