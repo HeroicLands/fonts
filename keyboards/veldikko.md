@@ -42,6 +42,8 @@ A Windows key holds at most four UTF-16 code units and a Linux key one character
 
 | Key | Sound | Script | Platform | Why |
 | --- | --- | --- | --- | --- |
+| `option+s` | `sh` | Veldikko | Linux | 2 code points; an XKB key types one |
+| `option+shift+s` | `Sh` | Veldikko | Linux | 2 code points; an XKB key types one |
 | `option+t` | `th` | Veldikko | Linux | 2 code points; an XKB key types one |
 | `option+shift+t` | `Th` | Veldikko | Linux | 2 code points; an XKB key types one |
 | `option+k` | `kh` | Veldikko | Linux | 2 code points; an XKB key types one |
@@ -92,6 +94,16 @@ A Windows key holds at most four UTF-16 code units and a Linux key one character
 | `option+]` | `ea` | Veldikko | Linux | 3 code points; an XKB key types one |
 | `option+shift+]` | `Ea` | Veldikko | Windows | 6 UTF-16 code units; an MSKLC ligature holds 4 |
 | `option+shift+]` | `Ea` | Veldikko | Linux | 3 code points; an XKB key types one |
+| `option+a` | `á` | Veldikko | Linux | 2 code points; an XKB key types one |
+| `option+shift+a` | `Á` | Veldikko | Linux | 2 code points; an XKB key types one |
+| `option+e` | `é` | Veldikko | Linux | 2 code points; an XKB key types one |
+| `option+shift+e` | `É` | Veldikko | Linux | 2 code points; an XKB key types one |
+| `option+i` | `í` | Veldikko | Linux | 2 code points; an XKB key types one |
+| `option+shift+i` | `Í` | Veldikko | Linux | 2 code points; an XKB key types one |
+| `option+o` | `ó` | Veldikko | Linux | 2 code points; an XKB key types one |
+| `option+shift+o` | `Ó` | Veldikko | Linux | 2 code points; an XKB key types one |
+| `option+u` | `ú` | Veldikko | Linux | 2 code points; an XKB key types one |
+| `option+shift+u` | `Ú` | Veldikko | Linux | 2 code points; an XKB key types one |
 
 ## Markup
 
@@ -170,8 +182,8 @@ Every sound key, in keyboard order. Example: `t` types the sound `t`.
 | `shift+z` | ![U+1ED54](../charts/veldikko/glyphs/U+1ED54.svg) | U+1ED54 | VELDIKKO LETTER S | `Z` | `Z` |
 | `option+c` | ![U+1ED58](../charts/veldikko/glyphs/U+1ED58.svg) | U+1ED58 | VELDIKKO LETTER K | `ch` | `\c` |
 | `option+shift+c` | ![U+1ED58](../charts/veldikko/glyphs/U+1ED58.svg) | U+1ED58 | VELDIKKO LETTER K | `Ch` | `\C` |
-| `option+s` | ![U+1ED54](../charts/veldikko/glyphs/U+1ED54.svg) | U+1ED54 | VELDIKKO LETTER S | `sh` | `\s` |
-| `option+shift+s` | ![U+1ED54](../charts/veldikko/glyphs/U+1ED54.svg) | U+1ED54 | VELDIKKO LETTER S | `Sh` | `\S` |
+| `option+s` | ![U+1ED54](../charts/veldikko/glyphs/U+1ED54.svg) ![U+1ED59](../charts/veldikko/glyphs/U+1ED59.svg) | U+1ED54 U+1ED59 | VELDIKKO LETTER S; VELDIKKO LETTER H | `sh` | `\s` |
+| `option+shift+s` | ![U+1ED54](../charts/veldikko/glyphs/U+1ED54.svg) ![U+1ED59](../charts/veldikko/glyphs/U+1ED59.svg) | U+1ED54 U+1ED59 | VELDIKKO LETTER S; VELDIKKO LETTER H | `Sh` | `\S` |
 | `option+t` | ![U+1ED53](../charts/veldikko/glyphs/U+1ED53.svg) ![U+1ED59](../charts/veldikko/glyphs/U+1ED59.svg) | U+1ED53 U+1ED59 | VELDIKKO LETTER T; VELDIKKO LETTER H | `th` | `\t` |
 | `option+shift+t` | ![U+1ED53](../charts/veldikko/glyphs/U+1ED53.svg) ![U+1ED59](../charts/veldikko/glyphs/U+1ED59.svg) | U+1ED53 U+1ED59 | VELDIKKO LETTER T; VELDIKKO LETTER H | `Th` | `\T` |
 | `option+d` | ![U+1ED57](../charts/veldikko/glyphs/U+1ED57.svg) | U+1ED57 | VELDIKKO LETTER DH | `dh` | `\d` |
@@ -222,16 +234,16 @@ Every sound key, in keyboard order. Example: `t` types the sound `t`.
 | `option+shift+[` | ![U+1ED70](../charts/veldikko/glyphs/U+1ED70.svg) ![U+1ED5D](../charts/veldikko/glyphs/U+1ED5D.svg) ![U+1ED73](../charts/veldikko/glyphs/U+1ED73.svg) | U+1ED70 U+1ED5D U+1ED73 | VELDIKKO VOWEL SIGN A; VELDIKKO LETTER CARRIER; VELDIKKO VOWEL SIGN E | `Ae` | `\{` |
 | `option+]` | ![U+1ED73](../charts/veldikko/glyphs/U+1ED73.svg) ![U+1ED5D](../charts/veldikko/glyphs/U+1ED5D.svg) ![U+1ED70](../charts/veldikko/glyphs/U+1ED70.svg) | U+1ED73 U+1ED5D U+1ED70 | VELDIKKO VOWEL SIGN E; VELDIKKO LETTER CARRIER; VELDIKKO VOWEL SIGN A | `ea` | `\]` |
 | `option+shift+]` | ![U+1ED73](../charts/veldikko/glyphs/U+1ED73.svg) ![U+1ED5D](../charts/veldikko/glyphs/U+1ED5D.svg) ![U+1ED70](../charts/veldikko/glyphs/U+1ED70.svg) | U+1ED73 U+1ED5D U+1ED70 | VELDIKKO VOWEL SIGN E; VELDIKKO LETTER CARRIER; VELDIKKO VOWEL SIGN A | `Ea` | `\}` |
-| `option+a` | ![U+1ED70](../charts/veldikko/glyphs/U+1ED70.svg) | U+1ED70 | VELDIKKO VOWEL SIGN A | `á` | `\a` |
-| `option+shift+a` | ![U+1ED70](../charts/veldikko/glyphs/U+1ED70.svg) | U+1ED70 | VELDIKKO VOWEL SIGN A | `Á` | `\A` |
-| `option+e` | ![U+1ED73](../charts/veldikko/glyphs/U+1ED73.svg) | U+1ED73 | VELDIKKO VOWEL SIGN E | `é` | `\e` |
-| `option+shift+e` | ![U+1ED73](../charts/veldikko/glyphs/U+1ED73.svg) | U+1ED73 | VELDIKKO VOWEL SIGN E | `É` | `\E` |
-| `option+i` | ![U+1ED74](../charts/veldikko/glyphs/U+1ED74.svg) | U+1ED74 | VELDIKKO VOWEL SIGN I | `í` | `\i` |
-| `option+shift+i` | ![U+1ED74](../charts/veldikko/glyphs/U+1ED74.svg) | U+1ED74 | VELDIKKO VOWEL SIGN I | `Í` | `\I` |
-| `option+o` | ![U+1ED71](../charts/veldikko/glyphs/U+1ED71.svg) | U+1ED71 | VELDIKKO VOWEL SIGN O | `ó` | `\o` |
-| `option+shift+o` | ![U+1ED71](../charts/veldikko/glyphs/U+1ED71.svg) | U+1ED71 | VELDIKKO VOWEL SIGN O | `Ó` | `\O` |
-| `option+u` | ![U+1ED72](../charts/veldikko/glyphs/U+1ED72.svg) | U+1ED72 | VELDIKKO VOWEL SIGN U | `ú` | `\u` |
-| `option+shift+u` | ![U+1ED72](../charts/veldikko/glyphs/U+1ED72.svg) | U+1ED72 | VELDIKKO VOWEL SIGN U | `Ú` | `\U` |
+| `option+a` | ![U+1ED70](../charts/veldikko/glyphs/U+1ED70.svg) ![U+1ED7B](../charts/veldikko/glyphs/U+1ED7B.svg) | U+1ED70 U+1ED7B | VELDIKKO VOWEL SIGN A; VELDIKKO SIGN EMPHASIS | `á` | `\a` |
+| `option+shift+a` | ![U+1ED70](../charts/veldikko/glyphs/U+1ED70.svg) ![U+1ED7B](../charts/veldikko/glyphs/U+1ED7B.svg) | U+1ED70 U+1ED7B | VELDIKKO VOWEL SIGN A; VELDIKKO SIGN EMPHASIS | `Á` | `\A` |
+| `option+e` | ![U+1ED73](../charts/veldikko/glyphs/U+1ED73.svg) ![U+1ED7B](../charts/veldikko/glyphs/U+1ED7B.svg) | U+1ED73 U+1ED7B | VELDIKKO VOWEL SIGN E; VELDIKKO SIGN EMPHASIS | `é` | `\e` |
+| `option+shift+e` | ![U+1ED73](../charts/veldikko/glyphs/U+1ED73.svg) ![U+1ED7B](../charts/veldikko/glyphs/U+1ED7B.svg) | U+1ED73 U+1ED7B | VELDIKKO VOWEL SIGN E; VELDIKKO SIGN EMPHASIS | `É` | `\E` |
+| `option+i` | ![U+1ED74](../charts/veldikko/glyphs/U+1ED74.svg) ![U+1ED7B](../charts/veldikko/glyphs/U+1ED7B.svg) | U+1ED74 U+1ED7B | VELDIKKO VOWEL SIGN I; VELDIKKO SIGN EMPHASIS | `í` | `\i` |
+| `option+shift+i` | ![U+1ED74](../charts/veldikko/glyphs/U+1ED74.svg) ![U+1ED7B](../charts/veldikko/glyphs/U+1ED7B.svg) | U+1ED74 U+1ED7B | VELDIKKO VOWEL SIGN I; VELDIKKO SIGN EMPHASIS | `Í` | `\I` |
+| `option+o` | ![U+1ED71](../charts/veldikko/glyphs/U+1ED71.svg) ![U+1ED7B](../charts/veldikko/glyphs/U+1ED7B.svg) | U+1ED71 U+1ED7B | VELDIKKO VOWEL SIGN O; VELDIKKO SIGN EMPHASIS | `ó` | `\o` |
+| `option+shift+o` | ![U+1ED71](../charts/veldikko/glyphs/U+1ED71.svg) ![U+1ED7B](../charts/veldikko/glyphs/U+1ED7B.svg) | U+1ED71 U+1ED7B | VELDIKKO VOWEL SIGN O; VELDIKKO SIGN EMPHASIS | `Ó` | `\O` |
+| `option+u` | ![U+1ED72](../charts/veldikko/glyphs/U+1ED72.svg) ![U+1ED7B](../charts/veldikko/glyphs/U+1ED7B.svg) | U+1ED72 U+1ED7B | VELDIKKO VOWEL SIGN U; VELDIKKO SIGN EMPHASIS | `ú` | `\u` |
+| `option+shift+u` | ![U+1ED72](../charts/veldikko/glyphs/U+1ED72.svg) ![U+1ED7B](../charts/veldikko/glyphs/U+1ED7B.svg) | U+1ED72 U+1ED7B | VELDIKKO VOWEL SIGN U; VELDIKKO SIGN EMPHASIS | `Ú` | `\U` |
 | `option+;` |  | nothing: this script has no character for the sound |  | `ä` | `\;` |
 | `option+shift+;` |  | nothing: this script has no character for the sound |  | `Ä` | `\:` |
 | `option+'` | ![U+1ED76](../charts/veldikko/glyphs/U+1ED76.svg) | U+1ED76 | VELDIKKO VOWEL SIGN E WITH DIAERESIS | `ë` | `\'` |

@@ -395,9 +395,9 @@ The outlines are fitted with Teng Chou's `fit.py`. Where a fitted curve would ru
 outside its polygon's box, as it can at a sharp joint of two strokes, the polygon
 is kept as straight lines, sampled closely enough to read as curves at every size.
 
-### The mapping and the keyboard
+### The encoding and the keyboard
 
-thalorna's `vedyakshara` mapping note, `Lore/Scripts/Vedyakshara_Spelling.md`,
+the `vedyakshara` encoding, `encodings/vedyakshara.json`,
 writes Vedyari's roman spelling in these code points: a consonant before a vowel
 is its sign alone, _a_ after a consonant writes nothing, another vowel after a
 consonant is its vowel sign, a vowel at the start of a word or a capital vowel is
@@ -409,7 +409,7 @@ and the full stop the bar with two.
 HL Vedyakshara types by sound like the other layouts. A consonant key types the
 bare consonant, which carries _a_; the _a_ key types nothing; another vowel key
 types its vowel sign; a capital vowel types its own sign. Vedyari writes no catch,
-so the catch key, `'`, types the cut, as the mapping note writes an apostrophe: a
+so the catch key, `'`, types the cut, as the encoding writes an apostrophe: a
 consonant with no vowel after it is typed with `'` after it, and _Suryadvar_ is
 typed S, u, r, `'`, y, a, d, `'`, v, a, r, `'`.
 
@@ -426,7 +426,7 @@ typed S, u, r, `'`, y, a, d, `'`, v, a, r, `'`.
   exists and is reached by its rule, that every flag and hook stands on its
   sign's anchor and every hook's neck meets the body, and that a mark after a
   space is the box.
-- `guard.py` writes every form of the Vedyari lexicon through the mapping note and
+- `guard.py` writes every form of the Vedyari lexicon through the encoding and
   asserts the glyphs the font shapes it to, from an account of the rules above
   written in Python; its fixtures in `fixtures.json` hold real words and
   phrases, and two forms with letters the script does not write.

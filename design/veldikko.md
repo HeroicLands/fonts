@@ -16,7 +16,7 @@ letters and their marks, and layer 3, the joining and the font, Veldikko.
   its own family of letter shapes, and within a family the stop, the fricative
   and the nasal are one shape varied three ways. Vowels are marks above the
   consonant they follow, carrying length and pitch. The Sinale language note's
-  mapping governs the letter inventory.
+  encoding governs the letter inventory.
 - **Right to left.** The pen travels leftward.
 - **A blend of Tengwar and Arabic calligraphy, copying neither.** From Tengwar
   the hand takes its principles: letters built from a stem and bowls, arches
@@ -247,7 +247,7 @@ stem with that family's bowl:
 form, for two reasons. They belong to the family's own image, a train of waves
 on the water; and _t_, _s_ and _n_ are the commonest consonants of Sinale, so
 the arched form is the commonest letter on a page and carries the heaviest share
-of the implied line. A voiced-partner mapping was weighed and set aside: Sinale
+of the implied line. A voiced-partner encoding was weighed and set aside: Sinale
 has almost no voiced partners, so it would put the form on two rare letters. The
 stroke takes one to three arches; the letters use two. Tengwar gives its double bow to the lips; the Veldikko does
 not.
@@ -590,7 +590,7 @@ A word is typed as it is said: a letter, then the bar if its consonant is double
 then each vowel mark in the order said, each followed by its signs. _mollu_ is
 _m_, _o_, _l_, bar, _u_; _nuuva_ is _n_, _u_, long, _v_, _a_.
 
-`tools/veldikko/convert.mjs` converts romanized Sinale by the Sinale mapping, and
+`tools/veldikko/convert.mjs` converts romanized Sinale by the Sinale encoding, and
 the guard and the specimens use it. A doubled consonant is the letter and the bar;
 _n_ before _k_ is _ng_; a doubled vowel is one mark with the long sign, and
 _eë_ is the long _ë_, so _leësy_ is _l_, _ë_, long, _s_, _y_; a diphthong of the
@@ -683,7 +683,7 @@ each letter's form, each folded mark, and where each mark and bar stands.
   rises or falls against the level of a list.
 - **Áelendan vowels.** Áelendi has eight vowel positions with length, and its
   scribes spend the pitch marks on them; which flick marks which vowel is the
-  Áelendi mapping's to settle.
+  Áelendi encoding's to settle.
 - **Ejectives in a romanized source.** The romanization writes none, so whether
-  the mapping ever produces the catch, or leaves it to transcriptions of old
+  the encoding ever produces the catch, or leaves it to transcriptions of old
   pages, is open.

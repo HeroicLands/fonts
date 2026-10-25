@@ -1,8 +1,8 @@
 # Copyright (c) 2026 Tom Rodriguez ("Toasty") — <toasty@heroiclands.org>
 # SPDX-License-Identifier: OFL-1.1
-"""Confirm that the sound layouts type what the mapping notes spell, and nothing else.
+"""Confirm that the sound layouts type what the encodings spell, and nothing else.
 
-    .venv/bin/python tools/keyboards_guard.py [--thalorna ~/dev/HeroicLands/thalorna | --fixtures-only]
+    .venv/bin/python tools/keyboards_guard.py [--encoding SCRIPT=FILE]
 
 - **The key map.** Every key of tools/sound_keys.json is a key, no key or chord carries
   two sounds, a capital sits on Shift and the key of its small sound, the Emacs Option
@@ -25,16 +25,16 @@
   every key the macOS layout types has a row in the sheet's tables, with the code points
   the layout types, and a ``data-key`` entry on the printable keyboard picture. A script
   added to ``keyboards.SCRIPTS`` is covered with no change here.
-- **The mapping notes.** Unless ``--fixtures-only`` is given, keyboards/sounds.json is
-  written afresh by tools/sounds.mjs from the ``origin/main`` of the thalorna checkout
+- **The encodings.** keyboards/sounds.json is written afresh by tools/sounds.py from
+  ``encodings/<script>.json`` (or the file ``--encoding SCRIPT=FILE`` names for a script)
   and must equal the committed file.
 """
 
 import argparse
 import html
+import importlib.util
 import json
 import re
-import subprocess
 import sys
 from pathlib import Path
 
@@ -85,14 +85,14 @@ def keymap_problems(keymap: list[dict], sounds: list[dict]) -> list[str]:
     problems += markup_problems(owner)
     problems += sign_problems(owner)
     listed = {s["sound"]: s["spelling"] for s in sounds}
-    mapped = {e["sound"]: e["spelling"] for e in keymap}
-    for sound in sorted(listed.keys() - mapped.keys()):
+    wanted = {e["sound"]: e["spelling"] for e in keymap}
+    for sound in sorted(listed.keys() - wanted.keys()):
         problems.append(f"keyboards/sounds.json: error: {sound} has no key in tools/sound_keys.json")
-    for sound in sorted(mapped.keys() - listed.keys()):
-        problems.append(f"keyboards/sounds.json: error: {sound} of tools/sound_keys.json is missing; run tools/sounds.mjs")
-    for sound in sorted(listed.keys() & mapped.keys()):
-        if listed[sound] != mapped[sound]:
-            problems.append(f"keyboards/sounds.json: error: {sound} is spelled {listed[sound]!r}, not {mapped[sound]!r}")
+    for sound in sorted(wanted.keys() - listed.keys()):
+        problems.append(f"keyboards/sounds.json: error: {sound} of tools/sound_keys.json is missing; run tools/sounds.py --write")
+    for sound in sorted(listed.keys() & wanted.keys()):
+        if listed[sound] != wanted[sound]:
+            problems.append(f"keyboards/sounds.json: error: {sound} is spelled {listed[sound]!r}, not {wanted[sound]!r}")
     for s in sounds:
         if set(s["scripts"]) != set(SCRIPT_KEYS):
             problems.append(f"keyboards/sounds.json: error: {s['sound']} lists the scripts {sorted(s['scripts'])}")
@@ -327,33 +327,34 @@ def zethu_problems(table: list[dict]) -> list[str]:
     return problems
 
 
-def thalorna_problems(thalorna: Path, committed: dict, notes: list[str] = ()) -> list[str]:
-    """Where keyboards/sounds.json differs from what the mapping notes spell today."""
-    run = subprocess.run(
-        ["node", str(ROOT / "tools" / "sounds.mjs"), "--thalorna", str(thalorna),
-         *[a for n in notes for a in ("--map-note", n)]],
-        capture_output=True, text=True, cwd=ROOT,
-    )  # fmt: skip
-    if run.returncode:
-        return [f"tools/sounds.mjs: error: {line}" for line in run.stderr.strip().splitlines()[-5:]]
-    fresh = json.loads(run.stdout)
+def encoding_problems(committed: dict, files: dict[str, str] | None = None) -> list[str]:
+    """Where keyboards/sounds.json differs from what the encodings spell."""
+    sounds = load_module("sounds", ROOT / "tools" / "sounds.py")
+    fresh = sounds.build(files)
     problems = []
     if fresh["source"] != committed["source"]:
-        problems.append("keyboards/sounds.json: error: the mapping notes or their faces differ from thalorna's")
+        problems.append("keyboards/sounds.json: error: the encodings or their faces differ from the file's source")
     old = {s["sound"]: s for s in committed["sounds"]}
     for s in fresh["sounds"]:
         if s != old.get(s["sound"]):
-            problems.append(f"keyboards/sounds.json: error: {s['sound']}: thalorna spells {json.dumps(s['scripts'], ensure_ascii=False)}")
+            problems.append(f"keyboards/sounds.json: error: {s['sound']}: the encodings spell {json.dumps(s['scripts'], ensure_ascii=False)}")
     if [s["sound"] for s in fresh["sounds"]] != [s["sound"] for s in committed["sounds"]]:
         problems.append("keyboards/sounds.json: error: the sounds differ from tools/sound_keys.json's")
     return problems
+
+
+def load_module(name: str, path: Path):
+    spec = importlib.util.spec_from_file_location(name, path)
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
 
 
 def committed_sounds() -> dict:
     return json.loads((KEYBOARDS / "sounds.json").read_text(encoding="utf-8"))
 
 
-def check(thalorna: Path | None, notes: list[str] = ()) -> list[str]:
+def check(files: dict[str, str] | None = None) -> list[str]:
     keymap = kk.load()["sounds"]
     committed = committed_sounds()
     sounds = committed["sounds"]
@@ -363,19 +364,16 @@ def check(thalorna: Path | None, notes: list[str] = ()) -> list[str]:
         problems += cheatsheet_problems(script, keymap, sounds, *read_cheatsheet(script))
     zethu = next(f for f in keyboards.manifest()["families"] if f["name"] == "Khelathi Zethu Glyphs")
     problems += zethu_problems(zethu["codepoints"])
-    if thalorna is not None:
-        problems += thalorna_problems(thalorna, committed, notes)
+    problems += encoding_problems(committed, files)
     return problems
 
 
 def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
-    ap.add_argument("--thalorna", default=str(Path.home() / "dev/HeroicLands/thalorna"))
-    ap.add_argument("--fixtures-only", action="store_true", help="read no thalorna checkout")
-    ap.add_argument("--map-note", action="append", default=[], metavar="SCRIPT=FILE",
-                    help="read a script's mapping note from a file instead of git, such as vedyakshara=FILE")
+    ap.add_argument("--encoding", action="append", default=[], metavar="SCRIPT=FILE",
+                    help="apply an encoding file for a script instead of encodings/<script>.json, such as vedyakshara=FILE")
     args = ap.parse_args()
-    problems = check(None if args.fixtures_only else Path(args.thalorna), args.map_note)
+    problems = check(dict(entry.split("=", 1) for entry in args.encoding))
     print(f"keyboards: {len(kk.load()['sounds'])} sounds on {len(SCRIPT_KEYS)} layouts and 4 platforms, " + (f"{len(problems)} problems" if problems else "ok"))
     for line in problems[:40]:
         print(line)

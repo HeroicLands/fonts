@@ -4,10 +4,10 @@
 
     .venv/bin/python tools/pirzath-hand/guard.py [--font fonts/PirzathHand-Regular.ttf]
                                               [--thalorna ~/dev/HeroicLands/thalorna | --note FILE]
-                                              [--map-note FILE | --fixtures-only]
+                                              [--encoding FILE | --fixtures-only]
 
 The hand draws the same code points as the carved face, and every form is
-written through the same ``pirzath`` mapping note, so the lexicon, the expected
+written through the same ``pirzath`` encoding, so the lexicon, the expected
 spelling of each form and the carved face's fixtures (numerals, quotation
 marks, the marks between words, doubling and the seventeen lost letters) come
 from ``tools/pirzath/guard.py`` and must shape here the same way. The hand
@@ -31,7 +31,7 @@ from pathlib import Path
 from fontTools.pens.boundsPen import BoundsPen
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
-from mapped import Mapping, MappedRenderer  # noqa: E402
+from encoded import Encoded, EncodedRenderer  # noqa: E402
 from render import Renderer  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent.parent
@@ -52,7 +52,8 @@ EMPTY = {"ignorable", "ignorable.sub"}
 
 def collapse(glyphs: list[str]) -> list[str]:
     """The hand's glyphs for a carved sequence or fixture: a vowel and its length mark are the
-    long-vowel glyph, and a consonant and its doubling mark are the doubled glyph."""
+    long-vowel glyph, a consonant and its doubling mark are the doubled glyph, and the carved
+    face's space.dot is the hand's space."""
     out: list[str] = []
     for g in glyphs:
         if g in ("lengthmark", "doubling"):
@@ -64,7 +65,7 @@ def collapse(glyphs: list[str]) -> list[str]:
             else:
                 out.append(g)
         else:
-            out.append(g)
+            out.append("space" if g == "space.dot" else g)
     return out
 
 
@@ -163,14 +164,13 @@ def ignorable_failures(r: Renderer) -> list[str]:
 
 
 def fixture_texts() -> list[str]:
-    """Every roman text the fixtures write through the mapping."""
+    """Every roman text the fixtures write through the encoding."""
     return ([t for t, _ in CARVED.FIXTURES + CARVED.LOST_FIXTURES + HAND_FIXTURES]
             + [t for t, _, _ in MARK_FIXTURES] + IGNORABLE_FIXTURES + [bare(t) for t in IGNORABLE_FIXTURES])
 
 
-def run(font: Path, forms: list[str], mapping: Mapping | None = None) -> list[str]:
-    r = MappedRenderer(Renderer(font), mapping or Mapping.offline("pirzath-hand"))
-    r.prepare(forms + fixture_texts())
+def run(font: Path, forms: list[str], encoded: Encoded | None = None) -> list[str]:
+    r = EncodedRenderer(Renderer(font), encoded or Encoded("pirzath-hand"))
     failures = []
     digraphs = acutes = doubled = 0
     for form in forms:
@@ -204,16 +204,13 @@ def main():
     ap.add_argument("--font", default=str(ROOT / "fonts" / "PirzathHand-Regular.ttf"))
     ap.add_argument("--thalorna", default=str(Path.home() / "dev/HeroicLands/thalorna"))
     ap.add_argument("--note", help="read the language note from this file instead of git")
-    ap.add_argument("--map-note", help="read the pirzath mapping note from this file instead of git")
+    ap.add_argument("--encoding", help="apply this encoding file instead of encodings/pirzath.json")
     ap.add_argument("--fixtures-only", action="store_true",
-                    help="shape the fixtures alone, written as tools/mapped.json records them")
+                    help="shape the fixtures alone and read no lexicon")
     args = ap.parse_args()
-    if args.fixtures_only:
-        forms, mapping = [], Mapping.offline("pirzath-hand")
-    else:
-        forms = CARVED.lexicon_forms(Path(args.thalorna), Path(args.note) if args.note else None)
-        mapping = Mapping("pirzath", thalorna=Path(args.thalorna), note=args.map_note, face="pirzath-hand")
-    failures = run(Path(args.font), forms, mapping)
+    forms = [] if args.fixtures_only else CARVED.lexicon_forms(Path(args.thalorna), Path(args.note) if args.note else None)
+    encoded = Encoded("pirzath-hand", args.encoding)
+    failures = run(Path(args.font), forms, encoded)
     for f in failures[:40]:
         print(f"{args.font}: error: {f}")
     if len(failures) > 40:

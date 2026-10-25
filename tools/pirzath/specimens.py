@@ -16,7 +16,7 @@ from pathlib import Path
 from PIL import Image, ImageDraw
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
-from mapped import Mapping, MappedRenderer  # noqa: E402
+from encoded import Encoded, EncodedRenderer  # noqa: E402
 from render import Renderer, label_font  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent.parent
@@ -288,12 +288,10 @@ def main():
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     ap.add_argument("--font", default=str(ROOT / "fonts" / "PirzathCarved-Regular.ttf"))
     ap.add_argument("--out", default=str(ROOT / "specimens" / "pirzath"))
-    ap.add_argument("--thalorna", default=str(Path.home() / "dev/HeroicLands/thalorna"),
-                    help="the checkout whose mapping notes write the roman texts")
     args = ap.parse_args()
     out = Path(args.out)
     out.mkdir(parents=True, exist_ok=True)
-    r = MappedRenderer(Renderer(Path(args.font)), Mapping("pirzath", thalorna=Path(args.thalorna), face="pirzath-carved"))
+    r = EncodedRenderer(Renderer(Path(args.font)), Encoded("pirzath-carved"))
     glyph_chart(r, out / "01-glyph-chart.png")
     texts(r, out / "02-texts-reading.png", 36, "The Khazari texts at reading size")
     texts(r, out / "03-texts-display.png", 96, "The Khazari texts at display size")

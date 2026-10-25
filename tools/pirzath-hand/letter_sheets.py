@@ -7,7 +7,7 @@
 
 The sheet shows every sign large with the roman that writes it; the sixteen digits
 together; every sign at 24 and 48 px after Monaspace Neon's "xhn"; and Khazari words
-and the sample texts, written through thalorna's ``pirzath`` mapping note, beside the
+and the sample texts, written through the ``pirzath`` encoding, beside the
 same words in a mixed-case Monaspace Neon line and in Pirzath Carved, all at one font
 size. The words come from the Khazari language note on thalorna's ``origin/main``.
 """
@@ -27,7 +27,7 @@ sys.path.insert(0, str(HERE))
 sys.path.insert(0, str(ROOT / "tools"))
 import letters as L  # noqa: E402
 import strokes as S  # noqa: E402
-from mapped import Mapping  # noqa: E402
+from encoded import Encoded  # noqa: E402
 from render import Renderer  # noqa: E402
 from strokes_sheet import BLUE, FAINT, GREY, INK, LATIN_FONT, PAPER, RED, RULE, draw_path, font  # noqa: E402
 
@@ -99,11 +99,9 @@ def carved_image(r: Renderer, cps: str, px: float):
 
 def sheet(out: Path, thalorna: Path):
     WIDTH = 2400
-    hand = Mapping("pirzath", thalorna=thalorna, face="pirzath-hand")
-    carved = Mapping("pirzath", thalorna=thalorna, face="pirzath-carved")
+    hand = Encoded("pirzath-hand")
+    carved = Encoded("pirzath-carved")
     words = lexicon_words(thalorna, 48)
-    hand.write(words + SAMPLES)
-    carved.write(SAMPLES)
     carved_r = Renderer(CARVED_FONT)
 
     order = (list(L.VOWELS) + list(L.LONG) + list(L.DIPHTHONGS) + list(L.CONSONANTS) + list(L.POINTS)
@@ -202,7 +200,7 @@ def sheet(out: Path, thalorna: Path):
         y = oy + px * 1.2 + 30
 
     # -- words and texts
-    d.text((40, y), "Khazari words and texts, written through the pirzath mapping: Monaspace Neon, Pirzath Carved and "
+    d.text((40, y), "Khazari words and texts, written through the pirzath encoding: Monaspace Neon, Pirzath Carved and "
            "the hand at one font size", fill=INK, font=font(32))
     y += 60
     px = 40

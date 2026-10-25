@@ -19,7 +19,7 @@ from pathlib import Path
 from PIL import Image, ImageDraw
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
-from mapped import Mapping, MappedRenderer  # noqa: E402
+from encoded import Encoded, EncodedRenderer  # noqa: E402
 from render import Renderer, label_font  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent.parent
@@ -64,7 +64,7 @@ STAVE_TABLE = [
     ('oi', 'oi', 'oi (Tharavarkon)', 'oi'),
 ]
 
-# The recension's characters have no row in the Thuravark mapping, so the sheets type
+# The recension's characters have no row in the Thuravark encoding, so the sheets type
 # them in the font's own code points.
 RAW = {"ai": "\U000F0128", "au": "\U000F0129", "oi": "\U000F012A"}
 OPEN, CLOSE = "\U000F0150", "\U000F0151"
@@ -256,13 +256,13 @@ def recension(r: Renderer, out: Path):
     y += 40
     for roman, note in CROWNED:
         baseline = y + 40 + int(size * 0.98)
-        text = OPEN + r.mapping.one(roman) + CLOSE
+        text = OPEN + r.encoded.one(roman) + CLOSE
         w = r.renderer.text(img, 60, baseline, text, size, INK)
         d.text((60, baseline + 30), f"{roman}   {note}", fill=INK, font=lab)
         y += int(size * 1.5) + 40
     # An open with no close.
     baseline = y + 40 + int(size * 0.98)
-    r.renderer.text(img, 60, baseline, OPEN + r.mapping.one("Thauras"), size, INK)
+    r.renderer.text(img, 60, baseline, OPEN + r.encoded.one("Thauras"), size, INK)
     d.text((60, baseline + 30), "Thauras with the open mark and no close: a bare post, no frame", fill=GREY, font=lab)
     y += int(size * 1.5) + 60
     # The bound runes.
@@ -294,13 +294,11 @@ def main():
     ap.add_argument("--font", default=str(ROOT / "fonts" / "ThuravarkCarved-Regular.ttf"))
     ap.add_argument("--pirzath", default=str(ROOT / "fonts" / "PirzathCarved-Regular.ttf"))
     ap.add_argument("--out", default=str(ROOT / "specimens" / "thuravark-carved"))
-    ap.add_argument("--thalorna", default=str(Path.home() / "dev/HeroicLands/thalorna"),
-                    help="the checkout whose mapping notes write the roman texts")
     args = ap.parse_args()
     out = Path(args.out)
     out.mkdir(parents=True, exist_ok=True)
-    r = MappedRenderer(Renderer(Path(args.font)), Mapping("thuravark", thalorna=Path(args.thalorna), face="thuravark-carved"))
-    p = MappedRenderer(Renderer(Path(args.pirzath)), Mapping("pirzath", thalorna=Path(args.thalorna), face="pirzath-carved"))
+    r = EncodedRenderer(Renderer(Path(args.font)), Encoded("thuravark-carved"))
+    p = EncodedRenderer(Renderer(Path(args.pirzath)), Encoded("pirzath-carved"))
     glyph_chart(r, out / "01-glyph-chart.png")
     texts(r, out / "02-nordmal.png")
     numerals(r, out / "03-numerals.png")

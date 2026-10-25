@@ -24,7 +24,7 @@
     {"latin": "Bethuan", "glyphs": ["B", "e", "th", "u", "a", "n"]},
     {"latin": "rhezin", "glyphs": ["r", "h", "e", "z", "i", "n"]}
   ],
-  "unmappable": [
+  "unencodable": [
     {"latin": "Xenos", "letter": "X"},
     {"latin": "Cato", "letter": "C"},
     {"latin": "kosamir?", "letter": "?"},
@@ -45,7 +45,7 @@
       {"latin": "eiros", "glyphs": ["e", "i", "r", "o", "s"]},
       {"latin": "a. a", "glyphs": ["a", "raisedDot", "a"]}
     ],
-    "unmappable": [
+    "unencodable": [
       {"latin": "a; a", "letter": ";"},
       {"latin": "a: a", "letter": ":"}
     ]
@@ -60,7 +60,7 @@
       {"latin": "dómissa", "glyphs": ["d", "o", "accent", "m", "i", "s", "s", "a"]},
       {"latin": "a. a", "glyphs": ["a", "raisedDot", "a"]}
     ],
-    "unmappable": [
+    "unencodable": [
       {"latin": "a; a", "letter": ";"},
       {"latin": "a: a", "letter": ":"}
     ]

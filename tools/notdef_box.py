@@ -29,8 +29,8 @@ A font fails when
 - a default-ignorable of the ranges (U+202A-202E) does not map to an empty glyph;
 - any default-ignorable character (U+200B-200F, U+202A-202E, U+2066-2069, U+FEFF),
   shaped alone, yields a glyph that draws or an advance other than zero. HarfBuzz
-  replaces a mapped ignorable with the font's space glyph unless a ``ccmp``
-  substitution changes it, and Pirzath's space is a visible dot;
+  replaces an ignorable with the font's space glyph unless a ``ccmp`` substitution
+  changes it, so Pirzath Carved's space glyph is empty and its dot a substitution;
 - a drawn code point reaches a glyph that draws nothing and is neither exception;
 - the OS/2 winAscent or winDescent is smaller than the highest or lowest ink of any
   glyph, which Windows clips.

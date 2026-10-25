@@ -1,0 +1,98 @@
+{
+  "semaron": {
+    "title": "semaron encoding",
+    "example": "thalen kaa",
+    "intro": [
+      "Semaron Kuriale is an alphabet of capital and small letters, written left to right. This encoding writes a roman spelling in its letters: `th` is one letter, `ch` is written with the letters for t, s and h, a doubled `a`, `i` or `u` is a long vowel, `q` is written as `k`, and `y` before a vowel is a glide. An apostrophe or hyphen after a letter writes the catch, a mark on the letter before it."
+    ]
+  },
+  "aelwythi-semaron": {
+    "title": "aelwythi-semaron encoding",
+    "example": "thalen kal",
+    "intro": [
+      "A second roman spelling for Semaron Kuriale, which draws the same letters as the semaron encoding. It takes each roman letter on its own where semaron joins them: a doubled vowel is two vowels, `c` is written as s before `e`, `i` and `y` and as k elsewhere, and `ch` and `tch` are written with the letters for t, s and h. The apostrophe and the quotation mark draw nothing and are written as invisible marks, and a hyphen draws a space and carries a mark."
+    ]
+  },
+  "pirzath": {
+    "title": "pirzath encoding",
+    "example": "kitha",
+    "intro": [
+      "Pirzath is a script of letters read left to right, drawn carved in Pirzath Carved and in a hand in Pirzath Hand on the same code points. This encoding writes a roman spelling in them: a digraph such as `th` or `kh` is a single letter, and `ay` before a consonant or at the end of a word is the single letter for the diphthong."
+    ]
+  },
+  "thuravark": {
+    "title": "thuravark encoding",
+    "example": "kitha",
+    "intro": [
+      "Thuravark Carved is a row of straight staves for letters, numerals and a few marks, read left to right. This encoding writes a roman spelling in them: a digraph such as `th` or `kh` is a single stave, a doubled vowel is the stave twice, and a hyphen draws nothing and is written as an invisible mark."
+    ]
+  },
+  "qalezu": {
+    "title": "qalezu encoding",
+    "example": "lrtk",
+    "intro": [
+      "Qalezu Hand is a right-to-left script with one sign for each consonant. This encoding writes a roman spelling in them: a vowel draws nothing except at the start of a word, where it draws the catch sign; elsewhere it is written as an invisible mark, so decoding restores it, and a digraph such as `kh` is a single sign."
+    ]
+  },
+  "vedyakshara": {
+    "title": "vedyakshara encoding",
+    "example": "kithe",
+    "intro": [
+      "Vedyakshara Classical is a left-to-right script in which each consonant carries the vowel `a`. This encoding writes a roman spelling in it: a consonant before a vowel is the bare consonant followed by that vowel's sign, a consonant elsewhere is the consonant with the cut that takes the vowel away, and `a` draws no sign of its own and is written as an invisible mark."
+    ]
+  },
+  "helonika": {
+    "title": "helonika encoding",
+    "example": "kela",
+    "intro": [
+      "Helonika Book is an alphabet of capital and small letters, written left to right. This encoding writes a roman spelling in its letters: `ei` and `ou` are the single letters for the long vowels, while `kh`, `zh` and doubled vowels are written as two letters."
+    ]
+  },
+  "helonika-bizarian": {
+    "title": "helonika-bizarian encoding",
+    "example": "khela",
+    "intro": [
+      "A second roman spelling for Helonika Book. Here `kh` and `zh` are single letters, a doubled `a`, `i` or `u` is a long vowel, `ei` is two letters, and an acute vowel is the vowel followed by the accent mark."
+    ]
+  },
+  "helonika-bethuan": {
+    "title": "helonika-bethuan encoding",
+    "example": "khela",
+    "intro": [
+      "A third roman spelling for Helonika Book. Here `kh` is a single letter and `zh` two, a doubled `a`, `i` or `u` is a long vowel, `ei` is the single letter for the long vowel, and an acute vowel is the vowel followed by the accent mark."
+    ]
+  },
+  "veldikko": {
+    "title": "veldikko encoding",
+    "example": "tanu",
+    "summary": true,
+    "intro": [
+      "Veldikko is a right-to-left calligraphy whose letters join along the line, with vowel marks that float above them. This encoding writes a roman spelling in its code points: a letter, then the doubling bar if the consonant is doubled, then each vowel mark followed by its signs of length, pitch and emphasis."
+    ],
+    "structure": [
+      "Its rows are generated from a small number of parts, so the complete table is too long to read. Every consonant is a single letter; a roman letter the script lacks (`b`, `f`, `w`, `z`, `c`, `q`, `g`) is written as the nearest letter, and `x` is written as two letters. A vowel is its vowel sign, and a vowel at the start of a word is written after the carrier letter. A doubled vowel adds the long sign. The accents circumflex, caron and acute, typed on a vowel or after it, add the rise, fall and emphasis signs. A doubled consonant adds the doubling bar. A capital draws the same letters as its small form and carries a mark that decoding reads back as the capital.",
+      "The rows below are the rows of a single character, then a few longer rows of each length."
+    ]
+  },
+  "veldikko-aelendi": {
+    "title": "veldikko-aelendi encoding",
+    "example": "tanu",
+    "intro": [
+      "A second roman spelling for Veldikko, with the same letters and marks. It writes the consonant digraphs such as `th`, `dh`, `kh` and `ng` as single letters."
+    ]
+  },
+  "zethu-mdc": {
+    "title": "zethu-mdc encoding",
+    "example": "SERVANT",
+    "intro": [
+      "Khelathi Zethu Glyphs is a right-to-left script of signs, one sign to a word. This encoding writes the named code of a sign, in capitals, as its code point."
+    ]
+  },
+  "chalish-common": {
+    "title": "chalish-common encoding",
+    "example": "n1",
+    "intro": [
+      "Chalish Pilam Common is a logographic script in which each glyph records a concept. This encoding writes the named code of a glyph, such as `n1` for the numeral one, as its code point."
+    ]
+  }
+}

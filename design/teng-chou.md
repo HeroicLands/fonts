@@ -665,7 +665,7 @@ committed: an edit belongs in `tools/teng-chou/`, and the script is run after it
   reads the origin from each glyph's top side bearing. `tools/vertical.py` checks
   all of it.
 - **Typing.** The characters and signs are typed by code point, or written by a
-  mapping in the consuming build; Teng Chou has no keyboard layout.
+  encoding in the consuming build; Teng Chou has no keyboard layout.
 
 `tools/teng-chou/text_specimen.py` sets the Tantsou and Jurthati passages of
 `tools/teng-chou/texts.py` from the built font: `text.png` along a line at display

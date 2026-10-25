@@ -21,7 +21,7 @@ bowls, arches, cups and hooked stems (the ``hooked`` and ``swing`` strokes), fre
 ends turned into flourishes, and every free bar end curled up. They need not follow
 their capitals, and only the six echoes, _o th ō p d l_, resemble Greek letters.
 
-``spell`` is the Helonic spelling the specimens are set with; the mapping notes in
+``spell`` is the Helonic spelling the specimens are set with; the encodings in
 thalorna are what a text is written through.
 """
 

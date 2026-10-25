@@ -8,6 +8,8 @@
         "./fonts.css": "./fonts.css",
         "./fonts.json": "./fonts.json",
         "./fonts/*": "./fonts/*",
+        "./encodings/*": "./encodings/*",
+        "./encode.py": "./encode.py",
         "./package.json": "./package.json"
     },
     "files": [
@@ -17,6 +19,8 @@
         "fonts.json",
         "keyboards",
         "charts",
+        "encodings",
+        "encode.py",
         "LICENSE",
         "README.md"
     ],
@@ -25,7 +29,7 @@
         "@heroiclands/package-build": "^23.12.8"
     },
     "scripts": {
-        "test": "node --test tools/convert.test.mjs tools/mapping.test.mjs tools/package_check.test.mjs",
+        "test": "node --test tools/convert.test.mjs tools/package_check.test.mjs",
         "format": "package-build format --write",
         "format:check": "package-build format",
         "check:package": "node tools/package_check.mjs",

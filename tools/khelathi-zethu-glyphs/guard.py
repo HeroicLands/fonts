@@ -21,6 +21,7 @@ The guard reads no lexicon: the samples and the encoding are in this directory.
 
 import argparse
 import json
+import re
 import sys
 from pathlib import Path
 
@@ -73,13 +74,32 @@ class Shaper:
         ]
 
 
+# A sign's codage code: its sense in capitals, words joined by ``_``. A hyphen ends a
+# quadrat in the codage and ``N`` with digits is a number, so neither is a code.
+CODE = re.compile(r"[A-Z][A-Z0-9_]*")
+
+
+def code_failures(signs: list[dict]) -> list[str]:
+    """Every sign without a well-formed code, and every code two signs share."""
+    out, seen = [], {}
+    for e in signs:
+        c = e.get("code", "")
+        if not CODE.fullmatch(c) or re.fullmatch(r"N\d+", c):
+            out.append(f"{e['id']}: code {c!r} is not capitals and _")
+        elif c in seen:
+            out.append(f"{e['id']}: code {c} is also {seen[c]}'s")
+        else:
+            seen[c] = e["id"]
+    return out
+
+
 def run(path: Path, report=None) -> list[str]:
     """Every failure of the font at `path`; `report`, if given, collects the counts."""
     enc = json.loads(ENCODING.read_text(encoding="utf-8"))
     code = {e["id"]: cp(e["codepoint"]) for e in enc["signs"] if e["drawn"]}
     variants = {e["id"]: e["variants"] for e in enc["signs"] if e["drawn"]}
     shaper = Shaper(path)
-    failures = []
+    failures = code_failures(enc["signs"])
     counts = {"samples": 0, "signs": 0, "variant shapings": 0}
 
     for label, ids in sample_lists():

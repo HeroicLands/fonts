@@ -6,9 +6,9 @@
 
 The layouts type by sound. tools/sound_keys.json puts every sound of the spelling
 guide on one key or chord, the same in every script, and keyboards/sounds.json
-(written by tools/sounds.mjs from thalorna's mapping notes) gives what each sound is
+(written by tools/sounds.py from the encodings) gives what each sound is
 in each script. A layout's key types its sound's output, as many code points as the
-mapping writes; a key whose sound the mapping cannot spell, and a key that carries no
+encoding writes; a key whose sound the encoding cannot spell, and a key that carries no
 sound, types nothing. The signs of the key map (``signs``), keys that are not sounds, type
 one code point in the layout of the script that writes them and nothing in the others. No key types a roman letter, apart from the keys of markup
 (``markup`` in the key map), which type themselves as plain ASCII in every layout.

@@ -124,6 +124,8 @@
     <string>sh.glif</string>
     <key>space</key>
     <string>space.glif</string>
+    <key>space.dot</key>
+    <string>space.dot.glif</string>
     <key>t</key>
     <string>t.glif</string>
     <key>t_h</key>

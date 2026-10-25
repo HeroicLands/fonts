@@ -1,0 +1,396 @@
+# zethu-mdc encoding
+
+Khelathi Zethu Glyphs is a right-to-left script of signs, one sign to a word. This encoding writes the named code of a sign, in capitals, as its code point.
+
+## Fonts
+
+- Khelathi Zethu Glyphs (`khelathi-zethu-glyphs`), written right to left.
+
+## Running it
+
+`encode.py` needs only Python 3.9 or later. From a checkout, or from `node_modules/@heroiclands/fonts`:
+
+```sh
+python3 encode.py --encoding zethu-mdc "SERVANT"
+python3 encode.py --encoding zethu-mdc --decode "𞩁"
+```
+
+The first command writes `𞩁`, and the second reads it back as `SERVANT`. `--codepoints` prints the result as `U+XXXX` values, and the text may come from standard input.
+
+From Python:
+
+```python
+import encode
+
+text = encode.encode("zethu-mdc", "SERVANT")
+roman = encode.decode("zethu-mdc", text)
+```
+
+## Rows
+
+The rows are in the order the file states them.
+
+| Roman | Character | Code points |
+| --- | --- | --- |
+| `SERVANT` | `𞩁` | U+1EA41 |
+| `SPEAK` | `𞩂` | U+1EA42 |
+| `ENTREAT` | `𞩄` | U+1EA44 |
+| `PURE` | `𞩅` | U+1EA45 |
+| `JOY` | `𞩆` | U+1EA46 |
+| `CARRY` | `𞩇` | U+1EA47 |
+| `ROW` | `𞩈` | U+1EA48 |
+| `CAPTIVE` | `𞩉` | U+1EA49 |
+| `CHILD` | `𞩊` | U+1EA4A |
+| `OLD_AGE` | `𞩋` | U+1EA4B |
+| `NOBLE` | `𞩌` | U+1EA4C |
+| `STRONG` | `𞩍` | U+1EA4D |
+| `MESSENGER` | `𞩎` | U+1EA4E |
+| `HAIL` | `𞩏` | U+1EA4F |
+| `DANCE` | `𞩐` | U+1EA50 |
+| `POUND` | `𞩑` | U+1EA51 |
+| `TILLER` | `𞩓` | U+1EA53 |
+| `REAP` | `𞩔` | U+1EA54 |
+| `HARPOONER` | `𞩖` | U+1EA56 |
+| `HUNTER` | `𞩗` | U+1EA57 |
+| `HERDER` | `𞩘` | U+1EA58 |
+| `POTTER` | `𞩙` | U+1EA59 |
+| `BOATMAN` | `𞩛` | U+1EA5B |
+| `HAUL` | `𞩜` | U+1EA5C |
+| `THRESH` | `𞩝` | U+1EA5D |
+| `WINNOW` | `𞩟` | U+1EA5F |
+| `REED_CUTTER` | `𞩠` | U+1EA60 |
+| `QUARRYMAN` | `𞩡` | U+1EA61 |
+| `WEIGHER` | `𞩢` | U+1EA62 |
+| `CORPSE` | `𞩥` | U+1EA65 |
+| `PRISONER` | `𞩦` | U+1EA66 |
+| `FOREIGNER` | `𞩧` | U+1EA67 |
+| `SCRIBE` | `𞩨` | U+1EA68 |
+| `MUSICIAN` | `𞩩` | U+1EA69 |
+| `GREET` | `𞩪` | U+1EA6A |
+| `PROSTRATE` | `𞩫` | U+1EA6B |
+| `SOLDIER` | `𞩬` | U+1EA6C |
+| `BROTHER` | `𞩭` | U+1EA6D |
+| `WITNESS` | `𞩮` | U+1EA6E |
+| `PUPIL` | `𞩰` | U+1EA70 |
+| `SURVEYOR` | `𞩱` | U+1EA71 |
+| `MEASURE_KEEPER` | `𞩲` | U+1EA72 |
+| `TEMPLE_SERVANT` | `𞩳` | U+1EA73 |
+| `EMBALMER` | `𞩴` | U+1EA74 |
+| `PORTER` | `𞩵` | U+1EA75 |
+| `ARCHER` | `𞩷` | U+1EA77 |
+| `SHIELD_BEARER` | `𞩸` | U+1EA78 |
+| `STEERSMAN` | `𞩹` | U+1EA79 |
+| `GOVERNOR` | `𞩺` | U+1EA7A |
+| `SOVEREIGN` | `𞩻` | U+1EA7B |
+| `MASON` | `𞩼` | U+1EA7C |
+| `HEW_TIMBER` | `𞩽` | U+1EA7D |
+| `VOUCH` | `𞩿` | U+1EA7F |
+| `PREGNANCY` | `𞪀` | U+1EA80 |
+| `WEAVER` | `𞪃` | U+1EA83 |
+| `SINGER` | `𞪄` | U+1EA84 |
+| `GIRL` | `𞪅` | U+1EA85 |
+| `MOURN` | `𞪆` | U+1EA86 |
+| `GRIEVE` | `𞪇` | U+1EA87 |
+| `LADY` | `𞪈` | U+1EA88 |
+| `HEALER` | `𞪌` | U+1EA8C |
+| `BELOVED` | `𞪎` | U+1EA8E |
+| `DANCER` | `𞪐` | U+1EA90 |
+| `GOD` | `𞪑` | U+1EA91 |
+| `SACRED_POWER` | `𞪓` | U+1EA93 |
+| `SOUL` | `𞪔` | U+1EA94 |
+| `VITAL_SPIRIT` | `𞪕` | U+1EA95 |
+| `QEARET` | `𞪖` | U+1EA96 |
+| `RETHSAAR` | `𞪗` | U+1EA97 |
+| `SAQARU` | `𞪘` | U+1EA98 |
+| `UZNERA` | `𞪙` | U+1EA99 |
+| `THUBAI` | `𞪚` | U+1EA9A |
+| `CHAQUR` | `𞪛` | U+1EA9B |
+| `NEHLEAT` | `𞪜` | U+1EA9C |
+| `HEZMUIRI` | `𞪝` | U+1EA9D |
+| `GEWAATIS` | `𞪞` | U+1EA9E |
+| `AZUATHIS` | `𞪟` | U+1EA9F |
+| `QEZTU` | `𞪠` | U+1EAA0 |
+| `PELGUN` | `𞪡` | U+1EAA1 |
+| `LINHUR` | `𞪢` | U+1EAA2 |
+| `LINKUR` | `𞪣` | U+1EAA3 |
+| `IGELNARU` | `𞪤` | U+1EAA4 |
+| `ALGIT` | `𞪥` | U+1EAA5 |
+| `STANDARD` | `𞪦` | U+1EAA6 |
+| `BLESS` | `𞪧` | U+1EAA7 |
+| `OMEN` | `𞪨` | U+1EAA8 |
+| `STAND` | `𞪩` | U+1EAA9 |
+| `SEE` | `𞪬` | U+1EAAC |
+| `MOUTH` | `𞪯` | U+1EAAF |
+| `GIVE` | `𞪲` | U+1EAB2 |
+| `HAND` | `𞪴` | U+1EAB4 |
+| `GO` | `𞪸` | U+1EAB8 |
+| `OATH` | `𞪺` | U+1EABA |
+| `HEART` | `𞪻` | U+1EABB |
+| `BONE` | `𞪽` | U+1EABD |
+| `EMBALMED_SOUL` | `𞪾` | U+1EABE |
+| `BULL` | `𞫀` | U+1EAC0 |
+| `YOKE` | `𞫃` | U+1EAC3 |
+| `HORSE` | `𞫄` | U+1EAC4 |
+| `DONKEY` | `𞫅` | U+1EAC5 |
+| `DRYING_BEDS_JACKAL` | `𞫍` | U+1EACD |
+| `LION` | `𞫎` | U+1EACE |
+| `LEOPARD` | `𞫐` | U+1EAD0 |
+| `HIPPOPOTAMUS` | `𞫑` | U+1EAD1 |
+| `BABOON` | `𞫗` | U+1EAD7 |
+| `HYENA` | `𞫜` | U+1EADC |
+| `OX_HEAD` | `𞫢` | U+1EAE2 |
+| `FALCON` | `𞫩` | U+1EAE9 |
+| `OWL` | `𞫫` | U+1EAEB |
+| `IBIS` | `𞫰` | U+1EAF0 |
+| `HERON` | `𞫴` | U+1EAF4 |
+| `GOOSE` | `𞫺` | U+1EAFA |
+| `FLY` | `𞫼` | U+1EAFC |
+| `BIRD_OFFERED` | `𞬁` | U+1EB01 |
+| `FISHER_BIRD` | `𞬃` | U+1EB03 |
+| `FEATHER` | `𞬅` | U+1EB05 |
+| `CROCODILE` | `𞬉` | U+1EB09 |
+| `BANK_CROCODILE` | `𞬊` | U+1EB0A |
+| `COBRA` | `𞬑` | U+1EB11 |
+| `PAPYRUS_FLOWER` | `𞬝` | U+1EB1D |
+| `LIFE` | `𞬡` | U+1EB21 |
+| `BARLEY` | `𞬢` | U+1EB22 |
+| `WHEAT` | `𞬣` | U+1EB23 |
+| `SHEAF` | `𞬤` | U+1EB24 |
+| `VINE` | `𞬪` | U+1EB2A |
+| `HERB` | `𞬬` | U+1EB2C |
+| `SKY` | `𞬱` | U+1EB31 |
+| `UQAA` | `𞬲` | U+1EB32 |
+| `EAST` | `𞬳` | U+1EB33 |
+| `NOON` | `𞬵` | U+1EB35 |
+| `NIGHT` | `𞬶` | U+1EB36 |
+| `MOON` | `𞬷` | U+1EB37 |
+| `FULL_MOON` | `𞬸` | U+1EB38 |
+| `STAR` | `𞬹` | U+1EB39 |
+| `CONSTELLATION` | `𞬺` | U+1EB3A |
+| `STORM` | `𞬻` | U+1EB3B |
+| `SACRED_FIRE` | `𞬾` | U+1EB3E |
+| `SMOKE` | `𞬿` | U+1EB3F |
+| `INUNDATION` | `𞭀` | U+1EB40 |
+| `EMERGENCE` | `𞭁` | U+1EB41 |
+| `LOW_WATER` | `𞭂` | U+1EB42 |
+| `COUNT_YEAR` | `𞭃` | U+1EB43 |
+| `DAY` | `𞭄` | U+1EB44 |
+| `FIVE_DAYS` | `𞭅` | U+1EB45 |
+| `FIRST_OCCASION` | `𞭆` | U+1EB46 |
+| `RIVER` | `𞭈` | U+1EB48 |
+| `ENDURING` | `𞭉` | U+1EB49 |
+| `FLOOD` | `𞭎` | U+1EB4E |
+| `FIELD` | `𞭏` | U+1EB4F |
+| `GARDEN` | `𞭐` | U+1EB50 |
+| `BLACK_SILT` | `𞭑` | U+1EB51 |
+| `MOUND` | `𞭒` | U+1EB52 |
+| `ISLAND` | `𞭓` | U+1EB53 |
+| `DESERT_LAND` | `𞭔` | U+1EB54 |
+| `WEST` | `𞭕` | U+1EB55 |
+| `HORIZON` | `𞭖` | U+1EB56 |
+| `LAND` | `𞭗` | U+1EB57 |
+| `ESTATE` | `𞭘` | U+1EB58 |
+| `PLACE` | `𞭙` | U+1EB59 |
+| `PROVINCE` | `𞭚` | U+1EB5A |
+| `ROAD` | `𞭛` | U+1EB5B |
+| `CATARACT` | `𞭝` | U+1EB5D |
+| `MARSH` | `𞭞` | U+1EB5E |
+| `DESERT_ROAD` | `𞭟` | U+1EB5F |
+| `BANK` | `𞭠` | U+1EB60 |
+| `DYKE` | `𞭡` | U+1EB61 |
+| `VILLAGE` | `𞭢` | U+1EB62 |
+| `CULTIVATED_LAND` | `𞭣` | U+1EB63 |
+| `HOUSE_OF` | `𞭤` | U+1EB64 |
+| `THRONE` | `𞭥` | U+1EB65 |
+| `HOUSE` | `𞭦` | U+1EB66 |
+| `GRANARY` | `𞭧` | U+1EB67 |
+| `WALL` | `𞭨` | U+1EB68 |
+| `GATE` | `𞭩` | U+1EB69 |
+| `LOCK` | `𞭪` | U+1EB6A |
+| `COURT` | `𞭫` | U+1EB6B |
+| `HALL` | `𞭬` | U+1EB6C |
+| `SANCTUARY` | `𞭭` | U+1EB6D |
+| `SHRINE` | `𞭮` | U+1EB6E |
+| `OBSERVATORY` | `𞭯` | U+1EB6F |
+| `ARCHIVE` | `𞭰` | U+1EB70 |
+| `MEASURE` | `𞭱` | U+1EB71 |
+| `RAMP` | `𞭲` | U+1EB72 |
+| `TOMB` | `𞭳` | U+1EB73 |
+| `NOBLE_TOMB` | `𞭴` | U+1EB74 |
+| `NICHE` | `𞭵` | U+1EB75 |
+| `TOMB_THRESHOLD` | `𞭶` | U+1EB76 |
+| `FORTRESS` | `𞭷` | U+1EB77 |
+| `SCHOOL` | `𞭸` | U+1EB78 |
+| `QUAY` | `𞭹` | U+1EB79 |
+| `TEMPLE` | `𞭻` | U+1EB7B |
+| `BUILD` | `𞭼` | U+1EB7C |
+| `BARGE` | `𞭽` | U+1EB7D |
+| `REED_BOAT` | `𞭾` | U+1EB7E |
+| `RAFT` | `𞭿` | U+1EB7F |
+| `LADEN_RAFT` | `𞮀` | U+1EB80 |
+| `SAIL` | `𞮁` | U+1EB81 |
+| `FURL` | `𞮂` | U+1EB82 |
+| `POLE` | `𞮃` | U+1EB83 |
+| `MOOR` | `𞮅` | U+1EB85 |
+| `TOW` | `𞮇` | U+1EB87 |
+| `GODS_BARGE` | `𞮈` | U+1EB88 |
+| `CARGO` | `𞮊` | U+1EB8A |
+| `PLUMB` | `𞮋` | U+1EB8B |
+| `WEIGH` | `𞮌` | U+1EB8C |
+| `SURVEY` | `𞮍` | U+1EB8D |
+| `GAUGE` | `𞮎` | U+1EB8E |
+| `SCOOP` | `𞮏` | U+1EB8F |
+| `HEAPED_MEASURE` | `𞮐` | U+1EB90 |
+| `SICKLE` | `𞮑` | U+1EB91 |
+| `SHEAF_CUT` | `𞮒` | U+1EB92 |
+| `FLOAT` | `𞮓` | U+1EB93 |
+| `READ_LEVEL` | `𞮔` | U+1EB94 |
+| `WINNOWING_FAN` | `𞮕` | U+1EB95 |
+| `DRAW_WATER` | `𞮖` | U+1EB96 |
+| `SPEAR_FISH` | `𞮗` | U+1EB97 |
+| `SCOOP_AND_STEM` | `𞮘` | U+1EB98 |
+| `QELU` | `𞮙` | U+1EB99 |
+| `CORD` | `𞮚` | U+1EB9A |
+| `ROD` | `𞮛` | U+1EB9B |
+| `GRAIN_MEASURE` | `𞮜` | U+1EB9C |
+| `ADZE` | `𞮟` | U+1EB9F |
+| `MAUL` | `𞮠` | U+1EBA0 |
+| `AXE` | `𞮢` | U+1EBA2 |
+| `BOW` | `𞮣` | U+1EBA3 |
+| `SPEAR` | `𞮤` | U+1EBA4 |
+| `SHIELD` | `𞮥` | U+1EBA5 |
+| `NET` | `𞮧` | U+1EBA7 |
+| `HARPOON` | `𞮨` | U+1EBA8 |
+| `SEAL` | `𞮪` | U+1EBAA |
+| `WEIGHING` | `𞮫` | U+1EBAB |
+| `LICENCE` | `𞮬` | U+1EBAC |
+| `TAX` | `𞮭` | U+1EBAD |
+| `FORGE` | `𞮮` | U+1EBAE |
+| `TIMBER` | `𞮯` | U+1EBAF |
+| `GOLD` | `𞮰` | U+1EBB0 |
+| `WASHING_SALT` | `𞮱` | U+1EBB1 |
+| `LYRE` | `𞮲` | U+1EBB2 |
+| `OFFERING_BOWL` | `𞮴` | U+1EBB4 |
+| `AMPHORA` | `𞮶` | U+1EBB6 |
+| `BEER` | `𞮷` | U+1EBB7 |
+| `CUP` | `𞮸` | U+1EBB8 |
+| `CENSER` | `𞮹` | U+1EBB9 |
+| `BREAD` | `𞮺` | U+1EBBA |
+| `CAKE` | `𞮻` | U+1EBBB |
+| `OFFERING` | `𞮼` | U+1EBBC |
+| `MEAT` | `𞮾` | U+1EBBE |
+| `SWEET_OIL` | `𞮿` | U+1EBBF |
+| `SACK` | `𞯂` | U+1EBC2 |
+| `HEAP` | `𞯃` | U+1EBC3 |
+| `COFFIN` | `𞯄` | U+1EBC4 |
+| `TABLET` | `𞯅` | U+1EBC5 |
+| `ROLL` | `𞯆` | U+1EBC6 |
+| `INK` | `𞯇` | U+1EBC7 |
+| `LAMP` | `𞯈` | U+1EBC8 |
+| `ANSWERER` | `𞯉` | U+1EBC9 |
+| `COLLAR` | `𞯋` | U+1EBCB |
+| `CLOAK` | `𞯎` | U+1EBCE |
+| `CROWN` | `𞯑` | U+1EBD1 |
+| `SANDAL` | `𞯓` | U+1EBD3 |
+| `SIGNET_RING` | `𞯔` | U+1EBD4 |
+| `FANG_PENDANT` | `𞯘` | U+1EBD8 |
+| `ARMBAND` | `𞯙` | U+1EBD9 |
+| `LOOM` | `𞯚` | U+1EBDA |
+| `MANTLE` | `𞯛` | U+1EBDB |
+| `CATCH` | `𞯜` | U+1EBDC |
+| `TEN` | `𞯞` | U+1EBDE |
+| `ONE` | `𞯟` | U+1EBDF |
+| `TWO` | `𞯠` | U+1EBE0 |
+| `MANY` | `𞯡` | U+1EBE1 |
+| `HUNDRED` | `𞯢` | U+1EBE2 |
+| `THOUSAND` | `𞯣` | U+1EBE3 |
+| `TEN_THOUSAND` | `𞯤` | U+1EBE4 |
+| `ROYAL_NAME` | `𞯦` | U+1EBE6 |
+| `ROYAL_NAME_COLUMN` | `𞯧` | U+1EBE7 |
+| `NAME_STRUCK` | `𞯨` | U+1EBE8 |
+| `TOTAL` | `𞯩` | U+1EBE9 |
+| `OPEN` | `𞯪` | U+1EBEA |
+| `CLOSED` | `𞯫` | U+1EBEB |
+| `HERE_ENDS` | `𞯭` | U+1EBED |
+| `SEALED` | `𞯮` | U+1EBEE |
+| `BUTCHER` | `𞯰` | U+1EBF0 |
+| `SCOUT` | `𞯱` | U+1EBF1 |
+| `NET_MASTER` | `𞯲` | U+1EBF2 |
+| `RIVER_CAT` | `𞯳` | U+1EBF3 |
+| `NIGHT_CROCODILE` | `𞯴` | U+1EBF4 |
+| `SHARE` | `𞯵` | U+1EBF5 |
+| `COMMEND` | `𞯶` | U+1EBF6 |
+| `AUGURY` | `𞯷` | U+1EBF7 |
+| `HYMN` | `𞯸` | U+1EBF8 |
+| `SPOKEN_SPELL` | `𞯹` | U+1EBF9 |
+| `READ_ALOUD` | `𞯺` | U+1EBFA |
+| `LAMENT` | `𞯻` | U+1EBFB |
+| `LAWSUIT` | `𞯼` | U+1EBFC |
+| `INSCRIPTION` | `𞯽` | U+1EBFD |
+| `MONTH` | `𞯾` | U+1EBFE |
+| `BATTLE` | `𞯿` | U+1EBFF |
+| `BLOOD_FIELD` | `𞰀` | U+1EC00 |
+| `SLEDGE` | `𞰁` | U+1EC01 |
+| `WEIGHED_HEART` | `𞰂` | U+1EC02 |
+| `SEVEN` | `𞰃` | U+1EC03 |
+| `FAIR` | `𞰄` | U+1EC04 |
+| `NAME` | `𞰅` | U+1EC05 |
+| `AT_PEACE` | `𞰆` | U+1EC06 |
+| `GREAT` | `𞰇` | U+1EC07 |
+| `COMMONER` | `𞰈` | U+1EC08 |
+| `BONDSMAN` | `𞰉` | U+1EC09 |
+| `OLD_WAY` | `𞰊` | U+1EC0A |
+| `PERFORMANCE` | `𞰋` | U+1EC0B |
+| `CRAFT` | `𞰌` | U+1EC0C |
+| `ARCANE_ORDER` | `𞰍` | U+1EC0D |
+| `EVERYDAY_ALPHABET` | `𞰏` | U+1EC0F |
+| `KHELATHI` | `𞰑` | U+1EC11 |
+| `REGNAL_YEAR` | `𞰔` | U+1EC14 |
+| `FOUR` | `𞰕` | U+1EC15 |
+| `FIVE` | `𞰖` | U+1EC16 |
+| `SIX` | `𞰗` | U+1EC17 |
+| `EIGHT` | `𞰘` | U+1EC18 |
+| `NINE` | `𞰙` | U+1EC19 |
+| `NOTHING_REMAINS` | `𞰚` | U+1EC1A |
+| `WETHUR` | `𞰛` | U+1EC1B |
+| `CAPTIVE_LED` | `𞰜` | U+1EC1C |
+| `LEAD_CAPTIVE` | `𞰝` | U+1EC1D |
+| `CAPTIVES` | `𞰞` | U+1EC1E |
+| `DEFEATED` | `𞰟` | U+1EC1F |
+| `HELD_BOUND` | `𞰠` | U+1EC20 |
+| `ENTRY_OPENED` | `𞰡` | U+1EC21 |
+| `ENTRY_CLOSED` | `𞰢` | U+1EC22 |
+| `ENTRY_SHORT` | `𞰣` | U+1EC23 |
+| `ENTRY_OPEN` | `𞰤` | U+1EC24 |
+| `GENZET_ENTRY` | `𞰥` | U+1EC25 |
+| `WEIGHING_ENTRY` | `𞰦` | U+1EC26 |
+| `LIKE` | `𞰧` | U+1EC27 |
+| `MAKE` | `𞰨` | U+1EC28 |
+| `TAKE` | `𞰩` | U+1EC29 |
+| `PRIEST` | `𞰪` | U+1EC2A |
+| `FOREIGN_CHIEF` | `𞰫` | U+1EC2B |
+| `COME_DOWN` | `𞰬` | U+1EC2C |
+| `NORTH` | `𞰭` | U+1EC2D |
+| `SEA` | `𞰮` | U+1EC2E |
+| `SAND_SEAS` | `𞰯` | U+1EC2F |
+| `ENVOY` | `𞰰` | U+1EC30 |
+| `ORDINAL_MARKER` | `𞰱` | U+1EC31 |
+| `CROWNING` | `𞰲` | U+1EC32 |
+| `:` | `𞱠` | U+1EC60 |
+| `*` | `𞱡` | U+1EC61 |
+| `[ts]` | `𞱢` | U+1EC62 |
+| `[bs]` | `𞱣` | U+1EC63 |
+| `[te]` | `𞱤` | U+1EC64 |
+| `[be]` | `𞱥` | U+1EC65 |
+| `(` | `𞱧` | U+1EC67 |
+| `)` | `𞱨` | U+1EC68 |
+| `<` | `𞱬` | U+1EC6C |
+| `>` | `𞱭` | U+1EC6D |
+| `-` | `󠄍` | U+E010D |
+| (space) | (space) | U+0020 |
+
+## Round trip
+
+Every encoding round-trips exactly: decoding the code points that encoding wrote gives back the roman text, and encoding that gives the same code points. The Code points column shows every character a row writes, including any that is invisible.
+
+This page is written from `encodings/zethu-mdc.json` by `tools/encoding_docs.py`.

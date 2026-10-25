@@ -47,7 +47,7 @@ def glif_path(ufo: Path, name: str) -> Path:
     return ufo / "glyphs" / match.group(1)
 
 
-def mapping(ufo: Path) -> dict[int, str]:
+def cmap_of(ufo: Path) -> dict[int, str]:
     out = {}
     contents = (ufo / "glyphs" / "contents.plist").read_text(encoding="utf-8")
     for name, file in re.findall(r"<key>([^<]+)</key>\s*<string>([^<]+)</string>", contents):
@@ -157,7 +157,7 @@ def edit_features(ufo: Path, ignorables: bool):
 
 def apply(ufo: Path, retarget=(), drop=(), ignorables=False):
     ufo = Path(ufo)
-    cmap = mapping(ufo)
+    cmap = cmap_of(ufo)
     wanted = set(codepoints())
 
     notdef = glif_path(ufo, ".notdef").read_text(encoding="utf-8")
@@ -178,14 +178,14 @@ def apply(ufo: Path, retarget=(), drop=(), ignorables=False):
         add_to_order(ufo, "ignorable.sub", "ignorable")
         add_category(ufo, "ignorable", "base")
         add_category(ufo, "ignorable.sub", "base")
-        cmap = mapping(ufo)
+        cmap = cmap_of(ufo)
 
     for name in retarget:
         file = glif_path(ufo, name)
         text = file.read_text(encoding="utf-8")
         have = unicodes_of(text)
         file.write_text(set_unicodes(text, [c for c in have if c not in wanted]), encoding="utf-8")
-    cmap = mapping(ufo)
+    cmap = cmap_of(ufo)
 
     on_box = [c for c, n in cmap.items() if n == BOX]
     new = [c for c in sorted(wanted) if c not in cmap]

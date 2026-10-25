@@ -2,8 +2,8 @@
 // SPDX-License-Identifier: OFL-1.1
 
 /**
- * Converts text to the code points of a right-to-left font of this package
- * that thalorna's mapping notes do not yet write.
+ * Converts text to the code points of a right-to-left font of this package:
+ * sign ids for Khelathi Zethu Glyphs, romanized Sinale for Veldikko.
  *
  *     import { convert } from "./convert.mjs";
  *     convert("Khelathi Zethu Glyphs", "01-002 01-003");

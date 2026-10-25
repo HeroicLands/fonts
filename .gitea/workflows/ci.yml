@@ -3,16 +3,18 @@ name: CI
 # What the repository asserts on every change: the canonical git hooks are
 # present, no TODO or FIXME marker is committed, and the fonts rebuild from the
 # UFO sources and pass the font check, and the npm package holds exactly the
-# fonts, their stylesheet, their manifest and their keyboards, and every drawn
-# Khelathi Zethu sign has a paint map whose seeds land in its regions.
+# fonts, their stylesheet, their manifest, their keyboards and their encodings, every
+# encoding round-trips under the standard library alone and its marks draw nothing
+# in the fonts, and every drawn Khelathi Zethu sign has a paint map whose seeds land
+# in its regions.
 #
 # The build is reproducible (a fixed head timestamp), so the committed fonts,
 # fonts.css and fonts.json must match a fresh build byte for byte: a file left
 # unrebuilt fails here.
 #
 # The lexicon guards run on their fixtures alone here, written through the
-# mapping notes as tools/mapped.json records them. The lexicons and the mapping
-# notes are read from a local thalorna checkout, and thalorna is private to this CI.
+# encodings. The lexicons are read from a local thalorna checkout, and thalorna
+# is private to this CI.
 
 on:
     push:
@@ -64,6 +66,13 @@ jobs:
               run: |
                   python3.13 -m venv .venv
                   .venv/bin/pip install -r requirements.txt
+            - name: Check the encodings
+              run: |
+                  python3.13 -m unittest tools/encode_test.py
+                  python3.13 tools/encodings_guard.py
+                  python3.13 tools/encoding_docs.py --check
+                  python3.13 tools/khelathi-zethu-glyphs/encoding_file.py --check
+                  .venv/bin/python tools/chalish-pilam/codage.py --check
             - name: Build the fonts
               run: PATH="$PWD/.venv/bin:$PATH" ./build.sh
             - name: Check the fonts
@@ -92,11 +101,13 @@ jobs:
                   .venv/bin/python tools/qalezu-hand/guard.py --fixtures-only
                   .venv/bin/python tools/semaron-kuriale/guard.py --fixtures-only
                   .venv/bin/python tools/notdef_box.py
+                  .venv/bin/python tools/encodings_guard.py --require-fonts
                   .venv/bin/python tools/font_names.py
                   .venv/bin/python tools/codepoints.py
                   .venv/bin/python tools/vertical.py
                   .venv/bin/python tools/spacing.py
-                  .venv/bin/python tools/keyboards_guard.py --fixtures-only
+                  .venv/bin/python tools/keyboards_guard.py
+                  .venv/bin/python tools/sample_texts.py
                   .venv/bin/python tools/khelathi-zethu-glyphs/paint_guard.py
                   .venv/bin/python tools/specimen_pages.py --check
                   .venv/bin/python tools/prove_guards.py

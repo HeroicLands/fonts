@@ -18,9 +18,10 @@ LABEL_FONT = "/System/Library/Fonts/Supplemental/Arial Unicode.ttf"
 
 
 class Shaped:
-    def __init__(self, glyphs, advance):
+    def __init__(self, glyphs, advance, clusters=None):
         self.glyphs = glyphs  # (gid, x_offset, y_offset, x_advance) in font units
         self.advance = advance
+        self.clusters = clusters or []  # the index of the text character each glyph starts from
 
 
 class Renderer:
@@ -42,6 +43,7 @@ class Renderer:
         does not infer one from the characters. Glyphs come back in visual order.
         """
         buf = hb.Buffer()
+        buf.cluster_level = hb.BufferClusterLevel.CHARACTERS  # one cluster per character
         buf.add_str(text)
         if direction:
             buf.direction = direction
@@ -49,11 +51,13 @@ class Renderer:
         buf.guess_segment_properties()
         hb.shape(self.hb_font, buf, features or {})
         glyphs = []
+        clusters = []
         pen_x = 0
         for info, pos in zip(buf.glyph_infos, buf.glyph_positions):
             glyphs.append((info.codepoint, pen_x + pos.x_offset, pos.y_offset, pos.x_advance))
+            clusters.append(info.cluster)
             pen_x += pos.x_advance
-        return Shaped(glyphs, pen_x)
+        return Shaped(glyphs, pen_x, clusters)
 
     def glyph_names(self, text: str, direction=None):
         return [self.order[g[0]] for g in self.shape(text, direction=direction).glyphs]

@@ -52,7 +52,7 @@ xkb_symbols "basic" {
     key <AB05> { type[Group1] = "FOUR_LEVEL", symbols[Group1] = [ UF0231, UF0201, VoidSymbol, VoidSymbol ] };
     key <AB06> { type[Group1] = "FOUR_LEVEL", symbols[Group1] = [ UF023C, UF020C, VoidSymbol, VoidSymbol ] };
     key <AB07> { type[Group1] = "FOUR_LEVEL", symbols[Group1] = [ UF023B, UF020B, VoidSymbol, VoidSymbol ] };
-    key <AB08> { type[Group1] = "FOUR_LEVEL", symbols[Group1] = [ UF0268, VoidSymbol, VoidSymbol, VoidSymbol ] };
+    key <AB08> { type[Group1] = "FOUR_LEVEL", symbols[Group1] = [ VoidSymbol, VoidSymbol, VoidSymbol, VoidSymbol ] };
     key <AB09> { type[Group1] = "FOUR_LEVEL", symbols[Group1] = [ UF0268, VoidSymbol, VoidSymbol, VoidSymbol ] };
     key <AB10> { type[Group1] = "FOUR_LEVEL", symbols[Group1] = [ VoidSymbol, VoidSymbol, VoidSymbol, VoidSymbol ] };
 };

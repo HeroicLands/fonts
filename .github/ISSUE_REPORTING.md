@@ -88,7 +88,7 @@ creates a label here; a gap in the set is raised in `HeroicLands/.github`.
 - `area/content` — the letters, ligatures, marks and specimens themselves.
 - `flag/tech-debt` — restructuring or cleanup of working code; refactors.
 - `flag/regression` — something that worked and stopped; pairs with type **bug**.
-- `flag/breaking-change` — alters a font's file name, family name, code points or the mapping from spelling to letters.
+- `flag/breaking-change` — alters a font's file name, family name, code points or the encoding from spelling to letters.
 - `status/blocked` — cannot proceed until an external dependency or another issue clears.
 - `resolution/duplicate`, `resolution/wontfix`, `status/question` — as their names say.
 

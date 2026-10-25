@@ -4,10 +4,10 @@
 
     .venv/bin/python tools/qalezu-hand/specimens.py [--font fonts/QalezuHand-Regular.ttf] [--out specimens/qalezu-hand]
                                             [--thalorna ~/dev/HeroicLands/thalorna | --note FILE]
-                                            [--map-note FILE]
+                                            [--encoding FILE]
 
 Four sheets: the glyph chart, a dozen Khelathi words and names written through
-thalorna's ``qalezu`` mapping note and shaped right to left beside their Latin
+the ``qalezu`` encoding and shaped right to left beside their Latin
 and gloss, an English sentence with
 a Qalezu name followed by a right-aligned block of Qalezu lines, and the
 plain, voiced and catch-before form of each sign at large and small sizes, the
@@ -25,7 +25,7 @@ from PIL import Image, ImageDraw
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from mapped import Mapping  # noqa: E402
+from encoded import Encoded  # noqa: E402
 from render import Renderer, label_font  # noqa: E402
 import guard  # noqa: E402
 
@@ -37,15 +37,15 @@ GREY = (120, 112, 104)
 RULE = (205, 198, 186)
 
 
-MAPPING = Mapping("qalezu", face=guard.FACE)
+ENCODED = Encoded(guard.FACE)
 
 
 def convert(text: str) -> str:
-    """The Qalezu code points of a roman word, through the qalezu mapping note."""
-    (record,) = MAPPING.records([text])
-    unmapped = [c for c in record.get("unmapped", []) if c != " "]
-    if unmapped:
-        raise SystemExit(f"{text!r}: the qalezu mapping does not write {unmapped}")
+    """The Qalezu code points of a roman word, through the qalezu encoding."""
+    (record,) = ENCODED.records([text])
+    unencoded = [c for c in record.get("unencoded", []) if c != " "]
+    if unencoded:
+        raise SystemExit(f"{text!r}: the qalezu encoding does not write {unencoded}")
     return record["text"]
 
 WORDS = [
@@ -184,10 +184,10 @@ def main():
     ap.add_argument("--out", default=str(ROOT / "specimens" / "qalezu-hand"))
     ap.add_argument("--thalorna", default=str(Path.home() / "dev/HeroicLands/thalorna"))
     ap.add_argument("--note", help="read the language note from this file instead of git")
-    ap.add_argument("--map-note", help="read the qalezu mapping note from this file instead of git")
+    ap.add_argument("--encoding", help="apply this encoding file instead of encodings/qalezu.json")
     args = ap.parse_args()
-    MAPPING.thalorna = Path(args.thalorna)
-    MAPPING.note = Path(args.map_note) if args.map_note else None
+    global ENCODED
+    ENCODED = Encoded(guard.FACE, args.encoding)
     out = Path(args.out)
     out.mkdir(parents=True, exist_ok=True)
     r = Renderer(Path(args.font))

@@ -406,7 +406,7 @@ of 250 holds them.
 
 ### Writing and typing
 
-thalorna's `helonika` mapping note (`Lore/Scripts/Helonika_Spelling.md`) writes
+the `helonika` encoding (`encodings/helonika.json`) writes
 Helonic's roman spelling in these characters, and Valtari's where it is written in
 the Helónika. Helonic writes _kh_, _sh_ and _zh_ as two letters, no accent and no
 length, so the _kh_ and _zh_ letters, the long vowels, the accent and the
@@ -422,7 +422,7 @@ own, Option+Shift+R.
   accent over every vowel and the box after anything else, the ignorables, the name
   table and the `.woff2`.
 - `tools/helonika/guard.py` writes every Helonic, Valtari, Bizarian and Bethuan lexicon
-  form through its mapping note, shapes it, and asserts the glyphs, with no notdef or
+  form through its encoding, shapes it, and asserts the glyphs, with no notdef or
   box; `--note` takes language note files, so a pull request's own notes are checked;
   `tools/helonika/fixtures.json` holds a fixture for each spelling rule.
 - `tools/prove_guards.py` proves the guard fails the font with the small letter _th_
@@ -432,6 +432,6 @@ own, Option+Shift+R.
 ### The specimen
 
 `tools/helonika/font_sheets.py` renders `specimens/helonika/text.png`: Helonic
-words from thalorna, written by the mapping note and shaped by HarfBuzz from the
+words from thalorna, written by the encoding and shaped by HarfBuzz from the
 built font, at display size and at 48, 24 and 20 px beside their roman spelling in
 Monaspace Neon, with the shared x-height ruled across both.

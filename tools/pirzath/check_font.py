@@ -22,7 +22,9 @@ import font_names  # noqa: E402
 import notdef_box  # noqa: E402
 
 IGNORABLES = [*range(0x200B, 0x2010), *range(0x202A, 0x202F), *range(0x2066, 0x206A), 0xFEFF]
-EMPTY_BY_DESIGN = {"ignorable", "ignorable.sub"}
+# HarfBuzz draws every default-ignorable as the space glyph, so the space glyph is
+# empty, and a space draws its dot, space.dot, by a ccmp substitution.
+EMPTY_BY_DESIGN = {"ignorable", "ignorable.sub", "space"}
 
 # Latin text is not the face's: every Latin letter, digit and mark draws the box,
 # and the space is the only character the face shares with it.
@@ -65,9 +67,11 @@ def check(path: Path) -> list[str]:
     for name in ("numopen", "numclose", "question", "semicolon", "colon"):
         if name in order:
             problems.append(f"{name} is still in the font")
-    for name in ("space", "period", "exclam", "comma"):
+    for name in ("space.dot", "period", "exclam", "comma"):
         if glyf[name].numberOfContours == 0:
             problems.append(f"{name} draws nothing")
+    if glyf["space"].numberOfContours != 0:
+        problems.append("space draws; it must be empty, with the dot of a space drawn by substitution")
     cmap = font.getBestCmap()
     for key in "?;:":
         if cmap.get(ord(key)) != notdef_box.BOX:

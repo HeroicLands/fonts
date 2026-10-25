@@ -78,9 +78,17 @@ default to right to left, so text in them runs right to left in browsers, Foundr
 and Typst with no control characters. Each sign of the inventory has one code
 point, in inventory order from U+1EA40, so a sign that is not yet drawn keeps its
 place and a later sign drops in without renumbering. `tools/khelathi-zethu-glyphs/encoding.json`
-is the table: each entry gives the id, the code point, the subject, the meaning,
-the consonant value, the god, the forms drawn, whether the sign is drawn and the
-box of each form.
+is the table: each entry gives the id, the code, the code point, the subject, the
+meaning, the consonant value, the god, the forms drawn, whether the sign is drawn
+and the box of each form.
+
+A sign's **code** is how text names it in roman: its sense in capitals, words joined
+by `_`, such as `SAIL`, `WEST` or `REGNAL_YEAR`. Where two signs share a sense the
+codes tell them apart (`HOUSE_OF` and `HOUSE`, `FISHER` and `FISH`), and a god's
+emblem takes the god's name (`UQAA`, `QEARET`), since it stands alone for the name. A
+code carries no hyphen, since `-` ends a quadrat, and is never `N` with digits. Every
+sign has one, drawn or not, and `tools/khelathi-zethu-glyphs/guard.py` fails a sign
+without a well-formed code or a code two signs share.
 
 The font also maps the space and the default-ignorable controls (U+200B to
 U+200F, U+202A to U+202E, U+2066 to U+2069 and U+FEFF). The controls draw

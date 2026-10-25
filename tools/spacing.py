@@ -28,13 +28,12 @@ fixed cell and takes a largest gap of its own.
 
 The sample lines are the texts of each face's specimens: the Khazari texts for
 the Pirzath faces, the Nordmal lines for Thuravark Carved and the Vylari texts for
-Semaron Kuriale, each written in the face's code points as tools/mapped.json
-records it from thalorna's mapping notes; Qalezu Hand's fixtures, written in the
+Semaron Kuriale, each written in the face's code points by its encoding; Qalezu Hand's fixtures, written in the
 signs the fixtures name, a catch-before form as the catch and its sign; the sample inscriptions of Khelathi Zethu Glyphs, set as one
 strip of signs; Teng Chou's Tantsou and Jurthati passages, each line one run
 of characters; Chalish Pilam Common's night entry, each phrase one word; and Veldikko's converter fixtures, written in the letters
 and marks the fixtures name; and Vedyakshara Classical's and Helonika Book's guard
-fixtures, written as tools/mapped.json records them. A joined face (Veldikko
+fixtures, written by their encodings. A joined face (Veldikko
 Sinale) meets its neighbours at the join, and Vedyakshara's signs meet in one headline,
 so their gaps are at most zero. None needs a thalorna checkout.
 """
@@ -86,10 +85,10 @@ def _semaron_texts() -> list[str]:
 
 
 def _written(face: str, texts: list[str]) -> list[str]:
-    """The roman sample lines in the face's code points, as tools/mapped.json records them."""
-    from mapped import Mapping
+    """The roman sample lines in the face's code points."""
+    from encoded import Encoded
 
-    return Mapping.offline(face).write(texts)
+    return Encoded(face).write(texts)
 
 
 def _pirzath_lines(face: str = "pirzath-carved") -> list[str]:

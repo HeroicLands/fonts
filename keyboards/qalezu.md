@@ -14,8 +14,6 @@ A printable copy is [qalezu.svg](qalezu.svg) and [qalezu.png](qalezu.png).
 - Character names and code points identify each character exactly, for a program or a character viewer.
 - The Emacs column is what to type in the Emacs input method `heroiclands-qalezu`, where Option is a backslash.
 
-In Roman spelling, U+00B7 MIDDLE DOT (`·`) writes the verse-end dot. `option+shift+f` types it directly in HL Qalezu; a physical line break does not add it.
-
 ## Installing the layout
 
 The layout is a file per platform, named below. [The README](../README.md#installing-a-keyboard-layout) walks through installing each.

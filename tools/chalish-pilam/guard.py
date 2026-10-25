@@ -4,7 +4,7 @@
 
     .venv/bin/python tools/chalish-pilam/guard.py [--font fonts/ChalishPilamCommon-Regular.ttf] [--fixtures-only]
 
-The face records meaning, not spelling, so it has no mapping note and reads no thalorna
+The face records meaning, not spelling, so it has no encoding and reads no thalorna
 checkout: the fixtures are its own. They are a night's entry at the sighting stones
 (``glyphs.passage_glyphs()``) and every glyph once. Each is written as the code points of
 ``encoding.json`` and shaped by HarfBuzz, and a fixture fails when it does not yield

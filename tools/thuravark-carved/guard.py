@@ -4,16 +4,14 @@
 
     .venv/bin/python tools/thuravark-carved/guard.py [--font fonts/ThuravarkCarved-Regular.ttf]
                                             [--thalorna ~/dev/HeroicLands/thalorna | --note FILE]
-                                            [--map-note FILE | --fixtures-only]
+                                            [--encoding FILE | --fixtures-only]
 
 The forms come from the frontmatter of ``assets/content/Skills/Languages/Nordmal.md``
 on the thalorna repository's ``origin/main``: the ``words``, ``affixes`` and
 ``elements`` forms and every given name and clan name. Each form is written in
-Thuravark's code points by thalorna's ``thuravark`` mapping note
-(``assets/content/Lore/Scripts/Thuravark_Spelling.md`` on ``origin/main``, or the
-file ``--map-note`` names), as a run marked ``map=thuravark`` is, and the result
-is shaped. The expected glyph sequence is derived from the spelling by the rules
-below, written here and read neither from the font source nor from the mapping:
+Thuravark's code points by the ``thuravark`` encoding (``encodings/thuravark.json``,
+or the file ``--encoding`` names), and the result is shaped. The expected glyph sequence is derived from the spelling by the rules
+below, written here and read neither from the font source nor from the encoding:
 
 - a digraph (th dh kh gh ng hl) is one stave, and ngh is n and gh;
 - an acute vowel is the vowel and the acute mark, which the face draws as the
@@ -26,11 +24,11 @@ below, written here and read neither from the font source nor from the mapping:
 - every other punctuation key, c and x draw the box;
 - nothing is .notdef.
 
-Fixtures, written through the mapping and shaped too, cover the fillers, the
+Fixtures, written through the encoding and shaped too, cover the fillers, the
 numerals, the full stop and the empty keys.
 
 The imperial recension's fixtures are typed in the font's code points around a
-name written through the mapping: the three diphthong staves; a crowned name,
+name written through the encoding: the three diphthong staves; a crowned name,
 whose every glyph takes its crowned form between the opened and the closed post;
 an open with no close, and a close with no open, which stay bare posts with the
 staves beside them unchanged; a crown longer than the font frames; the bound
@@ -55,7 +53,7 @@ from fontTools.ttLib import TTFont
 from PIL import Image
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
-from mapped import Mapping, MappedRenderer  # noqa: E402
+from encoded import Encoded, EncodedRenderer, drawn_names  # noqa: E402
 from render import Renderer, Shaped  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent.parent
@@ -171,7 +169,7 @@ FIXTURES = [
 ]
 
 # The recension: the diphthong staves, the crown marks and the bound runes, typed in
-# the font's own code points around a roman text written through the mapping. Each
+# the font's own code points around a roman text written through the encoding. Each
 # fixture is the text before, the roman text, the text after, the features, and the
 # glyphs expected.
 AI, AU, OI = "\U000F0128", "\U000F0129", "\U000F012A"
@@ -222,7 +220,7 @@ RECENSION_FIXTURES = [
 
 
 def fixture_texts() -> list[str]:
-    """Every roman text the fixtures write through the mapping."""
+    """Every roman text the fixtures write through the encoding."""
     return [text for text, _ in FIXTURES] + [roman for _, roman, _, _, _ in RECENSION_FIXTURES if roman]
 
 
@@ -298,9 +296,8 @@ def expected_glyphs(form: str) -> list[str]:
     return out
 
 
-def shaping(font: Path, forms: list[str], mapping: Mapping | None = None) -> list[str]:
-    r = MappedRenderer(Renderer(font), mapping or Mapping.offline("thuravark-carved"))
-    r.prepare(forms + fixture_texts())
+def shaping(font: Path, forms: list[str], encoded: Encoded | None = None) -> list[str]:
+    r = EncodedRenderer(Renderer(font), encoded or Encoded("thuravark-carved"))
     failures = []
     digraphs = long_vowels = doubled = 0
     for form in forms:
@@ -318,11 +315,11 @@ def shaping(font: Path, forms: list[str], mapping: Mapping | None = None) -> lis
         if got != want:
             failures.append(f"{text!r}: shaped {got}, expected {want}")
     for before, roman, after, features, want in RECENSION_FIXTURES:
-        text = before + (r.mapping.one(roman) if roman else "") + after
-        got = [r.order[g[0]] for g in r.renderer.shape(text, features).glyphs]
+        text = before + (r.encoded.one(roman) if roman else "") + after
+        got = drawn_names(r.renderer, text, features=features)
         if got != want:
             failures.append(f"{before!r} {roman!r} {after!r} {features}: shaped {got}, expected {want}")
-    failures += frame_problems(r.renderer, r.mapping)
+    failures += frame_problems(r.renderer, r.encoded)
     print(
         f"{font}: {len(forms)} forms shaped, {digraphs} digraph staves, {long_vowels} doubled "
         f"vowels and {doubled} doubled consonants expected, {len(FIXTURES) + len(RECENSION_FIXTURES)} fixtures, "
@@ -331,12 +328,12 @@ def shaping(font: Path, forms: list[str], mapping: Mapping | None = None) -> lis
     return failures
 
 
-def frame_problems(r: Renderer, mapping: Mapping) -> list[str]:
+def frame_problems(r: Renderer, encoded: Encoded) -> list[str]:
     """A rendered crowned name's rails run unbroken from post to post, and an open with
     no close draws nothing but its post."""
     problems = []
     size = 48
-    name = mapping.one("Thiland Thauras")
+    name = encoded.one("Thiland Thauras")
     for label, text, framed in (("crowned", OPEN + name + CLOSE, True), ("unclosed", OPEN + name, False)):
         shaped = r.shape(text)
         width = int(shaped.advance * size / r.upem) + 40
@@ -482,17 +479,14 @@ def main():
     ap.add_argument("--font", default=str(ROOT / "fonts" / "ThuravarkCarved-Regular.ttf"))
     ap.add_argument("--thalorna", default=str(Path.home() / "dev/HeroicLands/thalorna"))
     ap.add_argument("--note", help="read the language note from this file instead of git")
-    ap.add_argument("--map-note", help="read the thuravark mapping note from this file instead of git")
+    ap.add_argument("--encoding", help="apply this encoding file instead of encodings/thuravark.json")
     ap.add_argument("--fixtures-only", action="store_true",
-                    help="shape the fixtures alone, written as tools/mapped.json records them")
+                    help="shape the fixtures alone and read no lexicon")
     args = ap.parse_args()
-    if args.fixtures_only:
-        forms, mapping = [], Mapping.offline("thuravark-carved")
-    else:
-        forms = lexicon_forms(Path(args.thalorna), Path(args.note) if args.note else None)
-        mapping = Mapping("thuravark", thalorna=Path(args.thalorna), note=args.map_note, face="thuravark-carved")
+    forms = [] if args.fixtures_only else lexicon_forms(Path(args.thalorna), Path(args.note) if args.note else None)
+    encoded = Encoded("thuravark-carved", args.encoding)
     font = Path(args.font)
-    failures = shaping(font, forms, mapping) + geometry(font)
+    failures = shaping(font, forms, encoded) + geometry(font)
     for f in failures[:40]:
         print(f"{font}: error: {f}")
     if len(failures) > 40:

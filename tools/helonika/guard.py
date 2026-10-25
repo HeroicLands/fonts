@@ -4,31 +4,31 @@
 
     .venv/bin/python tools/helonika/guard.py [--font fonts/HelonikaBook-Regular.ttf]
                                        [--thalorna ~/dev/HeroicLands/thalorna | --note FILE ...]
-                                       [--map-note [SCRIPT=]FILE ... | --fixtures-only]
+                                       [--encoding [NAME=]FILE ... | --fixtures-only]
 
 The forms are the ``words``, ``affixes`` and ``names`` of the frontmatter of
 ``assets/content/Skills/Languages/Helonic.md``, ``Valtari.md``, ``Byzarian.md`` and
 ``Bethuan.md``, and each note's ``register`` entries in its own tongue, on the
 thalorna repository's ``origin/main``, or in the files ``--note`` names (one flag per
 file, each a language note written in the Helónika; only those files are read).
-Each form is written in the Helónika's code points by the mapping note the language
-note's ``writtenIn.map`` names, as a run marked ``map=`` is, and shaped left to
+Each form is written in the Helónika's code points by the encoding the language
+note's ``writtenIn.map`` names (package-build's key for it), and shaped left to
 right. Helonic and Valtari use ``helonika``, Bizarian ``helonika-bizarian`` and
-Bethuan ``helonika-bethuan``. The mapping notes are
-``assets/content/Lore/Scripts/Helonika_Spelling.md``, ``Bizarian_Spelling.md`` and
-``Bethuan_Spelling.md`` on ``origin/main``, or the file ``--map-note SCRIPT=FILE``
-names for ``helonika``, ``bizarian`` or ``bethuan``; a bare ``--map-note FILE`` is ``helonika=FILE``.
+Bethuan ``helonika-bethuan``. The encodings are ``encodings/helonika.json``,
+``encodings/helonika-bizarian.json`` and ``encodings/helonika-bethuan.json``, or the
+file ``--encoding NAME=FILE`` names for ``helonika``, ``bizarian`` or ``bethuan``; a
+bare ``--encoding FILE`` is ``helonika=FILE``.
 
-What a form must shape to follows from the code points the mapping wrote: each is
+What a form must shape to follows from the code points the encoding wrote: each is
 its own glyph, the space is the space, and the accent after anything but a vowel is
 the box. No form may shape to the notdef or the box.
 
 The fixtures in ``fixtures.json`` give a roman spelling and the glyphs it is drawn
 with, for the Helonic map and, under ``bizarian`` and ``bethuan``, for each of the
-others. They are written through their mapping and shaped too, so the guard checks
-the mappings and the face together. A character the mapping has no row for passes
+others. They are written through their encoding and shaped too, so the guard checks
+the encodings and the face together. A character the encoding has no row for passes
 through it and prints the box: the guard lists the forms that hold one, and its
-``unmappable`` fixtures assert both.
+``unencodable`` fixtures assert both.
 """
 
 import argparse
@@ -40,20 +40,20 @@ from pathlib import Path
 import yaml
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
-from mapped import Mapping  # noqa: E402
+from encoded import Encoded, drawn_names, visible  # noqa: E402
 from render import Renderer  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent.parent
 LANGUAGES = "assets/content/Skills/Languages"
-# Each tongue's language note, and the mapping each writes its forms by.
+# Each tongue's language note, and the encoding each writes its forms by.
 NOTES = {
     "helonic": f"{LANGUAGES}/Helonic.md",
     "valtari": f"{LANGUAGES}/Valtari.md",
     "byzarian": f"{LANGUAGES}/Byzarian.md",
     "bethuan": f"{LANGUAGES}/Bethuan.md",
 }
-# The mapping a language note's ``writtenIn.map`` names, as the key the tools use for it, and the key
-# tools/mapped.json records its fixtures under.
+# The encoding a language note's ``writtenIn.map`` (package-build's key) names, as the key the tools use
+# for it, and the face key of tools/encoded.py it is written for.
 SCRIPT_OF = {"helonika": "helonika", "helonika-bizarian": "bizarian", "helonika-bethuan": "bethuan"}
 OFFLINE = {"helonika": "helonika-book", "bizarian": "helonika-bizarian", "bethuan": "helonika-bethuan"}
 HERE = Path(__file__).resolve().parent
@@ -69,7 +69,7 @@ VOWELS |= {v.lower() for v in VOWELS}
 
 def drawn(text: str) -> list[str]:
     """The glyphs, in reading order, that the face draws for a string of code points."""
-    g = ["space" if c == SPACE else NAME_OF.get(c, BOX) for c in text]
+    g = ["space" if c == SPACE else NAME_OF.get(c, BOX) for c in visible(text)]
     return [BOX if n == "accent" and i and g[i - 1] not in VOWELS else n for i, n in enumerate(g)]
 
 
@@ -77,19 +77,19 @@ _fixtures = json.loads((HERE / "fixtures.json").read_text(encoding="utf-8"))
 
 
 def fixtures(script: str = "helonika") -> tuple[list, list]:
-    """The (latin, glyphs) fixtures and the (latin, letter) unmappable ones written by a mapping."""
+    """The (latin, glyphs) fixtures and the (latin, letter) unencodable ones written by an encoding."""
     doc = _fixtures if script == "helonika" else _fixtures[script]
-    return [(f["latin"], f["glyphs"]) for f in doc["fixtures"]], [(f["latin"], f["letter"]) for f in doc.get("unmappable", [])]
+    return [(f["latin"], f["glyphs"]) for f in doc["fixtures"]], [(f["latin"], f["letter"]) for f in doc.get("unencodable", [])]
 
 
 def fixture_texts(script: str = "helonika") -> list[str]:
-    """Every roman text the fixtures of a mapping write through it."""
+    """Every roman text the fixtures of an encoding write through it."""
     good, bad = fixtures(script)
     return [t for t, _ in good] + [t for t, _ in bad]
 
 
 def lexicon(thalorna: Path, note: str, file: Path | None = None) -> tuple[dict, str]:
-    """The ``data`` of a language note's frontmatter, and the mapping its ``writtenIn`` names."""
+    """The ``data`` of a language note's frontmatter, and the encoding its ``writtenIn`` names."""
     if file:
         text = file.read_text(encoding="utf-8")
     else:
@@ -122,7 +122,7 @@ def note_forms(data: dict, tongue: str) -> list[str]:
 
 
 def lexicon_forms(thalorna: Path, files: list[Path] = ()) -> dict[str, list[str]]:
-    """The forms to shape, by the mapping that writes them: those of the files, or of the
+    """The forms to shape, by the encoding that writes them: those of the files, or of the
     four language notes on thalorna's ``origin/main``. Each file's tongue is its file name."""
     sources = [(f.stem.lower(), NOTES.get(f.stem.lower(), str(f)), f) for f in files] if files else \
         [(tongue, note, None) for tongue, note in NOTES.items()]
@@ -136,35 +136,35 @@ def lexicon_forms(thalorna: Path, files: list[Path] = ()) -> dict[str, list[str]
     return by_script
 
 
-def run(font: Path, groups: dict[str, list[str]], mappings: dict[str, Mapping] | None = None) -> list[str]:
-    """Shape every group's forms, written by its mapping, and every mapping's fixtures.
+def run(font: Path, groups: dict[str, list[str]], encodings: dict[str, Encoded] | None = None) -> list[str]:
+    """Shape every group's forms, written by its encoding, and every encoding's fixtures.
 
-    ``groups`` is the forms by mapping (``helonika``, ``bizarian`` or ``bethuan``); the fixtures
-    of all three mappings are shaped whichever groups are given. A mapping not in ``mappings``
-    is the one tools/mapped.json records."""
+    ``groups`` is the forms by encoding (``helonika``, ``bizarian`` or ``bethuan``); the fixtures
+    of all three encodings are shaped whichever groups are given. An encoding not in ``encodings``
+    is the face's own."""
     r = Renderer(font)
-    mappings = mappings or {}
+    encodings = encodings or {}
     failures = []
-    shaped = glyphs = nforms = nunmapped = nfixtures = 0
+    shaped = glyphs = nforms = nunencoded = nfixtures = 0
     for script in OFFLINE:
-        m = mappings.get(script) or Mapping.offline(OFFLINE[script])
+        m = encodings.get(script) or Encoded(OFFLINE[script])
         forms = groups.get(script, [])
         records = m.records(forms + fixture_texts(script))
         # The space has no row: it passes through, and the face draws it.
         for rec in records:
-            if rec.get("unmapped"):
-                rec["unmapped"] = [c for c in rec["unmapped"] if c != SPACE]
+            if rec.get("unencoded"):
+                rec["unencoded"] = [c for c in rec["unencoded"] if c != SPACE]
         written = dict(zip(forms + fixture_texts(script), records))
         nforms += len(forms)
         for form in forms:
             rec = written[form]
-            if rec.get("unmapped"):
-                nunmapped += 1
+            if rec.get("unencoded"):
+                nunencoded += 1
                 print(f"{NOTES['helonic']}: warning: the form {form!r} has "
-                      f"{', '.join(map(repr, rec['unmapped']))}, which the {script} mapping does not write")
+                      f"{', '.join(map(repr, rec['unencoded']))}, which the {script} encoding does not write")
                 continue
             want = drawn(rec["text"])
-            got = r.glyph_names(rec["text"], direction="ltr")
+            got = drawn_names(r, rec["text"], direction="ltr")
             shaped += 1
             glyphs += len(want)
             if ".notdef" in got or BOX in got:
@@ -175,38 +175,38 @@ def run(font: Path, groups: dict[str, list[str]], mappings: dict[str, Mapping] |
         nfixtures += len(good) + len(bad)
         for latin, want in good:
             rec = written[latin]
-            if rec.get("unmapped"):
-                failures.append(f"{script}: {latin!r}: the mapping has no row for {rec['unmapped']}, expected {want}")
+            if rec.get("unencoded"):
+                failures.append(f"{script}: {latin!r}: the encoding has no row for {rec['unencoded']}, expected {want}")
                 continue
             if drawn(rec["text"]) != want:
                 failures.append(f"{script}: {latin!r}: written as {drawn(rec['text'])}, expected {want}")
-            got = r.glyph_names(rec["text"], direction="ltr")
+            got = drawn_names(r, rec["text"], direction="ltr")
             if got != want:
                 failures.append(f"{script}: {latin!r}: shaped {got}, expected {want}")
         for latin, letter in bad:
             rec = written[latin]
-            if letter not in rec.get("unmapped", []):
+            if letter not in rec.get("unencoded", []):
                 failures.append(f"{script}: {latin!r}: written as {drawn(rec['text'])}, expected no row for {letter!r}")
-            elif BOX not in r.glyph_names(rec["text"], direction="ltr"):
+            elif BOX not in drawn_names(r, rec["text"], direction="ltr"):
                 failures.append(f"{script}: {latin!r}: {letter!r} does not print the box")
     print(
         f"{font}: {nforms} forms, {shaped} written and shaped with {glyphs} glyphs, "
-        f"{nunmapped} with a character the mapping does not write, {nfixtures} fixtures, "
+        f"{nunencoded} with a character the encoding does not write, {nfixtures} fixtures, "
         f"{len(failures)} failures"
     )
     return failures
 
 
-def map_notes(entries: list[str]) -> dict[str, str]:
-    """Mapping note files by script: ``SCRIPT=FILE`` names the script, and a bare ``FILE`` is the helonika note."""
-    notes = {}
+def encoding_files(entries: list[str]) -> dict[str, str]:
+    """Encoding files by script: ``SCRIPT=FILE`` names the script, and a bare ``FILE`` is the helonika encoding."""
+    files = {}
     for entry in entries:
         script, eq, file = entry.partition("=")
         if eq and script in OFFLINE:
-            notes[script] = file
+            files[script] = file
         else:
-            notes["helonika"] = entry
-    return notes
+            files["helonika"] = entry
+    return files
 
 
 def main():
@@ -216,19 +216,16 @@ def main():
     ap.add_argument("--note", action="append", default=[], metavar="FILE",
                     help="read this language note (Helonic, Valtari, Byzarian or Bethuan) from a file instead of git; "
                          "repeat for several, and only those are read")
-    ap.add_argument("--map-note", action="append", default=[], metavar="[SCRIPT=]FILE",
-                    help="read a mapping note from a file instead of git: helonika=FILE, bizarian=FILE or bethuan=FILE; "
-                         "a bare FILE is helonika=FILE")
+    ap.add_argument("--encoding", action="append", default=[], metavar="[SCRIPT=]FILE",
+                    help="apply an encoding file instead of encodings/<name>.json: helonika=FILE, bizarian=FILE "
+                         "or bethuan=FILE; a bare FILE is helonika=FILE")
     ap.add_argument("--fixtures-only", action="store_true",
-                    help="shape the fixtures alone, written as tools/mapped.json records them")
+                    help="shape the fixtures alone and read no lexicon")
     args = ap.parse_args()
-    notes = map_notes(args.map_note)
-    if args.fixtures_only:
-        groups, mappings = {}, {}
-    else:
-        groups = lexicon_forms(Path(args.thalorna), [Path(n) for n in args.note])
-        mappings = {script: Mapping(script, thalorna=Path(args.thalorna), note=notes.get(script), face=FACE) for script in OFFLINE}
-    failures = run(Path(args.font), groups, mappings)
+    files = encoding_files(args.encoding)
+    groups = {} if args.fixtures_only else lexicon_forms(Path(args.thalorna), [Path(n) for n in args.note])
+    encodings = {script: Encoded(OFFLINE[script], files.get(script)) for script in OFFLINE}
+    failures = run(Path(args.font), groups, encodings)
     for f in failures[:40]:
         print(f"{args.font}: error: {f}")
     if len(failures) > 40:

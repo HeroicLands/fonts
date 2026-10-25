@@ -1,6 +1,6 @@
 # Qalezu Hand — design notes
 
-The everyday alphabet of the Khelathi of thalorna: signs written fast with a reed on papyrus, one sign for each consonant. It is written right to left, draws no vowel except at the start of a word, and is written from the setting's roman spelling by thalorna's `qalezu` mapping note, not by the font.
+The everyday alphabet of the Khelathi of thalorna: signs written fast with a reed on papyrus, one sign for each consonant. It is written right to left, draws no vowel except at the start of a word, and is written from the setting's roman spelling by the `qalezu` encoding, not by the font.
 
 ## The reed nib
 
@@ -73,7 +73,7 @@ Examples, each in reading order:
 
 A doubled consonant keeps its doubling bar under the sign; a catch before it puts the triangle over the doubled sign, whose bar stays below.
 
-The font draws each code point as its sign, and a catch followed by a consonant sign or a doubled sign as that sign's catch-before form. Two identical consonant signs stay two signs: a doubled consonant is a character of its own, written only where the spelling doubles the consonant, so a consonant, a silent vowel and the same consonant (_zelalgit_) is two signs. Which vowels vanish, which letters are one sign and where a consonant is doubled is the spelling, which thalorna's `qalezu` mapping note writes; the fixtures are in `tools/qalezu-hand/fixtures.json`.
+The font draws each code point as its sign, and a catch followed by a consonant sign or a doubled sign as that sign's catch-before form. Two identical consonant signs stay two signs: a doubled consonant is a character of its own, written only where the spelling doubles the consonant, so a consonant, a silent vowel and the same consonant (_zelalgit_) is two signs. Which vowels vanish, which letters are one sign and where a consonant is doubled is the spelling, which the `qalezu` encoding writes; the fixtures are in `tools/qalezu-hand/fixtures.json`.
 
 ## Right to left
 
@@ -126,5 +126,5 @@ PATH=.venv/bin:$PATH ./build.sh                          # fonts/QalezuHand-Regu
 ```
 
 - `check_font.py` confirms the cmap is `encoding.json` plus the box, which takes every code point of the Latin ranges that the encoding leaves free to the box, that every sign shaped alone is its glyph and every catch shaped before a sign is that sign's catch-before form, that every glyph has an outline, that the bar, dab and catchdots components have zero advance, that every doubled glyph is its sign with the bar drawn in at the sign's advance, that every catch-before glyph is its sign with three more dabs drawn above it at the sign's advance, and that the font carries no mark positioning, that the default-ignorables shape to zero advance and no ink, and that the name table carries the licence.
-- `guard.py` writes every form of the Khelathi lexicon, the `words` forms and the `names`, through thalorna's `qalezu` mapping note, shapes the result right to left and asserts no glyph is `.notdef` or the box and that the glyphs are the signs of the code points the mapping wrote, each catch fused with the sign after it. It reports every form that holds a character the mapping does not write (`c` outside `ch`, `x`). Fixtures cover the word-initial vowel, the apostrophe, each digraph, `ch` and `tj` giving one sign, doubled consonants and doubled digraphs, a number and a word-final vowel, and the catch before a consonant, before a doubled consonant, before another catch, at the end of a word and across a mark.
+- `guard.py` writes every form of the Khelathi lexicon, the `words` forms and the `names`, through the `qalezu` encoding, shapes the result right to left and asserts no glyph is `.notdef` or the box and that the glyphs are the signs of the code points the encoding wrote, each catch fused with the sign after it. It reports every form that holds a character the encoding does not write (`c` outside `ch`, `x`). Fixtures cover the word-initial vowel, the apostrophe, each digraph, `ch` and `tj` giving one sign, doubled consonants and doubled digraphs, a number and a word-final vowel, and the catch before a consonant, before a doubled consonant, before another catch, at the end of a word and across a mark.
 - `prove_guards.py` removes the th sign from the built font's character map, and the GSUB table from the built font, and the guard fails on each; `check_font.py` fails on the font without GSUB too.

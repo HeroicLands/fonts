@@ -4,18 +4,16 @@
 
     .venv/bin/python tools/vedyakshara/guard.py [--font fonts/VedyaksharaClassical-Regular.ttf]
                                          [--thalorna ~/dev/HeroicLands/thalorna | --note FILE]
-                                         [--map-note FILE | --fixtures-only]
+                                         [--encoding FILE | --fixtures-only]
 
 The forms are the ``words``, ``affixes``, ``names`` and ``elements`` of the
 frontmatter of ``assets/content/Skills/Languages/Vedyari.md``, and its
 ``register`` entries in Vedyari, on the thalorna repository's ``origin/main``, or
 in the file ``--note`` names. Each form is written in the Vedyakshara's code
-points by thalorna's ``vedyakshara`` mapping note
-(``assets/content/Lore/Scripts/Vedyakshara_Spelling.md`` on ``origin/main``, or the
-file ``--map-note`` names), as a run marked ``map=vedyakshara`` is, and shaped
-left to right.
+points by the ``vedyakshara`` encoding (``encodings/vedyakshara.json``, or the file
+``--encoding`` names), and shaped left to right.
 
-What a form must shape to follows from the code points the mapping wrote, by the
+What a form must shape to follows from the code points the encoding wrote, by the
 face's rules taken in order (``drawn``): _pa_ and the soft dot are _fa_; a fused
 pair with the cut between is its fused sign, the leftmost first; _ra_ with the cut
 is its half form before a consonant and its final form otherwise; a sign, the cut
@@ -26,10 +24,10 @@ after anything that cannot carry it is the box. A hook is compared by its kind,
 since the neck it takes is the sign's (``check_font.py`` checks the necks).
 
 The fixtures in ``fixtures.json`` give a roman spelling and the glyphs it is drawn
-with, and are written through the mapping and shaped too, so the guard checks the
-mapping and the face together. A character the mapping has no row for passes
+with, and are written through the encoding and shaped too, so the guard checks the
+encoding and the face together. A character the encoding has no row for passes
 through it and prints the box: the guard lists the forms that hold one, and its
-``unmappable`` fixtures assert both.
+``unencodable`` fixtures assert both.
 """
 
 import argparse
@@ -41,7 +39,7 @@ from pathlib import Path
 import yaml
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
-from mapped import Mapping  # noqa: E402
+from encoded import Encoded, drawn_names, visible  # noqa: E402
 from render import Renderer  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent.parent
@@ -66,7 +64,7 @@ SPLIT = {"vs.ai": ["flag.e", "flag.i"], "vs.au": ["hook.o", "hook.u"], "vs.u": [
 
 def drawn(text: str) -> list[str]:
     """The glyphs, in reading order, that the face draws for a string of code points."""
-    g = ["space" if c == SPACE else NAME_OF.get(c, BOX) for c in text]
+    g = ["space" if c == SPACE else NAME_OF.get(c, BOX) for c in visible(text)]
 
     def pairs(rule):
         out, i = [], 0
@@ -106,12 +104,12 @@ def plain(names: list[str]) -> list[str]:
 
 _fixtures = json.loads((HERE / "fixtures.json").read_text(encoding="utf-8"))
 FIXTURES = [(f["latin"], f["glyphs"]) for f in _fixtures["fixtures"]]
-UNMAPPABLE = [(f["latin"], f["letter"]) for f in _fixtures["unmappable"]]
+UNENCODABLE = [(f["latin"], f["letter"]) for f in _fixtures["unencodable"]]
 
 
 def fixture_texts() -> list[str]:
-    """Every roman text the fixtures write through the mapping."""
-    return [t for t, _ in FIXTURES] + [t for t, _ in UNMAPPABLE]
+    """Every roman text the fixtures write through the encoding."""
+    return [t for t, _ in FIXTURES] + [t for t, _ in UNENCODABLE]
 
 
 def lexicon(thalorna: Path | None, note: Path | None) -> dict:
@@ -147,24 +145,24 @@ def lexicon_forms(thalorna: Path | None, note: Path | None) -> list[str]:
     return forms
 
 
-def run(font: Path, forms: list[str], mapping: Mapping | None = None) -> list[str]:
+def run(font: Path, forms: list[str], encoded: Encoded | None = None) -> list[str]:
     r = Renderer(font)
-    m = mapping or Mapping.offline(FACE)
+    m = encoded or Encoded(FACE)
     records = m.records(forms + fixture_texts())
     # The space has no row: it passes through, and the face draws it.
     for rec in records:
-        if rec.get("unmapped"):
-            rec["unmapped"] = [c for c in rec["unmapped"] if c != SPACE]
+        if rec.get("unencoded"):
+            rec["unencoded"] = [c for c in rec["unencoded"] if c != SPACE]
     written = dict(zip(forms + fixture_texts(), records))
     failures = []
-    shaped, glyphs, unmapped = 0, 0, []
+    shaped, glyphs, unencoded = 0, 0, []
     for form in forms:
         rec = written[form]
-        if rec.get("unmapped"):
-            unmapped.append((form, rec["unmapped"]))
+        if rec.get("unencoded"):
+            unencoded.append((form, rec["unencoded"]))
             continue
         want = drawn(rec["text"])
-        got = plain(r.glyph_names(rec["text"], direction="ltr"))
+        got = plain(drawn_names(r, rec["text"], direction="ltr"))
         shaped += 1
         glyphs += len(want)
         if ".notdef" in got or BOX in got:
@@ -173,26 +171,26 @@ def run(font: Path, forms: list[str], mapping: Mapping | None = None) -> list[st
             failures.append(f"{form}: shaped {got}, expected {want}")
     for latin, want in FIXTURES:
         rec = written[latin]
-        if rec.get("unmapped"):
-            failures.append(f"{latin!r}: the mapping has no row for {rec['unmapped']}, expected {want}")
+        if rec.get("unencoded"):
+            failures.append(f"{latin!r}: the encoding has no row for {rec['unencoded']}, expected {want}")
             continue
         if drawn(rec["text"]) != want:
             failures.append(f"{latin!r}: written as {drawn(rec['text'])}, expected {want}")
-        got = plain(r.glyph_names(rec["text"], direction="ltr"))
+        got = plain(drawn_names(r, rec["text"], direction="ltr"))
         if got != want:
             failures.append(f"{latin!r}: shaped {got}, expected {want}")
-    for latin, letter in UNMAPPABLE:
+    for latin, letter in UNENCODABLE:
         rec = written[latin]
-        if letter not in rec.get("unmapped", []):
+        if letter not in rec.get("unencoded", []):
             failures.append(f"{latin!r}: written as {drawn(rec['text'])}, expected no row for {letter!r}")
-        elif BOX not in r.glyph_names(rec["text"], direction="ltr"):
+        elif BOX not in drawn_names(r, rec["text"], direction="ltr"):
             failures.append(f"{latin!r}: {letter!r} does not print the box")
-    for form, letters in unmapped:
+    for form, letters in unencoded:
         print(f"{NOTE}: warning: the form {form!r} has {', '.join(map(repr, letters))}, "
-              "which the vedyakshara mapping does not write")
+              "which the vedyakshara encoding does not write")
     print(
         f"{font}: {len(forms)} forms, {shaped} written and shaped with {glyphs} glyphs, "
-        f"{len(unmapped)} with a character the mapping does not write, {len(FIXTURES) + len(UNMAPPABLE)} fixtures, "
+        f"{len(unencoded)} with a character the encoding does not write, {len(FIXTURES) + len(UNENCODABLE)} fixtures, "
         f"{len(failures)} failures"
     )
     return failures
@@ -203,16 +201,13 @@ def main():
     ap.add_argument("--font", default=str(ROOT / "fonts" / "VedyaksharaClassical-Regular.ttf"))
     ap.add_argument("--thalorna", default=str(Path.home() / "dev/HeroicLands/thalorna"))
     ap.add_argument("--note", help="read the language note from this file instead of git")
-    ap.add_argument("--map-note", help="read the vedyakshara mapping note from this file instead of git")
+    ap.add_argument("--encoding", help="apply this encoding file instead of encodings/vedyakshara.json")
     ap.add_argument("--fixtures-only", action="store_true",
-                    help="shape the fixtures alone, written as tools/mapped.json records them")
+                    help="shape the fixtures alone and read no lexicon")
     args = ap.parse_args()
-    if args.fixtures_only:
-        forms, mapping = [], Mapping.offline(FACE)
-    else:
-        forms = lexicon_forms(Path(args.thalorna), Path(args.note) if args.note else None)
-        mapping = Mapping("vedyakshara", thalorna=Path(args.thalorna), note=args.map_note, face=FACE)
-    failures = run(Path(args.font), forms, mapping)
+    forms = [] if args.fixtures_only else lexicon_forms(Path(args.thalorna), Path(args.note) if args.note else None)
+    encoded = Encoded(FACE, args.encoding)
+    failures = run(Path(args.font), forms, encoded)
     for f in failures[:40]:
         print(f"{args.font}: error: {f}")
     if len(failures) > 40:

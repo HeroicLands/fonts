@@ -11,8 +11,9 @@
  * - a `files` entry in package.json packs nothing;
  * - a packed path is not a font (`fonts/*.woff2`, `fonts/*.ttf`), `fonts.css`,
  *   `fonts.json`, a font cheatsheet (`charts/`), a keyboard
- *   cheatsheet, Emacs input method, or macOS, Windows or Linux layout (`keyboards/`), `LICENSE`,
- *   `README.md` or `package.json`;
+ *   cheatsheet, Emacs input method, or macOS, Windows or Linux layout (`keyboards/`), an
+ *   encoding or its test vectors (`encodings/*.json`), `encode.py`, `LICENSE`, `README.md`
+ *   or `package.json`;
  * - `fonts.css` names a URL that is not packed;
  * - a font in `fonts/` has no `@font-face` rule that names it;
  * - a family's class in `fonts.css` is missing or lacks `font-synthesis: none`, so a
@@ -49,6 +50,9 @@ export const ALLOWED = [
     "keyboards/windows/*.klc",
     "keyboards/macos/HeroicLands.bundle/Contents/Info.plist",
     "keyboards/macos/HeroicLands.bundle/Contents/Resources/*.keylayout",
+    "encodings/*.json",
+    "encodings/*.md",
+    "encode.py",
     "LICENSE",
     "README.md",
     "package.json",

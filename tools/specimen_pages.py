@@ -4,7 +4,7 @@
 
     .venv/bin/python tools/specimen_pages.py            # write the pages, their images and the README cells
     .venv/bin/python tools/specimen_pages.py --check    # fail where any of them is missing or out of date
-    .venv/bin/python tools/specimen_pages.py --write-texts [--thalorna PATH] [--map-note SCRIPT=FILE]
+    .venv/bin/python tools/specimen_pages.py --write-texts [--thalorna PATH] [--encoding SCRIPT=FILE]
 
 Every family of fonts.json that is its own font file has a page, ``specimens/<class>.md``,
 with its images in ``specimens/pages/``:
@@ -16,7 +16,7 @@ with its images in ``specimens/pages/``:
   right to left for a right-to-left font and in columns for Teng Chou. The page gives
   each line's English with its roman spelling under it.
 
-Chalish Pilam Common has no mapping note, since its glyphs record meaning rather than
+Chalish Pilam Common has no encoding of spelling, since its glyphs record meaning rather than
 spelling. Its page shows the committed sheets of ``specimens/chalish-pilam/`` (the glyphs
 and the night's entry set through the font) and lists the entry phrase by phrase; its
 ``texts.json`` entry is written from ``tools/chalish-pilam/glyphs.py`` by ``--write-texts``.
@@ -27,9 +27,9 @@ with its English text.
 The texts are ``specimens/texts.json``: per family its source, and each line's code
 points, roman spelling and English, and each mark sample's code points. ``--write-texts``
 writes it once from a thalorna checkout: each roman line is written in the script by the
-script's mapping note on thalorna's ``origin/main`` through ``tools/mapping.mjs``, as
-``tools/mapped.py`` writes its fixtures, and every roman and English line must stand in
-its source note as written. Building the pages needs no thalorna checkout.
+script's encoding (``encodings/<name>.json``, or the file ``--encoding`` names), and every
+roman and English line must stand in its source note as written. Building the pages needs
+no thalorna checkout.
 
 Every line is shaped by HarfBuzz from the built font. ``--check`` renders every image
 and page afresh in memory and fails where a file is missing, differs from what the
@@ -71,8 +71,8 @@ LABEL = 18
 MARGIN = 40
 WIDTH = 1400
 
-# What each page writes, by class. ``script`` and ``face`` pick the mapping note and its
-# rows; ``tongue`` names the language. A passage's ``lines`` are (roman, English) as the
+# What each page writes, by class. ``script`` names the script and ``face`` the face whose
+# encoding writes it; ``tongue`` names the language. A passage's ``lines`` are (roman, English) as the
 # source note writes them. A mark sample is (label, glyph names).
 PASSAGES = {
     "hl-pirzath-carved": {
@@ -741,16 +741,16 @@ def note_text(thalorna: Path, note: str) -> str:
 
 
 def script_line(records: dict) -> str:
-    """The mapped line with what no row matched dropped, apart from its spaces.
+    """The encoded line with what no row matched dropped, apart from its spaces.
 
-    A mapping note writes the marks its script writes; any other punctuation of the
-    roman line passes through unmapped and would print the box, so the script line
+    An encoding writes the marks its script writes; any other punctuation of the
+    roman line passes through unencoded and would print the box, so the script line
     leaves it out, as the script does.
     """
     text = records["text"]
-    for piece in set(records.get("unmapped", [])) - {" "}:
+    for piece in set(records.get("unencoded", [])) - {" "}:
         if any(c.isalpha() for c in piece):
-            raise SystemExit(f"tools/mapping.mjs: error: {piece!r} has no row in its mapping note")
+            raise SystemExit(f"tools/specimen_pages.py: error: {piece!r} has no row in its encoding")
         text = text.replace(piece, "")
     return re.sub(r" {2,}", " ", text).strip()
 
@@ -791,8 +791,8 @@ def banner_english(md: str) -> list[str]:
     return [m.group(1).strip() for m in re.finditer(r"^\d+\. (.+)$", section, re.M)]
 
 
-def write_texts(thalorna: Path, notes: dict[str, str]) -> None:
-    from mapped import Mapping
+def write_texts(thalorna: Path, files: dict[str, str]) -> None:
+    from encoded import Encoded
 
     families = {f["class"]: f for f in manifest()}
     doc = {"families": {}}
@@ -819,9 +819,8 @@ def write_texts(thalorna: Path, notes: dict[str, str]) -> None:
         if spec["script"] == "teng-chou":
             scripts = [teng_chou_line(family, r) for r in romans]
         else:
-            note = notes.get(spec["script"])
-            mapping = Mapping(spec["script"], thalorna=thalorna, note=Path(note) if note else None, face=spec["face"])
-            scripts = [script_line(rec) for rec in mapping.records(romans)]
+            encoded = Encoded(spec["face"], files.get(spec["script"]))
+            scripts = [script_line(rec) for rec in encoded.records(romans)]
         entry["lines"] = [
             {"script": points(s), "roman": r, "english": e} for s, (r, e) in zip(scripts, spec["lines"])
         ]
@@ -843,11 +842,11 @@ def main() -> None:
     ap.add_argument("--check", action="store_true", help="fail where a page, image or README cell is missing or out of date")
     ap.add_argument("--write-texts", action="store_true", help="write specimens/texts.json from a thalorna checkout")
     ap.add_argument("--thalorna", default=str(THALORNA))
-    ap.add_argument("--map-note", action="append", default=[], metavar="SCRIPT=FILE",
-                    help="read a script's mapping note from a file instead of git, such as vedyakshara=FILE")
+    ap.add_argument("--encoding", action="append", default=[], metavar="SCRIPT=FILE",
+                    help="apply an encoding file for a script instead of encodings/<name>.json, such as vedyakshara=FILE")
     args = ap.parse_args()
     if args.write_texts:
-        write_texts(Path(args.thalorna), dict(n.split("=", 1) for n in args.map_note))
+        write_texts(Path(args.thalorna), dict(n.split("=", 1) for n in args.encoding))
         return
     families = manifest()
     texts = json.loads(TEXTS.read_text(encoding="utf-8"))

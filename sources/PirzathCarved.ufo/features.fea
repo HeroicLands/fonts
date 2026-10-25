@@ -3,13 +3,16 @@ languagesystem DFLT dflt;
 languagesystem latn dflt;
 
 # The face draws each character from its own code point. HarfBuzz replaces a
-# default-ignorable character the font maps directly with the space glyph. A
-# glyph that a lookup substitutes is left alone, so each ignorable is substituted
-# once, to a second empty glyph.
+# default-ignorable character with the space glyph, so the space glyph is empty and
+# a space draws its dot by substitution. A glyph that a lookup substitutes is left
+# alone, so each ignorable the font maps is substituted once, to a second empty glyph.
 feature ccmp {
   lookup ccmp_ignorable {
     sub ignorable by ignorable.sub;
   } ccmp_ignorable;
+  lookup ccmp_space {
+    sub space by space.dot;
+  } ccmp_space;
 } ccmp;
 
 # A consonant written twice is the letter once with the doubling mark.
@@ -48,7 +51,7 @@ feature rlig {
 } rlig;
 
 table GDEF {
-  GlyphClassDef [ignorable ignorable.sub .notdef notdef.box space p b f v m t d t_h d_h n k g k_h g_h s z h l r a u i e o sh zh ts ch j q ng ny catch w y hl ai au ei oi ou num.0 num.1 num.2 num.3 num.4 num.5 num.6 num.7 num.8 num.9 num.10 num.11 num.12 num.13 num.14 num.15 hyphen period exclam comma quote.open quote.close], , [lengthmark doubling], ;
+  GlyphClassDef [ignorable ignorable.sub .notdef notdef.box space space.dot p b f v m t d t_h d_h n k g k_h g_h s z h l r a u i e o sh zh ts ch j q ng ny catch w y hl ai au ei oi ou num.0 num.1 num.2 num.3 num.4 num.5 num.6 num.7 num.8 num.9 num.10 num.11 num.12 num.13 num.14 num.15 hyphen period exclam comma quote.open quote.close], , [lengthmark doubling], ;
 } GDEF;
 
 markClass lengthmark <anchor 0 0> @LEN;

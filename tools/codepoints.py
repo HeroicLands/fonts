@@ -137,8 +137,9 @@ def not_characters(stem: str, order: list[str]) -> dict[str, str]:
 # The Private Use Area of the Basic Multilingual Plane, which no face's cmap uses.
 BMP_PRIVATE = (0xE000, 0xF8FF)
 
-# Glyphs of every left-to-right face that are not characters.
-STRUCTURAL = {".notdef", "notdef.box", "ignorable", "ignorable.sub", "space"}
+# Glyphs of every left-to-right face that are not characters. space.dot is the dot
+# Pirzath Carved substitutes for its empty space glyph.
+STRUCTURAL = {".notdef", "notdef.box", "ignorable", "ignorable.sub", "space", "space.dot"}
 JOINED_SUFFIXES = (".init", ".medi", ".fina")
 
 

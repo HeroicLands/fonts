@@ -229,7 +229,7 @@ Every sound key, in keyboard order. Example: `t` types the sound `t`.
 | `option+shift+/` |  | nothing: this script has no character for the sound |  | `Ü` | `\?` |
 | `'` | ![U+F0270](../charts/semaron-kuriale/glyphs/U+F0270.svg) | U+F0270 | SEMARON CATCH | `catch` | `'` |
 | `.` | ![U+F0268](../charts/semaron-kuriale/glyphs/U+F0268.svg) | U+F0268 | SEMARON POINT | `stop` | `.` |
-| `,` | ![U+F0268](../charts/semaron-kuriale/glyphs/U+F0268.svg) | U+F0268 | SEMARON POINT | `pause` | `,` |
+| `,` |  | nothing: this script has no character for the sound |  | `pause` | `,` |
 | `shift+,` |  | nothing: this script has no character for the sound |  | `open quote` | `<` |
 | `shift+.` |  | nothing: this script has no character for the sound |  | `close quote` | `>` |
 | `0` | ![U+F0258](../charts/semaron-kuriale/glyphs/U+F0258.svg) | U+F0258 | SEMARON DIGIT ZERO | `0` | `0` |

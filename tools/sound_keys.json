@@ -7,7 +7,7 @@
     "An acute vowel sits on Option and its vowel, as Option+E types the acute on a Mac and AltGr and a vowel types it on Windows' US-International layout.",
     "The long vowels sit on Option and the digits 1 to 5, in the order a e i o u: Option+1 aa, Option+5 uu. The other vowel pairs follow in order on Option and the keys after them: 6 ai, 7 au, 8 ei, 9 oi, 0 ou, - ie, = uo, [ ae, ] ea. A vowel key's Option holds its acute, so the pairs cannot sit on their first vowel.",
     "A diaeresis vowel sits on Option and the punctuation keys right of L and M, in the order a e i o u: ; ä, ' ë, , ï, . ö, / ü.",
-    "The catch sits on ', the stop on ., the pause on , and the open and close quotes on Shift+, and Shift+., the keys of < and >. Vedyari writes no catch, and its mapping note writes an apostrophe as the cut, so in HL Vedyakshara ' types the cut. Only Pirzath writes quotation marks, so those two keys type nothing in the other scripts.",
+    "The catch sits on ', the stop on ., the pause on , and the open and close quotes on Shift+, and Shift+., the keys of < and >. Vedyari writes no catch, and its encoding writes an apostrophe as the cut, so in HL Vedyakshara ' types the cut. Only Pirzath writes quotation marks, so those two keys type nothing in the other scripts.",
     "Digits sit on the digit row. Pirzath counts in sixteens, and its numerals ten to fifteen sit on Shift+2 to Shift+7, the keys of @ # $ % ^ &, the characters on those keys.",
     "Qalezu writes consonants only, so its vowel keys type nothing; a vowel at the start of a word is written with the catch.",
     "Qalezu’s high verse-end dot is a sign typed by Option+Shift+F in HL Qalezu. Its Roman input is U+00B7 MIDDLE DOT; a physical newline does not add it.",

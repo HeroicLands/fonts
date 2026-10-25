@@ -9,5 +9,11 @@ fonts.css
 keyboards
 charts
 
+# Encodings and their vectors, laid out one row to a line by encode.py's writer.
+encodings/*.json
+
+# Written by tools/encoding_docs.py from the encodings.
+encodings/*.md
+
 # Hand-laid-out data tables that the tools read.
 tools/**/*.json

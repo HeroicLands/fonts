@@ -95,7 +95,7 @@ into each. The catch is a mark, set by GPOS (`mark`) over the letter before it;
 with no letter before it, a `ccmp` substitution draws it as the box. The
 default-ignorables map to an empty glyph and draw nothing.
 
-A note writes Vylari in roman, and thalorna's `semaron` mapping note turns the
+A note writes Vylari in roman, and the `semaron` encoding turns the
 spelling into these code points:
 
 | Spelled                                    | Written                                                                   |
@@ -120,7 +120,7 @@ spelling into these code points:
   and anchors, the win metrics and the `.woff2`.
 - `tools/semaron-kuriale/guard.py` writes every form of the Vylari lexicon, read
   from the frontmatter of the language note, and a set of fixtures for each
-  spelling rule through the `semaron` mapping note, shapes them, and asserts the
+  spelling rule through the `semaron` encoding, shapes them, and asserts the
   glyph sequences. `tools/codepoints.py` checks that the face draws its own code
   points and nothing else, and that no substitution turns one character into
   another: _i_ written twice is two _i_.

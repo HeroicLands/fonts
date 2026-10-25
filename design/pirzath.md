@@ -137,7 +137,7 @@ notch on the other arm of a frame, and a pole from the opposite end.
 
 Each of the seventeen is a character of its own, on its own code point, and the
 face draws it from that code point alone. A note writes it by its spelling, which
-thalorna's `pirzath` mapping note turns into the code point, the longest spelling
+the `pirzath` encoding turns into the code point, the longest spelling
 first:
 
 | Glyph                      | Spelled            |
@@ -148,7 +148,7 @@ first:
 | y (the glide)              | `y` before a vowel |
 | ai, au, ei, oi, ou         | the two vowels     |
 
-- **ngh is n and gh.** The mapping reads the four digraphs th, dh, kh and gh
+- **ngh is n and gh.** The encoding reads the four digraphs th, dh, kh and gh
   before the lost ones, so _ngh_ is `n` and `gh`, never `ng` and `h`; the
   lexicon's _zangh_ and _huzangh_ depend on it.
 - **y not before a vowel** is the spelling guide's vowel _y_, said _i_, and is
@@ -157,7 +157,7 @@ first:
   therefore never the glide. The glide before a vowel pair is the glide and the
   pair.
 - **Doubling** is the face's: two identical consonants, single letters or
-  digraph letters, draw the letter once with the doubling mark. The mapping
+  digraph letters, draw the letter once with the doubling mark. The encoding
   writes `shsh` and `ssh` both as `sh` twice, as it writes `tth` as `th` twice.
 - **A long vowel pair** carries the length mark when an acute falls on either
   vowel: `aí` and `ái` are both `ai` and the mark.
@@ -195,12 +195,12 @@ nought to fifteen, so twenty-six is one and ten and three hundred and nine is
 one, three and five. The opening and closing quotation marks are characters of
 their own.
 
-A note writes Pirzath in roman, and thalorna's `pirzath` mapping note turns the
+A note writes Pirzath in roman, and the `pirzath` encoding turns the
 spelling into these code points: an acute vowel is the vowel and the length
 mark, a capital is its letter, the digits `0` to `9` and `@ # $ % ^ &` are the
 numerals, and `“ ”`, `[ ]`, `<<` `>>` and a straight `"` are the quotation
 marks. The letter c outside _ch_, and every mark the script lacks, pass through
-the mapping and print the box.
+the encoding and print the box.
 
 ## Checks
 
@@ -210,11 +210,11 @@ the mapping and print the box.
   checks that the face draws its own code points and nothing else, and that no
   substitution turns one character into another.
 - `tools/pirzath/guard.py` writes every form in the `words` list of the Khazari
-  language note on thalorna's `origin/main` through the `pirzath` mapping note,
+  language note on thalorna's `origin/main` through the `pirzath` encoding,
   shapes it, and asserts the shaped glyph sequence is the one the spelling demands:
   no `.notdef`, each digraph one glyph, each acute vowel its vowel followed by the
   length mark, each doubled consonant or digraph the letter once with the doubling
-  mark. A set of fixtures, written through the mapping too, covers the numerals, a
+  mark. A set of fixtures, written through the encoding too, covers the numerals, a
   number beside words, the letters a to f, the quotation marks opening and closing
   from every input with gh right before the closing mark, the four marks between
   words, the keys that print the box, every consonant and every digraph doubled,

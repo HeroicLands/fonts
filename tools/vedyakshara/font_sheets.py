@@ -3,10 +3,10 @@
 """Render the built Vedyakshara Classical on real Vedyari words.
 
     .venv/bin/python tools/vedyakshara/font_sheets.py [--font fonts/VedyaksharaClassical-Regular.ttf]
-                                               [--thalorna ~/dev/HeroicLands/thalorna | --map-note FILE]
+                                               [--encoding FILE]
 
 ``specimens/vedyakshara/text.png``: words and sample phrases from the Vedyari note,
-written through the ``vedyakshara`` mapping note and shaped by HarfBuzz from the
+written through the ``vedyakshara`` encoding and shaped by HarfBuzz from the
 built font, at display size and at 48, 24 and 20 px, each after its roman spelling
 in Monaspace Neon at the same size, with the shared x-height ruled across both.
 Nothing here draws from the generator: what is shown is the font.
@@ -21,7 +21,7 @@ from PIL import Image, ImageDraw, ImageFont
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parent.parent
 sys.path.insert(0, str(HERE.parent))
-from mapped import Mapping, MappedRenderer  # noqa: E402
+from encoded import Encoded, EncodedRenderer  # noqa: E402
 from render import Renderer  # noqa: E402
 
 PAPER = (243, 239, 228)
@@ -46,15 +46,14 @@ def font(size, path=LABEL_FONT):
         return ImageFont.load_default()
 
 
-def sheet(out: Path, r: MappedRenderer) -> Path:
+def sheet(out: Path, r: EncodedRenderer) -> Path:
     W = 2400
     img = Image.new("RGB", (W, 3000), PAPER)
     d = ImageDraw.Draw(img)
     d.text((40, 30), "Vedyakshara Classical — the built font", fill=INK, font=font(46))
-    d.text((40, 94), "Vedyari words and the sample phrases of the Vedyari note, written by the vedyakshara mapping note "
+    d.text((40, 94), "Vedyari words and the sample phrases of the Vedyari note, written by the vedyakshara encoding "
            "and shaped by HarfBuzz from fonts/VedyaksharaClassical-Regular.ttf.", fill=GREY, font=font(22))
     texts = [" ".join(WORDS[:5]), " ".join(WORDS[5:10]), " ".join(WORDS[10:])] + PHRASES
-    r.prepare(texts + WORDS)
     y = 170
     size = 96
     x = 60
@@ -90,12 +89,10 @@ def sheet(out: Path, r: MappedRenderer) -> Path:
 def main():
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     ap.add_argument("--font", default=str(ROOT / "fonts" / "VedyaksharaClassical-Regular.ttf"))
-    ap.add_argument("--thalorna", default=str(Path.home() / "dev/HeroicLands/thalorna"))
-    ap.add_argument("--map-note", help="read the vedyakshara mapping note from this file instead of git")
+    ap.add_argument("--encoding", help="apply this encoding file instead of encodings/vedyakshara.json")
     ap.add_argument("--out", default=str(ROOT / "specimens" / "vedyakshara" / "text.png"))
     a = ap.parse_args()
-    mapping = Mapping("vedyakshara", thalorna=Path(a.thalorna), note=a.map_note, face="vedyakshara-classical")
-    print(sheet(Path(a.out), MappedRenderer(Renderer(Path(a.font)), mapping)))
+    print(sheet(Path(a.out), EncodedRenderer(Renderer(Path(a.font)), Encoded("vedyakshara-classical", a.encoding))))
 
 
 if __name__ == "__main__":

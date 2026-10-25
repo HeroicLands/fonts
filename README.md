@@ -82,7 +82,7 @@ Set the character's font to the matching font, or it shows as an empty box. Each
 
 ## For programs
 
-The fonts are on npm as `@heroiclands/fonts`, with the font files, `fonts.css`, the `fonts.json` manifest, the keyboards and the charts:
+The fonts are on npm as `@heroiclands/fonts`, with the font files, `fonts.css`, the `fonts.json` manifest, the keyboards, the charts and the encodings:
 
 ```sh
 npm install @heroiclands/fonts
@@ -101,6 +101,42 @@ On a web page, import the stylesheet and name a family:
 `@0` follows the newest 0.x release, and a full version pins one. A family is named by its font-family, such as `font-family: "Pirzath Carved"`, or by the `hl-<font>` class in `fonts.css`, which also turns on any OpenType feature the family needs and sets right-to-left families to run right to left.
 
 For Foundry VTT, Typst and the manifest's contents, see [DEVELOPING.md](DEVELOPING.md).
+
+## Encodings
+
+An encoding turns roman text into the code points of a script's font, and back. A font draws only its own code points, so text typed in the Latin alphabet needs an encoding to become text a font can show. Each encoding is one JSON file in `encodings/`, and `encode.py` applies it in either direction. It needs only Python 3.9 or later and no packages.
+
+```sh
+python3 encode.py --encoding pirzath "kitha"
+python3 encode.py --encoding pirzath --decode "<the code points>"
+python3 encode.py --list
+```
+
+**Encoding and decoding are exact inverses.** Decoding encoded roman gives the roman back unchanged. Encoding decoded text gives the text back unchanged.
+
+**Some encodings carry sounds the script does not write.** A setting may write a spoken language in a script that lacks some of its sounds, as Qalezu writes no vowels. Its encoding can carry such a sound as invisible characters: the script shows nothing, and decoding reads the sound back. The encodings here do this. A word encoded from its full spelling decodes to that same spelling, so it still matches the word lists and name lists that record it with vowels.
+
+The encoding itself needs no vowels. Roman written with consonants only encodes to the same visible text and decodes back to consonants only, but it is then a different spelling from the one a word list holds. `Khelathi` and `Khlth` look alike in Qalezu, and each decodes to itself. Text typed straight into a script has no invisible characters, so Qalezu typed on a keyboard decodes to roman with no vowels: that is what the text holds.
+
+`--encoding` takes an encoding's name, or the path of an encoding file. `--face SLUG` applies the rows of one face, `--codepoints` prints `U+XXXX` values, and the text may come from standard input. From Python, `import encode` gives `encode.encode(name, text)` and `encode.decode(name, text)`.
+
+Each encoding has a page that lists its fonts, its rows and its conditions:
+
+- [aelwythi-semaron](encodings/aelwythi-semaron.md)
+- [chalish-common](encodings/chalish-common.md)
+- [helonika](encodings/helonika.md)
+- [helonika-bethuan](encodings/helonika-bethuan.md)
+- [helonika-bizarian](encodings/helonika-bizarian.md)
+- [pirzath](encodings/pirzath.md)
+- [qalezu](encodings/qalezu.md)
+- [semaron](encodings/semaron.md)
+- [thuravark](encodings/thuravark.md)
+- [vedyakshara](encodings/vedyakshara.md)
+- [veldikko](encodings/veldikko.md)
+- [veldikko-aelendi](encodings/veldikko-aelendi.md)
+- [zethu-mdc](encodings/zethu-mdc.md)
+
+`encodings/vectors.json` lists roman and Unicode pairs for every encoding, so that an implementation in another language can test itself against the same results.
 
 ## Licence
 

@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: OFL-1.1
 """Prove that each guard passes a built font and fails the same font broken.
 
-    .venv/bin/python tools/prove_guards.py [--map-note SCRIPT=FILE]
+    .venv/bin/python tools/prove_guards.py [--encoding SCRIPT=FILE]
 
 The broken Pirzath and Thuravark fonts are the built .ttf with the GSUB table
 removed, so no ligature, decomposition or contextual rule applies. Pirzath Hand's
@@ -57,17 +57,17 @@ on altered fonts.json tables: a Khelathi Zethu Glyphs sign without a key, two si
 typed by sound. Its block registry is proved on a code point outside its family's blocks, two overlapping blocks and a DEVELOPING.md table that
 differs from the registry. The spacing guard (tools/spacing.py) is proved on every font with every advance widened by 120 units,
 half on each side of the ink, and on Khelathi Zethu Glyphs and Qalezu Hand with the space widened by 100 units. The default-ignorable check of the box guard is proved on every font with the glyph of the ignorables drawing the box, and on
-Pirzath Carved with the GSUB table removed. The keyboard guard (tools/keyboards_guard.py) is proved on a key map with
+Pirzath Carved without GSUB and with its space glyph drawing the dot. The keyboard guard (tools/keyboards_guard.py) is proved on a key map with
 two sounds on one key, with a sound removed, with a capital off Shift, with a quote off Shift+, and Shift+., with a markup character missing and with a
 markup character on a key that carries a sound; on layouts with a macOS output cut short, a Linux key
 line removed, an Emacs rule removed and a Windows key typing a roman letter, and with a key of markup typing
-nothing on each platform; and, where a thalorna checkout exists, on a sounds.json
-that thalorna's mapping notes no longer spell. The cheatsheet guard (tools/charts_guard.py) is proved on a sheet with a table row removed, with a wrong Code Point cell, with a chart cell removed, with a glyph image removed, with a
+nothing on each platform; and on a sounds.json
+that the encodings no longer spell. The cheatsheet guard (tools/charts_guard.py) is proved on a sheet with a table row removed, with a wrong Code Point cell, with a chart cell removed, with a glyph image removed, with a
 lowercase name and with a Zethu name that is not its code point's position. The paint guard
 (tools/khelathi-zethu-glyphs/paint_guard.py) is proved on a map without the 11-001 sign's entry and on a
 map with a seed of 01-008 moved onto its outline, on a map with one region of the oxen 05-004
 left without a seed, and on a map without the closing segments of the river 10-001. The guards run on their
-fixtures alone, written through the mappings as tools/mapped.json records them, so the proof needs no lexicon
+fixtures alone, written through the encodings, so the proof needs no lexicon
 and no thalorna checkout. The specimen-page check (tools/specimen_pages.py --check) is proved on
 Qalezu Hand's page with a line's roman spelling changed, with a line's code points changed, on a family
 with no page, and with its README sample cell an unlinked relative image.
@@ -100,6 +100,16 @@ def stripped(font: Path, out: Path) -> Path:
     return out
 
 
+def dotted_space(font: Path, out: Path) -> Path:
+    """Pirzath Carved without GSUB and with its space glyph drawing the dot, as space.dot
+    does, so that HarfBuzz draws an unsubstituted ignorable as the dot."""
+    f = TTFont(str(font))
+    del f["GSUB"]
+    f["glyf"]["space"] = f["glyf"]["space.dot"]
+    f.save(str(out))
+    return out
+
+
 def without_gpos(font: Path, out: Path) -> Path:
     f = TTFont(str(font))
     del f["GPOS"]
@@ -118,7 +128,7 @@ def without_sign(font: Path, out: Path) -> Path:
 
 
 def _mentions(table, glyph: str) -> bool:
-    """Whether a lookup subtable names `glyph` in a coverage, a class definition or a mapping."""
+    """Whether a lookup subtable names `glyph` in a coverage, a class definition or an alternate map."""
     table = getattr(table, "ExtSubTable", table)
     for attr in ("Coverage", "InputCoverage", "BacktrackCoverage", "LookAheadCoverage"):
         value = getattr(table, attr, None)
@@ -510,9 +520,9 @@ def prove_registry(codepoints) -> int:
     return status
 
 
-def prove_keyboards(notes: list[str] = ()) -> int:
+def prove_keyboards(files: dict[str, str] | None = None) -> int:
     """Prove that the keyboard guard fails a broken key map, a layout that types the wrong
-    thing or a roman letter, and a sounds.json that differs from thalorna's mapping notes."""
+    thing or a roman letter, and a sounds.json that differs from the encodings."""
     guard = load("keyboards_guard", ROOT / "tools" / "keyboards_guard.py")
     keymap = guard.kk.load()["sounds"]
     committed = guard.committed_sounds()
@@ -649,14 +659,10 @@ def prove_keyboards(notes: list[str] = ()) -> int:
         ("with an Emacs rule removed, so the key types itself", on_layouts({**layouts, "emacs": emacs})),
         ("with a Windows key typing a roman letter", on_layouts({**layouts, "windows": windows})),
     ]
-    thalorna = Path.home() / "dev/HeroicLands/thalorna"
-    if thalorna.exists():
-        stale = copy.deepcopy(committed)
-        entry(stale["sounds"], "th")["scripts"][script] = {"codepoints": "U+F0241 U+F0236"}
-        good += len(guard.thalorna_problems(thalorna, committed, notes))
-        cases.append(("with a sounds.json that thalorna no longer spells", len(guard.thalorna_problems(thalorna, stale, notes))))
-    else:
-        print(f"keyboards: no thalorna checkout at {thalorna}, so the sounds.json proof is skipped")
+    stale = copy.deepcopy(committed)
+    entry(stale["sounds"], "th")["scripts"][script] = {"codepoints": "U+F0241 U+F0236"}
+    good += len(guard.encoding_problems(committed, files))
+    cases.append(("with a sounds.json that the encodings no longer spell", len(guard.encoding_problems(stale, files))))
     status = 0
     for how, bad in cases:
         print(f"keyboards: {good} failures on the layouts, {bad} on the layouts {how}")
@@ -1015,25 +1021,25 @@ def main():
             if not ok:
                 print(f"{font}: error: the guard must pass the font and fail the broken font")
                 status = 1
-    bare = helonika.map_notes(["Helonika_Spelling.md", "bizarian=Bizarian_Spelling.md"])
-    if bare != {"helonika": "Helonika_Spelling.md", "bizarian": "Bizarian_Spelling.md"}:
-        print(f"{ROOT / 'tools' / 'helonika' / 'guard.py'}: error: a bare --map-note FILE must read the helonika map, got {bare}")
+    bare = helonika.encoding_files(["helonika.json", "bizarian=helonika-bizarian.json"])
+    if bare != {"helonika": "helonika.json", "bizarian": "helonika-bizarian.json"}:
+        print(f"{ROOT / 'tools' / 'helonika' / 'guard.py'}: error: a bare --encoding FILE must name the helonika encoding, got {bare}")
         status = 1
     status |= prove_keys(codepoints)
     status |= prove_registry(codepoints)
-    # --map-note SCRIPT=FILE reads a script's mapping note from a file, as the keyboard guard does
-    notes = [sys.argv[i + 1] for i, arg in enumerate(sys.argv[:-1]) if arg == "--map-note"]
-    status |= prove_keyboards(notes)
+    # --encoding SCRIPT=FILE applies a script's encoding from a file, as the keyboard guard does
+    files = dict(sys.argv[i + 1].split("=", 1) for i, arg in enumerate(sys.argv[:-1]) if arg == "--encoding")
+    status |= prove_keyboards(files)
     status |= prove_charts()
     status |= prove_paint()
     status |= prove_stroke_mix()
     status |= prove_specimen_pages()
     pirzath_font = ROOT / "fonts" / "PirzathCarved-Regular.ttf"
     with tempfile.TemporaryDirectory() as tmp:
-        good, bad = notdef.check(pirzath_font), notdef.check(stripped(pirzath_font, Path(tmp) / pirzath_font.name))
-        print(f"Pirzath Carved: {len(good)} failures on the font, {len(bad)} on the font without GSUB, where an ignorable draws the space dot")
+        good, bad = notdef.check(pirzath_font), notdef.check(dotted_space(pirzath_font, Path(tmp) / pirzath_font.name))
+        print(f"Pirzath Carved: {len(good)} failures on the font, {len(bad)} on the font without GSUB whose space glyph draws the dot, which an ignorable then draws")
         if good or not bad:
-            print(f"{pirzath_font}: error: the ignorable check must pass the font and fail the font without GSUB")
+            print(f"{pirzath_font}: error: the ignorable check must pass the font and fail the font without GSUB whose space glyph draws the dot")
             status = 1
     sys.exit(status)
 

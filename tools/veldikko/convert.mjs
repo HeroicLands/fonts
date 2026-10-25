@@ -9,7 +9,7 @@
  *
  * An internal tool of the Veldikko guard, not shipped; `convert("Veldikko",
  * text)` in `../convert.mjs` reaches it. The code points come from
- * `encoding.json` beside it. The rules are the Sinale mapping:
+ * `encoding.json` beside it. The rules:
  *
  * - a consonant is its letter, and `dh` and `ng` are one letter each; `n` before
  *   `k` is `ng`, since Sinale says _nk_ with the back nasal;

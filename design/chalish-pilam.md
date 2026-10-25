@@ -129,7 +129,7 @@ it, so _Ch'akul_ is _cha-ku-lu_, and a catch is left to the reader.
 words said. Nobody is quoted exactly, and grammar is never written out. Endings such
 as _-ok_ and _-bal_ are sounds, and a glyph may write one, but context usually
 carries them instead. So a passage is composed from its meaning, never converted
-from the roman word by word, and no mapping note writes roman into this script.
+from the roman word by word, and no encoding writes roman into this script.
 
 **No diacritics.** A glyph is always drawn whole and the same. No mark is ever added
 to a glyph or taken from it.

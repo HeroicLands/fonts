@@ -187,7 +187,7 @@ The cheatsheet keyboards/index.md lists every key."
  ("M" #xF020B)
  ("\\m" [""])
  ("\\M" [""])
- ("," #xF0268)
+ ("," [""])
  ("<" [""])
  ("\\," [""])
  ("\\<" [""])

@@ -17,7 +17,7 @@ the signs built from them (`tools/pirzath-hand/letters.py`), and the font
 
 The hand draws the same characters, on the same code points, as the carved face,
 and nothing else: a Latin letter, digit or mark draws the box. A note writes
-Pirzath in roman, and thalorna's `pirzath` mapping note turns the spelling into
+Pirzath in roman, and the `pirzath` encoding turns the spelling into
 these code points, by the same rows for both faces. What the hand draws beyond
 its characters is contextual:
 
@@ -320,7 +320,7 @@ or digit.
 `specimens/pirzath-hand/letters.png` holds every sign large, with the roman
 that writes it and its number of pen movements; the sixteen digits together at
 display size, 48 and 24 px; every sign at 48 and 24 px after Monaspace Neon's
-_xhn_; the sample texts written through thalorna's `pirzath` mapping note
+_xhn_; the sample texts written through the `pirzath` encoding
 beside the same text in Monaspace Neon and in Pirzath Carved, all at one font
 size; and the first word forms of the Khazari note at 48 and 24 px.
 
@@ -385,7 +385,7 @@ There is no `ss01`, no joined form and no kerning.
   length mark, the name table, the line metrics, the spacing of every glyph, and
   that no `ss01`, joined form or kerning is present.
 - `tools/pirzath-hand/guard.py` writes every Khazari lexicon form and the
-  fixtures through the `pirzath` mapping note, shapes them, and asserts the
+  fixtures through the `pirzath` encoding, shapes them, and asserts the
   glyph sequence and the length mark's seat over a pair.
 - `tools/prove_guards.py` proves the guard fails the font without its GSUB
   table, and the font check fails it without its GPOS table.

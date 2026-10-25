@@ -9,7 +9,7 @@ The forms are the ``words`` forms and every name of the frontmatter of
 ``assets/content/Skills/Languages/Sinale.md`` on the thalorna repository's
 ``origin/main``, and the fixtures in ``fixtures.json``. The converter from
 romanized Sinale to the Veldikko's code points is ``convert.mjs`` beside it,
-called through ``node`` in one batch, and the mapping's rules live there alone.
+called through ``node`` in one batch, and the converter's rules live there alone.
 
 Each converted form is shaped right to left, and the guard asserts what the font
 must do with it:
@@ -25,8 +25,8 @@ must do with it:
   stand centred on it, the first said to the right; the length bar stands at the
   ``bar`` anchor. Two units of rounding are allowed.
 
-A character with no sign is never invented a mapping: the converter refuses it,
-and the guard reports the form with the character.
+The converter refuses a character with no sign, and the guard reports the form
+with the character.
 """
 
 from __future__ import annotations

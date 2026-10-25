@@ -4,16 +4,14 @@
 
     .venv/bin/python tools/semaron-kuriale/guard.py [--font fonts/SemaronKuriale-Regular.ttf]
                                                  [--thalorna ~/dev/HeroicLands/thalorna | --note FILE]
-                                                 [--map-note FILE | --fixtures-only]
+                                                 [--encoding FILE | --fixtures-only]
 
 The forms come from the ``words`` list in the frontmatter of
 ``assets/content/Skills/Languages/Vylari.md`` on the thalorna repository's
 ``origin/main``; the body of the note is never read. Each form is written in
-Semaron's code points by thalorna's ``semaron`` mapping note
-(``assets/content/Lore/Scripts/Semaron_Spelling.md`` on ``origin/main``, or the
-file ``--map-note`` names), as a run marked ``map=semaron`` is, and the result is
-shaped. The expected glyph sequence is derived from the spelling rules below,
-which the guard owns and which read neither the font nor the mapping:
+Semaron's code points by the ``semaron`` encoding (``encodings/semaron.json``, or
+the file ``--encoding`` names), and the result is shaped. The expected glyph
+sequence is derived from the spelling rules below, which the guard owns and which read neither the font nor the encoding:
 
 - the case of the typed letter picks the majuscule or the minuscule, and ``th``
   is one letter, ``Th`` and ``TH`` its majuscule;
@@ -31,12 +29,12 @@ which the guard owns and which read neither the font nor the mapping:
   that takes no room; with no letter before them they print the box, and the
   Unicode hyphens U+2010 and U+2011 are characters the script lacks;
 - ``c``, ``x``, the quotation marks, ``?``, ``!``, ``¡`` and every other
-  character the script lacks pass through the mapping and print the box;
+  character the script lacks pass through the encoding and print the box;
 - only the default-ignorable characters draw nothing.
 
 Fixtures cover each rule, the catch on an x-height letter, a tall letter and
 after a long vowel, the numerals, and the sample lines of the specimens. They
-are written through the mapping and shaped too, so the guard checks the mapping
+are written through the encoding and shaped too, so the guard checks the encoding
 and the face together.
 """
 
@@ -49,7 +47,7 @@ import yaml
 from fontTools.pens.boundsPen import BoundsPen
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
-from mapped import Mapping  # noqa: E402
+from encoded import Encoded, drawn_glyphs, drawn_names  # noqa: E402
 from render import Renderer  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent.parent
@@ -180,7 +178,7 @@ FIXTURES: list[tuple[str, list[str]]] = [
     ("tà", ["t", "grave", "a"]), ("dà", ["d", "grave", "a"]), ("gà", ["g", "grave", "a"]),
     ("TÀ", ["T", "grave", "A"]), ("DÀ", ["D", "grave", "A"]), ("GÀ", ["G", "grave", "A"]),
     ("yà", ["y", "a", "grave"]), ("YÀ", ["Y", "A", "grave"]),
-    # Other tongues retain their own catch spellings in the shared mapping.
+    # Other tongues retain their own catch spellings in the shared encoding.
     ("Au'Khelathu", ["A", "u", "grave", "K", "h", "e", "l", "a", "th", "u"]),
     ("Zeghet'Nelgu", ["Z", "e", "g", "h", "e", "t", "grave", "N", "e", "l", "g", "u"]),
     ("Amqel'Uqa", ["A", "m", "k", "e", "l", "grave", "U", "k", "a"]),
@@ -221,7 +219,7 @@ MARK_FIXTURES = ["a'", "e'", "o'", "k'", "m'", "v'", "l'", "h'", "t'", "th'", "A
 
 
 def fixture_texts() -> list[str]:
-    """Every roman text the fixtures write through the mapping."""
+    """Every roman text the fixtures write through the encoding."""
     return [t for t, _ in FIXTURES] + [t for pair in WIDTH_PAIRS for t in pair] + MARK_FIXTURES
 
 
@@ -242,16 +240,17 @@ def lexicon_forms(thalorna: Path | None, note: Path | None) -> list[str]:
     return forms
 
 
-def mark_failures(r: Renderer, m: Mapping) -> list[str]:
+def mark_failures(r: Renderer, m: Encoded) -> list[str]:
     """Each catch takes no room and stands on its base."""
     failures = []
     glyphset = r.tt.getGlyphSet()
     for text in MARK_FIXTURES:
         shaped = r.shape(m.one(text))
-        names = [r.order[g[0]] for g in shaped.glyphs]
+        kept = [i for i, _ in drawn_glyphs(r, m.one(text))]
+        names = [r.order[shaped.glyphs[i][0]] for i in kept]
         pen_x = 0
         base = None
-        for name, (gid, gx, gy, adv) in zip(names, shaped.glyphs):
+        for name, (gid, gx, gy, adv) in zip(names, [shaped.glyphs[i] for i in kept]):
             if name != "grave":
                 base = (name, pen_x, adv)
                 pen_x += adv
@@ -272,15 +271,15 @@ def mark_failures(r: Renderer, m: Mapping) -> list[str]:
     return failures
 
 
-def run(font: Path, forms: list[str], mapping: Mapping | None = None) -> list[str]:
+def run(font: Path, forms: list[str], encoded: Encoded | None = None) -> list[str]:
     r = Renderer(font)
-    m = mapping or Mapping.offline("semaron-kuriale")
+    m = encoded or Encoded("semaron-kuriale")
     m.write(forms + fixture_texts())
     failures = []
     digraphs = longs = catches = 0
     for form in forms:
         want = expected_glyphs(form)
-        got = normalized([r.order[g[0]] for g in r.shape(m.one(form)).glyphs])
+        got = normalized(drawn_names(r, m.one(form)))
         if BOX in got and BOX not in want:
             failures.append(f"{form}: the box in {got}")
         elif got != want:
@@ -292,7 +291,7 @@ def run(font: Path, forms: list[str], mapping: Mapping | None = None) -> list[st
         derived = expected_glyphs(text)
         if derived != want:
             failures.append(f"{text!r}: the guard derives {derived} but the fixture says {want}")
-        got = normalized([r.order[g[0]] for g in r.shape(m.one(text)).glyphs])
+        got = normalized(drawn_names(r, m.one(text)))
         if got != want:
             failures.append(f"{text!r}: shaped {got}, expected {want}")
     for text, plain in WIDTH_PAIRS:
@@ -313,19 +312,16 @@ def main():
     ap.add_argument("--font", default=str(ROOT / "fonts" / "SemaronKuriale-Regular.ttf"))
     ap.add_argument("--thalorna", default=str(Path.home() / "dev/HeroicLands/thalorna"))
     ap.add_argument("--note", help="read the language note from this file instead of git")
-    ap.add_argument("--map-note", help="read the semaron mapping note from this file instead of git")
+    ap.add_argument("--encoding", help="apply this encoding file instead of encodings/semaron.json")
     ap.add_argument("--fixtures-only", action="store_true",
-                    help="shape the fixtures alone, written as tools/mapped.json records them")
+                    help="shape the fixtures alone and read no lexicon")
     args = ap.parse_args()
     if not Path(args.font).exists():
         print(f"{args.font}: error: the font does not exist")
         sys.exit(1)
-    if args.fixtures_only:
-        forms, mapping = [], Mapping.offline("semaron-kuriale")
-    else:
-        forms = lexicon_forms(Path(args.thalorna), Path(args.note) if args.note else None)
-        mapping = Mapping("semaron", thalorna=Path(args.thalorna), note=args.map_note, face="semaron-kuriale")
-    failures = run(Path(args.font), forms, mapping)
+    forms = [] if args.fixtures_only else lexicon_forms(Path(args.thalorna), Path(args.note) if args.note else None)
+    encoded = Encoded("semaron-kuriale", args.encoding)
+    failures = run(Path(args.font), forms, encoded)
     for f in failures[:40]:
         print(f"{args.font}: error: {f}")
     if len(failures) > 40:

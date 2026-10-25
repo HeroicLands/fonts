@@ -3,10 +3,10 @@
 """Render the built Pirzath Hand on real Khazari text.
 
     .venv/bin/python tools/pirzath-hand/font_sheets.py [--font fonts/PirzathHand-Regular.ttf]
-                                                [--thalorna ~/dev/HeroicLands/thalorna | --map-note FILE]
+                                                [--encoding FILE]
 
 ``specimens/pirzath-hand/text.png``: Khazari words and the Khazari texts of the
-carved specimens, written through the ``pirzath`` mapping note and shaped by HarfBuzz
+carved specimens, written through the ``pirzath`` encoding and shaped by HarfBuzz
 from the built font, at display size and at 48, 24 and 20 px, each after its roman
 spelling in Monaspace Neon at the same size, with Neon's x-height and cap height
 ruled across both. Nothing here draws from the generator: what is shown is the font.
@@ -22,7 +22,7 @@ from PIL import Image, ImageDraw, ImageFont
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parent.parent
 sys.path.insert(0, str(HERE.parent))
-from mapped import Mapping, MappedRenderer  # noqa: E402
+from encoded import Encoded, EncodedRenderer  # noqa: E402
 from render import Renderer  # noqa: E402
 
 PAPER = (243, 239, 228)
@@ -52,16 +52,15 @@ def font(size, path=LABEL_FONT):
         return ImageFont.load_default()
 
 
-def sheet(out: Path, r: MappedRenderer) -> Path:
+def sheet(out: Path, r: EncodedRenderer) -> Path:
     W = 2400
     img = Image.new("RGB", (W, 9000), PAPER)
     d = ImageDraw.Draw(img)
     d.text((40, 30), "Pirzath Hand — the built font", fill=INK, font=font(46))
-    d.text((40, 94), "Khazari words and texts, written by the pirzath mapping note and shaped by HarfBuzz from "
+    d.text((40, 94), "Khazari words and texts, written by the pirzath encoding and shaped by HarfBuzz from "
            "fonts/PirzathHand-Regular.ttf, after Monaspace Neon at the same size; faint rules: Neon's x-height and "
            "cap height.", fill=GREY, font=font(22))
     texts = _carved_texts()
-    r.prepare(texts + WORDS)
     y = 170
     size = 96
     x = 60
@@ -98,12 +97,10 @@ def sheet(out: Path, r: MappedRenderer) -> Path:
 def main():
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     ap.add_argument("--font", default=str(ROOT / "fonts" / "PirzathHand-Regular.ttf"))
-    ap.add_argument("--thalorna", default=str(Path.home() / "dev/HeroicLands/thalorna"))
-    ap.add_argument("--map-note", help="read the pirzath mapping note from this file instead of git")
+    ap.add_argument("--encoding", help="apply this encoding file instead of encodings/pirzath.json")
     ap.add_argument("--out", default=str(ROOT / "specimens" / "pirzath-hand" / "text.png"))
     a = ap.parse_args()
-    mapping = Mapping("pirzath", thalorna=Path(a.thalorna), note=a.map_note, face="pirzath-hand")
-    print(sheet(Path(a.out), MappedRenderer(Renderer(Path(a.font)), mapping)))
+    print(sheet(Path(a.out), EncodedRenderer(Renderer(Path(a.font)), Encoded("pirzath-hand", a.encoding))))
 
 
 if __name__ == "__main__":

@@ -185,7 +185,7 @@
             ]
         }
     ],
-    "unmappable": [
+    "unencodable": [
         {
             "latin": "Zaron",
             "letter": "Z"
