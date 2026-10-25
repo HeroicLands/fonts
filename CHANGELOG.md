@@ -1,5 +1,11 @@
 # @heroiclands/fonts
 
+## 1.2.1
+
+### Patch Changes
+
+Chalish Pilam Common, the everyday hand of the Ki'ich'chik writing, joins the fonts, with its character chart and a specimen page.
+
 ## 1.2.0
 
 ### Minor Changes
