@@ -165,6 +165,25 @@
       <string>prayer</string>
       <string>cenote</string>
       <string>caution</string>
+      <string>kankul_seat</string>
+      <string>ishkul</string>
+      <string>chakul</string>
+      <string>tsalam</string>
+      <string>kushi</string>
+      <string>tsul</string>
+      <string>chalish</string>
+      <string>qemul</string>
+      <string>puqem</string>
+      <string>nelush</string>
+      <string>chakal</string>
+      <string>toshel</string>
+      <string>shaknal</string>
+      <string>tsultel</string>
+      <string>penqal</string>
+      <string>shelem_bird</string>
+      <string>ishtem</string>
+      <string>qaptel</string>
+      <string>neok</string>
       <string>a1</string>
       <string>a2</string>
       <string>i1</string>
@@ -1085,6 +1104,25 @@
       <string>prayer.mL</string>
       <string>cenote.mL</string>
       <string>caution.mL</string>
+      <string>kankul_seat.mL</string>
+      <string>ishkul.mL</string>
+      <string>chakul.mL</string>
+      <string>tsalam.mL</string>
+      <string>kushi.mL</string>
+      <string>tsul.mL</string>
+      <string>chalish.mL</string>
+      <string>qemul.mL</string>
+      <string>puqem.mL</string>
+      <string>nelush.mL</string>
+      <string>chakal.mL</string>
+      <string>toshel.mL</string>
+      <string>shaknal.mL</string>
+      <string>tsultel.mL</string>
+      <string>penqal.mL</string>
+      <string>shelem_bird.mL</string>
+      <string>ishtem.mL</string>
+      <string>qaptel.mL</string>
+      <string>neok.mL</string>
       <string>lord.mLL</string>
       <string>patriarch.mLL</string>
       <string>jaguar.mLL</string>
@@ -1220,6 +1258,25 @@
       <string>prayer.mLL</string>
       <string>cenote.mLL</string>
       <string>caution.mLL</string>
+      <string>kankul_seat.mLL</string>
+      <string>ishkul.mLL</string>
+      <string>chakul.mLL</string>
+      <string>tsalam.mLL</string>
+      <string>kushi.mLL</string>
+      <string>tsul.mLL</string>
+      <string>chalish.mLL</string>
+      <string>qemul.mLL</string>
+      <string>puqem.mLL</string>
+      <string>nelush.mLL</string>
+      <string>chakal.mLL</string>
+      <string>toshel.mLL</string>
+      <string>shaknal.mLL</string>
+      <string>tsultel.mLL</string>
+      <string>penqal.mLL</string>
+      <string>shelem_bird.mLL</string>
+      <string>ishtem.mLL</string>
+      <string>qaptel.mLL</string>
+      <string>neok.mLL</string>
       <string>lord.mO</string>
       <string>patriarch.mO</string>
       <string>jaguar.mO</string>
@@ -1355,6 +1412,25 @@
       <string>prayer.mO</string>
       <string>cenote.mO</string>
       <string>caution.mO</string>
+      <string>kankul_seat.mO</string>
+      <string>ishkul.mO</string>
+      <string>chakul.mO</string>
+      <string>tsalam.mO</string>
+      <string>kushi.mO</string>
+      <string>tsul.mO</string>
+      <string>chalish.mO</string>
+      <string>qemul.mO</string>
+      <string>puqem.mO</string>
+      <string>nelush.mO</string>
+      <string>chakal.mO</string>
+      <string>toshel.mO</string>
+      <string>shaknal.mO</string>
+      <string>tsultel.mO</string>
+      <string>penqal.mO</string>
+      <string>shelem_bird.mO</string>
+      <string>ishtem.mO</string>
+      <string>qaptel.mO</string>
+      <string>neok.mO</string>
       <string>lord.mLO</string>
       <string>patriarch.mLO</string>
       <string>jaguar.mLO</string>
@@ -1490,6 +1566,25 @@
       <string>prayer.mLO</string>
       <string>cenote.mLO</string>
       <string>caution.mLO</string>
+      <string>kankul_seat.mLO</string>
+      <string>ishkul.mLO</string>
+      <string>chakul.mLO</string>
+      <string>tsalam.mLO</string>
+      <string>kushi.mLO</string>
+      <string>tsul.mLO</string>
+      <string>chalish.mLO</string>
+      <string>qemul.mLO</string>
+      <string>puqem.mLO</string>
+      <string>nelush.mLO</string>
+      <string>chakal.mLO</string>
+      <string>toshel.mLO</string>
+      <string>shaknal.mLO</string>
+      <string>tsultel.mLO</string>
+      <string>penqal.mLO</string>
+      <string>shelem_bird.mLO</string>
+      <string>ishtem.mLO</string>
+      <string>qaptel.mLO</string>
+      <string>neok.mLO</string>
       <string>lord.mU</string>
       <string>patriarch.mU</string>
       <string>jaguar.mU</string>
@@ -1625,6 +1720,25 @@
       <string>prayer.mU</string>
       <string>cenote.mU</string>
       <string>caution.mU</string>
+      <string>kankul_seat.mU</string>
+      <string>ishkul.mU</string>
+      <string>chakul.mU</string>
+      <string>tsalam.mU</string>
+      <string>kushi.mU</string>
+      <string>tsul.mU</string>
+      <string>chalish.mU</string>
+      <string>qemul.mU</string>
+      <string>puqem.mU</string>
+      <string>nelush.mU</string>
+      <string>chakal.mU</string>
+      <string>toshel.mU</string>
+      <string>shaknal.mU</string>
+      <string>tsultel.mU</string>
+      <string>penqal.mU</string>
+      <string>shelem_bird.mU</string>
+      <string>ishtem.mU</string>
+      <string>qaptel.mU</string>
+      <string>neok.mU</string>
       <string>lord.mOU</string>
       <string>patriarch.mOU</string>
       <string>jaguar.mOU</string>
@@ -1760,6 +1874,25 @@
       <string>prayer.mOU</string>
       <string>cenote.mOU</string>
       <string>caution.mOU</string>
+      <string>kankul_seat.mOU</string>
+      <string>ishkul.mOU</string>
+      <string>chakul.mOU</string>
+      <string>tsalam.mOU</string>
+      <string>kushi.mOU</string>
+      <string>tsul.mOU</string>
+      <string>chalish.mOU</string>
+      <string>qemul.mOU</string>
+      <string>puqem.mOU</string>
+      <string>nelush.mOU</string>
+      <string>chakal.mOU</string>
+      <string>toshel.mOU</string>
+      <string>shaknal.mOU</string>
+      <string>tsultel.mOU</string>
+      <string>penqal.mOU</string>
+      <string>shelem_bird.mOU</string>
+      <string>ishtem.mOU</string>
+      <string>qaptel.mOU</string>
+      <string>neok.mOU</string>
       <string>lord.mLU</string>
       <string>patriarch.mLU</string>
       <string>jaguar.mLU</string>
@@ -1895,6 +2028,25 @@
       <string>prayer.mLU</string>
       <string>cenote.mLU</string>
       <string>caution.mLU</string>
+      <string>kankul_seat.mLU</string>
+      <string>ishkul.mLU</string>
+      <string>chakul.mLU</string>
+      <string>tsalam.mLU</string>
+      <string>kushi.mLU</string>
+      <string>tsul.mLU</string>
+      <string>chalish.mLU</string>
+      <string>qemul.mLU</string>
+      <string>puqem.mLU</string>
+      <string>nelush.mLU</string>
+      <string>chakal.mLU</string>
+      <string>toshel.mLU</string>
+      <string>shaknal.mLU</string>
+      <string>tsultel.mLU</string>
+      <string>penqal.mLU</string>
+      <string>shelem_bird.mLU</string>
+      <string>ishtem.mLU</string>
+      <string>qaptel.mLU</string>
+      <string>neok.mLU</string>
       <string>n1.lead0</string>
       <string>n2.lead0</string>
       <string>n3.lead0</string>
@@ -3876,6 +4028,54 @@
       <string>base</string>
       <key>cha2.under1_double</key>
       <string>base</string>
+      <key>chakal</key>
+      <string>base</string>
+      <key>chakal.mL</key>
+      <string>base</string>
+      <key>chakal.mLL</key>
+      <string>base</string>
+      <key>chakal.mLO</key>
+      <string>base</string>
+      <key>chakal.mLU</key>
+      <string>base</string>
+      <key>chakal.mO</key>
+      <string>base</string>
+      <key>chakal.mOU</key>
+      <string>base</string>
+      <key>chakal.mU</key>
+      <string>base</string>
+      <key>chakul</key>
+      <string>base</string>
+      <key>chakul.mL</key>
+      <string>base</string>
+      <key>chakul.mLL</key>
+      <string>base</string>
+      <key>chakul.mLO</key>
+      <string>base</string>
+      <key>chakul.mLU</key>
+      <string>base</string>
+      <key>chakul.mO</key>
+      <string>base</string>
+      <key>chakul.mOU</key>
+      <string>base</string>
+      <key>chakul.mU</key>
+      <string>base</string>
+      <key>chalish</key>
+      <string>base</string>
+      <key>chalish.mL</key>
+      <string>base</string>
+      <key>chalish.mLL</key>
+      <string>base</string>
+      <key>chalish.mLO</key>
+      <string>base</string>
+      <key>chalish.mLU</key>
+      <string>base</string>
+      <key>chalish.mO</key>
+      <string>base</string>
+      <key>chalish.mOU</key>
+      <string>base</string>
+      <key>chalish.mU</key>
+      <string>base</string>
       <key>che1</key>
       <string>base</string>
       <key>che1.lead0</key>
@@ -5164,6 +5364,38 @@
       <string>base</string>
       <key>ishilankul.mU</key>
       <string>base</string>
+      <key>ishkul</key>
+      <string>base</string>
+      <key>ishkul.mL</key>
+      <string>base</string>
+      <key>ishkul.mLL</key>
+      <string>base</string>
+      <key>ishkul.mLO</key>
+      <string>base</string>
+      <key>ishkul.mLU</key>
+      <string>base</string>
+      <key>ishkul.mO</key>
+      <string>base</string>
+      <key>ishkul.mOU</key>
+      <string>base</string>
+      <key>ishkul.mU</key>
+      <string>base</string>
+      <key>ishtem</key>
+      <string>base</string>
+      <key>ishtem.mL</key>
+      <string>base</string>
+      <key>ishtem.mLL</key>
+      <string>base</string>
+      <key>ishtem.mLO</key>
+      <string>base</string>
+      <key>ishtem.mLU</key>
+      <string>base</string>
+      <key>ishtem.mO</key>
+      <string>base</string>
+      <key>ishtem.mOU</key>
+      <string>base</string>
+      <key>ishtem.mU</key>
+      <string>base</string>
       <key>jaguar</key>
       <string>base</string>
       <key>jaguar.mL</key>
@@ -5303,6 +5535,22 @@
       <key>kankul.mOU</key>
       <string>base</string>
       <key>kankul.mU</key>
+      <string>base</string>
+      <key>kankul_seat</key>
+      <string>base</string>
+      <key>kankul_seat.mL</key>
+      <string>base</string>
+      <key>kankul_seat.mLL</key>
+      <string>base</string>
+      <key>kankul_seat.mLO</key>
+      <string>base</string>
+      <key>kankul_seat.mLU</key>
+      <string>base</string>
+      <key>kankul_seat.mO</key>
+      <string>base</string>
+      <key>kankul_seat.mOU</key>
+      <string>base</string>
+      <key>kankul_seat.mU</key>
       <string>base</string>
       <key>ke1</key>
       <string>base</string>
@@ -5639,6 +5887,22 @@
       <key>ku3.under1</key>
       <string>base</string>
       <key>ku3.under1_double</key>
+      <string>base</string>
+      <key>kushi</key>
+      <string>base</string>
+      <key>kushi.mL</key>
+      <string>base</string>
+      <key>kushi.mLL</key>
+      <string>base</string>
+      <key>kushi.mLO</key>
+      <string>base</string>
+      <key>kushi.mLU</key>
+      <string>base</string>
+      <key>kushi.mO</key>
+      <string>base</string>
+      <key>kushi.mOU</key>
+      <string>base</string>
+      <key>kushi.mU</key>
       <string>base</string>
       <key>kushi_ishbal</key>
       <string>base</string>
@@ -6956,6 +7220,38 @@
       <string>base</string>
       <key>ne2.under1_double</key>
       <string>base</string>
+      <key>nelush</key>
+      <string>base</string>
+      <key>nelush.mL</key>
+      <string>base</string>
+      <key>nelush.mLL</key>
+      <string>base</string>
+      <key>nelush.mLO</key>
+      <string>base</string>
+      <key>nelush.mLU</key>
+      <string>base</string>
+      <key>nelush.mO</key>
+      <string>base</string>
+      <key>nelush.mOU</key>
+      <string>base</string>
+      <key>nelush.mU</key>
+      <string>base</string>
+      <key>neok</key>
+      <string>base</string>
+      <key>neok.mL</key>
+      <string>base</string>
+      <key>neok.mLL</key>
+      <string>base</string>
+      <key>neok.mLO</key>
+      <string>base</string>
+      <key>neok.mLU</key>
+      <string>base</string>
+      <key>neok.mO</key>
+      <string>base</string>
+      <key>neok.mOU</key>
+      <string>base</string>
+      <key>neok.mU</key>
+      <string>base</string>
       <key>neok_baate</key>
       <string>base</string>
       <key>neok_baate.mL</key>
@@ -7542,6 +7838,22 @@
       <string>base</string>
       <key>peak_builder.mU</key>
       <string>base</string>
+      <key>penqal</key>
+      <string>base</string>
+      <key>penqal.mL</key>
+      <string>base</string>
+      <key>penqal.mLL</key>
+      <string>base</string>
+      <key>penqal.mLO</key>
+      <string>base</string>
+      <key>penqal.mLU</key>
+      <string>base</string>
+      <key>penqal.mO</key>
+      <string>base</string>
+      <key>penqal.mOU</key>
+      <string>base</string>
+      <key>penqal.mU</key>
+      <string>base</string>
       <key>people</key>
       <string>base</string>
       <key>people.mL</key>
@@ -7870,6 +8182,22 @@
       <string>base</string>
       <key>pu2.under1_double</key>
       <string>base</string>
+      <key>puqem</key>
+      <string>base</string>
+      <key>puqem.mL</key>
+      <string>base</string>
+      <key>puqem.mLL</key>
+      <string>base</string>
+      <key>puqem.mLO</key>
+      <string>base</string>
+      <key>puqem.mLU</key>
+      <string>base</string>
+      <key>puqem.mO</key>
+      <string>base</string>
+      <key>puqem.mOU</key>
+      <string>base</string>
+      <key>puqem.mU</key>
+      <string>base</string>
       <key>qa1</key>
       <string>base</string>
       <key>qa1.lead0</key>
@@ -7942,6 +8270,22 @@
       <string>base</string>
       <key>qa2.under1_double</key>
       <string>base</string>
+      <key>qaptel</key>
+      <string>base</string>
+      <key>qaptel.mL</key>
+      <string>base</string>
+      <key>qaptel.mLL</key>
+      <string>base</string>
+      <key>qaptel.mLO</key>
+      <string>base</string>
+      <key>qaptel.mLU</key>
+      <string>base</string>
+      <key>qaptel.mO</key>
+      <string>base</string>
+      <key>qaptel.mOU</key>
+      <string>base</string>
+      <key>qaptel.mU</key>
+      <string>base</string>
       <key>qaptel_tsakul</key>
       <string>base</string>
       <key>qaptel_tsakul.mL</key>
@@ -7993,6 +8337,22 @@
       <key>qe1.under1</key>
       <string>base</string>
       <key>qe1.under1_double</key>
+      <string>base</string>
+      <key>qemul</key>
+      <string>base</string>
+      <key>qemul.mL</key>
+      <string>base</string>
+      <key>qemul.mLL</key>
+      <string>base</string>
+      <key>qemul.mLO</key>
+      <string>base</string>
+      <key>qemul.mLU</key>
+      <string>base</string>
+      <key>qemul.mO</key>
+      <string>base</string>
+      <key>qemul.mOU</key>
+      <string>base</string>
+      <key>qemul.mU</key>
       <string>base</string>
       <key>qi1</key>
       <string>base</string>
@@ -8334,6 +8694,22 @@
       <string>base</string>
       <key>sha2.under1_double</key>
       <string>base</string>
+      <key>shaknal</key>
+      <string>base</string>
+      <key>shaknal.mL</key>
+      <string>base</string>
+      <key>shaknal.mLL</key>
+      <string>base</string>
+      <key>shaknal.mLO</key>
+      <string>base</string>
+      <key>shaknal.mLU</key>
+      <string>base</string>
+      <key>shaknal.mO</key>
+      <string>base</string>
+      <key>shaknal.mOU</key>
+      <string>base</string>
+      <key>shaknal.mU</key>
+      <string>base</string>
       <key>she1</key>
       <string>base</string>
       <key>she1.lead0</key>
@@ -8385,6 +8761,22 @@
       <key>shelem.mOU</key>
       <string>base</string>
       <key>shelem.mU</key>
+      <string>base</string>
+      <key>shelem_bird</key>
+      <string>base</string>
+      <key>shelem_bird.mL</key>
+      <string>base</string>
+      <key>shelem_bird.mLL</key>
+      <string>base</string>
+      <key>shelem_bird.mLO</key>
+      <string>base</string>
+      <key>shelem_bird.mLU</key>
+      <string>base</string>
+      <key>shelem_bird.mO</key>
+      <string>base</string>
+      <key>shelem_bird.mOU</key>
+      <string>base</string>
+      <key>shelem_bird.mU</key>
       <string>base</string>
       <key>shelem_ishbal</key>
       <string>base</string>
@@ -9090,6 +9482,22 @@
       <string>base</string>
       <key>to1.under1_double</key>
       <string>base</string>
+      <key>toshel</key>
+      <string>base</string>
+      <key>toshel.mL</key>
+      <string>base</string>
+      <key>toshel.mLL</key>
+      <string>base</string>
+      <key>toshel.mLO</key>
+      <string>base</string>
+      <key>toshel.mLU</key>
+      <string>base</string>
+      <key>toshel.mO</key>
+      <string>base</string>
+      <key>toshel.mOU</key>
+      <string>base</string>
+      <key>toshel.mU</key>
+      <string>base</string>
       <key>tqan</key>
       <string>base</string>
       <key>tqan.mL</key>
@@ -9193,6 +9601,22 @@
       <key>tsa2.under1</key>
       <string>base</string>
       <key>tsa2.under1_double</key>
+      <string>base</string>
+      <key>tsalam</key>
+      <string>base</string>
+      <key>tsalam.mL</key>
+      <string>base</string>
+      <key>tsalam.mLL</key>
+      <string>base</string>
+      <key>tsalam.mLO</key>
+      <string>base</string>
+      <key>tsalam.mLU</key>
+      <string>base</string>
+      <key>tsalam.mO</key>
+      <string>base</string>
+      <key>tsalam.mOU</key>
+      <string>base</string>
+      <key>tsalam.mU</key>
       <string>base</string>
       <key>tse1</key>
       <string>base</string>
@@ -9481,6 +9905,38 @@
       <key>tsu2.under1</key>
       <string>base</string>
       <key>tsu2.under1_double</key>
+      <string>base</string>
+      <key>tsul</key>
+      <string>base</string>
+      <key>tsul.mL</key>
+      <string>base</string>
+      <key>tsul.mLL</key>
+      <string>base</string>
+      <key>tsul.mLO</key>
+      <string>base</string>
+      <key>tsul.mLU</key>
+      <string>base</string>
+      <key>tsul.mO</key>
+      <string>base</string>
+      <key>tsul.mOU</key>
+      <string>base</string>
+      <key>tsul.mU</key>
+      <string>base</string>
+      <key>tsultel</key>
+      <string>base</string>
+      <key>tsultel.mL</key>
+      <string>base</string>
+      <key>tsultel.mLL</key>
+      <string>base</string>
+      <key>tsultel.mLO</key>
+      <string>base</string>
+      <key>tsultel.mLU</key>
+      <string>base</string>
+      <key>tsultel.mO</key>
+      <string>base</string>
+      <key>tsultel.mOU</key>
+      <string>base</string>
+      <key>tsultel.mU</key>
       <string>base</string>
       <key>tu1</key>
       <string>base</string>

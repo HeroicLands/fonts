@@ -69,6 +69,7 @@ def _concepts():
     import compounds as X
     import core as Z
     import cosmos as K
+    import emblems as H
     import events as E
     import gods as G
     import kin as N
@@ -77,7 +78,7 @@ def _concepts():
     import senses as V
     import turnings as W
     return [g for g in R.PILOT + Z.CORE + G.GODS + T.RANKS + E.EVENTS + K.COSMOS + PL.PLACES + X.COMPOUNDS
-            + W.TURNINGS + N.KIN + V.SENSES if not g.name[1:].isdigit()]
+            + W.TURNINGS + N.KIN + V.SENSES + H.EMBLEMS if not g.name[1:].isdigit()]
 
 
 # Every concept glyph drawn so far, by its code. A glyph with no compact form of its own
@@ -157,6 +158,8 @@ _MOTIFS = {
     "SOUL_AMONG_THE_DEAD": "worm",
     "MEMORY": "door", "OBSERVATION": "hand_mirror", "SECRET": "bundle_x", "PROCLAMATION": "scroll", "THE_UNKNOWN": "nested_diamond",
     "WRITING": "quill", "PRAYER": "drum", "CENOTE": "jar", "CAUTION": "ears",
+    "KANKUL_SEAT": "court", "CHAKUL": "serpent", "TSALAM": "arts", "KUSHI": "clay", "QEMUL": "antlers",
+    "TSULTEL": "mound", "NEOK": "river",
 }
 
 
@@ -173,6 +176,10 @@ _TOKENS = {
     "DEATH": "skull", "DEATH_OF_A_WOMAN": "half_down", "SACRED_FLAME": "flame", "HEAVEN": "triangle",
     "ISHILANKUL": "x_cross", "KANKUL": "stair", "SEED_SOWN": "three_dots", "OUT_OF_THE_TRIALS": "half_up",
     "WHOLE_ROUND": "cross", "ERA_BEGINS": "flower",
+    # and house emblems whose picture no motif draws apart from the signs they echo
+    "TSUL": "reed", "NELUSH": "ceiba", "CHAKAL": "hand", "SHAKNAL": "beak", "PENQAL": "grass",
+    "SHELEM_BIRD": "perched_bird", "ISHTEM": "talon", "TOSHEL": "conch", "ISHKUL": "crescent", "PUQEM": "spool",
+    "CHALISH": "censer", "QAPTEL": "post",
 }
 
 

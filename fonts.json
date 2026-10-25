@@ -937,6 +937,120 @@
                     "kind": "character"
                 },
                 {
+                    "codepoint": "U+F40A7",
+                    "name": "CHALISH CEREMONIAL GLYPH KANKUL SEAT",
+                    "glyph": "kankul_seat",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F40A8",
+                    "name": "CHALISH CEREMONIAL GLYPH ISHKUL",
+                    "glyph": "ishkul",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F40A9",
+                    "name": "CHALISH CEREMONIAL GLYPH CHAKUL",
+                    "glyph": "chakul",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F40AA",
+                    "name": "CHALISH CEREMONIAL GLYPH TSALAM",
+                    "glyph": "tsalam",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F40AB",
+                    "name": "CHALISH CEREMONIAL GLYPH KUSHI",
+                    "glyph": "kushi",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F40AC",
+                    "name": "CHALISH CEREMONIAL GLYPH TSUL",
+                    "glyph": "tsul",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F40AD",
+                    "name": "CHALISH CEREMONIAL GLYPH CHALISH",
+                    "glyph": "chalish",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F40AE",
+                    "name": "CHALISH CEREMONIAL GLYPH QEMUL",
+                    "glyph": "qemul",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F40AF",
+                    "name": "CHALISH CEREMONIAL GLYPH PUQEM",
+                    "glyph": "puqem",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F40B0",
+                    "name": "CHALISH CEREMONIAL GLYPH NELUSH",
+                    "glyph": "nelush",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F40B1",
+                    "name": "CHALISH CEREMONIAL GLYPH CHAKAL",
+                    "glyph": "chakal",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F40B2",
+                    "name": "CHALISH CEREMONIAL GLYPH TOSHEL",
+                    "glyph": "toshel",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F40B3",
+                    "name": "CHALISH CEREMONIAL GLYPH SHAKNAL",
+                    "glyph": "shaknal",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F40B4",
+                    "name": "CHALISH CEREMONIAL GLYPH TSULTEL",
+                    "glyph": "tsultel",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F40B5",
+                    "name": "CHALISH CEREMONIAL GLYPH PENQAL",
+                    "glyph": "penqal",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F40B6",
+                    "name": "CHALISH CEREMONIAL GLYPH SHELEM BIRD",
+                    "glyph": "shelem_bird",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F40B7",
+                    "name": "CHALISH CEREMONIAL GLYPH ISHTEM",
+                    "glyph": "ishtem",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F40B8",
+                    "name": "CHALISH CEREMONIAL GLYPH QAPTEL",
+                    "glyph": "qaptel",
+                    "kind": "character"
+                },
+                {
+                    "codepoint": "U+F40B9",
+                    "name": "CHALISH CEREMONIAL GLYPH NEOK",
+                    "glyph": "neok",
+                    "kind": "character"
+                },
+                {
                     "codepoint": "U+F4400",
                     "name": "CHALISH CEREMONIAL SYLLABLE A-1",
                     "glyph": "a1",

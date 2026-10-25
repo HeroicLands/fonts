@@ -164,6 +164,17 @@ def bird(cx, cy, r):
     return _poly([(cx - r, cy + r * 0.3), (cx, cy - r * 0.3), (cx + r, cy + r * 0.3), (cx, cy - r * 0.05)])
 
 
+def perched_bird(cx, cy, r):
+    """A perched bird in one piece, facing the line's start: round head and short beak,
+    a full breast, and its tail falling behind."""
+    return _poly(S._bezier((cx - r * 0.95, cy + r * 0.45), (cx - r * 0.75, cy + r * 0.6), (cx - r * 0.65, cy + r * 0.95), (cx - r * 0.3, cy + r * 0.9))
+                 + S._bezier((cx - r * 0.3, cy + r * 0.9), (cx - r * 0.05, cy + r * 0.85), (cx, cy + r * 0.55), (cx + r * 0.1, cy + r * 0.45))[1:]
+                 + S._bezier((cx + r * 0.1, cy + r * 0.45), (cx + r * 0.5, cy + r * 0.35), (cx + r * 0.75, cy), (cx + r, cy - r * 0.6))[1:]
+                 + [(cx + r * 0.75, cy - r * 0.7)]
+                 + S._bezier((cx + r * 0.75, cy - r * 0.7), (cx + r * 0.4, cy - r * 0.45), (cx - r * 0.3, cy - r * 0.6), (cx - r * 0.55, cy - r * 0.05))
+                 + S._bezier((cx - r * 0.55, cy - r * 0.05), (cx - r * 0.65, cy + r * 0.2), (cx - r * 0.6, cy + r * 0.32), (cx - r * 0.7, cy + r * 0.36))[1:])
+
+
 def paw(cx, cy, r):
     """A paw in one piece: the pad with three toes grown from its top."""
     pts = S._arc(cx, cy - r * 0.25, r * 0.6, r * 0.5, 180, 360)
@@ -175,6 +186,81 @@ def paw(cx, cy, r):
 def bolt(cx, cy, r):
     return _poly([(cx - r * 0.2, cy + r), (cx + r * 0.4, cy + r * 0.1), (cx, cy + r * 0.1), (cx + r * 0.3, cy - r),
                   (cx - r * 0.4, cy - r * 0.1), (cx, cy - r * 0.1)])
+
+
+def beak(cx, cy, r):
+    """An eagle's head in one piece, facing the line's start: the crown, and the beak
+    hooked down from it."""
+    return _poly(S._arc(cx + r * 0.2, cy, r * 0.75, r * 0.7, -60, 160)
+                 + S._bezier((cx - r * 0.5, cy + r * 0.24), (cx - r * 0.9, cy + r * 0.2), (cx - r * 1.05, cy - r * 0.1), (cx - r * 0.85, cy - r * 0.45))
+                 + S._bezier((cx - r * 0.85, cy - r * 0.45), (cx - r * 0.7, cy - r * 0.2), (cx - r * 0.4, cy - r * 0.2), (cx - r * 0.2, cy - r * 0.35))
+                 + [(cx + r * 0.2, cy - r * 0.9), (cx + r * 0.6, cy - r * 0.9)])
+
+
+def reed(cx, cy, r):
+    """A reed in one piece: its stalk under a long seed head, a leaf springing from it."""
+    return [S.Fill(S._capsule(cx, cy - r * 0.95, cx, cy + r * 0.3, r * 0.1)),
+            S.Fill(S._capsule(cx, cy + r * 0.2, cx, cy + r * 0.85, r * 0.24)),
+            S.Fill([(cx, cy - r * 0.6), (cx - r * 0.75, cy + r * 0.05), (cx, cy - r * 0.3)]),
+            S.Fill(S._capsule(cx - r * 0.55, cy - r * 0.95, cx + r * 0.55, cy - r * 0.95, r * 0.11))]
+
+
+def post(cx, cy, r):
+    """A boundary post in one piece: the post, its cord stretched across it and knotted at
+    both ends."""
+    return [S.Fill([(cx + r * 0.22, cy - r * 0.95), (cx + r * 0.22, cy + r * 0.65)] + S._arc(cx, cy + r * 0.65, r * 0.22, r * 0.3, 0, 180)
+                   + [(cx - r * 0.22, cy - r * 0.95)]),
+            S.Fill(S._capsule(cx - r * 0.85, cy + r * 0.1, cx + r * 0.85, cy + r * 0.1, r * 0.1))] + \
+        S.dot(cx - r * 0.85, cy + r * 0.1, r * 0.18) + S.dot(cx + r * 0.85, cy + r * 0.1, r * 0.18)
+
+
+def talon(cx, cy, r):
+    """A raptor's foot in one piece: the leg coming down and three toes spread below it,
+    the outer two hooked at their tips."""
+    return _poly([(cx - r * 0.2, cy + r * 0.95), (cx - r * 0.2, cy - r * 0.05), (cx - r * 0.85, cy - r * 0.45),
+                  (cx - r * 0.95, cy - r * 0.95), (cx - r * 0.65, cy - r * 0.75), (cx - r * 0.15, cy - r * 0.45),
+                  (cx - r * 0.12, cy - r * 0.95), (cx + r * 0.12, cy - r * 0.95), (cx + r * 0.15, cy - r * 0.45),
+                  (cx + r * 0.65, cy - r * 0.75), (cx + r * 0.95, cy - r * 0.95), (cx + r * 0.85, cy - r * 0.45),
+                  (cx + r * 0.2, cy - r * 0.05), (cx + r * 0.2, cy + r * 0.95)])
+
+
+def spool(cx, cy, r):
+    """The ear spool in one piece: its round flare, and the pendant hanging from it."""
+    return S.dot(cx, cy + r * 0.3, r * 0.6) + [S.Fill(S._capsule(cx, cy + r * 0.3, cx, cy - r * 0.75, r * 0.1))] + \
+        S.dot(cx, cy - r * 0.8, r * 0.2)
+
+
+def censer(cx, cy, r):
+    """The censer in one piece: its bowl on a foot, and the smoke rising over it."""
+    out = _poly(S._arc(cx, cy - r * 0.05, r * 0.9, r * 0.6, 180, 360))
+    out += _poly([(cx - r * 0.3, cy - r * 0.95), (cx + r * 0.3, cy - r * 0.95), (cx + r * 0.15, cy - r * 0.5), (cx - r * 0.15, cy - r * 0.5)])
+    out.append(S.Fill([(cx - r * 0.12 + r * 0.14 * math.sin(math.pi * 2 * k / 12), cy + r * 0.2 + r * 0.75 * k / 12) for k in range(13)]
+                      + [(cx + r * 0.12 + r * 0.14 * math.sin(math.pi * 2 * k / 12), cy + r * 0.2 + r * 0.75 * k / 12) for k in range(12, -1, -1)]))
+    return out
+
+
+def grass(cx, cy, r):
+    """A tuft of grass in one piece: three blades springing from one root, bending out."""
+    return _poly([(cx - r * 0.45, cy - r * 0.9), (cx - r * 1.0, cy + r * 0.6), (cx - r * 0.2, cy - r * 0.1),
+                  (cx, cy + r * 0.95), (cx + r * 0.2, cy - r * 0.1), (cx + r * 1.0, cy + r * 0.6),
+                  (cx + r * 0.45, cy - r * 0.9)])
+
+
+def conch(cx, cy, r):
+    """A conch: its whorl wound in a spiral, and the flared lip drawn out from it to the
+    canal's point."""
+    whorl = R.curl(cx - r * 0.3, cy + r * 0.25, r * 0.62, turns=1.1)
+    lip = S._bezier((cx + r * 0.32, cy + r * 0.25), (cx + r * 0.75, cy + r * 0.05), (cx + r * 0.95, cy - r * 0.5), (cx + r * 0.85, cy - r * 0.95))
+    lip += S._bezier((cx + r * 0.85, cy - r * 0.95), (cx + r * 0.3, cy - r * 0.75), (cx - r * 0.05, cy - r * 0.6), (cx - r * 0.3, cy - r * 0.37))[1:]
+    return whorl + [S.Fill(lip)]
+
+
+def ceiba(cx, cy, r):
+    """The ceiba in one piece: a straight trunk on spread roots, under a broad flat crown."""
+    return _poly([(cx - r * 0.75, cy - r * 0.9), (cx - r * 0.2, cy - r * 0.6), (cx - r * 0.2, cy + r * 0.25),
+                  (cx - r * 0.95, cy + r * 0.35), (cx - r * 0.6, cy + r * 0.8), (cx + r * 0.6, cy + r * 0.8),
+                  (cx + r * 0.95, cy + r * 0.35), (cx + r * 0.2, cy + r * 0.25), (cx + r * 0.2, cy - r * 0.6),
+                  (cx + r * 0.75, cy - r * 0.9)])
 
 
 # -- compact forms -------------------------------------------------------------------------------

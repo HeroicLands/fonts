@@ -524,6 +524,54 @@
     <string>cha2.under1.glif</string>
     <key>cha2.under1_double</key>
     <string>cha2.under1_double.glif</string>
+    <key>chakal</key>
+    <string>chakal.glif</string>
+    <key>chakal.mL</key>
+    <string>chakal.mL_.glif</string>
+    <key>chakal.mLL</key>
+    <string>chakal.mL_L_.glif</string>
+    <key>chakal.mLO</key>
+    <string>chakal.mL_O_.glif</string>
+    <key>chakal.mLU</key>
+    <string>chakal.mL_U_.glif</string>
+    <key>chakal.mO</key>
+    <string>chakal.mO_.glif</string>
+    <key>chakal.mOU</key>
+    <string>chakal.mO_U_.glif</string>
+    <key>chakal.mU</key>
+    <string>chakal.mU_.glif</string>
+    <key>chakul</key>
+    <string>chakul.glif</string>
+    <key>chakul.mL</key>
+    <string>chakul.mL_.glif</string>
+    <key>chakul.mLL</key>
+    <string>chakul.mL_L_.glif</string>
+    <key>chakul.mLO</key>
+    <string>chakul.mL_O_.glif</string>
+    <key>chakul.mLU</key>
+    <string>chakul.mL_U_.glif</string>
+    <key>chakul.mO</key>
+    <string>chakul.mO_.glif</string>
+    <key>chakul.mOU</key>
+    <string>chakul.mO_U_.glif</string>
+    <key>chakul.mU</key>
+    <string>chakul.mU_.glif</string>
+    <key>chalish</key>
+    <string>chalish.glif</string>
+    <key>chalish.mL</key>
+    <string>chalish.mL_.glif</string>
+    <key>chalish.mLL</key>
+    <string>chalish.mL_L_.glif</string>
+    <key>chalish.mLO</key>
+    <string>chalish.mL_O_.glif</string>
+    <key>chalish.mLU</key>
+    <string>chalish.mL_U_.glif</string>
+    <key>chalish.mO</key>
+    <string>chalish.mO_.glif</string>
+    <key>chalish.mOU</key>
+    <string>chalish.mO_U_.glif</string>
+    <key>chalish.mU</key>
+    <string>chalish.mU_.glif</string>
     <key>che1</key>
     <string>che1.glif</string>
     <key>che1.lead0</key>
@@ -1816,6 +1864,38 @@
     <string>ishilankul.mO_U_.glif</string>
     <key>ishilankul.mU</key>
     <string>ishilankul.mU_.glif</string>
+    <key>ishkul</key>
+    <string>ishkul.glif</string>
+    <key>ishkul.mL</key>
+    <string>ishkul.mL_.glif</string>
+    <key>ishkul.mLL</key>
+    <string>ishkul.mL_L_.glif</string>
+    <key>ishkul.mLO</key>
+    <string>ishkul.mL_O_.glif</string>
+    <key>ishkul.mLU</key>
+    <string>ishkul.mL_U_.glif</string>
+    <key>ishkul.mO</key>
+    <string>ishkul.mO_.glif</string>
+    <key>ishkul.mOU</key>
+    <string>ishkul.mO_U_.glif</string>
+    <key>ishkul.mU</key>
+    <string>ishkul.mU_.glif</string>
+    <key>ishtem</key>
+    <string>ishtem.glif</string>
+    <key>ishtem.mL</key>
+    <string>ishtem.mL_.glif</string>
+    <key>ishtem.mLL</key>
+    <string>ishtem.mL_L_.glif</string>
+    <key>ishtem.mLO</key>
+    <string>ishtem.mL_O_.glif</string>
+    <key>ishtem.mLU</key>
+    <string>ishtem.mL_U_.glif</string>
+    <key>ishtem.mO</key>
+    <string>ishtem.mO_.glif</string>
+    <key>ishtem.mOU</key>
+    <string>ishtem.mO_U_.glif</string>
+    <key>ishtem.mU</key>
+    <string>ishtem.mU_.glif</string>
     <key>jaguar</key>
     <string>jaguar.glif</string>
     <key>jaguar.mL</key>
@@ -1960,6 +2040,22 @@
     <string>kankul.mO_U_.glif</string>
     <key>kankul.mU</key>
     <string>kankul.mU_.glif</string>
+    <key>kankul_seat</key>
+    <string>kankul_seat.glif</string>
+    <key>kankul_seat.mL</key>
+    <string>kankul_seat.mL_.glif</string>
+    <key>kankul_seat.mLL</key>
+    <string>kankul_seat.mL_L_.glif</string>
+    <key>kankul_seat.mLO</key>
+    <string>kankul_seat.mL_O_.glif</string>
+    <key>kankul_seat.mLU</key>
+    <string>kankul_seat.mL_U_.glif</string>
+    <key>kankul_seat.mO</key>
+    <string>kankul_seat.mO_.glif</string>
+    <key>kankul_seat.mOU</key>
+    <string>kankul_seat.mO_U_.glif</string>
+    <key>kankul_seat.mU</key>
+    <string>kankul_seat.mU_.glif</string>
     <key>ke1</key>
     <string>ke1.glif</string>
     <key>ke1.lead0</key>
@@ -2296,6 +2392,22 @@
     <string>ku3.under1.glif</string>
     <key>ku3.under1_double</key>
     <string>ku3.under1_double.glif</string>
+    <key>kushi</key>
+    <string>kushi.glif</string>
+    <key>kushi.mL</key>
+    <string>kushi.mL_.glif</string>
+    <key>kushi.mLL</key>
+    <string>kushi.mL_L_.glif</string>
+    <key>kushi.mLO</key>
+    <string>kushi.mL_O_.glif</string>
+    <key>kushi.mLU</key>
+    <string>kushi.mL_U_.glif</string>
+    <key>kushi.mO</key>
+    <string>kushi.mO_.glif</string>
+    <key>kushi.mOU</key>
+    <string>kushi.mO_U_.glif</string>
+    <key>kushi.mU</key>
+    <string>kushi.mU_.glif</string>
     <key>kushi_ishbal</key>
     <string>kushi_ishbal.glif</string>
     <key>kushi_ishbal.mL</key>
@@ -3612,6 +3724,38 @@
     <string>ne2.under1.glif</string>
     <key>ne2.under1_double</key>
     <string>ne2.under1_double.glif</string>
+    <key>nelush</key>
+    <string>nelush.glif</string>
+    <key>nelush.mL</key>
+    <string>nelush.mL_.glif</string>
+    <key>nelush.mLL</key>
+    <string>nelush.mL_L_.glif</string>
+    <key>nelush.mLO</key>
+    <string>nelush.mL_O_.glif</string>
+    <key>nelush.mLU</key>
+    <string>nelush.mL_U_.glif</string>
+    <key>nelush.mO</key>
+    <string>nelush.mO_.glif</string>
+    <key>nelush.mOU</key>
+    <string>nelush.mO_U_.glif</string>
+    <key>nelush.mU</key>
+    <string>nelush.mU_.glif</string>
+    <key>neok</key>
+    <string>neok.glif</string>
+    <key>neok.mL</key>
+    <string>neok.mL_.glif</string>
+    <key>neok.mLL</key>
+    <string>neok.mL_L_.glif</string>
+    <key>neok.mLO</key>
+    <string>neok.mL_O_.glif</string>
+    <key>neok.mLU</key>
+    <string>neok.mL_U_.glif</string>
+    <key>neok.mO</key>
+    <string>neok.mO_.glif</string>
+    <key>neok.mOU</key>
+    <string>neok.mO_U_.glif</string>
+    <key>neok.mU</key>
+    <string>neok.mU_.glif</string>
     <key>neok_baate</key>
     <string>neok_baate.glif</string>
     <key>neok_baate.mL</key>
@@ -4198,6 +4342,22 @@
     <string>peak_builder.mO_U_.glif</string>
     <key>peak_builder.mU</key>
     <string>peak_builder.mU_.glif</string>
+    <key>penqal</key>
+    <string>penqal.glif</string>
+    <key>penqal.mL</key>
+    <string>penqal.mL_.glif</string>
+    <key>penqal.mLL</key>
+    <string>penqal.mL_L_.glif</string>
+    <key>penqal.mLO</key>
+    <string>penqal.mL_O_.glif</string>
+    <key>penqal.mLU</key>
+    <string>penqal.mL_U_.glif</string>
+    <key>penqal.mO</key>
+    <string>penqal.mO_.glif</string>
+    <key>penqal.mOU</key>
+    <string>penqal.mO_U_.glif</string>
+    <key>penqal.mU</key>
+    <string>penqal.mU_.glif</string>
     <key>people</key>
     <string>people.glif</string>
     <key>people.mL</key>
@@ -4526,6 +4686,22 @@
     <string>pu2.under1.glif</string>
     <key>pu2.under1_double</key>
     <string>pu2.under1_double.glif</string>
+    <key>puqem</key>
+    <string>puqem.glif</string>
+    <key>puqem.mL</key>
+    <string>puqem.mL_.glif</string>
+    <key>puqem.mLL</key>
+    <string>puqem.mL_L_.glif</string>
+    <key>puqem.mLO</key>
+    <string>puqem.mL_O_.glif</string>
+    <key>puqem.mLU</key>
+    <string>puqem.mL_U_.glif</string>
+    <key>puqem.mO</key>
+    <string>puqem.mO_.glif</string>
+    <key>puqem.mOU</key>
+    <string>puqem.mO_U_.glif</string>
+    <key>puqem.mU</key>
+    <string>puqem.mU_.glif</string>
     <key>qa1</key>
     <string>qa1.glif</string>
     <key>qa1.lead0</key>
@@ -4598,6 +4774,22 @@
     <string>qa2.under1.glif</string>
     <key>qa2.under1_double</key>
     <string>qa2.under1_double.glif</string>
+    <key>qaptel</key>
+    <string>qaptel.glif</string>
+    <key>qaptel.mL</key>
+    <string>qaptel.mL_.glif</string>
+    <key>qaptel.mLL</key>
+    <string>qaptel.mL_L_.glif</string>
+    <key>qaptel.mLO</key>
+    <string>qaptel.mL_O_.glif</string>
+    <key>qaptel.mLU</key>
+    <string>qaptel.mL_U_.glif</string>
+    <key>qaptel.mO</key>
+    <string>qaptel.mO_.glif</string>
+    <key>qaptel.mOU</key>
+    <string>qaptel.mO_U_.glif</string>
+    <key>qaptel.mU</key>
+    <string>qaptel.mU_.glif</string>
     <key>qaptel_tsakul</key>
     <string>qaptel_tsakul.glif</string>
     <key>qaptel_tsakul.mL</key>
@@ -4650,6 +4842,22 @@
     <string>qe1.under1.glif</string>
     <key>qe1.under1_double</key>
     <string>qe1.under1_double.glif</string>
+    <key>qemul</key>
+    <string>qemul.glif</string>
+    <key>qemul.mL</key>
+    <string>qemul.mL_.glif</string>
+    <key>qemul.mLL</key>
+    <string>qemul.mL_L_.glif</string>
+    <key>qemul.mLO</key>
+    <string>qemul.mL_O_.glif</string>
+    <key>qemul.mLU</key>
+    <string>qemul.mL_U_.glif</string>
+    <key>qemul.mO</key>
+    <string>qemul.mO_.glif</string>
+    <key>qemul.mOU</key>
+    <string>qemul.mO_U_.glif</string>
+    <key>qemul.mU</key>
+    <string>qemul.mU_.glif</string>
     <key>qi1</key>
     <string>qi1.glif</string>
     <key>qi1.lead0</key>
@@ -4990,6 +5198,22 @@
     <string>sha2.under1.glif</string>
     <key>sha2.under1_double</key>
     <string>sha2.under1_double.glif</string>
+    <key>shaknal</key>
+    <string>shaknal.glif</string>
+    <key>shaknal.mL</key>
+    <string>shaknal.mL_.glif</string>
+    <key>shaknal.mLL</key>
+    <string>shaknal.mL_L_.glif</string>
+    <key>shaknal.mLO</key>
+    <string>shaknal.mL_O_.glif</string>
+    <key>shaknal.mLU</key>
+    <string>shaknal.mL_U_.glif</string>
+    <key>shaknal.mO</key>
+    <string>shaknal.mO_.glif</string>
+    <key>shaknal.mOU</key>
+    <string>shaknal.mO_U_.glif</string>
+    <key>shaknal.mU</key>
+    <string>shaknal.mU_.glif</string>
     <key>she1</key>
     <string>she1.glif</string>
     <key>she1.lead0</key>
@@ -5042,6 +5266,22 @@
     <string>shelem.mO_U_.glif</string>
     <key>shelem.mU</key>
     <string>shelem.mU_.glif</string>
+    <key>shelem_bird</key>
+    <string>shelem_bird.glif</string>
+    <key>shelem_bird.mL</key>
+    <string>shelem_bird.mL_.glif</string>
+    <key>shelem_bird.mLL</key>
+    <string>shelem_bird.mL_L_.glif</string>
+    <key>shelem_bird.mLO</key>
+    <string>shelem_bird.mL_O_.glif</string>
+    <key>shelem_bird.mLU</key>
+    <string>shelem_bird.mL_U_.glif</string>
+    <key>shelem_bird.mO</key>
+    <string>shelem_bird.mO_.glif</string>
+    <key>shelem_bird.mOU</key>
+    <string>shelem_bird.mO_U_.glif</string>
+    <key>shelem_bird.mU</key>
+    <string>shelem_bird.mU_.glif</string>
     <key>shelem_ishbal</key>
     <string>shelem_ishbal.glif</string>
     <key>shelem_ishbal.mL</key>
@@ -5748,6 +5988,22 @@
     <string>to1.under1.glif</string>
     <key>to1.under1_double</key>
     <string>to1.under1_double.glif</string>
+    <key>toshel</key>
+    <string>toshel.glif</string>
+    <key>toshel.mL</key>
+    <string>toshel.mL_.glif</string>
+    <key>toshel.mLL</key>
+    <string>toshel.mL_L_.glif</string>
+    <key>toshel.mLO</key>
+    <string>toshel.mL_O_.glif</string>
+    <key>toshel.mLU</key>
+    <string>toshel.mL_U_.glif</string>
+    <key>toshel.mO</key>
+    <string>toshel.mO_.glif</string>
+    <key>toshel.mOU</key>
+    <string>toshel.mO_U_.glif</string>
+    <key>toshel.mU</key>
+    <string>toshel.mU_.glif</string>
     <key>tqan</key>
     <string>tqan.glif</string>
     <key>tqan.mL</key>
@@ -5852,6 +6108,22 @@
     <string>tsa2.under1.glif</string>
     <key>tsa2.under1_double</key>
     <string>tsa2.under1_double.glif</string>
+    <key>tsalam</key>
+    <string>tsalam.glif</string>
+    <key>tsalam.mL</key>
+    <string>tsalam.mL_.glif</string>
+    <key>tsalam.mLL</key>
+    <string>tsalam.mL_L_.glif</string>
+    <key>tsalam.mLO</key>
+    <string>tsalam.mL_O_.glif</string>
+    <key>tsalam.mLU</key>
+    <string>tsalam.mL_U_.glif</string>
+    <key>tsalam.mO</key>
+    <string>tsalam.mO_.glif</string>
+    <key>tsalam.mOU</key>
+    <string>tsalam.mO_U_.glif</string>
+    <key>tsalam.mU</key>
+    <string>tsalam.mU_.glif</string>
     <key>tse1</key>
     <string>tse1.glif</string>
     <key>tse1.lead0</key>
@@ -6140,6 +6412,38 @@
     <string>tsu2.under1.glif</string>
     <key>tsu2.under1_double</key>
     <string>tsu2.under1_double.glif</string>
+    <key>tsul</key>
+    <string>tsul.glif</string>
+    <key>tsul.mL</key>
+    <string>tsul.mL_.glif</string>
+    <key>tsul.mLL</key>
+    <string>tsul.mL_L_.glif</string>
+    <key>tsul.mLO</key>
+    <string>tsul.mL_O_.glif</string>
+    <key>tsul.mLU</key>
+    <string>tsul.mL_U_.glif</string>
+    <key>tsul.mO</key>
+    <string>tsul.mO_.glif</string>
+    <key>tsul.mOU</key>
+    <string>tsul.mO_U_.glif</string>
+    <key>tsul.mU</key>
+    <string>tsul.mU_.glif</string>
+    <key>tsultel</key>
+    <string>tsultel.glif</string>
+    <key>tsultel.mL</key>
+    <string>tsultel.mL_.glif</string>
+    <key>tsultel.mLL</key>
+    <string>tsultel.mL_L_.glif</string>
+    <key>tsultel.mLO</key>
+    <string>tsultel.mL_O_.glif</string>
+    <key>tsultel.mLU</key>
+    <string>tsultel.mL_U_.glif</string>
+    <key>tsultel.mO</key>
+    <string>tsultel.mO_.glif</string>
+    <key>tsultel.mOU</key>
+    <string>tsultel.mO_U_.glif</string>
+    <key>tsultel.mU</key>
+    <string>tsultel.mU_.glif</string>
     <key>tu1</key>
     <string>tu1.glif</string>
     <key>tu1.lead0</key>

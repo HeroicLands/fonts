@@ -1,6 +1,6 @@
 # Chalish Pilam Ceremonial
 
-271 characters, U+F4001 to U+F4FF1, in the font `Chalish Pilam Ceremonial`.
+290 characters, U+F4001 to U+F4FF1, in the font `Chalish Pilam Ceremonial`.
 
 ## Code chart
 
@@ -174,6 +174,25 @@
 | CHALISH CEREMONIAL GLYPH PRAYER | ![U+F40A4](chalish-pilam-ceremonial/glyphs/U+F40A4.svg) | U+F40A4 | `&#999588;` | `&#xF40A4;` |
 | CHALISH CEREMONIAL GLYPH CENOTE | ![U+F40A5](chalish-pilam-ceremonial/glyphs/U+F40A5.svg) | U+F40A5 | `&#999589;` | `&#xF40A5;` |
 | CHALISH CEREMONIAL GLYPH CAUTION | ![U+F40A6](chalish-pilam-ceremonial/glyphs/U+F40A6.svg) | U+F40A6 | `&#999590;` | `&#xF40A6;` |
+| CHALISH CEREMONIAL GLYPH KANKUL SEAT | ![U+F40A7](chalish-pilam-ceremonial/glyphs/U+F40A7.svg) | U+F40A7 | `&#999591;` | `&#xF40A7;` |
+| CHALISH CEREMONIAL GLYPH ISHKUL | ![U+F40A8](chalish-pilam-ceremonial/glyphs/U+F40A8.svg) | U+F40A8 | `&#999592;` | `&#xF40A8;` |
+| CHALISH CEREMONIAL GLYPH CHAKUL | ![U+F40A9](chalish-pilam-ceremonial/glyphs/U+F40A9.svg) | U+F40A9 | `&#999593;` | `&#xF40A9;` |
+| CHALISH CEREMONIAL GLYPH TSALAM | ![U+F40AA](chalish-pilam-ceremonial/glyphs/U+F40AA.svg) | U+F40AA | `&#999594;` | `&#xF40AA;` |
+| CHALISH CEREMONIAL GLYPH KUSHI | ![U+F40AB](chalish-pilam-ceremonial/glyphs/U+F40AB.svg) | U+F40AB | `&#999595;` | `&#xF40AB;` |
+| CHALISH CEREMONIAL GLYPH TSUL | ![U+F40AC](chalish-pilam-ceremonial/glyphs/U+F40AC.svg) | U+F40AC | `&#999596;` | `&#xF40AC;` |
+| CHALISH CEREMONIAL GLYPH CHALISH | ![U+F40AD](chalish-pilam-ceremonial/glyphs/U+F40AD.svg) | U+F40AD | `&#999597;` | `&#xF40AD;` |
+| CHALISH CEREMONIAL GLYPH QEMUL | ![U+F40AE](chalish-pilam-ceremonial/glyphs/U+F40AE.svg) | U+F40AE | `&#999598;` | `&#xF40AE;` |
+| CHALISH CEREMONIAL GLYPH PUQEM | ![U+F40AF](chalish-pilam-ceremonial/glyphs/U+F40AF.svg) | U+F40AF | `&#999599;` | `&#xF40AF;` |
+| CHALISH CEREMONIAL GLYPH NELUSH | ![U+F40B0](chalish-pilam-ceremonial/glyphs/U+F40B0.svg) | U+F40B0 | `&#999600;` | `&#xF40B0;` |
+| CHALISH CEREMONIAL GLYPH CHAKAL | ![U+F40B1](chalish-pilam-ceremonial/glyphs/U+F40B1.svg) | U+F40B1 | `&#999601;` | `&#xF40B1;` |
+| CHALISH CEREMONIAL GLYPH TOSHEL | ![U+F40B2](chalish-pilam-ceremonial/glyphs/U+F40B2.svg) | U+F40B2 | `&#999602;` | `&#xF40B2;` |
+| CHALISH CEREMONIAL GLYPH SHAKNAL | ![U+F40B3](chalish-pilam-ceremonial/glyphs/U+F40B3.svg) | U+F40B3 | `&#999603;` | `&#xF40B3;` |
+| CHALISH CEREMONIAL GLYPH TSULTEL | ![U+F40B4](chalish-pilam-ceremonial/glyphs/U+F40B4.svg) | U+F40B4 | `&#999604;` | `&#xF40B4;` |
+| CHALISH CEREMONIAL GLYPH PENQAL | ![U+F40B5](chalish-pilam-ceremonial/glyphs/U+F40B5.svg) | U+F40B5 | `&#999605;` | `&#xF40B5;` |
+| CHALISH CEREMONIAL GLYPH SHELEM BIRD | ![U+F40B6](chalish-pilam-ceremonial/glyphs/U+F40B6.svg) | U+F40B6 | `&#999606;` | `&#xF40B6;` |
+| CHALISH CEREMONIAL GLYPH ISHTEM | ![U+F40B7](chalish-pilam-ceremonial/glyphs/U+F40B7.svg) | U+F40B7 | `&#999607;` | `&#xF40B7;` |
+| CHALISH CEREMONIAL GLYPH QAPTEL | ![U+F40B8](chalish-pilam-ceremonial/glyphs/U+F40B8.svg) | U+F40B8 | `&#999608;` | `&#xF40B8;` |
+| CHALISH CEREMONIAL GLYPH NEOK | ![U+F40B9](chalish-pilam-ceremonial/glyphs/U+F40B9.svg) | U+F40B9 | `&#999609;` | `&#xF40B9;` |
 
 ### Syllables
 

@@ -1254,6 +1254,158 @@
       "footprint": "full"
     },
     {
+      "glyph": "kankul_seat",
+      "codepoint": "U+F40A7",
+      "code": "KANKUL_SEAT",
+      "kind": "concept",
+      "concept": "K'ankul, the golden seat: a stepped seat studded with gold",
+      "footprint": "full"
+    },
+    {
+      "glyph": "ishkul",
+      "codepoint": "U+F40A8",
+      "code": "ISHKUL",
+      "kind": "concept",
+      "concept": "Ishkul, the silver seat: the stepped seat under a crescent",
+      "footprint": "full"
+    },
+    {
+      "glyph": "chakul",
+      "codepoint": "U+F40A9",
+      "code": "CHAKUL",
+      "kind": "concept",
+      "concept": "Ch'akul, the serpent seat: a serpent coiled round the stepped seat",
+      "footprint": "full"
+    },
+    {
+      "glyph": "tsalam",
+      "codepoint": "U+F40AA",
+      "code": "TSALAM",
+      "kind": "concept",
+      "concept": "Ts'alam, a spring: water welling from a cleft rock",
+      "footprint": "full"
+    },
+    {
+      "glyph": "kushi",
+      "codepoint": "U+F40AB",
+      "code": "KUSHI",
+      "kind": "concept",
+      "concept": "K'ushi, the maize ear: an ear of maize in its husk",
+      "footprint": "full"
+    },
+    {
+      "glyph": "tsul",
+      "codepoint": "U+F40AC",
+      "code": "TSUL",
+      "kind": "concept",
+      "concept": "Tsul, a reed: a stand of reeds",
+      "footprint": "full"
+    },
+    {
+      "glyph": "chalish",
+      "codepoint": "U+F40AD",
+      "code": "CHALISH",
+      "kind": "concept",
+      "concept": "Ch'alish, sacred: a censer with rising copal smoke",
+      "footprint": "full"
+    },
+    {
+      "glyph": "qemul",
+      "codepoint": "U+F40AE",
+      "code": "QEMUL",
+      "kind": "concept",
+      "concept": "Q'emul, supreme: the plumed crown",
+      "footprint": "full"
+    },
+    {
+      "glyph": "puqem",
+      "codepoint": "U+F40AF",
+      "code": "PUQEM",
+      "kind": "concept",
+      "concept": "Puq'em, highborn: the jade ear spool",
+      "footprint": "full"
+    },
+    {
+      "glyph": "nelush",
+      "codepoint": "U+F40B0",
+      "code": "NELUSH",
+      "kind": "concept",
+      "concept": "Nelush, great: the great tree, the ceiba",
+      "footprint": "full"
+    },
+    {
+      "glyph": "chakal",
+      "codepoint": "U+F40B1",
+      "code": "CHAKAL",
+      "kind": "concept",
+      "concept": "Ch'akal, big: the great gate",
+      "footprint": "full"
+    },
+    {
+      "glyph": "toshel",
+      "codepoint": "U+F40B2",
+      "code": "TOSHEL",
+      "kind": "concept",
+      "concept": "Toshel, southward: the conch shell",
+      "footprint": "full"
+    },
+    {
+      "glyph": "shaknal",
+      "codepoint": "U+F40B3",
+      "code": "SHAKNAL",
+      "kind": "concept",
+      "concept": "Shak'nal, the eagle: an eagle's head",
+      "footprint": "full"
+    },
+    {
+      "glyph": "tsultel",
+      "codepoint": "U+F40B4",
+      "code": "TSULTEL",
+      "kind": "concept",
+      "concept": "Ts'ultel, the mountain: a mountain with its cave mouth",
+      "footprint": "full"
+    },
+    {
+      "glyph": "penqal",
+      "codepoint": "U+F40B5",
+      "code": "PENQAL",
+      "kind": "concept",
+      "concept": "P'enqal, the grassland: a tuft of tall grass",
+      "footprint": "full"
+    },
+    {
+      "glyph": "shelem_bird",
+      "codepoint": "U+F40B6",
+      "code": "SHELEM_BIRD",
+      "kind": "concept",
+      "concept": "Shelem, the bird: a perched bird",
+      "footprint": "full"
+    },
+    {
+      "glyph": "ishtem",
+      "codepoint": "U+F40B7",
+      "code": "ISHTEM",
+      "kind": "concept",
+      "concept": "Ishtem, the claw: a raptor's talon",
+      "footprint": "full"
+    },
+    {
+      "glyph": "qaptel",
+      "codepoint": "U+F40B8",
+      "code": "QAPTEL",
+      "kind": "concept",
+      "concept": "Q'aptel, the border: a boundary post with its cord",
+      "footprint": "full"
+    },
+    {
+      "glyph": "neok",
+      "codepoint": "U+F40B9",
+      "code": "NEOK",
+      "kind": "concept",
+      "concept": "Ne'ok, flowing: a river between its banks",
+      "footprint": "full"
+    },
+    {
       "glyph": "a1",
       "codepoint": "U+F4400",
       "code": "a1",

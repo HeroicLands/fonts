@@ -221,6 +221,18 @@ house of Ish'bal, an eagle for Shak'nal). Syllable signs set round it give the r
 the person's name, and a coefficient before it counts their descent with that name: the
 third of the name, the fourth. All of it stands in one block.
 
+Every house element has its emblem, drawn in `tools/chalish-pilam/emblems.py`, each a
+picture in a full cushion. Ish'bal, Ne' and Ish write JAGUAR, WATER and STAR. A house
+named for a quality takes a concrete object of it: the censer for Ch'alish (sacred), the
+plumed crown for Q'emul (supreme), the jade ear spool for Puq'em (highborn), the ceiba
+for Nelush (great), the great gate for Ch'akal (big) and the conch for Toshel
+(southward). The three seats share one stepped seat: studded with gold for K'ankul, under
+a crescent for Ishkul, and with a serpent coiled round it for Ch'akul. An emblem stands
+as the main sign of a name's first block, so its compact form is a token or motif of its
+own picture, kept apart from the sign it echoes: TSULTEL from STONE and PEAK, NEOK from
+WATER, SHELEM-BIRD from the city SHELEM, KANKUL-SEAT from the city KANKUL, CHALISH from
+SACRED_FLAME.
+
 **The syllabary.** The ceremonial hand has a syllabary of its own, laid out as consonant
 against vowel. Each of the syllables Ki'i'chek uses is written by one or more signs, and
 the signs are mostly shaped as affixes: flat oblongs to set above or below a main sign,
