@@ -10,8 +10,12 @@
     <string>A_.long.glif</string>
     <key>B</key>
     <string>B_.glif</string>
+    <key>CH</key>
+    <string>C_H_.glif</string>
     <key>D</key>
     <string>D_.glif</string>
+    <key>DH</key>
+    <string>D_H_.glif</string>
     <key>E</key>
     <string>E_.glif</string>
     <key>E.long</key>
@@ -20,6 +24,8 @@
     <string>F_.glif</string>
     <key>G</key>
     <string>G_.glif</string>
+    <key>GH</key>
+    <string>G_H_.glif</string>
     <key>H</key>
     <string>H_.glif</string>
     <key>I</key>
@@ -30,26 +36,38 @@
     <string>J_.glif</string>
     <key>K</key>
     <string>K_.glif</string>
+    <key>KH</key>
+    <string>K_H_.glif</string>
     <key>L</key>
     <string>L_.glif</string>
     <key>M</key>
     <string>M_.glif</string>
     <key>N</key>
     <string>N_.glif</string>
+    <key>NG</key>
+    <string>N_G_.glif</string>
+    <key>NY</key>
+    <string>N_Y_.glif</string>
     <key>O</key>
     <string>O_.glif</string>
     <key>O.long</key>
     <string>O_.long.glif</string>
     <key>P</key>
     <string>P_.glif</string>
+    <key>Q</key>
+    <string>Q_.glif</string>
     <key>R</key>
     <string>R_.glif</string>
     <key>S</key>
     <string>S_.glif</string>
+    <key>SH</key>
+    <string>S_H_.glif</string>
     <key>T</key>
     <string>T_.glif</string>
     <key>TH</key>
     <string>T_H_.glif</string>
+    <key>TS</key>
+    <string>T_S_.glif</string>
     <key>U</key>
     <string>U_.glif</string>
     <key>U.long</key>
@@ -62,14 +80,20 @@
     <string>Y_.glif</string>
     <key>Z</key>
     <string>Z_.glif</string>
+    <key>ZH</key>
+    <string>Z_H_.glif</string>
     <key>a</key>
     <string>a.glif</string>
     <key>a.long</key>
     <string>a.long.glif</string>
     <key>b</key>
     <string>b.glif</string>
+    <key>ch</key>
+    <string>ch.glif</string>
     <key>d</key>
     <string>d.glif</string>
+    <key>dh</key>
+    <string>dh.glif</string>
     <key>e</key>
     <string>e.glif</string>
     <key>e.long</key>
@@ -78,6 +102,8 @@
     <string>f.glif</string>
     <key>g</key>
     <string>g.glif</string>
+    <key>gh</key>
+    <string>gh.glif</string>
     <key>grave</key>
     <string>grave.glif</string>
     <key>h</key>
@@ -94,12 +120,16 @@
     <string>j.glif</string>
     <key>k</key>
     <string>k.glif</string>
+    <key>kh</key>
+    <string>kh.glif</string>
     <key>l</key>
     <string>l.glif</string>
     <key>m</key>
     <string>m.glif</string>
     <key>n</key>
     <string>n.glif</string>
+    <key>ng</key>
+    <string>ng.glif</string>
     <key>notdef.box</key>
     <string>notdef.box.glif</string>
     <key>num.0</key>
@@ -122,6 +152,8 @@
     <string>num.8.glif</string>
     <key>num.9</key>
     <string>num.9.glif</string>
+    <key>ny</key>
+    <string>ny.glif</string>
     <key>o</key>
     <string>o.glif</string>
     <key>o.long</key>
@@ -130,16 +162,22 @@
     <string>p.glif</string>
     <key>point</key>
     <string>point.glif</string>
+    <key>q</key>
+    <string>q.glif</string>
     <key>r</key>
     <string>r.glif</string>
     <key>s</key>
     <string>s.glif</string>
+    <key>sh</key>
+    <string>sh.glif</string>
     <key>space</key>
     <string>space.glif</string>
     <key>t</key>
     <string>t.glif</string>
     <key>th</key>
     <string>th.glif</string>
+    <key>ts</key>
+    <string>ts.glif</string>
     <key>u</key>
     <string>u.glif</string>
     <key>u.long</key>
@@ -152,5 +190,7 @@
     <string>y.glif</string>
     <key>z</key>
     <string>z.glif</string>
+    <key>zh</key>
+    <string>zh.glif</string>
   </dict>
 </plist>

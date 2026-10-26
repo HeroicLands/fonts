@@ -599,8 +599,9 @@ def prove_keyboards(files: dict[str, str] | None = None) -> int:
         next(s for s in spelled if s["sound"] == "th")["spelling"] = "Th"
         return len(guard.keymap_problems(keymap_with(capital), spelled))
 
-    ch = "&#xF0241;&#xF0240;&#xF0236;"
-    macos = layouts["macos"].replace(ch, "&#xF0241;", 1)
+    ai = "&#xF0230;&#xF0237;"
+    macos = layouts["macos"].replace(ai, "&#xF0230;", 1)
+    assert macos != layouts["macos"]
     linux = "\n".join(line for line in layouts["linux"].split("\n") if "<AC03>" not in line)
     emacs = "\n".join(line for line in layouts["emacs"].split("\n") if not line.startswith(' ("q" '))
     windows = layouts["windows"].decode("utf-16").replace("\r\n2e\tC\t\t0\t-1", "\r\n2e\tC\t\t0\t0063")

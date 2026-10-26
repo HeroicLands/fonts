@@ -55,6 +55,26 @@
       <string>Y</string>
       <string>z</string>
       <string>Z</string>
+      <string>dh</string>
+      <string>DH</string>
+      <string>kh</string>
+      <string>KH</string>
+      <string>gh</string>
+      <string>GH</string>
+      <string>ng</string>
+      <string>NG</string>
+      <string>sh</string>
+      <string>SH</string>
+      <string>zh</string>
+      <string>ZH</string>
+      <string>ts</string>
+      <string>TS</string>
+      <string>ch</string>
+      <string>CH</string>
+      <string>ny</string>
+      <string>NY</string>
+      <string>q</string>
+      <string>Q</string>
       <string>a.long</string>
       <string>e.long</string>
       <string>i.long</string>
@@ -90,7 +110,11 @@
       <string>base</string>
       <key>B</key>
       <string>base</string>
+      <key>CH</key>
+      <string>base</string>
       <key>D</key>
+      <string>base</string>
+      <key>DH</key>
       <string>base</string>
       <key>E</key>
       <string>base</string>
@@ -99,6 +123,8 @@
       <key>F</key>
       <string>base</string>
       <key>G</key>
+      <string>base</string>
+      <key>GH</key>
       <string>base</string>
       <key>H</key>
       <string>base</string>
@@ -110,11 +136,17 @@
       <string>base</string>
       <key>K</key>
       <string>base</string>
+      <key>KH</key>
+      <string>base</string>
       <key>L</key>
       <string>base</string>
       <key>M</key>
       <string>base</string>
       <key>N</key>
+      <string>base</string>
+      <key>NG</key>
+      <string>base</string>
+      <key>NY</key>
       <string>base</string>
       <key>O</key>
       <string>base</string>
@@ -122,13 +154,19 @@
       <string>base</string>
       <key>P</key>
       <string>base</string>
+      <key>Q</key>
+      <string>base</string>
       <key>R</key>
       <string>base</string>
       <key>S</key>
       <string>base</string>
+      <key>SH</key>
+      <string>base</string>
       <key>T</key>
       <string>base</string>
       <key>TH</key>
+      <string>base</string>
+      <key>TS</key>
       <string>base</string>
       <key>U</key>
       <string>base</string>
@@ -142,13 +180,19 @@
       <string>base</string>
       <key>Z</key>
       <string>base</string>
+      <key>ZH</key>
+      <string>base</string>
       <key>a</key>
       <string>base</string>
       <key>a.long</key>
       <string>base</string>
       <key>b</key>
       <string>base</string>
+      <key>ch</key>
+      <string>base</string>
       <key>d</key>
+      <string>base</string>
+      <key>dh</key>
       <string>base</string>
       <key>e</key>
       <string>base</string>
@@ -157,6 +201,8 @@
       <key>f</key>
       <string>base</string>
       <key>g</key>
+      <string>base</string>
+      <key>gh</key>
       <string>base</string>
       <key>grave</key>
       <string>mark</string>
@@ -174,11 +220,15 @@
       <string>base</string>
       <key>k</key>
       <string>base</string>
+      <key>kh</key>
+      <string>base</string>
       <key>l</key>
       <string>base</string>
       <key>m</key>
       <string>base</string>
       <key>n</key>
+      <string>base</string>
+      <key>ng</key>
       <string>base</string>
       <key>notdef.box</key>
       <string>base</string>
@@ -202,6 +252,8 @@
       <string>base</string>
       <key>num.9</key>
       <string>base</string>
+      <key>ny</key>
+      <string>base</string>
       <key>o</key>
       <string>base</string>
       <key>o.long</key>
@@ -210,15 +262,21 @@
       <string>base</string>
       <key>point</key>
       <string>base</string>
+      <key>q</key>
+      <string>base</string>
       <key>r</key>
       <string>base</string>
       <key>s</key>
+      <string>base</string>
+      <key>sh</key>
       <string>base</string>
       <key>space</key>
       <string>base</string>
       <key>t</key>
       <string>base</string>
       <key>th</key>
+      <string>base</string>
+      <key>ts</key>
       <string>base</string>
       <key>u</key>
       <string>base</string>
@@ -231,6 +289,8 @@
       <key>y</key>
       <string>base</string>
       <key>z</key>
+      <string>base</string>
+      <key>zh</key>
       <string>base</string>
     </dict>
   </dict>

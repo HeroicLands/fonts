@@ -23,7 +23,7 @@ font fails when
 - its OS/2 sxHeight or sCapHeight differs by more than 2 units from the median
   height of its typical x-height letters or capitals;
 - a glyph's ink leaves the band between the ascent and the descent, other than
-  the accepted overshoot: Semaron Kuriale's ``f j p s g``, whose descenders reach below
+  the accepted overshoot: Semaron Kuriale's ``f j p s g sh gh``, whose descenders reach below
   it, and Veldikko's raised stops, its riser _l_ and its nasals in every form,
   whose stems and tails reach past both edges, and its length bar: Veldikko's
   bowls, not its extenders, stand at the x-height. Vedyakshara Classical's hooks,
@@ -143,7 +143,7 @@ FACES = {
 # Glyphs allowed to leave the band, by face: the first part of the glyph name, before
 # any ``.init``, ``.medi`` or ``.fina`` suffix.
 OVERSHOOT = {
-    "SemaronKuriale": {"f", "j", "p", "s", "g"},
+    "SemaronKuriale": {"f", "j", "p", "s", "g", "sh", "gh"},
     # the raised stems, the riser and the nasals' tails reach well past Semaron's
     # extenders by design; the bowls stand at the x-height
     "Veldikko": set("p t k d g th dhasp kh gh tej dej kej gej l m n ng bar".split()),

@@ -1008,6 +1008,10 @@
       "kind": "pair",
       "key": "option+y",
       "contexts": {
+        "semaron": [
+          "",
+          "a"
+        ],
         "vedyakshara": [
           "",
           "a"
@@ -1021,6 +1025,10 @@
       "key": "option+shift+y",
       "capital of": "ny",
       "contexts": {
+        "semaron": [
+          "",
+          "a"
+        ],
         "vedyakshara": [
           "",
           "a"

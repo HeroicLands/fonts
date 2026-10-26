@@ -38,28 +38,8 @@ A Windows key holds at most four UTF-16 code units and a Linux key one character
 
 | Key | Sound | Script | Platform | Why |
 | --- | --- | --- | --- | --- |
-| `option+c` | `ch` | Semaron | Windows | 6 UTF-16 code units; an MSKLC ligature holds 4 |
-| `option+c` | `ch` | Semaron | Linux | 3 code points; an XKB key types one |
-| `option+shift+c` | `Ch` | Semaron | Windows | 6 UTF-16 code units; an MSKLC ligature holds 4 |
-| `option+shift+c` | `Ch` | Semaron | Linux | 3 code points; an XKB key types one |
-| `option+s` | `sh` | Semaron | Linux | 2 code points; an XKB key types one |
-| `option+shift+s` | `Sh` | Semaron | Linux | 2 code points; an XKB key types one |
-| `option+d` | `dh` | Semaron | Linux | 2 code points; an XKB key types one |
-| `option+shift+d` | `Dh` | Semaron | Linux | 2 code points; an XKB key types one |
-| `option+k` | `kh` | Semaron | Linux | 2 code points; an XKB key types one |
-| `option+shift+k` | `Kh` | Semaron | Linux | 2 code points; an XKB key types one |
-| `option+g` | `gh` | Semaron | Linux | 2 code points; an XKB key types one |
-| `option+shift+g` | `Gh` | Semaron | Linux | 2 code points; an XKB key types one |
-| `option+z` | `zh` | Semaron | Linux | 2 code points; an XKB key types one |
-| `option+shift+z` | `Zh` | Semaron | Linux | 2 code points; an XKB key types one |
 | `option+p` | `ph` | Semaron | Linux | 2 code points; an XKB key types one |
 | `option+shift+p` | `Ph` | Semaron | Linux | 2 code points; an XKB key types one |
-| `option+n` | `ng` | Semaron | Linux | 2 code points; an XKB key types one |
-| `option+shift+n` | `Ng` | Semaron | Linux | 2 code points; an XKB key types one |
-| `option+y` | `ny` | Semaron | Linux | 2 code points; an XKB key types one |
-| `option+shift+y` | `Ny` | Semaron | Linux | 2 code points; an XKB key types one |
-| `option+x` | `ts` | Semaron | Linux | 2 code points; an XKB key types one |
-| `option+shift+x` | `Ts` | Semaron | Linux | 2 code points; an XKB key types one |
 | `option+h` | `hl` | Semaron | Linux | 2 code points; an XKB key types one |
 | `option+shift+h` | `Hl` | Semaron | Linux | 2 code points; an XKB key types one |
 | `option+b` | `bh` | Semaron | Linux | 2 code points; an XKB key types one |
@@ -144,8 +124,8 @@ Every sound key, in keyboard order. Example: `t` types the sound `t`.
 | `shift+o` | ![U+F020D](../charts/semaron-kuriale/glyphs/U+F020D.svg) | U+F020D | SEMARON CAPITAL LETTER ORNETHE | `O` | `O` |
 | `p` | ![U+F023E](../charts/semaron-kuriale/glyphs/U+F023E.svg) | U+F023E | SEMARON SMALL LETTER POZERA | `p` | `p` |
 | `shift+p` | ![U+F020E](../charts/semaron-kuriale/glyphs/U+F020E.svg) | U+F020E | SEMARON CAPITAL LETTER POZERA | `P` | `P` |
-| `q` | ![U+F0239](../charts/semaron-kuriale/glyphs/U+F0239.svg) | U+F0239 | SEMARON SMALL LETTER KALPEZA | `q` | `q` |
-| `shift+q` | ![U+F0209](../charts/semaron-kuriale/glyphs/U+F0209.svg) | U+F0209 | SEMARON CAPITAL LETTER KALPEZA | `Q` | `Q` |
+| `q` | ![U+F0247](../charts/semaron-kuriale/glyphs/U+F0247.svg) | U+F0247 | SEMARON SMALL LETTER QORETHA | `q` | `q` |
+| `shift+q` | ![U+F0217](../charts/semaron-kuriale/glyphs/U+F0217.svg) | U+F0217 | SEMARON CAPITAL LETTER QORETHA | `Q` | `Q` |
 | `r` | ![U+F023F](../charts/semaron-kuriale/glyphs/U+F023F.svg) | U+F023F | SEMARON SMALL LETTER RONETHOS | `r` | `r` |
 | `shift+r` | ![U+F020F](../charts/semaron-kuriale/glyphs/U+F020F.svg) | U+F020F | SEMARON CAPITAL LETTER RONETHOS | `R` | `R` |
 | `s` | ![U+F0240](../charts/semaron-kuriale/glyphs/U+F0240.svg) | U+F0240 | SEMARON SMALL LETTER SIRETHA | `s` | `s` |
@@ -162,28 +142,28 @@ Every sound key, in keyboard order. Example: `t` types the sound `t`.
 | `shift+y` | ![U+F0215](../charts/semaron-kuriale/glyphs/U+F0215.svg) | U+F0215 | SEMARON CAPITAL LETTER YALZEMIS | `Y` | `Y` |
 | `z` | ![U+F0246](../charts/semaron-kuriale/glyphs/U+F0246.svg) | U+F0246 | SEMARON SMALL LETTER ZARGON | `z` | `z` |
 | `shift+z` | ![U+F0216](../charts/semaron-kuriale/glyphs/U+F0216.svg) | U+F0216 | SEMARON CAPITAL LETTER ZARGON | `Z` | `Z` |
-| `option+c` | ![U+F0241](../charts/semaron-kuriale/glyphs/U+F0241.svg) ![U+F0240](../charts/semaron-kuriale/glyphs/U+F0240.svg) ![U+F0236](../charts/semaron-kuriale/glyphs/U+F0236.svg) | U+F0241 U+F0240 U+F0236 | SEMARON SMALL LETTER TALOTHOS; SEMARON SMALL LETTER SIRETHA; SEMARON SMALL LETTER HARLEN | `ch` | `\c` |
-| `option+shift+c` | ![U+F0211](../charts/semaron-kuriale/glyphs/U+F0211.svg) ![U+F0240](../charts/semaron-kuriale/glyphs/U+F0240.svg) ![U+F0236](../charts/semaron-kuriale/glyphs/U+F0236.svg) | U+F0211 U+F0240 U+F0236 | SEMARON CAPITAL LETTER TALOTHOS; SEMARON SMALL LETTER SIRETHA; SEMARON SMALL LETTER HARLEN | `Ch` | `\C` |
-| `option+s` | ![U+F0240](../charts/semaron-kuriale/glyphs/U+F0240.svg) ![U+F0236](../charts/semaron-kuriale/glyphs/U+F0236.svg) | U+F0240 U+F0236 | SEMARON SMALL LETTER SIRETHA; SEMARON SMALL LETTER HARLEN | `sh` | `\s` |
-| `option+shift+s` | ![U+F0210](../charts/semaron-kuriale/glyphs/U+F0210.svg) ![U+F0236](../charts/semaron-kuriale/glyphs/U+F0236.svg) | U+F0210 U+F0236 | SEMARON CAPITAL LETTER SIRETHA; SEMARON SMALL LETTER HARLEN | `Sh` | `\S` |
+| `option+c` | ![U+F028C](../charts/semaron-kuriale/glyphs/U+F028C.svg) | U+F028C | SEMARON SMALL LETTER CHEROLA | `ch` | `\c` |
+| `option+shift+c` | ![U+F028D](../charts/semaron-kuriale/glyphs/U+F028D.svg) | U+F028D | SEMARON CAPITAL LETTER CHEROLA | `Ch` | `\C` |
+| `option+s` | ![U+F0286](../charts/semaron-kuriale/glyphs/U+F0286.svg) | U+F0286 | SEMARON SMALL LETTER SHELMORA | `sh` | `\s` |
+| `option+shift+s` | ![U+F0287](../charts/semaron-kuriale/glyphs/U+F0287.svg) | U+F0287 | SEMARON CAPITAL LETTER SHELMORA | `Sh` | `\S` |
 | `option+t` | ![U+F0250](../charts/semaron-kuriale/glyphs/U+F0250.svg) | U+F0250 | SEMARON SMALL LETTER THOLERA | `th` | `\t` |
 | `option+shift+t` | ![U+F0251](../charts/semaron-kuriale/glyphs/U+F0251.svg) | U+F0251 | SEMARON CAPITAL LETTER THOLERA | `Th` | `\T` |
-| `option+d` | ![U+F0232](../charts/semaron-kuriale/glyphs/U+F0232.svg) ![U+F0236](../charts/semaron-kuriale/glyphs/U+F0236.svg) | U+F0232 U+F0236 | SEMARON SMALL LETTER DEKAZU; SEMARON SMALL LETTER HARLEN | `dh` | `\d` |
-| `option+shift+d` | ![U+F0202](../charts/semaron-kuriale/glyphs/U+F0202.svg) ![U+F0236](../charts/semaron-kuriale/glyphs/U+F0236.svg) | U+F0202 U+F0236 | SEMARON CAPITAL LETTER DEKAZU; SEMARON SMALL LETTER HARLEN | `Dh` | `\D` |
-| `option+k` | ![U+F0239](../charts/semaron-kuriale/glyphs/U+F0239.svg) ![U+F0236](../charts/semaron-kuriale/glyphs/U+F0236.svg) | U+F0239 U+F0236 | SEMARON SMALL LETTER KALPEZA; SEMARON SMALL LETTER HARLEN | `kh` | `\k` |
-| `option+shift+k` | ![U+F0209](../charts/semaron-kuriale/glyphs/U+F0209.svg) ![U+F0236](../charts/semaron-kuriale/glyphs/U+F0236.svg) | U+F0209 U+F0236 | SEMARON CAPITAL LETTER KALPEZA; SEMARON SMALL LETTER HARLEN | `Kh` | `\K` |
-| `option+g` | ![U+F0235](../charts/semaron-kuriale/glyphs/U+F0235.svg) ![U+F0236](../charts/semaron-kuriale/glyphs/U+F0236.svg) | U+F0235 U+F0236 | SEMARON SMALL LETTER GULMOS; SEMARON SMALL LETTER HARLEN | `gh` | `\g` |
-| `option+shift+g` | ![U+F0205](../charts/semaron-kuriale/glyphs/U+F0205.svg) ![U+F0236](../charts/semaron-kuriale/glyphs/U+F0236.svg) | U+F0205 U+F0236 | SEMARON CAPITAL LETTER GULMOS; SEMARON SMALL LETTER HARLEN | `Gh` | `\G` |
-| `option+z` | ![U+F0246](../charts/semaron-kuriale/glyphs/U+F0246.svg) ![U+F0236](../charts/semaron-kuriale/glyphs/U+F0236.svg) | U+F0246 U+F0236 | SEMARON SMALL LETTER ZARGON; SEMARON SMALL LETTER HARLEN | `zh` | `\z` |
-| `option+shift+z` | ![U+F0216](../charts/semaron-kuriale/glyphs/U+F0216.svg) ![U+F0236](../charts/semaron-kuriale/glyphs/U+F0236.svg) | U+F0216 U+F0236 | SEMARON CAPITAL LETTER ZARGON; SEMARON SMALL LETTER HARLEN | `Zh` | `\Z` |
+| `option+d` | ![U+F0280](../charts/semaron-kuriale/glyphs/U+F0280.svg) | U+F0280 | SEMARON SMALL LETTER DHANETHE | `dh` | `\d` |
+| `option+shift+d` | ![U+F0281](../charts/semaron-kuriale/glyphs/U+F0281.svg) | U+F0281 | SEMARON CAPITAL LETTER DHANETHE | `Dh` | `\D` |
+| `option+k` | ![U+F0282](../charts/semaron-kuriale/glyphs/U+F0282.svg) | U+F0282 | SEMARON SMALL LETTER KHORVENA | `kh` | `\k` |
+| `option+shift+k` | ![U+F0283](../charts/semaron-kuriale/glyphs/U+F0283.svg) | U+F0283 | SEMARON CAPITAL LETTER KHORVENA | `Kh` | `\K` |
+| `option+g` | ![U+F0284](../charts/semaron-kuriale/glyphs/U+F0284.svg) | U+F0284 | SEMARON SMALL LETTER GHORMAS | `gh` | `\g` |
+| `option+shift+g` | ![U+F0285](../charts/semaron-kuriale/glyphs/U+F0285.svg) | U+F0285 | SEMARON CAPITAL LETTER GHORMAS | `Gh` | `\G` |
+| `option+z` | ![U+F0288](../charts/semaron-kuriale/glyphs/U+F0288.svg) | U+F0288 | SEMARON SMALL LETTER ZHAREVA | `zh` | `\z` |
+| `option+shift+z` | ![U+F0289](../charts/semaron-kuriale/glyphs/U+F0289.svg) | U+F0289 | SEMARON CAPITAL LETTER ZHAREVA | `Zh` | `\Z` |
 | `option+p` | ![U+F023E](../charts/semaron-kuriale/glyphs/U+F023E.svg) ![U+F0236](../charts/semaron-kuriale/glyphs/U+F0236.svg) | U+F023E U+F0236 | SEMARON SMALL LETTER POZERA; SEMARON SMALL LETTER HARLEN | `ph` | `\p` |
 | `option+shift+p` | ![U+F020E](../charts/semaron-kuriale/glyphs/U+F020E.svg) ![U+F0236](../charts/semaron-kuriale/glyphs/U+F0236.svg) | U+F020E U+F0236 | SEMARON CAPITAL LETTER POZERA; SEMARON SMALL LETTER HARLEN | `Ph` | `\P` |
-| `option+n` | ![U+F023C](../charts/semaron-kuriale/glyphs/U+F023C.svg) ![U+F0235](../charts/semaron-kuriale/glyphs/U+F0235.svg) | U+F023C U+F0235 | SEMARON SMALL LETTER NELAMIS; SEMARON SMALL LETTER GULMOS | `ng` | `\n` |
-| `option+shift+n` | ![U+F020C](../charts/semaron-kuriale/glyphs/U+F020C.svg) ![U+F0235](../charts/semaron-kuriale/glyphs/U+F0235.svg) | U+F020C U+F0235 | SEMARON CAPITAL LETTER NELAMIS; SEMARON SMALL LETTER GULMOS | `Ng` | `\N` |
-| `option+y` | ![U+F023C](../charts/semaron-kuriale/glyphs/U+F023C.svg) ![U+F0237](../charts/semaron-kuriale/glyphs/U+F0237.svg) | U+F023C U+F0237 | SEMARON SMALL LETTER NELAMIS; SEMARON SMALL LETTER ILTHERA | `ny` | `\y` |
-| `option+shift+y` | ![U+F020C](../charts/semaron-kuriale/glyphs/U+F020C.svg) ![U+F0237](../charts/semaron-kuriale/glyphs/U+F0237.svg) | U+F020C U+F0237 | SEMARON CAPITAL LETTER NELAMIS; SEMARON SMALL LETTER ILTHERA | `Ny` | `\Y` |
-| `option+x` | ![U+F0241](../charts/semaron-kuriale/glyphs/U+F0241.svg) ![U+F0240](../charts/semaron-kuriale/glyphs/U+F0240.svg) | U+F0241 U+F0240 | SEMARON SMALL LETTER TALOTHOS; SEMARON SMALL LETTER SIRETHA | `ts` | `\x` |
-| `option+shift+x` | ![U+F0211](../charts/semaron-kuriale/glyphs/U+F0211.svg) ![U+F0240](../charts/semaron-kuriale/glyphs/U+F0240.svg) | U+F0211 U+F0240 | SEMARON CAPITAL LETTER TALOTHOS; SEMARON SMALL LETTER SIRETHA | `Ts` | `\X` |
+| `option+n` | ![U+F028E](../charts/semaron-kuriale/glyphs/U+F028E.svg) | U+F028E | SEMARON SMALL LETTER ENGARIS | `ng` | `\n` |
+| `option+shift+n` | ![U+F028F](../charts/semaron-kuriale/glyphs/U+F028F.svg) | U+F028F | SEMARON CAPITAL LETTER ENGARIS | `Ng` | `\N` |
+| `option+y` | ![U+F0290](../charts/semaron-kuriale/glyphs/U+F0290.svg) | U+F0290 | SEMARON SMALL LETTER NYELIS | `ny` | `\y` |
+| `option+shift+y` | ![U+F0291](../charts/semaron-kuriale/glyphs/U+F0291.svg) | U+F0291 | SEMARON CAPITAL LETTER NYELIS | `Ny` | `\Y` |
+| `option+x` | ![U+F028A](../charts/semaron-kuriale/glyphs/U+F028A.svg) | U+F028A | SEMARON SMALL LETTER TSALEMA | `ts` | `\x` |
+| `option+shift+x` | ![U+F028B](../charts/semaron-kuriale/glyphs/U+F028B.svg) | U+F028B | SEMARON CAPITAL LETTER TSALEMA | `Ts` | `\X` |
 | `option+h` | ![U+F0236](../charts/semaron-kuriale/glyphs/U+F0236.svg) ![U+F023A](../charts/semaron-kuriale/glyphs/U+F023A.svg) | U+F0236 U+F023A | SEMARON SMALL LETTER HARLEN; SEMARON SMALL LETTER LIZELA | `hl` | `\h` |
 | `option+shift+h` | ![U+F0206](../charts/semaron-kuriale/glyphs/U+F0206.svg) ![U+F023A](../charts/semaron-kuriale/glyphs/U+F023A.svg) | U+F0206 U+F023A | SEMARON CAPITAL LETTER HARLEN; SEMARON SMALL LETTER LIZELA | `Hl` | `\H` |
 | `option+b` | ![U+F0231](../charts/semaron-kuriale/glyphs/U+F0231.svg) ![U+F0236](../charts/semaron-kuriale/glyphs/U+F0236.svg) | U+F0231 U+F0236 | SEMARON SMALL LETTER BRUTHEKA; SEMARON SMALL LETTER HARLEN | `bh` | `\b` |

@@ -164,16 +164,17 @@ def readme_table() -> str:
 # Face -> (block start, block end, groups). A group is (kind, first code point, glyphs).
 SEMARON = (
     0xF0200,
-    0xF027F,
+    0xF02FF,
     [
-        ("letter", 0xF0200, "A B D E F G H I J K L M N O P R S T U V W Y Z".split()),
+        ("letter", 0xF0200, "A B D E F G H I J K L M N O P R S T U V W Y Z Q".split()),
         ("letter", 0xF0220, "A.long E.long I.long O.long U.long".split()),
-        ("letter", 0xF0230, "a b d e f g h i j k l m n o p r s t u v w y z".split()),
+        ("letter", 0xF0230, "a b d e f g h i j k l m n o p r s t u v w y z q".split()),
         ("letter", 0xF0248, "a.long e.long i.long o.long u.long".split()),
         ("digraph", 0xF0250, ["th", "TH"]),
         ("numeral", 0xF0258, [f"num.{i}" for i in range(10)]),
         ("point", 0xF0268, ["point"]),
         ("mark", 0xF0270, ["grave"]),
+        ("digraph", 0xF0280, "dh DH kh KH gh GH sh SH zh ZH ts TS ch CH ng NG ny NY".split()),
     ],
 )
 

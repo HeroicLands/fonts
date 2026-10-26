@@ -28,7 +28,7 @@
     "title": "semaron encoding",
     "example": "thalen kaa",
     "intro": [
-      "Semaron Kuriale is an alphabet of capital and small letters, written left to right. This encoding writes a roman spelling in its small letters, and a capital letter in its majuscule: `th` is one letter, `ch` is written with the letters for t, s and h, a doubled `a`, `i` or `u` is a long vowel, `q` is written as `k`, and `y` before a vowel is a glide. An apostrophe or hyphen after a letter writes the catch, a mark on the letter before it."
+      "Semaron Kuriale is an alphabet of capital and small letters, written left to right. This encoding writes a roman spelling in its small letters, and a capital letter in its majuscule: `th`, `dh`, `kh`, `gh`, `sh`, `zh`, `ts`, `ch` and `ng` are each one letter, read left to right, so `tch` is t and `ch` and `ngh` is `ng` and h; `ny` before a vowel is one letter and anywhere else is n and the vowel i; `q` is a letter of its own; a doubled `a`, `i` or `u` is a long vowel; and `y` before a vowel is a glide. An apostrophe or hyphen after a letter writes the catch, a mark on the letter before it."
     ]
   },
   "aelwythi-semaron": {

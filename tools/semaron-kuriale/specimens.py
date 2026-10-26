@@ -7,7 +7,7 @@
 
 Three sheets, each drawn from the built font's own outlines:
 
-- ``00-capitals.png``: all 24 majuscules, large, one to a cell and labelled, for review;
+- ``00-capitals.png``: every majuscule, large, one to a cell and labelled, for review;
 - ``01-glyph-chart.png``: each letter's majuscule above its minuscule, the long vowels,
   the numerals and the marks;
 - ``02-texts.png``: the Vylari texts at display size and at 18 and 24 px.
@@ -31,7 +31,9 @@ GREY = (110, 106, 100)
 RULE = (214, 207, 194)
 
 LETTERS = ["a", "b", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "r", "s", "t", "th", "u",
-           "v", "w", "y", "z"]
+           "v", "w", "y", "z", "dh", "kh", "gh", "ng", "sh", "zh", "ts", "ch", "ny", "q"]
+# A letter that types as another where nothing follows it is shown from a word in which it stands.
+SHOWN_IN = {"y": "a", "ny": "a"}
 TEXTS = [
     ("The oath", "ulthandoi okointor denon zaron ul kalmetharen."),
     ("The morning call", "daimela orfenamen."),
@@ -42,6 +44,7 @@ TEXTS = [
     ("Reported speech, vethor", "daimela vethor orfenamen."),
     ("An exclamation, aia", "aia theson."),
     ("Names", "eltheza solterates. kalmethis. hiltheris. tholmarar."),
+    ("The digraph letters and q", "shelmora khorvena ghormas dhanethe zhareva tsalema cherola engaris nyelis qoretha."),
     ("The long vowels and the numerals", "daamela. viir. kuun. 0123456789. 12. 2026."),
     ("Period alone writes the pause point", "daimela vethor orfenamen. theson."),
     ("The Vylari catch, on its ancient stop or article", "kàralzon. kàrthorgila. à."),
@@ -53,28 +56,35 @@ def text(draw, xy, s, size=14, color=GREY):
     draw.text(xy, s, font=label_font(size), fill=color)
 
 
+def first_glyph(r: Renderer, typed: str):
+    """The text shaped, cut to its first glyph. A y before a vowel is the glide and ny before a vowel
+    is the letter ny, so each is shown from a word in which it stands."""
+    shaped = r.shape(typed)
+    shaped.glyphs = shaped.glyphs[:1]
+    shaped.advance = shaped.glyphs[0][3]
+    return shaped
+
+
 def capitals(r: Renderer, out: Path):
-    cols, rows = 6, 4
+    cols = 6
+    rows = (len(LETTERS) + cols - 1) // cols
     cell_w, cell_h = 300, 330
     em = 300
     img = Image.new("RGB", (cols * cell_w + 80, rows * cell_h + 120), PAPER)
     d = ImageDraw.Draw(img)
-    text(d, (40, 24), "Semaron Kuriale: the 24 majuscules, one to a cell", 22, INK)
+    text(d, (40, 24), "Semaron Kuriale: the majuscules, one to a cell", 22, INK)
     for i, name in enumerate(LETTERS):
         col, row = i % cols, i // cols
         x0, y0 = 40 + col * cell_w, 80 + row * cell_h
         d.rectangle([x0, y0, x0 + cell_w - 10, y0 + cell_h - 10], outline=RULE)
         typed = name.capitalize()
-        # a y before a vowel is the glide; alone it types the vowel i, so the glide is shown from "Ya"
-        shaped = r.shape("Ya" if name == "y" else typed)
-        shaped.glyphs = shaped.glyphs[:1]
-        shaped.advance = shaped.glyphs[0][3]
+        shaped = first_glyph(r, typed + SHOWN_IN.get(name, ""))
         width = shaped.advance * em / r.upem
         base = y0 + 240
         d.line([x0 + 8, base, x0 + cell_w - 18, base], fill=RULE)
         r.draw(img, x0 + (cell_w - 10 - width) / 2, base, shaped, em, INK)
         glyph = r.order[shaped.glyphs[0][0]]
-        text(d, (x0 + 12, y0 + cell_h - 40), f"{typed}{'a' if name == 'y' else ''}   glyph {glyph}", 15, INK)
+        text(d, (x0 + 12, y0 + cell_h - 40), f"{typed}{SHOWN_IN.get(name, '')}   glyph {glyph}", 15, INK)
     img.save(out / "00-capitals.png")
 
 
@@ -106,7 +116,7 @@ def glyph_chart(r: Renderer, out: Path):
             else:
                 lines = [(top, 100, top), (bottom, 200, bottom)]
             for typed, offset, label in lines:
-                shaped = r.shape(typed)
+                shaped = first_glyph(r, typed + SHOWN_IN.get(typed.lower(), "")) if typed.lower() in SHOWN_IN else r.shape(typed)
                 width = shaped.advance * em / r.upem
                 r.draw(img, x0 + (cell_w - 10 - width) / 2, y0 + offset, shaped, em, INK)
             label = "  ".join(t for t, _, _ in lines)

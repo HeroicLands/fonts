@@ -7707,6 +7707,12 @@
                     "kind": "letter"
                 },
                 {
+                    "codepoint": "U+F0217",
+                    "name": "SEMARON CAPITAL LETTER QORETHA",
+                    "glyph": "Q",
+                    "kind": "letter"
+                },
+                {
                     "codepoint": "U+F0220",
                     "name": "SEMARON CAPITAL LETTER LONG ANKRON",
                     "glyph": "A.long",
@@ -7875,6 +7881,12 @@
                     "kind": "letter"
                 },
                 {
+                    "codepoint": "U+F0247",
+                    "name": "SEMARON SMALL LETTER QORETHA",
+                    "glyph": "q",
+                    "kind": "letter"
+                },
+                {
                     "codepoint": "U+F0248",
                     "name": "SEMARON SMALL LETTER LONG ANKRON",
                     "glyph": "a.long",
@@ -7987,6 +7999,114 @@
                     "name": "SEMARON CATCH",
                     "glyph": "grave",
                     "kind": "mark"
+                },
+                {
+                    "codepoint": "U+F0280",
+                    "name": "SEMARON SMALL LETTER DHANETHE",
+                    "glyph": "dh",
+                    "kind": "digraph"
+                },
+                {
+                    "codepoint": "U+F0281",
+                    "name": "SEMARON CAPITAL LETTER DHANETHE",
+                    "glyph": "DH",
+                    "kind": "digraph"
+                },
+                {
+                    "codepoint": "U+F0282",
+                    "name": "SEMARON SMALL LETTER KHORVENA",
+                    "glyph": "kh",
+                    "kind": "digraph"
+                },
+                {
+                    "codepoint": "U+F0283",
+                    "name": "SEMARON CAPITAL LETTER KHORVENA",
+                    "glyph": "KH",
+                    "kind": "digraph"
+                },
+                {
+                    "codepoint": "U+F0284",
+                    "name": "SEMARON SMALL LETTER GHORMAS",
+                    "glyph": "gh",
+                    "kind": "digraph"
+                },
+                {
+                    "codepoint": "U+F0285",
+                    "name": "SEMARON CAPITAL LETTER GHORMAS",
+                    "glyph": "GH",
+                    "kind": "digraph"
+                },
+                {
+                    "codepoint": "U+F0286",
+                    "name": "SEMARON SMALL LETTER SHELMORA",
+                    "glyph": "sh",
+                    "kind": "digraph"
+                },
+                {
+                    "codepoint": "U+F0287",
+                    "name": "SEMARON CAPITAL LETTER SHELMORA",
+                    "glyph": "SH",
+                    "kind": "digraph"
+                },
+                {
+                    "codepoint": "U+F0288",
+                    "name": "SEMARON SMALL LETTER ZHAREVA",
+                    "glyph": "zh",
+                    "kind": "digraph"
+                },
+                {
+                    "codepoint": "U+F0289",
+                    "name": "SEMARON CAPITAL LETTER ZHAREVA",
+                    "glyph": "ZH",
+                    "kind": "digraph"
+                },
+                {
+                    "codepoint": "U+F028A",
+                    "name": "SEMARON SMALL LETTER TSALEMA",
+                    "glyph": "ts",
+                    "kind": "digraph"
+                },
+                {
+                    "codepoint": "U+F028B",
+                    "name": "SEMARON CAPITAL LETTER TSALEMA",
+                    "glyph": "TS",
+                    "kind": "digraph"
+                },
+                {
+                    "codepoint": "U+F028C",
+                    "name": "SEMARON SMALL LETTER CHEROLA",
+                    "glyph": "ch",
+                    "kind": "digraph"
+                },
+                {
+                    "codepoint": "U+F028D",
+                    "name": "SEMARON CAPITAL LETTER CHEROLA",
+                    "glyph": "CH",
+                    "kind": "digraph"
+                },
+                {
+                    "codepoint": "U+F028E",
+                    "name": "SEMARON SMALL LETTER ENGARIS",
+                    "glyph": "ng",
+                    "kind": "digraph"
+                },
+                {
+                    "codepoint": "U+F028F",
+                    "name": "SEMARON CAPITAL LETTER ENGARIS",
+                    "glyph": "NG",
+                    "kind": "digraph"
+                },
+                {
+                    "codepoint": "U+F0290",
+                    "name": "SEMARON SMALL LETTER NYELIS",
+                    "glyph": "ny",
+                    "kind": "digraph"
+                },
+                {
+                    "codepoint": "U+F0291",
+                    "name": "SEMARON CAPITAL LETTER NYELIS",
+                    "glyph": "NY",
+                    "kind": "digraph"
                 }
             ]
         },

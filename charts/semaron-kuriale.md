@@ -1,10 +1,11 @@
 # Semaron Kuriale
 
-70 characters, U+F0200 to U+F0270, in the font `Semaron Kuriale`.
+90 characters, U+F0200 to U+F0291, in the font `Semaron Kuriale`.
 
 ## Code chart
 
 ![Semaron Kuriale, code chart 1](semaron-kuriale/chart-1.png)
+![Semaron Kuriale, code chart 2](semaron-kuriale/chart-2.png)
 
 ## Characters
 
@@ -35,6 +36,7 @@
 | SEMARON CAPITAL LETTER WA | ![U+F0214](semaron-kuriale/glyphs/U+F0214.svg) | U+F0214 | `&#983572;` | `&#xF0214;` |
 | SEMARON CAPITAL LETTER YALZEMIS | ![U+F0215](semaron-kuriale/glyphs/U+F0215.svg) | U+F0215 | `&#983573;` | `&#xF0215;` |
 | SEMARON CAPITAL LETTER ZARGON | ![U+F0216](semaron-kuriale/glyphs/U+F0216.svg) | U+F0216 | `&#983574;` | `&#xF0216;` |
+| SEMARON CAPITAL LETTER QORETHA | ![U+F0217](semaron-kuriale/glyphs/U+F0217.svg) | U+F0217 | `&#983575;` | `&#xF0217;` |
 | SEMARON CAPITAL LETTER LONG ANKRON | ![U+F0220](semaron-kuriale/glyphs/U+F0220.svg) | U+F0220 | `&#983584;` | `&#xF0220;` |
 | SEMARON CAPITAL LETTER LONG ELZA | ![U+F0221](semaron-kuriale/glyphs/U+F0221.svg) | U+F0221 | `&#983585;` | `&#xF0221;` |
 | SEMARON CAPITAL LETTER LONG ILTHERA | ![U+F0222](semaron-kuriale/glyphs/U+F0222.svg) | U+F0222 | `&#983586;` | `&#xF0222;` |
@@ -63,6 +65,7 @@
 | SEMARON SMALL LETTER WA | ![U+F0244](semaron-kuriale/glyphs/U+F0244.svg) | U+F0244 | `&#983620;` | `&#xF0244;` |
 | SEMARON SMALL LETTER YALZEMIS | ![U+F0245](semaron-kuriale/glyphs/U+F0245.svg) | U+F0245 | `&#983621;` | `&#xF0245;` |
 | SEMARON SMALL LETTER ZARGON | ![U+F0246](semaron-kuriale/glyphs/U+F0246.svg) | U+F0246 | `&#983622;` | `&#xF0246;` |
+| SEMARON SMALL LETTER QORETHA | ![U+F0247](semaron-kuriale/glyphs/U+F0247.svg) | U+F0247 | `&#983623;` | `&#xF0247;` |
 | SEMARON SMALL LETTER LONG ANKRON | ![U+F0248](semaron-kuriale/glyphs/U+F0248.svg) | U+F0248 | `&#983624;` | `&#xF0248;` |
 | SEMARON SMALL LETTER LONG ELZA | ![U+F0249](semaron-kuriale/glyphs/U+F0249.svg) | U+F0249 | `&#983625;` | `&#xF0249;` |
 | SEMARON SMALL LETTER LONG ILTHERA | ![U+F024A](semaron-kuriale/glyphs/U+F024A.svg) | U+F024A | `&#983626;` | `&#xF024A;` |
@@ -75,6 +78,24 @@
 | --- | --- | --- | --- | --- |
 | SEMARON SMALL LETTER THOLERA | ![U+F0250](semaron-kuriale/glyphs/U+F0250.svg) | U+F0250 | `&#983632;` | `&#xF0250;` |
 | SEMARON CAPITAL LETTER THOLERA | ![U+F0251](semaron-kuriale/glyphs/U+F0251.svg) | U+F0251 | `&#983633;` | `&#xF0251;` |
+| SEMARON SMALL LETTER DHANETHE | ![U+F0280](semaron-kuriale/glyphs/U+F0280.svg) | U+F0280 | `&#983680;` | `&#xF0280;` |
+| SEMARON CAPITAL LETTER DHANETHE | ![U+F0281](semaron-kuriale/glyphs/U+F0281.svg) | U+F0281 | `&#983681;` | `&#xF0281;` |
+| SEMARON SMALL LETTER KHORVENA | ![U+F0282](semaron-kuriale/glyphs/U+F0282.svg) | U+F0282 | `&#983682;` | `&#xF0282;` |
+| SEMARON CAPITAL LETTER KHORVENA | ![U+F0283](semaron-kuriale/glyphs/U+F0283.svg) | U+F0283 | `&#983683;` | `&#xF0283;` |
+| SEMARON SMALL LETTER GHORMAS | ![U+F0284](semaron-kuriale/glyphs/U+F0284.svg) | U+F0284 | `&#983684;` | `&#xF0284;` |
+| SEMARON CAPITAL LETTER GHORMAS | ![U+F0285](semaron-kuriale/glyphs/U+F0285.svg) | U+F0285 | `&#983685;` | `&#xF0285;` |
+| SEMARON SMALL LETTER SHELMORA | ![U+F0286](semaron-kuriale/glyphs/U+F0286.svg) | U+F0286 | `&#983686;` | `&#xF0286;` |
+| SEMARON CAPITAL LETTER SHELMORA | ![U+F0287](semaron-kuriale/glyphs/U+F0287.svg) | U+F0287 | `&#983687;` | `&#xF0287;` |
+| SEMARON SMALL LETTER ZHAREVA | ![U+F0288](semaron-kuriale/glyphs/U+F0288.svg) | U+F0288 | `&#983688;` | `&#xF0288;` |
+| SEMARON CAPITAL LETTER ZHAREVA | ![U+F0289](semaron-kuriale/glyphs/U+F0289.svg) | U+F0289 | `&#983689;` | `&#xF0289;` |
+| SEMARON SMALL LETTER TSALEMA | ![U+F028A](semaron-kuriale/glyphs/U+F028A.svg) | U+F028A | `&#983690;` | `&#xF028A;` |
+| SEMARON CAPITAL LETTER TSALEMA | ![U+F028B](semaron-kuriale/glyphs/U+F028B.svg) | U+F028B | `&#983691;` | `&#xF028B;` |
+| SEMARON SMALL LETTER CHEROLA | ![U+F028C](semaron-kuriale/glyphs/U+F028C.svg) | U+F028C | `&#983692;` | `&#xF028C;` |
+| SEMARON CAPITAL LETTER CHEROLA | ![U+F028D](semaron-kuriale/glyphs/U+F028D.svg) | U+F028D | `&#983693;` | `&#xF028D;` |
+| SEMARON SMALL LETTER ENGARIS | ![U+F028E](semaron-kuriale/glyphs/U+F028E.svg) | U+F028E | `&#983694;` | `&#xF028E;` |
+| SEMARON CAPITAL LETTER ENGARIS | ![U+F028F](semaron-kuriale/glyphs/U+F028F.svg) | U+F028F | `&#983695;` | `&#xF028F;` |
+| SEMARON SMALL LETTER NYELIS | ![U+F0290](semaron-kuriale/glyphs/U+F0290.svg) | U+F0290 | `&#983696;` | `&#xF0290;` |
+| SEMARON CAPITAL LETTER NYELIS | ![U+F0291](semaron-kuriale/glyphs/U+F0291.svg) | U+F0291 | `&#983697;` | `&#xF0291;` |
 
 ### Digits
 

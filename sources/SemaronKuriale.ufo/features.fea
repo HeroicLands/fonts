@@ -2,7 +2,7 @@ languagesystem DFLT dflt;
 languagesystem latn dflt;
 
 # The glyphs a catch can stand on.
-@BASE = [a b d e f g h i j k l m n o p r s t th u v w y z A B D E F G H I J K L M N O P R S T TH U V W Y Z a.long e.long i.long o.long u.long A.long E.long I.long O.long U.long];
+@BASE = [a b d e f g h i j k l m n o p r s t th u v w y z dh kh gh ng sh zh ts ch ny q A B D E F G H I J K L M N O P R S T TH U V W Y Z DH KH GH NG SH ZH TS CH NY Q a.long e.long i.long o.long u.long A.long E.long I.long O.long U.long];
 
 # The face draws each character from its own code point. HarfBuzz replaces a
 # default-ignorable character the font maps directly with the space glyph, so each
@@ -19,7 +19,7 @@ lookup ccmp_catch {
 } ccmp;
 
 table GDEF {
-  GlyphClassDef [.notdef space a A b B d D e E f F g G h H i I j J k K l L m M n N o O p P r R s S t T th TH u U v V w W y Y z Z a.long e.long i.long o.long u.long A.long E.long I.long O.long U.long num.0 num.1 num.2 num.3 num.4 num.5 num.6 num.7 num.8 num.9 point ignorable ignorable.sub notdef.box], , [grave], ;
+  GlyphClassDef [.notdef space a A b B d D e E f F g G h H i I j J k K l L m M n N o O p P r R s S t T th TH u U v V w W y Y z Z dh DH kh KH gh GH ng NG sh SH zh ZH ts TS ch CH ny NY q Q a.long e.long i.long o.long u.long A.long E.long I.long O.long U.long num.0 num.1 num.2 num.3 num.4 num.5 num.6 num.7 num.8 num.9 point ignorable ignorable.sub notdef.box], , [grave], ;
 } GDEF;
 
 markClass grave <anchor 0 0> @CATCH;
@@ -35,7 +35,7 @@ feature mark {
   pos base D <anchor 515 608> mark @CATCH;
   pos base e <anchor 225 589> mark @CATCH;
   pos base E <anchor 515 608> mark @CATCH;
-  pos base f <anchor 325 589> mark @CATCH;
+  pos base f <anchor 369 589> mark @CATCH;
   pos base F <anchor 543 608> mark @CATCH;
   pos base g <anchor 437 589> mark @CATCH;
   pos base G <anchor 577 608> mark @CATCH;
@@ -63,8 +63,8 @@ feature mark {
   pos base S <anchor 577 608> mark @CATCH;
   pos base t <anchor 495 490> mark @CATCH;
   pos base T <anchor 403 534> mark @CATCH;
-  pos base th <anchor 495 516> mark @CATCH;
-  pos base TH <anchor 403 579> mark @CATCH;
+  pos base th <anchor 495 532> mark @CATCH;
+  pos base TH <anchor 403 592> mark @CATCH;
   pos base u <anchor 495 490> mark @CATCH;
   pos base U <anchor 403 534> mark @CATCH;
   pos base v <anchor 402 589> mark @CATCH;
@@ -75,6 +75,26 @@ feature mark {
   pos base Y <anchor 294 577> mark @CATCH;
   pos base z <anchor 306 589> mark @CATCH;
   pos base Z <anchor 418 608> mark @CATCH;
+  pos base dh <anchor 355 589> mark @CATCH;
+  pos base DH <anchor 515 608> mark @CATCH;
+  pos base kh <anchor 251 589> mark @CATCH;
+  pos base KH <anchor 324 635> mark @CATCH;
+  pos base gh <anchor 490 589> mark @CATCH;
+  pos base GH <anchor 577 635> mark @CATCH;
+  pos base ng <anchor 214 589> mark @CATCH;
+  pos base NG <anchor 324 627> mark @CATCH;
+  pos base sh <anchor 380 589> mark @CATCH;
+  pos base SH <anchor 577 632> mark @CATCH;
+  pos base zh <anchor 355 589> mark @CATCH;
+  pos base ZH <anchor 418 608> mark @CATCH;
+  pos base ts <anchor 313 589> mark @CATCH;
+  pos base TS <anchor 577 611> mark @CATCH;
+  pos base ch <anchor 310 595> mark @CATCH;
+  pos base CH <anchor 515 608> mark @CATCH;
+  pos base ny <anchor 335 589> mark @CATCH;
+  pos base NY <anchor 438 577> mark @CATCH;
+  pos base q <anchor 249 589> mark @CATCH;
+  pos base Q <anchor 454 608> mark @CATCH;
   pos base a.long <anchor 294 518> mark @CATCH;
   pos base e.long <anchor 453 573> mark @CATCH;
   pos base i.long <anchor 294 518> mark @CATCH;

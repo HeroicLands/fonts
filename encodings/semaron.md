@@ -1,6 +1,6 @@
 # semaron encoding
 
-Semaron Kuriale is an alphabet of capital and small letters, written left to right. This encoding writes a roman spelling in its small letters, and a capital letter in its majuscule: `th` is one letter, `ch` is written with the letters for t, s and h, a doubled `a`, `i` or `u` is a long vowel, `q` is written as `k`, and `y` before a vowel is a glide. An apostrophe or hyphen after a letter writes the catch, a mark on the letter before it.
+Semaron Kuriale is an alphabet of capital and small letters, written left to right. This encoding writes a roman spelling in its small letters, and a capital letter in its majuscule: `th`, `dh`, `kh`, `gh`, `sh`, `zh`, `ts`, `ch` and `ng` are each one letter, read left to right, so `tch` is t and `ch` and `ngh` is `ng` and h; `ny` before a vowel is one letter and anywhere else is n and the vowel i; `q` is a letter of its own; a doubled `a`, `i` or `u` is a long vowel; and `y` before a vowel is a glide. An apostrophe or hyphen after a letter writes the catch, a mark on the letter before it.
 
 ## Fonts
 
@@ -131,8 +131,8 @@ The rows are in the order the file states them. A row here for a standard mark r
 | `O` | `󰈍` | U+F020D | always |
 | `p` | `󰈾` | U+F023E | always |
 | `P` | `󰈎` | U+F020E | always |
-| `q` | `󰈹󠅑󠇯` | U+F0239 U+E0151 U+E01EF | always |
-| `Q` | `󰈉󠄱󠇯` | U+F0209 U+E0131 U+E01EF | always |
+| `q` | `󰉇` | U+F0247 | always |
+| `Q` | `󰈗` | U+F0217 | always |
 | `r` | `󰈿` | U+F023F | always |
 | `R` | `󰈏` | U+F020F | always |
 | `s` | `󰉀` | U+F0240 | always |
@@ -159,8 +159,24 @@ The rows are in the order the file states them. A row here for a standard mark r
 | `Ú` | `󰈒󠅛󠅄󠅁󠅝󠇯` | U+F0212 U+E015B U+E0144 U+E0141 U+E015D U+E01EF | always |
 | `th` | `󰉐` | U+F0250 | always |
 | `Th` | `󰉑` | U+F0251 | always |
-| `ch` | `󰉁󰉀󰈶󠅃󠅈󠇯` | U+F0241 U+F0240 U+F0236 U+E0143 U+E0148 U+E01EF | always |
-| `Ch` | `󰈑󰉀󰈶󠄣󠅈󠇯` | U+F0211 U+F0240 U+F0236 U+E0123 U+E0148 U+E01EF | always |
+| `ch` | `󰊌` | U+F028C | always |
+| `Ch` | `󰊍` | U+F028D | always |
+| `dh` | `󰊀` | U+F0280 | always |
+| `Dh` | `󰊁` | U+F0281 | always |
+| `kh` | `󰊂` | U+F0282 | always |
+| `Kh` | `󰊃` | U+F0283 | always |
+| `gh` | `󰊄` | U+F0284 | always |
+| `Gh` | `󰊅` | U+F0285 | always |
+| `sh` | `󰊆` | U+F0286 | always |
+| `Sh` | `󰊇` | U+F0287 | always |
+| `zh` | `󰊈` | U+F0288 | always |
+| `Zh` | `󰊉` | U+F0289 | always |
+| `ts` | `󰊊` | U+F028A | always |
+| `Ts` | `󰊋` | U+F028B | always |
+| `ng` | `󰊎` | U+F028E | always |
+| `Ng` | `󰊏` | U+F028F | always |
+| `ny` | `󰊐` | U+F0290 | before a vowel |
+| `Ny` | `󰊑` | U+F0291 | before a vowel |
 | `aa` | `󰉈` | U+F0248 | always |
 | `aá` | `󰉈󠅁󠅛󠅅󠄑󠅝󠇯` | U+F0248 U+E0141 U+E015B U+E0145 U+E0111 U+E015D U+E01EF | always |
 | `áa` | `󰉈󠅛󠅅󠄑󠅝󠅁󠇯` | U+F0248 U+E015B U+E0145 U+E0111 U+E015D U+E0141 U+E01EF | always |

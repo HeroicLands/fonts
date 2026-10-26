@@ -45,30 +45,58 @@ with the window metrics enclosing all ink, the catch where it stands on its base
 
 ## The letters
 
-There are 24 letters, each with a majuscule and a minuscule. The branch codes are
+Each letter has a majuscule and a minuscule. The branch codes are
 the Thuravark stave's: side (F forward, B back), the level it leaves from and the
 level it ends at (T top, M middle, 0 foot).
 
-| Letter | Branches    | Letter | Branches        |
-| ------ | ----------- | ------ | --------------- |
-| a      | F0T         | n      | F0T BMT         |
-| b      | FT0 BT0 B0M | o      | FTM F0M BTM B0M |
-| d      | F0T B0T BTM | p      | FT0 BT0         |
-| e      | FTM BTM     | r      | BTM B0M         |
-| f      | FT0 BT0 FMT | s      | FTM BM0         |
-| g      | FTM F0M BM0 | t      | F0T B0T         |
-| h      | BM0 FMT     | th     | F0T B0T FMT     |
-| i      | none        | u      | B0T             |
-| j      | FMT BMT     | v      | FT0 BT0 B0M FMT |
-| k      | FTM F0M     | w      | BMT             |
-| l      | FM0         | y      | FMT             |
-| m      | FT0 BM0     | z      | FT0 B0T         |
+| Letter | Branches        | Letter | Branches        |
+| ------ | --------------- | ------ | --------------- |
+| a      | F0T             | n      | F0T BMT         |
+| b      | FT0 BT0 B0M     | o      | FTM F0M BTM B0M |
+| d      | F0T B0T BTM     | p      | FT0 BT0         |
+| e      | FTM BTM         | r      | BTM B0M         |
+| f      | FT0 BT0 FMT     | s      | FTM BM0         |
+| g      | FTM F0M BM0     | t      | F0T B0T         |
+| h      | BM0 FMT         | th     | F0T B0T FMT     |
+| i      | none            | u      | B0T             |
+| j      | FMT BMT         | v      | FT0 BT0 B0M FMT |
+| k      | FTM F0M         | w      | BMT             |
+| l      | FM0             | y      | FMT             |
+| m      | FT0 BM0         | z      | FT0 B0T         |
+| dh     | F0T B0T BTM FMT | kh     | FTM F0M FMT     |
+| gh     | FTM F0M BM0 FMT | ng     | FTM F0M FMT FM0 |
+| sh     | FTM BM0 FMT     | zh     | FT0 B0T FMT     |
+| ts     | F0T B0T FTM BM0 | ch     | F0T B0T BTM FM0 |
+| ny     | F0T BMT FMT     | q      | FTM F0M BMT     |
 
 Each is the Thuravark stave of the same name, with two readings: _y_ is
 Thuravark's _j_, the glide, and _j_ is the letter Tharavarkon adds, a stem forking
-into two arms. Thuravark's own _y_ is the vowel _i_ here. On _f_ and _th_ the
-forward middle-to-top branch is the **aspirate hook**, part of the glyph, not an
-arm.
+into two arms. Thuravark's own _y_ is the vowel _i_ here. There is no letter for
+a vowel _y_: it is written _i_.
+
+**The digraph letters.** _dh_, _kh_, _gh_, _sh_, _zh_, _ts_, _ch_, _ng_ and _ny_
+are each one letter, and so is _q_. Their names are Dhanethe, Khorvena, Ghormas,
+Shelmora, Zhareva, Tsalema, Cherola, Engaris, Nyelis and Qoretha.
+
+- **The aspirate family.** _f_, _th_, _dh_, _kh_, _gh_, _sh_ and _zh_ are the
+  letter they aspirate plus the **aspirate hook**: the forward middle-to-top
+  branch, part of the glyph, not an arm. The hook ends 1.25 half-reaches forward
+  and 70 units above the body line, outside the arch, cup or bowl it crosses, so
+  its end shows clear of the letter. The nib turns 55° across it at its middle, as
+  across the curl's crown, so the hook is a hairline at the stem and at the tip and
+  swells where it crosses the letter. Every aspirate shares the one hook stroke.
+  The hook lifts the aspirate majuscules above the other letters' cap height.
+- **Through legs.** A middle branch on the side of a long branch runs on through
+  it and out, as _v_'s arm runs through its arch: _ch_'s forward leg, _ts_'s back
+  leg and _ny_'s arm. A through leg reaches one and a half times its own reach and
+  falls 90 units below the line.
+- **A half branch that runs on.** A majuscule half branch that ends where a
+  long branch on its side ends runs on, along its own line, 90 units past the cap
+  height. _NY_ is the one majuscule that does so.
+- **_gh_'s back branch** is _g_'s tail, carried below the line.
+- **Tall and deep.** None of the new letters is tall. _sh_ is deep, as _s_ is; the
+  others stand as their parent does, and _ts_ takes the top with its shoulder and
+  the foot with its forward cup.
 
 ## The marks
 
@@ -98,21 +126,21 @@ default-ignorables map to an empty glyph and draw nothing.
 A note writes Vylari in roman, and the `semaron` encoding turns the
 spelling into these code points:
 
-| Spelled                            | Written                                                                 |
-| ---------------------------------- | ----------------------------------------------------------------------- |
-| `a`                                | The minuscule. A capital `A` is the majuscule, with no mark for case.   |
-| `th`                               | The one letter _th_.                                                    |
-| `ch`                               | The letters _t_, _s_ and _h_, because the script has no _c_.            |
-| `aa`, `ii`, `uu`                   | The long vowel.                                                         |
-| `ee`, `oo`                         | Two plain vowels.                                                       |
-| `á é í ó ú`, `ë`                   | The plain vowel: Semaron writes no stress.                              |
-| `q`                                | The letter _k_.                                                         |
-| `y` before a vowel                 | The glide _y_. Anywhere else it is the vowel _i_.                       |
-| `'`, `’`, `` ` ``, `-`             | The catch, set on the letter before it. With no letter before, the box. |
-| `.` `?` `!` `!!` `,`               | The point, each told apart from the others by invisible marks.          |
-| `« »` `‹ ›` `—` `…` `/` `//` `{ }` | Nothing: invisible marks alone, so decoding restores them.              |
-| `0`–`9`                            | The numerals.                                                           |
-| `c`, `x`, and any other character  | Refused by the encoding; set in the face, it prints the box.            |
+| Spelled                                      | Written                                                                                                                         |
+| -------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
+| `a`                                          | The minuscule. A capital `A` is the majuscule, with no mark for case.                                                           |
+| `th` `dh` `kh` `gh` `sh` `zh` `ts` `ch` `ng` | The one letter of that name, read left to right: `tch` is _t_ and _ch_, `ngh` is _ng_ and _h_. A capital `Ch` is the majuscule. |
+| `ny` before a vowel                          | The one letter _ny_. Anywhere else it is _n_ and the vowel _i_.                                                                 |
+| `aa`, `ii`, `uu`                             | The long vowel.                                                                                                                 |
+| `ee`, `oo`                                   | Two plain vowels.                                                                                                               |
+| `á é í ó ú`, `ë`                             | The plain vowel: Semaron writes no stress.                                                                                      |
+| `q`                                          | The letter _q_.                                                                                                                 |
+| `y` before a vowel                           | The glide _y_. Anywhere else it is the vowel _i_; there is no vowel _y_.                                                        |
+| `'`, `’`, `` ` ``, `-`                       | The catch, set on the letter before it. With no letter before, the box.                                                         |
+| `.` `?` `!` `!!` `,`                         | The point, each told apart from the others by invisible marks.                                                                  |
+| `« »` `‹ ›` `—` `…` `/` `//` `{ }`           | Nothing: invisible marks alone, so decoding restores them.                                                                      |
+| `0`–`9`                                      | The numerals.                                                                                                                   |
+| `c`, `x`, and any other character            | Refused by the encoding; set in the face, it prints the box.                                                                    |
 
 ## The checks
 
@@ -125,10 +153,13 @@ spelling into these code points:
   glyph sequences. `tools/codepoints.py` checks that the face draws its own code
   points and nothing else, and that no substitution turns one character into
   another: _i_ written twice is two _i_.
+- `tools/semaron-kuriale/build_ufo.py` writes `sources/SemaronKuriale.ufo` from
+  the drawing kit `tools/semaron-kuriale/kit.py`; an edit to a letter belongs in
+  the kit, and the script is run after it, before `build.sh` compiles the UFO.
 - `tools/prove_guards.py` proves the guard fails the font with its GSUB removed,
   and with its GPOS removed.
 - `tools/notdef_box.py` and `tools/font_names.py` run on the font as on every
   other.
 - `tools/semaron-kuriale/specimens.py` renders `specimens/semaron-kuriale/`: the
-  24 majuscules one to a cell, the glyph chart, and the Vylari texts at display
+  majuscules one to a cell, the glyph chart, and the Vylari texts at display
   size and at 18 and 24 px.
