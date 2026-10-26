@@ -19,6 +19,6 @@ The Khelathu banner, the memorial of Meqes VI in ten registers, drawn from this 
 
 ## The signs
 
-The font has 344 signs. This is the first of each group, under its sign id; the [chart](../charts/khelathi-zethu-glyphs.md) has them all.
+The font has 499 signs. This is the first of each group, under its sign id; the [chart](../charts/khelathi-zethu-glyphs.md) has them all.
 
 ![A sample of the signs of Khelathi Zethu Glyphs](pages/hl-khelathi-zethu-glyphs-letters.png)

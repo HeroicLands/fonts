@@ -3844,6 +3844,1635 @@
         { "seed": [51, 367], "paint": "cord" },
         { "seed": [73, 355], "paint": "cord" }
       ]
+    },
+    "01-001": {
+      "regions": [
+        { "seed": [139, 696], "paint": "hair" },
+        { "seed": [199, 598], "paint": "skin-male" },
+        { "seed": [159, 484], "paint": "skin-male" },
+        { "seed": [255, 508], "paint": "skin-male" },
+        { "seed": [273, 348], "paint": "skin-male" },
+        { "seed": [149, 242], "paint": "linen" },
+        { "seed": [339, 244], "paint": "skin-male" },
+        { "seed": [277, 172], "paint": "ground" },
+        { "seed": [191, 154], "paint": "skin-male" },
+        { "seed": [223, 100], "paint": "skin-male" }
+      ]
+    },
+    "01-004": {
+      "regions": [
+        { "seed": [135, 694], "paint": "hair" },
+        { "seed": [181, 664], "paint": "skin-male" },
+        { "seed": [197, 598], "paint": "skin-male" },
+        { "seed": [159, 484], "paint": "skin-male" },
+        { "seed": [253, 498], "paint": "skin-male" },
+        { "seed": [103, 342], "paint": "linen" },
+        { "seed": [145, 206], "paint": "linen" },
+        { "seed": [259, 238], "paint": "ground" },
+        { "seed": [297, 86], "paint": "skin-male" }
+      ]
+    },
+    "01-019": {
+      "regions": [
+        { "seed": [296, 627], "paint": "hair" },
+        { "seed": [162, 567], "paint": "skin-male" },
+        { "seed": [298, 545], "paint": "skin-male" },
+        { "seed": [186, 497], "paint": "skin-male" },
+        { "seed": [250, 543], "paint": "skin-male" },
+        { "seed": [252, 477], "paint": "skin-male" },
+        { "seed": [82, 447], "paint": "linen" },
+        { "seed": [232, 443], "paint": "skin-male" },
+        { "seed": [104, 331], "paint": "linen" },
+        { "seed": [138, 393], "paint": "linen" },
+        { "seed": [286, 323], "paint": "pottery" },
+        { "seed": [336, 259], "paint": "pottery" },
+        { "seed": [90, 261], "paint": "skin-male" },
+        { "seed": [140, 263], "paint": "skin-male" },
+        { "seed": [110, 75], "paint": "ground" },
+        { "seed": [368, 115], "paint": "pottery" }
+      ]
+    },
+    "01-022": {
+      "regions": [
+        { "seed": [111, 717], "paint": "hair" },
+        { "seed": [149, 645], "paint": "skin-male" },
+        { "seed": [129, 557], "paint": "skin-male" },
+        { "seed": [193, 581], "paint": "skin-male" },
+        { "seed": [53, 329], "paint": "skin-male" },
+        { "seed": [179, 487], "paint": "ground" },
+        { "seed": [95, 457], "paint": "linen" },
+        { "seed": [151, 419], "paint": "linen" },
+        { "seed": [117, 345], "paint": "linen" },
+        { "seed": [153, 281], "paint": "skin-male" },
+        { "seed": [95, 277], "paint": "skin-male" },
+        { "seed": [129, 79], "paint": "ground" },
+        { "seed": [459, 139], "paint": "faience" }
+      ]
+    },
+    "01-027": {
+      "regions": [
+        { "seed": [361, 624], "paint": "hair" },
+        { "seed": [385, 576], "paint": "skin-male" },
+        { "seed": [371, 510], "paint": "skin-male" },
+        { "seed": [183, 534], "paint": "skin-male" },
+        { "seed": [233, 440], "paint": "skin-male" },
+        { "seed": [329, 420], "paint": "skin-male" },
+        { "seed": [295, 362], "paint": "skin-male" },
+        { "seed": [319, 224], "paint": "ground" },
+        { "seed": [91, 338], "paint": "linen" },
+        { "seed": [121, 220], "paint": "linen" },
+        { "seed": [195, 290], "paint": "linen" },
+        { "seed": [415, 200], "paint": "stone" },
+        { "seed": [257, 92], "paint": "skin-male" },
+        { "seed": [109, 138], "paint": "skin-male" },
+        { "seed": [413, 92], "paint": "stone" },
+        { "seed": [585, 46], "paint": "stone" }
+      ]
+    },
+    "01-031": {
+      "regions": [
+        { "seed": [155, 717], "paint": "hair" },
+        { "seed": [193, 647], "paint": "skin-male" },
+        { "seed": [161, 571], "paint": "skin-male" },
+        { "seed": [239, 579], "paint": "skin-male" },
+        { "seed": [185, 491], "paint": "skin-male" },
+        { "seed": [113, 527], "paint": "skin-male" },
+        { "seed": [161, 457], "paint": "linen" },
+        { "seed": [161, 345], "paint": "linen" },
+        { "seed": [195, 417], "paint": "linen" },
+        { "seed": [75, 329], "paint": "linen" },
+        { "seed": [213, 281], "paint": "skin-male" },
+        { "seed": [129, 277], "paint": "skin-male" }
+      ]
+    },
+    "01-036": {
+      "regions": [
+        { "seed": [291, 289], "paint": "ground" },
+        { "seed": [583, 263], "paint": "hair" },
+        { "seed": [257, 239], "paint": "skin-male" },
+        { "seed": [497, 195], "paint": "skin-male" },
+        { "seed": [437, 249], "paint": "skin-male" },
+        { "seed": [107, 207], "paint": "ground" },
+        { "seed": [315, 205], "paint": "linen" },
+        { "seed": [409, 225], "paint": "linen" },
+        { "seed": [577, 197], "paint": "skin-male" },
+        { "seed": [381, 177], "paint": "linen" },
+        { "seed": [263, 173], "paint": "skin-male" },
+        { "seed": [555, 165], "paint": "ground" },
+        { "seed": [521, 141], "paint": "skin-male" }
+      ]
+    },
+    "01-037": {
+      "regions": [
+        { "seed": [519, 304], "paint": "skin-male" },
+        { "seed": [265, 288], "paint": "skin-male" },
+        { "seed": [643, 278], "paint": "skin-male" },
+        { "seed": [713, 248], "paint": "hair" },
+        { "seed": [515, 238], "paint": "skin-male" },
+        { "seed": [431, 256], "paint": "linen" },
+        { "seed": [295, 250], "paint": "ground" },
+        { "seed": [471, 222], "paint": "linen" },
+        { "seed": [367, 216], "paint": "linen" },
+        { "seed": [105, 214], "paint": "ground" },
+        { "seed": [305, 202], "paint": "skin-male" },
+        { "seed": [637, 184], "paint": "ground" },
+        { "seed": [507, 180], "paint": "ground" },
+        { "seed": [281, 168], "paint": "ground" },
+        { "seed": [55, 126], "paint": "wood" },
+        { "seed": [95, 106], "paint": "ground" },
+        { "seed": [739, 126], "paint": "wood" }
+      ]
+    },
+    "01-048": {
+      "regions": [
+        { "seed": [161, 653], "paint": "hair" },
+        { "seed": [201, 591], "paint": "skin-male" },
+        { "seed": [179, 479], "paint": "skin-male" },
+        { "seed": [75, 515], "paint": "linen" },
+        { "seed": [241, 533], "paint": "skin-male" },
+        { "seed": [125, 489], "paint": "skin-male" },
+        { "seed": [287, 363], "paint": "ground" },
+        { "seed": [151, 419], "paint": "linen" },
+        { "seed": [201, 385], "paint": "linen" },
+        { "seed": [171, 317], "paint": "linen" },
+        { "seed": [217, 261], "paint": "skin-male" },
+        { "seed": [143, 255], "paint": "skin-male" }
+      ]
+    },
+    "01-055": {
+      "regions": [
+        { "seed": [134, 716], "paint": "hair" },
+        { "seed": [176, 648], "paint": "skin-male" },
+        { "seed": [242, 564], "paint": "skin-male" },
+        { "seed": [156, 556], "paint": "skin-male" },
+        { "seed": [92, 532], "paint": "skin-male" },
+        { "seed": [120, 456], "paint": "linen" },
+        { "seed": [176, 420], "paint": "linen" },
+        { "seed": [144, 344], "paint": "linen" },
+        { "seed": [194, 284], "paint": "skin-male" },
+        { "seed": [112, 278], "paint": "skin-male" },
+        { "seed": [394, 186], "paint": "skin-male" },
+        { "seed": [578, 268], "paint": "skin-male" },
+        { "seed": [340, 108], "paint": "ground" },
+        { "seed": [582, 112], "paint": "skin-male" },
+        { "seed": [384, 104], "paint": "skin-male" },
+        { "seed": [542, 104], "paint": "skin-male" },
+        { "seed": [560, 36], "paint": "ground" },
+        { "seed": [312, 56], "paint": "skin-male" }
+      ]
+    },
+    "01-071": {
+      "regions": [
+        { "seed": [111, 717], "paint": "hair" },
+        { "seed": [287, 715], "paint": "hair" },
+        { "seed": [151, 647], "paint": "skin-male" },
+        { "seed": [329, 645], "paint": "skin-male" },
+        { "seed": [131, 555], "paint": "skin-male" },
+        { "seed": [307, 561], "paint": "skin-male" },
+        { "seed": [193, 585], "paint": "skin-male" },
+        { "seed": [371, 585], "paint": "skin-male" },
+        { "seed": [65, 537], "paint": "skin-male" },
+        { "seed": [245, 535], "paint": "skin-male" },
+        { "seed": [191, 489], "paint": "ground" },
+        { "seed": [353, 495], "paint": "ground" },
+        { "seed": [95, 457], "paint": "linen" },
+        { "seed": [273, 457], "paint": "linen" },
+        { "seed": [151, 419], "paint": "linen" },
+        { "seed": [329, 419], "paint": "linen" },
+        { "seed": [117, 345], "paint": "linen" },
+        { "seed": [297, 345], "paint": "linen" },
+        { "seed": [215, 273], "paint": "ground" },
+        { "seed": [333, 279], "paint": "skin-male" },
+        { "seed": [97, 277], "paint": "skin-male" },
+        { "seed": [275, 277], "paint": "skin-male" },
+        { "seed": [307, 79], "paint": "ground" },
+        { "seed": [129, 79], "paint": "ground" }
+      ]
+    },
+    "02-001": {
+      "regions": [
+        { "seed": [135, 694], "paint": "hair" },
+        { "seed": [183, 666], "paint": "skin-female" },
+        { "seed": [197, 598], "paint": "skin-female" },
+        { "seed": [137, 506], "paint": "skin-female" },
+        { "seed": [197, 508], "paint": "skin-female" },
+        { "seed": [255, 508], "paint": "skin-female" },
+        { "seed": [169, 188], "paint": "linen" },
+        { "seed": [79, 68], "paint": "skin-female" },
+        { "seed": [271, 52], "paint": "skin-female" }
+      ]
+    },
+    "02-004": {
+      "regions": [
+        { "seed": [153, 707], "paint": "hair" },
+        { "seed": [209, 623], "paint": "skin-female" },
+        { "seed": [119, 625], "paint": "hair" },
+        { "seed": [155, 543], "paint": "skin-female" },
+        { "seed": [209, 545], "paint": "skin-female" },
+        { "seed": [259, 543], "paint": "skin-female" },
+        { "seed": [171, 297], "paint": "linen" },
+        { "seed": [305, 173], "paint": "skin-female" },
+        { "seed": [217, 181], "paint": "skin-female" },
+        { "seed": [111, 165], "paint": "skin-female" },
+        { "seed": [153, 123], "paint": "ground" },
+        { "seed": [287, 115], "paint": "ground" },
+        { "seed": [63, 53], "paint": "pottery" },
+        { "seed": [331, 51], "paint": "pottery" },
+        { "seed": [265, 89], "paint": "skin-female" },
+        { "seed": [299, 25], "paint": "skin-female" }
+      ]
+    },
+    "02-005": {
+      "regions": [
+        { "seed": [141, 703], "paint": "hair" },
+        { "seed": [181, 671], "paint": "skin-female" },
+        { "seed": [199, 609], "paint": "skin-female" },
+        { "seed": [355, 581], "paint": "skin-female" },
+        { "seed": [131, 505], "paint": "skin-female" },
+        { "seed": [197, 465], "paint": "skin-female" },
+        { "seed": [341, 535], "paint": "skin-female" },
+        { "seed": [301, 529], "paint": "ground" },
+        { "seed": [253, 521], "paint": "skin-female" },
+        { "seed": [357, 465], "paint": "skin-female" },
+        { "seed": [311, 489], "paint": "skin-female" },
+        { "seed": [159, 289], "paint": "linen" },
+        { "seed": [311, 399], "paint": "ground" },
+        { "seed": [371, 373], "paint": "linen" },
+        { "seed": [263, 319], "paint": "ground" },
+        { "seed": [305, 323], "paint": "linen" },
+        { "seed": [293, 287], "paint": "skin-female" },
+        { "seed": [95, 83], "paint": "wood" },
+        { "seed": [333, 75], "paint": "skin-female" },
+        { "seed": [375, 47], "paint": "skin-female" }
+      ]
+    },
+    "02-012": {
+      "regions": [
+        { "seed": [357, 622], "paint": "hair" },
+        { "seed": [385, 576], "paint": "skin-female" },
+        { "seed": [377, 510], "paint": "skin-female" },
+        { "seed": [189, 536], "paint": "skin-female" },
+        { "seed": [251, 430], "paint": "skin-female" },
+        { "seed": [335, 420], "paint": "skin-female" },
+        { "seed": [301, 362], "paint": "skin-female" },
+        { "seed": [157, 192], "paint": "linen" },
+        { "seed": [327, 224], "paint": "ground" },
+        { "seed": [419, 200], "paint": "stone" },
+        { "seed": [419, 92], "paint": "stone" },
+        { "seed": [329, 74], "paint": "skin-female" },
+        { "seed": [69, 68], "paint": "skin-female" },
+        { "seed": [589, 46], "paint": "stone" }
+      ]
+    },
+    "02-013": {
+      "regions": [
+        { "seed": [249, 693], "paint": "hair" },
+        { "seed": [83, 683], "paint": "pottery" },
+        { "seed": [149, 677], "paint": "pottery" },
+        { "seed": [121, 693], "paint": "pottery" },
+        { "seed": [159, 537], "paint": "skin-female" },
+        { "seed": [183, 613], "paint": "ground" },
+        { "seed": [285, 623], "paint": "skin-female" },
+        { "seed": [113, 631], "paint": "pottery" },
+        { "seed": [239, 553], "paint": "skin-female" },
+        { "seed": [291, 545], "paint": "skin-female" },
+        { "seed": [327, 561], "paint": "skin-female" },
+        { "seed": [257, 111], "paint": "linen" },
+        { "seed": [321, 355], "paint": "ground" },
+        { "seed": [271, 59], "paint": "ground" },
+        { "seed": [303, 41], "paint": "skin-female" },
+        { "seed": [237, 41], "paint": "skin-female" }
+      ]
+    },
+    "02-014": {
+      "regions": [
+        { "seed": [249, 635], "paint": "hair" },
+        { "seed": [263, 555], "paint": "skin-female" },
+        { "seed": [131, 577], "paint": "skin-female" },
+        { "seed": [151, 503], "paint": "skin-female" },
+        { "seed": [223, 483], "paint": "skin-female" },
+        { "seed": [77, 347], "paint": "linen" },
+        { "seed": [205, 451], "paint": "skin-female" },
+        { "seed": [205, 221], "paint": "ground" },
+        { "seed": [369, 349], "paint": "cord" },
+        { "seed": [255, 315], "paint": "wood" },
+        { "seed": [279, 279], "paint": "wood" },
+        { "seed": [273, 243], "paint": "wood" },
+        { "seed": [475, 243], "paint": "wood" },
+        { "seed": [67, 43], "paint": "skin-female" }
+      ]
+    },
+    "02-016": {
+      "regions": [
+        { "seed": [105, 715], "paint": "hair" },
+        { "seed": [149, 647], "paint": "skin-female" },
+        { "seed": [405, 567], "paint": "ground" },
+        { "seed": [327, 515], "paint": "ground" },
+        { "seed": [323, 595], "paint": "skin-female" },
+        { "seed": [101, 573], "paint": "skin-female" },
+        { "seed": [155, 565], "paint": "skin-female" },
+        { "seed": [191, 587], "paint": "skin-female" },
+        { "seed": [249, 539], "paint": "skin-female" },
+        { "seed": [113, 469], "paint": "linen" },
+        { "seed": [397, 525], "paint": "gold" },
+        { "seed": [413, 503], "paint": "gold" },
+        { "seed": [377, 475], "paint": "gold" },
+        { "seed": [221, 457], "paint": "skin-female" },
+        { "seed": [163, 273], "paint": "linen" },
+        { "seed": [129, 61], "paint": "ground" },
+        { "seed": [167, 41], "paint": "skin-female" },
+        { "seed": [99, 41], "paint": "skin-female" }
+      ]
+    },
+    "02-018": {
+      "regions": [
+        { "seed": [129, 717], "paint": "hair" },
+        { "seed": [169, 647], "paint": "skin-female" },
+        { "seed": [263, 517], "paint": "skin-female" },
+        { "seed": [127, 573], "paint": "skin-female" },
+        { "seed": [175, 567], "paint": "skin-female" },
+        { "seed": [85, 541], "paint": "skin-female" },
+        { "seed": [133, 469], "paint": "linen" },
+        { "seed": [45, 339], "paint": "linen" },
+        { "seed": [75, 291], "paint": "linen" },
+        { "seed": [307, 231], "paint": "wood" },
+        { "seed": [149, 61], "paint": "ground" },
+        { "seed": [187, 41], "paint": "skin-female" },
+        { "seed": [119, 41], "paint": "skin-female" }
+      ]
+    },
+    "03-002": {
+      "default": "skin-female",
+      "regions": [
+        { "seed": [195, 701], "paint": "faience" },
+        { "seed": [141, 651], "paint": "faience" },
+        { "seed": [215, 599], "paint": "skin-female" },
+        { "seed": [131, 597], "paint": "faience" },
+        { "seed": [159, 513], "paint": "skin-female" },
+        { "seed": [219, 537], "paint": "skin-female" },
+        { "seed": [261, 519], "paint": "skin-female" },
+        { "seed": [175, 325], "paint": "linen" },
+        { "seed": [65, 245], "paint": "gold" },
+        { "seed": [273, 197], "paint": "ground" },
+        { "seed": [141, 165], "paint": "gold" },
+        { "seed": [331, 73], "paint": "skin-female" },
+        { "seed": [365, 45], "paint": "skin-female" },
+        { "seed": [47, 13], "paint": "gold" }
+      ]
+    },
+    "04-001": {
+      "regions": [
+        { "seed": [241, 586], "paint": "hair" },
+        { "seed": [467, 214], "paint": "skin-male" },
+        { "seed": [463, 424], "paint": "skin-male" },
+        { "seed": [521, 426], "paint": "skin-male" },
+        { "seed": [303, 356], "paint": "skin-male" }
+      ]
+    },
+    "04-002": {
+      "regions": [
+        { "seed": [207, 221], "paint": "skin-male" },
+        { "seed": [207, 425], "paint": "skin-male" },
+        { "seed": [277, 429], "paint": "skin-male" }
+      ]
+    },
+    "04-004": {
+      "regions": [
+        { "seed": [135, 538], "paint": "skin-male" }
+      ]
+    },
+    "04-005": {
+      "regions": [
+        { "seed": [203, 225], "paint": "skin-male" },
+        { "seed": [301, 471], "paint": "skin-male" }
+      ]
+    },
+    "04-007": {
+      "regions": [
+        { "seed": [689, 140], "paint": "skin-male" }
+      ]
+    },
+    "04-008": {
+      "regions": [
+        { "seed": [61, 721], "paint": "skin-male" },
+        { "seed": [299, 375], "paint": "skin-male" }
+      ]
+    },
+    "04-010": {
+      "regions": [
+        { "seed": [561, 67], "paint": "skin-male" },
+        { "seed": [705, 539], "paint": "skin-male" },
+        { "seed": [223, 61], "paint": "skin-male" }
+      ]
+    },
+    "04-012": {
+      "regions": [
+        { "seed": [169, 406], "paint": "skin-male" }
+      ]
+    },
+    "04-013": {
+      "regions": [
+        { "seed": [133, 114], "paint": "skin-male" }
+      ]
+    },
+    "04-014": {
+      "regions": [
+        { "seed": [127, 593], "paint": "skin-male" }
+      ]
+    },
+    "04-016": {
+      "regions": [
+        { "seed": [105, 580], "paint": "skin-male" }
+      ]
+    },
+    "04-019": {
+      "regions": [
+        { "seed": [149, 428], "paint": "hair" }
+      ]
+    },
+    "04-022": {
+      "regions": [
+        { "seed": [221, 641], "paint": "pottery" },
+        { "seed": [305, 619], "paint": "pottery" },
+        { "seed": [151, 627], "paint": "pottery" },
+        { "seed": [191, 587], "paint": "ground" },
+        { "seed": [97, 599], "paint": "pottery" },
+        { "seed": [55, 557], "paint": "pottery" },
+        { "seed": [237, 427], "paint": "pottery" }
+      ]
+    },
+    "04-025": {
+      "regions": [
+        { "seed": [403, 259], "paint": "skin-male" },
+        { "seed": [255, 257], "paint": "skin-male" },
+        { "seed": [571, 255], "paint": "skin-male" },
+        { "seed": [261, 167], "paint": "skin-male" },
+        { "seed": [577, 165], "paint": "skin-male" }
+      ]
+    },
+    "05-002": {
+      "regions": [
+        { "seed": [521, 624], "paint": "skin-male" },
+        { "seed": [257, 362], "paint": "skin-male" },
+        { "seed": [163, 256], "paint": "skin-male" },
+        { "seed": [509, 254], "paint": "skin-male" },
+        { "seed": [55, 246], "paint": "skin-male" },
+        { "seed": [201, 250], "paint": "skin-male" },
+        { "seed": [481, 188], "paint": "ground" },
+        { "seed": [447, 240], "paint": "skin-male" },
+        { "seed": [171, 142], "paint": "skin-male" },
+        { "seed": [141, 114], "paint": "ground" },
+        { "seed": [135, 38], "paint": "skin-male" },
+        { "seed": [179, 38], "paint": "skin-male" },
+        { "seed": [441, 38], "paint": "skin-male" },
+        { "seed": [527, 38], "paint": "skin-male" }
+      ]
+    },
+    "05-003": {
+      "regions": [
+        { "seed": [445, 626], "paint": "ground" },
+        { "seed": [437, 576], "paint": "linen" },
+        { "seed": [397, 518], "paint": "linen" },
+        { "seed": [487, 532], "paint": "linen" },
+        { "seed": [489, 378], "paint": "linen" },
+        { "seed": [105, 188], "paint": "ground" },
+        { "seed": [483, 202], "paint": "linen" },
+        { "seed": [175, 180], "paint": "linen" },
+        { "seed": [455, 144], "paint": "ground" },
+        { "seed": [425, 190], "paint": "linen" },
+        { "seed": [301, 186], "paint": "linen" },
+        { "seed": [167, 122], "paint": "linen" },
+        { "seed": [53, 112], "paint": "linen" },
+        { "seed": [137, 36], "paint": "linen" },
+        { "seed": [179, 36], "paint": "linen" },
+        { "seed": [415, 36], "paint": "linen" },
+        { "seed": [493, 36], "paint": "linen" }
+      ]
+    },
+    "05-007": {
+      "regions": [
+        { "seed": [495, 588], "paint": "wood" },
+        { "seed": [197, 324], "paint": "wood" },
+        { "seed": [447, 520], "paint": "wood" },
+        { "seed": [551, 424], "paint": "wood" },
+        { "seed": [51, 408], "paint": "wood" },
+        { "seed": [123, 240], "paint": "wood" },
+        { "seed": [427, 236], "paint": "wood" },
+        { "seed": [155, 234], "paint": "wood" },
+        { "seed": [379, 228], "paint": "wood" },
+        { "seed": [405, 62], "paint": "ground" },
+        { "seed": [105, 36], "paint": "wood" },
+        { "seed": [141, 36], "paint": "wood" },
+        { "seed": [373, 36], "paint": "wood" },
+        { "seed": [439, 36], "paint": "wood" }
+      ]
+    },
+    "05-008": {
+      "regions": [
+        { "seed": [415, 729], "paint": "skin-female" },
+        { "seed": [163, 345], "paint": "skin-female" },
+        { "seed": [339, 675], "paint": "skin-female" },
+        { "seed": [387, 539], "paint": "ground" },
+        { "seed": [323, 509], "paint": "skin-female" },
+        { "seed": [321, 449], "paint": "skin-female" },
+        { "seed": [331, 473], "paint": "ground" },
+        { "seed": [67, 373], "paint": "skin-female" },
+        { "seed": [197, 259], "paint": "skin-female" },
+        { "seed": [137, 253], "paint": "skin-female" },
+        { "seed": [143, 95], "paint": "ground" },
+        { "seed": [127, 37], "paint": "skin-female" },
+        { "seed": [193, 37], "paint": "skin-female" }
+      ]
+    },
+    "05-009": {
+      "regions": [
+        { "seed": [531, 566], "paint": "linen" },
+        { "seed": [589, 626], "paint": "ground" },
+        { "seed": [521, 464], "paint": "linen" },
+        { "seed": [61, 332], "paint": "linen" },
+        { "seed": [487, 238], "paint": "linen" },
+        { "seed": [165, 230], "paint": "linen" },
+        { "seed": [197, 230], "paint": "linen" },
+        { "seed": [439, 226], "paint": "linen" },
+        { "seed": [467, 66], "paint": "ground" },
+        { "seed": [143, 36], "paint": "linen" },
+        { "seed": [183, 36], "paint": "linen" },
+        { "seed": [431, 36], "paint": "linen" },
+        { "seed": [503, 36], "paint": "linen" }
+      ]
+    },
+    "05-010": {
+      "regions": [
+        { "seed": [609, 458], "paint": "pottery" },
+        { "seed": [465, 330], "paint": "pottery" },
+        { "seed": [69, 428], "paint": "ground" },
+        { "seed": [563, 192], "paint": "pottery" },
+        { "seed": [181, 188], "paint": "pottery" },
+        { "seed": [515, 180], "paint": "pottery" },
+        { "seed": [229, 180], "paint": "pottery" },
+        { "seed": [543, 60], "paint": "ground" },
+        { "seed": [201, 82], "paint": "ground" },
+        { "seed": [171, 36], "paint": "pottery" },
+        { "seed": [219, 36], "paint": "pottery" },
+        { "seed": [505, 36], "paint": "pottery" },
+        { "seed": [575, 36], "paint": "pottery" }
+      ]
+    },
+    "05-011": {
+      "regions": [
+        { "seed": [219, 358], "paint": "skin-female" },
+        { "seed": [341, 420], "paint": "skin-female" },
+        { "seed": [117, 66], "paint": "skin-female" },
+        { "seed": [333, 72], "paint": "skin-female" }
+      ]
+    },
+    "05-012": {
+      "regions": [
+        { "seed": [667, 506], "paint": "skin-female" },
+        { "seed": [79, 372], "paint": "skin-female" },
+        { "seed": [583, 458], "paint": "skin-female" },
+        { "seed": [473, 312], "paint": "skin-female" },
+        { "seed": [141, 46], "paint": "skin-female" },
+        { "seed": [465, 34], "paint": "skin-female" }
+      ]
+    },
+    "05-013": {
+      "regions": [
+        { "seed": [597, 592], "paint": "skin-female" },
+        { "seed": [557, 598], "paint": "skin-female" },
+        { "seed": [439, 352], "paint": "skin-female" },
+        { "seed": [81, 360], "paint": "skin-female" },
+        { "seed": [515, 260], "paint": "skin-female" },
+        { "seed": [169, 250], "paint": "skin-female" },
+        { "seed": [469, 246], "paint": "skin-female" },
+        { "seed": [205, 248], "paint": "skin-female" },
+        { "seed": [495, 62], "paint": "ground" },
+        { "seed": [155, 94], "paint": "ground" },
+        { "seed": [147, 36], "paint": "skin-female" },
+        { "seed": [195, 36], "paint": "skin-female" },
+        { "seed": [459, 36], "paint": "skin-female" },
+        { "seed": [529, 36], "paint": "skin-female" }
+      ]
+    },
+    "05-016": {
+      "regions": [
+        { "seed": [594, 458], "paint": "skin-female" },
+        { "seed": [536, 144], "paint": "skin-female" },
+        { "seed": [610, 364], "paint": "skin-female" },
+        { "seed": [284, 366], "paint": "skin-female" },
+        { "seed": [48, 272], "paint": "skin-female" },
+        { "seed": [46, 244], "paint": "skin-female" },
+        { "seed": [394, 116], "paint": "skin-female" },
+        { "seed": [164, 70], "paint": "skin-female" }
+      ]
+    },
+    "05-019": {
+      "regions": [
+        { "seed": [276, 479], "paint": "stone" },
+        { "seed": [528, 539], "paint": "stone" },
+        { "seed": [668, 343], "paint": "stone" },
+        { "seed": [172, 199], "paint": "stone" },
+        { "seed": [538, 197], "paint": "stone" },
+        { "seed": [240, 201], "paint": "stone" },
+        { "seed": [470, 197], "paint": "stone" }
+      ]
+    },
+    "05-020": {
+      "regions": [
+        { "seed": [433, 694], "paint": "skin-female" },
+        { "seed": [365, 578], "paint": "skin-female" },
+        { "seed": [327, 398], "paint": "skin-female" },
+        { "seed": [69, 280], "paint": "ground" },
+        { "seed": [351, 288], "paint": "skin-female" },
+        { "seed": [99, 282], "paint": "skin-female" },
+        { "seed": [315, 280], "paint": "skin-female" },
+        { "seed": [135, 276], "paint": "skin-female" },
+        { "seed": [337, 74], "paint": "ground" },
+        { "seed": [93, 36], "paint": "skin-female" },
+        { "seed": [123, 36], "paint": "skin-female" },
+        { "seed": [367, 36], "paint": "skin-female" }
+      ]
+    },
+    "05-021": {
+      "regions": [
+        { "seed": [485, 564], "paint": "linen" },
+        { "seed": [365, 336], "paint": "linen" },
+        { "seed": [437, 516], "paint": "linen" },
+        { "seed": [439, 250], "paint": "linen" },
+        { "seed": [133, 240], "paint": "linen" },
+        { "seed": [395, 240], "paint": "linen" },
+        { "seed": [163, 238], "paint": "linen" },
+        { "seed": [421, 58], "paint": "ground" },
+        { "seed": [393, 132], "paint": "linen" }
+      ]
+    },
+    "05-022": {
+      "regions": [
+        { "seed": [403, 378], "paint": "skin-female" },
+        { "seed": [437, 516], "paint": "skin-female" },
+        { "seed": [587, 444], "paint": "skin-female" },
+        { "seed": [439, 250], "paint": "skin-female" },
+        { "seed": [133, 242], "paint": "skin-female" },
+        { "seed": [395, 240], "paint": "skin-female" },
+        { "seed": [163, 238], "paint": "skin-female" },
+        { "seed": [421, 64], "paint": "ground" },
+        { "seed": [115, 36], "paint": "skin-female" }
+      ]
+    },
+    "05-023": {
+      "regions": [
+        { "seed": [349, 672], "paint": "wood" },
+        { "seed": [405, 662], "paint": "wood" },
+        { "seed": [449, 636], "paint": "wood" },
+        { "seed": [497, 550], "paint": "wood" },
+        { "seed": [359, 330], "paint": "wood" },
+        { "seed": [425, 504], "paint": "wood" },
+        { "seed": [583, 434], "paint": "wood" },
+        { "seed": [539, 394], "paint": "wood" },
+        { "seed": [431, 246], "paint": "wood" },
+        { "seed": [131, 236], "paint": "wood" },
+        { "seed": [387, 234], "paint": "wood" },
+        { "seed": [161, 234], "paint": "wood" },
+        { "seed": [413, 58], "paint": "ground" }
+      ]
+    },
+    "05-025": {
+      "regions": [
+        { "seed": [123, 342], "paint": "stone" },
+        { "seed": [121, 582], "paint": "stone" },
+        { "seed": [459, 300], "paint": "stone" },
+        { "seed": [587, 442], "paint": "stone" },
+        { "seed": [175, 216], "paint": "stone" },
+        { "seed": [517, 214], "paint": "stone" },
+        { "seed": [201, 208], "paint": "ground" },
+        { "seed": [491, 60], "paint": "ground" },
+        { "seed": [227, 200], "paint": "stone" },
+        { "seed": [457, 198], "paint": "stone" },
+        { "seed": [181, 68], "paint": "ground" },
+        { "seed": [139, 36], "paint": "stone" },
+        { "seed": [201, 36], "paint": "stone" },
+        { "seed": [447, 36], "paint": "stone" },
+        { "seed": [523, 36], "paint": "stone" }
+      ]
+    },
+    "05-026": {
+      "regions": [
+        { "seed": [437, 326], "paint": "skin-female" },
+        { "seed": [457, 136], "paint": "skin-female" },
+        { "seed": [441, 274], "paint": "ground" }
+      ]
+    },
+    "05-027": {
+      "regions": [
+        { "seed": [545, 205], "paint": "stone" },
+        { "seed": [367, 145], "paint": "stone" },
+        { "seed": [297, 37], "paint": "stone" },
+        { "seed": [497, 37], "paint": "stone" }
+      ]
+    },
+    "05-028": {
+      "regions": [
+        { "seed": [587, 545], "paint": "stone" },
+        { "seed": [555, 355], "paint": "stone" },
+        { "seed": [719, 417], "paint": "stone" },
+        { "seed": [659, 455], "paint": "stone" },
+        { "seed": [563, 181], "paint": "stone" },
+        { "seed": [171, 183], "paint": "stone" },
+        { "seed": [237, 173], "paint": "stone" },
+        { "seed": [497, 173], "paint": "stone" }
+      ]
+    },
+    "05-030": {
+      "regions": [
+        { "seed": [685, 689], "paint": "skin-female" },
+        { "seed": [217, 455], "paint": "skin-female" },
+        { "seed": [143, 311], "paint": "skin-female" },
+        { "seed": [517, 321], "paint": "skin-female" },
+        { "seed": [465, 313], "paint": "skin-female" },
+        { "seed": [187, 309], "paint": "skin-female" },
+        { "seed": [495, 67], "paint": "ground" },
+        { "seed": [137, 153], "paint": "ground" },
+        { "seed": [131, 37], "paint": "skin-female" },
+        { "seed": [181, 37], "paint": "skin-female" },
+        { "seed": [459, 37], "paint": "skin-female" },
+        { "seed": [535, 37], "paint": "skin-female" }
+      ]
+    },
+    "05-031": {
+      "regions": [
+        { "seed": [487, 640], "paint": "ground" },
+        { "seed": [469, 586], "paint": "skin-male" },
+        { "seed": [429, 538], "paint": "skin-male" },
+        { "seed": [343, 350], "paint": "skin-male" },
+        { "seed": [421, 272], "paint": "skin-male" },
+        { "seed": [377, 246], "paint": "skin-male" },
+        { "seed": [401, 62], "paint": "ground" },
+        { "seed": [49, 222], "paint": "skin-male" },
+        { "seed": [133, 222], "paint": "skin-male" },
+        { "seed": [163, 220], "paint": "skin-male" }
+      ]
+    },
+    "05-032": {
+      "regions": [
+        { "seed": [161, 484], "paint": "linen" },
+        { "seed": [551, 480], "paint": "linen" },
+        { "seed": [359, 498], "paint": "gold" },
+        { "seed": [361, 394], "paint": "gold" },
+        { "seed": [283, 386], "paint": "ground" },
+        { "seed": [205, 298], "paint": "linen" },
+        { "seed": [511, 300], "paint": "linen" },
+        { "seed": [357, 282], "paint": "gold" },
+        { "seed": [321, 200], "paint": "gold" },
+        { "seed": [325, 136], "paint": "gold" },
+        { "seed": [361, 64], "paint": "gold" }
+      ]
+    },
+    "05-033": {
+      "regions": [
+        { "seed": [315, 176], "paint": "plant" },
+        { "seed": [293, 244], "paint": "plant" },
+        { "seed": [467, 262], "paint": "plant" },
+        { "seed": [619, 178], "paint": "plant" },
+        { "seed": [417, 214], "paint": "plant" },
+        { "seed": [355, 136], "paint": "plant" },
+        { "seed": [109, 152], "paint": "plant" },
+        { "seed": [243, 140], "paint": "plant" }
+      ]
+    },
+    "05-034": {
+      "regions": [
+        { "seed": [103, 703], "paint": "skin-female" },
+        { "seed": [449, 703], "paint": "skin-female" },
+        { "seed": [83, 629], "paint": "ground" },
+        { "seed": [467, 631], "paint": "ground" },
+        { "seed": [181, 441], "paint": "skin-female" },
+        { "seed": [385, 451], "paint": "skin-female" },
+        { "seed": [275, 447], "paint": "skin-female" },
+        { "seed": [317, 395], "paint": "skin-female" },
+        { "seed": [115, 357], "paint": "ground" },
+        { "seed": [419, 357], "paint": "ground" },
+        { "seed": [215, 329], "paint": "skin-female" },
+        { "seed": [115, 307], "paint": "ground" },
+        { "seed": [423, 307], "paint": "ground" },
+        { "seed": [275, 245], "paint": "skin-female" },
+        { "seed": [115, 257], "paint": "ground" },
+        { "seed": [343, 167], "paint": "ground" },
+        { "seed": [415, 177], "paint": "skin-female" },
+        { "seed": [269, 171], "paint": "skin-female" },
+        { "seed": [389, 49], "paint": "skin-female" },
+        { "seed": [277, 121], "paint": "skin-female" },
+        { "seed": [297, 73], "paint": "skin-female" }
+      ]
+    },
+    "05-036": {
+      "regions": [
+        { "seed": [391, 242], "paint": "cord" },
+        { "seed": [305, 168], "paint": "cord" },
+        { "seed": [123, 118], "paint": "cord" }
+      ]
+    },
+    "05-037": {
+      "regions": [
+        { "seed": [407, 190], "paint": "linen" }
+      ]
+    },
+    "05-038": {
+      "regions": [
+        { "seed": [135, 66], "paint": "linen" },
+        { "seed": [69, 66], "paint": "linen" }
+      ]
+    },
+    "05-039": {
+      "regions": [
+        { "seed": [103, 720], "paint": "skin-female" },
+        { "seed": [99, 224], "paint": "skin-female" }
+      ]
+    },
+    "06-001": {
+      "regions": [
+        { "seed": [491, 640], "paint": "linen" },
+        { "seed": [411, 604], "paint": "linen" },
+        { "seed": [415, 458], "paint": "linen" },
+        { "seed": [273, 434], "paint": "linen" },
+        { "seed": [125, 226], "paint": "linen" },
+        { "seed": [75, 92], "paint": "linen" },
+        { "seed": [401, 160], "paint": "linen" },
+        { "seed": [369, 68], "paint": "ground" },
+        { "seed": [331, 132], "paint": "linen" }
+      ]
+    },
+    "06-002": {
+      "regions": [
+        { "seed": [595, 500], "paint": "wood" },
+        { "seed": [747, 518], "paint": "wood" },
+        { "seed": [595, 380], "paint": "wood" },
+        { "seed": [449, 364], "paint": "wood" },
+        { "seed": [99, 254], "paint": "wood" },
+        { "seed": [497, 176], "paint": "wood" },
+        { "seed": [465, 68], "paint": "ground" },
+        { "seed": [425, 170], "paint": "wood" }
+      ]
+    },
+    "06-004": {
+      "regions": [
+        { "seed": [523, 682], "paint": "wood" },
+        { "seed": [255, 328], "paint": "wood" },
+        { "seed": [475, 522], "paint": "wood" },
+        { "seed": [397, 474], "paint": "wood" },
+        { "seed": [331, 204], "paint": "wood" },
+        { "seed": [169, 110], "paint": "wood" },
+        { "seed": [427, 146], "paint": "wood" },
+        { "seed": [397, 66], "paint": "ground" },
+        { "seed": [361, 118], "paint": "wood" }
+      ]
+    },
+    "06-006": {
+      "regions": [
+        { "seed": [533, 556], "paint": "hair" },
+        { "seed": [463, 462], "paint": "hair" },
+        { "seed": [281, 192], "paint": "hair" },
+        { "seed": [333, 446], "paint": "hair" },
+        { "seed": [369, 134], "paint": "hair" },
+        { "seed": [337, 72], "paint": "ground" },
+        { "seed": [301, 120], "paint": "hair" }
+      ]
+    },
+    "06-007": {
+      "regions": [
+        { "seed": [511, 654], "paint": "skin-female" },
+        { "seed": [439, 486], "paint": "skin-female" },
+        { "seed": [591, 494], "paint": "skin-female" },
+        { "seed": [333, 412], "paint": "skin-female" },
+        { "seed": [87, 110], "paint": "skin-female" },
+        { "seed": [363, 156], "paint": "skin-female" },
+        { "seed": [337, 62], "paint": "ground" },
+        { "seed": [309, 136], "paint": "skin-female" }
+      ]
+    },
+    "06-008": {
+      "regions": [
+        { "seed": [561, 564], "paint": "faience" },
+        { "seed": [315, 482], "paint": "faience" },
+        { "seed": [687, 594], "paint": "faience" },
+        { "seed": [253, 314], "paint": "faience" },
+        { "seed": [285, 446], "paint": "faience" },
+        { "seed": [253, 500], "paint": "faience" },
+        { "seed": [119, 244], "paint": "faience" },
+        { "seed": [455, 204], "paint": "faience" },
+        { "seed": [421, 72], "paint": "ground" },
+        { "seed": [387, 178], "paint": "faience" },
+        { "seed": [379, 34], "paint": "faience" },
+        { "seed": [461, 34], "paint": "faience" }
+      ]
+    },
+    "06-009": {
+      "regions": [
+        { "seed": [457, 695], "paint": "wood" },
+        { "seed": [537, 679], "paint": "wood" },
+        { "seed": [629, 663], "paint": "wood" },
+        { "seed": [357, 667], "paint": "wood" },
+        { "seed": [465, 475], "paint": "wood" },
+        { "seed": [419, 383], "paint": "wood" },
+        { "seed": [83, 365], "paint": "wood" },
+        { "seed": [371, 255], "paint": "wood" },
+        { "seed": [333, 81], "paint": "ground" },
+        { "seed": [295, 245], "paint": "wood" }
+      ]
+    },
+    "06-011": {
+      "regions": [
+        { "seed": [347, 456], "paint": "red" },
+        { "seed": [501, 716], "paint": "red" },
+        { "seed": [473, 710], "paint": "red" },
+        { "seed": [313, 392], "paint": "red" },
+        { "seed": [91, 362], "paint": "red" },
+        { "seed": [273, 66], "paint": "ground" }
+      ]
+    },
+    "06-012": {
+      "regions": [
+        { "seed": [559, 696], "paint": "hair" },
+        { "seed": [645, 690], "paint": "hair" },
+        { "seed": [481, 492], "paint": "hair" },
+        { "seed": [85, 378], "paint": "hair" },
+        { "seed": [383, 266], "paint": "hair" },
+        { "seed": [345, 80], "paint": "ground" },
+        { "seed": [305, 262], "paint": "hair" }
+      ]
+    },
+    "06-013": {
+      "regions": [
+        { "seed": [429, 710], "paint": "linen" },
+        { "seed": [507, 696], "paint": "linen" },
+        { "seed": [391, 514], "paint": "linen" },
+        { "seed": [309, 394], "paint": "linen" },
+        { "seed": [323, 274], "paint": "linen" },
+        { "seed": [291, 82], "paint": "ground" },
+        { "seed": [249, 242], "paint": "linen" }
+      ]
+    },
+    "06-015": {
+      "regions": [
+        { "seed": [495, 721], "paint": "linen" },
+        { "seed": [425, 533], "paint": "linen" },
+        { "seed": [291, 375], "paint": "linen" },
+        { "seed": [343, 279], "paint": "linen" },
+        { "seed": [321, 71], "paint": "ground" }
+      ]
+    },
+    "06-016": {
+      "regions": [
+        { "seed": [491, 595], "paint": "hair" },
+        { "seed": [425, 455], "paint": "hair" },
+        { "seed": [381, 287], "paint": "hair" },
+        { "seed": [103, 379], "paint": "hair" },
+        { "seed": [293, 365], "paint": "hair" },
+        { "seed": [95, 319], "paint": "hair" },
+        { "seed": [95, 279], "paint": "hair" },
+        { "seed": [367, 209], "paint": "hair" },
+        { "seed": [321, 193], "paint": "hair" },
+        { "seed": [353, 53], "paint": "ground" }
+      ]
+    },
+    "06-017": {
+      "regions": [
+        { "seed": [477, 694], "paint": "hair" },
+        { "seed": [577, 708], "paint": "hair" },
+        { "seed": [413, 608], "paint": "hair" },
+        { "seed": [357, 334], "paint": "hair" },
+        { "seed": [241, 478], "paint": "hair" },
+        { "seed": [489, 478], "paint": "hair" },
+        { "seed": [387, 106], "paint": "hair" },
+        { "seed": [321, 72], "paint": "hair" },
+        { "seed": [307, 36], "paint": "hair" }
+      ]
+    },
+    "06-018": {
+      "regions": [
+        { "seed": [581, 492], "paint": "faience" },
+        { "seed": [719, 496], "paint": "faience" },
+        { "seed": [597, 398], "paint": "faience" },
+        { "seed": [313, 318], "paint": "faience" },
+        { "seed": [87, 134], "paint": "faience" },
+        { "seed": [437, 230], "paint": "faience" },
+        { "seed": [191, 176], "paint": "faience" }
+      ]
+    },
+    "06-019": {
+      "regions": [
+        { "seed": [493, 505], "paint": "wood" },
+        { "seed": [637, 529], "paint": "wood" },
+        { "seed": [471, 359], "paint": "wood" },
+        { "seed": [125, 435], "paint": "wood" },
+        { "seed": [409, 141], "paint": "wood" },
+        { "seed": [383, 79], "paint": "ground" },
+        { "seed": [351, 133], "paint": "wood" }
+      ]
+    },
+    "06-021": {
+      "regions": [
+        { "seed": [583, 502], "paint": "wood" },
+        { "seed": [707, 500], "paint": "wood" },
+        { "seed": [575, 386], "paint": "wood" },
+        { "seed": [133, 334], "paint": "wood" },
+        { "seed": [523, 254], "paint": "wood" },
+        { "seed": [475, 134], "paint": "wood" },
+        { "seed": [445, 62], "paint": "ground" },
+        { "seed": [409, 128], "paint": "wood" }
+      ]
+    },
+    "06-023": {
+      "regions": [
+        { "seed": [523, 343], "paint": "wood" },
+        { "seed": [627, 343], "paint": "wood" },
+        { "seed": [507, 219], "paint": "wood" },
+        { "seed": [461, 131], "paint": "wood" },
+        { "seed": [129, 191], "paint": "wood" },
+        { "seed": [219, 47], "paint": "wood" },
+        { "seed": [305, 39], "paint": "wood" },
+        { "seed": [485, 51], "paint": "wood" }
+      ]
+    },
+    "06-024": {
+      "regions": [
+        { "seed": [337, 552], "paint": "skin-female" },
+        { "seed": [523, 640], "paint": "skin-female" },
+        { "seed": [257, 422], "paint": "skin-female" },
+        { "seed": [331, 158], "paint": "skin-female" },
+        { "seed": [295, 84], "paint": "ground" },
+        { "seed": [249, 152], "paint": "skin-female" },
+        { "seed": [243, 34], "paint": "skin-female" },
+        { "seed": [339, 34], "paint": "skin-female" }
+      ]
+    },
+    "06-025": {
+      "regions": [
+        { "seed": [415, 206], "paint": "skin-female" },
+        { "seed": [611, 324], "paint": "skin-female" },
+        { "seed": [51, 38], "paint": "skin-female" }
+      ]
+    },
+    "06-026": {
+      "regions": [
+        { "seed": [373, 524], "paint": "wood" },
+        { "seed": [473, 538], "paint": "wood" },
+        { "seed": [227, 402], "paint": "wood" },
+        { "seed": [559, 414], "paint": "wood" },
+        { "seed": [659, 428], "paint": "wood" },
+        { "seed": [459, 298], "paint": "wood" },
+        { "seed": [85, 368], "paint": "wood" },
+        { "seed": [271, 258], "paint": "wood" },
+        { "seed": [323, 166], "paint": "ground" },
+        { "seed": [511, 64], "paint": "ground" }
+      ]
+    },
+    "06-028": {
+      "regions": [
+        { "seed": [161, 321], "paint": "skin-female" },
+        { "seed": [343, 319], "paint": "skin-female" },
+        { "seed": [523, 321], "paint": "skin-female" },
+        { "seed": [663, 335], "paint": "skin-female" },
+        { "seed": [275, 285], "paint": "ground" },
+        { "seed": [455, 285], "paint": "ground" },
+        { "seed": [303, 221], "paint": "cord" }
+      ]
+    },
+    "06-030": {
+      "regions": [
+        { "seed": [437, 256], "paint": "faience" }
+      ]
+    },
+    "06-032": {
+      "regions": [
+        { "seed": [321, 201], "paint": "linen" }
+      ]
+    },
+    "06-033": {
+      "regions": [
+        { "seed": [303, 704], "paint": "skin-female" },
+        { "seed": [311, 602], "paint": "skin-female" },
+        { "seed": [319, 508], "paint": "skin-female" },
+        { "seed": [325, 440], "paint": "skin-female" },
+        { "seed": [81, 430], "paint": "skin-female" },
+        { "seed": [295, 392], "paint": "skin-female" },
+        { "seed": [329, 362], "paint": "skin-female" },
+        { "seed": [371, 324], "paint": "skin-female" },
+        { "seed": [419, 320], "paint": "skin-female" },
+        { "seed": [633, 282], "paint": "skin-female" },
+        { "seed": [221, 62], "paint": "skin-female" },
+        { "seed": [469, 90], "paint": "skin-female" }
+      ]
+    },
+    "06-034": {
+      "regions": [
+        { "seed": [181, 511], "paint": "wood" },
+        { "seed": [625, 673], "paint": "wood" },
+        { "seed": [307, 637], "paint": "wood" },
+        { "seed": [545, 601], "paint": "ground" },
+        { "seed": [531, 495], "paint": "wood" },
+        { "seed": [113, 99], "paint": "wood" }
+      ]
+    },
+    "07-003": {
+      "regions": []
+    },
+    "07-004": {
+      "regions": [
+        { "seed": [323, 612], "paint": "stone" },
+        { "seed": [113, 524], "paint": "stone" },
+        { "seed": [535, 528], "paint": "stone" },
+        { "seed": [317, 528], "paint": "stone" },
+        { "seed": [175, 384], "paint": "stone" },
+        { "seed": [469, 388], "paint": "stone" },
+        { "seed": [323, 362], "paint": "stone" },
+        { "seed": [175, 292], "paint": "stone" },
+        { "seed": [469, 294], "paint": "stone" },
+        { "seed": [313, 146], "paint": "stone" },
+        { "seed": [159, 128], "paint": "stone" },
+        { "seed": [489, 126], "paint": "stone" },
+        { "seed": [323, 78], "paint": "stone" }
+      ]
+    },
+    "07-005": {
+      "regions": []
+    },
+    "07-006": {
+      "regions": [
+        { "seed": [581, 136], "paint": "hair" },
+        { "seed": [451, 176], "paint": "hair" }
+      ]
+    },
+    "07-007": {
+      "regions": [
+        { "seed": [239, 447], "paint": "skin-female" },
+        { "seed": [45, 635], "paint": "ground" },
+        { "seed": [283, 547], "paint": "skin-female" },
+        { "seed": [187, 349], "paint": "skin-female" },
+        { "seed": [291, 349], "paint": "skin-female" },
+        { "seed": [225, 257], "paint": "skin-female" }
+      ]
+    },
+    "07-008": {
+      "regions": [
+        { "seed": [681, 155], "paint": "skin-female" },
+        { "seed": [629, 145], "paint": "skin-female" },
+        { "seed": [519, 135], "paint": "skin-female" },
+        { "seed": [419, 75], "paint": "skin-female" },
+        { "seed": [273, 39], "paint": "skin-female" }
+      ]
+    },
+    "07-010": {
+      "regions": []
+    },
+    "07-011": {
+      "regions": [
+        { "seed": [395, 482], "paint": "stone" },
+        { "seed": [275, 428], "paint": "stone" },
+        { "seed": [361, 252], "paint": "stone" },
+        { "seed": [91, 248], "paint": "stone" },
+        { "seed": [421, 50], "paint": "stone" }
+      ]
+    },
+    "07-012": {
+      "regions": [
+        { "seed": [435, 300], "paint": "stone" },
+        { "seed": [413, 108], "paint": "stone" },
+        { "seed": [651, 136], "paint": "stone" },
+        { "seed": [105, 154], "paint": "stone" },
+        { "seed": [735, 88], "paint": "ground" }
+      ]
+    },
+    "07-013": {
+      "regions": [
+        { "seed": [355, 276], "paint": "stone" },
+        { "seed": [511, 272], "paint": "stone" },
+        { "seed": [353, 148], "paint": "stone" },
+        { "seed": [105, 154], "paint": "stone" },
+        { "seed": [663, 126], "paint": "stone" },
+        { "seed": [349, 38], "paint": "stone" }
+      ]
+    },
+    "07-014": {
+      "regions": [
+        { "seed": [337, 286], "paint": "stone" },
+        { "seed": [383, 162], "paint": "stone" },
+        { "seed": [103, 170], "paint": "stone" },
+        { "seed": [701, 164], "paint": "stone" },
+        { "seed": [311, 44], "paint": "stone" }
+      ]
+    },
+    "07-015": {
+      "regions": [
+        { "seed": [367, 378], "paint": "gold" },
+        { "seed": [91, 344], "paint": "gold" }
+      ]
+    },
+    "07-016": {
+      "regions": [
+        { "seed": [469, 326], "paint": "stone" },
+        { "seed": [549, 184], "paint": "stone" },
+        { "seed": [81, 182], "paint": "stone" },
+        { "seed": [737, 120], "paint": "ground" }
+      ]
+    },
+    "07-017": {
+      "regions": [
+        { "seed": [125, 230], "paint": "stone" }
+      ]
+    },
+    "07-018": {
+      "regions": [
+        { "seed": [449, 653], "paint": "linen" },
+        { "seed": [167, 575], "paint": "linen" },
+        { "seed": [581, 575], "paint": "linen" },
+        { "seed": [153, 305], "paint": "linen" },
+        { "seed": [373, 61], "paint": "linen" }
+      ]
+    },
+    "07-019": {
+      "regions": [
+        { "seed": [105, 390], "paint": "stone" },
+        { "seed": [363, 326], "paint": "stone" },
+        { "seed": [105, 120], "paint": "stone" },
+        { "seed": [363, 56], "paint": "stone" }
+      ]
+    },
+    "07-020": {
+      "regions": [
+        { "seed": [431, 607], "paint": "pottery" },
+        { "seed": [211, 621], "paint": "pottery" },
+        { "seed": [231, 197], "paint": "pottery" }
+      ]
+    },
+    "08-002": {
+      "regions": []
+    },
+    "08-003": {
+      "regions": []
+    },
+    "08-004": {
+      "regions": [
+        { "seed": [227, 656], "paint": "ground" },
+        { "seed": [167, 638], "paint": "ground" },
+        { "seed": [287, 636], "paint": "ground" },
+        { "seed": [107, 622], "paint": "ground" },
+        { "seed": [347, 624], "paint": "ground" },
+        { "seed": [91, 484], "paint": "cord" },
+        { "seed": [135, 490], "paint": "cord" },
+        { "seed": [183, 490], "paint": "cord" },
+        { "seed": [229, 490], "paint": "cord" },
+        { "seed": [277, 490], "paint": "cord" },
+        { "seed": [325, 488], "paint": "cord" },
+        { "seed": [365, 494], "paint": "cord" },
+        { "seed": [91, 172], "paint": "cord" },
+        { "seed": [135, 178], "paint": "cord" },
+        { "seed": [183, 176], "paint": "cord" },
+        { "seed": [231, 174], "paint": "cord" },
+        { "seed": [277, 176], "paint": "cord" },
+        { "seed": [325, 174], "paint": "cord" },
+        { "seed": [365, 180], "paint": "cord" }
+      ]
+    },
+    "08-009": {
+      "regions": [
+        { "seed": [162, 722], "paint": "cord" },
+        { "seed": [192, 720], "paint": "cord" },
+        { "seed": [54, 678], "paint": "cord" },
+        { "seed": [270, 676], "paint": "cord" },
+        { "seed": [298, 678], "paint": "cord" },
+        { "seed": [84, 674], "paint": "cord" },
+        { "seed": [100, 614], "paint": "cord" },
+        { "seed": [222, 608], "paint": "cord" },
+        { "seed": [252, 616], "paint": "cord" },
+        { "seed": [130, 612], "paint": "cord" }
+      ]
+    },
+    "08-010": {
+      "regions": [
+        { "seed": [167, 696], "paint": "ground" },
+        { "seed": [403, 698], "paint": "ground" },
+        { "seed": [287, 524], "paint": "wood" },
+        { "seed": [371, 506], "paint": "red" },
+        { "seed": [287, 470], "paint": "wood" },
+        { "seed": [287, 374], "paint": "wood" },
+        { "seed": [287, 312], "paint": "wood" },
+        { "seed": [287, 230], "paint": "wood" },
+        { "seed": [287, 152], "paint": "wood" },
+        { "seed": [287, 70], "paint": "wood" }
+      ]
+    },
+    "08-011": {
+      "regions": [
+        { "seed": [377, 194], "paint": "wood" },
+        { "seed": [373, 260], "paint": "ground" }
+      ]
+    },
+    "08-012": {
+      "regions": [
+        { "seed": [259, 466], "paint": "ground" },
+        { "seed": [445, 464], "paint": "ground" },
+        { "seed": [357, 448], "paint": "wood" },
+        { "seed": [367, 382], "paint": "wood" },
+        { "seed": [287, 382], "paint": "wood" },
+        { "seed": [371, 346], "paint": "wood" },
+        { "seed": [345, 60], "paint": "wood" }
+      ]
+    },
+    "08-013": {
+      "regions": [
+        { "seed": [221, 503], "paint": "ground" },
+        { "seed": [489, 479], "paint": "ground" },
+        { "seed": [269, 483], "paint": "ground" },
+        { "seed": [379, 473], "paint": "ground" },
+        { "seed": [189, 493], "paint": "wood" },
+        { "seed": [341, 427], "paint": "wood" },
+        { "seed": [277, 427], "paint": "wood" },
+        { "seed": [491, 429], "paint": "wood" },
+        { "seed": [413, 417], "paint": "wood" },
+        { "seed": [309, 403], "paint": "wood" },
+        { "seed": [403, 367], "paint": "wood" },
+        { "seed": [351, 51], "paint": "wood" }
+      ]
+    },
+    "08-015": {
+      "regions": [
+        { "seed": [221, 717], "paint": "faience" },
+        { "seed": [223, 559], "paint": "faience" },
+        { "seed": [89, 567], "paint": "faience" },
+        { "seed": [351, 567], "paint": "faience" },
+        { "seed": [205, 55], "paint": "ground" }
+      ]
+    },
+    "08-017": {
+      "regions": []
+    },
+    "08-018": {
+      "regions": []
+    },
+    "08-019": {
+      "regions": [
+        { "seed": [215, 297], "paint": "linen" }
+      ]
+    },
+    "08-020": {
+      "regions": [
+        { "seed": [213, 78], "paint": "ground" },
+        { "seed": [499, 78], "paint": "ground" },
+        { "seed": [51, 38], "paint": "pottery" }
+      ]
+    },
+    "09-004": {
+      "regions": [
+        { "seed": [385, 166], "paint": "pottery" },
+        { "seed": [49, 38], "paint": "pottery" }
+      ]
+    },
+    "09-012": {
+      "regions": []
+    },
+    "09-013": {
+      "regions": [
+        { "seed": [741, 556], "paint": "plant" },
+        { "seed": [217, 264], "paint": "plant" },
+        { "seed": [393, 272], "paint": "plant" },
+        { "seed": [97, 38], "paint": "pottery" }
+      ]
+    },
+    "09-023": {
+      "regions": [
+        { "seed": [659, 218], "paint": "pottery" },
+        { "seed": [49, 38], "paint": "pottery" }
+      ]
+    },
+    "10-003": {
+      "regions": []
+    },
+    "10-004": {
+      "regions": [
+        { "seed": [385, 439], "paint": "stone" },
+        { "seed": [395, 361], "paint": "water" }
+      ]
+    },
+    "10-005": {
+      "regions": []
+    },
+    "10-006": {
+      "regions": [
+        { "seed": [185, 432], "paint": "ground" },
+        { "seed": [251, 416], "paint": "water" },
+        { "seed": [375, 314], "paint": "water" },
+        { "seed": [605, 268], "paint": "water" },
+        { "seed": [335, 268], "paint": "water" },
+        { "seed": [399, 244], "paint": "water" },
+        { "seed": [201, 130], "paint": "water" },
+        { "seed": [253, 112], "paint": "water" }
+      ]
+    },
+    "10-021": {
+      "regions": [
+        { "seed": [197, 548], "paint": "stone" },
+        { "seed": [493, 548], "paint": "stone" },
+        { "seed": [197, 494], "paint": "stone" },
+        { "seed": [493, 494], "paint": "stone" },
+        { "seed": [321, 76], "paint": "water" }
+      ]
+    },
+    "10-031": {
+      "regions": []
+    },
+    "11-023": {
+      "regions": [
+        { "seed": [403, 461], "paint": "pottery" },
+        { "seed": [517, 245], "paint": "ground" }
+      ]
+    },
+    "12-008": {
+      "regions": []
+    },
+    "12-010": {
+      "regions": [
+        { "seed": [513, 699], "paint": "cord" },
+        { "seed": [349, 609], "paint": "cord" },
+        { "seed": [203, 149], "paint": "stone" }
+      ]
+    },
+    "12-013": {
+      "regions": [
+        { "seed": [199, 279], "paint": "ground" },
+        { "seed": [539, 133], "paint": "ground" },
+        { "seed": [709, 71], "paint": "pottery" }
+      ]
+    },
+    "13-019": {
+      "regions": [
+        { "seed": [473, 127], "paint": "stone" },
+        { "seed": [379, 111], "paint": "cord" },
+        { "seed": [357, 101], "paint": "cord" },
+        { "seed": [335, 89], "paint": "cord" }
+      ]
+    },
+    "13-020": {
+      "regions": [
+        { "seed": [241, 131], "paint": "stone" }
+      ]
+    },
+    "13-023": {
+      "regions": [
+        { "seed": [423, 121], "paint": "stone" }
+      ]
+    },
+    "13-028": {
+      "regions": []
+    },
+    "13-031": {
+      "regions": [
+        { "seed": [279, 661], "paint": "stone" },
+        { "seed": [289, 625], "paint": "ground" },
+        { "seed": [291, 551], "paint": "stone" },
+        { "seed": [69, 245], "paint": "stone" }
+      ]
+    },
+    "13-041": {
+      "regions": [
+        { "seed": [207, 624], "paint": "cord" },
+        { "seed": [207, 366], "paint": "ground" },
+        { "seed": [203, 250], "paint": "stone" },
+        { "seed": [179, 194], "paint": "red" }
+      ]
+    },
+    "14-002": {
+      "regions": []
+    },
+    "14-010": {
+      "regions": [
+        { "seed": [463, 547], "paint": "gold" },
+        { "seed": [283, 531], "paint": "red" },
+        { "seed": [377, 427], "paint": "red" },
+        { "seed": [469, 465], "paint": "ground" },
+        { "seed": [545, 417], "paint": "plant" },
+        { "seed": [199, 409], "paint": "plant" },
+        { "seed": [451, 369], "paint": "ground" },
+        { "seed": [323, 81], "paint": "cord" },
+        { "seed": [301, 295], "paint": "cord" },
+        { "seed": [451, 295], "paint": "cord" },
+        { "seed": [291, 191], "paint": "cord" },
+        { "seed": [501, 191], "paint": "cord" }
+      ]
+    },
+    "14-013": {
+      "regions": [
+        { "seed": [203, 626], "paint": "ground" },
+        { "seed": [297, 580], "paint": "plant" }
+      ]
+    },
+    "14-014": {
+      "regions": []
+    },
+    "14-023": {
+      "regions": [
+        { "seed": [283, 494], "paint": "gold" },
+        { "seed": [281, 392], "paint": "gold" }
+      ]
+    },
+    "15-002": {
+      "regions": []
+    },
+    "15-003": {
+      "regions": []
+    },
+    "15-005": {
+      "regions": [
+        { "seed": [181, 320], "paint": "hair" }
+      ]
+    },
+    "15-006": {
+      "regions": [
+        { "seed": [733, 451], "paint": "red" },
+        { "seed": [379, 443], "paint": "ground" },
+        { "seed": [139, 211], "paint": "red" },
+        { "seed": [71, 329], "paint": "red" },
+        { "seed": [95, 223], "paint": "ground" }
+      ]
+    },
+    "15-008": {
+      "regions": [
+        { "seed": [61, 583], "paint": "red" },
+        { "seed": [239, 581], "paint": "ground" },
+        { "seed": [245, 491], "paint": "red" },
+        { "seed": [373, 151], "paint": "red" },
+        { "seed": [207, 131], "paint": "red" },
+        { "seed": [291, 375], "paint": "ground" },
+        { "seed": [399, 73], "paint": "ground" },
+        { "seed": [367, 67], "paint": "ground" }
+      ]
+    },
+    "15-011": {
+      "regions": [
+        { "seed": [397, 425], "paint": "faience" },
+        { "seed": [273, 411], "paint": "faience" },
+        { "seed": [521, 411], "paint": "faience" },
+        { "seed": [169, 371], "paint": "faience" },
+        { "seed": [625, 373], "paint": "faience" },
+        { "seed": [99, 315], "paint": "faience" },
+        { "seed": [695, 315], "paint": "faience" },
+        { "seed": [75, 243], "paint": "faience" },
+        { "seed": [725, 247], "paint": "faience" },
+        { "seed": [695, 179], "paint": "faience" },
+        { "seed": [103, 177], "paint": "faience" },
+        { "seed": [169, 121], "paint": "faience" },
+        { "seed": [625, 123], "paint": "faience" },
+        { "seed": [273, 83], "paint": "faience" },
+        { "seed": [521, 85], "paint": "faience" },
+        { "seed": [397, 71], "paint": "gold" }
+      ]
+    },
+    "15-012": {
+      "regions": [
+        { "seed": [67, 584], "paint": "gold" },
+        { "seed": [677, 584], "paint": "gold" },
+        { "seed": [81, 438], "paint": "faience" },
+        { "seed": [663, 438], "paint": "faience" },
+        { "seed": [125, 298], "paint": "gold" },
+        { "seed": [619, 298], "paint": "gold" },
+        { "seed": [191, 180], "paint": "faience" },
+        { "seed": [551, 180], "paint": "faience" },
+        { "seed": [275, 104], "paint": "gold" },
+        { "seed": [467, 102], "paint": "gold" },
+        { "seed": [369, 74], "paint": "faience" }
+      ]
+    },
+    "15-013": {
+      "regions": [
+        { "seed": [115, 698], "paint": "hair" },
+        { "seed": [115, 618], "paint": "hair" },
+        { "seed": [109, 554], "paint": "hair" },
+        { "seed": [117, 488], "paint": "hair" },
+        { "seed": [115, 424], "paint": "hair" },
+        { "seed": [113, 360], "paint": "hair" },
+        { "seed": [109, 296], "paint": "hair" },
+        { "seed": [117, 230], "paint": "hair" },
+        { "seed": [93, 176], "paint": "hair" },
+        { "seed": [117, 86], "paint": "gold" }
+      ]
+    },
+    "16-002": {
+      "regions": []
+    },
+    "16-010": {
+      "regions": []
+    },
+    "16-017": {
+      "regions": []
+    },
+    "16-020": {
+      "regions": []
+    },
+    "16-023": {
+      "regions": [
+        { "seed": [53, 599], "paint": "stone" },
+        { "seed": [513, 495], "paint": "stone" },
+        { "seed": [629, 517], "paint": "plant" }
+      ]
     }
   }
 }
