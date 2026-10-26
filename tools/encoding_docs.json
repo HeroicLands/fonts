@@ -145,5 +145,18 @@
     "intro": [
       "Chalish Pilam Common is a logographic script in which each glyph records a concept. This codage names each glyph by a code, such as `n1` for the numeral one or `SUN` for the sun. It is reached only between `⟦` and `⟧` of the [chalish-pilam encoding](chalish-pilam.md), and encodes no text of its own."
     ]
+  },
+  "teng-chou": {
+    "title": "teng-chou encoding",
+    "example": "⟦WONG TALLY3 ka⟧",
+    "intro": [
+      "Teng Chou is a logographic script of the Tantsou: one character for each morpheme, with a syllabary of 87 signs for particles, verb endings and island words. Its characters are set directly beside each other, with nothing between them. This encoding accepts no roman letters: Tantsou words are turned into characters by the language-aware encoder, and a character is written by its code between `⟦` and `⟧`, in the notation of the [teng-chou-codes codage](teng-chou-codes.md). Its word separator is empty: whitespace in roman draws nothing and writes nothing, so no output contains U+0020."
+    ]
+  },
+  "teng-chou-codes": {
+    "title": "teng-chou-codes codage",
+    "intro": [
+      "Teng Chou is a logographic script of the Tantsou. This codage names each character by a code: a character by its morpheme in capitals (`WONG`), a stage of the tally by `TALLY1` to `TALLY5`, and a sign of the Jurthati syllabary by its syllable in lowercase (`ka`). Case separates a character from a sign that shares its spelling, so `KA` and `ka` are different characters. It is reached only between `⟦` and `⟧` of the [teng-chou encoding](teng-chou.md), and encodes no text of its own."
+    ]
   }
 }

@@ -74,6 +74,7 @@ jobs:
                   python3.13 tools/khelathi-zethu-glyphs/encoding_file.py --check
                   .venv/bin/python tools/chalish-pilam/codage.py --check
                   .venv/bin/python tools/chalish-pilam/ceremonial_codage.py --check
+                  .venv/bin/python tools/teng-chou/codage.py --check
             - name: Build the fonts
               run: PATH="$PWD/.venv/bin:$PATH" ./build.sh
             - name: Check the fonts

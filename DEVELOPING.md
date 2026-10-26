@@ -68,7 +68,7 @@ An encoding is `encodings/<name>.json`: the `name`, the `fonts` it serves (slugs
 
 **A character no row matches is refused.** `encode.encode` and `encode.decode` raise `EncodingError` at the character's line and column, and `encode.py` prints it as `file:line:column: error:` (the `--file` path, `<stdin>` or `<text>`) and exits 1. Only a tool that sets such characters in a font on purpose, to see the box, keeps them: `encode.pieces(..., strict=False)`, which `tools/encoded.py` uses and reports in each record's `unencoded`.
 
-To add or change an encoding, edit its JSON (the Ch'alish and Zethu codages and script encodings are written by `tools/chalish-pilam/codage.py`, `tools/chalish-pilam/ceremonial_codage.py --write` and `tools/khelathi-zethu-glyphs/encoding_file.py`, so change their sources), then run, in order:
+To add or change an encoding, edit its JSON (the Ch'alish, Teng Chou and Zethu codages and script encodings are written by `tools/chalish-pilam/codage.py`, `tools/chalish-pilam/ceremonial_codage.py --write`, `tools/teng-chou/codage.py` and `tools/khelathi-zethu-glyphs/encoding_file.py`, so change their sources), then run, in order:
 
 ```sh
 python3 tools/encoding_vectors.py --write   # encodings/vectors.json

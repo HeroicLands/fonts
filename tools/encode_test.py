@@ -13,6 +13,7 @@ import shutil
 import sys
 import tempfile
 import unittest
+from unittest import mock
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, ROOT)
@@ -649,16 +650,28 @@ class Command(Case):
         return status, out.getvalue(), err.getvalue()
 
     def test_a_font_with_no_encoding_is_addressed_by_its_slug(self):
-        status, out, _ = self.run_main("--font", "teng-chou", "\u27e6LATIN_SMALL_LETTER_A\u27e7")
-        self.assertEqual((status, out), (0, E.mark("\u27e6") + "a" + E.mark("\u27e7") + "\n"))
-        status, out, err = self.run_main("--font", "teng-chou", "a")
-        self.assertEqual((status, out), (1, ""))
-        self.assertIn("the `teng-chou` font has no encoding", err)
+        with mock.patch.object(E, "names", return_value=[]):
+            status, out, _ = self.run_main("--font", "teng-chou", "\u27e6LATIN_SMALL_LETTER_A\u27e7")
+            self.assertEqual((status, out), (0, E.mark("\u27e6") + "a" + E.mark("\u27e7") + "\n"))
+            status, out, err = self.run_main("--font", "teng-chou", "a")
+            self.assertEqual((status, out), (1, ""))
+            self.assertIn("the `teng-chou` font has no encoding", err)
+
+    def test_teng_chou_codes_separate_a_character_from_a_sign_by_case(self):
+        enc = E.load("teng-chou")
+        both = E.encode(enc, "\u27e6KA ka   TALLY5\u27e7")
+        points = [c for c in both if not E.is_mark(c)]
+        self.assertEqual(len(points), 3)
+        self.assertNotEqual(points[0], points[1])
+        self.assertNotIn(" ", both)
+        self.assertEqual(E.decode(enc, both), "\u27e6KA ka TALLY5\u27e7")
+        with self.assertRaises(E.EncodingError):
+            E.encode(enc, "\u27e6NOSUCHCODE\u27e7")
 
     def test_the_names_are_encodings_and_the_codages_are_listed_apart(self):
         self.assertIn("zethu", E.names())
         self.assertNotIn("zethu-mdc", E.names())
-        self.assertEqual(E.names(kind="codage"), ["chalish-ceremonial", "chalish-common", "zethu-mdc"])
+        self.assertEqual(E.names(kind="codage"), ["chalish-ceremonial", "chalish-common", "teng-chou-codes", "zethu-mdc"])
         self.assertEqual(E.for_font("khelathi-zethu-glyphs").name, "zethu")
 
     def test_encode_and_decode_by_path(self):
