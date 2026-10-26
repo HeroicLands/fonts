@@ -1,34 +1,16 @@
-# zethu-mdc encoding
+# zethu-mdc codage
 
-Khelathi Zethu Glyphs is a right-to-left script of signs, one sign to a word. This encoding writes the named code of a sign, in capitals, as its code point.
+Khelathi Zethu Glyphs is a right-to-left script of signs, one sign to a word. This codage names each sign by a code, its sense in capitals, and types the format controls in the notation of the Manuel de Codage. It is reached only between `⟦` and `⟧` of the [zethu encoding](zethu.md), and encodes no text of its own.
 
 ## Fonts
 
 - Khelathi Zethu Glyphs (`khelathi-zethu-glyphs`), written right to left.
 
-## Running it
+## Using it
 
-`encode.py` needs only Python 3.9 or later. From a checkout, or from `node_modules/@heroiclands/fonts`:
-
-```sh
-python3 encode.py --encoding zethu-mdc "SERVANT"
-python3 encode.py --encoding zethu-mdc --decode "𞩁"
-```
-
-The first command writes `𞩁`, and the second reads it back as `SERVANT`. `--codepoints` prints the result as `U+XXXX` values, and the text may come from standard input.
-
-From Python:
-
-```python
-import encode
-
-text = encode.encode("zethu-mdc", "SERVANT")
-roman = encode.decode("zethu-mdc", text)
-```
+A codage is a file of kind `codage`: it extends nothing and takes no text of its own. A script encoding states it with `"codage": "zethu-mdc"`, and its codes are written between `⟦` and `⟧`. Whitespace between codes only separates them, and decoding writes single spaces. Inside the markers only this codage's codes and notation are allowed, so a standard mark such as `,` is refused at its position. Outside them a code is ordinary roman. Asking for the codage as a whole-text encoding is an error that names the script encoding to use.
 
 ## Rows
-
-The rows are in the order the file states them.
 
 | Roman | Character | Code points |
 | --- | --- | --- |
@@ -387,10 +369,5 @@ The rows are in the order the file states them.
 | `<` | `𞱬` | U+1EC6C |
 | `>` | `𞱭` | U+1EC6D |
 | `-` | `󠄍` | U+E010D |
-| (space) | (space) | U+0020 |
-
-## Round trip
-
-Every encoding round-trips exactly: decoding the code points that encoding wrote gives back the roman text, and encoding that gives the same code points. The Code points column shows every character a row writes, including any that is invisible.
 
 This page is written from `encodings/zethu-mdc.json` by `tools/encoding_docs.py`.

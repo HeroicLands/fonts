@@ -1,23 +1,27 @@
 # Copyright (c) 2026 Tom Rodriguez ("Toasty") — <toasty@heroiclands.org>
 # SPDX-License-Identifier: OFL-1.1
-"""Write the Chalish Ceremonial Codage from ceremonial_encoding.json: the encoding
-``encodings/chalish-ceremonial.json``, and the rows of thalorna's mapping note.
+"""Write the Chalish Ceremonial Codage, ``encodings/chalish-ceremonial.json``, the script
+encoding that states it, ``encodings/chalish-pilam-ceremonial.json``, and the rows of
+thalorna's mapping note, from ceremonial_encoding.json.
 
-    .venv/bin/python tools/chalish-pilam/ceremonial_codage.py --write   # write the encoding
-    .venv/bin/python tools/chalish-pilam/ceremonial_codage.py --check   # check it
+    .venv/bin/python tools/chalish-pilam/ceremonial_codage.py --write   # write both files
+    .venv/bin/python tools/chalish-pilam/ceremonial_codage.py --check   # check them
     .venv/bin/python tools/chalish-pilam/ceremonial_codage.py > rows.yaml
 
 Every character of Chalish Pilam Ceremonial has one code: a concept glyph its name in
 capitals (``SUN``, ``KING``), a syllable sign its syllable and number (``ka1``, ``la1``),
 a number ``n`` and its value (``n13``, ``n400``). ``*`` writes the joiner that sets
 items side by side and ``:`` the one that stacks the first over the second. ``-`` ends a
-block and writes nothing, since a block ends wherever no joiner follows; a space writes
-nothing either. The rows are generated, so the map never drifts from the font: run this
+block and writes nothing, since a block ends wherever no joiner follows; whitespace only
+separates codes and writes nothing. The rows are generated, so the map never drifts from the font: run this
 after a glyph is added, write the encoding, and paste the printed rows into the note's
 ``data.map.rows``.
 
-In the encoding, ``-`` and the space each write their invisible mark (``encode.mark``),
-so decoding restores them. Zero and the places of the count have codes and code points
+The codage is a file of kind ``codage``: it extends nothing and is reached only between
+the literal markers of ``chalish-pilam-ceremonial``. In it, ``-`` writes its invisible
+mark (``encode.mark``), so decoding restores it. The script encoding extends the
+standard roman encoding, ``encodings/standard.json``, and accepts nothing else as roman,
+since the hand writes no sounds; its separator is one space, an empty block. Zero and the places of the count have codes and code points
 but no ceremonial drawing, so they print the box; the encoding keeps their rows, so a
 text written today keeps its code points when they are drawn, and the note's rows say
 that they print the box.
@@ -31,6 +35,7 @@ from pathlib import Path
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parent.parent
 OUT = ROOT / "encodings" / "chalish-ceremonial.json"
+SCRIPT = ROOT / "encodings" / "chalish-pilam-ceremonial.json"
 sys.path.insert(0, str(ROOT))
 import encode as E  # noqa: E402
 
@@ -76,10 +81,24 @@ def to_text(codage: str) -> str:
 
 
 def encoding_text() -> str:
-    """The encoding file: every code, then ``-`` and the space, each writing its mark."""
+    """The codage file: every code, then ``-`` writing its mark."""
     rows_ = [[code, chr(int(cp[2:], 16))] for code, cp, _ in rows()]
-    rows_ += [["-", E.mark("-")], [" ", E.mark(" ")]]
-    return E.dumps({"name": "chalish-ceremonial", "fonts": ["chalish-pilam-ceremonial"], "rows": rows_})
+    rows_ += [["-", E.mark("-")]]
+    return E.dumps({"name": "chalish-ceremonial", "kind": "codage", "fonts": ["chalish-pilam-ceremonial"], "rows": rows_})
+
+
+def script_text() -> str:
+    return E.dumps(
+        {
+            "name": "chalish-pilam-ceremonial",
+            "fonts": ["chalish-pilam-ceremonial"],
+            "extends": E.STANDARD,
+            "codage": "chalish-ceremonial",
+            "accepts": [],
+            "separator": " ",
+            "rows": [],
+        }
+    )
 
 
 def note_rows():
@@ -88,22 +107,24 @@ def note_rows():
         note = " pending: draws the box" if pending else ""
         print(f'      - ["{code}", "{char}"] # {cp}{note}')
     print('      - ["-", ""]')
-    print('      - [" ", ""]')
 
 
 def main():
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     group = ap.add_mutually_exclusive_group()
-    group.add_argument("--write", action="store_true", help="write encodings/chalish-ceremonial.json")
-    group.add_argument("--check", action="store_true", help="check encodings/chalish-ceremonial.json")
+    group.add_argument("--write", action="store_true", help="write the codage and the script encoding")
+    group.add_argument("--check", action="store_true", help="check the codage and the script encoding")
     args = ap.parse_args()
+    files = ((OUT, encoding_text()), (SCRIPT, script_text()))
     if args.check:
-        if not OUT.exists() or OUT.read_text(encoding="utf-8") != encoding_text():
-            print(f"{OUT.relative_to(ROOT)}: error: differs from ceremonial_encoding.json; run ceremonial_codage.py --write")
-            return 1
+        for path, want in files:
+            if not path.exists() or path.read_text(encoding="utf-8") != want:
+                print(f"{path.relative_to(ROOT)}: error: differs from ceremonial_encoding.json; run ceremonial_codage.py --write")
+                return 1
         return 0
     if args.write:
-        OUT.write_text(encoding_text(), encoding="utf-8")
+        for path, want in files:
+            path.write_text(want, encoding="utf-8")
         return 0
     note_rows()
     return 0

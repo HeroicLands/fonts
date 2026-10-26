@@ -1,6 +1,6 @@
 # helonika-bethuan encoding
 
-A third roman spelling for Helonika Book. Here `kh` is a single letter and `zh` two, a doubled `a`, `i` or `u` is a long vowel, `ei` is the single letter for the long vowel, and an acute vowel is the vowel followed by the accent mark.
+A third roman spelling for Helonika Book. Here `kh` is a single letter and `zh` two, a doubled `a`, `i` or `u` is a long vowel, `ei` is the single letter for the long vowel, and an acute vowel is the vowel followed by the accent mark. A capital letter is written in its majuscule.
 
 ## Fonts
 
@@ -26,13 +26,54 @@ text = encode.encode("helonika-bethuan", "khela")
 roman = encode.decode("helonika-bethuan", text)
 ```
 
+## Accepted characters
+
+This encoding accepts `a-z`, `A-Z`, `0-9`, `-`, `§`, `Á`, `Ä`, `É`, `Ë`, `Í`, `Ï`, `Ó`, `Ö`, `Ú`, `Ü`, `á`, `ä`, `é`, `ë`, `í`, `ï`, `ó`, `ö`, `ú`, `ü`, and the standard's marks and whitespace. Any other character is refused at its line and column.
+
+## Punctuation
+
+This encoding extends the [standard roman encoding](standard.md), which every language's roman shares. The table shows how this script writes each standard mark. A mark the script draws writes its glyph; a mark it does not draw writes the standard's invisible mark, the same in every encoding, so decoding restores it.
+
+| Mark | Meaning | Written | Code points |
+| --- | --- | --- | --- |
+| `.` | completes a declarative sentence, terminal | drawn, `󰍰` | U+F0370 |
+| `?` | completes an interrogative sentence, terminal | drawn, `󰍰` | U+F0370 U+E011F U+E01EF |
+| `!` | completes an imperative sentence, terminal | drawn, `󰍰` | U+F0370 U+E0101 U+E01EF |
+| `!!` | completes an exclamative sentence, terminal | drawn, `󰍰` | U+F0370 U+E0101 U+E0101 U+E01EF |
+| `,` | a pause that does not end the sentence | invisible | U+E010C |
+| `«` | opens a quotation of one or more terminated sentences | invisible | U+E015B U+E0141 U+E0142 U+E015D |
+| `»` | closes a quotation opened by `«` | invisible | U+E015B U+E0142 U+E0142 U+E015D |
+| `‹` | opens a quotation nested inside `«` `»`, alternating with them at any depth | invisible | U+E015B U+E0112 U+E0110 U+E0113 U+E0119 U+E015D |
+| `›` | closes a quotation opened by `‹` | invisible | U+E015B U+E0112 U+E0110 U+E0113 U+E0141 U+E015D |
+| `—` | interrupts a sentence, non-terminal, immediately followed by a terminal | invisible | U+E015B U+E0112 U+E0110 U+E0111 U+E0114 U+E015D |
+| `…` | abandons a sentence, non-terminal and immediately followed by a terminal; at a sentence's start, resumes one | invisible | U+E015B U+E0112 U+E0110 U+E0112 U+E0116 U+E015D |
+| `/` | verse line end | invisible | U+E010F |
+| `//` | verse stanza end | invisible | U+E010F U+E010F |
+| `***` | verse canto end | invisible | U+E010A U+E010A U+E010A |
+| `{` | opens a name | invisible | U+E015B U+E0117 U+E0142 U+E015D |
+| `}` | closes a name opened by `{` | invisible | U+E015D |
+
+## Whitespace
+
+In roman, outside `⟦` and `⟧`, any run of spaces, tabs and line breaks is one word separator. It is not a character of the script, and no row matches it.
+
+This script spaces its words, so its `separator` is one space, U+0020: a separator writes one space, and decoding writes one space.
+
+The separator is normalized on input, not preserved: `a  b` and `a\n\tb` encode as `a b` does, and decoding writes a single space.
+
+A character that no row matches is refused: `encode.py` reports it with its line and column, and writes nothing.
+
+## Literal spans
+
+`⟦` and `⟧` enclose character names, as the [standard](standard.md) describes: `⟦LATIN_SMALL_LETTER_A_WITH_ACUTE⟧` writes `á`. Whitespace between names only separates them.
+
 ## Vowels and conditions
 
 The vowels are `AEIOUaeiouÁÄÉËÍÏÓÖÚÜáäéëíïóöúü`.
 
 ## Rows
 
-The rows are in the order the file states them.
+The rows are in the order the file states them. A row here for a standard mark replaces the standard's row for it.
 
 | Roman | Character | Code points |
 | --- | --- | --- |
@@ -95,22 +136,15 @@ The rows are in the order the file states them.
 | `w` | `󰍅󠅗󠇯` | U+F0345 U+E0157 U+E01EF |
 | `W` | `󰌕󠄷󠇯` | U+F0315 U+E0137 U+E01EF |
 | `th` | `󰍄` | U+F0344 |
-| `tH` | `󰍄󠅔󠄨󠇯` | U+F0344 U+E0154 U+E0128 U+E01EF |
 | `Th` | `󰌔` | U+F0314 |
-| `TH` | `󰌔󠄴󠄨󠇯` | U+F0314 U+E0134 U+E0128 U+E01EF |
 | `ph` | `󰌵󠅐󠅈󠇯` | U+F0335 U+E0150 U+E0148 U+E01EF |
-| `pH` | `󰌵󠅐󠄨󠇯` | U+F0335 U+E0150 U+E0128 U+E01EF |
 | `Ph` | `󰌅󠄰󠅈󠇯` | U+F0305 U+E0130 U+E0148 U+E01EF |
-| `PH` | `󰌅󠄰󠄨󠇯` | U+F0305 U+E0130 U+E0128 U+E01EF |
 | `ch` | `󰍃󰍂󰌷󠅃󠅈󠇯` | U+F0343 U+F0342 U+F0337 U+E0143 U+E0148 U+E01EF |
-| `cH` | `󰍃󰍂󰌷󠅃󠄨󠇯` | U+F0343 U+F0342 U+F0337 U+E0143 U+E0128 U+E01EF |
 | `Ch` | `󰌓󰍂󰌷󠄣󠅈󠇯` | U+F0313 U+F0342 U+F0337 U+E0123 U+E0148 U+E01EF |
-| `CH` | `󰌓󰍂󰌷󠄣󠄨󠇯` | U+F0313 U+F0342 U+F0337 U+E0123 U+E0128 U+E01EF |
-| `. ` | `󰍰` | U+F0370 |
-| `.` | `󰍰󠄎󠇯` | U+F0370 U+E010E U+E01EF |
-| `,` | `󠄌` | U+E010C |
-| `—` | `󠅛󠄒󠄐󠄑󠄔󠅝` | U+E015B U+E0112 U+E0110 U+E0111 U+E0114 U+E015D |
-| `–` | `󠅛󠄒󠄐󠄑󠄓󠅝` | U+E015B U+E0112 U+E0110 U+E0111 U+E0113 U+E015D |
+| `.` | `󰍰` | U+F0370 |
+| `?` | `󰍰󠄟󠇯` | U+F0370 U+E011F U+E01EF |
+| `!` | `󰍰󠄁󠇯` | U+F0370 U+E0101 U+E01EF |
+| `!!` | `󰍰󠄁󠄁󠇯` | U+F0370 U+E0101 U+E0101 U+E01EF |
 | `-` | `󠄍` | U+E010D |
 | `0` | `󰍠` | U+F0360 |
 | `1` | `󰍡` | U+F0361 |
@@ -133,53 +167,29 @@ The rows are in the order the file states them.
 | `Ó` | `󰌎󰍸` | U+F030E U+F0378 |
 | `Ú` | `󰌕󰍸` | U+F0315 U+F0378 |
 | `kh` | `󰍈` | U+F0348 |
-| `kH` | `󰍈󠅋󠄨󠇯` | U+F0348 U+E014B U+E0128 U+E01EF |
 | `Kh` | `󰌘` | U+F0318 |
-| `KH` | `󰌘󠄫󠄨󠇯` | U+F0318 U+E012B U+E0128 U+E01EF |
 | `aa` | `󰍐` | U+F0350 |
-| `aA` | `󰍐󠅁󠄡󠇯` | U+F0350 U+E0141 U+E0121 U+E01EF |
 | `Aa` | `󰌠` | U+F0320 |
-| `AA` | `󰌠󠄡󠄡󠇯` | U+F0320 U+E0121 U+E0121 U+E01EF |
 | `ii` | `󰍑` | U+F0351 |
-| `iI` | `󰍑󠅉󠄩󠇯` | U+F0351 U+E0149 U+E0129 U+E01EF |
 | `Ii` | `󰌡` | U+F0321 |
-| `II` | `󰌡󠄩󠄩󠇯` | U+F0321 U+E0129 U+E0129 U+E01EF |
 | `uu` | `󰍒` | U+F0352 |
-| `uU` | `󰍒󠅕󠄵󠇯` | U+F0352 U+E0155 U+E0135 U+E01EF |
 | `Uu` | `󰌢` | U+F0322 |
-| `UU` | `󰌢󠄵󠄵󠇯` | U+F0322 U+E0135 U+E0135 U+E01EF |
 | `ei` | `󰌴` | U+F0334 |
-| `eI` | `󰌴󠅅󠄩󠇯` | U+F0334 U+E0145 U+E0129 U+E01EF |
 | `Ei` | `󰌄` | U+F0304 |
-| `EI` | `󰌄󠄥󠄩󠇯` | U+F0304 U+E0125 U+E0129 U+E01EF |
 | `eí` | `󰌴󰍸` | U+F0334 U+F0378 |
-| `eÍ` | `󰌴󰍸󠅅󠅛󠅃󠅄󠅝󠇯` | U+F0334 U+F0378 U+E0145 U+E015B U+E0143 U+E0144 U+E015D U+E01EF |
 | `Eí` | `󰌄󰍸` | U+F0304 U+F0378 |
-| `EÍ` | `󰌄󰍸󠄥󠅛󠅃󠅄󠅝󠇯` | U+F0304 U+F0378 U+E0125 U+E015B U+E0143 U+E0144 U+E015D U+E01EF |
 | `éi` | `󰌴󰍸󠅛󠅅󠄙󠅝󠅉󠇯` | U+F0334 U+F0378 U+E015B U+E0145 U+E0119 U+E015D U+E0149 U+E01EF |
-| `éI` | `󰌴󰍸󠅛󠅅󠄙󠅝󠄩󠇯` | U+F0334 U+F0378 U+E015B U+E0145 U+E0119 U+E015D U+E0129 U+E01EF |
 | `Éi` | `󰌄󰍸󠅛󠅃󠄙󠅝󠅉󠇯` | U+F0304 U+F0378 U+E015B U+E0143 U+E0119 U+E015D U+E0149 U+E01EF |
-| `ÉI` | `󰌄󰍸󠅛󠅃󠄙󠅝󠄩󠇯` | U+F0304 U+F0378 U+E015B U+E0143 U+E0119 U+E015D U+E0129 U+E01EF |
 | `éí` | `󰌴󰍸󠅛󠅅󠄙󠅝󠅛󠅅󠅄󠅝󠇯` | U+F0334 U+F0378 U+E015B U+E0145 U+E0119 U+E015D U+E015B U+E0145 U+E0144 U+E015D U+E01EF |
-| `éÍ` | `󰌴󰍸󠅛󠅅󠄙󠅝󠅛󠅃󠅄󠅝󠇯` | U+F0334 U+F0378 U+E015B U+E0145 U+E0119 U+E015D U+E015B U+E0143 U+E0144 U+E015D U+E01EF |
 | `Éí` | `󰌄󰍸󠅛󠅃󠄙󠅝󠅛󠅅󠅄󠅝󠇯` | U+F0304 U+F0378 U+E015B U+E0143 U+E0119 U+E015D U+E015B U+E0145 U+E0144 U+E015D U+E01EF |
-| `ÉÍ` | `󰌄󰍸󠅛󠅃󠄙󠅝󠅛󠅃󠅄󠅝󠇯` | U+F0304 U+F0378 U+E015B U+E0143 U+E0119 U+E015D U+E015B U+E0143 U+E0144 U+E015D U+E01EF |
 | `ou` | `󰌿` | U+F033F |
-| `oU` | `󰌿󠅏󠄵󠇯` | U+F033F U+E014F U+E0135 U+E01EF |
 | `Ou` | `󰌏` | U+F030F |
-| `OU` | `󰌏󠄯󠄵󠇯` | U+F030F U+E012F U+E0135 U+E01EF |
 | `oú` | `󰌿󰍸` | U+F033F U+F0378 |
-| `oÚ` | `󰌿󰍸󠅏󠅛󠅄󠅁󠅝󠇯` | U+F033F U+F0378 U+E014F U+E015B U+E0144 U+E0141 U+E015D U+E01EF |
 | `Oú` | `󰌏󰍸` | U+F030F U+F0378 |
-| `OÚ` | `󰌏󰍸󠄯󠅛󠅄󠅁󠅝󠇯` | U+F030F U+F0378 U+E012F U+E015B U+E0144 U+E0141 U+E015D U+E01EF |
 | `óu` | `󰌿󰍸󠅛󠅆󠄓󠅝󠅕󠇯` | U+F033F U+F0378 U+E015B U+E0146 U+E0113 U+E015D U+E0155 U+E01EF |
-| `óU` | `󰌿󰍸󠅛󠅆󠄓󠅝󠄵󠇯` | U+F033F U+F0378 U+E015B U+E0146 U+E0113 U+E015D U+E0135 U+E01EF |
 | `Óu` | `󰌏󰍸󠅛󠅄󠄓󠅝󠅕󠇯` | U+F030F U+F0378 U+E015B U+E0144 U+E0113 U+E015D U+E0155 U+E01EF |
-| `ÓU` | `󰌏󰍸󠅛󠅄󠄓󠅝󠄵󠇯` | U+F030F U+F0378 U+E015B U+E0144 U+E0113 U+E015D U+E0135 U+E01EF |
 | `óú` | `󰌿󰍸󠅛󠅆󠄓󠅝󠅛󠅆󠅁󠅝󠇯` | U+F033F U+F0378 U+E015B U+E0146 U+E0113 U+E015D U+E015B U+E0146 U+E0141 U+E015D U+E01EF |
-| `óÚ` | `󰌿󰍸󠅛󠅆󠄓󠅝󠅛󠅄󠅁󠅝󠇯` | U+F033F U+F0378 U+E015B U+E0146 U+E0113 U+E015D U+E015B U+E0144 U+E0141 U+E015D U+E01EF |
 | `Óú` | `󰌏󰍸󠅛󠅄󠄓󠅝󠅛󠅆󠅁󠅝󠇯` | U+F030F U+F0378 U+E015B U+E0144 U+E0113 U+E015D U+E015B U+E0146 U+E0141 U+E015D U+E01EF |
-| `ÓÚ` | `󰌏󰍸󠅛󠅄󠄓󠅝󠅛󠅄󠅁󠅝󠇯` | U+F030F U+F0378 U+E015B U+E0144 U+E0113 U+E015D U+E015B U+E0144 U+E0141 U+E015D U+E01EF |
 | `§` | `󰍱` | U+F0371 |
 
 ## Round trip

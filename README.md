@@ -46,7 +46,7 @@ Choose the font by its name, such as `Pirzath Carved`, in the font box of your w
 
 ## Type in a script
 
-Eight of the fonts have a keyboard layout that types by sound. You press the key for the sound, and the layout types the script's character for it: `t` types the script's t, Option+T types its th, and Shift makes a capital. Each layout is a standard US keyboard underneath, so the roman letters are the ones printed on the keys. **Option** is the Option key on a Mac and the **AltGr** key on Windows and Linux (the right Alt key; on a keyboard without one, hold Ctrl and Alt together).
+Eight of the fonts have a keyboard layout that types by sound. You press the key for the sound, and the layout types the script's character for it: `t` types the script's t and Option+T types its th. Each layout is a standard US keyboard underneath, so the roman letters are the ones printed on the keys. **Option** is the Option key on a Mac and the **AltGr** key on Windows and Linux (the right Alt key; on a keyboard without one, hold Ctrl and Alt together).
 
 Every layout has a printable cheatsheet with a picture of the keyboard and a table of every key:
 
@@ -68,6 +68,12 @@ Every layout has a printable cheatsheet with a picture of the keyboard and a tab
 - **Windows.** Each layout is a source file, `keyboards/windows/<layout>.klc`, for Microsoft Keyboard Layout Creator, which builds the installer on Windows only. Install that free tool, open the `.klc` file in it, choose Project, then Build DLL and Setup Package, and run the `setup.exe` it writes. Then add the layout under Settings, Time & language, Language & region, English (United States), Keyboard. Switch layouts with Windows key+Space.
 - **Linux.** Each layout is an XKB symbols file, `keyboards/linux/hl_<layout>`. Copy the files to `~/.config/xkb/symbols/`. Under X11 run `setxkbmap -I$HOME/.config/xkb -layout hl_pirzath` (substitute the layout); a desktop that reads `~/.config/xkb` lists them as custom layouts. `setxkbmap us` returns to the usual layout.
 - **Emacs.** `keyboards/emacs/heroiclands-<layout>.el` is an input method. Put the folder on `load-path`, evaluate `(require 'heroiclands-pirzath)`, then run `M-x set-input-method` and name `heroiclands-pirzath`. Emacs has no Option key, so Option+T is typed as a backslash and then `t`.
+
+Every layout types the literal markers `⟦` and `⟧` on Option+Shift+W and Option+Shift+L. If a program or platform has no such key, type them by code point (U+27E6 and U+27E7):
+
+- **macOS:** open the Character Viewer (Edit, Emoji & Symbols), search for `27E6`, and double-click the character; or add the Unicode Hex Input source and type Option+27E6; or add a Text Replacement in System Settings, Keyboard, such as `;[[` for `⟦`.
+- **Windows:** press Win+. (period) for the emoji and symbol panel and search for the bracket; or use WinCompose, or Word's Alt+X after typing `27E6`.
+- **Linux:** press Ctrl+Shift+U, type `27e6`, and press Enter; or use a compose key sequence where your compose table has one.
 
 A few sounds are written with more characters than a Windows key (four UTF-16 code units) or a Linux key (one character) can hold. Those keys type nothing on that platform, and each cheatsheet lists them. macOS and Emacs type everything.
 
@@ -116,17 +122,26 @@ python3 encode.py --list
 
 **Encoding and decoding are exact inverses.** Decoding encoded roman gives the roman back unchanged. Encoding decoded text gives the text back unchanged.
 
+**Every encoding shares one roman punctuation.** The [standard roman encoding](encodings/standard.md), `encodings/standard.json`, holds the marks every language's roman uses: `.` `?` `!` `!!` and `,` for the sentence and the pause, `«` `»` and `‹` `›` for quotation, `—` and `…`, `/`, `//` and `***` for verse line, stanza and canto ends, and `{` `}` around a name. Whitespace is not a mark: outside `⟦` and `⟧`, any run of spaces, tabs and line breaks is one word separator, and each encoding states in `separator` what its script writes for it (one space, or `""` for a script with no spaces). Decoding writes a single space, so the roman's whitespace is normalized, not preserved. Each encoding extends it with `"extends": "standard"` and adds its script's letters and numerals. Roman is typed in lowercase, and a caseless script accepts only lowercase: its encoding refuses a capital letter. Semaron Kuriale and Helónika are the two scripts with case, and their encodings write a capital as its majuscule with no mark for case, so a pair such as `TH` draws the majuscules of its two letters. A codage, which names each sign by a code, keeps its codes in capitals. A mark the script draws writes its glyph: Qalezu's `/` and `//` are its verse dot, Semaron draws all five sentence marks as its one point, and Pirzath, Thuravark, Helónika, Qalezu and Vedyakshara draw `.` `?` `!` and `!!` as their one sentence end. Marks that share a glyph are told apart by invisible marks. A mark the script does not draw writes invisible marks, the same sequence in every encoding, so decoding restores it.
+
+**Every encoding writes exact characters between `⟦` and `⟧`.** The literal immutable markers force one character the encoder would not choose, such as a homophone. Without a `codage`, the codes are character names in capitals with spaces written `_`, separated by whitespace: `⟦LATIN_SMALL_LETTER_A_WITH_ACUTE LATIN_SMALL_LETTER_I LATIN_SMALL_LETTER_M⟧` writes `áim`. Whitespace inside the markers is ignored: any amount of space, newline or tab between codes only separates them and is not saved, and decoding writes single spaces. An encoding that states `"codage": "zethu-mdc"` reads the span in that codage's own codes and notation, such as Zethu's joiners, and nothing else: a standard mark such as `,` inside is an error at its position, and a code outside the markers is ordinary roman. A codage is a file of kind `codage` in `encodings/`, reached only through the encoding that states it (`zethu-mdc` through `zethu`, `chalish-common` through `chalish-pilam`). A font with no encoding, such as Teng Chou, accepts nothing outside `⟦…⟧`: `encode.py --font teng-chou` writes character names between the markers and refuses everything else. Zethu and Teng Chou set their characters directly beside each other, so their separator writes nothing and their output holds no U+0020; Zethu's decoding gives the `⟦…⟧` codage alone, Teng Chou's puts a space after each character's word, and Ch'alish keeps its space as one empty cell. The markers are written as the same invisible marks in every encoding, and decoding gives the span back with its codes. A name that names no character, an unmatched marker and a marker inside a span are refused with the line and column.
+
+**A character outside the encoding is refused.** `encode.py` stops with `file:line:column: error:` and the character, and exits non-zero, rather than passing it through. Decoding refuses a code point that no row writes in the same way.
+
 **Some encodings carry sounds the script does not write.** A setting may write a spoken language in a script that lacks some of its sounds, as Qalezu writes no vowels. Its encoding can carry such a sound as invisible characters: the script shows nothing, and decoding reads the sound back. The encodings here do this. A word encoded from its full spelling decodes to that same spelling, so it still matches the word lists and name lists that record it with vowels.
 
 The encoding itself needs no vowels. Roman written with consonants only encodes to the same visible text and decodes back to consonants only, but it is then a different spelling from the one a word list holds. `Khelathi` and `Khlth` look alike in Qalezu, and each decodes to itself. Text typed straight into a script has no invisible characters, so Qalezu typed on a keyboard decodes to roman with no vowels: that is what the text holds.
 
-`--encoding` takes an encoding's name, or the path of an encoding file. `--face SLUG` applies the rows of one face, `--codepoints` prints `U+XXXX` values, and the text may come from standard input. From Python, `import encode` gives `encode.encode(name, text)` and `encode.decode(name, text)`.
+`--encoding` takes an encoding's name, or the path of an encoding file; `--font SLUG` takes a font's slug instead, and a font with no encoding accepts only text between `⟦` and `⟧`. `--face SLUG` applies the rows of one face, `--codepoints` prints `U+XXXX` values, and the text may come from standard input or, with `--file`, from a file. From Python, `import encode` gives `encode.encode(name, text)` and `encode.decode(name, text)`.
 
-Each encoding has a page that lists its fonts, its rows and its conditions:
+Each encoding has a page that lists its fonts, how it writes each standard mark, its rows and its conditions:
 
+- [standard](encodings/standard.md), the punctuation every encoding extends
 - [aelwythi-semaron](encodings/aelwythi-semaron.md)
-- [chalish-ceremonial](encodings/chalish-ceremonial.md)
-- [chalish-common](encodings/chalish-common.md)
+- [chalish-ceremonial](encodings/chalish-ceremonial.md), the Ch'alish ceremonial codage
+- [chalish-common](encodings/chalish-common.md), the Ch'alish codage
+- [chalish-pilam](encodings/chalish-pilam.md)
+- [chalish-pilam-ceremonial](encodings/chalish-pilam-ceremonial.md)
 - [helonika](encodings/helonika.md)
 - [helonika-bethuan](encodings/helonika-bethuan.md)
 - [helonika-bizarian](encodings/helonika-bizarian.md)
@@ -137,9 +152,10 @@ Each encoding has a page that lists its fonts, its rows and its conditions:
 - [vedyakshara](encodings/vedyakshara.md)
 - [veldikko](encodings/veldikko.md)
 - [veldikko-aelendi](encodings/veldikko-aelendi.md)
-- [zethu-mdc](encodings/zethu-mdc.md)
+- [zethu](encodings/zethu.md)
+- [zethu-mdc](encodings/zethu-mdc.md), the Zethu codage
 
-`encodings/vectors.json` lists roman and Unicode pairs for every encoding, so that an implementation in another language can test itself against the same results.
+`encodings/vectors.json` lists roman and Unicode pairs for every encoding, and the texts each one refuses with the line and column of the refusal, so that an implementation in another language can test itself against the same results.
 
 ## Licence
 

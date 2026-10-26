@@ -707,6 +707,10 @@ must still be written in strokes.
 Across the 213 characters the mean is 3.4 long, 4.8 short and 0.5 dabs; across
 the syllabary, 2.5 long, 0.9 short and under 0.1 dabs.
 
+## Spaces
+
+Teng Chou writes no spaces: its characters are set directly beside each other, with nothing between them. In roman, a run of whitespace is one word separator, and Teng Chou writes nothing for it, so its separator is empty and no output holds U+0020. Decoding puts a space after each character's word, since one character is a word or a phrase.
+
 ## The tally of five
 
 Clerks, temple scribes and quartermasters keep a running count with the tally:

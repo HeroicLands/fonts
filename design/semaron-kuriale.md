@@ -98,20 +98,21 @@ default-ignorables map to an empty glyph and draw nothing.
 A note writes Vylari in roman, and the `semaron` encoding turns the
 spelling into these code points:
 
-| Spelled                                    | Written                                                                   |
-| ------------------------------------------ | ------------------------------------------------------------------------- |
-| `A`, `a`                                   | The majuscule, the minuscule; case follows roman case.                    |
-| `th`, `Th`, `TH`                           | The one letter _th_, or its majuscule when the first letter is capital.   |
-| `ch`                                       | The letters _t_, _s_ and _h_, because the script has no _c_.              |
-| `aa`, `ii`, `uu`                           | The long vowel; the first letter's case picks the majuscule.              |
-| `ee`, `oo`                                 | Two plain vowels.                                                         |
-| `á é í ó ú`, `ë`                           | The plain vowel: Semaron writes no stress.                                |
-| `q`                                        | The letter _k_.                                                           |
-| `y` before a vowel                         | The glide _y_. Anywhere else it is the vowel _i_.                         |
-| `'`, `’`, `` ` ``, `-`                     | The catch, set on the letter before it. With no letter before, the box.   |
-| `.` `,` `;` `:` `—` `–`                    | The point.                                                                |
-| `0`–`9`                                    | The numerals.                                                             |
-| `c`, `x`, `"`, `“ ”`, `« »`, `?`, `!`, `¡` | Passed through, so the face prints the box, as for every other character. |
+| Spelled                            | Written                                                                 |
+| ---------------------------------- | ----------------------------------------------------------------------- |
+| `a`                                | The minuscule. A capital `A` is the majuscule, with no mark for case.   |
+| `th`                               | The one letter _th_.                                                    |
+| `ch`                               | The letters _t_, _s_ and _h_, because the script has no _c_.            |
+| `aa`, `ii`, `uu`                   | The long vowel.                                                         |
+| `ee`, `oo`                         | Two plain vowels.                                                       |
+| `á é í ó ú`, `ë`                   | The plain vowel: Semaron writes no stress.                              |
+| `q`                                | The letter _k_.                                                         |
+| `y` before a vowel                 | The glide _y_. Anywhere else it is the vowel _i_.                       |
+| `'`, `’`, `` ` ``, `-`             | The catch, set on the letter before it. With no letter before, the box. |
+| `.` `?` `!` `!!` `,`               | The point, each told apart from the others by invisible marks.          |
+| `« »` `‹ ›` `—` `…` `/` `//` `{ }` | Nothing: invisible marks alone, so decoding restores them.              |
+| `0`–`9`                            | The numerals.                                                           |
+| `c`, `x`, and any other character  | Refused by the encoding; set in the face, it prints the box.            |
 
 ## The checks
 

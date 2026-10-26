@@ -103,14 +103,15 @@ Base ten, place order, ten independent signs from the counting-house tradition, 
 
 ## The punctuation
 
-| Mark  | Role          | Shape                                                |
-| ----- | ------------- | ---------------------------------------------------- |
-| `.`   | sentence end  | a short stroke on the line, hooking down at its end  |
-| `·`   | verse end     | a heavy reed-formed dot high in the character space  |
-| `,`   | pause         | a short low dash                                     |
-| space | word division | 200 units, a gap several times the gap between signs |
+| Mark  | Role          | Shape                                                    |
+| ----- | ------------- | -------------------------------------------------------- |
+| `.`   | sentence end  | a short stroke on the line, hooking down at its end      |
+| `/`   | verse end     | a heavy reed-formed dot high in the character space      |
+| `//`  | stanza end    | the verse-end dot, since a stanza end is also a line end |
+| `,`   | pause         | a short low dash                                         |
+| space | word division | 200 units, a gap several times the gap between signs     |
 
-The low sentence-end stroke and the high verse-end dot are separate punctuation. Roman spelling uses U+00B7 MIDDLE DOT (`·`) for the verse end; a physical line break alone does not add it. There is no hyphen, exclamation mark, question mark, semicolon, colon or quotation mark. A hyphen between the parts of a name is written as the space between two words.
+The low sentence-end stroke and the high verse-end dot are separate punctuation. Roman spelling writes the verse end as `/`, the standard verse line end, and a verse passage supplies one at the end of every line; the stanza end `//` draws the same dot. Every terminal, `.`, `?`, `!` and `!!`, draws the sentence-end stroke. Where two marks draw one glyph, the later adds invisible marks so that decoding tells them apart. There is no hyphen, semicolon, colon or quotation mark. A hyphen between the parts of a name is written as the space between two words.
 
 ## Building and checking
 

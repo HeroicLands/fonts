@@ -21,7 +21,10 @@ accent as the box wherever it follows a glyph that is not a vowel; standing firs
 in a run, with nothing before it, it is drawn as itself. ``mark`` sets the accent
 over the middle of the vowel before it: over a minuscule as it is drawn, and over a
 capital raised by the difference between the cap height and the body, and over a
-long vowel raised again, clear of the length bar.
+long vowel raised again, clear of the length bar. ``kern`` takes the advance of a space
+that directly follows the raised dot, or follows it past the invisible characters that mark `?` and `!`;
+the dot's own advance already holds a space, so the dot sits close to the next word, and the
+text keeps the dot and the space.
 
 **Metrics.** The letters are drawn at the font's size: the minuscule body is the
 shared x-height and the capitals stand at the shared cap height. The line metrics
@@ -279,7 +282,14 @@ def features(enc: dict, middles: dict) -> str:
     for v in VOWELS:
         rise = (ACCENT_RISE if v[0].isupper() else 0) + (LENGTH_CLEAR if v.endswith(".macron") else 0)
         lines.append(f"  pos base {v} <anchor {round(middles[v])} {rise}> mark @TOP;")
-    lines += ["} mark;", ""]
+    lines += [
+        "} mark;",
+        "",
+        "feature kern {",
+        *(f"  pos raisedDot{' ignorable.sub' * n} space' {-round(S.SPACE)};" for n in range(4)),
+        "} kern;",
+        "",
+    ]
     return "\n".join(lines)
 
 

@@ -34,14 +34,14 @@ from strokes_sheet import BLUE, FAINT, GREY, INK, LATIN_FONT, PAPER, RED, RULE, 
 CARVED_FONT = ROOT / "fonts/PirzathCarved-Regular.ttf"
 KHAZARI = "assets/content/Skills/Languages/Khazari.md"
 SAMPLES = [
-    "Thiz durákh tanv.",
-    "Gazn.Gazn durákh tanv.",
-    "Dalk.Bant.Tanv-guráz.",
-    "Vog narv dulák",
-    "Gaz bunát, bant durákh.",
-    "Ves mulágh nuv gazn zef.",
-    "Gaz thumár, ves zummád.",
-    "Galdan bunát, \"Dalík bant, maríg bant\".",
+    "thiz durákh tanv.",
+    "gazn.gazn durákh tanv.",
+    "dalk.bant.tanv-guráz.",
+    "vog narv dulák",
+    "gaz bunát, bant durákh.",
+    "ves mulágh nuv gazn zef.",
+    "gaz thumár, ves zummád.",
+    "galdan bunát, \"dalík bant, maríg bant\".",
 ]
 LONG_OF = {"a": "a", "e": "e", "i": "i", "o": "o", "u": "u"}
 

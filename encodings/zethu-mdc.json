@@ -1,5 +1,6 @@
 {
     "name": "zethu-mdc",
+    "kind": "codage",
     "fonts": ["khelathi-zethu-glyphs"],
     "rows": [
         ["SERVANT", "𞩁"],
@@ -356,7 +357,6 @@
         [")", "𞱨"],
         ["<", "𞱬"],
         [">", "𞱭"],
-        ["-", "\uDB40\uDD0D"],
-        [" ", " "]
+        ["-", "\uDB40\uDD0D"]
     ]
 }

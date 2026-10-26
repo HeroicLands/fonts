@@ -12,23 +12,23 @@
     {"latin": "lonku", "glyphs": ["l", "vowel.o", "ng", "k", "vowel.u"]},
     {"latin": "leësy", "glyphs": ["l", "vowel.edieresis", "long", "s", "vowel.y"]},
     {"latin": "huoma", "glyphs": ["h", "vowel.u", "vowel.o", "m", "vowel.a"]},
-    {"latin": "Kalpitti", "glyphs": ["k", "vowel.a", "l", "p", "vowel.i", "t", "bar", "vowel.i"]},
+    {"latin": "kalpitti", "glyphs": ["k", "vowel.a", "l", "p", "vowel.i", "t", "bar", "vowel.i"]},
     {"latin": "seëlis", "glyphs": ["s", "vowel.edieresis", "long", "l", "vowel.i", "s"]},
     {"latin": "eëvi", "glyphs": ["carrier", "vowel.edieresis", "long", "v", "vowel.i"]},
     {"latin": "aulira", "glyphs": ["carrier", "vowel.a", "vowel.u", "l", "vowel.i", "r", "vowel.a"]},
-    {"latin": "Sinalo", "glyphs": ["s", "vowel.i", "n", "vowel.a", "l", "vowel.o"]},
+    {"latin": "sinalo", "glyphs": ["s", "vowel.i", "n", "vowel.a", "l", "vowel.o"]},
     {"latin": "naë", "glyphs": ["n", "vowel.a", "carrier", "vowel.edieresis"]},
     {"latin": "olde", "glyphs": ["carrier", "vowel.o", "l", "d", "vowel.e"]},
-    {"latin": "Luuro nuuva", "glyphs": ["l", "vowel.u", "long", "r", "vowel.o", "space", "n", "vowel.u", "long", "v", "vowel.a"]},
+    {"latin": "luuro nuuva", "glyphs": ["l", "vowel.u", "long", "r", "vowel.o", "space", "n", "vowel.u", "long", "v", "vowel.a"]},
     {"latin": "nuuva-nu", "glyphs": ["n", "vowel.u", "long", "v", "vowel.a", "space", "n", "vowel.u"]},
     {"latin": "-sto", "glyphs": ["s", "t", "vowel.o"]},
     {"latin": "a", "glyphs": ["carrier", "vowel.a"]}
   ],
-  "unmappable": [
-    {"latin": "beth", "letter": "b"},
-    {"latin": "gora", "letter": "g"},
-    {"latin": "fëa", "letter": "f"},
-    {"latin": "táli", "letter": "á"},
-    {"latin": "luuro.", "letter": "."}
+  "written": [
+    {"latin": "beth", "codepoints": ["U+1ED50", "U+E0142", "U+E01EF", "U+1ED73", "U+1ED53", "U+1ED59"]},
+    {"latin": "gora", "codepoints": ["U+1ED58", "U+E0147", "U+E01EF", "U+1ED71", "U+1ED5C", "U+1ED70"]},
+    {"latin": "fëa", "codepoints": ["U+1ED51", "U+E0146", "U+E01EF", "U+1ED76", "U+1ED5D", "U+1ED70", "U+E015B", "U+E0145", "U+E0142", "U+E015D", "U+E0141", "U+E01EF"]},
+    {"latin": "táli", "codepoints": ["U+1ED53", "U+1ED70", "U+1ED7B", "U+E015B", "U+E0145", "U+E0111", "U+E015D", "U+E01EF", "U+1ED5B", "U+1ED74"]},
+    {"latin": "luuro.", "codepoints": ["U+1ED5B", "U+1ED72", "U+1ED78", "U+1ED5C", "U+1ED71", "U+E010E"]}
   ]
 }

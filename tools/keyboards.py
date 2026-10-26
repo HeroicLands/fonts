@@ -58,6 +58,8 @@ BUNDLE_ID = "org.heroiclands.keyboardlayout"
 
 # The scripts typed by sound, in the order of sounds.json. ``chart`` is the charts/ folder
 # whose glyph images the cheatsheet shows.
+# The scripts with case; every other layout is caseless and types nothing on a capital's key.
+CASED = {"semaron", "helonika"}
 SCRIPTS = [
     {"key": "semaron", "title": "Semaron", "faces": ["Semaron Kuriale"], "chart": "semaron-kuriale",
      "layout": "HL Semaron", "klc": "hlsemaro", "id": -26101},
@@ -466,7 +468,7 @@ def emacs_method(script: dict, keys: dict[str, list[int]]) -> str:
         "Each key types its sound in the script, and a key whose sound the script",
         "does not write types nothing. The characters of markup type themselves, and a",
         f"backslash is {kk.OPTION_PREFIX * 2}. Option has no Emacs key: Option+x is {kk.OPTION_PREFIX} and",
-        "then the key that x types, so Option+t (th) is \\t and Option+Shift+t (Th) is \\T.",
+        "then the key that x types, so Option+t (th) is \\t" + (" and Option+Shift+t (Th) is \\T." if script["key"] in CASED else "."),
         *[f"{sign['sign'].capitalize()} is {kk.quail_sequence(sign['key'])}." for sign in kk.signs() if sign["script"] == script["key"]],
         "The cheatsheet keyboards/index.md lists every key.",
     ]
@@ -613,8 +615,14 @@ def md_code(s: str) -> str:
     return f"`{s}`"
 
 
+# The literal immutable markers, which no script draws and so have no chart image.
+LITERALS = {0x27E6: "LEFT WHITE SQUARE BRACKET", 0x27E7: "RIGHT WHITE SQUARE BRACKET"}
+
+
 def glyph_cells(script: dict, cps: list[int], names: dict[int, str]) -> tuple[str, str, str]:
     """The glyph images, code points and character names of an output."""
+    if all(p in LITERALS for p in cps):
+        return " ".join(chr(p) for p in cps), code_list(cps), "; ".join(LITERALS[p] for p in cps)
     images = []
     for p in cps:
         path = ROOT / "charts" / script["chart"] / "glyphs" / f"U+{p:04X}.svg"
@@ -820,6 +828,9 @@ def cheat_svg(script: dict, keys: dict[str, list[int]], keymap: list[dict], face
                         left = qx + (qw - each * len(cps)) / 2
                         o.append(f'<g data-key="{html.escape(key)}">')
                         for i, cp in enumerate(cps):
+                            if cp in LITERALS:
+                                o.append(text(qx + qw / 2, qy + qh / 2 + 3, chr(cp), 22, MUTED, "middle"))
+                                continue
                             slot = len(cps) - 1 - i if backwards else i
                             gx, gy = left + slot * each, qy + 3
                             o.append(f'<g fill="{colour}" transform="translate({gx:.1f} {gy:.1f}) scale({scale:.4f})">{glyph_body(script, cp)}</g>')
@@ -860,8 +871,9 @@ def script_sheet(script: dict, keymap: list[dict], sounds: list[dict], names: di
         f"# {layout} cheatsheet",
         "",
         f"{layout} types {faces} by sound. It is a US keyboard that writes the {title} script: the key for a sound "
-        f"types that sound's {title} character, so `t` types the script's t, Option+T types its th, and Shift makes a "
-        "capital. You type the sounds of a word one after another, as you would in English.",
+        f"types that sound's {title} character, so `t` types the script's t and Option+T types its th"
+        + (", and Shift makes a capital. " if k in CASED else ". ")
+        + "You type the sounds of a word one after another, as you would in English.",
         "",
         f"![{layout} on an ANSI keyboard]({k}.png)",
         "",

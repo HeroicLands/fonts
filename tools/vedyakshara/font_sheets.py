@@ -33,10 +33,10 @@ X_HEIGHT = 0.5135
 LABEL_FONT = "/System/Library/Fonts/Supplemental/Arial Unicode.ttf"
 LATIN_FONT = Path.home() / "Library/Fonts/MonaspaceNeon-Regular.otf"
 
-WORDS = ["Vedyara", "dvarna", "Suryadvar", "Rajepur", "chendra", "karmija", "shroshta", "ikshva", "smiriti",
-         "Padmavali", "purnakala", "Adanshreni", "foshu", "aisu", "Ganoka-shalda"]
-PHRASES = ["Agarana dulipati, vandikana.", "Vedyaram tivayu, tarajisum.", "Vastuna karmata vanisa?",
-           "Rituta samarvana ushti.", "Bhaktir ushtami dulitara."]
+WORDS = ["vedyara", "dvarna", "suryadvar", "rajepur", "chendra", "karmija", "shroshta", "ikshva", "smiriti",
+         "padmavali", "purnakala", "adanshreni", "foshu", "aisu", "ganoka-shalda"]
+PHRASES = ["agarana dulipati, vandikana.", "vedyaram tivayu, tarajisum.", "vastuna karmata vanisa?",
+           "rituta samarvana ushti.", "bhaktir ushtami dulitara."]
 
 
 def font(size, path=LABEL_FONT):

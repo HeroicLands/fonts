@@ -1,5 +1,6 @@
 {
     "name": "chalish-common",
+    "kind": "codage",
     "fonts": ["chalish-pilam-common"],
     "rows": [
         ["n0", "󳀀"],
@@ -96,7 +97,6 @@
         ["HUMMINGBIRD", "󳁣"],
         ["SHIELD", "󳁤"],
         ["DEER", "󳁥"],
-        ["MASK", "󳁦"],
-        [" ", "\uDB40\uDD00"]
+        ["MASK", "󳁦"]
     ]
 }

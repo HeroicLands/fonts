@@ -71,9 +71,9 @@ OPEN, CLOSE = "\U000F0150", "\U000F0151"
 SS01 = {"ss01": True}
 BOUND = [("en", "e_n"), ("el", "e_l"), ("ar", "a_r"), ("al", "a_l"), ("ma", "m_a"),
          ("za", "z_a"), ("ka", "k_a"), ("ur", "u_r"), ("lm", "l_m"), ("lth", "l_th")]
-CROWNED = [("Thauras", "a god: the Keeper"), ("Marendas", "a god: the Keeper of the Book"),
-           ("Thiland Thauras", "a name of two words"), ("Árdavon", "a long vowel inside the crown")]
-DEDICATION = "Thelvaralon Marendas kalmethar"
+CROWNED = [("thauras", "a god: the Keeper"), ("marendas", "a god: the Keeper of the Book"),
+           ("thiland thauras", "a name of two words"), ("árdavon", "a long vowel inside the crown")]
+DEDICATION = "thelvaralon marendas kalmethar"
 
 # The fillers are staves Nordmal does not write.
 FILLERS = {"dh", "kh", "gh", "z", "w"}
@@ -82,10 +82,10 @@ FILLERS = {"dh", "kh", "gh", "z", "w"}
 # typed with spaces, which draw nothing, so the runes run on.
 LINES = [
     ("A saga, a praise-poem, a lament", "storald geldra hnura"),
-    ("A king, a high seat, a seat at the ting", "Hringsveld hofudsveld tingsveld"),
-    ("Women's names", "Hlarthrinna Hvalgselda Dvarnthira Druskinda"),
-    ("Men's names", "Dvalgmil Braldvir Draskmil Bruldthann"),
-    ("Clan names", "Althendik Braldaruk Druskidrok Dvulgumak"),
+    ("A king, a high seat, a seat at the ting", "hringsveld hofudsveld tingsveld"),
+    ("Women's names", "hlarthrinna hvalgselda dvarnthira druskinda"),
+    ("Men's names", "dvalgmil braldvir draskmil bruldthann"),
+    ("Clan names", "althendik braldaruk druskidrok dvulgumak"),
     ("A whale, a seal, the ice-edge, a rookery", "hvelm dvon skelfr dvonvangr"),
     ("Death, a grave, a pyre, a ship-burial", "svelth dulm eldsdulm skipsdulm"),
     ("The glide and the long vowels", "bjarn bjart jel járn skjálf hrúmverdir nágengir"),
@@ -262,8 +262,8 @@ def recension(r: Renderer, out: Path):
         y += int(size * 1.5) + 40
     # An open with no close.
     baseline = y + 40 + int(size * 0.98)
-    r.renderer.text(img, 60, baseline, OPEN + r.encoded.one("Thauras"), size, INK)
-    d.text((60, baseline + 30), "Thauras with the open mark and no close: a bare post, no frame", fill=GREY, font=lab)
+    r.renderer.text(img, 60, baseline, OPEN + r.encoded.one("thauras"), size, INK)
+    d.text((60, baseline + 30), "The name thauras with the open mark and no close: a bare post, no frame", fill=GREY, font=lab)
     y += int(size * 1.5) + 60
     # The bound runes.
     d.text((60, y), "The bound runes: each pair of staves, then the pair on one stem", fill=GREY, font=lab)

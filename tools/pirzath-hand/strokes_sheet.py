@@ -398,7 +398,7 @@ def sheet(out: Path):
                 d.text((x, oy), latin, fill=BLUE, font=font(px, LATIN_FONT), anchor="ls")
                 x += d.textlength(latin, font=font(px, LATIN_FONT)) + px * 0.6
             else:
-                cimg, base = carved_line(latin, px)
+                cimg, base = carved_line(latin.lower(), px)
                 img.paste(cimg, (int(x - 10), oy - base))
                 x += cimg.width + px * 0.6
             k = 0 if row == "latin" else 3

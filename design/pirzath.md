@@ -84,10 +84,10 @@ The marks between words are in the carver's vocabulary and look nothing like
 English punctuation. **Word division** is a drilled dot at mid height with room
 either side, typed with the space key; it stands lower than the length mark,
 which sits over a vowel. **The sentence end** is a short cut along the grain at
-mid height, typed `.`. **The imperative** is two such cuts stacked at mid
-height, typed `!`; Khazari verbs never change form, so writing is the only
-place an imperative can show. **The pause** inside a sentence is a short back
-cut at mid height, typed `,`; its slant keeps it apart from the sentence end,
+mid height, typed `.`, `?`, `!` or `!!`. **The imperative** is two such cuts
+stacked at mid height, set at the start of what it governs; Khazari verbs never
+change form, so writing is the only place an imperative can show. **The pause**
+inside a sentence is a short back cut at mid height, typed `,`; its slant keeps it apart from the sentence end,
 and it slants the other way from the dash. **The dash** of a built name is a
 short forward cut at mid height between the two parts. **A quotation** is
 enclosed by two marks built on g, the way « » enclose: the opening mark is g
@@ -197,10 +197,19 @@ their own.
 
 A note writes Pirzath in roman, and the `pirzath` encoding turns the
 spelling into these code points: an acute vowel is the vowel and the length
-mark, a capital is its letter, the digits `0` to `9` and `@ # $ % ^ &` are the
-numerals, and `“ ”`, `[ ]`, `<<` `>>` and a straight `"` are the quotation
-marks. The letter c outside _ch_, and every mark the script lacks, pass through
-the encoding and print the box.
+mark, the digits `0` to `9` and `@ # $ % ^ &` are the numerals, and the
+standard roman `« »` are the quotation marks, with `‹ ›`, a quotation nested
+inside one, drawn as the same pair. Every terminal, `.`, `?`, `!` and `!!`,
+draws the sentence end, and the three after `.` add invisible marks so that
+decoding tells them apart. The other standard marks the script does not draw,
+`—`, `…`, `/`, `//` and the braces `{ }` of a name, write invisible marks.
+Pirzath is caseless, so it accepts only lowercase roman and a capital is refused, and so are the letter c outside
+_ch_ and every other character outside the encoding.
+
+The encoding does not place the imperative sign. A Khazari imperative is
+marked in roman by its `!`, and the sign stands at the start of what the
+command governs; a language-aware encoder, which knows where that span begins,
+reads the `!` and sets the sign there.
 
 ## Checks
 
@@ -247,4 +256,4 @@ PATH=.venv/bin:$PATH ./build.sh      # fonts/PirzathCarved-Regular.ttf and .woff
 
 A handout, a shield device, a banner or a logo shows a whole word or a name in this script, never a single letter standing alone. Several letters, seen on their own, share their shape with runes that are used as hate symbols; inside a word they read as letters.
 
-The sentence end is always the last mark of a sentence, outside a closing quotation mark or any other mark: _Galdan bunát, "Dalík bant, maríg bant"._ The imperative mark (`!` or `¡`) stands at the start of what it governs: before the first word of the sentence, or just inside the opening quotation mark when it governs only the quotation. It is not a sentence end, and the sentence still closes with the sentence-end cut.
+The sentence end is always the last mark of a sentence, outside a closing quotation mark or any other mark: _Galdan bunát, "Dalík bant, maríg bant"._ The imperative sign stands at the start of what it governs: before the first word of the sentence, or just inside the opening quotation mark when it governs only the quotation. It is not a sentence end, and the sentence still closes with the sentence-end cut.

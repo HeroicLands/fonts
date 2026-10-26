@@ -8,16 +8,19 @@
 
 The forms come from the ``words`` list in the frontmatter of
 ``assets/content/Skills/Languages/Khazari.md`` on the thalorna repository's
-``origin/main``. Each form is written in Pirzath's code points by the ``pirzath`` encoding
+``origin/main``. Roman is lowercase, so each form is lowercased, then written in
+Pirzath's code points by the ``pirzath`` encoding
 (``encodings/pirzath.json``, or the file ``--encoding`` names), and the result is
 shaped. The expected glyph sequence is
 derived from the spelling, by rules the guard owns: a digraph is one letter, an
 acute vowel is its vowel followed by the length mark, a doubled consonant or
-digraph is the letter once with the doubling mark, and nothing is .notdef or the
-box. The shaped sequence must match it exactly. A set of fixtures, written
+digraph is the letter once with the doubling mark, every terminal is the sentence
+end, and nothing is .notdef or the box. The shaped sequence must match it exactly. A set of fixtures, written
 through the encoding and shaped too, covers the numerals, the quotation marks,
-the marks between words, every doubled letter, the seventeen lost letters in
-every position they occupy, and characters the script lacks, which print the box.
+nested ones included, the marks between words, the standard marks the script does
+not draw, which shape to nothing, every doubled letter, the seventeen lost letters in
+every position they occupy, and characters the script lacks, capitals among them,
+which print the box.
 """
 
 import argparse
@@ -42,10 +45,13 @@ DIGRAPHS = {"th": "t_h", "dh": "d_h", "gh": "g_h", "kh": "k_h"}
 ACUTES = {"á": "aacute", "é": "eacute", "í": "iacute", "ó": "oacute", "ú": "uacute"}
 LETTERS = {c: c for c in "bdgkptvfzshmnlraeiou"}
 PUNCT_MAP = {
-    "-": "hyphen", ".": "period", ",": "comma", "!": "exclam",
+    "-": "hyphen", ".": "period", "?": "period", "!": "period", ",": "comma",
     " ": "space.dot", "\u00a0": "space.dot",
-    "\u201c": "quote.open", "\u201d": "quote.close",
+    "«": "quote.open", "»": "quote.close", "‹": "quote.open", "›": "quote.close",
 }
+# The standard roman marks the script does not draw: each writes invisible marks alone.
+# The two-character marks are matched first.
+SILENT = ("//", "—", "…", "/", "{", "}")
 CONSONANT_NAMES = {
     "p", "b", "f", "v", "m", "t", "d", "t_h", "d_h", "n", "k", "g", "k_h", "g_h", "s", "z", "h",
     "l", "r", "sh", "zh", "ts", "ch", "j", "q", "ng", "ny", "catch", "w", "y", "hl",
@@ -60,37 +66,47 @@ FIXTURES = [
     ("girm 10 bep tob 1", ["g", "i", "r", "m", "space.dot", "num.1", "num.0", "space.dot", "b", "e", "p",
                            "space.dot", "t", "o", "b", "space.dot", "num.1"]),
     ("abcdef", ["a", "b", "notdef.box", "d", "e", "f"]),
-    # Only the curly pair writes quotation signs; unsupported aliases pass through as boxes.
+    # The standard's quotation marks write the quotation signs, nested ones too; any other
+    # quotation mark is outside the encoding and prints the box.
     ('"dalk"', ["notdef.box", "d", "a", "l", "k", "notdef.box"]),
     ('gaz "dalk" zef', ["g", "a", "z", "space.dot", "notdef.box", "d", "a", "l", "k", "notdef.box",
                         "space.dot", "z", "e", "f"]),
     ('bant."', ["b", "a", "n", "t", "period", "notdef.box"]),
-    ("“dalk”", ["quote.open", "d", "a", "l", "k", "quote.close"]),
-    ("dalk“", ["d", "a", "l", "k", "quote.open"]),
-    ("”dalk", ["quote.close", "d", "a", "l", "k"]),
+    ("«dalk»", ["quote.open", "d", "a", "l", "k", "quote.close"]),
+    ("dalk«", ["d", "a", "l", "k", "quote.open"]),
+    ("»dalk", ["quote.close", "d", "a", "l", "k"]),
+    ("«gaz ‹dalk› zef»", ["quote.open", "g", "a", "z", "space.dot", "quote.open", "d", "a", "l", "k",
+                          "quote.close", "space.dot", "z", "e", "f", "quote.close"]),
+    ("“dalk”", ["notdef.box", "d", "a", "l", "k", "notdef.box"]),
     ("[dalk]", ["notdef.box", "d", "a", "l", "k", "notdef.box"]),
     ("gaz [ghulk]", ["g", "a", "z", "space.dot", "notdef.box", "g_h", "u", "l", "k", "notdef.box"]),
-    ("«dalk»", ["notdef.box", "d", "a", "l", "k", "notdef.box"]),
     ("<<dalk>>", ["notdef.box", "notdef.box", "d", "a", "l", "k", "notdef.box", "notdef.box"]),
     ("gaz <<dalk>> zef", ["g", "a", "z", "space.dot", "notdef.box", "notdef.box", "d", "a", "l", "k", "notdef.box", "notdef.box",
                           "space.dot", "z", "e", "f"]),
     # A final gh stays intact beside either the canonical sign or an unsupported alias.
     ('"thurágh"', ["notdef.box", "t_h", "u", "r", "a", "lengthmark", "g_h", "notdef.box"]),
-    ("“thurágh”", ["quote.open", "t_h", "u", "r", "a", "lengthmark", "g_h", "quote.close"]),
+    ("«thurágh»", ["quote.open", "t_h", "u", "r", "a", "lengthmark", "g_h", "quote.close"]),
+    ("‹thurágh›", ["quote.open", "t_h", "u", "r", "a", "lengthmark", "g_h", "quote.close"]),
     ("<<thurágh>>", ["notdef.box", "notdef.box", "t_h", "u", "r", "a", "lengthmark", "g_h", "notdef.box", "notdef.box"]),
-    ("?;:", ["notdef.box", "notdef.box", "notdef.box"]),
+    ("?;:", ["period", "notdef.box", "notdef.box"]),
+    # Every terminal draws the sentence end; the standard marks the script does not draw
+    # shape to nothing.
+    ("{dalk} bant", ["d", "a", "l", "k", "space.dot", "b", "a", "n", "t"]),
+    ("dalk? bant!! ramk— tanv… gaz/ zef//", ["d", "a", "l", "k", "period", "space.dot", "b", "a", "n", "t",
+                                             "period", "space.dot", "r", "a", "m", "k", "space.dot", "t", "a", "n", "v",
+                                             "space.dot", "g", "a", "z", "space.dot", "z", "e", "f"]),
     ("¡ves durám.", ["notdef.box", "v", "e", "s", "space.dot", "d", "u", "r", "a", "lengthmark", "m", "period"]),
-    ("!ves durám.", ["exclam", "v", "e", "s", "space.dot", "d", "u", "r", "a", "lengthmark", "m", "period"]),
+    ("!ves durám.", ["period", "v", "e", "s", "space.dot", "d", "u", "r", "a", "lengthmark", "m", "period"]),
     # Doubling: every consonant and every digraph, then the lexicon's own.
     *[(f"a{c}{c}a", ["a", c, "doubling", "a"]) for c in "bdgkptvfzshmnlr"],
     *[(f"a{d[0]}{d}a", ["a", DIGRAPHS[d], "doubling", "a"]) for d in DIGRAPHS],
     ("dullák", ["d", "u", "l", "doubling", "a", "lengthmark", "k"]),
     ("putthák", ["p", "u", "t_h", "doubling", "a", "lengthmark", "k"]),
     ("gummáth", ["g", "u", "m", "doubling", "a", "lengthmark", "t_h"]),
-    ("Khubbán", ["k_h", "u", "b", "doubling", "a", "lengthmark", "n"]),
+    ("khubbán", ["k_h", "u", "b", "doubling", "a", "lengthmark", "n"]),
     ("dalk.bant! ramk, tanv?", ["d", "a", "l", "k", "period", "b", "a", "n", "t",
-                                  "exclam", "space.dot", "r", "a", "m", "k", "comma", "space.dot",
-                                  "t", "a", "n", "v", "notdef.box"]),
+                                  "period", "space.dot", "r", "a", "m", "k", "comma", "space.dot",
+                                  "t", "a", "n", "v", "period"]),
 ]
 
 
@@ -133,7 +149,6 @@ LOST_FIXTURES = [
     ("by", ["b", "i"]),
     ("byb", ["b", "i", "b"]),
     ("y", ["i"]),
-    ("Y", ["i"]),
     ("bayab", ["b", "a", "y", "a", "b"]),
     # A doubled lost consonant is the letter once with the doubling mark, from
     # the letter written twice and, for a digraph, from the first letter too.
@@ -141,8 +156,9 @@ LOST_FIXTURES = [
     *[(f"a{k}{k}a", ["a", g, "doubling", "a"]) for k, g in LOST_SINGLE if len(k) == 2],
     *[(f"a{k[0]}{k}a", ["a", g, "doubling", "a"]) for k, g in LOST_SINGLE if len(k) == 2],
     ("annghab", ["a", "n", "doubling", "g_h", "a", "b"]),
-    # Capitals draw the same letters.
-    ("ShaNGa", ["sh", "a", "ng", "a"]),
+    # A capital is outside the encoding and prints the box.
+    ("Y", ["notdef.box"]),
+    ("Shanga", ["notdef.box", "h", "a", "ng", "a"]),
 ]
 
 
@@ -163,7 +179,7 @@ def lexicon_forms(thalorna: Path | None, note: Path | None) -> list[str]:
         ).stdout
     body = text.split("\n---\n", 1)[0].lstrip("-\n")
     front = yaml.safe_load(body)
-    forms = [w["form"] for w in front["data"]["words"]]
+    forms = [w["form"].lower() for w in front["data"]["words"]]
     if not forms:
         raise SystemExit("the words list is empty")
     return forms
@@ -172,12 +188,16 @@ def lexicon_forms(thalorna: Path | None, note: Path | None) -> list[str]:
 def expected_glyphs(form: str) -> list[str]:
     out = []
     i = 0
-    s = form.lower()
+    s = form
     while i < len(s):
         three = s[i : i + 3]
         if three in DOUBLED_DIGRAPHS:
             out += [DOUBLED_DIGRAPHS[three], "doubling"]
             i += 3
+            continue
+        silent = next((m for m in SILENT if s.startswith(m, i)), None)
+        if silent:
+            i += len(silent)
             continue
         two = s[i : i + 2]
         if two in DIGRAPHS:

@@ -5,15 +5,30 @@
     python3 tools/encoding_vectors.py --write   # write the file
     python3 tools/encoding_vectors.py           # check it against the encodings
 
-For each encoding the vectors give a text that each row applies in, then each sample
-text, every one as ``{"roman", "unicode", "decoded"}``: encoding ``roman`` gives
-``unicode``, and decoding ``unicode`` gives ``decoded``, which is ``roman`` again. A vector of a face's own rows also names its ``face``. Another implementation of
-the encodings tests itself against them.
+For each encoding the vectors give a text that each row applies in, its base's rows
+included, then each sample text, every one as ``{"roman", "unicode", "decoded"}``:
+encoding ``roman`` gives ``unicode``, and decoding ``unicode`` gives ``decoded``, which
+is ``roman`` again. A vector of a face's own rows also names its ``face``. A text with
+a character outside the encoding is ``{"roman", "refused": [line, column]}``: encoding
+refuses it at the first such character. Another implementation of the encodings tests
+itself against them.
 
 A row's text is the first found in which the row applies: its ``from`` alone, then
 preceded by a space, each vowel or each consonant the encoding's rows begin with, then
 followed by one, then both, so that a condition holds. A row no such text
 applies is shadowed by another, which the guard reports.
+
+The literal immutable markers add vectors of their own to every encoding: a span of
+character names (or, where the encoding states a ``codage``, of its codes) alone and
+between words, a span with irregular whitespace between its codes, and refusals at the
+position of an unmatched marker, a nested one, a code that names nothing, a standard mark
+inside a span, and a code outside the markers. Where the encoding states a ``codage``, each
+of its rows is a vector too, written between the markers.
+
+Whitespace adds vectors of its own: runs of spaces, tabs and line breaks between two
+words (or two spans) encode as one separator, and decoding writes a single space, or nothing
+where the script's separator is empty. The verse marks ``/``, ``//`` and ``***`` beside each
+other add vectors that show the longest match.
 
 Sample texts are the texts of ``tools/sample_texts.json`` under each face whose texts the
 encoding writes, and the Khelathi Zethu scenes of ``tools/khelathi-zethu-glyphs/samples.json`` written in
@@ -75,7 +90,7 @@ def witness(enc, row, face=None):
     for before, after in tries:
         text = before + row.source + after
         at = 0
-        for _, _, applied in E.pieces(enc, text, face):
+        for _, _, applied in E.pieces(enc, text, face, strict=False):
             if at >= len(before):
                 if at == len(before) and applied is row:
                     return text
@@ -93,7 +108,7 @@ def samples(enc):
         for face, listed in faces.items():
             if FACE_ENCODING.get(face) == enc.name:
                 texts += [t for t in listed if t not in texts]
-    if enc.name == "zethu-mdc":
+    if enc.name == "zethu":
         with open(os.path.join(ZETHU, "encoding.json"), encoding="utf-8") as handle:
             codes = {s["id"]: s["code"] for s in json.load(handle)["signs"] if s.get("drawn")}
         with open(os.path.join(ZETHU, "samples.json"), encoding="utf-8") as handle:
@@ -101,18 +116,68 @@ def samples(enc):
         for scene in scenes:
             for sample in scene["samples"]:
                 if all(i in codes for i in sample["ids"]):
-                    text = "-".join(codes[i] for i in sample["ids"])
+                    text = E.OPEN + "-".join(codes[i] for i in sample["ids"]) + E.CLOSE
                     if text not in texts:
                         texts.append(text)
     return texts
 
 
 def vector(enc, roman, face=None):
-    unicode = E.encode(enc, roman, face)
-    out = {"roman": roman, "unicode": unicode, "decoded": E.decode(enc, unicode, face)}
+    try:
+        unicode = E.encode(enc, roman, face)
+    except E.EncodingError as error:
+        out = {"roman": roman, "refused": [error.line, error.column]}
+    else:
+        out = {"roman": roman, "unicode": unicode, "decoded": E.decode(enc, unicode, face)}
     if face is not None:
         out = {"face": face, **out}
     return out
+
+
+def marker_texts(enc):
+    """The texts that try the literal immutable markers in an encoding."""
+    if enc.codage is not None:
+        codes = next(
+            (r.source for r in enc.codage.own
+             if r.source.isalpha() and witness(enc.codage, r) == r.source),
+            None,
+        )
+        bad = "\u2603"
+    else:
+        codes = "LATIN_SMALL_LETTER_A_WITH_ACUTE LATIN_SMALL_LETTER_I"
+        bad = "ACCUTE"
+    if codes is None:
+        return []
+    word = next((r.source for r in enc.own if r.source.isalpha() and witness(enc, r) == r.source), "")
+    span = f"{E.OPEN}{codes}{E.CLOSE}"
+    texts = [span, f"{word} {span} {word}", f"{E.OPEN}{codes}", E.CLOSE,
+             f"{E.OPEN}{E.OPEN}{codes}{E.CLOSE}{E.CLOSE}", f"{E.OPEN}{codes} {bad}{E.CLOSE}",
+             # whitespace only separates codes, and decoding writes one space
+             f"{E.OPEN}  {codes}\n\t  {codes} {E.CLOSE}",
+             # no standard mark is allowed inside a span
+             f"{E.OPEN}{codes},{E.CLOSE}", f"{E.OPEN}{codes} ?{E.CLOSE}"]
+    if enc.codage is not None:
+        # a code outside the markers is ordinary roman
+        texts.append(codes)
+    return texts
+
+
+def whitespace_texts(enc):
+    """The texts that try whitespace as the one word separator, and the verse marks."""
+    if enc.codage is not None:
+        code = next(
+            (r.source for r in enc.codage.own
+             if r.source.isalpha() and witness(enc.codage, r) == r.source),
+            None,
+        )
+        unit = f"{E.OPEN}{code}{E.CLOSE}" if code else None
+    else:
+        unit = next((r.source for r in enc.own if r.source.isalpha() and witness(enc, r) == r.source), None)
+    texts = [" ", "\n", "\t \r\n ", "///", "/***//", "//***/", "***"]
+    if unit:
+        texts += [f"{unit} {unit}", f"{unit}      \t\t\n\t   {unit}", f"{unit}\r\n\r\n{unit}",
+                  f" {unit} ", f"{unit}***\n{unit}"]
+    return texts
 
 
 def build(encodings):
@@ -132,6 +197,10 @@ def build(encodings):
             if (None, text) not in seen:
                 seen.add((None, text))
                 vectors.append(vector(enc, text))
+        vectors += [vector(enc, text) for text in marker_texts(enc)]
+        vectors += [vector(enc, text) for text in whitespace_texts(enc)]
+        if enc.codage is not None:
+            vectors += [vector(enc, f"{E.OPEN}{row.source}{E.CLOSE}") for row in enc.codage.rows]
         out[enc.name] = vectors
     return out
 
@@ -156,6 +225,10 @@ def vectors_path(directory):
     return os.path.join(directory, "vectors.json")
 
 
+def standard_path(directory):
+    return os.path.join(directory, f"{E.STANDARD}.json")
+
+
 def load_all(directory=E.ENCODINGS):
     return [E.load(os.path.join(directory, f"{name}.json")) for name in _names(directory)]
 
@@ -163,11 +236,7 @@ def load_all(directory=E.ENCODINGS):
 def _names(directory):
     if not os.path.isdir(directory):
         return []
-    return sorted(
-        f[:-5]
-        for f in os.listdir(directory)
-        if f.endswith(".json") and f[:-5] not in E.NOT_ENCODINGS
-    )
+    return E.names(directory)
 
 
 def main(argv=None):

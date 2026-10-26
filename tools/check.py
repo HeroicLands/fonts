@@ -83,7 +83,7 @@ FONTS = {
     ],
     "Veldikko": [
         "tools/veldikko/check_font.py",
-        "tools/veldikko/guard.py --fixtures-only",  # the converter's fixtures join and carry their marks
+        "tools/veldikko/guard.py --fixtures-only",  # the fixtures join and carry their marks
     ],
     "VedyaksharaClassical": [
         "tools/vedyakshara/check_font.py",

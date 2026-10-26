@@ -65,7 +65,7 @@ typed by sound. Its block registry is proved on a code point outside its family'
 differs from the registry. The spacing guard (tools/spacing.py) is proved on every font with every advance widened by 120 units,
 half on each side of the ink, and on Khelathi Zethu Glyphs and Qalezu Hand with the space widened by 100 units. The default-ignorable check of the box guard is proved on every font with the glyph of the ignorables drawing the box, and on
 Pirzath Carved without GSUB and with its space glyph drawing the dot. The keyboard guard (tools/keyboards_guard.py) is proved on a key map with
-two sounds on one key, with a sound removed, with a capital off Shift, with a quote off Shift+, and Shift+., with a markup character missing and with a
+two sounds on one key, with a sound removed, with a sound spelled with a capital, with a quote off Shift+, and Shift+., with a markup character missing and with a
 markup character on a key that carries a sound; on layouts with a macOS output cut short, a Linux key
 line removed, an Emacs rule removed and a Windows key typing a roman letter, and with a key of markup typing
 nothing on each platform; and on a sounds.json
@@ -590,8 +590,14 @@ def prove_keyboards(files: dict[str, str] | None = None) -> int:
     def drop(rows):
         rows.remove(entry(rows, "th"))
 
-    def unshifted(rows):
-        entry(rows, "Th")["key"] = "option+q"
+    def capital(rows):
+        entry(rows, "th")["spelling"] = "Th"
+
+    def on_capital():
+        """Problems of a key map, and the sounds.json beside it, that spell a sound with a capital."""
+        spelled = copy.deepcopy(sounds)
+        next(s for s in spelled if s["sound"] == "th")["spelling"] = "Th"
+        return len(guard.keymap_problems(keymap_with(capital), spelled))
 
     ch = "&#xF0241;&#xF0240;&#xF0236;"
     macos = layouts["macos"].replace(ch, "&#xF0241;", 1)
@@ -661,7 +667,7 @@ def prove_keyboards(files: dict[str, str] | None = None) -> int:
         ("with a sign typed in another layout", on_layouts({**layouts, "emacs": foreign})),
         ("with two sounds on one key", on_keymap(keymap_with(share))),
         ("with a sound without a key", on_keymap(keymap_with(drop))),
-        ("with a capital off Shift", on_keymap(keymap_with(unshifted))),
+        ("with a sound spelled with a capital", on_capital()),
         ("with the quotes back on [ and ]", on_keymap(keymap_with(quotes_old))),
         ("with a markup character missing", on_markup(lambda m: m.remove("*"))),
         ("with # listed as markup, on Shift+3, the key of eleven", on_markup(lambda m: m.append("#"))),
@@ -996,6 +1002,7 @@ def main():
          win_to_line_box, "with its Windows ascent and descent cut to the shared line box, inside its hooks"),
         ("Helonika Book", helonika_font, lambda p: helonika.run(p, {}), without_th, "without the small letter th"),
         ("Helonika Book", helonika_font, lambda p: helonika.run(p, {}), without_kh, "without the small letter kh, which Bizarian and Bethuan write"),
+        ("Helonika Book", helonika_font, lambda p: helonika.run(p, {}), without_gpos, "without GPOS, so a space after the raised dot keeps its advance"),
         ("Helonika Book", helonika_font, helonika_check.check, stripped, "without GSUB"),
         ("Helonika Book", helonika_font, helonika_check.check, without_gpos, "without GPOS"),
         ("Teng Chou", teng_chou_font, lambda p: teng_chou.run(p, []), without_teng, "without the character teng"),

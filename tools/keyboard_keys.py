@@ -97,10 +97,17 @@ def load() -> dict:
     return json.loads((Path(__file__).resolve().parent / "sound_keys.json").read_text(encoding="utf-8"))
 
 
+# The scripts with a layout, as keyboards.SCRIPTS lists them.
+LAYOUT_SCRIPTS = ("semaron", "pirzath", "thuravark", "qalezu", "veldikko", "vedyakshara", "helonika")
+
+
 def signs() -> list[dict]:
     """The signs of tools/sound_keys.json: keys that are not sounds, each typing one code
-    point in the one layout whose script writes it."""
-    return load().get("signs", [])
+    point in the one layout whose script writes it, and the literals, which every layout
+    types: the literal immutable markers, drawn by no script."""
+    data = load()
+    literals = [{**sign, "script": script, "literal": True} for script in LAYOUT_SCRIPTS for sign in data.get("literals", [])]
+    return data.get("signs", []) + literals
 
 
 def every_key() -> list[str]:

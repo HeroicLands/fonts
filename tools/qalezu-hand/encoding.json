@@ -57,7 +57,7 @@
     {"glyph": "nine", "codepoint": "U+1EA36", "kind": "digit", "sound": "9", "typing": ["9"]},
     {"glyph": "period", "codepoint": "U+1EA37", "kind": "punctuation", "sound": "sentence-end", "typing": ["."]},
     {"glyph": "comma", "codepoint": "U+1EA38", "kind": "punctuation", "sound": "pause", "typing": [","]},
-    {"glyph": "verseEnd", "codepoint": "U+1EA39", "kind": "punctuation", "sound": "verse-end", "typing": ["·"]}
+    {"glyph": "verseEnd", "codepoint": "U+1EA39", "kind": "punctuation", "sound": "verse-end", "typing": ["/"]}
   ],
   "forms": [
     {"glyph": "l.catch", "base": "l", "sound": "catch before l"},

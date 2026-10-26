@@ -49,16 +49,16 @@ def convert(text: str) -> str:
     return record["text"]
 
 WORDS = [
-    "Au'Khelathu", "Khelathu", "Khelathi-zethu", "Qalezu", "Nelgir", "Halzi",
-    "Weth'ur", "Qe'aret", "Uqa'a", "Igelnaru", "Genzet", "Lenni",
+    "au'khelathu", "khelathu", "khelathi-zethu", "qalezu", "nelgir", "halzi",
+    "weth'ur", "qe'aret", "uqa'a", "igelnaru", "genzet", "lenni",
 ]
-NAMES = {"Lenni": "a given name, with the n doubled"}
-BLOCK = ["Gar-Qethar", "Zel-Qar", "Lut-Psaqa"]
+NAMES = {"lenni": "a given name, with the n doubled"}
+BLOCK = ["gar-qethar", "zel-qar", "lut-psaqa"]
 # Each row: the sign, its voiced partner if it has one, and the Latin that types them.
 TRIPLES = [("t", "d"), ("s", "z"), ("k", "g"), ("kh", "gh"), ("p", "b"), ("l", None), ("r", None),
            ("n", None), ("th", None), ("m", None), ("q", None), ("h", None), ("sh", None), ("f", None),
            ("w", None), ("y", None), ("tj", None)]
-SENTENCE = ("The scribes of the delta write ", "Khelathu", " with a reed on papyrus.")
+SENTENCE = ("The scribes of the delta write ", "khelathu", " with a reed on papyrus.")
 
 
 def page(width, height):

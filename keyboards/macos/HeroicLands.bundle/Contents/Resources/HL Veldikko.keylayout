@@ -87,39 +87,15 @@
             <key code="126" output="&#x001E;"/>
         </keyMap>
         <keyMap index="1">
-            <key code="0" output="&#x1ED70;"/>
-            <key code="1" output="&#x1ED54;"/>
-            <key code="2" output="&#x1ED56;"/>
-            <key code="3" output="&#x1ED51;"/>
-            <key code="4" output="&#x1ED59;"/>
-            <key code="5" output="&#x1ED58;"/>
-            <key code="6" output="&#x1ED54;"/>
-            <key code="9" output="&#x1ED51;"/>
-            <key code="11" output="&#x1ED50;"/>
-            <key code="12" output="&#x1ED58;"/>
-            <key code="13" output="&#x1ED51;"/>
-            <key code="14" output="&#x1ED73;"/>
-            <key code="15" output="&#x1ED5C;"/>
-            <key code="16" output="&#x1ED75;"/>
-            <key code="17" output="&#x1ED53;"/>
             <key code="25" output="&#x0028;"/>
             <key code="27" output="&#x005F;"/>
             <key code="28" output="&#x002A;"/>
             <key code="29" output="&#x0029;"/>
             <key code="30" output="&#x007D;"/>
-            <key code="31" output="&#x1ED71;"/>
-            <key code="32" output="&#x1ED72;"/>
             <key code="33" output="&#x007B;"/>
-            <key code="34" output="&#x1ED74;"/>
-            <key code="35" output="&#x1ED50;"/>
             <key code="36" output="&#x000D;"/>
-            <key code="37" output="&#x1ED5B;"/>
-            <key code="38" output="&#x1ED75;"/>
-            <key code="40" output="&#x1ED58;"/>
             <key code="41" output="&#x003A;"/>
             <key code="42" output="&#x007C;"/>
-            <key code="45" output="&#x1ED55;"/>
-            <key code="46" output="&#x1ED52;"/>
             <key code="48" output="&#x0009;"/>
             <key code="49" output="&#x0020;"/>
             <key code="50" output="&#x007E;"/>
@@ -194,40 +170,9 @@
             <key code="126" output="&#x001E;"/>
         </keyMap>
         <keyMap index="3">
-            <key code="0" output="&#x1ED70;&#x1ED7B;"/>
-            <key code="1" output="&#x1ED54;&#x1ED59;"/>
-            <key code="2" output="&#x1ED57;"/>
-            <key code="4" output="&#x1ED59;&#x1ED5B;"/>
-            <key code="5" output="&#x1ED58;&#x1ED59;"/>
-            <key code="6" output="&#x1ED54;&#x1ED59;"/>
-            <key code="7" output="&#x1ED53;&#x1ED54;"/>
-            <key code="8" output="&#x1ED58;"/>
-            <key code="11" output="&#x1ED50;&#x1ED59;"/>
-            <key code="14" output="&#x1ED73;&#x1ED7B;"/>
-            <key code="16" output="&#x1ED55;&#x1ED75;"/>
-            <key code="17" output="&#x1ED53;&#x1ED59;"/>
-            <key code="18" output="&#x1ED70;&#x1ED78;"/>
-            <key code="19" output="&#x1ED73;&#x1ED78;"/>
-            <key code="20" output="&#x1ED74;&#x1ED78;"/>
-            <key code="21" output="&#x1ED71;&#x1ED78;"/>
-            <key code="22" output="&#x1ED70;&#x1ED74;"/>
-            <key code="23" output="&#x1ED72;&#x1ED78;"/>
-            <key code="24" output="&#x1ED72;&#x1ED71;"/>
-            <key code="25" output="&#x1ED71;&#x1ED74;"/>
-            <key code="26" output="&#x1ED70;&#x1ED72;"/>
-            <key code="27" output="&#x1ED74;&#x1ED73;"/>
-            <key code="28" output="&#x1ED73;&#x1ED74;"/>
-            <key code="29" output="&#x1ED71;&#x1ED72;"/>
-            <key code="30" output="&#x1ED73;&#x1ED5D;&#x1ED70;"/>
-            <key code="31" output="&#x1ED71;&#x1ED7B;"/>
-            <key code="32" output="&#x1ED72;&#x1ED7B;"/>
-            <key code="33" output="&#x1ED70;&#x1ED5D;&#x1ED73;"/>
-            <key code="34" output="&#x1ED74;&#x1ED7B;"/>
-            <key code="35" output="&#x1ED50;&#x1ED59;"/>
+            <key code="13" output="&#x27E6;"/>
             <key code="36" output="&#x000D;"/>
-            <key code="39" output="&#x1ED76;"/>
-            <key code="40" output="&#x1ED58;&#x1ED59;"/>
-            <key code="45" output="&#x1ED5A;"/>
+            <key code="37" output="&#x27E7;"/>
             <key code="48" output="&#x0009;"/>
             <key code="49" output="&#x0020;"/>
             <key code="51" output="&#x0008;"/>

@@ -4,10 +4,12 @@
 
     from encoded import Encoded
     semaron = Encoded("semaron-kuriale")
-    semaron.write(["Zaron tholmeza"])          # the code points, one string per text
+    semaron.write(["zaron tholmeza"])          # the code points, one string per text
 
 A face draws its own code points and nothing else, so a guard or a specimen that
-starts from roman text writes it through the face's encoding first. The encoding is
+starts from roman text writes it through the face's encoding first. ``encode.py``
+refuses a character no row matches; here it is kept as it is and reported in
+``unencoded``, because a guard sets such characters in the font to see the box. The encoding is
 ``encodings/<name>.json`` applied by ``encode.py``, for the face it serves. The
 guards' ``--encoding FILE`` option names an encoding file to apply instead.
 """
@@ -78,10 +80,10 @@ class Encoded:
 
     def records(self, texts: list[str]) -> list[dict]:
         """``{"text": ..., "unencoded": [...]?}`` for each text: its code points, and the
-        characters no row matched, which passed through as they are, where there are any."""
+        characters no row matched, which are kept as they are, where there are any."""
         out = []
         for text in texts:
-            pieces = E.pieces(self.encoding, text, self.face)
+            pieces = E.pieces(self.encoding, text, self.face, strict=False)
             record = {"text": "".join(to for _, to, _ in pieces)}
             unencoded = [source for source, _, row in pieces if row is None]
             if unencoded:

@@ -35,7 +35,7 @@ LABEL_FONT = "/System/Library/Fonts/Supplemental/Arial Unicode.ttf"
 LATIN_FONT = Path.home() / "Library/Fonts/MonaspaceNeon-Regular.otf"
 
 WORDS = ["dalk", "dulák", "dullák", "durákh", "tanv", "bant", "gazn", "narv", "zuvák", "dubáz", "thumár",
-         "zummád", "galdod", "thufár", "mardh", "putthák", "Ramk-sumád"]
+         "zummád", "galdod", "thufár", "mardh", "putthák", "ramk-sumád"]
 
 
 def _carved_texts() -> list[str]:

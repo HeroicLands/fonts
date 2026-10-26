@@ -22,7 +22,7 @@ xkb_symbols "basic" {
     key <AE11> { type[Group1] = "FOUR_LEVEL", symbols[Group1] = [ VoidSymbol, underscore, VoidSymbol, VoidSymbol ] };
     key <AE12> { type[Group1] = "FOUR_LEVEL", symbols[Group1] = [ equal, VoidSymbol, VoidSymbol, VoidSymbol ] };
     key <AD01> { type[Group1] = "FOUR_LEVEL", symbols[Group1] = [ UF0239, UF0209, VoidSymbol, VoidSymbol ] };
-    key <AD02> { type[Group1] = "FOUR_LEVEL", symbols[Group1] = [ UF0244, UF0214, VoidSymbol, VoidSymbol ] };
+    key <AD02> { type[Group1] = "FOUR_LEVEL", symbols[Group1] = [ UF0244, UF0214, VoidSymbol, U27E6 ] };
     key <AD03> { type[Group1] = "FOUR_LEVEL", symbols[Group1] = [ UF0233, UF0203, UF0233, UF0203 ] };
     key <AD04> { type[Group1] = "FOUR_LEVEL", symbols[Group1] = [ UF023F, UF020F, VoidSymbol, VoidSymbol ] };
     key <AD05> { type[Group1] = "FOUR_LEVEL", symbols[Group1] = [ UF0241, UF0211, UF0250, UF0251 ] };
@@ -42,7 +42,7 @@ xkb_symbols "basic" {
     key <AC06> { type[Group1] = "FOUR_LEVEL", symbols[Group1] = [ UF0236, UF0206, VoidSymbol, VoidSymbol ] };
     key <AC07> { type[Group1] = "FOUR_LEVEL", symbols[Group1] = [ UF0238, UF0208, VoidSymbol, VoidSymbol ] };
     key <AC08> { type[Group1] = "FOUR_LEVEL", symbols[Group1] = [ UF0239, UF0209, VoidSymbol, VoidSymbol ] };
-    key <AC09> { type[Group1] = "FOUR_LEVEL", symbols[Group1] = [ UF023A, UF020A, VoidSymbol, VoidSymbol ] };
+    key <AC09> { type[Group1] = "FOUR_LEVEL", symbols[Group1] = [ UF023A, UF020A, VoidSymbol, U27E7 ] };
     key <AC10> { type[Group1] = "FOUR_LEVEL", symbols[Group1] = [ VoidSymbol, colon, VoidSymbol, VoidSymbol ] };
     key <AC11> { type[Group1] = "FOUR_LEVEL", symbols[Group1] = [ UF0270, VoidSymbol, UF0233, UF0203 ] };
     key <AB01> { type[Group1] = "FOUR_LEVEL", symbols[Group1] = [ UF0246, UF0216, VoidSymbol, VoidSymbol ] };
@@ -52,7 +52,7 @@ xkb_symbols "basic" {
     key <AB05> { type[Group1] = "FOUR_LEVEL", symbols[Group1] = [ UF0231, UF0201, VoidSymbol, VoidSymbol ] };
     key <AB06> { type[Group1] = "FOUR_LEVEL", symbols[Group1] = [ UF023C, UF020C, VoidSymbol, VoidSymbol ] };
     key <AB07> { type[Group1] = "FOUR_LEVEL", symbols[Group1] = [ UF023B, UF020B, VoidSymbol, VoidSymbol ] };
-    key <AB08> { type[Group1] = "FOUR_LEVEL", symbols[Group1] = [ VoidSymbol, VoidSymbol, VoidSymbol, VoidSymbol ] };
+    key <AB08> { type[Group1] = "FOUR_LEVEL", symbols[Group1] = [ UF0268, VoidSymbol, VoidSymbol, VoidSymbol ] };
     key <AB09> { type[Group1] = "FOUR_LEVEL", symbols[Group1] = [ UF0268, VoidSymbol, VoidSymbol, VoidSymbol ] };
     key <AB10> { type[Group1] = "FOUR_LEVEL", symbols[Group1] = [ VoidSymbol, VoidSymbol, VoidSymbol, VoidSymbol ] };
 };

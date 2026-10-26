@@ -79,6 +79,8 @@ def keymap_problems(keymap: list[dict], sounds: list[dict]) -> list[str]:
                 shift, option, base = kk.parse(by_sound[small]["key"])
                 if shift or kk.spell(True, option, base) != key:
                     problems.append(f"tools/sound_keys.json: error: {sound} sits on {key}, not on Shift and the key of {small}")
+        elif any(c.isupper() for c in entry["spelling"]):
+            problems.append(f"tools/sound_keys.json: error: {sound} is spelled {entry['spelling']!r}, a capital that names no small sound")
     for sound, key in QUOTE_KEYS.items():
         if sound in by_sound and by_sound[sound]["key"] != key:
             problems.append(f"tools/sound_keys.json: error: the {sound} sits on {by_sound[sound]['key']}, not {key}")
@@ -115,12 +117,20 @@ def markup_problems(owner: dict[str, str]) -> list[str]:
     return problems
 
 
+def unwritten(sound: str, script: str) -> bool:
+    """Whether a script does not write a sound, so that its key types nothing there and a sign may sit on it."""
+    entry = next((s for s in keyboards.sounds_table() if s["sound"] == sound), None)
+    return entry is not None and "unmapped" in entry["scripts"].get(script, {})
+
+
 def sign_problems(owner: dict[str, str]) -> list[str]:
     """Where a sign of the key map sits on a key that carries a sound, markup or another sign,
     names a script with no layout, or types a code point its face does not draw."""
     problems = []
     faces = {f["name"]: {r["codepoint"] for r in f["codepoints"] if "codepoint" in r} for f in keyboards.manifest()["families"]}
-    seen: dict[str, str] = {}
+    seen: dict[tuple[str, str], str] = {}
+    if tuple(kk.LAYOUT_SCRIPTS) != tuple(SCRIPT_KEYS):
+        problems.append("tools/keyboard_keys.py: error: LAYOUT_SCRIPTS differs from keyboards.SCRIPTS")
     for sign in kk.signs():
         name, key = sign["sign"], sign["key"]
         script = next((s for s in keyboards.SCRIPTS if s["key"] == sign["script"]), None)
@@ -129,17 +139,17 @@ def sign_problems(owner: dict[str, str]) -> list[str]:
             continue
         if script is None:
             problems.append(f"tools/sound_keys.json: error: the sign {name} names the script {sign['script']}, which has no layout")
-        elif sign["codepoint"] not in faces.get(script["faces"][0], set()):
+        elif not sign.get("literal") and sign["codepoint"] not in faces.get(script["faces"][0], set()):
             problems.append(f"tools/sound_keys.json: error: the sign {name} types {sign['codepoint']}, which {script['faces'][0]} does not draw")
-        if key in owner:
+        if key in owner and not unwritten(owner[key], sign["script"]):
             problems.append(f"tools/sound_keys.json: error: the sign {name} sits on {key}, which carries the sound {owner[key]}")
         if key in kk.markup():
             problems.append(f"tools/sound_keys.json: error: the sign {name} sits on {key}, which types markup")
         if kk.parse(key)[2] == "\\":
             problems.append(f"tools/sound_keys.json: error: the sign {name} sits on {key}, the Emacs Option prefix")
-        if key in seen:
-            problems.append(f"tools/sound_keys.json: error: the signs {name} and {seen[key]} both sit on {key}")
-        seen.setdefault(key, name)
+        if (key, sign["script"]) in seen:
+            problems.append(f"tools/sound_keys.json: error: the signs {name} and {seen[(key, sign['script'])]} both sit on {key}")
+        seen.setdefault((key, sign["script"]), name)
     return problems
 
 

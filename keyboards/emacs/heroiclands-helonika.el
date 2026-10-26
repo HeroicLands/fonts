@@ -32,6 +32,8 @@ Long i is \\~.
 Long u is c.
 Long u is C.
 Accent is \\M.
+Literal open is \\W.
+Literal close is \\L.
 The cheatsheet keyboards/index.md lists every key."
  nil t nil nil nil nil nil nil nil nil t)
 
@@ -89,7 +91,7 @@ The cheatsheet keyboards/index.md lists every key."
  ("w" #xF0345)
  ("W" #xF0315)
  ("\\w" [""])
- ("\\W" [""])
+ ("\\W" #x27E6)
  ("e" #xF0333)
  ("E" #xF0303)
  ("\\e" #xF0333)
@@ -163,7 +165,7 @@ The cheatsheet keyboards/index.md lists every key."
  ("l" #xF033B)
  ("L" #xF030B)
  ("\\l" [""])
- ("\\L" [""])
+ ("\\L" #x27E7)
  (";" [""])
  ("\\;" #xF0330)
  ("\\:" #xF0300)

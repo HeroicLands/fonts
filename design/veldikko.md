@@ -362,13 +362,11 @@ path = L.S.outline(w, L.S.HAND)                # a pathops.Path
 ```
 
 `tools/veldikko/letter_sheets.py` renders the letters, marks, words and close-up
-sheets, or the ones named; `tools/veldikko/l_options.py` renders the _l_
-candidates:
+sheets, or the ones named:
 
 ```sh
 .venv/bin/python tools/veldikko/letter_sheets.py            # all four
 .venv/bin/python tools/veldikko/letter_sheets.py closeup    # one
-.venv/bin/python tools/veldikko/l_options.py
 ```
 
 ### The inventory
@@ -487,11 +485,6 @@ _p_. The Sinale letters for _v_, _h_ and _dh_ and the hooks therefore appear in
 - `specimens/veldikko/closeup.png`: runs of marked letters at 24 and 20 px, at
   actual size and enlarged without smoothing, then at display
   size. The marks are judged here first.
-- `specimens/veldikko/l-options.png`: the riser beside two shorter forms
-  weighed for _l_, the loop and the sprout, each beside _r_, the carrier, _k_
-  and _t_ and in words at display size and 24 px. The loop and the sprout stand
-  at the bowls' height and close into blots at 24 px, and the sprout reads as
-  _r_; the riser stays distinct at every size.
 - `specimens/veldikko/words.png`: _nuuva_, _mollu_ beside _molu_, _kalpi_ beside
   its worn _halpi_, _eilava_, _aamas_, _rivy_, _ennedhi_ and _lonku_ in Sinale,
   and _khalthon_, _ghoran_, _thidharon_ and _gulmesa_ in Áelendi, right to left,
@@ -590,12 +583,12 @@ A word is typed as it is said: a letter, then the bar if its consonant is double
 then each vowel mark in the order said, each followed by its signs. _mollu_ is
 _m_, _o_, _l_, bar, _u_; _nuuva_ is _n_, _u_, long, _v_, _a_.
 
-`tools/veldikko/convert.mjs` converts romanized Sinale by the Sinale encoding, and
+`encode.py` writes romanized Sinale in code points by `encodings/veldikko.json`, and
 the guard and the specimens use it. A doubled consonant is the letter and the bar;
 _n_ before _k_ is _ng_; a doubled vowel is one mark with the long sign, and
 _eë_ is the long _ë_, so _leësy_ is _l_, _ë_, long, _s_, _y_; a diphthong of the
 language is two marks; a vowel at a word's start, and any other vowel sounded
-apart from the one before it, rides on the carrier. The romanization writes no pitch or emphasis, so the converter writes
+apart from the one before it, rides on the carrier. The romanization writes no pitch or emphasis, so the encoding writes
 neither, and it writes Sinale only: Áelendi wants its own convention.
 
 ### The font
@@ -654,7 +647,7 @@ PATH=.venv/bin:$PATH ./build.sh                   # the fonts, fonts.css, fonts.
 .venv/bin/python tools/veldikko/font_sheets.py    # the layer 3 sheets, through the built font
 ```
 
-`tools/veldikko/guard.py` converts every word and name of the Sinale note, and its
+`tools/veldikko/guard.py` encodes every word and name of the Sinale note, and its
 fixtures (`tools/veldikko/fixtures.json`), shapes each right to left, and asserts
 each letter's form, each folded mark, and where each mark and bar stands.
 `--fixtures-only` needs no thalorna checkout, and CI runs it.
@@ -665,7 +658,7 @@ each letter's form, each folded mark, and where each mark and bar stands.
   stretched forms, with each advance ruled beneath, then the nasals' hooks and
   long tails;
 - `specimens/veldikko/joined.png`: the words of `words.png`, joined, set by the
-  font at display size and at 48 px, the Sinale words converted from their
+  font at display size and at 48 px, the Sinale words encoded from their
   romanization and the Áelendi words from their spelling;
 - `specimens/veldikko/verse.png`: the Sinale sample phrases as a right-aligned
   block at a line height of 2.4 em, the same lines with the pitch the

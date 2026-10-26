@@ -400,18 +400,19 @@ is kept as straight lines, sampled closely enough to read as curves at every siz
 the `vedyakshara` encoding, `encodings/vedyakshara.json`,
 writes Vedyari's roman spelling in these code points: a consonant before a vowel
 is its sign alone, _a_ after a consonant writes nothing, another vowel after a
-consonant is its vowel sign, a vowel at the start of a word or a capital vowel is
-its own sign, a consonant with no vowel after it takes the cut, an apostrophe is
-the cut wherever it stands, _f_ is _pa_ with
-the soft dot, a hyphen, `?` and `!` write nothing, a pause is the bar with one knot
-and the full stop the bar with two.
+consonant is its vowel sign, a vowel at the start of a word is its own sign, a
+consonant with no vowel after it takes the cut, an apostrophe is the cut wherever
+it stands, _f_ is _pa_ with the soft dot, a hyphen writes nothing, a pause is the
+bar with one knot, and every terminal, `.`, `?`, `!` and `!!`, is the full stop,
+the bar with two, the three after `.` adding invisible marks so that decoding
+tells them apart. Vedyakshara is caseless, so it accepts only lowercase roman and a capital is refused.
 
 HL Vedyakshara types by sound like the other layouts. A consonant key types the
 bare consonant, which carries _a_; the _a_ key types nothing; another vowel key
-types its vowel sign; a capital vowel types its own sign. Vedyari writes no catch,
-so the catch key, `'`, types the cut, as the encoding writes an apostrophe: a
-consonant with no vowel after it is typed with `'` after it, and _Suryadvar_ is
-typed S, u, r, `'`, y, a, d, `'`, v, a, r, `'`.
+types its vowel sign. Vedyari writes no catch, so the catch key, `'`, types the
+cut, as the encoding writes an apostrophe: a consonant with no vowel after it is
+typed with `'` after it, and _suryadvar_ is typed s, u, r, `'`, y, a, d, `'`, v,
+a, r, `'`.
 
 ### Building and checking
 

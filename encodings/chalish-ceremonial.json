@@ -1,5 +1,6 @@
 {
     "name": "chalish-ceremonial",
+    "kind": "codage",
     "fonts": ["chalish-pilam-ceremonial"],
     "rows": [
         ["n0", "󴀀"],
@@ -297,7 +298,6 @@
         ["be2", "󴑲"],
         ["*", "󴿰"],
         [":", "󴿱"],
-        ["-", "\uDB40\uDD0D"],
-        [" ", "\uDB40\uDD00"]
+        ["-", "\uDB40\uDD0D"]
     ]
 }

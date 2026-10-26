@@ -33,7 +33,7 @@ Semaron Kuriale, each written in the face's code points by its encoding; Qalezu 
 signs the fixtures name, a catch-before form as the catch and its sign; the sample inscriptions of Khelathi Zethu Glyphs, set as one
 strip of signs; Teng Chou's Tantsou and Jurthati passages, each line one run
 of characters; Chalish Pilam Common's night entry, each phrase one word; the codes of Chalish Pilam
-Ceremonial's passage, each glyph in its plain form, set as one strip; and Veldikko's converter fixtures, written in the letters
+Ceremonial's passage, each glyph in its plain form, set as one strip; and Veldikko's fixtures, written in the letters
 and marks the fixtures name; and Vedyakshara Classical's and Helonika Book's guard
 fixtures, written by their encodings. A joined face (Veldikko
 Sinale) meets its neighbours at the join, and Vedyakshara's signs meet in one headline,
@@ -186,7 +186,7 @@ def _chalish_lines() -> list[str]:
 
 def _ceremonial_lines() -> list[str]:
     """The codes of the passage of tools/chalish-pilam/ceremonial_passage.py, written by its
-    encoding with no joiner, so each glyph stands in its own plain form, set as one strip
+    script encoding as one literal span with no joiner, so each glyph stands in its own plain form, set as one strip
     as an inscription runs on. A composed block sets its affixes with no advance of their
     own, so the strip measures the signs themselves."""
     sys.path.insert(0, str(ROOT))
@@ -194,7 +194,8 @@ def _ceremonial_lines() -> list[str]:
 
     passage = _load("ceremonial_passage", TOOLS / "chalish-pilam" / "ceremonial_passage.py")
     codes = re.split(r"[*: ]", passage.codage())
-    return ["".join(encode.encode(str(ROOT / "encodings" / "chalish-ceremonial.json"), c) for c in codes)]
+    script = str(ROOT / "encodings" / "chalish-pilam-ceremonial.json")
+    return [encode.encode(script, "⟦" + " ".join(c for c in codes if c) + "⟧")]
 
 
 # Each face: its sample lines, its direction and the features its class turns on.

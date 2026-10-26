@@ -1,7 +1,7 @@
 {
     "fixtures": [
         {
-            "latin": "Vedyara",
+            "latin": "vedyara",
             "glyphs": [
                 "va",
                 "vs.e",
@@ -18,7 +18,7 @@
             ]
         },
         {
-            "latin": "Rajepur",
+            "latin": "rajepur",
             "glyphs": [
                 "ra",
                 "ja",
@@ -37,7 +37,7 @@
             ]
         },
         {
-            "latin": "Ganoka-shalda",
+            "latin": "ganoka-shalda",
             "glyphs": [
                 "ga",
                 "na",
@@ -86,7 +86,7 @@
             ]
         },
         {
-            "latin": "Suryadvar",
+            "latin": "suryadvar",
             "glyphs": [
                 "sa",
                 "hook.u",
@@ -107,7 +107,7 @@
             ]
         },
         {
-            "latin": "Ushti",
+            "latin": "ushti",
             "glyphs": [
                 "u",
                 "shta",
@@ -123,7 +123,7 @@
             ]
         },
         {
-            "latin": "Vastuna karmata vanisa?",
+            "latin": "vastuna karmata vanisa?",
             "glyphs": [
                 "va",
                 "sta",
@@ -137,11 +137,12 @@
                 "va",
                 "na",
                 "vs.i",
-                "sa"
+                "sa",
+                "stop"
             ]
         },
         {
-            "latin": "Agarana dulipati, vandikana",
+            "latin": "agarana dulipati, vandikana",
             "glyphs": [
                 "a",
                 "ga",
@@ -183,6 +184,28 @@
                 "la",
                 "ma.final"
             ]
+        },
+        {
+            "latin": "tesk! tesk!! tesk?",
+            "glyphs": [
+                "ta",
+                "vs.e",
+                "sa.half",
+                "ka.final",
+                "stop",
+                "space",
+                "ta",
+                "vs.e",
+                "sa.half",
+                "ka.final",
+                "stop",
+                "space",
+                "ta",
+                "vs.e",
+                "sa.half",
+                "ka.final",
+                "stop"
+            ]
         }
     ],
     "unencodable": [
@@ -193,6 +216,10 @@
         {
             "latin": "wexa",
             "letter": "w"
+        },
+        {
+            "latin": "Vedyara",
+            "letter": "V"
         }
     ]
 }

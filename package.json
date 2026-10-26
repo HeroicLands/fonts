@@ -29,7 +29,7 @@
         "@heroiclands/package-build": "^25.0.0"
     },
     "scripts": {
-        "test": "node --test tools/convert.test.mjs tools/package_check.test.mjs",
+        "test": "node --test tools/package_check.test.mjs",
         "format": "package-build format --write",
         "format:check": "package-build format",
         "check:package": "node tools/package_check.mjs",

@@ -1,0 +1,21 @@
+{
+    "name": "standard",
+    "rows": [
+        [".", "\uDB40\uDD0E"],
+        ["?", "\uDB40\uDD1F"],
+        ["!", "\uDB40\uDD01"],
+        ["!!", "\uDB40\uDD01\uDB40\uDD01"],
+        [",", "\uDB40\uDD0C"],
+        ["«", "\uDB40\uDD5B\uDB40\uDD41\uDB40\uDD42\uDB40\uDD5D"],
+        ["»", "\uDB40\uDD5B\uDB40\uDD42\uDB40\uDD42\uDB40\uDD5D"],
+        ["‹", "\uDB40\uDD5B\uDB40\uDD12\uDB40\uDD10\uDB40\uDD13\uDB40\uDD19\uDB40\uDD5D"],
+        ["›", "\uDB40\uDD5B\uDB40\uDD12\uDB40\uDD10\uDB40\uDD13\uDB40\uDD41\uDB40\uDD5D"],
+        ["—", "\uDB40\uDD5B\uDB40\uDD12\uDB40\uDD10\uDB40\uDD11\uDB40\uDD14\uDB40\uDD5D"],
+        ["…", "\uDB40\uDD5B\uDB40\uDD12\uDB40\uDD10\uDB40\uDD12\uDB40\uDD16\uDB40\uDD5D"],
+        ["/", "\uDB40\uDD0F"],
+        ["//", "\uDB40\uDD0F\uDB40\uDD0F"],
+        ["***", "\uDB40\uDD0A\uDB40\uDD0A\uDB40\uDD0A"],
+        ["{", "\uDB40\uDD5B\uDB40\uDD17\uDB40\uDD42\uDB40\uDD5D"],
+        ["}", "\uDB40\uDD5D"]
+    ]
+}

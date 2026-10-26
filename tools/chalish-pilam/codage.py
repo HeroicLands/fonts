@@ -1,15 +1,19 @@
 # Copyright (c) 2026 Tom Rodriguez ("Toasty") — <toasty@heroiclands.org>
 # SPDX-License-Identifier: OFL-1.1
-"""Write the Chalish Common Codage, ``encodings/chalish-common.json``, from encoding.json.
+"""Write the Chalish Common codage, ``encodings/chalish-common.json``, and the Ch'alish script encoding that states it, ``encodings/chalish-pilam.json``, from encoding.json.
 
     .venv/bin/python tools/chalish-pilam/codage.py           # write the file
     .venv/bin/python tools/chalish-pilam/codage.py --check   # check it
 
 Every glyph of Chalish Pilam Common has one code: a concept glyph its name in capitals
 (``SUN``, ``MAN``, ``HIGH``), a number ``n`` and its value (``n13``, ``n400``). Codes are
-separated by spaces. The script has no word spaces, so a space writes its mark, the
-invisible variation selector U+E0100, and decoding restores it. The encoding is generated, so it never
-drifts from the font: run this after a glyph is added.
+separated by whitespace, which only separates and writes nothing. The codage is a file of kind
+``codage``: it extends nothing and is reached only between the literal markers of
+``chalish-pilam``. The script encoding extends the standard roman encoding,
+``encodings/standard.json``, and accepts nothing else as roman: the script marks no
+sentences, pauses or speech, so every standard mark keeps the standard's invisible mark, and
+its separator is one space, an empty cell. The files are generated, so they never drift
+from the font: run this after a glyph is added.
 """
 
 import argparse
@@ -20,6 +24,7 @@ from pathlib import Path
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parent.parent
 OUT = ROOT / "encodings" / "chalish-common.json"
+SCRIPT = ROOT / "encodings" / "chalish-pilam.json"
 sys.path.insert(0, str(HERE))
 sys.path.insert(0, str(ROOT))
 import encode as E  # noqa: E402
@@ -45,12 +50,31 @@ def rows() -> list:
     codes = [c for c, _ in out]
     if len(set(codes)) != len(codes):
         raise SystemExit("tools/chalish-pilam/encoding.json: error: two glyphs share a code")
-    return out + [[" ", E.mark(" ")]]
+    return out
 
 
 def text() -> str:
     return E.dumps(
-        {"name": "chalish-common", "fonts": ["chalish-pilam-common"], "rows": rows()}
+        {
+            "name": "chalish-common",
+            "kind": "codage",
+            "fonts": ["chalish-pilam-common"],
+            "rows": rows(),
+        }
+    )
+
+
+def script_text() -> str:
+    return E.dumps(
+        {
+            "name": "chalish-pilam",
+            "fonts": ["chalish-pilam-common"],
+            "extends": E.STANDARD,
+            "codage": "chalish-common",
+            "accepts": [],
+            "separator": " ",
+            "rows": [],
+        }
     )
 
 
@@ -58,11 +82,13 @@ def main():
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     ap.add_argument("--check", action="store_true", help="check the file rather than write it")
     if ap.parse_args().check:
-        if not OUT.exists() or OUT.read_text(encoding="utf-8") != text():
-            print(f"{OUT.relative_to(ROOT)}: error: differs from encoding.json; run codage.py")
-            return 1
+        for path, want in ((OUT, text()), (SCRIPT, script_text())):
+            if not path.exists() or path.read_text(encoding="utf-8") != want:
+                print(f"{path.relative_to(ROOT)}: error: differs from encoding.json; run codage.py")
+                return 1
         return 0
     OUT.write_text(text(), encoding="utf-8")
+    SCRIPT.write_text(script_text(), encoding="utf-8")
     return 0
 
 

@@ -1,34 +1,16 @@
-# chalish-common encoding
+# chalish-common codage
 
-Chalish Pilam Common is a logographic script in which each glyph records a concept. This encoding writes the named code of a glyph, such as `n1` for the numeral one, as its code point.
+Chalish Pilam Common is a logographic script in which each glyph records a concept. This codage names each glyph by a code, such as `n1` for the numeral one or `SUN` for the sun. It is reached only between `⟦` and `⟧` of the [chalish-pilam encoding](chalish-pilam.md), and encodes no text of its own.
 
 ## Fonts
 
 - Chalish Pilam Common (`chalish-pilam-common`), written left to right.
 
-## Running it
+## Using it
 
-`encode.py` needs only Python 3.9 or later. From a checkout, or from `node_modules/@heroiclands/fonts`:
-
-```sh
-python3 encode.py --encoding chalish-common "n1"
-python3 encode.py --encoding chalish-common --decode "󳀁"
-```
-
-The first command writes `󳀁`, and the second reads it back as `n1`. `--codepoints` prints the result as `U+XXXX` values, and the text may come from standard input.
-
-From Python:
-
-```python
-import encode
-
-text = encode.encode("chalish-common", "n1")
-roman = encode.decode("chalish-common", text)
-```
+A codage is a file of kind `codage`: it extends nothing and takes no text of its own. A script encoding states it with `"codage": "chalish-common"`, and its codes are written between `⟦` and `⟧`. Whitespace between codes only separates them, and decoding writes single spaces. Inside the markers only this codage's codes and notation are allowed, so a standard mark such as `,` is refused at its position. Outside them a code is ordinary roman. Asking for the codage as a whole-text encoding is an error that names the script encoding to use.
 
 ## Rows
-
-The rows are in the order the file states them.
 
 | Roman | Character | Code points |
 | --- | --- | --- |
@@ -127,10 +109,5 @@ The rows are in the order the file states them.
 | `SHIELD` | `󳁤` | U+F3064 |
 | `DEER` | `󳁥` | U+F3065 |
 | `MASK` | `󳁦` | U+F3066 |
-| (space) | `󠄀` | U+E0100 |
-
-## Round trip
-
-Every encoding round-trips exactly: decoding the code points that encoding wrote gives back the roman text, and encoding that gives the same code points. The Code points column shows every character a row writes, including any that is invisible.
 
 This page is written from `encodings/chalish-common.json` by `tools/encoding_docs.py`.

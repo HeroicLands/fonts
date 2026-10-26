@@ -9,9 +9,10 @@
 The forms are the ``words``, ``affixes``, ``names`` and ``elements`` of the
 frontmatter of ``assets/content/Skills/Languages/Vedyari.md``, and its
 ``register`` entries in Vedyari, on the thalorna repository's ``origin/main``, or
-in the file ``--note`` names. Each form is written in the Vedyakshara's code
-points by the ``vedyakshara`` encoding (``encodings/vedyakshara.json``, or the file
-``--encoding`` names), and shaped left to right.
+in the file ``--note`` names. Roman is lowercase, so each form is lowercased, then
+written in the Vedyakshara's code points by the ``vedyakshara`` encoding
+(``encodings/vedyakshara.json``, or the file ``--encoding`` names), and shaped left
+to right.
 
 What a form must shape to follows from the code points the encoding wrote, by the
 face's rules taken in order (``drawn``): _pa_ and the soft dot are _fa_; a fused
@@ -139,7 +140,7 @@ def lexicon_forms(thalorna: Path | None, note: Path | None) -> list[str]:
                 walk(v)
 
     walk({k: v for k, v in data["names"].items() if k != "pattern"})
-    forms = list(dict.fromkeys(str(f) for f in forms))
+    forms = list(dict.fromkeys(str(f).lower() for f in forms))
     if not forms:
         raise SystemExit("the lexicon is empty")
     return forms

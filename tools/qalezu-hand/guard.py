@@ -8,7 +8,8 @@
 
 The forms come from the ``words`` forms and the ``names`` of the frontmatter of
 ``assets/content/Skills/Languages/Khelathi.md`` on the thalorna repository's
-``origin/main``. Each form is written in Qalezu's code points by the ``qalezu`` encoding
+``origin/main``. Roman is lowercase, so each form is lowercased, then written in
+Qalezu's code points by the ``qalezu`` encoding
 (``encodings/qalezu.json``, or the file ``--encoding`` names), and the result is
 shaped right to left.
 
@@ -24,7 +25,7 @@ visual run, and none ``.notdef`` or the box.
 The fixtures in ``fixtures.json`` give a roman spelling and the signs it is
 drawn with, in reading order, and are written through the encoding and shaped
 too, so the guard checks the encoding and the face together. A character the
-encoding has no row for (``c`` outside ``ch``, ``x``, or a mark the script lacks)
+encoding has no row for (``c`` outside ``ch``, ``x``, a capital, or a mark the script lacks)
 passes through it and prints the box: the guard lists the forms that hold one,
 and its ``unencodable`` fixtures assert both. Targets come from ``encoding.json``.
 """
@@ -107,7 +108,7 @@ def lexicon_forms(thalorna: Path | None, note: Path | None) -> list[str]:
     forms += names["house"] + names["place"]
     if not forms:
         raise SystemExit("the lexicon is empty")
-    return forms
+    return [form.lower() for form in forms]
 
 
 def run(font: Path, forms: list[str], encoded: Encoded | None = None) -> list[str]:

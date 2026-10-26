@@ -20,6 +20,8 @@ Each key types its sound in the script, and a key whose sound the script
 does not write types nothing. The characters of markup type themselves, and a
 backslash is \\\\. Option has no Emacs key: Option+x is \\ and
 then the key that x types, so Option+t (th) is \\t and Option+Shift+t (Th) is \\T.
+Literal open is \\W.
+Literal close is \\L.
 The cheatsheet keyboards/index.md lists every key."
  nil t nil nil nil nil nil nil nil nil t)
 
@@ -77,7 +79,7 @@ The cheatsheet keyboards/index.md lists every key."
  ("w" #xF0244)
  ("W" #xF0214)
  ("\\w" [""])
- ("\\W" [""])
+ ("\\W" #x27E6)
  ("e" #xF0233)
  ("E" #xF0203)
  ("\\e" #xF0233)
@@ -151,7 +153,7 @@ The cheatsheet keyboards/index.md lists every key."
  ("l" #xF023A)
  ("L" #xF020A)
  ("\\l" [""])
- ("\\L" [""])
+ ("\\L" #x27E7)
  (";" [""])
  ("\\;" [""])
  ("\\:" [""])
@@ -187,7 +189,7 @@ The cheatsheet keyboards/index.md lists every key."
  ("M" #xF020B)
  ("\\m" [""])
  ("\\M" [""])
- ("," [""])
+ ("," #xF0268)
  ("<" [""])
  ("\\," [""])
  ("\\<" [""])

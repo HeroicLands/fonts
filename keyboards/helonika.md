@@ -1,6 +1,6 @@
 # HL Helónika cheatsheet
 
-HL Helónika types Helonika Book by sound. It is a US keyboard that writes the Helónika script: the key for a sound types that sound's Helónika character, so `t` types the script's t, Option+T types its th, and Shift makes a capital. You type the sounds of a word one after another, as you would in English.
+HL Helónika types Helonika Book by sound. It is a US keyboard that writes the Helónika script: the key for a sound types that sound's Helónika character, so `t` types the script's t and Option+T types its th, and Shift makes a capital. You type the sounds of a word one after another, as you would in English.
 
 ![HL Helónika on an ANSI keyboard](helonika.png)
 
@@ -41,6 +41,8 @@ These keys type no sound. They type in HL Helónika alone.
 | `c` | `c` | long u | HL Helónika | ![U+F0352](../charts/helonika-book/glyphs/U+F0352.svg) | U+F0352 | HELONIKA SMALL LETTER U WITH LENGTH BAR |
 | `shift+c` | `C` | Long U | HL Helónika | ![U+F0322](../charts/helonika-book/glyphs/U+F0322.svg) | U+F0322 | HELONIKA CAPITAL LETTER U WITH LENGTH BAR |
 | `option+shift+m` | `\M` | accent | HL Helónika | ![U+F0378](../charts/helonika-book/glyphs/U+F0378.svg) | U+F0378 | HELONIKA COMBINING ACCENT |
+| `option+shift+w` | `\W` | literal open | HL Helónika | ⟦ | U+27E6 | LEFT WHITE SQUARE BRACKET |
+| `option+shift+l` | `\L` | literal close | HL Helónika | ⟧ | U+27E7 | RIGHT WHITE SQUARE BRACKET |
 
 ## Keys a platform cannot carry
 

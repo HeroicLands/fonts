@@ -1,16 +1,41 @@
 {
+  "standard": {
+    "title": "standard roman encoding",
+    "intro": [
+      "Roman transliteration has one standard punctuation, used by every language, scripted or not. Its marks record the type of a sentence, the bounds of a quotation and the ends of verse lines and stanzas. Every encoding extends this one, `encodings/standard.json`, and adds its script's letters, numerals and the other characters its language writes.",
+      "Roman is typed in lowercase, and a caseless script accepts only lowercase: its encoding refuses a capital letter, names included. Semaron Kuriale and Helónika are the two scripts with case, and their encodings write a capital letter as its majuscule, with no mark for case. A codage, which names each sign by a code, keeps its codes in capitals. `{` and `}` surround a name, and a script may mark the name in its own way. `…` is the ellipsis character, never three periods. A quoted span that closes without a terminal is resumed by the next span as the same sentence, and a closing quote never terminates the outer sentence. In verse, a line beginning with `.` is indented one level per period."
+    ],
+    "marks": {
+      ".": "completes a declarative sentence, terminal",
+      "?": "completes an interrogative sentence, terminal",
+      "!": "completes an imperative sentence, terminal",
+      "!!": "completes an exclamative sentence, terminal",
+      ",": "a pause that does not end the sentence",
+      "«": "opens a quotation of one or more terminated sentences",
+      "»": "closes a quotation opened by `«`",
+      "‹": "opens a quotation nested inside `«` `»`, alternating with them at any depth",
+      "›": "closes a quotation opened by `‹`",
+      "—": "interrupts a sentence, non-terminal, immediately followed by a terminal",
+      "…": "abandons a sentence, non-terminal and immediately followed by a terminal; at a sentence's start, resumes one",
+      "/": "verse line end",
+      "//": "verse stanza end",
+      "***": "verse canto end",
+      "{": "opens a name",
+      "}": "closes a name opened by `{`"
+    }
+  },
   "semaron": {
     "title": "semaron encoding",
     "example": "thalen kaa",
     "intro": [
-      "Semaron Kuriale is an alphabet of capital and small letters, written left to right. This encoding writes a roman spelling in its letters: `th` is one letter, `ch` is written with the letters for t, s and h, a doubled `a`, `i` or `u` is a long vowel, `q` is written as `k`, and `y` before a vowel is a glide. An apostrophe or hyphen after a letter writes the catch, a mark on the letter before it."
+      "Semaron Kuriale is an alphabet of capital and small letters, written left to right. This encoding writes a roman spelling in its small letters, and a capital letter in its majuscule: `th` is one letter, `ch` is written with the letters for t, s and h, a doubled `a`, `i` or `u` is a long vowel, `q` is written as `k`, and `y` before a vowel is a glide. An apostrophe or hyphen after a letter writes the catch, a mark on the letter before it."
     ]
   },
   "aelwythi-semaron": {
     "title": "aelwythi-semaron encoding",
     "example": "thalen kal",
     "intro": [
-      "A second roman spelling for Semaron Kuriale, which draws the same letters as the semaron encoding. It takes each roman letter on its own where semaron joins them: a doubled vowel is two vowels, `c` is written as s before `e`, `i` and `y` and as k elsewhere, and `ch` and `tch` are written with the letters for t, s and h. The apostrophe and the quotation mark draw nothing and are written as invisible marks, and a hyphen draws a space and carries a mark."
+      "A second roman spelling for Semaron Kuriale, which draws the same letters as the semaron encoding. It takes each roman letter on its own where semaron joins them: a doubled vowel is two vowels, `c` is written as s before `e`, `i` and `y` and as k elsewhere, and `ch` and `tch` are written with the letters for t, s and h. The apostrophe draws nothing and is written as an invisible mark, and a hyphen draws a space and carries a mark. A capital letter is written in its majuscule."
     ]
   },
   "pirzath": {
@@ -45,21 +70,21 @@
     "title": "helonika encoding",
     "example": "kela",
     "intro": [
-      "Helonika Book is an alphabet of capital and small letters, written left to right. This encoding writes a roman spelling in its letters: `ei` and `ou` are the single letters for the long vowels, while `kh`, `zh` and doubled vowels are written as two letters."
+      "Helonika Book is an alphabet of capital and small letters, written left to right. This encoding writes a roman spelling in its small letters, and a capital letter in its majuscule: `ei` and `ou` are the single letters for the long vowels, while `kh`, `zh` and doubled vowels are written as two letters."
     ]
   },
   "helonika-bizarian": {
     "title": "helonika-bizarian encoding",
     "example": "khela",
     "intro": [
-      "A second roman spelling for Helonika Book. Here `kh` and `zh` are single letters, a doubled `a`, `i` or `u` is a long vowel, `ei` is two letters, and an acute vowel is the vowel followed by the accent mark."
+      "A second roman spelling for Helonika Book. Here `kh` and `zh` are single letters, a doubled `a`, `i` or `u` is a long vowel, `ei` is two letters, and an acute vowel is the vowel followed by the accent mark. A capital letter is written in its majuscule."
     ]
   },
   "helonika-bethuan": {
     "title": "helonika-bethuan encoding",
     "example": "khela",
     "intro": [
-      "A third roman spelling for Helonika Book. Here `kh` is a single letter and `zh` two, a doubled `a`, `i` or `u` is a long vowel, `ei` is the single letter for the long vowel, and an acute vowel is the vowel followed by the accent mark."
+      "A third roman spelling for Helonika Book. Here `kh` is a single letter and `zh` two, a doubled `a`, `i` or `u` is a long vowel, `ei` is the single letter for the long vowel, and an acute vowel is the vowel followed by the accent mark. A capital letter is written in its majuscule."
     ]
   },
   "veldikko": {
@@ -70,7 +95,7 @@
       "Veldikko is a right-to-left calligraphy whose letters join along the line, with vowel marks that float above them. This encoding writes a roman spelling in its code points: a letter, then the doubling bar if the consonant is doubled, then each vowel mark followed by its signs of length, pitch and emphasis."
     ],
     "structure": [
-      "Its rows are generated from a small number of parts, so the complete table is too long to read. Every consonant is a single letter; a roman letter the script lacks (`b`, `f`, `w`, `z`, `c`, `q`, `g`) is written as the nearest letter, and `x` is written as two letters. A vowel is its vowel sign, and a vowel at the start of a word is written after the carrier letter. A doubled vowel adds the long sign. The accents circumflex, caron and acute, typed on a vowel or after it, add the rise, fall and emphasis signs. A doubled consonant adds the doubling bar. A capital draws the same letters as its small form and carries a mark that decoding reads back as the capital.",
+      "Its rows are generated from a small number of parts, so the complete table is too long to read. Every consonant is a single letter; a roman letter the script lacks (`b`, `f`, `w`, `z`, `c`, `q`, `g`) is written as the nearest letter, and `x` is written as two letters. A vowel is its vowel sign, and a vowel at the start of a word is written after the carrier letter. A doubled vowel adds the long sign. The accents circumflex, caron and acute, typed on a vowel or after it, add the rise, fall and emphasis signs. A doubled consonant adds the doubling bar.",
       "The rows below are the rows of a single character, then a few longer rows of each length."
     ]
   },
@@ -81,26 +106,44 @@
       "A second roman spelling for Veldikko, with the same letters and marks. It writes the consonant digraphs such as `th`, `dh`, `kh` and `ng` as single letters."
     ]
   },
-  "zethu-mdc": {
-    "title": "zethu-mdc encoding",
-    "example": "SERVANT",
+  "zethu": {
+    "title": "zethu encoding",
+    "example": "⟦SERVANT SPEAK⟧",
     "intro": [
-      "Khelathi Zethu Glyphs is a right-to-left script of signs, one sign to a word. This encoding writes the named code of a sign, in capitals, as its code point."
+      "Khelathi Zethu Glyphs is a right-to-left script of signs, set directly beside each other with nothing between them. This encoding accepts no roman letters: Khelathi words are written by the language-aware encoder, and a sign is written by its code between `⟦` and `⟧`, in the notation of the [zethu-mdc codage](zethu-mdc.md). Its word separator is empty: whitespace in roman draws nothing and writes nothing, so no output contains U+0020, and decoding gives the `⟦…⟧` codage alone."
+    ]
+  },
+  "zethu-mdc": {
+    "title": "zethu-mdc codage",
+    "intro": [
+      "Khelathi Zethu Glyphs is a right-to-left script of signs, one sign to a word. This codage names each sign by a code, its sense in capitals, and types the format controls in the notation of the Manuel de Codage. It is reached only between `⟦` and `⟧` of the [zethu encoding](zethu.md), and encodes no text of its own."
+    ]
+  },
+  "chalish-pilam": {
+    "title": "chalish-pilam encoding",
+    "example": "⟦SUN MOON⟧ ⟦n1⟧",
+    "intro": [
+      "Chalish Pilam Common is a logographic script in which each glyph records a concept. This encoding accepts no roman letters: a glyph is written by its code between `⟦` and `⟧`, in the notation of the [chalish-common codage](chalish-common.md). Its word separator is one space, an empty cell."
+    ]
+  },
+  "chalish-pilam-ceremonial": {
+    "title": "chalish-pilam-ceremonial encoding",
+    "example": "⟦n13*TQAN DAWN⟧",
+    "intro": [
+      "Chalish Pilam Ceremonial is the carved hand of Ch'alish P'ilam, a logographic script whose glyphs compose into blocks. This encoding accepts no roman letters: a glyph or a block is written by its codes between `⟦` and `⟧`, in the notation of the [chalish-ceremonial codage](chalish-ceremonial.md). Its word separator is one space, an empty block."
     ]
   },
   "chalish-ceremonial": {
-    "title": "chalish-ceremonial encoding",
-    "example": "n13*TQAN DAWN",
+    "title": "chalish-ceremonial codage",
     "intro": [
-      "Chalish Pilam Ceremonial is the carved hand of Ch'alish P'ilam, a logographic script whose glyphs compose into blocks. This encoding writes the named code of a glyph as its code point: a concept glyph by its name in capitals (`SUN`), a syllable sign by its syllable and number (`ka1`), and a number by `n` and its value (`n13`).",
-      "Inside a block, `*` writes the joiner that sets two items side by side and `:` the joiner that stacks the first over the second; the font lays the block out from them. A block ends wherever no joiner follows, so `-` and a space each write only their invisible mark. Zero and the places of the count have code points and no ceremonial drawing, so they print the box."
+      "Chalish Pilam Ceremonial is the carved hand of Ch'alish P'ilam, a logographic script whose glyphs compose into blocks. This codage names each glyph by a code: a concept glyph by its name in capitals (`SUN`), a syllable sign by its syllable and number (`ka1`), and a number by `n` and its value (`n13`). It is reached only between `⟦` and `⟧` of the [chalish-pilam-ceremonial encoding](chalish-pilam-ceremonial.md), and encodes no text of its own.",
+      "Inside a block, `*` writes the joiner that sets two items side by side and `:` the joiner that stacks the first over the second; the font lays the block out from them. A block ends wherever no joiner follows, so `-` writes only its invisible mark, and whitespace only separates codes. Zero and the places of the count have code points and no ceremonial drawing, so they print the box."
     ]
   },
   "chalish-common": {
-    "title": "chalish-common encoding",
-    "example": "n1",
+    "title": "chalish-common codage",
     "intro": [
-      "Chalish Pilam Common is a logographic script in which each glyph records a concept. This encoding writes the named code of a glyph, such as `n1` for the numeral one, as its code point."
+      "Chalish Pilam Common is a logographic script in which each glyph records a concept. This codage names each glyph by a code, such as `n1` for the numeral one or `SUN` for the sun. It is reached only between `⟦` and `⟧` of the [chalish-pilam encoding](chalish-pilam.md), and encodes no text of its own."
     ]
   }
 }

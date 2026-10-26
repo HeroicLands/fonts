@@ -1,7 +1,50 @@
 {
     "fixtures": [
         {
-            "latin": "Anlagh",
+            "latin": "lrt.",
+            "signs": [
+                "l",
+                "r",
+                "t",
+                "period"
+            ]
+        },
+        {
+            "latin": "lrt, lrt/",
+            "signs": [
+                "l",
+                "r",
+                "t",
+                "comma",
+                "space",
+                "l",
+                "r",
+                "t",
+                "verseEnd"
+            ]
+        },
+        {
+            "latin": "l?",
+            "signs": [
+                "l",
+                "period"
+            ]
+        },
+        {
+            "latin": "l! l!! l//",
+            "signs": [
+                "l",
+                "period",
+                "space",
+                "l",
+                "period",
+                "space",
+                "l",
+                "verseEnd"
+            ]
+        },
+        {
+            "latin": "anlagh",
             "signs": [
                 "n.catch",
                 "l",
@@ -9,7 +52,7 @@
             ]
         },
         {
-            "latin": "Qe'aret",
+            "latin": "qe'aret",
             "signs": [
                 "q",
                 "r.catch",
@@ -17,7 +60,7 @@
             ]
         },
         {
-            "latin": "Au'Khelathu",
+            "latin": "au'khelathu",
             "signs": [
                 "catch",
                 "kh.catch",
@@ -26,14 +69,14 @@
             ]
         },
         {
-            "latin": "Uqa'a",
+            "latin": "uqa'a",
             "signs": [
                 "q.catch",
                 "catch"
             ]
         },
         {
-            "latin": "Lem'",
+            "latin": "lem'",
             "signs": [
                 "l",
                 "m",
@@ -41,7 +84,7 @@
             ]
         },
         {
-            "latin": "Au",
+            "latin": "au",
             "signs": [
                 "catch"
             ]
@@ -60,7 +103,7 @@
             ]
         },
         {
-            "latin": "Gar-Anlagh",
+            "latin": "gar-anlagh",
             "signs": [
                 "g",
                 "r",
@@ -71,7 +114,7 @@
             ]
         },
         {
-            "latin": "Gith’el",
+            "latin": "gith’el",
             "signs": [
                 "g",
                 "th",
@@ -122,7 +165,7 @@
             ]
         },
         {
-            "latin": "Gar-Qethar",
+            "latin": "gar-qethar",
             "signs": [
                 "g",
                 "r",
@@ -133,7 +176,7 @@
             ]
         },
         {
-            "latin": "Khelathi-zethu",
+            "latin": "khelathi-zethu",
             "signs": [
                 "kh",
                 "l",
@@ -144,7 +187,7 @@
             ]
         },
         {
-            "latin": "Gar-Au",
+            "latin": "gar-au",
             "signs": [
                 "g",
                 "r",
@@ -153,14 +196,14 @@
             ]
         },
         {
-            "latin": "Gar-",
+            "latin": "gar-",
             "signs": [
                 "g",
                 "r"
             ]
         },
         {
-            "latin": "Lut-",
+            "latin": "lut-",
             "signs": [
                 "l",
                 "t"
@@ -222,13 +265,6 @@
         },
         {
             "latin": "tjal",
-            "signs": [
-                "tj",
-                "l"
-            ]
-        },
-        {
-            "latin": "TJAL",
             "signs": [
                 "tj",
                 "l"
@@ -308,7 +344,7 @@
             ]
         },
         {
-            "latin": "Linnuseret",
+            "latin": "linnuseret",
             "signs": [
                 "l",
                 "n.dbl",
@@ -325,7 +361,7 @@
             ]
         },
         {
-            "latin": "Zel ez Qar",
+            "latin": "zel ez qar",
             "signs": [
                 "z",
                 "l",
@@ -397,12 +433,12 @@
             "letter": "x"
         },
         {
-            "latin": "l?",
-            "letter": "?"
-        },
-        {
             "latin": "l;",
             "letter": ";"
+        },
+        {
+            "latin": "Anlagh",
+            "letter": "A"
         }
     ]
 }

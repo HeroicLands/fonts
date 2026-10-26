@@ -2,7 +2,7 @@
   "principles": [
     "Each sound sits on one key or chord, the same in every script, and no key or chord carries two sounds. A layout types the sound in its script's own characters, or nothing where the script does not write the sound.",
     "A single letter sits on its own roman key. c and x are not sounds, so their plain keys carry no sound; x types the carrier in HL Veldikko.",
-    "A capital sits on Shift and the key of its small sound: Shift+A is A, Option+Shift+T is Th. A pair's capital is written with its first letter capital (Ch, Ai), the form a word starts with.",
+    "A capital sits on Shift and the key of its small sound: Shift+A is A, Option+Shift+T is Th. A pair's capital is written with its first letter capital (Ch, Ai), the form a word starts with. Only Semaron Kuriale and Helónika have case, so a capital types its majuscule in HL Semaron and HL Helónika and nothing in the caseless layouts.",
     "A consonant pair sits on Option and its first letter: Option+T th, Option+C ch. Where two pairs share a first letter, the second is a mnemonic: ny on Option+Y, its second letter, and ts on Option+X.",
     "An acute vowel sits on Option and its vowel, as Option+E types the acute on a Mac and AltGr and a vowel types it on Windows' US-International layout.",
     "The long vowels sit on Option and the digits 1 to 5, in the order a e i o u: Option+1 aa, Option+5 uu. The other vowel pairs follow in order on Option and the keys after them: 6 ai, 7 au, 8 ei, 9 oi, 0 ou, - ie, = uo, [ ae, ] ea. A vowel key's Option holds its acute, so the pairs cannot sit on their first vowel.",
@@ -10,10 +10,12 @@
     "The catch sits on ', the stop on ., the pause on , and the open and close quotes on Shift+, and Shift+., the keys of < and >. Vedyari writes no catch, and its encoding writes an apostrophe as the cut, so in HL Vedyakshara ' types the cut. Only Pirzath writes quotation marks, so those two keys type nothing in the other scripts.",
     "Digits sit on the digit row. Pirzath counts in sixteens, and its numerals ten to fifteen sit on Shift+2 to Shift+7, the keys of @ # $ % ^ &, the characters on those keys.",
     "Qalezu writes consonants only, so its vowel keys type nothing; a vowel at the start of a word is written with the catch.",
-    "Qalezu’s high verse-end dot is a sign typed by Option+Shift+F in HL Qalezu. Its Roman input is U+00B7 MIDDLE DOT; a physical newline does not add it.",
-    "Vedyakshara's consonant carries the vowel a, so in HL Vedyakshara a consonant is spelled before an a and its key types the bare consonant; the a key types nothing, another vowel key types its vowel sign, and a capital vowel types the vowel's own sign.",
+    "Qalezu’s high verse-end dot is a sign typed by Option+Shift+F in HL Qalezu. In roman it is `/`, the standard verse line end.",
+    "Vedyakshara's consonant carries the vowel a, so in HL Vedyakshara a consonant is spelled before an a and its key types the bare consonant; the a key types nothing, and another vowel key types its vowel sign.",
     "Markup types itself. The characters Markdown and similar markup need sit at their U.S. positions and type plain ASCII in every layout, so formatting is written without switching layouts, and no script draws them. No sound shares a key with markup; # is not markup because Shift+3 is Pirzath's eleven.",
     "A sign that is not a sound sits on a key of its own and types in the one layout whose script writes it, as the quote keys do outside Pirzath. HL Veldikko's six: the carrier on x, and on Option the long sign on L, the bar of a doubled consonant on W, the rise on R, the fall on F and the emphasis on M. No sound shares a key with a sign, and a sign types nothing in the other layouts. HL Helónika's eleven are the letters its sound keys cannot type, since a sound key types kh as k and h: the kh and zh letters on Option+Q and Option+J, the barred long vowels on Option+V, Option+` and C, each with its capital on Shift, and the accent on Option+Shift+M.",
+    "The literal immutable markers ⟦ and ⟧ sit on Option+Shift+W and Option+Shift+L in every layout, as signs that no script draws; the keys are free in all seven, and the brackets' own Option keys carry the vowel pairs ae and ea.",
+    "HL Vedyakshara types an independent vowel on Shift and its vowel key, a key of the keyboard alone: Vedyari roman is lowercase, so Shift+A carries no sound there, and the key types the independent vowel letter directly.",
     "Control chords and function keys carry nothing: the four layers above hold every sound, and no platform types reliably from them."
   ],
   "markup": [
@@ -146,6 +148,36 @@
       "script": "qalezu",
       "key": "option+shift+f",
       "codepoint": "U+1EA39"
+    },
+    {
+      "sign": "independent a",
+      "script": "vedyakshara",
+      "key": "shift+a",
+      "codepoint": "U+F0420"
+    },
+    {
+      "sign": "independent i",
+      "script": "vedyakshara",
+      "key": "shift+i",
+      "codepoint": "U+F0421"
+    },
+    {
+      "sign": "independent u",
+      "script": "vedyakshara",
+      "key": "shift+u",
+      "codepoint": "U+F0422"
+    },
+    {
+      "sign": "independent e",
+      "script": "vedyakshara",
+      "key": "shift+e",
+      "codepoint": "U+F0423"
+    },
+    {
+      "sign": "independent o",
+      "script": "vedyakshara",
+      "key": "shift+o",
+      "codepoint": "U+F0424"
     }
   ],
   "sounds": [
@@ -1594,13 +1626,13 @@
     },
     {
       "sound": "open quote",
-      "spelling": "“",
+      "spelling": "«",
       "kind": "punctuation",
       "key": "shift+,"
     },
     {
       "sound": "close quote",
-      "spelling": "”",
+      "spelling": "»",
       "kind": "punctuation",
       "key": "shift+."
     },
@@ -1699,6 +1731,18 @@
       "spelling": "&",
       "kind": "digit",
       "key": "shift+7"
+    }
+  ],
+  "literals": [
+    {
+      "sign": "literal open",
+      "key": "option+shift+w",
+      "codepoint": "U+27E6"
+    },
+    {
+      "sign": "literal close",
+      "key": "option+shift+l",
+      "codepoint": "U+27E7"
     }
   ]
 }

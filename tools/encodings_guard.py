@@ -5,23 +5,53 @@
     python3 tools/encodings_guard.py [--encodings DIR] [--fonts fonts.json] [--require-fonts]
 
 Every encoding round-trips both ways: decoding an encoded roman text gives the text
-back, and encoding decoded code points gives the code points back. For every encoding
+back with each run of whitespace outside the literal markers as one space (nothing for a
+script that writes none), and encoding decoded code points gives the code points back. For every encoding
 file in ``encodings/`` it checks that
 
-- the file is well formed, and every font it lists is a face in ``fonts.json``;
+- the standard roman encoding, ``encodings/standard.json``, gives each of its marks
+  the mark of the mark's own characters, and has no row for whitespace;
+- the file is well formed, it extends the standard, and every font it lists is a face
+  in ``fonts.json``; no row of its own repeats a row of the standard;
+- whitespace is one word separator: any run of space, tab, newline and carriage return
+  outside the literal markers encodes as exactly the encoding's ``separator``, and no row
+  matches whitespace; a script that spaces its words states a separator that is not empty,
+  and a script that sets its characters directly beside each other (Zethu, Teng Chou) states
+  ``""`` and writes no U+0020;
+- it declares the characters it accepts (``accepts``), every ``from`` of its rows is made
+  of declared characters or the standard's, a caseless script accepts ``a-z`` and no
+  capital (and refuses one at its position), and Semaron and Helonika, the scripts with
+  case, accept ``a-z`` and ``A-Z``;
+- every standard mark round-trips, alone and inside a sentence, in the shared rows and
+  in each face; a mark the script does not draw writes the standard's mark, so its
+  sequence is identical in every encoding;
+- a character outside the encoding is refused at its line and column, and so is a
+  code point that no row writes;
 - no row writes nothing, and no two rows with different ``from`` write one output;
 - every row's output follows the mark rule: a row that draws nothing writes the mark of
   its ``from``, and a row writes its drawing, the mark of its ``from`` and the end mark
   when an earlier row with another ``from`` draws the same, when its drawing is a run
-  of two or more other rows' drawings, or when it draws whitespace that no row reads
-  and so passes through (``encode.mark`` spells a mark, and ``encode.is_run`` tells a
-  run);
+  of two or more other rows' drawings, or when it draws what the separator writes
+  (``encode.mark`` spells a mark, and ``encode.is_run`` tells a run);
 - every row round-trips in the shortest text found in which it applies (see
   ``tools/encoding_vectors.py``), and so does every row beside every row that draws
   nothing, before it and after it;
+- the literal immutable markers ``\u27e6`` and ``\u27e7`` round-trip in every encoding, with
+  mixed content around and between spans, writing the same marker marks in every encoding:
+  character names where it states no ``codage``, and the codage's codes where it does;
+  whitespace of any amount between codes only separates them, and decoding writes single
+  spaces; an unmatched or nested marker, a code that names nothing and a standard mark
+  inside a span are refused at their line and column, and a code outside the markers is
+  ordinary roman, refused where the script does not accept it; every code of a codage
+  round-trips between the markers of the script that states it, and the codage, a file of
+  kind ``codage``, is refused as a whole-text encoding with the script's name in the
+  error; a script encoding built beside each codage proves a stated codage where no
+  shipped script states one;
+- ``names.json`` beside the encodings is the one ``tools/encoding_names.py`` writes;
 - seeded random roman texts over the encoding's ``from`` alphabet round-trip, and so do
   random sequences of outputs, wherever encoding their ``from``s applies those rows;
-- every sample text round-trips, and encoding the encoded text again leaves it unchanged;
+- every sample text round-trips; a sample with a character outside the encoding, which a font guard sets
+  to see the box, is refused;
 - in every font an encoding lists, every non-writing character draws no ink and adds no
   advance: each text set with its marks shapes exactly as it does without them, and a
   row that draws nothing shapes to nothing;
@@ -37,7 +67,10 @@ import argparse
 import json
 import os
 import random
+import string
+import shutil
 import sys
+import tempfile
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
@@ -74,17 +107,21 @@ class Report:
         self.files = {}
 
     def add(self, enc, where, message):
-        """A finding at a path in the encoding's file."""
+        """A finding at a path in the encoding's file, or at a row in the file that
+        states it."""
+        path = enc.path
+        if isinstance(where, E.Row):
+            path, where = where.where
         line = column = None
-        if enc.path not in self.files:
-            with open(enc.path, encoding="utf-8") as handle:
+        if path not in self.files:
+            with open(path, encoding="utf-8") as handle:
                 text = handle.read()
-            self.files[enc.path] = (text, E._positions(text)[0])
-        text, offsets = self.files[enc.path]
+            self.files[path] = (text, E._positions(text)[0])
+        text, offsets = self.files[path]
         offset = offsets.get(where)
         if offset is not None:
             line, column = E._line_column(text, offset)
-        self.findings.append(str(E.EncodingError(message, enc.path, line, column)))
+        self.findings.append(str(E.EncodingError(message, path, line, column)))
 
 
 def row_lists(enc):
@@ -102,13 +139,97 @@ def drawing(target):
     return target[:end]
 
 
-def passes_through(enc, text):
-    """Whether text is whitespace that no row's ``from`` begins with, which a roman text
-    writes by passing it through."""
-    firsts = {r.source[0] for r in enc.rows} | {
-        r.source[0] for f in enc.faces.values() for r in f.rows
-    }
-    return text != "" and all(c.isspace() and c not in firsts for c in text)
+# The scripts with case: Semaron Kuriale and Helonika and the recensions that write them.
+# Every other script is caseless.
+CASED = ("semaron", "aelwythi-semaron", "helonika", "helonika-bethuan", "helonika-bizarian")
+
+
+# Scripts whose characters are set directly beside each other: their separator is empty and
+# no encoding output holds U+0020. Every other script spaces its words.
+NO_SPACES = ("zethu", "teng-chou")
+
+# Runs of whitespace, each one separator.
+RUNS = (" ", "  ", "\t", "\n", "\r\n", " \t\n\r ", "\n\n\n")
+
+
+def check_separator(report, enc):
+    """Whitespace is one word separator: each run encodes as exactly the separator, a
+    script that spaces its words has a separator, and one that does not writes no U+0020."""
+    where = ("separator",)
+    separator = enc.separator
+    if separator is None:
+        report.add(enc, where, f"`{enc.name}` states no `separator`")
+        return
+    if enc.name in NO_SPACES:
+        if separator != "":
+            report.add(enc, where, f"`{enc.name}` sets its characters beside each other, so its "
+                       f"separator is empty, not {_show(separator)}")
+    elif separator == "":
+        report.add(enc, where, f"`{enc.name}` spaces its words, so its separator is not empty")
+    for run in RUNS:
+        try:
+            written = E.encode(enc, run)
+        except E.EncodingError as error:
+            report.add(enc, where, f"the whitespace {_show(run)} is refused: {error.message}")
+            continue
+        if written != separator:
+            report.add(enc, where, f"the whitespace {_show(run)} encodes to {_codepoints(written)}, "
+                       f"not the separator {_codepoints(separator)}")
+        if separator and E.decode(enc, written) != " ":
+            report.add(enc, where, f"the separator {_codepoints(separator)} does not read back as a "
+                       "single space")
+        if enc.name in NO_SPACES and " " in written:
+            report.add(enc, where, f"`{enc.name}` writes no spaces, yet {_show(run)} encodes to "
+                       f"{_codepoints(written)}, which holds U+0020")
+    unit = word_of(enc)
+    if unit is None and enc.codage is not None:
+        code = word_of(enc.codage)
+        unit = f"{E.OPEN}{code}{E.CLOSE}" if code else None
+    if unit is None:
+        return
+    single = E.encode(enc, unit)
+    for run in RUNS:
+        text = unit + run + unit
+        try:
+            written = E.encode(enc, text)
+        except E.EncodingError as error:
+            report.add(enc, where, f"{_show(text)} is refused: {error.message}")
+            continue
+        if written != single + separator + single:
+            report.add(enc, where, f"{_show(text)} encodes to {_codepoints(written)}, not the word, "
+                       f"one separator and the word")
+        if enc.name in NO_SPACES and " " in written:
+            report.add(enc, where, f"`{enc.name}` writes no spaces, yet {_show(text)} encodes to "
+                       f"{_codepoints(written)}, which holds U+0020")
+        read = E.decode(enc, written)
+        if read != E.canonical(enc, text):
+            report.add(enc, where, f"{_show(text)} reads back as {_show(read)}, not "
+                       f"{_show(E.canonical(enc, text))}")
+
+
+def check_accepted(report, enc):
+    """The encoding declares what it accepts; every ``from`` is made of accepted
+    characters; a caseless script accepts no capital and a script with case accepts both."""
+    declared = enc.accepts | enc.standard_chars
+    for face, at, rows in row_lists(enc):
+        for row in rows:
+            if row.where is not None and row.where[0] != enc.path:
+                continue
+            bad = sorted({c for c in row.source if c not in declared})
+            if bad:
+                report.add(enc, row, f"row {_show(row.source)} uses {_show(''.join(bad))}, which "
+                           "`accepts` does not declare")
+    if enc.codage is not None and not enc.accepts:
+        return
+    lower, upper = set(string.ascii_lowercase), set(string.ascii_uppercase)
+    if not lower <= enc.accepts:
+        report.add(enc, ("accepts",), "`accepts` lists `a-z`")
+    if enc.name in CASED:
+        if not upper <= enc.accepts:
+            report.add(enc, ("accepts",), f"`{enc.name}` has case, so `accepts` lists `A-Z`")
+    elif upper & enc.accepts:
+        report.add(enc, ("accepts",), f"`{enc.name}` is caseless, so it accepts only lowercase "
+                   "roman and no capital")
 
 
 # --- what the rows write -------------------------------------------------------------
@@ -118,11 +239,11 @@ def check_outputs(report, enc):
     """No row writes nothing, no output reads back as two romans, and every output
     follows the mark rule."""
     for face, at, rows in row_lists(enc):
-        firsts = {}
+        firsts = {enc.separator: " "} if enc.separator else {}
         pool = rows + (enc.rows if face is not None else [])
         drawings = {drawing(r.target) for r in pool} - {""}
         for row in rows:
-            where = at + (row.order,)
+            where = row
             if row.target == "":
                 report.add(
                     enc,
@@ -136,8 +257,7 @@ def check_outputs(report, enc):
                 expected = E.mark(row.source)
             else:
                 first = firsts.setdefault(drawn, row.source)
-                if (first == row.source and not passes_through(enc, drawn)
-                        and not E.is_run(drawn, drawings)):
+                if first == row.source and not E.is_run(drawn, drawings):
                     expected = drawn
                 else:
                     expected = drawn + E.mark(row.source) + E.END_MARK
@@ -156,10 +276,9 @@ def check_outputs(report, enc):
                 continue
             other = readers.setdefault(row.target, row)
             if other.source != row.source:
-                at = ("rows",) if face is None or row in enc.rows else ("faces", face, "rows")
                 report.add(
                     enc,
-                    at + (row.order,),
+                    row,
                     f"row {_show(row.source)} writes {_codepoints(row.target)}, which row "
                     f"{_show(other.source)} also writes, so decoding cannot tell them apart",
                 )
@@ -169,16 +288,30 @@ def check_outputs(report, enc):
 
 
 def round_trip(report, enc, where, label, roman, face=None):
-    """Whether ``roman`` reads back exactly, and its code points encode back exactly."""
-    unicode = E.encode(enc, roman, face)
-    read = E.decode(enc, unicode, face)
+    """Whether ``roman`` reads back as its canonical form (each run of whitespace one
+    space), and its code points encode back exactly."""
+    try:
+        unicode = E.encode(enc, roman, face)
+    except E.EncodingError as error:
+        report.add(enc, where, f"{label} {_show(roman)} is refused: {error.message}")
+        return False
+    try:
+        read = E.decode(enc, unicode, face)
+    except E.EncodingError as error:
+        report.add(
+            enc,
+            where,
+            f"{label} {_show(roman)} encodes to {_codepoints(unicode)}, which is refused in "
+            f"decoding: {error.message}",
+        )
+        return False
     ok = True
-    if read != roman:
+    if read != E.canonical(enc, roman):
         report.add(
             enc,
             where,
             f"{label} {_show(roman)} encodes to {_codepoints(unicode)}, which reads back as "
-            f"{_show(read)}",
+            f"{_show(read)}, not {_show(E.canonical(enc, roman))}",
         )
         ok = False
     again = E.encode(enc, read, face)
@@ -190,15 +323,6 @@ def round_trip(report, enc, where, label, roman, face=None):
             f"{_show(read)}, which encodes to {_codepoints(again)}",
         )
         ok = False
-    twice = E.encode(enc, unicode, face)
-    if twice != unicode:
-        report.add(
-            enc,
-            where,
-            f"{label} {_show(roman)} encodes to {_codepoints(unicode)}, and encoding that "
-            f"again gives {_codepoints(twice)}",
-        )
-        ok = False
     return ok
 
 
@@ -207,7 +331,7 @@ def check_rows(report, enc):
     for face, at, rows in row_lists(enc):
         silent = sorted({r.source for r in rows if r.target and drawing(r.target) == ""})
         for row in rows:
-            where = at + (row.order,)
+            where = row
             text = V.witness(enc, row, face)
             if text is None:
                 report.add(
@@ -227,7 +351,7 @@ def check_rows(report, enc):
 def alphabet(enc, rows):
     """What a random roman text is made of: every ``from``, every character of one, and
     a space."""
-    tokens = {r.source for r in rows} | {c for r in rows for c in r.source} | {" "}
+    tokens = {r.source for r in rows} | {c for r in rows for c in r.source} | {" ", "\n"}
     return sorted(tokens)
 
 
@@ -239,6 +363,8 @@ def check_sweep(report, enc):
         failed = 0
         for _ in range(SWEEP):
             roman = "".join(chooser.choice(tokens) for _ in range(chooser.randint(1, LONGEST)))
+            if refused(enc, roman, face):
+                continue
             if not round_trip(report, enc, at, "the random text", roman, face):
                 failed += 1
                 if failed >= 3:
@@ -247,7 +373,7 @@ def check_sweep(report, enc):
         for _ in range(SWEEP):
             chosen = [chooser.choice(rows) for _ in range(chooser.randint(1, LONGEST))]
             roman = "".join(r.source for r in chosen)
-            applied = [row for _, _, row in E.pieces(enc, roman, face)]
+            applied = [row for _, _, row in E.pieces(enc, roman, face, strict=False)]
             if [id(r) for r in applied] != [id(r) for r in chosen]:
                 continue
             unicode = "".join(r.target for r in chosen)
@@ -265,9 +391,326 @@ def check_sweep(report, enc):
                     break
 
 
+def refused(enc, roman, face=None):
+    """Whether encoding refuses ``roman``, which holds a character outside the encoding."""
+    try:
+        E.encode(enc, roman, face)
+    except E.EncodingError:
+        return True
+    return False
+
+
 def check_samples(report, enc):
+    """Every sample round-trips, unless it holds a character no row matches: a font
+    guard's text for the box, which encoding refuses."""
     for text in V.samples(enc):
-        round_trip(report, enc, ("rows",), "the sample", text)
+        if all(row is not None for _, _, row in E.pieces(enc, text, strict=False)):
+            round_trip(report, enc, ("rows",), "the sample", text)
+        elif not refused(enc, text):
+            report.add(enc, ("rows",), f"the sample {_show(text)} holds a character no row "
+                       "matches, and encoding does not refuse it")
+
+
+# --- the standard ------------------------------------------------------------------
+
+
+def check_standard(report, directory):
+    """The standard roman encoding: each mark writes the mark of its own characters, and
+    it has no row for whitespace. Its marks, or ``None`` when it cannot be read."""
+    path = V.standard_path(directory)
+    try:
+        standard = E.load_base(path)
+    except E.EncodingError as error:
+        report.findings += [str(f) for f in error.faults]
+        return None
+    marks = []
+    for row in standard.rows:
+        if row.conditioned:
+            report.add(standard, row, f"the standard's row {_show(row.source)} takes a condition; "
+                       "the standard's rows apply everywhere")
+        expected = E.mark(row.source)
+        marks.append(row)
+        if row.target != expected:
+            report.add(standard, row, f"the standard's row {_show(row.source)} writes "
+                       f"{_codepoints(row.target)}; it writes {_codepoints(expected)}")
+    return marks
+
+
+def word_of(enc):
+    """A word of the encoding to set a mark beside: the ``from`` of its first row of
+    letters alone that applies by itself."""
+    for row in enc.own:
+        if row.source.isalpha() and V.witness(enc, row) == row.source:
+            return row.source
+    return None
+
+
+def check_marks(report, enc, standard, marks):
+    """The encoding extends the standard, repeats none of its rows, and round-trips
+    every standard mark, alone and in a sentence. A mark it does not draw writes the
+    standard's mark."""
+    if enc.base is None or os.path.abspath(enc.base) != os.path.abspath(standard.path):
+        report.add(enc, ("name",), f"`{enc.name}` does not extend the standard; it states "
+                   '`"extends": "standard"`')
+        return
+    theirs = {(r.source, r.target, r.before, r.at) for r in standard.rows}
+    for row in enc.own:
+        if (row.source, row.target, row.before, row.at) in theirs:
+            report.add(enc, row, f"row {_show(row.source)} is the standard's own row; the "
+                       "standard supplies it")
+    word = word_of(enc)
+    verse = [m.source for m in marks if m.source in ("/", "//", "***")]
+    for face, at, _ in row_lists(enc):
+        # Verse marks that begin alike are matched longest first, whatever stands beside them.
+        for first in verse:
+            for second in verse:
+                for text in (first + second, first + second + first, f"{first}\n{second}"):
+                    round_trip(report, enc, at, "the verse marks", text, face)
+        for mark in marks:
+            texts = [mark.source]
+            if word is not None:
+                texts += [
+                    word + mark.source,
+                    mark.source + word,
+                    f"{word} {word}{mark.source} {word}",
+                    f"{word} {mark.source} {word}",
+                ]
+            for text in texts:
+                if not round_trip(report, enc, at, f"the standard mark {_show(mark.source)} in",
+                                  text, face):
+                    break
+            try:
+                written = E.encode(enc, mark.source, face)
+            except E.EncodingError:
+                continue
+            if drawing(written) == "" and written != mark.target:
+                row = E.pieces(enc, mark.source, face)[0][2]
+                report.add(
+                    enc,
+                    row,
+                    f"the standard mark {_show(mark.source)}, which the script does not draw, "
+                    f"writes {_codepoints(written)}; every encoding writes the standard's "
+                    f"{_codepoints(mark.target)}",
+                )
+
+
+# Characters tried as ones outside an encoding, and code points no encoding writes.
+STRANGERS = ("\u2603", ";", "\u00a0", "~")
+UNWRITTEN = ("\U0010FFFD", E.END_MARK)
+
+
+def check_refusal(report, enc):
+    """A character outside the encoding is refused at its line and column, in encoding
+    and in decoding."""
+    word = word_of(enc) or ""
+    firsts = {r.source[0] for r in enc.rows}
+    for char in STRANGERS:
+        if char in firsts:
+            continue
+        text = f"{word}\n{word}{char}"
+        try:
+            E.encode(enc, text)
+        except E.EncodingError as error:
+            if (error.line, error.column) != (2, len(word) + 1):
+                report.add(enc, ("rows",), f"{_show(text)} is refused at {error.line}:"
+                           f"{error.column}, not at 2:{len(word) + 1}")
+        else:
+            report.add(enc, ("rows",), f"{_show(text)} holds {_show(char)}, which no row "
+                       "matches, and encoding does not refuse it")
+    for char in string.ascii_uppercase:
+        if char in enc.accepted:
+            continue
+        if not refuses_at(enc, E.encode, f"{word}{char}", 1, len(word) + 1):
+            report.add(enc, ("accepts",), f"the capital {_show(char)} is not refused at 1:{len(word) + 1}")
+    targets = {r.target[0] for r in enc.rows}
+    for char in UNWRITTEN:
+        if char in targets:
+            continue
+        try:
+            E.decode(enc, char)
+        except E.EncodingError as error:
+            if (error.line, error.column) != (1, 1):
+                report.add(enc, ("rows",), f"{_codepoints(char)} is refused in decoding at "
+                           f"{error.line}:{error.column}, not at 1:1")
+        else:
+            report.add(enc, ("rows",), f"{_codepoints(char)}, which no row writes, is not "
+                       "refused in decoding")
+
+
+# --- the literal immutable markers ----------------------------------------------------
+
+# Codes of characters every Python 3.9 or later names.
+NAMES = ("LATIN_SMALL_LETTER_A_WITH_ACUTE", "LATIN_SMALL_LETTER_I", "LATIN_SMALL_LETTER_M")
+
+
+def refuses_at(enc, run, text, line, column):
+    """Whether ``run`` (``E.encode`` or ``E.decode``) refuses ``text`` at the position."""
+    try:
+        run(enc, text)
+    except E.EncodingError as error:
+        return (error.line, error.column) == (line, column)
+    return False
+
+
+def named_code(enc):
+    """A code of the script fonts' own characters: the name of the first character an
+    encoding's rows write alone, or ``None``."""
+    for row in enc.rows:
+        if len(row.target) == 1 and E.character_name(row.target) and not E.is_mark(row.target):
+            return E.character_name(row.target)
+    return None
+
+
+def check_markers(report, enc):
+    """The literal immutable markers: with a codage stated they enclose its codes, and
+    otherwise character names. They round-trip with mixed content, write the shared
+    marker marks, and are refused where unmatched, nested or naming nothing."""
+    where = ("rows",)
+    word = word_of(enc) or ""
+    opening, closing = E.mark(E.OPEN), E.mark(E.CLOSE)
+    if enc.codage is not None:
+        codes = word_of(enc.codage)
+        if codes is None:
+            report.add(enc, where, "its codage has no row of letters to try a span with")
+            return
+        pair = codes
+        refused_code = "\u2603"
+    else:
+        codes = " ".join(NAMES)
+        own = named_code(enc)
+        pair = codes + (" " + own if own else "")
+        codes = pair
+        refused_code = "ACCUTE"
+    span = f"{E.OPEN}{codes}{E.CLOSE}"
+    texts = [
+        span,
+        f"{E.OPEN}{E.CLOSE}",
+        f"{word}{span}",
+        f"{span}{word}",
+        f"{word} {span} {word}",
+        f"{word}\n{span}\n{word}",
+        f"{span}{span}",
+        f"{word}{span}{word}{span}{word}",
+    ]
+    for text in texts:
+        round_trip(report, enc, where, "the literal span text", text)
+    unicode = E.encode(enc, span)
+    if not (unicode.startswith(opening) and unicode.endswith(closing)):
+        report.add(enc, where, f"{_show(span)} is not written between the marker marks "
+                   f"{_codepoints(opening)} and {_codepoints(closing)}")
+    inner = unicode[len(opening): len(unicode) - len(closing)]
+    unmatched = (
+        (f"{word}{E.OPEN}{codes}", 1, len(word) + 1),
+        (E.CLOSE, 1, 1),
+        (f"{word}{E.CLOSE}", 1, len(word) + 1),
+        (f"{E.OPEN}{E.OPEN}{codes}{E.CLOSE}{E.CLOSE}", 1, 2),
+        (f"{E.OPEN}{refused_code}{E.CLOSE}", 1, 2),
+        (f"{word}\n{E.OPEN}{codes} {refused_code}{E.CLOSE}", 2, len(codes) + 3),
+    )
+    for text, line, column in unmatched:
+        if not refuses_at(enc, E.encode, text, line, column):
+            report.add(enc, where, f"{_show(text)} is not refused at {line}:{column}")
+    decoding = (
+        (closing + inner, 1, 1),
+        (opening + inner, 1, 1),
+        (opening + opening + inner + closing + closing, 1, len(opening) + 1),
+        (opening + "\U0010FFFD" + closing, 1, len(opening) + 1),
+    )
+    for text, line, column in decoding:
+        if not refuses_at(enc, E.decode, text, line, column):
+            report.add(enc, where, f"{_codepoints(text)} is not refused in decoding at "
+                       f"{line}:{column}")
+    if E.decode(enc, unicode) != span:
+        report.add(enc, where, f"{_show(span)} does not read back as itself")
+    # Whitespace between codes only separates them; decoding writes the single space.
+    loose = f"{E.OPEN}  {codes.replace(' ', '  ' + chr(10) + chr(9) + '  ')}\n{E.CLOSE}"
+    if E.encode(enc, loose) != unicode:
+        report.add(enc, where, f"{_show(loose)} does not encode as {_show(span)} does: whitespace "
+                   "between codes is only a separator")
+    if E.decode(enc, E.encode(enc, loose)) != span:
+        report.add(enc, where, f"{_show(loose)} does not read back with single spaces")
+    # No standard mark is allowed inside a span.
+    for mark_char in (",", "?", "."):
+        text = f"{E.OPEN}{codes}{mark_char}{E.CLOSE}"
+        if not refuses_at(enc, E.encode, text, 1, len(codes) + 2):
+            report.add(enc, where, f"{_show(text)} is not refused at 1:{len(codes) + 2}: a standard "
+                       "mark is not allowed inside a span")
+    # A code outside the markers is ordinary roman.
+    if enc.codage is not None and not refused(enc, codes):
+        report.add(enc, where, f"the code {_show(codes)} is read outside the markers; a codage is "
+                   "recognized only between them")
+
+
+def check_codage(report, enc, faces, shaping):
+    """A codage, a file of kind ``codage``: it follows the mark rule, each code
+    round-trips between the markers of the script that states it, shapes with marks that
+    draw nothing, and the file is refused as a whole-text encoding."""
+    codage = enc.codage
+    check_outputs(report, codage)
+    for row in codage.rows:
+        round_trip(report, enc, row, "the code", f"{E.OPEN}{row.source}{E.CLOSE}")
+    try:
+        E.load(codage.path)
+    except E.EncodingError as error:
+        if enc.name not in error.message:
+            report.add(codage, ("name",), f"asking for the codage `{codage.name}` as a text "
+                       f"encoding is refused without naming `{enc.name}`, which states it")
+    else:
+        report.add(codage, ("name",), f"`{codage.name}` loads as a whole-text encoding; a codage "
+                   "is reached only between the literal markers")
+    if shaping:
+        check_fonts(report, codage, faces)
+
+
+def check_codage_scripts(report, directory):
+    """A script encoding built beside each codage, so a stated codage is proved even
+    where no shipped script names one."""
+    standard = V.standard_path(directory)
+    for codage in E.names(directory, "codage"):
+        source = os.path.join(directory, f"{codage}.json")
+        if not os.path.exists(source) or not os.path.exists(standard):
+            continue
+        with tempfile.TemporaryDirectory() as tmp:
+            shutil.copy(standard, tmp)
+            shutil.copy(source, tmp)
+            script = os.path.join(tmp, "marker-script.json")
+            data = {"name": "marker-script", "fonts": ["marker-face"], "extends": E.STANDARD,
+                    "codage": codage, "accepts": ["a", "b"], "separator": " ",
+                    "rows": [["a", "\uE000"], ["b", "\uE001"]]}
+            with open(script, "w", encoding="utf-8") as handle:
+                json.dump(data, handle, ensure_ascii=False, indent=4)
+            try:
+                enc = E.load(script)
+            except E.EncodingError as error:
+                report.findings += [str(f) for f in error.faults]
+                continue
+            before = len(report.findings)
+            check_markers(report, enc)
+            report.findings[before:] = [
+                f"{E._shown(source)}: error: as the codage of a script, {f.split(': error: ', 1)[-1]}"
+                for f in report.findings[before:]
+            ]
+
+
+def check_names(report, directory):
+    """``names.json`` beside the encodings is the one ``tools/encoding_names.py`` writes."""
+    import encoding_names as N
+
+    if not os.path.isdir(N.SOURCES):
+        return
+    names, findings = N.gather()
+    report.findings += findings
+    path = N.path_of(directory)
+    try:
+        with open(path, encoding="utf-8") as handle:
+            current = handle.read()
+    except OSError:
+        current = None
+    if current != N.dumps(names):
+        report.findings.append(
+            f"{E._shown(path)}: error: the names differ from tools/names; "
+            "run python3 tools/encoding_names.py"
+        )
 
 
 # --- in the fonts ----------------------------------------------------------------------
@@ -330,6 +773,8 @@ def check_fonts(report, enc, faces):
         face = slug if slug in enc.faces else None
         failed = 0
         for text in font_texts(enc, face):
+            if refused(enc, text, face):
+                continue
             unicode = E.encode(enc, text, face)
             bare = "".join(c for c in unicode if not E.is_mark(c))
             if bare == unicode:
@@ -353,7 +798,7 @@ def check_fonts(report, enc, faces):
                     if glyphs or advance:
                         report.add(
                             enc,
-                            at + (row.order,),
+                            row,
                             f"in `{slug}`, the mark {_codepoints(row.target)} of "
                             f"{_show(row.source)} shapes to {len(glyphs)} inked glyphs and an "
                             f"advance of {advance}",
@@ -377,6 +822,8 @@ def check(directory, fonts, require_fonts=False):
         faces = families(fonts)
     except (OSError, ValueError, KeyError) as error:
         return [f"{E._shown(fonts)}: error: cannot read the faces: {error}"], False
+    marks = check_standard(report, directory)
+    standard = E.load_base(V.standard_path(directory)) if marks is not None else None
     encodings = []
     for name in V._names(directory):
         try:
@@ -391,11 +838,21 @@ def check(directory, fonts, require_fonts=False):
             if slug not in faces:
                 report.add(enc, ("fonts", n), f"`{slug}` is not a face in {os.path.basename(fonts)}")
         check_outputs(report, enc)
+        check_accepted(report, enc)
+        check_separator(report, enc)
+        if enc.codage is not None:
+            check_codage(report, enc, faces, shaping)
+        if standard is not None:
+            check_marks(report, enc, standard, marks)
+        check_refusal(report, enc)
+        check_markers(report, enc)
         check_rows(report, enc)
         check_sweep(report, enc)
         check_samples(report, enc)
         if shaping:
             check_fonts(report, enc, faces)
+    check_codage_scripts(report, directory)
+    check_names(report, directory)
     if not report.findings:
         expected = V.dumps(V.build(encodings))
         path = V.vectors_path(directory)

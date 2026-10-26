@@ -1,36 +1,18 @@
-# chalish-ceremonial encoding
+# chalish-ceremonial codage
 
-Chalish Pilam Ceremonial is the carved hand of Ch'alish P'ilam, a logographic script whose glyphs compose into blocks. This encoding writes the named code of a glyph as its code point: a concept glyph by its name in capitals (`SUN`), a syllable sign by its syllable and number (`ka1`), and a number by `n` and its value (`n13`).
+Chalish Pilam Ceremonial is the carved hand of Ch'alish P'ilam, a logographic script whose glyphs compose into blocks. This codage names each glyph by a code: a concept glyph by its name in capitals (`SUN`), a syllable sign by its syllable and number (`ka1`), and a number by `n` and its value (`n13`). It is reached only between `⟦` and `⟧` of the [chalish-pilam-ceremonial encoding](chalish-pilam-ceremonial.md), and encodes no text of its own.
 
-Inside a block, `*` writes the joiner that sets two items side by side and `:` the joiner that stacks the first over the second; the font lays the block out from them. A block ends wherever no joiner follows, so `-` and a space each write only their invisible mark. Zero and the places of the count have code points and no ceremonial drawing, so they print the box.
+Inside a block, `*` writes the joiner that sets two items side by side and `:` the joiner that stacks the first over the second; the font lays the block out from them. A block ends wherever no joiner follows, so `-` writes only its invisible mark, and whitespace only separates codes. Zero and the places of the count have code points and no ceremonial drawing, so they print the box.
 
 ## Fonts
 
 - Chalish Pilam Ceremonial (`chalish-pilam-ceremonial`), written left to right.
 
-## Running it
+## Using it
 
-`encode.py` needs only Python 3.9 or later. From a checkout, or from `node_modules/@heroiclands/fonts`:
-
-```sh
-python3 encode.py --encoding chalish-ceremonial "n13*TQAN DAWN"
-python3 encode.py --encoding chalish-ceremonial --decode "󴀍󴿰󴀧󠄀󴂄"
-```
-
-The first command writes `󴀍󴿰󴀧󠄀󴂄`, and the second reads it back as `n13*TQAN DAWN`. `--codepoints` prints the result as `U+XXXX` values, and the text may come from standard input.
-
-From Python:
-
-```python
-import encode
-
-text = encode.encode("chalish-ceremonial", "n13*TQAN DAWN")
-roman = encode.decode("chalish-ceremonial", text)
-```
+A codage is a file of kind `codage`: it extends nothing and takes no text of its own. A script encoding states it with `"codage": "chalish-ceremonial"`, and its codes are written between `⟦` and `⟧`. Whitespace between codes only separates them, and decoding writes single spaces. Inside the markers only this codage's codes and notation are allowed, so a standard mark such as `,` is refused at its position. Outside them a code is ordinary roman. Asking for the codage as a whole-text encoding is an error that names the script encoding to use.
 
 ## Rows
-
-The rows are in the order the file states them.
 
 | Roman | Character | Code points |
 | --- | --- | --- |
@@ -330,10 +312,5 @@ The rows are in the order the file states them.
 | `*` | `󴿰` | U+F4FF0 |
 | `:` | `󴿱` | U+F4FF1 |
 | `-` | `󠄍` | U+E010D |
-| (space) | `󠄀` | U+E0100 |
-
-## Round trip
-
-Every encoding round-trips exactly: decoding the code points that encoding wrote gives back the roman text, and encoding that gives the same code points. The Code points column shows every character a row writes, including any that is invisible.
 
 This page is written from `encodings/chalish-ceremonial.json` by `tools/encoding_docs.py`.

@@ -1,6 +1,6 @@
 # HL Semaron cheatsheet
 
-HL Semaron types Semaron Kuriale by sound. It is a US keyboard that writes the Semaron script: the key for a sound types that sound's Semaron character, so `t` types the script's t, Option+T types its th, and Shift makes a capital. You type the sounds of a word one after another, as you would in English.
+HL Semaron types Semaron Kuriale by sound. It is a US keyboard that writes the Semaron script: the key for a sound types that sound's Semaron character, so `t` types the script's t and Option+T types its th, and Shift makes a capital. You type the sounds of a word one after another, as you would in English.
 
 ![HL Semaron on an ANSI keyboard](semaron.png)
 
@@ -22,6 +22,15 @@ The layout is a file per platform, named below. [The README](../README.md#instal
 - Windows: `keyboards/windows/semaron.klc`, the Microsoft Keyboard Layout Creator source of **HL Semaron**.
 - Linux: `keyboards/linux/hl_semaron`, the XKB symbols of **HL Semaron**.
 - Emacs: `keyboards/emacs/heroiclands-semaron.el`, the input method `heroiclands-semaron`.
+
+## Signs
+
+These keys type no sound. They type in HL Semaron alone.
+
+| Key | Emacs | Sign | Layout | Glyph | Code point | Name |
+| --- | --- | --- | --- | --- | --- | --- |
+| `option+shift+w` | `\W` | literal open | HL Semaron | ⟦ | U+27E6 | LEFT WHITE SQUARE BRACKET |
+| `option+shift+l` | `\L` | literal close | HL Semaron | ⟧ | U+27E7 | RIGHT WHITE SQUARE BRACKET |
 
 ## Keys a platform cannot carry
 
@@ -229,7 +238,7 @@ Every sound key, in keyboard order. Example: `t` types the sound `t`.
 | `option+shift+/` |  | nothing: this script has no character for the sound |  | `Ü` | `\?` |
 | `'` | ![U+F0270](../charts/semaron-kuriale/glyphs/U+F0270.svg) | U+F0270 | SEMARON CATCH | `catch` | `'` |
 | `.` | ![U+F0268](../charts/semaron-kuriale/glyphs/U+F0268.svg) | U+F0268 | SEMARON POINT | `stop` | `.` |
-| `,` |  | nothing: this script has no character for the sound |  | `pause` | `,` |
+| `,` | ![U+F0268](../charts/semaron-kuriale/glyphs/U+F0268.svg) | U+F0268 | SEMARON POINT | `pause` | `,` |
 | `shift+,` |  | nothing: this script has no character for the sound |  | `open quote` | `<` |
 | `shift+.` |  | nothing: this script has no character for the sound |  | `close quote` | `>` |
 | `0` | ![U+F0258](../charts/semaron-kuriale/glyphs/U+F0258.svg) | U+F0258 | SEMARON DIGIT ZERO | `0` | `0` |

@@ -45,7 +45,7 @@ def spell(enc, face, sound, script):
     text = before + sound["spelling"] + after
     within = []
     at = 0
-    for source, target, row in E.pieces(enc, text, face):
+    for source, target, row in E.pieces(enc, text, face, strict=False):
         if at < end and at + len(source) > start:
             if at < start or at + len(source) > end:
                 raise SystemExit(

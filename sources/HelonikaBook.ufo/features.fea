@@ -43,3 +43,10 @@ feature mark {
   pos base i.macron <anchor 119 70> mark @TOP;
   pos base u.macron <anchor 238 70> mark @TOP;
 } mark;
+
+feature kern {
+  pos raisedDot space' -200;
+  pos raisedDot ignorable.sub space' -200;
+  pos raisedDot ignorable.sub ignorable.sub space' -200;
+  pos raisedDot ignorable.sub ignorable.sub ignorable.sub space' -200;
+} kern;

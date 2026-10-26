@@ -8,7 +8,8 @@
 
 The forms come from the frontmatter of ``assets/content/Skills/Languages/Nordmal.md``
 on the thalorna repository's ``origin/main``: the ``words``, ``affixes`` and
-``elements`` forms and every given name and clan name. Each form is written in
+``elements`` forms and every given name and clan name. Roman is lowercase, so each
+form is lowercased, then written in
 Thuravark's code points by the ``thuravark`` encoding (``encodings/thuravark.json``,
 or the file ``--encoding`` names), and the result is shaped. The expected glyph sequence is derived from the spelling by the rules
 below, written here and read neither from the font source nor from the encoding:
@@ -19,13 +20,13 @@ below, written here and read neither from the font source nor from the encoding:
 - a doubled consonant is two staves, a doubled digraph two digraph staves;
 - j, and y before a vowel, is the glide; any other y is the vowel i;
 - q is the stave k, and ë is e;
-- the space draws nothing, the hyphen-minus is written as nothing, and the full
-  stop draws the dash;
-- every other punctuation key, c and x draw the box;
+- the space draws nothing, the hyphen-minus is written as nothing, and every
+  terminal (``.`` ``?`` ``!`` ``!!``) draws the dash;
+- every other punctuation key, c, x and a capital draw the box;
 - nothing is .notdef.
 
 Fixtures, written through the encoding and shaped too, cover the fillers, the
-numerals, the full stop and the empty keys.
+numerals, the terminals and the empty keys.
 
 The imperial recension's fixtures are typed in the font's code points around a
 name written through the encoding: the three diphthong staves; a crowned name,
@@ -132,7 +133,7 @@ FIXTURES = [
     ("yy", ["i", "i"]),
     # Long vowels: the vowel and the acute mark, or the vowel letter doubled.
     ("á", ["a", "a.acute"]), ("é", ["e", "e.acute"]), ("í", ["i", "i.acute"]), ("ó", ["o", "o.acute"]),
-    ("ú", ["u", "u.acute"]), ("Á", ["a", "a.acute"]),
+    ("ú", ["u", "u.acute"]),
     ("aa", ["a", "a"]), ("ii", ["i", "i"]), ("uu", ["u", "u"]),
     ("rún", ["r", "u", "u.acute", "n"]),
     # Doubled consonants: two staves.
@@ -141,7 +142,9 @@ FIXTURES = [
     ("tth", ["th", "th"]), ("hhl", ["hl", "hl"]), ("nng", ["ng", "ng"]),
     # Digraphs and the cases that look like them.
     ("ngh", ["n", "gh"]), ("hr", ["h", "r"]), ("hn", ["h", "n"]), ("sh", ["s", "h"]),
-    ("th", ["th"]), ("TH", ["th"]), ("Hlarth", ["hl", "a", "r", "th"]),
+    ("th", ["th"]), ("hlarth", ["hl", "a", "r", "th"]),
+    # Roman is lowercase: a capital draws the box.
+    ("Á", ["notdef.box"]), ("TH", ["notdef.box", "notdef.box"]), ("Hlarth", ["notdef.box", "l", "a", "r", "th"]),
     # The fillers: staves Nordmal does not write.
     ("dh", ["dh"]), ("kh", ["kh"]), ("gh", ["gh"]), ("z", ["z"]), ("w", ["w"]),
     ("ddh", ["dh", "dh"]), ("kkh", ["kh", "kh"]),
@@ -153,14 +156,19 @@ FIXTURES = [
     ("0123456789", [f"num.{i}" for i in range(10)]),
     ("128", ["num.1", "num.2", "num.8"]),
     ("0i0", ["num.0", "i", "num.0"]),
-    # The full stop draws the dash, the space draws nothing, and other punctuation draws the box.
+    # Every terminal draws the dash and the space draws nothing; the other standard marks
+    # write invisible marks alone, and any other punctuation draws the box.
     ("rún.", ["r", "u", "u.acute", "n", "period"]),
     ("a b", ["a", "space", "b"]),
     ("a b", ["a", "space", "b"]),
-    (",!?;:", ["notdef.box"] * 5),
+    (",!?;:", ["period", "period", "notdef.box", "notdef.box"]),
+    ("a, b! i? d!! e— f… g/ h//", ["a", "space", "b", "period", "space", "i", "period", "space", "d", "period",
+                                    "space", "e", "space", "f", "space", "g", "space", "h"]),
     ('"\'()', ["notdef.box"] * 4),
     ("“a”", ["notdef.box", "a", "notdef.box"]),
-    ("a«b»", ["a", "notdef.box", "b", "notdef.box"]),
+    ("a«b»", ["a", "b"]),
+    ("a‹b›", ["a", "b"]),
+    ("{a} b", ["a", "space", "b"]),
     ("<>[]", ["notdef.box"] * 4),
     ("@#$%^&", ["notdef.box"] * 6),
     # No stave: the box, never .notdef; q is k and ë is e.
@@ -187,17 +195,17 @@ RECENSION_FIXTURES = [
     (AI, "", "", {}, ["ai"]), (AU, "", "", {}, ["au"]), (OI, "", "", {}, ["oi"]),
     (AI + AU + OI, "", "", {}, ["ai", "au", "oi"]),
     # A crowned name: every glyph between the marks takes its crowned form.
-    (OPEN, "Thauras", CLOSE, {}, crowned(["th", "a", "u", "r", "a", "s"])),
-    (OPEN, "Thiland Thauras", CLOSE, {}, crowned(["th", "i", "l", "a", "n", "d", "space", "th", "a", "u", "r", "a", "s"])),
-    (OPEN, "Árdavon", CLOSE, {}, crowned(["a", "a.acute", "r", "d", "a", "v", "o", "n"])),
+    (OPEN, "thauras", CLOSE, {}, crowned(["th", "a", "u", "r", "a", "s"])),
+    (OPEN, "thiland thauras", CLOSE, {}, crowned(["th", "i", "l", "a", "n", "d", "space", "th", "a", "u", "r", "a", "s"])),
+    (OPEN, "árdavon", CLOSE, {}, crowned(["a", "a.acute", "r", "d", "a", "v", "o", "n"])),
     (OPEN, "128", CLOSE, {}, crowned(["num.1", "num.2", "num.8"])),
     (OPEN, "", CLOSE, {}, crowned([])),
     (OPEN + AI, "", AU + CLOSE, {}, crowned(["ai", "au"])),
     # An open with no close, and a close with no open: a bare post, the staves unchanged.
-    (OPEN, "Thauras", "", {}, ["crown.open", "th", "a", "u", "r", "a", "s"]),
-    ("", "Thauras", CLOSE, {}, ["th", "a", "u", "r", "a", "s", "crown.close"]),
+    (OPEN, "thauras", "", {}, ["crown.open", "th", "a", "u", "r", "a", "s"]),
+    ("", "thauras", CLOSE, {}, ["th", "a", "u", "r", "a", "s", "crown.close"]),
     # A character with no stave breaks the crown: both marks stay bare.
-    (OPEN, "a,b", CLOSE, {}, ["crown.open", "a", "notdef.box", "b", "crown.close"]),
+    (OPEN, "a;b", CLOSE, {}, ["crown.open", "a", "notdef.box", "b", "crown.close"]),
     # Two crowns in one run, and an open inside a crown, which opens the inner one.
     (OPEN, "a", CLOSE + OPEN, {}, crowned(["a"]) + ["crown.open"]),
     (OPEN + AI + OPEN, "", AU + CLOSE, {}, ["crown.open", "ai"] + crowned(["au"])),
@@ -211,11 +219,11 @@ RECENSION_FIXTURES = [
     ("", "en el ar al ma za ka ur lm lth", "", {},
      ["e", "n", "space", "e", "l", "space", "a", "r", "space", "a", "l", "space", "m", "a", "space", "z", "a", "space",
       "k", "a", "space", "u", "r", "space", "l", "m", "space", "l", "th"]),
-    ("", "Marendas", "", SS01, ["m_a", "r", "e_n", "d", "a", "s"]),
-    ("", "Marendas", "", {}, ["m", "a", "r", "e", "n", "d", "a", "s"]),
-    ("", "Thelvaralon", "", SS01, ["th", "e_l", "v", "a_r", "a_l", "o", "n"]),
+    ("", "marendas", "", SS01, ["m_a", "r", "e_n", "d", "a", "s"]),
+    ("", "marendas", "", {}, ["m", "a", "r", "e", "n", "d", "a", "s"]),
+    ("", "thelvaralon", "", SS01, ["th", "e_l", "v", "a_r", "a_l", "o", "n"]),
     # A bound rune inside a crown takes its crowned form too.
-    (OPEN, "Marendas", CLOSE, SS01, crowned(["m_a", "r", "e_n", "d", "a", "s"])),
+    (OPEN, "marendas", CLOSE, SS01, crowned(["m_a", "r", "e_n", "d", "a", "s"])),
 ]
 
 
@@ -232,7 +240,7 @@ def forms_of(front) -> list[str]:
     for group in d["names"]["given"].values():
         forms += group
     forms += d["names"]["clan"]
-    return forms
+    return [form.lower() for form in forms]
 
 
 def lexicon_forms(thalorna: Path | None, note: Path | None) -> list[str]:
@@ -251,7 +259,7 @@ def lexicon_forms(thalorna: Path | None, note: Path | None) -> list[str]:
 
 
 def expected_glyphs(form: str) -> list[str]:
-    s = form.lower()
+    s = form
     out: list[str] = []
     i = 0
     while i < len(s):
@@ -268,7 +276,11 @@ def expected_glyphs(form: str) -> list[str]:
             pass
         elif ch == " ":
             out.append("space")
-        elif ch == ".":
+        elif s.startswith("!!", i):
+            out.append("period")
+            i += 2
+            continue
+        elif ch in ".?!":
             out.append("period")
         elif ch == "q":
             out.append("k")
@@ -333,7 +345,7 @@ def frame_problems(r: Renderer, encoded: Encoded) -> list[str]:
     no close draws nothing but its post."""
     problems = []
     size = 48
-    name = encoded.one("Thiland Thauras")
+    name = encoded.one("thiland thauras")
     for label, text, framed in (("crowned", OPEN + name + CLOSE, True), ("unclosed", OPEN + name, False)):
         shaped = r.shape(text)
         width = int(shaped.advance * size / r.upem) + 40

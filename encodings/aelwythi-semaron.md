@@ -1,6 +1,6 @@
 # aelwythi-semaron encoding
 
-A second roman spelling for Semaron Kuriale, which draws the same letters as the semaron encoding. It takes each roman letter on its own where semaron joins them: a doubled vowel is two vowels, `c` is written as s before `e`, `i` and `y` and as k elsewhere, and `ch` and `tch` are written with the letters for t, s and h. The apostrophe and the quotation mark draw nothing and are written as invisible marks, and a hyphen draws a space and carries a mark.
+A second roman spelling for Semaron Kuriale, which draws the same letters as the semaron encoding. It takes each roman letter on its own where semaron joins them: a doubled vowel is two vowels, `c` is written as s before `e`, `i` and `y` and as k elsewhere, and `ch` and `tch` are written with the letters for t, s and h. The apostrophe draws nothing and is written as an invisible mark, and a hyphen draws a space and carries a mark. A capital letter is written in its majuscule.
 
 ## Fonts
 
@@ -26,36 +26,66 @@ text = encode.encode("aelwythi-semaron", "thalen kal")
 roman = encode.decode("aelwythi-semaron", text)
 ```
 
+## Accepted characters
+
+This encoding accepts `a-z`, `A-Z`, `0-9`, `'`, `-`, `` ` ``, `Á`, `É`, `Ë`, `Í`, `Ó`, `Ú`, `á`, `é`, `ë`, `í`, `ó`, `ú`, `‐`, `‑`, `’`, and the standard's marks and whitespace. Any other character is refused at its line and column.
+
+## Punctuation
+
+This encoding extends the [standard roman encoding](standard.md), which every language's roman shares. The table shows how this script writes each standard mark. A mark the script draws writes its glyph; a mark it does not draw writes the standard's invisible mark, the same in every encoding, so decoding restores it.
+
+| Mark | Meaning | Written | Code points |
+| --- | --- | --- | --- |
+| `.` | completes a declarative sentence, terminal | drawn, `󰉨` | U+F0268 |
+| `?` | completes an interrogative sentence, terminal | drawn, `󰉨` | U+F0268 U+E011F U+E01EF |
+| `!` | completes an imperative sentence, terminal | drawn, `󰉨` | U+F0268 U+E0101 U+E01EF |
+| `!!` | completes an exclamative sentence, terminal | drawn, `󰉨` | U+F0268 U+E0101 U+E0101 U+E01EF |
+| `,` | a pause that does not end the sentence | drawn, `󰉨` | U+F0268 U+E010C U+E01EF |
+| `«` | opens a quotation of one or more terminated sentences | invisible | U+E015B U+E0141 U+E0142 U+E015D |
+| `»` | closes a quotation opened by `«` | invisible | U+E015B U+E0142 U+E0142 U+E015D |
+| `‹` | opens a quotation nested inside `«` `»`, alternating with them at any depth | invisible | U+E015B U+E0112 U+E0110 U+E0113 U+E0119 U+E015D |
+| `›` | closes a quotation opened by `‹` | invisible | U+E015B U+E0112 U+E0110 U+E0113 U+E0141 U+E015D |
+| `—` | interrupts a sentence, non-terminal, immediately followed by a terminal | invisible | U+E015B U+E0112 U+E0110 U+E0111 U+E0114 U+E015D |
+| `…` | abandons a sentence, non-terminal and immediately followed by a terminal; at a sentence's start, resumes one | invisible | U+E015B U+E0112 U+E0110 U+E0112 U+E0116 U+E015D |
+| `/` | verse line end | invisible | U+E010F |
+| `//` | verse stanza end | invisible | U+E010F U+E010F |
+| `***` | verse canto end | invisible | U+E010A U+E010A U+E010A |
+| `{` | opens a name | invisible | U+E015B U+E0117 U+E0142 U+E015D |
+| `}` | closes a name opened by `{` | invisible | U+E015D |
+
+## Whitespace
+
+In roman, outside `⟦` and `⟧`, any run of spaces, tabs and line breaks is one word separator. It is not a character of the script, and no row matches it.
+
+This script spaces its words, so its `separator` is one space, U+0020: a separator writes one space, and decoding writes one space.
+
+The separator is normalized on input, not preserved: `a  b` and `a\n\tb` encode as `a b` does, and decoding writes a single space.
+
+A character that no row matches is refused: `encode.py` reports it with its line and column, and writes nothing.
+
+## Literal spans
+
+`⟦` and `⟧` enclose character names, as the [standard](standard.md) describes: `⟦LATIN_SMALL_LETTER_A_WITH_ACUTE⟧` writes `á`. Whitespace between names only separates them.
+
 ## Vowels and conditions
 
 The vowels are `AEIOUYaeiouy`.
 
 ## Rows
 
-The rows are in the order the file states them.
+The rows are in the order the file states them. A row here for a standard mark replaces the standard's row for it.
 
 | Roman | Character | Code points |
 | --- | --- | --- |
 | `tch` | `󰉁󰉀󰈶󠅔󠅃󠅈󠇯` | U+F0241 U+F0240 U+F0236 U+E0154 U+E0143 U+E0148 U+E01EF |
-| `tcH` | `󰉁󰉀󰈶󠅔󠅃󠄨󠇯` | U+F0241 U+F0240 U+F0236 U+E0154 U+E0143 U+E0128 U+E01EF |
-| `tCh` | `󰉁󰉀󰈶󠅔󠄣󠅈󠇯` | U+F0241 U+F0240 U+F0236 U+E0154 U+E0123 U+E0148 U+E01EF |
-| `tCH` | `󰉁󰉀󰈶󠅔󠄣󠄨󠇯` | U+F0241 U+F0240 U+F0236 U+E0154 U+E0123 U+E0128 U+E01EF |
 | `Tch` | `󰈑󰉀󰈶󠄴󠅃󠅈󠇯` | U+F0211 U+F0240 U+F0236 U+E0134 U+E0143 U+E0148 U+E01EF |
-| `TcH` | `󰈑󰉀󰈶󠄴󠅃󠄨󠇯` | U+F0211 U+F0240 U+F0236 U+E0134 U+E0143 U+E0128 U+E01EF |
-| `TCh` | `󰈑󰉀󰈶󠄴󠄣󠅈󠇯` | U+F0211 U+F0240 U+F0236 U+E0134 U+E0123 U+E0148 U+E01EF |
-| `TCH` | `󰈑󰉀󰈶󠄴󠄣󠄨󠇯` | U+F0211 U+F0240 U+F0236 U+E0134 U+E0123 U+E0128 U+E01EF |
 | `ch` | `󰉁󰉀󰈶󠅃󠅈󠇯` | U+F0241 U+F0240 U+F0236 U+E0143 U+E0148 U+E01EF |
-| `cH` | `󰉁󰉀󰈶󠅃󠄨󠇯` | U+F0241 U+F0240 U+F0236 U+E0143 U+E0128 U+E01EF |
 | `Ch` | `󰈑󰉀󰈶󠄣󠅈󠇯` | U+F0211 U+F0240 U+F0236 U+E0123 U+E0148 U+E01EF |
-| `CH` | `󰈑󰉀󰈶󠄣󠄨󠇯` | U+F0211 U+F0240 U+F0236 U+E0123 U+E0128 U+E01EF |
 | `qu` | `󰈹󰉄󠅑󠅕󠇯` | U+F0239 U+F0244 U+E0151 U+E0155 U+E01EF |
-| `qU` | `󰈹󰉄󠅑󠄵󠇯` | U+F0239 U+F0244 U+E0151 U+E0135 U+E01EF |
 | `Qu` | `󰈉󰉄󠄱󠅕󠇯` | U+F0209 U+F0244 U+E0131 U+E0155 U+E01EF |
 | `QU` | `󰈉󰈔󠄱󠄵󠇯` | U+F0209 U+F0214 U+E0131 U+E0135 U+E01EF |
 | `th` | `󰉐` | U+F0250 |
-| `tH` | `󰉐󠅔󠄨󠇯` | U+F0250 U+E0154 U+E0128 U+E01EF |
 | `Th` | `󰉑` | U+F0251 |
-| `TH` | `󰉑󠄴󠄨󠇯` | U+F0251 U+E0134 U+E0128 U+E01EF |
 | `ce` | `󰉀󰈳󠅃󠅅󠇯` | U+F0240 U+F0233 U+E0143 U+E0145 U+E01EF |
 | `cE` | `󰉀󰈃󠅃󠄥󠇯` | U+F0240 U+F0203 U+E0143 U+E0125 U+E01EF |
 | `Ce` | `󰈐󰈳󠄣󠅅󠇯` | U+F0210 U+F0233 U+E0123 U+E0145 U+E01EF |
@@ -143,14 +173,12 @@ The rows are in the order the file states them.
 | `8` | `󰉠` | U+F0260 |
 | `9` | `󰉡` | U+F0261 |
 | `.` | `󰉨` | U+F0268 |
-| `"` | `󠄂` | U+E0102 |
-| `“` | `󠅛󠄒󠄐󠄑󠅃󠅝` | U+E015B U+E0112 U+E0110 U+E0111 U+E0143 U+E015D |
-| `”` | `󠅛󠄒󠄐󠄑󠅄󠅝` | U+E015B U+E0112 U+E0110 U+E0111 U+E0144 U+E015D |
-| `«` | `󠅛󠅁󠅂󠅝` | U+E015B U+E0141 U+E0142 U+E015D |
-| `»` | `󠅛󠅂󠅂󠅝` | U+E015B U+E0142 U+E0142 U+E015D |
+| `?` | `󰉨󠄟󠇯` | U+F0268 U+E011F U+E01EF |
+| `!` | `󰉨󠄁󠇯` | U+F0268 U+E0101 U+E01EF |
+| `!!` | `󰉨󠄁󠄁󠇯` | U+F0268 U+E0101 U+E0101 U+E01EF |
+| `,` | `󰉨󠄌󠇯` | U+F0268 U+E010C U+E01EF |
 | `'` | `󠄇` | U+E0107 |
 | `’` | `󠅛󠄒󠄐󠄑󠄙󠅝` | U+E015B U+E0112 U+E0110 U+E0111 U+E0119 U+E015D |
-| `‘` | `󠅛󠄒󠄐󠄑󠄘󠅝` | U+E015B U+E0112 U+E0110 U+E0111 U+E0118 U+E015D |
 | `` ` `` | `󠅀` | U+E0140 |
 | `-` | ` 󠄍󠇯` | U+0020 U+E010D U+E01EF |
 | `‐` | ` 󠅛󠄒󠄐󠄑󠄐󠅝󠇯` | U+0020 U+E015B U+E0112 U+E0110 U+E0111 U+E0110 U+E015D U+E01EF |

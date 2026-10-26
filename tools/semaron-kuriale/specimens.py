@@ -33,19 +33,19 @@ RULE = (214, 207, 194)
 LETTERS = ["a", "b", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "r", "s", "t", "th", "u",
            "v", "w", "y", "z"]
 TEXTS = [
-    ("The oath", "Ulthandoi okointor denon zaron ul kalmetharen."),
-    ("The morning call", "Daimela orfenamen."),
-    ("A question, eza", "Eza à daimela falvator."),
-    ("A question expecting yes", "Areza à thelmos lokator."),
-    ("A command, voza", "Voza lokathen."),
-    ("A prohibition", "Ar voza lokathen."),
-    ("Reported speech, vethor", "Daimela vethor orfenamen."),
-    ("An exclamation, aia", "Aia theson."),
-    ("Names", "Eltheza Solterates. Kalmethis. Hiltheris. Tholmarar."),
-    ("The long vowels and the numerals", "Daamela. viir. kuun. 0123456789. 12. 2026."),
-    ("Period alone writes the pause point", "Daimela vethor orfenamen. theson."),
-    ("The Vylari catch, on its ancient stop or article", "kàralzon. kàrthorgila. à. À."),
-    ("Other tongues' catch spellings", "Au'Khelathu. Zeghet'Nelgu. Amqel'Uqa. selth-kelmeza."),
+    ("The oath", "ulthandoi okointor denon zaron ul kalmetharen."),
+    ("The morning call", "daimela orfenamen."),
+    ("A question, eza", "eza à daimela falvator."),
+    ("A question expecting yes", "areza à thelmos lokator."),
+    ("A command, voza", "voza lokathen."),
+    ("A prohibition", "ar voza lokathen."),
+    ("Reported speech, vethor", "daimela vethor orfenamen."),
+    ("An exclamation, aia", "aia theson."),
+    ("Names", "eltheza solterates. kalmethis. hiltheris. tholmarar."),
+    ("The long vowels and the numerals", "daamela. viir. kuun. 0123456789. 12. 2026."),
+    ("Period alone writes the pause point", "daimela vethor orfenamen. theson."),
+    ("The Vylari catch, on its ancient stop or article", "kàralzon. kàrthorgila. à."),
+    ("Other tongues' catch spellings", "au'khelathu. zeghet'nelgu. amqel'uqa. selth-kelmeza."),
 ]
 
 

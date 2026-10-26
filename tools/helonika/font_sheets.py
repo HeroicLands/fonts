@@ -33,10 +33,10 @@ X_HEIGHT = 0.5135
 LABEL_FONT = "/System/Library/Fonts/Supplemental/Arial Unicode.ttf"
 LATIN_FONT = Path.home() / "Library/Fonts/MonaspaceNeon-Regular.otf"
 
-WORDS = ["Sothira", "kosamir", "harmodhin", "therin", "kléandir", "kumethos", "agelon", "teikhir", "koum",
-         "fótamir", "zefaris", "Epistémion", "dramin", "thásira", "bulos"]
-PHRASES = ["Sothira koum harmodhin.", "Kléandir, kumethos, agelon.", "Teikhir koum fótamir.",
-           "Bulos vesmor zefaris dramin thásira.", "Epistémion koum therin."]
+WORDS = ["sothira", "kosamir", "harmodhin", "therin", "kléandir", "kumethos", "agelon", "teikhir", "koum",
+         "fótamir", "zefaris", "epistémion", "dramin", "thásira", "bulos"]
+PHRASES = ["sothira koum harmodhin.", "kléandir, kumethos, agelon.", "teikhir koum fótamir.",
+           "bulos vesmor zefaris dramin thásira.", "epistémion koum therin."]
 
 
 def font(size, path=LABEL_FONT):

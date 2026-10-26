@@ -392,6 +392,12 @@ word space is `SPACE`.
 - **`mark`** sets the accent over the middle of the vowel before it: over a
   minuscule as drawn, over a capital raised by the difference between the cap
   height and the body, and over a long vowel raised again, clear of its length bar.
+- **`kern`** takes the whole advance of a space that follows the raised dot directly,
+  or past the invisible marks that `?`, `!` and `!!` add. The dot's advance already
+  holds a word space with its ink centred, so the dot sits close to the next word
+  while the text keeps the dot and one ordinary U+0020. It is a positioning rule on
+  the space, not a substitution, so the glyphs are unchanged and the sequence
+  decodes as written. A space anywhere else keeps `SPACE`.
 
 The face substitutes nothing else: _ei_ written as two letters stays two letters, and
 _th_ written as _t_ and _h_ stays _t_ and _h_.
@@ -408,7 +414,8 @@ of 250 holds them.
 
 the `helonika` encoding (`encodings/helonika.json`) writes
 Helonic's roman spelling in these characters, and Valtari's where it is written in
-the Helónika. Helonic writes _kh_, _sh_ and _zh_ as two letters, no accent and no
+the Helónika. The Helónika has case, so the three encodings write a lowercase letter as its minuscule and a capital as its majuscule, with no mark for case; a pair such as _Th_ or _Ch_ is its first letter's majuscule, and an all-capital pair draws the two letters' majuscules. Every terminal, `.`, `?`, `!` and `!!`, draws the raised dot,
+each after the first adding invisible marks so that decoding tells them apart. Helonic writes _kh_, _sh_ and _zh_ as two letters, no accent and no
 length, so the _kh_ and _zh_ letters, the long vowels, the accent and the
 register-mark are drawn for the recensions of Bizarian and Bethuan and reached from
 their code points.

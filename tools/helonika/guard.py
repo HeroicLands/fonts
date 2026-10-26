@@ -11,7 +11,8 @@ The forms are the ``words``, ``affixes`` and ``names`` of the frontmatter of
 ``Bethuan.md``, and each note's ``register`` entries in its own tongue, on the
 thalorna repository's ``origin/main``, or in the files ``--note`` names (one flag per
 file, each a language note written in the Helónika; only those files are read).
-Each form is written in the Helónika's code points by the encoding the language
+Roman is lowercase, so each form is lowercased, then written in the Helónika's code
+points by the encoding the language
 note's ``writtenIn.map`` names (package-build's key for it), and shaped left to
 right. Helonic and Valtari use ``helonika``, Bizarian ``helonika-bizarian`` and
 Bethuan ``helonika-bethuan``. The encodings are ``encodings/helonika.json``,
@@ -20,7 +21,8 @@ file ``--encoding NAME=FILE`` names for ``helonika``, ``bizarian`` or ``bethuan`
 bare ``--encoding FILE`` is ``helonika=FILE``.
 
 What a form must shape to follows from the code points the encoding wrote: each is
-its own glyph, the space is the space, and the accent after anything but a vowel is
+its own glyph, the space is the space (given no advance when it follows the raised dot of a sentence end,
+as the ``spaces`` fixtures assert), and the accent after anything but a vowel is
 the box. No form may shape to the notdef or the box.
 
 The fixtures in ``fixtures.json`` give a roman spelling and the glyphs it is drawn
@@ -82,10 +84,16 @@ def fixtures(script: str = "helonika") -> tuple[list, list]:
     return [(f["latin"], f["glyphs"]) for f in doc["fixtures"]], [(f["latin"], f["letter"]) for f in doc.get("unencodable", [])]
 
 
+def spaces() -> list[tuple[str, list[int]]]:
+    """The (latin, advances) fixtures: the advance of each space glyph a roman text shapes to."""
+    return [(f["latin"], f["advances"]) for f in _fixtures.get("spaces", [])]
+
+
 def fixture_texts(script: str = "helonika") -> list[str]:
     """Every roman text the fixtures of an encoding write through it."""
     good, bad = fixtures(script)
-    return [t for t, _ in good] + [t for t, _ in bad]
+    texts = [t for t, _ in good] + [t for t, _ in bad]
+    return texts + [t for t, _ in spaces()] if script == "helonika" else texts
 
 
 def lexicon(thalorna: Path, note: str, file: Path | None = None) -> tuple[dict, str]:
@@ -118,7 +126,7 @@ def note_forms(data: dict, tongue: str) -> list[str]:
                 walk(v)
 
     walk({k: v for k, v in data.get("names", {}).items() if k != "pattern"})
-    return [str(f) for f in forms]
+    return [str(f).lower() for f in forms]
 
 
 def lexicon_forms(thalorna: Path, files: list[Path] = ()) -> dict[str, list[str]]:
@@ -183,6 +191,14 @@ def run(font: Path, groups: dict[str, list[str]], encodings: dict[str, Encoded] 
             got = drawn_names(r, rec["text"], direction="ltr")
             if got != want:
                 failures.append(f"{script}: {latin!r}: shaped {got}, expected {want}")
+        if script == "helonika":
+            nfixtures += len(spaces())
+            for latin, want in spaces():
+                shaped_text = r.shape(written[latin]["text"], direction="ltr")
+                text = written[latin]["text"]
+                got = [g[3] for g, c in zip(shaped_text.glyphs, shaped_text.clusters) if text[c] == SPACE]
+                if got != want:
+                    failures.append(f"{script}: {latin!r}: the spaces advance {got}, expected {want}")
         for latin, letter in bad:
             rec = written[latin]
             if letter not in rec.get("unencoded", []):

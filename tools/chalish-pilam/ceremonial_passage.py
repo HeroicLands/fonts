@@ -6,7 +6,7 @@
 
 The passage is a lord's seating and his deeds, sixteen blocks written in codage
 (``PASSAGE``). Each block is written in code points by the Chalish Ceremonial Codage,
-``encodings/chalish-ceremonial.json``, shaped by HarfBuzz through
+``encodings/chalish-pilam-ceremonial.json`` as one literal span, shaped by HarfBuzz through
 ``fonts/ChalishPilamCeremonial-Regular.ttf`` and drawn from the font's own outlines, so
 the font lays out every block from its joiners. The blocks stand in paired columns, read
 A1, B1, A2, B2, each over its place and its meaning. Shaping fails the run if any glyph
@@ -30,7 +30,7 @@ sys.path.insert(0, str(ROOT))
 import encode as E  # noqa: E402
 
 FONT = ROOT / "fonts" / "ChalishPilamCeremonial-Regular.ttf"
-ENCODING = ROOT / "encodings" / "chalish-ceremonial.json"
+ENCODING = ROOT / "encodings" / "chalish-pilam-ceremonial.json"
 BAD = {".notdef", "notdef.box"}
 
 # The passage, block by block in reading order (A1, B1, A2, B2, ...), each block's codage
@@ -138,8 +138,9 @@ def main():
 
     face = Face(FONT)
     encoding = E.load(str(ENCODING))
-    whole = E.encode(encoding, codage())
-    if E.decode(encoding, whole) != codage():
+    literal = f"⟦{codage()}⟧"
+    whole = E.encode(encoding, literal)
+    if E.decode(encoding, whole) != literal:
         raise SystemExit(f"{ENCODING.relative_to(ROOT)}: error: the passage does not read back as written")
     face.shape(whole)
 
@@ -150,7 +151,7 @@ def main():
     sh = Sheet(width)
     for i, (code, gloss) in enumerate(PASSAGE):
         row, col = divmod(i, 2)
-        shaped = face.shape(E.encode(encoding, code))
+        shaped = face.shape(E.encode(encoding, f"⟦{code}⟧"))
         left, right = face.ink(shaped)
         x0 = margin + col * COLUMN
         base = margin + row * row_h + face.ascent * sc

@@ -93,6 +93,7 @@
 <text x="213.0" y="226.0" font-family="Helvetica, Arial, sans-serif" font-size="18" font-weight="bold" text-anchor="start" fill="#161412">w</text>
 <text x="213.0" y="190.0" font-family="Helvetica, Arial, sans-serif" font-size="18" font-weight="bold" text-anchor="start" fill="#161412">W</text>
 <text x="265.0" y="226.0" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" text-anchor="end" fill="#9a4a14">bar</text>
+<text x="265.0" y="190.0" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" text-anchor="end" fill="#9a4a14">literal open</text>
 <rect x="279.0" y="168.0" width="68.0" height="68.0" rx="7" fill="#ffffff" stroke="#7a756d" stroke-width="1.2"/>
 <text x="313.0" y="207.0" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="normal" text-anchor="middle" fill="#8a847b">e</text>
 <text x="287.0" y="226.0" font-family="Helvetica, Arial, sans-serif" font-size="18" font-weight="bold" text-anchor="start" fill="#161412">e</text>
@@ -212,6 +213,7 @@
 <text x="749.5" y="300.0" font-family="Helvetica, Arial, sans-serif" font-size="18" font-weight="bold" text-anchor="start" fill="#161412">l</text>
 <text x="749.5" y="264.0" font-family="Helvetica, Arial, sans-serif" font-size="18" font-weight="bold" text-anchor="start" fill="#161412">L</text>
 <text x="801.5" y="300.0" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" text-anchor="end" fill="#9a4a14">long</text>
+<text x="801.5" y="264.0" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="bold" text-anchor="end" fill="#9a4a14">literal close</text>
 <rect x="815.5" y="242.0" width="68.0" height="68.0" rx="7" fill="#ffffff" stroke="#7a756d" stroke-width="1.2"/>
 <text x="849.5" y="281.0" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="normal" text-anchor="middle" fill="#8a847b">;</text>
 <text x="819.5" y="264.0" font-family="Helvetica, Arial, sans-serif" font-size="9" font-weight="normal" text-anchor="start" fill="#b3ada3">markup</text>

@@ -8,29 +8,32 @@
 
 The forms come from the ``words`` list in the frontmatter of
 ``assets/content/Skills/Languages/Vylari.md`` on the thalorna repository's
-``origin/main``; the body of the note is never read. Each form is written in
+``origin/main``; the body of the note is never read. Roman is lowercase, so each
+form is lowercased, then written in
 Semaron's code points by the ``semaron`` encoding (``encodings/semaron.json``, or
 the file ``--encoding`` names), and the result is shaped. The expected glyph
 sequence is derived from the spelling rules below, which the guard owns and which read neither the font nor the encoding:
 
-- the case of the typed letter picks the majuscule or the minuscule, and ``th``
-  is one letter, ``Th`` and ``TH`` its majuscule;
+- Semaron has case: a capital letter writes its majuscule, and ``th`` is one letter,
+  ``Th`` its majuscule; ``tH`` and ``TH`` are the letters t and H, and T and H;
 - ``ch`` types the letters t, s and h, because the script has no c;
-- a doubled ``a``, ``i`` or ``u`` is the long vowel, and the first letter's case
-  picks its majuscule; ``ee`` and ``oo`` are two plain vowels;
+- a doubled ``a``, ``i`` or ``u`` is the long vowel; ``ee`` and ``oo`` are two plain vowels;
 - an acute vowel is the plain vowel, because Semaron writes no stress, and ``ë``
   is ``e``;
 - ``q`` is ``k``, because the script has no q;
 - ``y`` before a vowel is the glide y, and anywhere else the vowel i;
-- period alone writes the point; commas, colons, semicolons and both dashes print the box;
+- ``.``, ``?``, ``!``, ``!!`` and ``,`` write the point, told apart by invisible marks;
+  the other standard marks, the quotation marks, the dash, the ellipsis, the verse
+  ends and the braces of a name, draw nothing; colons, semicolons and the en dash print the box;
 - Vylari ``à`` writes a and the catch. After an ancient t, k, d or g, the catch
-  stands on that stop before the a; each letter keeps its case;
+  stands on that stop before the a;
 - ``'``, ``’``, a grave accent and a hyphen-minus after a letter are the catch, a mark
   that takes no room; with no letter before them they print the box, and the
   Unicode hyphens U+2010 and U+2011 are characters the script lacks;
-- ``c``, ``x``, the quotation marks, ``?``, ``!``, ``¡`` and every other
-  character the script lacks pass through the encoding and print the box;
-- only the default-ignorable characters draw nothing.
+- ``c``, ``x``, the English quotation marks, ``¡`` and every other character the
+  script lacks are outside the encoding; the guard sets them in the font, where they
+  print the box;
+- otherwise only the default-ignorable characters draw nothing.
 
 Fixtures cover each rule, the catch on an x-height letter, a tall letter and
 after a long vowel, the numerals, and the sample lines of the specimens. They
@@ -60,9 +63,13 @@ EMPTY = {"ignorable", "ignorable.sub"}
 LETTERS = "abdefghijklmnoprstuvwz"
 VOWELS = "aeiou"
 LONG_VOWELS = "aiu"
-ACUTES = {"á": "a", "é": "e", "í": "i", "ó": "o", "ú": "u", "Á": "A", "É": "E", "Í": "I", "Ó": "O", "Ú": "U",
-          "ë": "e", "Ë": "E", "q": "k", "Q": "K"}
-PAUSES = "."
+ACUTES = {"á": "a", "é": "e", "í": "i", "ó": "o", "ú": "u", "ë": "e", "q": "k",
+          "Á": "A", "É": "E", "Í": "I", "Ó": "O", "Ú": "U", "Ë": "E", "Q": "K"}
+# The standard marks that draw the point: the four terminals and the pause, told apart
+# by invisible marks. The other standard marks write invisible marks alone. Two-character
+# marks come first, as the encoding matches them.
+PAUSES = ("!!", ".", "?", "!", ",")
+UNDRAWN = ("//", "«", "»", "‹", "›", "—", "…", "/", "{", "}")
 CATCHES = "'’`-"
 SILENT = "​‌‍‎‏‪‫‬‭‮⁦⁧⁨⁩﻿"
 NUMERALS = [f"num.{i}" for i in range(10)]
@@ -80,8 +87,17 @@ def expected_glyphs(text: str) -> list[str]:
     i = 0
     while i < len(t):
         ch = t[i]
+        pair = t[i : i + 2]
+        pause = next((m for m in PAUSES if t.startswith(m, i)), None)
+        if pause:
+            out.append("point")
+            i += len(pause)
+            continue
+        undrawn = next((m for m in UNDRAWN if t.startswith(m, i)), None)
+        if undrawn:
+            i += len(undrawn)
+            continue
         low = ch.lower()
-        pair = t[i : i + 2].lower()
         if low in "tkdg" and i + 1 < len(t) and t[i + 1] in "àÀ":
             out += [ch, "grave", "A" if t[i + 1].isupper() else "a"]
             i += 2
@@ -90,15 +106,15 @@ def expected_glyphs(text: str) -> list[str]:
             out += ["A" if ch.isupper() else "a", "grave"]
             i += 1
             continue
-        if pair == "th":
+        if pair in ("th", "Th"):
             out.append("TH" if ch.isupper() else "th")
             i += 2
             continue
-        if pair == "ch":
+        if pair in ("ch", "Ch"):
             out += ["T" if ch.isupper() else "t", "s", "h"]
             i += 2
             continue
-        if low in LONG_VOWELS and pair == low + low:
+        if low in LONG_VOWELS and pair in (low + low, low.upper() + low):
             out.append((low.upper() if ch.isupper() else low) + ".long")
             i += 2
             continue
@@ -112,8 +128,6 @@ def expected_glyphs(text: str) -> list[str]:
             out.append(f"num.{ch}")
         elif ch == " ":
             out.append("space")
-        elif ch in PAUSES:
-            out.append("point")
         elif ch in CATCHES:
             out.append("grave" if out and out[-1] in BASES else BOX)
         elif ch in SILENT:
@@ -132,36 +146,42 @@ def normalized(names: list[str]) -> list[str]:
 # The fixtures spell out what each rule gives, so the derivation above is checked against the rulings
 # themselves and not against itself.
 FIXTURES: list[tuple[str, list[str]]] = [
-    # case
-    ("a", ["a"]), ("A", ["A"]), ("Daamela", ["D", "a.long", "m", "e", "l", "a"]),
-    ("DAAMELA", ["D", "A.long", "M", "E", "L", "A"]), ("fa", ["f", "a"]), ("Fa", ["F", "a"]),
+    # roman is lowercase: a capital is outside the encoding and prints the box
+    ("a", ["a"]), ("daamela", ["d", "a.long", "m", "e", "l", "a"]), ("fa", ["f", "a"]),
     *[(c, [c]) for c in "abdefghjklmnoprstuvwz"],
+    # a capital writes its majuscule, with no mark for case
     *[(c.upper(), [c.upper()]) for c in "abdefghjklmnoprstuvwz"],
-    # th is one letter and so is its majuscule
-    ("th", ["th"]), ("Th", ["TH"]), ("TH", ["TH"]), ("tH", ["th"]), ("thh", ["th", "h"]), ("tth", ["t", "th"]),
-    ("athu", ["a", "th", "u"]), ("Athu", ["A", "th", "u"]), ("ATHU", ["A", "TH", "U"]),
+    ("Daamela", ["D", "a.long", "m", "e", "l", "a"]), ("DAAMELA", ["D", "A", "A", "M", "E", "L", "A"]),
+    ("Th", ["TH"]), ("TH", ["T", "H"]), ("tH", ["t", "H"]), ("Athu", ["A", "th", "u"]),
+    ("Ch", ["T", "s", "h"]), ("CH", [BOX, "H"]), ("cH", [BOX, "H"]),
+    ("Aa", ["A.long"]), ("aA", ["a", "A"]), ("Ii", ["I.long"]), ("Uu", ["U.long"]), ("Ee", ["E", "e"]), ("Oo", ["O", "o"]),
+    ("Á", ["A"]), ("É", ["E"]), ("Í", ["I"]), ("Ó", ["O"]), ("Ú", ["U"]), ("Ë", ["E"]), ("Q", ["K"]), ("Meqes", ["M", "e", "k", "e", "s"]),
+    ("Aá", ["A.long"]), ("Áa", ["A.long"]), ("Áá", ["A.long"]), ("AÁ", ["A", "A"]),
+    ("Ya", ["Y", "a"]), ("Y", ["I"]), ("Y ", ["I", "space"]),
+    *[(f"K{c}", ["K", "grave"]) for c in CATCHES],
+    ("À", ["A", "grave"]), ("Kà", ["K", "grave", "a"]), ("kÀ", ["k", "grave", "A"]), ("KÀ", ["K", "grave", "A"]),
+    ("TÀ", ["T", "grave", "A"]), ("YÀ", ["Y", "A", "grave"]),
+    ("Au'Khelathu", ["A", "u", "grave", "K", "h", "e", "l", "a", "th", "u"]),
+    # th is one letter
+    ("th", ["th"]), ("thh", ["th", "h"]), ("tth", ["t", "th"]), ("athu", ["a", "th", "u"]),
     # ch types t, s, h
-    ("ch", ["t", "s", "h"]), ("Ch", ["T", "s", "h"]), ("CH", ["T", "s", "h"]), ("cH", ["t", "s", "h"]),
-    ("tch", ["t", "t", "s", "h"]), ("chh", ["t", "s", "h", "h"]), ("cth", [BOX, "th"]),
+    ("ch", ["t", "s", "h"]), ("tch", ["t", "t", "s", "h"]), ("chh", ["t", "s", "h", "h"]), ("cth", [BOX, "th"]),
     # a doubled vowel is the curl
     ("aa", ["a.long"]), ("ii", ["i.long"]), ("uu", ["u.long"]),
-    ("Aa", ["A.long"]), ("AA", ["A.long"]), ("aA", ["a.long"]), ("Ii", ["I.long"]), ("UU", ["U.long"]),
     ("aaa", ["a.long", "a"]), ("aaaa", ["a.long", "a.long"]), ("ee", ["e", "e"]), ("oo", ["o", "o"]),
-    ("Ee", ["E", "e"]), ("Oo", ["O", "o"]),
     ("viir", ["v", "i.long", "r"]), ("kuun", ["k", "u.long", "n"]),
     # an acute gives the plain vowel
     ("á", ["a"]), ("é", ["e"]), ("í", ["i"]), ("ó", ["o"]), ("ú", ["u"]),
-    ("Á", ["A"]), ("É", ["E"]), ("Í", ["I"]), ("Ó", ["O"]), ("Ú", ["U"]),
     ("áa", ["a.long"]), ("aá", ["a.long"]), ("ái", ["a", "i"]), ("dáamela", ["d", "a.long", "m", "e", "l", "a"]),
     # y before a vowel is the glide, elsewhere the vowel i
-    ("ya", ["y", "a"]), ("yá", ["y", "a"]), ("Ya", ["Y", "a"]), ("yaa", ["y", "a.long"]), ("yi", ["y", "i"]),
-    ("ty", ["t", "i"]), ("y", ["i"]), ("Y", ["I"]), ("yy", ["i", "i"]), ("yya", ["i", "y", "a"]),
-    ("yth", ["i", "th"]), ("y'", ["i", "grave"]), ("Y ", ["I", "space"]), ("dayos", ["d", "a", "y", "o", "s"]),
+    ("ya", ["y", "a"]), ("yá", ["y", "a"]), ("yaa", ["y", "a.long"]), ("yi", ["y", "i"]),
+    ("ty", ["t", "i"]), ("y", ["i"]), ("yy", ["i", "i"]), ("yya", ["i", "y", "a"]),
+    ("yth", ["i", "th"]), ("y'", ["i", "grave"]), ("y ", ["i", "space"]), ("dayos", ["d", "a", "y", "o", "s"]),
     # the catch, on every input
     *[(f"a{c}", ["a", "grave"]) for c in CATCHES],
     *[(f"l{c}", ["l", "grave"]) for c in CATCHES],
     *[(f"aa{c}", ["a.long", "grave"]) for c in CATCHES],
-    *[(f"K{c}", ["K", "grave"]) for c in CATCHES],
+    *[(f"k{c}", ["k", "grave"]) for c in CATCHES],
     *[(f"th{c}", ["th", "grave"]) for c in CATCHES],
     *[(f"uu{c}k", ["u.long", "grave", "k"]) for c in CATCHES],
     # a catch with no letter before it is the box
@@ -170,37 +190,40 @@ FIXTURES: list[tuple[str, list[str]]] = [
     *[(f"1{c}", ["num.1", BOX]) for c in CATCHES],
     *[(f".{c}", ["point", BOX]) for c in CATCHES],
     ("a''", ["a", "grave", BOX]), ("a'-", ["a", "grave", BOX]), ("c'", [BOX, BOX]),
-    # Vylari's precomposed catch keeps its original base and each letter's case.
+    # Vylari's precomposed catch keeps its original base.
     ("kàralzon", ["k", "grave", "a", "r", "a", "l", "z", "o", "n"]),
     ("kàrthorgila", ["k", "grave", "a", "r", "th", "o", "r", "g", "i", "l", "a"]),
-    ("à", ["a", "grave"]), ("À", ["A", "grave"]),
-    ("Kà", ["K", "grave", "a"]), ("kÀ", ["k", "grave", "A"]), ("KÀ", ["K", "grave", "A"]),
-    ("tà", ["t", "grave", "a"]), ("dà", ["d", "grave", "a"]), ("gà", ["g", "grave", "a"]),
-    ("TÀ", ["T", "grave", "A"]), ("DÀ", ["D", "grave", "A"]), ("GÀ", ["G", "grave", "A"]),
-    ("yà", ["y", "a", "grave"]), ("YÀ", ["Y", "A", "grave"]),
+    ("à", ["a", "grave"]),
+    ("kà", ["k", "grave", "a"]), ("tà", ["t", "grave", "a"]), ("dà", ["d", "grave", "a"]), ("gà", ["g", "grave", "a"]),
+    ("yà", ["y", "a", "grave"]),
     # Other tongues retain their own catch spellings in the shared encoding.
-    ("Au'Khelathu", ["A", "u", "grave", "K", "h", "e", "l", "a", "th", "u"]),
-    ("Zeghet'Nelgu", ["Z", "e", "g", "h", "e", "t", "grave", "N", "e", "l", "g", "u"]),
-    ("Amqel'Uqa", ["A", "m", "k", "e", "l", "grave", "U", "k", "a"]),
+    ("au'khelathu", ["a", "u", "grave", "k", "h", "e", "l", "a", "th", "u"]),
+    ("zeghet'nelgu", ["z", "e", "g", "h", "e", "t", "grave", "n", "e", "l", "g", "u"]),
+    ("amqel'uqa", ["a", "m", "k", "e", "l", "grave", "u", "k", "a"]),
     ("selth-kelmeza", ["s", "e", "l", "th", "grave", "k", "e", "l", "m", "e", "z", "a"]),
-    # Period alone writes the point; unsupported pause aliases remain visible errors.
+    # The terminals and the pause write the point; the other standard marks draw nothing,
+    # and any other punctuation is outside the encoding and prints the box.
     *[(c, ["point"]) for c in PAUSES],
-    *[(c, [BOX]) for c in ",;:—–"],
-    ("Daimela vethor orfenamen. theson.",
-     ["D", "a", "i", "m", "e", "l", "a", "space", "v", "e", "th", "o", "r", "space",
+    *[(c, []) for c in UNDRAWN],
+    ("a!!a", ["a", "point", "a"]), ("a, a? a!", ["a", "point", "space", "a", "point", "space", "a", "point"]),
+    ("«a ‹a›» a— a…", ["a", "space", "a", "space", "a", "space", "a"]),
+    ("{daimela} a", ["d", "a", "i", "m", "e", "l", "a", "space", "a"]),
+    *[(c, [BOX]) for c in ";:–"],
+    ("daimela vethor orfenamen. theson.",
+     ["d", "a", "i", "m", "e", "l", "a", "space", "v", "e", "th", "o", "r", "space",
       "o", "r", "f", "e", "n", "a", "m", "e", "n", "point", "space", "th", "e", "s", "o", "n", "point"]),
     # the marks the script lacks, c and x print the box; q is k and ë is e
-    *[(c, [BOX]) for c in '"“”«»?!¡()[]<>@#$%&*+=/\\|_{}~^‘…'],
+    *[(c, [BOX]) for c in '"“”¡()[]<>@#$%&*+=\\|_~^‘'],
     *[(c, [BOX]) for c in "cxCX"],
-    ("a‐", ["a", BOX]), ("a‑", ["a", BOX]), ("q", ["k"]), ("Q", ["K"]), ("Meqes", ["M", "e", "k", "e", "s"]), ("ë", ["e"]), ("Ë", ["E"]),
-    ("Eza à daimela falvator.",
-     ["E", "z", "a", "space", "a", "grave", "space", "d", "a", "i", "m", "e", "l", "a", "space", "f", "a", "l",
+    ("a‐", ["a", BOX]), ("a‑", ["a", BOX]), ("q", ["k"]), ("meqes", ["m", "e", "k", "e", "s"]), ("ë", ["e"]),
+    ("eza à daimela falvator.",
+     ["e", "z", "a", "space", "a", "grave", "space", "d", "a", "i", "m", "e", "l", "a", "space", "f", "a", "l",
       "v", "a", "t", "o", "r", "point"]),
     # the numerals
     ("0123456789", NUMERALS),
     ("2026", ["num.2", "num.0", "num.2", "num.6"]),
-    ("Daamela. viir. kuun. 0123456789. 12. 2026.",
-     ["D", "a.long", "m", "e", "l", "a", "point", "space", "v", "i.long", "r", "point", "space", "k", "u.long",
+    ("daamela. viir. kuun. 0123456789. 12. 2026.",
+     ["d", "a.long", "m", "e", "l", "a", "point", "space", "v", "i.long", "r", "point", "space", "k", "u.long",
       "n", "point", "space", *NUMERALS, "point", "space", "num.1", "num.2", "point", "space", "num.2", "num.0",
       "num.2", "num.6", "point"]),
     # space, and the default-ignorables that draw nothing
@@ -210,12 +233,12 @@ FIXTURES: list[tuple[str, list[str]]] = [
 ]
 
 # Pairs of lines the catch must set exactly as wide as the line without it.
-WIDTH_PAIRS = [("kàralzon", "karalzon"), ("kàrthorgila", "karthorgila"), ("à", "a"), ("À", "A"),
-               ("Zeghet'Nelgu", "ZeghetNelgu"), ("selth-kelmeza", "selthkelmeza"),
+WIDTH_PAIRS = [("kàralzon", "karalzon"), ("kàrthorgila", "karthorgila"), ("à", "a"),
+               ("zeghet'nelgu", "zeghetnelgu"), ("selth-kelmeza", "selthkelmeza"),
                ("daa'", "daa"), ("a`l’k", "alk")]
 # The catch sits over, beside or at the right of its base: these lines place one.
-MARK_FIXTURES = ["a'", "e'", "o'", "k'", "m'", "v'", "l'", "h'", "t'", "th'", "A'", "E'", "K'", "L'", "aa'", "ii'",
-                 "uu'", "Aa'", "k-a", "a’k", "à", "À", "kàralzon", "kàrthorgila", "Kà", "kÀ", "KÀ"]
+MARK_FIXTURES = ["a'", "e'", "o'", "k'", "m'", "v'", "l'", "h'", "t'", "th'", "aa'", "ii'",
+                 "uu'", "k-a", "a’k", "à", "kàralzon", "kàrthorgila", "kà", "tà"]
 
 
 def fixture_texts() -> list[str]:
@@ -234,7 +257,7 @@ def lexicon_forms(thalorna: Path | None, note: Path | None) -> list[str]:
             text=True,
         ).stdout
     front = yaml.safe_load(text.split("\n---\n", 1)[0].lstrip("-\n"))
-    forms = [w["form"] for w in front["data"]["words"]]
+    forms = [w["form"].lower() for w in front["data"]["words"]]
     if not forms:
         raise SystemExit("the words list is empty")
     return forms
@@ -284,7 +307,7 @@ def run(font: Path, forms: list[str], encoded: Encoded | None = None) -> list[st
             failures.append(f"{form}: the box in {got}")
         elif got != want:
             failures.append(f"{form}: shaped {got}, expected {want}")
-        digraphs += want.count("th") + want.count("TH")
+        digraphs += want.count("th")
         longs += sum(1 for g in want if g.endswith(".long"))
         catches += want.count("grave")
     for text, want in FIXTURES:
