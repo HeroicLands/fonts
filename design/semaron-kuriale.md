@@ -163,3 +163,12 @@ spelling into these code points:
 - `tools/semaron-kuriale/specimens.py` renders `specimens/semaron-kuriale/`: the
   majuscules one to a cell, the glyph chart, and the Vylari texts at display
   size and at 18 and 24 px.
+
+## Aelwythi consonant signs
+
+The Aelwythi encoding reserves code points for q and the consonant groups dh,
+kh, gh, sh, zh, ts, ch, ng and ny in both cases. The font draws these signs as dedicated letters, shared by the Semaron
+encoders. Aelwythi retains its own spelling and pronunciation rules.
+
+The stress modifier U+E0114 is declared as a non-printing control. It maps to
+an empty glyph with zero advance.

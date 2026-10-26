@@ -523,6 +523,6 @@ A codage is a file of kind `codage`: it extends nothing and takes no text of its
 | `)` | `𞱨` | U+1EC68 |
 | `<` | `𞱬` | U+1EC6C |
 | `>` | `𞱭` | U+1EC6D |
-| `-` | `󠄍` | U+E010D |
+| `-` | `󠅛󠄒󠅄󠅝` | U+E015B U+E0112 U+E0144 U+E015D |
 
 This page is written from `encodings/zethu-mdc.json` by `tools/encoding_docs.py`.

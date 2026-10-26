@@ -1,27 +1,21 @@
 {
   "standard": {
-    "title": "standard roman encoding",
-    "intro": [
-      "Roman transliteration has one standard punctuation, used by every language, scripted or not. Its marks record the type of a sentence, the bounds of a quotation and the ends of verse lines and stanzas. Every encoding extends this one, `encodings/standard.json`, and adds its script's letters, numerals and the other characters its language writes.",
-      "Roman is typed in lowercase, and a caseless script accepts only lowercase: its encoding refuses a capital letter, names included. Semaron Kuriale and Helónika are the two scripts with case, and their encodings write a capital letter as its majuscule, with no mark for case. A codage, which names each sign by a code, keeps its codes in capitals. `{` and `}` surround a name, and a script may mark the name in its own way. `…` is the ellipsis character, never three periods. A quoted span that closes without a terminal is resumed by the next span as the same sentence, and a closing quote never terminates the outer sentence. In verse, a line beginning with `.` is indented one level per period."
-    ],
     "marks": {
       ".": "completes a declarative sentence, terminal",
       "?": "completes an interrogative sentence, terminal",
-      "!": "completes an imperative sentence, terminal",
-      "!!": "completes an exclamative sentence, terminal",
+      "‼": "completes an imperative sentence, terminal",
+      "!": "completes an exclamative sentence, terminal",
+      "^": "at the beginning of a line, indents one level",
       ",": "a pause that does not end the sentence",
-      "«": "opens a quotation of one or more terminated sentences",
-      "»": "closes a quotation opened by `«`",
-      "‹": "opens a quotation nested inside `«` `»`, alternating with them at any depth",
-      "›": "closes a quotation opened by `‹`",
-      "—": "interrupts a sentence, non-terminal, immediately followed by a terminal",
-      "…": "abandons a sentence, non-terminal and immediately followed by a terminal; at a sentence's start, resumes one",
-      "/": "verse line end",
-      "//": "verse stanza end",
-      "***": "verse canto end",
+      "«": "opens an outer quotation",
+      "»": "closes an outer quotation",
+      "‹": "opens a nested quotation",
+      "›": "closes a nested quotation",
+      "—": "interrupts a sentence, non-terminal",
+      "…": "abandons or resumes a sentence, non-terminal",
+      "/": "verse line separator",
       "{": "opens a name",
-      "}": "closes a name opened by `{`"
+      "}": "closes a name"
     }
   },
   "semaron": {
@@ -35,7 +29,10 @@
     "title": "aelwythi-semaron encoding",
     "example": "thalen kal",
     "intro": [
-      "A second roman spelling for Semaron Kuriale, which draws the same letters as the semaron encoding. It takes each roman letter on its own where semaron joins them: a doubled vowel is two vowels, `c` is written as s before `e`, `i` and `y` and as k elsewhere, and `ch` and `tch` are written with the letters for t, s and h. The apostrophe draws nothing and is written as an invisible mark, and a hyphen draws a space and carries a mark. A capital letter is written in its majuscule."
+      "Aelwythi has its own encoding in the Semaron Kuriale hand. Coined words use the fixed Aelwythi letter groups: ch, sh, th, dh, kh, gh, zh, ts and ng have dedicated signs, and ny takes its dedicated sign before a vowel. A group is lowercase, as in ch, or initial-uppercase, as in Ch; CH and cH are illegal. The letter q has its own sign, and y is always a consonant. There are no automatic c or x substitutions.",
+      "An acute vowel writes its ordinary vowel sign followed by the non-printing stress modifier U+E0114. Stress does not change vowel sound or length. Coined words use no diaeresis or grave accent. Doubled vowels remain two written signs.",
+      "Only a period draws the pause point. Quotation marks and apostrophes draw nothing, and a hyphen writes a space. Decoding returns a conventional Roman spelling: omitted punctuation is not restored, and a hyphen reads back as a word space. Other Semaron encodings keep their own rules.",
+      "The twenty newly assigned consonant glyph designs are pending. Their code-point assignments are reserved, and native rendering remains blocked until the drawings are supplied."
     ]
   },
   "pirzath": {

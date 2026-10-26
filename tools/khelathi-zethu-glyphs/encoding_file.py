@@ -9,7 +9,7 @@ Every drawn sign is typed by its code, its sense in capitals (``SAIL``, ``WEST``
 notation of the Manuel de Codage types the format controls, in the face's own block: ``:``
 the vertical joiner, ``*`` the horizontal joiner, ``[ts]``, ``[bs]``, ``[te]`` and
 ``[be]`` the four insertions, ``(`` and ``)`` a segment, and ``<`` and ``>`` a cartouche.
-``-`` ends a quadrat and draws nothing, so it writes its mark, the invisible variation selector U+E010D,
+``-`` ends a quadrat and draws nothing, so it writes its escaped invisible spelling mark, distinct from the shared stanza control,
 and decoding restores it. The codage is a file of kind ``codage``: it extends nothing, allows only
 its codes and its notation, and is reached only between the literal markers of ``zethu``.
 

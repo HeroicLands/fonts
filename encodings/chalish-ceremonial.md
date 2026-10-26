@@ -311,6 +311,6 @@ A codage is a file of kind `codage`: it extends nothing and takes no text of its
 | `be2` | `󴑲` | U+F4472 |
 | `*` | `󴿰` | U+F4FF0 |
 | `:` | `󴿱` | U+F4FF1 |
-| `-` | `󠄍` | U+E010D |
+| `-` | `󠅛󠄒󠅄󠅝` | U+E015B U+E0112 U+E0144 U+E015D |
 
 This page is written from `encodings/chalish-ceremonial.json` by `tools/encoding_docs.py`.

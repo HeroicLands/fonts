@@ -8,7 +8,8 @@
 For each encoding the vectors give a text that each row applies in, its base's rows
 included, then each sample text, every one as ``{"roman", "unicode", "decoded"}``:
 encoding ``roman`` gives ``unicode``, and decoding ``unicode`` gives ``decoded``, which
-is ``roman`` again. A vector of a face's own rows also names its ``face``. A text with
+is ``roman`` again for exact encodings, or the conventional spelling for an
+encoding that explicitly selects ``roundTrip: "canonical"``. A vector of a face's own rows also names its ``face``. A text with
 a character outside the encoding is ``{"roman", "refused": [line, column]}``: encoding
 refuses it at the first such character. Another implementation of the encodings tests
 itself against them.

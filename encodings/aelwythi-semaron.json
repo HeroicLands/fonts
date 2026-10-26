@@ -1,116 +1,447 @@
 {
     "name": "aelwythi-semaron",
-    "fonts": ["semaron-kuriale"],
+    "fonts": [
+        "semaron-kuriale"
+    ],
     "extends": "standard",
-    "accepts": ["a-z", "A-Z", "0-9", "'", "-", "`", "Á", "É", "Ë", "Í", "Ó", "Ú", "á", "é", "ë", "í", "ó", "ú", "‐", "‑", "’"],
+    "roundTrip": "canonical",
+    "accepts": [
+        "a-z",
+        "A-Z",
+        "0-9",
+        "'",
+        "-",
+        "`",
+        "\u00c1",
+        "\u00c9",
+        "\u00cd",
+        "\u00d3",
+        "\u00da",
+        "\u00e1",
+        "\u00e9",
+        "\u00ed",
+        "\u00f3",
+        "\u00fa",
+        "\u2010",
+        "\u2011",
+        "\u2019",
+        ".",
+        "\"",
+        "\u201c",
+        "\u201d",
+        "\u00ab",
+        "\u00bb",
+        "\u2018"
+    ],
     "separator": " ",
-    "vowels": "aeiouyAEIOUY",
+    "vowels": "aeiouAEIOU\u00e1\u00e9\u00ed\u00f3\u00fa\u00c1\u00c9\u00cd\u00d3\u00da",
     "rows": [
-        ["tch", "󰉁󰉀󰈶\uDB40\uDD54\uDB40\uDD43\uDB40\uDD48\uDB40\uDDEF"],
-        ["Tch", "󰈑󰉀󰈶\uDB40\uDD34\uDB40\uDD43\uDB40\uDD48\uDB40\uDDEF"],
-        ["ch", "󰉁󰉀󰈶\uDB40\uDD43\uDB40\uDD48\uDB40\uDDEF"],
-        ["Ch", "󰈑󰉀󰈶\uDB40\uDD23\uDB40\uDD48\uDB40\uDDEF"],
-        ["qu", "󰈹󰉄\uDB40\uDD51\uDB40\uDD55\uDB40\uDDEF"],
-        ["Qu", "󰈉󰉄\uDB40\uDD31\uDB40\uDD55\uDB40\uDDEF"],
-        ["QU", "󰈉󰈔\uDB40\uDD31\uDB40\uDD35\uDB40\uDDEF"],
-        ["th", "󰉐"],
-        ["Th", "󰉑"],
-        ["ce", "󰉀󰈳\uDB40\uDD43\uDB40\uDD45\uDB40\uDDEF"],
-        ["cE", "󰉀󰈃\uDB40\uDD43\uDB40\uDD25\uDB40\uDDEF"],
-        ["Ce", "󰈐󰈳\uDB40\uDD23\uDB40\uDD45\uDB40\uDDEF"],
-        ["CE", "󰈐󰈃\uDB40\uDD23\uDB40\uDD25\uDB40\uDDEF"],
-        ["ci", "󰉀󰈷\uDB40\uDD43\uDB40\uDD49\uDB40\uDDEF"],
-        ["cI", "󰉀󰈇\uDB40\uDD43\uDB40\uDD29\uDB40\uDDEF"],
-        ["Ci", "󰈐󰈷\uDB40\uDD23\uDB40\uDD49\uDB40\uDDEF"],
-        ["CI", "󰈐󰈇\uDB40\uDD23\uDB40\uDD29\uDB40\uDDEF"],
-        ["cy", "󰉀󰉅\uDB40\uDD43\uDB40\uDD59\uDB40\uDDEF"],
-        ["cY", "󰉀󰈕\uDB40\uDD43\uDB40\uDD39\uDB40\uDDEF"],
-        ["Cy", "󰈐󰉅\uDB40\uDD23\uDB40\uDD59\uDB40\uDDEF"],
-        ["CY", "󰈐󰈕\uDB40\uDD23\uDB40\uDD39\uDB40\uDDEF"],
-        ["a", "󰈰"],
-        ["A", "󰈀"],
-        ["b", "󰈱"],
-        ["B", "󰈁"],
-        ["c", "󰈹"],
-        ["C", "󰈉"],
-        ["d", "󰈲"],
-        ["D", "󰈂"],
-        ["e", "󰈳"],
-        ["E", "󰈃"],
-        ["f", "󰈴"],
-        ["F", "󰈄"],
-        ["g", "󰈵"],
-        ["G", "󰈅"],
-        ["h", "󰈶"],
-        ["H", "󰈆"],
-        ["i", "󰈷"],
-        ["I", "󰈇"],
-        ["j", "󰈸"],
-        ["J", "󰈈"],
-        ["k", "󰈹\uDB40\uDD4B\uDB40\uDDEF"],
-        ["K", "󰈉\uDB40\uDD2B\uDB40\uDDEF"],
-        ["l", "󰈺"],
-        ["L", "󰈊"],
-        ["m", "󰈻"],
-        ["M", "󰈋"],
-        ["n", "󰈼"],
-        ["N", "󰈌"],
-        ["o", "󰈽"],
-        ["O", "󰈍"],
-        ["p", "󰈾"],
-        ["P", "󰈎"],
-        ["q", "󰈹\uDB40\uDD51\uDB40\uDDEF"],
-        ["Q", "󰈉\uDB40\uDD31\uDB40\uDDEF"],
-        ["r", "󰈿"],
-        ["R", "󰈏"],
-        ["s", "󰉀"],
-        ["S", "󰈐"],
-        ["t", "󰉁"],
-        ["T", "󰈑"],
-        ["u", "󰉂"],
-        ["U", "󰈒"],
-        ["v", "󰉃"],
-        ["V", "󰈓"],
-        ["w", "󰉄"],
-        ["W", "󰈔"],
-        ["x", "󰈹󰉀\uDB40\uDD58\uDB40\uDDEF"],
-        ["X", "󰈉󰈐\uDB40\uDD38\uDB40\uDDEF"],
-        ["y", "󰉅"],
-        ["Y", "󰈕"],
-        ["z", "󰉆"],
-        ["Z", "󰈖"],
-        ["á", "󰈰\uDB40\uDD5B\uDB40\uDD45\uDB40\uDD11\uDB40\uDD5D\uDB40\uDDEF"],
-        ["Á", "󰈀\uDB40\uDD5B\uDB40\uDD43\uDB40\uDD11\uDB40\uDD5D\uDB40\uDDEF"],
-        ["é", "󰈳\uDB40\uDD5B\uDB40\uDD45\uDB40\uDD19\uDB40\uDD5D\uDB40\uDDEF"],
-        ["É", "󰈃\uDB40\uDD5B\uDB40\uDD43\uDB40\uDD19\uDB40\uDD5D\uDB40\uDDEF"],
-        ["í", "󰈷\uDB40\uDD5B\uDB40\uDD45\uDB40\uDD44\uDB40\uDD5D\uDB40\uDDEF"],
-        ["Í", "󰈇\uDB40\uDD5B\uDB40\uDD43\uDB40\uDD44\uDB40\uDD5D\uDB40\uDDEF"],
-        ["ó", "󰈽\uDB40\uDD5B\uDB40\uDD46\uDB40\uDD13\uDB40\uDD5D\uDB40\uDDEF"],
-        ["Ó", "󰈍\uDB40\uDD5B\uDB40\uDD44\uDB40\uDD13\uDB40\uDD5D\uDB40\uDDEF"],
-        ["ú", "󰉂\uDB40\uDD5B\uDB40\uDD46\uDB40\uDD41\uDB40\uDD5D\uDB40\uDDEF"],
-        ["Ú", "󰈒\uDB40\uDD5B\uDB40\uDD44\uDB40\uDD41\uDB40\uDD5D\uDB40\uDDEF"],
-        ["ë", "󰈳\uDB40\uDD5B\uDB40\uDD45\uDB40\uDD42\uDB40\uDD5D\uDB40\uDDEF"],
-        ["Ë", "󰈃\uDB40\uDD5B\uDB40\uDD43\uDB40\uDD42\uDB40\uDD5D\uDB40\uDDEF"],
-        ["0", "󰉘"],
-        ["1", "󰉙"],
-        ["2", "󰉚"],
-        ["3", "󰉛"],
-        ["4", "󰉜"],
-        ["5", "󰉝"],
-        ["6", "󰉞"],
-        ["7", "󰉟"],
-        ["8", "󰉠"],
-        ["9", "󰉡"],
-        [".", "󰉨"],
-        ["?", "󰉨\uDB40\uDD1F\uDB40\uDDEF"],
-        ["!", "󰉨\uDB40\uDD01\uDB40\uDDEF"],
-        ["!!", "󰉨\uDB40\uDD01\uDB40\uDD01\uDB40\uDDEF"],
-        [",", "󰉨\uDB40\uDD0C\uDB40\uDDEF"],
-        ["'", "\uDB40\uDD07"],
-        ["’", "\uDB40\uDD5B\uDB40\uDD12\uDB40\uDD10\uDB40\uDD11\uDB40\uDD19\uDB40\uDD5D"],
-        ["`", "\uDB40\uDD40"],
-        ["-", " \uDB40\uDD0D\uDB40\uDDEF"],
-        ["‐", " \uDB40\uDD5B\uDB40\uDD12\uDB40\uDD10\uDB40\uDD11\uDB40\uDD10\uDB40\uDD5D\uDB40\uDDEF"],
-        ["‑", " \uDB40\uDD5B\uDB40\uDD12\uDB40\uDD10\uDB40\uDD11\uDB40\uDD11\uDB40\uDD5D\uDB40\uDDEF"]
-    ]
+        {
+            "from": "ny",
+            "to": "\udb80\ude90",
+            "before": "vowel"
+        },
+        {
+            "from": "Ny",
+            "to": "\udb80\ude91",
+            "before": "vowel"
+        },
+        [
+            "0",
+            "\udb80\ude58"
+        ],
+        [
+            "1",
+            "\udb80\ude59"
+        ],
+        [
+            "2",
+            "\udb80\ude5a"
+        ],
+        [
+            "3",
+            "\udb80\ude5b"
+        ],
+        [
+            "4",
+            "\udb80\ude5c"
+        ],
+        [
+            "5",
+            "\udb80\ude5d"
+        ],
+        [
+            "6",
+            "\udb80\ude5e"
+        ],
+        [
+            "7",
+            "\udb80\ude5f"
+        ],
+        [
+            "8",
+            "\udb80\ude60"
+        ],
+        [
+            "9",
+            "\udb80\ude61"
+        ],
+        [
+            "a",
+            "\udb80\ude30"
+        ],
+        [
+            "A",
+            "\udb80\ude00"
+        ],
+        [
+            "b",
+            "\udb80\ude31"
+        ],
+        [
+            "B",
+            "\udb80\ude01"
+        ],
+        [
+            "d",
+            "\udb80\ude32"
+        ],
+        [
+            "D",
+            "\udb80\ude02"
+        ],
+        [
+            "e",
+            "\udb80\ude33"
+        ],
+        [
+            "E",
+            "\udb80\ude03"
+        ],
+        [
+            "f",
+            "\udb80\ude34"
+        ],
+        [
+            "F",
+            "\udb80\ude04"
+        ],
+        [
+            "g",
+            "\udb80\ude35"
+        ],
+        [
+            "G",
+            "\udb80\ude05"
+        ],
+        [
+            "h",
+            "\udb80\ude36"
+        ],
+        [
+            "H",
+            "\udb80\ude06"
+        ],
+        [
+            "i",
+            "\udb80\ude37"
+        ],
+        [
+            "I",
+            "\udb80\ude07"
+        ],
+        [
+            "j",
+            "\udb80\ude38"
+        ],
+        [
+            "J",
+            "\udb80\ude08"
+        ],
+        [
+            "k",
+            "\udb80\ude39"
+        ],
+        [
+            "K",
+            "\udb80\ude09"
+        ],
+        [
+            "l",
+            "\udb80\ude3a"
+        ],
+        [
+            "L",
+            "\udb80\ude0a"
+        ],
+        [
+            "m",
+            "\udb80\ude3b"
+        ],
+        [
+            "M",
+            "\udb80\ude0b"
+        ],
+        [
+            "n",
+            "\udb80\ude3c"
+        ],
+        [
+            "N",
+            "\udb80\ude0c"
+        ],
+        [
+            "o",
+            "\udb80\ude3d"
+        ],
+        [
+            "O",
+            "\udb80\ude0d"
+        ],
+        [
+            "p",
+            "\udb80\ude3e"
+        ],
+        [
+            "P",
+            "\udb80\ude0e"
+        ],
+        [
+            "q",
+            "\udb80\ude47"
+        ],
+        [
+            "Q",
+            "\udb80\ude17"
+        ],
+        [
+            "r",
+            "\udb80\ude3f"
+        ],
+        [
+            "R",
+            "\udb80\ude0f"
+        ],
+        [
+            "s",
+            "\udb80\ude40"
+        ],
+        [
+            "S",
+            "\udb80\ude10"
+        ],
+        [
+            "t",
+            "\udb80\ude41"
+        ],
+        [
+            "T",
+            "\udb80\ude11"
+        ],
+        [
+            "u",
+            "\udb80\ude42"
+        ],
+        [
+            "U",
+            "\udb80\ude12"
+        ],
+        [
+            "v",
+            "\udb80\ude43"
+        ],
+        [
+            "V",
+            "\udb80\ude13"
+        ],
+        [
+            "w",
+            "\udb80\ude44"
+        ],
+        [
+            "W",
+            "\udb80\ude14"
+        ],
+        [
+            "y",
+            "\udb80\ude45"
+        ],
+        [
+            "Y",
+            "\udb80\ude15"
+        ],
+        [
+            "z",
+            "\udb80\ude46"
+        ],
+        [
+            "Z",
+            "\udb80\ude16"
+        ],
+        [
+            "\u00e1",
+            "\udb80\ude30\udb40\udd14"
+        ],
+        [
+            "\u00c1",
+            "\udb80\ude00\udb40\udd14"
+        ],
+        [
+            "\u00e9",
+            "\udb80\ude33\udb40\udd14"
+        ],
+        [
+            "\u00c9",
+            "\udb80\ude03\udb40\udd14"
+        ],
+        [
+            "\u00ed",
+            "\udb80\ude37\udb40\udd14"
+        ],
+        [
+            "\u00cd",
+            "\udb80\ude07\udb40\udd14"
+        ],
+        [
+            "\u00f3",
+            "\udb80\ude3d\udb40\udd14"
+        ],
+        [
+            "\u00d3",
+            "\udb80\ude0d\udb40\udd14"
+        ],
+        [
+            "\u00fa",
+            "\udb80\ude42\udb40\udd14"
+        ],
+        [
+            "\u00da",
+            "\udb80\ude12\udb40\udd14"
+        ],
+        [
+            ".",
+            "\udb80\ude68"
+        ],
+        [
+            "\"",
+            ""
+        ],
+        [
+            "\u201c",
+            ""
+        ],
+        [
+            "\u201d",
+            ""
+        ],
+        [
+            "\u00ab",
+            ""
+        ],
+        [
+            "\u00bb",
+            ""
+        ],
+        [
+            "'",
+            ""
+        ],
+        [
+            "\u2019",
+            ""
+        ],
+        [
+            "\u2018",
+            ""
+        ],
+        [
+            "`",
+            ""
+        ],
+        [
+            "-",
+            " "
+        ],
+        [
+            "\u2010",
+            " "
+        ],
+        [
+            "\u2011",
+            " "
+        ],
+        [
+            "ch",
+            "\udb80\ude8c"
+        ],
+        [
+            "Ch",
+            "\udb80\ude8d"
+        ],
+        [
+            "sh",
+            "\udb80\ude86"
+        ],
+        [
+            "Sh",
+            "\udb80\ude87"
+        ],
+        [
+            "th",
+            "\udb80\ude50"
+        ],
+        [
+            "Th",
+            "\udb80\ude51"
+        ],
+        [
+            "dh",
+            "\udb80\ude80"
+        ],
+        [
+            "Dh",
+            "\udb80\ude81"
+        ],
+        [
+            "kh",
+            "\udb80\ude82"
+        ],
+        [
+            "Kh",
+            "\udb80\ude83"
+        ],
+        [
+            "gh",
+            "\udb80\ude84"
+        ],
+        [
+            "Gh",
+            "\udb80\ude85"
+        ],
+        [
+            "zh",
+            "\udb80\ude88"
+        ],
+        [
+            "Zh",
+            "\udb80\ude89"
+        ],
+        [
+            "ts",
+            "\udb80\ude8a"
+        ],
+        [
+            "Ts",
+            "\udb80\ude8b"
+        ],
+        [
+            "ng",
+            "\udb80\ude8e"
+        ],
+        [
+            "Ng",
+            "\udb80\ude8f"
+        ]
+    ],
+    "groupCase": "initial"
 }

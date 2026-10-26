@@ -1,7 +1,9 @@
 # Copyright (c) 2026 Tom Rodriguez ("Toasty") — <toasty@heroiclands.org>
 # SPDX-License-Identifier: OFL-1.1
-"""Write the page of each encoding, ``encodings/<name>.md``, and of the standard roman
-encoding, ``encodings/standard.md``, from their JSON.
+"""Write each encoding page, ``encodings/<name>.md``, from its JSON.
+
+The shared punctuation specification, ``encodings/standard.md``, is authored
+separately and is never overwritten by this generator.
 
     python3 tools/encoding_docs.py            # write the pages
     python3 tools/encoding_docs.py --check    # fail where a page is missing or out of date
@@ -12,9 +14,9 @@ conditions in plain words, the table of its own rows, and the guarantee that it
 round-trips exactly. The tables come from the encoding file and the standard alone; an
 encoding is deterministic and structural, so a page names no setting.
 
-The ``standard`` entry of ``tools/encoding_docs.json`` holds the standard page's
-``title`` and ``intro``, and ``marks``: the meaning of each mark, by the mark, stating
-every mark of ``encodings/standard.json`` and nothing else.
+The ``standard.marks`` entry of ``tools/encoding_docs.json`` holds the meaning
+of each punctuation row in ``encodings/standard.json``. The authored standard
+page also describes its structural controls.
 
 ``tools/encoding_docs.json`` holds, for each encoding, a ``title``, an ``intro`` (a list of
 paragraphs), an ``example`` roman text, and for an encoding too large to read as one
@@ -44,7 +46,7 @@ SAMPLE = 12
 
 WORDS = {
     "before": {"vowel": "before a vowel", "consonant": "before a consonant"},
-    "at": {"start": "at the start of a word", "end": "at the end of a word"},
+    "at": {"start": "at the start of a word", "end": "at the end of a word", "line-start": "at the beginning of a line"},
 }
 DIRECTIONS = {"ltr": "left to right", "rtl": "right to left"}
 
@@ -147,6 +149,12 @@ def separator_section(enc):
         "decoding writes a single space.",
         "",
     ]
+    lines += [
+        "With `--verse` or `encode(..., verse=True)`, a line ending writes the shared verse "
+        "line control and a blank line writes the stanza control. `--- {.canto}` writes "
+        "the canto control. See [standard.md](standard.md) for the structural assignments.",
+        "",
+    ]
     return lines
 
 
@@ -161,6 +169,10 @@ def marks_section(enc, standard, meanings):
         "standard's invisible mark, the same in every encoding, so decoding restores it.",
         "",
     ]
+    if enc.round_trip == "canonical":
+        lines[2] = ("This encoding inherits punctuation rows from standard.json, with the replacements "
+                    "listed below. A replacement may omit a mark; decoding then cannot restore it. "
+                    "The shared assignments are defined in [standard.md](standard.md).")
     rows = []
     for mark in marks_of(standard):
         written = E.encode(enc, mark.source)
@@ -306,6 +318,7 @@ def page(enc, entry, fonts, standard=None, meanings=None):
             "consonant": "A row marked _before a consonant_ applies when the next character is a letter that is not a vowel.",
             "start": "A row marked _at the start of a word_ applies at the first character of the text or after whitespace, punctuation or a symbol.",
             "end": "A row marked _at the end of a word_ applies at the last character of the text or before whitespace, punctuation or a symbol.",
+            "line-start": "A row marked _at the beginning of a line_ applies before any other text on that line; preceding indentation carets are allowed.",
         }
         for key in ("vowel", "consonant", "start", "end"):
             if key in used:
@@ -342,116 +355,26 @@ def page(enc, entry, fonts, standard=None, meanings=None):
         lines += [f"### Rows of `{slug}`", "", "These rows apply only to text set in this face, and are tried first.", ""]
         lines += row_table(face.rows) + [""]
 
+    round_trip = (
+        "This encoding decodes to a conventional Roman spelling. Omitted punctuation is not restored, "
+        "and rows that write the word separator decode as a space. It does not preserve the exact "
+        "source spelling or promise an exact code-point round trip. The Code points column shows "
+        "every character each row writes."
+        if enc.round_trip == "canonical" else
+        "Every encoding round-trips exactly: decoding the code points that encoding wrote gives back the roman "
+        "text, and encoding that gives the same code points. The Code points column shows every character a row "
+        "writes, including any that is invisible."
+    )
     lines += [
         "## Round trip",
         "",
-        "Every encoding round-trips exactly: decoding the code points that encoding wrote gives back the roman "
-        "text, and encoding that gives the same code points. The Code points column shows every character a row "
-        "writes, including any that is invisible.",
+        round_trip,
         "",
     ]
 
     lines += [f"This page is written from `encodings/{name}.json` by `tools/encoding_docs.py`.", ""]
     return "\n".join(lines)
 
-
-def standard_page(standard, entry):
-    lines = [f"# {entry['title']}", ""]
-    lines += paragraph_lines(entry["intro"])
-    lines += ["## Marks", ""]
-    rows = [[code(r.source), entry["marks"][r.source], points(r.target)] for r in marks_of(standard)]
-    lines += table(["Mark", "Meaning", "Invisible mark"], rows) + [""]
-    lines += [
-        "Each invisible mark is the mark rule's spelling of the mark's own characters, in the variation "
-        "selectors U+E0100 to U+E015E: a printable ASCII character `c` is U+E0100 + (`c` − U+0020), and any "
-        "other character is spelled as `{`, its code point in lowercase hex, and `}`. A script that does not "
-        "draw a mark writes this sequence, so the mark is written alike in every encoding and decoding "
-        "restores it. A script that draws a mark replaces the row with its own.",
-        "",
-        "Where two marks begin alike, the longer is matched first: `!!` before `!`, and `//` before `/`. "
-        "`***`, the canto end, is an invisible mark by default, and a script draws it only where its design "
-        "note says so.",
-        "",
-        "## Literal spans",
-        "",
-        "`⟦` and `⟧` (U+27E6, U+27E7) are the literal immutable markers. What they enclose names exact "
-        "characters, which no encoder reinterprets, so a writer can force one character, such as a homophone "
-        "the lexicon would not choose. Every encoding supports them. Each marker is written as the "
-        f"invisible mark of itself, {points(E.mark(E.OPEN))} and {points(E.mark(E.CLOSE))}, the same in every "
-        "encoding.",
-        "",
-        "Without a `codage`, the codes are character names in capitals, with each space of a name written "
-        "`_`, separated by whitespace: `⟦LATIN_SMALL_LETTER_A_WITH_ACUTE LATIN_SMALL_LETTER_I LATIN_SMALL_LETTER_M⟧` "
-        "writes `áim`. The names of the script fonts' characters are in "
-        "`encodings/names.json`, written by `tools/encoding_names.py` from `tools/names`; every other "
-        "character is named by Unicode. Decoding names each character between the marker marks and "
-        "separates the codes with single spaces.",
-        "",
-        "An encoding that states `\"codage\": \"<name>\"` encodes and decodes the span through that codage "
-        "instead, so the codes are the codage's own, as `⟦WONG_YELLOW⟧` in the Zethu script. A codage is a "
-        "file of kind `codage`, `encodings/<name>.json`: it extends nothing, encodes no text of its own and "
-        "is reached only through the markers of the encoding that states it. Inside the markers only the "
-        "codes and the codage's own notation are allowed (Zethu's joiners `-` `:` `*`, its brackets and "
-        "`[ts]`), never a standard mark: a `,` or `?` inside is an error at its position. A code outside "
-        "the markers is ordinary roman, never read as a code.",
-        "",
-        "Whitespace inside the markers is ignored. Any amount of space, newline or tab between codes is a "
-        "separator only and is not saved, so `⟦ONE TWO THREE⟧` and the same codes with runs of whitespace "
-        "between them are the same text. Decoding always writes single spaces between codes. This is the "
-        "normalization, not a loss.",
-        "",
-        "A name that names no character, an unmatched `⟦` or `⟧`, and a marker inside a span are refused "
-        "at the offending position, as are a marker mark in the same cases in decoding.",
-        "",
-        "A script with no encoding file accepts no roman at all: its text is written only as character "
-        "names between the markers, and anything outside them is an error. `encode.py --font <slug>` "
-        "addresses such a font.",
-        "",
-        "## Whitespace",
-        "",
-        "In roman, outside `⟦` and `⟧`, any run of whitespace (space, tab, newline, carriage return) is one "
-        "word separator. It is not a character of the script and has no row: the standard states none. "
-        "`this      is \\t\\t\\n\\t a   test` encodes like `this is a test`.",
-        "",
-        "Each encoding states how its script writes the separator with `separator`, a required string:",
-        "",
-        "- A script that spaces its words (Semaron Kuriale, Helónika, Pirzath, Qalezu, Thuravark, Vedyakshara, "
-        "Veldikko and Ch'alish Pilam) states `\" \"`, one U+0020 for each separator. Ch'alish writes its space "
-        "as one empty cell. A script with a glyph of its own for the word space may state that glyph.",
-        "- A script that sets its characters beside each other states `\"\"` and writes nothing. Khelathi Zethu "
-        "is one: it accepts nothing outside `⟦` and `⟧`, so its decoding gives the `⟦…⟧` codage alone. Teng Chou is "
-        "the other: it has no encoding file, it writes nothing for a separator, and its decoding puts a "
-        "space after each character's word, since one character is a word or a phrase.",
-        "",
-        "The separator is normalized on input, not preserved. Encoding writes it once for a whole run, and "
-        "decoding writes a single space (nothing for an empty separator), so a round trip gives the roman back "
-        "with each run of whitespace as one space. Whitespace inside `⟦` and `⟧` only separates codes, and "
-        "decoding writes single spaces there too.",
-        "",
-        "A newline is only whitespace in the encodings. The structure of verse is the work of the build "
-        "that reads a verse fence: inside it a newline is `/`, a blank line is `//`, and a line of only `***` "
-        "is a canto break, `***`. Outside verse, verse quoted in prose writes `/`, `//` and `***` explicitly.",
-        "",
-        "## Extending it",
-        "",
-        "An encoding builds on the standard with `\"extends\": \"standard\"`. Its rows are the standard's rows "
-        "whose roman it does not state, in the standard's order, followed by its own rows. Nothing else is "
-        "inherited, so the two files together are the whole encoding, and any implementation can apply it "
-        "from them alone.",
-        "",
-        "An encoding declares the characters it accepts as roman with `accepts`, a list of characters and "
-        "ranges such as `\"a-z\"`. A caseless script lists `a-z` and its own additions, and Semaron and "
-        "Helónika, the scripts with case, list `a-zA-Z` and theirs. The standard's marks and whitespace are "
-        "accepted besides, and every `from` is made of accepted characters.",
-        "",
-        "A character that is in neither the standard nor the encoding's rows is refused: `encode.py` reports "
-        "it as `file:line:column: error:` and exits non-zero, and decoding refuses a code point no row writes "
-        "in the same way.",
-        "",
-        f"This page is written from `encodings/{E.STANDARD}.json` by `tools/encoding_docs.py`.",
-        "",
-    ]
-    return "\n".join(lines)
 
 
 def pages():
@@ -471,7 +394,7 @@ def pages():
             f"{os.path.relpath(DATA)}: error: `{E.STANDARD}.marks` gives the meaning of every mark "
             f"of the standard; missing {missing or 'none'}, not in the standard {extra or 'none'}"
         )
-    out = {os.path.join(E.ENCODINGS, f"{E.STANDARD}.md"): standard_page(standard, entry)}
+    out = {}  # standard.md is the authored punctuation specification.
     for name in E.names():
         if name not in data:
             raise SystemExit(f"{os.path.relpath(DATA)}: error: `{name}` has no entry")
@@ -515,7 +438,7 @@ def main(argv=None):
             print(E._shown(path))
     stale = [
         f for f in os.listdir(E.ENCODINGS)
-        if f.endswith(".md") and os.path.join(E.ENCODINGS, f) not in written
+        if f.endswith(".md") and f != "standard.md" and os.path.join(E.ENCODINGS, f) not in written
     ]
     for f in stale:
         problems.append(f"{E._shown(os.path.join(E.ENCODINGS, f))}: error: no encoding has this page")

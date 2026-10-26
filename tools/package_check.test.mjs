@@ -27,3 +27,15 @@ test("a family without a class rule is a finding", () => {
     const altered = css.replace(/\.hl-qalezu-hand \{[^}]*\}/, "");
     assert.equal(check(altered).length, 1);
 });
+
+test("the published encoding specification may be YAML", () => {
+    const messages = findings({
+        packed: ["encodings/aelwythi-semaron.yaml"],
+        files: [],
+        css,
+        fontFiles: [],
+        manifest,
+        exports: {},
+    });
+    assert.ok(!messages.some((message) => message.includes("outside the font package")));
+});

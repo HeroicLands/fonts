@@ -52,6 +52,7 @@ export const ALLOWED = [
     "keyboards/macos/HeroicLands.bundle/Contents/Resources/*.keylayout",
     "encodings/*.json",
     "encodings/*.md",
+    "encodings/*.yaml",
     "encode.py",
     "LICENSE",
     "README.md",

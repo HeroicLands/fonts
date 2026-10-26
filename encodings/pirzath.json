@@ -101,8 +101,8 @@
         ["y", "󰀂\uDB40\uDD59\uDB40\uDDEF"],
         ["«", "󰁔"],
         ["»", "󰁕"],
-        ["‹", "󰁔\uDB40\uDD5B\uDB40\uDD12\uDB40\uDD10\uDB40\uDD13\uDB40\uDD19\uDB40\uDD5D\uDB40\uDDEF"],
-        ["›", "󰁕\uDB40\uDD5B\uDB40\uDD12\uDB40\uDD10\uDB40\uDD13\uDB40\uDD41\uDB40\uDD5D\uDB40\uDDEF"],
+        ["\u2039", "\udb80\udc54\udb40\udd08\udb40\uddef"],
+        ["\u203a", "\udb80\udc55\udb40\udd09\udb40\uddef"],
         ["0", "󰁀"],
         ["1", "󰁁"],
         ["2", "󰁂"],
@@ -120,9 +120,9 @@
         ["^", "󰁎"],
         ["&", "󰁏"],
         [".", "󰁐"],
-        ["?", "󰁐\uDB40\uDD1F\uDB40\uDDEF"],
-        ["!", "󰁐\uDB40\uDD01\uDB40\uDDEF"],
-        ["!!", "󰁐\uDB40\uDD01\uDB40\uDD01\uDB40\uDDEF"],
+        ["?", "\udb80\udc50\udb40\udd01\udb40\uddef"],
+        ["\u203c", "\udb80\udc50\udb40\udd02\udb40\uddef"],
+        ["!", "\udb80\udc50\udb40\udd03\udb40\uddef"],
         [",", "󰁑"],
         ["-", "󰁓"]
     ]

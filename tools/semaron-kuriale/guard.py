@@ -24,10 +24,8 @@ sequence is derived from the spelling rules below, which the guard owns and whic
 - a doubled ``a``, ``i`` or ``u`` is the long vowel; ``ee`` and ``oo`` are two plain vowels;
 - an acute vowel is the plain vowel, because Semaron writes no stress, and ``ë``
   is ``e``;
-- ``q`` is ``k``, because the script has no q;
-- ``y`` before a vowel is the glide y, and anywhere else the vowel i; there is no letter for a
-  vowel y;
-- ``.``, ``?``, ``!``, ``!!`` and ``,`` write the point, told apart by invisible marks;
+- ``y`` before a vowel is the glide y, and anywhere else the vowel i;
+- ``.``, ``?``, ``‼``, ``!`` and ``,`` write the point, told apart by invisible marks;
   the other standard marks, the quotation marks, the dash, the ellipsis, the verse
   ends and the braces of a name, draw nothing; colons, semicolons and the en dash print the box;
 - Vylari ``à`` writes a and the catch. After an ancient t, k, d or g, the catch
@@ -74,8 +72,8 @@ ACUTES = {"á": "a", "é": "e", "í": "i", "ó": "o", "ú": "u", "ë": "e",
 # The standard marks that draw the point: the four terminals and the pause, told apart
 # by invisible marks. The other standard marks write invisible marks alone. Two-character
 # marks come first, as the encoding matches them.
-PAUSES = ("!!", ".", "?", "!", ",")
-UNDRAWN = ("//", "«", "»", "‹", "›", "—", "…", "/", "{", "}")
+PAUSES = (".", "?", "‼", "!", ",")
+UNDRAWN = ("^", "«", "»", "‹", "›", "—", "…", "/", "{", "}")
 CATCHES = "'’`-"
 SILENT = "​‌‍‎‏‪‫‬‭‮⁦⁧⁨⁩﻿"
 NUMERALS = [f"num.{i}" for i in range(10)]
@@ -235,7 +233,7 @@ FIXTURES: list[tuple[str, list[str]]] = [
     # and any other punctuation is outside the encoding and prints the box.
     *[(c, ["point"]) for c in PAUSES],
     *[(c, []) for c in UNDRAWN],
-    ("a!!a", ["a", "point", "a"]), ("a, a? a!", ["a", "point", "space", "a", "point", "space", "a", "point"]),
+    ("a!a", ["a", "point", "a"]), ("a, a? a‼", ["a", "point", "space", "a", "point", "space", "a", "point"]),
     ("«a ‹a›» a— a…", ["a", "space", "a", "space", "a", "space", "a"]),
     ("{daimela} a", ["d", "a", "i", "m", "e", "l", "a", "space", "a"]),
     *[(c, [BOX]) for c in ";:–"],
@@ -243,7 +241,7 @@ FIXTURES: list[tuple[str, list[str]]] = [
      ["d", "a", "i", "m", "e", "l", "a", "space", "v", "e", "th", "o", "r", "space",
       "o", "r", "f", "e", "n", "a", "m", "e", "n", "point", "space", "th", "e", "s", "o", "n", "point"]),
     # the marks the script lacks, c and x print the box; ë is e
-    *[(c, [BOX]) for c in '"“”¡()[]<>@#$%&*+=\\|_~^‘'],
+    *[(c, [BOX]) for c in '"“”¡()[]<>@#$%&*+=\\|_~‘'],
     *[(c, [BOX]) for c in "cxCX"],
     ("a‐", ["a", BOX]), ("a‑", ["a", BOX]), ("meqes", ["m", "e", "q", "e", "s"]), ("ë", ["e"]),
     ("eza à daimela falvator.",

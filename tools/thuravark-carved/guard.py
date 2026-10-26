@@ -21,7 +21,7 @@ below, written here and read neither from the font source nor from the encoding:
 - j, and y before a vowel, is the glide; any other y is the vowel i;
 - q is the stave k, and ë is e;
 - the space draws nothing, the hyphen-minus is written as nothing, and every
-  terminal (``.`` ``?`` ``!`` ``!!``) draws the dash;
+  terminal (``.`` ``?`` ``‼`` ``!``) draws the dash;
 - every other punctuation key, c, x and a capital draw the box;
 - nothing is .notdef.
 
@@ -162,7 +162,7 @@ FIXTURES = [
     ("a b", ["a", "space", "b"]),
     ("a b", ["a", "space", "b"]),
     (",!?;:", ["period", "period", "notdef.box", "notdef.box"]),
-    ("a, b! i? d!! e— f… g/ h//", ["a", "space", "b", "period", "space", "i", "period", "space", "d", "period",
+    ("a, b‼ i? d! e— f… g/ h/", ["a", "space", "b", "period", "space", "i", "period", "space", "d", "period",
                                     "space", "e", "space", "f", "space", "g", "space", "h"]),
     ('"\'()', ["notdef.box"] * 4),
     ("“a”", ["notdef.box", "a", "notdef.box"]),
@@ -170,7 +170,7 @@ FIXTURES = [
     ("a‹b›", ["a", "b"]),
     ("{a} b", ["a", "space", "b"]),
     ("<>[]", ["notdef.box"] * 4),
-    ("@#$%^&", ["notdef.box"] * 6),
+    ("@#$%&", ["notdef.box"] * 5),
     # No stave: the box, never .notdef; q is k and ë is e.
     ("cqx", ["notdef.box", "k", "notdef.box"]),
     ("ë", ["e"]),
@@ -276,11 +276,7 @@ def expected_glyphs(form: str) -> list[str]:
             pass
         elif ch == " ":
             out.append("space")
-        elif s.startswith("!!", i):
-            out.append("period")
-            i += 2
-            continue
-        elif ch in ".?!":
+        elif ch in ".?‼!":
             out.append("period")
         elif ch == "q":
             out.append("k")

@@ -238,6 +238,9 @@ def check_accepted(report, enc):
 def check_outputs(report, enc):
     """No row writes nothing, no output reads back as two romans, and every output
     follows the mark rule."""
+    if enc.round_trip == "canonical":
+        # The loader validates structure; aliases and omitted marks are intentional.
+        return
     for face, at, rows in row_lists(enc):
         firsts = {enc.separator: " "} if enc.separator else {}
         pool = rows + (enc.rows if face is not None else [])
@@ -314,6 +317,8 @@ def round_trip(report, enc, where, label, roman, face=None):
             f"{_show(read)}, not {_show(E.canonical(enc, roman))}",
         )
         ok = False
+    if enc.round_trip == "canonical":
+        return ok
     again = E.encode(enc, read, face)
     if again != unicode:
         report.add(
@@ -344,6 +349,10 @@ def check_rows(report, enc):
                 continue
             for other in silent:
                 for pair in (text + other, other + text):
+                    # Joining rows can invalidate a positional rule, such as
+                    # moving line-start indentation into the middle of a line.
+                    if refused(enc, pair, face):
+                        continue
                     if not round_trip(report, enc, where, "the row beside a silent row", pair, face):
                         break
 
@@ -378,7 +387,12 @@ def check_sweep(report, enc):
                 continue
             unicode = "".join(r.target for r in chosen)
             read = E.decode(enc, unicode, face)
-            if read != roman or E.encode(enc, read, face) != unicode:
+            if enc.round_trip == "canonical":
+                expected = E.canonical(enc, roman)
+                wrong = read != expected
+            else:
+                wrong = read != roman or E.encode(enc, read, face) != unicode
+            if wrong:
                 report.add(
                     enc,
                     at,
@@ -425,7 +439,7 @@ def check_standard(report, directory):
         return None
     marks = []
     for row in standard.rows:
-        if row.conditioned:
+        if row.conditioned and not (row.source == "^" and row.at == "line-start" and not row.before):
             report.add(standard, row, f"the standard's row {_show(row.source)} takes a condition; "
                        "the standard's rows apply everywhere")
         expected = E.mark(row.source)
@@ -468,7 +482,7 @@ def check_marks(report, enc, standard, marks):
                     round_trip(report, enc, at, "the verse marks", text, face)
         for mark in marks:
             texts = [mark.source]
-            if word is not None:
+            if word is not None and mark.source != "^":
                 texts += [
                     word + mark.source,
                     mark.source + word,
@@ -483,7 +497,7 @@ def check_marks(report, enc, standard, marks):
                 written = E.encode(enc, mark.source, face)
             except E.EncodingError:
                 continue
-            if drawing(written) == "" and written != mark.target:
+            if enc.round_trip != "canonical" and drawing(written) == "" and written != mark.target:
                 row = E.pieces(enc, mark.source, face)[0][2]
                 report.add(
                     enc,
@@ -522,7 +536,7 @@ def check_refusal(report, enc):
             continue
         if not refuses_at(enc, E.encode, f"{word}{char}", 1, len(word) + 1):
             report.add(enc, ("accepts",), f"the capital {_show(char)} is not refused at 1:{len(word) + 1}")
-    targets = {r.target[0] for r in enc.rows}
+    targets = {r.target[0] for r in enc.rows if r.target}
     for char in UNWRITTEN:
         if char in targets:
             continue

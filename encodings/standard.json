@@ -1,21 +1,73 @@
 {
     "name": "standard",
     "rows": [
-        [".", "\uDB40\uDD0E"],
-        ["?", "\uDB40\uDD1F"],
-        ["!", "\uDB40\uDD01"],
-        ["!!", "\uDB40\uDD01\uDB40\uDD01"],
-        [",", "\uDB40\uDD0C"],
-        ["«", "\uDB40\uDD5B\uDB40\uDD41\uDB40\uDD42\uDB40\uDD5D"],
-        ["»", "\uDB40\uDD5B\uDB40\uDD42\uDB40\uDD42\uDB40\uDD5D"],
-        ["‹", "\uDB40\uDD5B\uDB40\uDD12\uDB40\uDD10\uDB40\uDD13\uDB40\uDD19\uDB40\uDD5D"],
-        ["›", "\uDB40\uDD5B\uDB40\uDD12\uDB40\uDD10\uDB40\uDD13\uDB40\uDD41\uDB40\uDD5D"],
-        ["—", "\uDB40\uDD5B\uDB40\uDD12\uDB40\uDD10\uDB40\uDD11\uDB40\uDD14\uDB40\uDD5D"],
-        ["…", "\uDB40\uDD5B\uDB40\uDD12\uDB40\uDD10\uDB40\uDD12\uDB40\uDD16\uDB40\uDD5D"],
-        ["/", "\uDB40\uDD0F"],
-        ["//", "\uDB40\uDD0F\uDB40\uDD0F"],
-        ["***", "\uDB40\uDD0A\uDB40\uDD0A\uDB40\uDD0A"],
-        ["{", "\uDB40\uDD5B\uDB40\uDD17\uDB40\uDD42\uDB40\uDD5D"],
-        ["}", "\uDB40\uDD5D"]
-    ]
+        [
+            ".",
+            "\udb40\udd00"
+        ],
+        [
+            "?",
+            "\udb40\udd01"
+        ],
+        [
+            "\u203c",
+            "\udb40\udd02"
+        ],
+        [
+            "!",
+            "\udb40\udd03"
+        ],
+        {
+            "from": "^",
+            "to": "\udb40\udd04",
+            "at": "line-start"
+        },
+        [
+            ",",
+            "\udb40\udd05"
+        ],
+        [
+            "\u00ab",
+            "\udb40\udd06"
+        ],
+        [
+            "\u00bb",
+            "\udb40\udd07"
+        ],
+        [
+            "\u2039",
+            "\udb40\udd08"
+        ],
+        [
+            "\u203a",
+            "\udb40\udd09"
+        ],
+        [
+            "\u2014",
+            "\udb40\udd0a"
+        ],
+        [
+            "\u2026",
+            "\udb40\udd0b"
+        ],
+        [
+            "/",
+            "\udb40\udd0c"
+        ],
+        [
+            "{",
+            "\udb40\udd10"
+        ],
+        [
+            "}",
+            "\udb40\udd11"
+        ]
+    ],
+    "controls": {
+        "verseStanza": "\udb40\udd0d",
+        "verseCanto": "\udb40\udd0e",
+        "wordSeparator": " ",
+        "literalOpen": "\udb40\udd12",
+        "literalClose": "\udb40\udd13"
+    }
 }

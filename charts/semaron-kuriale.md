@@ -1,13 +1,20 @@
 # Semaron Kuriale
 
-90 characters, U+F0200 to U+F0291, in the font `Semaron Kuriale`.
+91 characters, U+E0114 to U+F0291, in the font `Semaron Kuriale`.
 
 ## Code chart
 
 ![Semaron Kuriale, code chart 1](semaron-kuriale/chart-1.png)
 ![Semaron Kuriale, code chart 2](semaron-kuriale/chart-2.png)
+![Semaron Kuriale, code chart 3](semaron-kuriale/chart-3.png)
 
 ## Characters
+
+### Controls
+
+| Character Name | Character | Code Point | Entity | Hex Entity |
+| --- | --- | --- | --- | --- |
+| VARIATION SELECTOR-37 | ![U+E0114](semaron-kuriale/glyphs/U+E0114.svg) | U+E0114 | `&#917780;` | `&#xE0114;` |
 
 ### Letters
 

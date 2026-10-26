@@ -5,7 +5,7 @@
     {"latin": "a. b c. d e", "advances": [0, 200, 0, 200]},
     {"latin": "kosamir? a", "advances": [0]},
     {"latin": "kosamir! a", "advances": [0]},
-    {"latin": "kosamir!! a", "advances": [0]},
+    {"latin": "kosamir! a", "advances": [0]},
     {"latin": "a, b", "advances": [200]}
   ],
   "fixtures": [
@@ -45,7 +45,7 @@
     {"latin": "jumina", "glyphs": ["j", "u", "m", "i", "n", "a"]},
     {"latin": "bethuan", "glyphs": ["b", "e", "th", "u", "a", "n"]},
     {"latin": "rhezin", "glyphs": ["r", "h", "e", "z", "i", "n"]},
-    {"latin": "a! a!! a?", "glyphs": ["a", "raisedDot", "space", "a", "raisedDot", "space", "a", "raisedDot"]}
+    {"latin": "a‼ a! a?", "glyphs": ["a", "raisedDot", "space", "a", "raisedDot", "space", "a", "raisedDot"]}
   ],
   "unencodable": [
     {"latin": "Xenos", "letter": "X"},

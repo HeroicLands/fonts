@@ -245,7 +245,8 @@ def block_problems(label: str, rows: list[dict]) -> list[str]:
     return [
         f"fonts.json: error: {label}: {r['codepoint']} is outside the blocks registered for it"
         for r in rows
-        if not any(b["start"] <= cp(r["codepoint"]) <= b["end"] for b in own)
+        if not (r["kind"] == "control" and 0xE0100 <= cp(r["codepoint"]) <= 0xE01EF)
+        and not any(b["start"] <= cp(r["codepoint"]) <= b["end"] for b in own)
     ]
 
 
@@ -383,12 +384,13 @@ def check(font: Path) -> list[str]:
                 problems.append(f"{font}: error: {label}: {' '.join(sequence)} shapes to {got}, not as written")
         if stem in codepoint_order.LTR:
             start, end = codepoint_order.block(stem)
-            for row in rows:
+            native_rows = [r for r in rows if not (r["kind"] == "control" and 0xE0100 <= cp(r["codepoint"]) <= 0xE01EF)]
+            for row in native_rows:
                 if not start <= cp(row["codepoint"]) <= end:
                     problems.append(f"fonts.json: error: {label}: {row['codepoint']} is outside U+{start:04X}-U+{end:04X}")
             for code in sorted(c for c in cmap if BMP_PRIVATE[0] <= c <= BMP_PRIVATE[1]):
                 problems.append(f"{font}: error: {label}: the cmap has an entry at U+{code:04X}, in the Basic Multilingual Plane's Private Use Area")
-            glyphs = [r["glyph"] for r in rows]
+            glyphs = [r["glyph"] for r in native_rows]
             if len(set(glyphs)) != len(glyphs):
                 problems.append(f"fonts.json: error: {label}: a glyph is listed twice")
             excluded = not_characters(stem, renderer.order)

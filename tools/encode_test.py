@@ -242,8 +242,8 @@ class Decoding(Case):
 
     def test_a_row_that_draws_nothing_is_restored(self):
         enc = self.encoding([["a", "A"], ["-", E.mark("-")], ["b", "B"]])
-        self.assertEqual(E.encode(enc, "a-b"), "A\U000E010DB")
-        self.assertEqual(E.decode(enc, "A\U000E010DB"), "a-b")
+        self.assertEqual(E.encode(enc, "a-b"), "A" + E.mark("-") + "B")
+        self.assertEqual(E.decode(enc, "A" + E.mark("-") + "B"), "a-b")
 
     def test_an_inherent_vowel_is_restored(self):
         enc = self.encoding(
@@ -266,15 +266,103 @@ class Decoding(Case):
             E.decode(enc, "2B")
 
 
+class CanonicalEncoding(Case):
+    def test_omitted_marks_aliases_and_spaces_use_conventional_reading(self):
+        enc = self.encoding([["a", "A"], ["b", "B"], ["x", "A"],
+                             ["'", ""], ["-", " "]], roundTrip="canonical")
+        self.assertEqual(E.encode(enc, "x'-b"), "A B")
+        self.assertEqual(E.decode(enc, "A B"), "a b")
+        self.assertEqual(E.canonical(enc, "x'-b"), "a b")
+
+    def test_unknown_modes_are_refused(self):
+        with self.assertRaises(E.EncodingError):
+            self.encoding([["a", "A"]], roundTrip="anything")
+        with self.assertRaises(E.EncodingError):
+            self.encoding([["a", "A"]], groupCase="anything")
+
+
+class AelwythiEncoding(unittest.TestCase):
+    def setUp(self):
+        self.enc = E.load("aelwythi-semaron")
+
+    def test_dedicated_groups_have_only_minuscule_and_majuscule_forms(self):
+        for group, point in [("ch", 0xF028C), ("sh", 0xF0286), ("th", 0xF0250),
+                             ("dh", 0xF0280), ("kh", 0xF0282), ("gh", 0xF0284),
+                             ("zh", 0xF0288), ("ts", 0xF028A), ("ng", 0xF028E)]:
+            for spelling, value in [(group, point), (group.capitalize(), point + 1)]:
+                with self.subTest(spelling=spelling):
+                    self.assertEqual(E.encode(self.enc, spelling), chr(value))
+                    self.assertEqual(E.decode(self.enc, chr(value)), spelling)
+            for illegal in [group.upper(), group[0] + group[1].upper()]:
+                for text in [illegal, "a" + illegal + "a"]:
+                    with self.subTest(illegal=text), self.assertRaises(E.EncodingError):
+                        E.encode(self.enc, text)
+
+    def test_contextual_ny_stress_and_consonant_y(self):
+        for text, expected in [("nya", "\U000F0290\U000F0230"),
+                               ("Nyá", "\U000F0291\U000F0230\U000E0114"),
+                               ("ny", "\U000F023C\U000F0245"),
+                               ("y", "\U000F0245"), ("i", "\U000F0237"),
+                               ("q", "\U000F0247"), ("Q", "\U000F0217"),
+                               ("á", "\U000F0230\U000E0114"),
+                               ("Á", "\U000F0200\U000E0114")]:
+            with self.subTest(text=text):
+                self.assertEqual(E.encode(self.enc, text), expected)
+                self.assertEqual(E.decode(self.enc, expected), text)
+        for illegal in ["NYa", "nYa", "ë", "aë", "à", "c", "x"]:
+            with self.subTest(illegal=illegal), self.assertRaises(E.EncodingError):
+                E.encode(self.enc, illegal)
+
+    def test_punctuation_normalizes_without_extra_metadata(self):
+        text = "'a-b'."
+        encoded = E.encode(self.enc, text)
+        self.assertEqual(encoded, "\U000F0230 \U000F0231\U000F0268")
+        self.assertEqual(E.decode(self.enc, encoded), "a b.")
+
+    def test_other_semaron_encoding_is_unchanged(self):
+        enc = E.load("semaron")
+        self.assertEqual(enc.round_trip, "exact")
+        self.assertIsNone(enc.group_case)
+        text = "thalen kaa"
+        self.assertEqual(E.decode(enc, E.encode(enc, text)), text)
+
+
+class SharedIndentation(unittest.TestCase):
+    def test_indentation_is_reserved_at_line_start(self):
+        for name in ["aelwythi-semaron", "semaron", "pirzath"]:
+            enc = E.load(name)
+            self.assertEqual(E.encode(enc, "^^"), "\U000E0104\U000E0104")
+            self.assertEqual(E.encode(enc, "a\n^"), E.encode(enc, "a/") + "\U000E0104")
+
+    def test_indented_line_boundaries_round_trip(self):
+        for name in ["helonika", "pirzath", "semaron", "aelwythi-semaron"]:
+            enc = E.load(name)
+            encoded = E.encode(enc, "a\n^^a")
+            decoded = E.decode(enc, encoded)
+            self.assertEqual(decoded, "a/^^a")
+            self.assertEqual(E.encode(enc, decoded), encoded)
+            self.assertEqual(E.canonical(enc, "a\n^^a"), decoded)
+
+    def test_an_indent_inside_ordinary_text_is_refused(self):
+        for name in ["semaron", "helonika", "aelwythi-semaron"]:
+            with self.assertRaises(E.EncodingError):
+                E.encode(name, "a^a")
+
+    def test_pirzath_fourteenth_digit_keeps_its_numeric_context(self):
+        enc = E.load("pirzath")
+        self.assertEqual(E.encode(enc, "0^"), "\U000F0040\U000F004E")
+        self.assertEqual(E.decode(enc, "\U000F0040\U000F004E"), "0^")
+
+
 class Marks(Case):
     def test_printable_ascii_is_a_variation_selector_of_its_own(self):
         self.assertEqual(E.mark("a"), "\U000E0141")
-        self.assertEqual(E.mark(" -"), "\U000E0100\U000E010D")
+        self.assertTrue(E.mark(" -").startswith("\U000E015B"))
         self.assertTrue(all(E.is_mark(c) for c in E.mark("~ {")))
 
     def test_any_other_character_is_spelled_by_its_code_point(self):
         self.assertEqual(E.mark("á"), "".join(chr(0xE0100 + ord(c) - 0x20) for c in "{e1}"))
-        self.assertEqual(E.mark("{"), "".join(chr(0xE0100 + ord(c) - 0x20) for c in "{7b}"))
+        self.assertEqual(E.mark("{"), "\U000E0110")
         self.assertNotEqual(E.mark("á"), E.mark("a"))
 
     def test_a_run_is_two_or_more_other_drawings(self):
@@ -304,7 +392,7 @@ class Loading(Case):
             self.faults(path),
             [
                 f"{shown}:9:5: error: `colour` is not an encoding key; an encoding takes "
-                "`name`, `kind`, `fonts`, `extends`, `codage`, `accepts`, `separator`, `vowels`, `rows`, `faces`",
+                "`name`, `kind`, `fonts`, `extends`, `codage`, `accepts`, `separator`, `vowels`, `rows`, `faces`, `roundTrip`, `groupCase`",
                 f'{shown}:5:44: error: `before` is `vowel` or `consonant`, not "vowl"',
                 f"{shown}:6:9: error: needs `from`, the one or more characters the row matches",
                 f"{shown}:7:9: error: a row written as a list is two strings, `[from, to]`",
@@ -443,15 +531,33 @@ class Whitespace(Case):
     def test_a_font_with_no_encoding_refuses_whitespace_outside_the_markers(self):
         self.assertEqual(self.position(E.encode, E.Encoding.names_only("f"), " "), (1, 1))
 
-    def test_the_standard_marks_are_matched_longest_first(self):
+    def test_the_shared_punctuation_assignments(self):
         std = E.load_base(os.path.join(E.ENCODINGS, "standard.json"))
-        sources = [r.source for r in std.rows]
-        self.assertIn("***", sources)
-        self.assertFalse([s for s in sources if any(c in E.WHITESPACE for c in s)])
-        enc = E.load("pirzath")
-        for text in ("///", "/***//", "//***/", "***/", "***//"):
-            self.assertEqual(E.decode(enc, E.encode(enc, text)), text)
-        self.assertEqual(E.encode(enc, "***"), E.mark("***"))
+        targets = {r.source: r.target for r in std.rows}
+        for source, point in [(".", 0xE0100), ("?", 0xE0101), ("‼", 0xE0102),
+                              ("!", 0xE0103), ("^", 0xE0104), (",", 0xE0105),
+                              ("«", 0xE0106), ("»", 0xE0107), ("‹", 0xE0108),
+                              ("›", 0xE0109), ("—", 0xE010A), ("…", 0xE010B),
+                              ("/", 0xE010C), ("{", 0xE0110), ("}", 0xE0111)]:
+            self.assertEqual(targets[source], chr(point))
+        self.assertNotIn("!!", targets)
+        self.assertNotIn("//", targets)
+        self.assertNotIn("***", targets)
+        for source in ["?", "‼", "!", "^", ",", "—", "…", "/", "{", "}"]:
+            enc = E.load("aelwythi-semaron")
+            self.assertEqual(E.encode(enc, source), targets[source])
+
+    def test_shared_verse_controls_and_prose_whitespace(self):
+        enc = E.load("aelwythi-semaron")
+        self.assertEqual(E.encode(enc, "a\nb", verse=True), "\U000F0230\U000E010C\U000F0231")
+        self.assertEqual(E.encode(enc, "a\n\nb", verse=True), "\U000F0230\U000E010D\U000F0231")
+        self.assertEqual(E.encode(enc, "--- {.canto}"), "\U000E010E")
+        self.assertEqual(E.encode(enc, "a\nb"), "\U000F0230 \U000F0231")
+        self.assertEqual(E.decode(enc, "\U000E010D"), "\n\n")
+        self.assertEqual(E.encode(enc, "a\n--- {.canto}\nb", verse=True),
+                         "\U000F0230\U000E010E\U000F0231")
+        self.assertEqual(E.encode(enc, "a\n \nb", verse=True),
+                         "\U000F0230\U000E010D\U000F0231")
 
     def position(self, run, enc, text):
         with self.assertRaises(E.EncodingError) as caught:
@@ -555,8 +661,8 @@ class Literal(Case):
         self.assertEqual(self.position(E.decode, enc, "a"), (1, 1))
 
     def test_the_marker_marks_are_the_marks_of_the_markers(self):
-        self.assertEqual(self.open, "".join(chr(0xE0100 + ord(c) - 0x20) for c in "{27e6}"))
-        self.assertEqual(self.close, "".join(chr(0xE0100 + ord(c) - 0x20) for c in "{27e7}"))
+        self.assertEqual(self.open, "\U000E0112")
+        self.assertEqual(self.close, "\U000E0113")
         for enc in (self.enc, self.plain):
             self.assertEqual(E.encode(enc, "\u27e6\u27e7"), self.open + self.close)
 

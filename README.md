@@ -122,9 +122,21 @@ python3 encode.py --list
 
 **Encoding and decoding are exact inverses.** Decoding encoded roman gives the roman back unchanged. Encoding decoded text gives the text back unchanged.
 
-**Every encoding shares one roman punctuation.** The [standard roman encoding](encodings/standard.md), `encodings/standard.json`, holds the marks every language's roman uses: `.` `?` `!` `!!` and `,` for the sentence and the pause, `«` `»` and `‹` `›` for quotation, `—` and `…`, `/`, `//` and `***` for verse line, stanza and canto ends, and `{` `}` around a name. Whitespace is not a mark: outside `⟦` and `⟧`, any run of spaces, tabs and line breaks is one word separator, and each encoding states in `separator` what its script writes for it (one space, or `""` for a script with no spaces). Decoding writes a single space, so the roman's whitespace is normalized, not preserved. Each encoding extends it with `"extends": "standard"` and adds its script's letters and numerals. Roman is typed in lowercase, and a caseless script accepts only lowercase: its encoding refuses a capital letter. Semaron Kuriale and Helónika are the two scripts with case, and their encodings write a capital as its majuscule with no mark for case, so a pair such as `TH` draws the majuscules of its two letters. A codage, which names each sign by a code, keeps its codes in capitals. A mark the script draws writes its glyph: Qalezu's `/` and `//` are its verse dot, Semaron draws all five sentence marks as its one point, and Pirzath, Thuravark, Helónika, Qalezu and Vedyakshara draw `.` `?` `!` and `!!` as their one sentence end. Marks that share a glyph are told apart by invisible marks. A mark the script does not draw writes invisible marks, the same sequence in every encoding, so decoding restores it.
+**Every encoding shares one punctuation standard.** The [shared specification](encodings/standard.md)
+and `encodings/standard.json` assign sentence, quotation, indentation, verse,
+name and literal-span marks. Declarative, interrogative, imperative and
+exclamative sentences end in `.`, `?`, `‼` and `!`. Script encoders supply their
+own visible punctuation forms and retain the shared meanings. Word-separating
+whitespace is normalized; each script declares its printed word separator.
+`--verse` interprets line endings and blank lines as verse line and stanza
+boundaries. `--- {.canto}` marks a canto boundary.
 
-**Every encoding writes exact characters between `⟦` and `⟧`.** The literal immutable markers force one character the encoder would not choose, such as a homophone. Without a `codage`, the codes are character names in capitals with spaces written `_`, separated by whitespace: `⟦LATIN_SMALL_LETTER_A_WITH_ACUTE LATIN_SMALL_LETTER_I LATIN_SMALL_LETTER_M⟧` writes `áim`. Whitespace inside the markers is ignored: any amount of space, newline or tab between codes only separates them and is not saved, and decoding writes single spaces. An encoding that states `"codage": "zethu-mdc"` reads the span in that codage's own codes and notation, such as Zethu's joiners, and nothing else: a standard mark such as `,` inside is an error at its position, and a code outside the markers is ordinary roman. A codage is a file of kind `codage` in `encodings/`, reached only through the encoding that states it (`zethu-mdc` through `zethu`, `chalish-common` through `chalish-pilam`, `teng-chou-codes` through `teng-chou`). A font with no encoding accepts nothing outside `⟦…⟧`: `encode.py --font <font>` writes character names between the markers and refuses everything else. Teng Chou's codes are a character's morpheme in capitals (`WONG`), `TALLY1` to `TALLY5`, and a Jurthati syllable sign's syllable in lowercase (`ka`). Zethu and Teng Chou set their characters directly beside each other, so their separator writes nothing and their output holds no U+0020; Zethu's decoding gives the `⟦…⟧` codage alone, Teng Chou's puts a space after each character's word, and Ch'alish keeps its space as one empty cell. The markers are written as the same invisible marks in every encoding, and decoding gives the span back with its codes. A name that names no character, an unmatched marker and a marker inside a span are refused with the line and column.
+**Literal spans use shared boundaries.** `⟦` and `⟧` encode as U+E0112 and
+U+E0113. The active encoding reads the enclosed codes using its declared codage,
+or Unicode character names when it has no codage. Whitespace separates codes;
+decoding uses one space between them. An unmatched or nested boundary is
+refused. Character inventories and codage notation belong to the individual
+encoding definitions.
 
 **A character outside the encoding is refused.** `encode.py` stops with `file:line:column: error:` and the character, and exits non-zero, rather than passing it through. Decoding refuses a code point that no row writes in the same way.
 
@@ -133,6 +145,12 @@ python3 encode.py --list
 The encoding itself needs no vowels. Roman written with consonants only encodes to the same visible text and decodes back to consonants only, but it is then a different spelling from the one a word list holds. `Khelathi` and `Khlth` look alike in Qalezu, and each decodes to itself. Text typed straight into a script has no invisible characters, so Qalezu typed on a keyboard decodes to roman with no vowels: that is what the text holds.
 
 `--encoding` takes an encoding's name, or the path of an encoding file; `--font SLUG` takes a font's slug instead, and a font with no encoding accepts only text between `⟦` and `⟧`. `--face SLUG` applies the rows of one face, `--codepoints` prints `U+XXXX` values, and the text may come from standard input or, with `--file`, from a file. From Python, `import encode` gives `encode.encode(name, text)` and `encode.decode(name, text)`.
+
+Aelwythi uses its own `aelwythi-semaron` encoding. Its consonant groups accept
+only lowercase or initial-uppercase forms, such as `ch` and `Ch`; `CH` and
+`cH` are refused. This encoding explicitly selects `roundTrip: "canonical"`:
+decoding returns a conventional spelling, without restoring omitted punctuation
+or hyphens. Other encodings retain exact round trips by default.
 
 Each encoding has a page that lists its fonts, how it writes each standard mark, its rows and its conditions:
 

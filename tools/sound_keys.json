@@ -1732,7 +1732,13 @@
       "sound": "fourteen",
       "spelling": "^",
       "kind": "digit",
-      "key": "shift+6"
+      "key": "shift+6",
+      "contexts": {
+        "pirzath": [
+          "0",
+          ""
+        ]
+      }
     },
     {
       "sound": "fifteen",

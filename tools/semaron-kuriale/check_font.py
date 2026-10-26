@@ -4,7 +4,7 @@
 
     .venv/bin/python tools/semaron-kuriale/check_font.py [fonts/SemaronKuriale-Regular.ttf]
 
-The font carries 24 letters, each with a majuscule and a minuscule, five long
+The font carries letters and dedicated consonant groups in both cases, five long
 vowels with their majuscules, the numerals, the point and the catch. The checks:
 
 - every letter, long vowel, numeral and the point has an outline, and the space
@@ -40,6 +40,8 @@ LONGS = [f"{v}.long" for v in "aeiou"] + [f"{v.upper()}.long" for v in "aeiou"]
 NUMERALS = [f"num.{i}" for i in range(10)]
 DRAWN = LETTERS + LONGS + NUMERALS + ["point", "grave", ".notdef"]
 BASES = LETTERS + LONGS
+# These assigned signs remain blocked until their glyph designs are supplied.
+AELWYTHI_REQUIRED = [0xF0217, 0xF0247, *range(0xF0280, 0xF0292)]
 EMPTY = {"ignorable", "ignorable.sub", "space"}
 IGNORABLES = [*range(0x200B, 0x2010), *range(0x202A, 0x202F), *range(0x2066, 0x206A), 0xFEFF]
 
@@ -58,6 +60,10 @@ def check(path: Path) -> list[str]:
     for cp, name in sorted(cmap.items()):
         if name not in order:
             problems.append(f"U+{cp:04X} maps to {name}, which is not in the font")
+    for point in AELWYTHI_REQUIRED:
+        name = cmap.get(point)
+        if name is None or name not in order or name in {".notdef", "notdef.box"} or glyf[name].numberOfContours == 0:
+            problems.append(f"U+{point:04X} requires a supplied Aelwythi glyph design")
     for name in DRAWN:
         if name not in order or glyf[name].numberOfContours == 0:
             problems.append(f"{name} is missing or draws nothing")
@@ -73,6 +79,8 @@ def check(path: Path) -> list[str]:
     for cp in IGNORABLES:
         if cmap.get(cp) != "ignorable":
             problems.append(f"U+{cp:04X} must map to the empty glyph 'ignorable'")
+    if cmap.get(0xE0114) != "ignorable":
+        problems.append("the stress modifier U+E0114 must map to the empty glyph ignorable")
     for name in EMPTY - {"space"}:
         if name not in order or glyf[name].numberOfContours != 0 or hmtx[name][0] != 0:
             problems.append(f"{name} must be in the font, empty and without advance")

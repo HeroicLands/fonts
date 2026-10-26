@@ -29,6 +29,6 @@
     {"latin": "gora", "codepoints": ["U+1ED58", "U+E0147", "U+E01EF", "U+1ED71", "U+1ED5C", "U+1ED70"]},
     {"latin": "fëa", "codepoints": ["U+1ED51", "U+E0146", "U+E01EF", "U+1ED76", "U+1ED5D", "U+1ED70", "U+E015B", "U+E0145", "U+E0142", "U+E015D", "U+E0141", "U+E01EF"]},
     {"latin": "táli", "codepoints": ["U+1ED53", "U+1ED70", "U+1ED7B", "U+E015B", "U+E0145", "U+E0111", "U+E015D", "U+E01EF", "U+1ED5B", "U+1ED74"]},
-    {"latin": "luuro.", "codepoints": ["U+1ED5B", "U+1ED72", "U+1ED78", "U+1ED5C", "U+1ED71", "U+E010E"]}
+    {"latin": "luuro.", "codepoints": ["U+1ED5B", "U+1ED72", "U+1ED78", "U+1ED5C", "U+1ED71", "U+E0100"]}
   ]
 }

@@ -36,22 +36,21 @@ This encoding extends the [standard roman encoding](standard.md), which every la
 
 | Mark | Meaning | Written | Code points |
 | --- | --- | --- | --- |
-| `.` | completes a declarative sentence, terminal | invisible | U+E010E |
-| `?` | completes an interrogative sentence, terminal | invisible | U+E011F |
-| `!` | completes an imperative sentence, terminal | invisible | U+E0101 |
-| `!!` | completes an exclamative sentence, terminal | invisible | U+E0101 U+E0101 |
-| `,` | a pause that does not end the sentence | invisible | U+E010C |
-| `«` | opens a quotation of one or more terminated sentences | invisible | U+E015B U+E0141 U+E0142 U+E015D |
-| `»` | closes a quotation opened by `«` | invisible | U+E015B U+E0142 U+E0142 U+E015D |
-| `‹` | opens a quotation nested inside `«` `»`, alternating with them at any depth | invisible | U+E015B U+E0112 U+E0110 U+E0113 U+E0119 U+E015D |
-| `›` | closes a quotation opened by `‹` | invisible | U+E015B U+E0112 U+E0110 U+E0113 U+E0141 U+E015D |
-| `—` | interrupts a sentence, non-terminal, immediately followed by a terminal | invisible | U+E015B U+E0112 U+E0110 U+E0111 U+E0114 U+E015D |
-| `…` | abandons a sentence, non-terminal and immediately followed by a terminal; at a sentence's start, resumes one | invisible | U+E015B U+E0112 U+E0110 U+E0112 U+E0116 U+E015D |
-| `/` | verse line end | invisible | U+E010F |
-| `//` | verse stanza end | invisible | U+E010F U+E010F |
-| `***` | verse canto end | invisible | U+E010A U+E010A U+E010A |
-| `{` | opens a name | invisible | U+E015B U+E0117 U+E0142 U+E015D |
-| `}` | closes a name opened by `{` | invisible | U+E015D |
+| `.` | completes a declarative sentence, terminal | invisible | U+E0100 |
+| `?` | completes an interrogative sentence, terminal | invisible | U+E0101 |
+| `‼` | completes an imperative sentence, terminal | invisible | U+E0102 |
+| `!` | completes an exclamative sentence, terminal | invisible | U+E0103 |
+| `^` | at the beginning of a line, indents one level | invisible | U+E0104 |
+| `,` | a pause that does not end the sentence | invisible | U+E0105 |
+| `«` | opens an outer quotation | invisible | U+E0106 |
+| `»` | closes an outer quotation | invisible | U+E0107 |
+| `‹` | opens a nested quotation | invisible | U+E0108 |
+| `›` | closes a nested quotation | invisible | U+E0109 |
+| `—` | interrupts a sentence, non-terminal | invisible | U+E010A |
+| `…` | abandons or resumes a sentence, non-terminal | invisible | U+E010B |
+| `/` | verse line separator | invisible | U+E010C |
+| `{` | opens a name | invisible | U+E0110 |
+| `}` | closes a name | invisible | U+E0111 |
 
 ## Whitespace
 
@@ -60,6 +59,8 @@ In roman, outside `⟦` and `⟧`, any run of spaces, tabs and line breaks is on
 This script spaces its words, so its `separator` is one space, U+0020: a separator writes one space, and decoding writes one space.
 
 The separator is normalized on input, not preserved: `a  b` and `a\n\tb` encode as `a b` does, and decoding writes a single space.
+
+With `--verse` or `encode(..., verse=True)`, a line ending writes the shared verse line control and a blank line writes the stanza control. `--- {.canto}` writes the canto control. See [standard.md](standard.md) for the structural assignments.
 
 A character that no row matches is refused: `encode.py` reports it with its line and column, and writes nothing.
 
@@ -125,9 +126,9 @@ The rows are in the order the file states them. A row here for a standard mark r
 | `thth` | `𞵡𞵼` | U+1ED61 U+1ED7C | always |
 | `khkh` | `𞵣𞵼` | U+1ED63 U+1ED7C | always |
 | `ghgh` | `𞵤𞵼` | U+1ED64 U+1ED7C | always |
-| `-` | `󠄍` | U+E010D | at the start of a word |
-| `-` | `󠄍` | U+E010D | at the end of a word |
-| `-` | ` 󠄍󠇯` | U+0020 U+E010D U+E01EF | always |
+| `-` | `󠅛󠄒󠅄󠅝` | U+E015B U+E0112 U+E0144 U+E015D | at the start of a word |
+| `-` | `󠅛󠄒󠅄󠅝` | U+E015B U+E0112 U+E0144 U+E015D | at the end of a word |
+| `-` | ` 󠅛󠄒󠅄󠅝󠇯` | U+0020 U+E015B U+E0112 U+E0144 U+E015D U+E01EF | always |
 | `a` | `𞵝𞵰` | U+1ED5D U+1ED70 | at the start of a word |
 | `a` | `𞵰` | U+1ED70 | always |
 | `á` | `𞵝𞵰󠅛󠅅󠄑󠅝󠇯` | U+1ED5D U+1ED70 U+E015B U+E0145 U+E0111 U+E015D U+E01EF | at the start of a word |

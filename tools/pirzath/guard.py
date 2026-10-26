@@ -92,7 +92,7 @@ FIXTURES = [
     # Every terminal draws the sentence end; the standard marks the script does not draw
     # shape to nothing.
     ("{dalk} bant", ["d", "a", "l", "k", "space.dot", "b", "a", "n", "t"]),
-    ("dalk? bant!! ramk— tanv… gaz/ zef//", ["d", "a", "l", "k", "period", "space.dot", "b", "a", "n", "t",
+    ("dalk? bant! ramk— tanv… gaz/ zef/", ["d", "a", "l", "k", "period", "space.dot", "b", "a", "n", "t",
                                              "period", "space.dot", "r", "a", "m", "k", "space.dot", "t", "a", "n", "v",
                                              "space.dot", "g", "a", "z", "space.dot", "z", "e", "f"]),
     ("¡ves durám.", ["notdef.box", "v", "e", "s", "space.dot", "d", "u", "r", "a", "lengthmark", "m", "period"]),

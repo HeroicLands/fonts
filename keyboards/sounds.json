@@ -142,7 +142,7 @@
     {"sound":"eleven","spelling":"#","scripts":{"semaron":{"unmapped":"no row"},"pirzath":{"codepoints":"U+F004B"},"thuravark":{"unmapped":"no row"},"qalezu":{"unmapped":"no row"},"veldikko":{"unmapped":"no row"},"vedyakshara":{"unmapped":"no row"},"helonika":{"unmapped":"no row"}}},
     {"sound":"twelve","spelling":"$","scripts":{"semaron":{"unmapped":"no row"},"pirzath":{"codepoints":"U+F004C"},"thuravark":{"unmapped":"no row"},"qalezu":{"unmapped":"no row"},"veldikko":{"unmapped":"no row"},"vedyakshara":{"unmapped":"no row"},"helonika":{"unmapped":"no row"}}},
     {"sound":"thirteen","spelling":"%","scripts":{"semaron":{"unmapped":"no row"},"pirzath":{"codepoints":"U+F004D"},"thuravark":{"unmapped":"no row"},"qalezu":{"unmapped":"no row"},"veldikko":{"unmapped":"no row"},"vedyakshara":{"unmapped":"no row"},"helonika":{"unmapped":"no row"}}},
-    {"sound":"fourteen","spelling":"^","scripts":{"semaron":{"unmapped":"no row"},"pirzath":{"codepoints":"U+F004E"},"thuravark":{"unmapped":"no row"},"qalezu":{"unmapped":"no row"},"veldikko":{"unmapped":"no row"},"vedyakshara":{"unmapped":"no row"},"helonika":{"unmapped":"no row"}}},
+    {"sound":"fourteen","spelling":"^","scripts":{"semaron":{"unmapped":"writes nothing"},"pirzath":{"codepoints":"U+F004E"},"thuravark":{"unmapped":"writes nothing"},"qalezu":{"unmapped":"writes nothing"},"veldikko":{"unmapped":"writes nothing"},"vedyakshara":{"unmapped":"writes nothing"},"helonika":{"unmapped":"writes nothing"}}},
     {"sound":"fifteen","spelling":"&","scripts":{"semaron":{"unmapped":"no row"},"pirzath":{"codepoints":"U+F004F"},"thuravark":{"unmapped":"no row"},"qalezu":{"unmapped":"no row"},"veldikko":{"unmapped":"no row"},"vedyakshara":{"unmapped":"no row"},"helonika":{"unmapped":"no row"}}}
   ]
 }

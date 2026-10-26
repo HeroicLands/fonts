@@ -8107,6 +8107,12 @@
                     "name": "SEMARON CAPITAL LETTER NYELIS",
                     "glyph": "NY",
                     "kind": "digraph"
+                },
+                {
+                    "codepoint": "U+E0114",
+                    "name": "VARIATION SELECTOR-37",
+                    "glyph": "ignorable",
+                    "kind": "control"
                 }
             ]
         },

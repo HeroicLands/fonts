@@ -78,10 +78,10 @@
         ["9", "󰑉"],
         [",", "󰑐"],
         [".", "󰑑"],
-        ["?", "󰑑\uDB40\uDD1F\uDB40\uDDEF"],
-        ["!", "󰑑\uDB40\uDD01\uDB40\uDDEF"],
-        ["!!", "󰑑\uDB40\uDD01\uDB40\uDD01\uDB40\uDDEF"],
-        ["-", "\uDB40\uDD0D"],
+        ["?", "\udb81\udc51\udb40\udd01\udb40\uddef"],
+        ["\u203c", "\udb81\udc51\udb40\udd02\udb40\uddef"],
+        ["!", "\udb81\udc51\udb40\udd03\udb40\uddef"],
+        ["-", "\udb40\udd5b\udb40\udd12\udb40\udd44\udb40\udd5d"],
         ["'", "󰐸"],
         ["’", "󰐸\uDB40\uDD5B\uDB40\uDD12\uDB40\uDD10\uDB40\uDD11\uDB40\uDD19\uDB40\uDD5D\uDB40\uDDEF"]
     ]

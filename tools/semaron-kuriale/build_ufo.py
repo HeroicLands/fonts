@@ -38,7 +38,7 @@ import vertical  # noqa: E402
 STEM = "SemaronKuriale"
 SCALE = Fraction(str(vertical.SCALES[STEM]))
 SPACE = 24
-IGNORABLES = [*range(0x200B, 0x2010), *range(0x202A, 0x202F), *range(0x2066, 0x206A), 0xFEFF]
+IGNORABLES = [*range(0x200B, 0x2010), *range(0x202A, 0x202F), *range(0x2066, 0x206A), 0xFEFF, 0xE0114]
 
 # The glyphs the kit draws, in glyph order, then the font's own.
 LONGS = [f"{v}.long" for v in K.VOWELS]

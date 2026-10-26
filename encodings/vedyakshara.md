@@ -37,21 +37,20 @@ This encoding extends the [standard roman encoding](standard.md), which every la
 | Mark | Meaning | Written | Code points |
 | --- | --- | --- | --- |
 | `.` | completes a declarative sentence, terminal | drawn, `󰑑` | U+F0451 |
-| `?` | completes an interrogative sentence, terminal | drawn, `󰑑` | U+F0451 U+E011F U+E01EF |
-| `!` | completes an imperative sentence, terminal | drawn, `󰑑` | U+F0451 U+E0101 U+E01EF |
-| `!!` | completes an exclamative sentence, terminal | drawn, `󰑑` | U+F0451 U+E0101 U+E0101 U+E01EF |
+| `?` | completes an interrogative sentence, terminal | drawn, `󰑑` | U+F0451 U+E0101 U+E01EF |
+| `‼` | completes an imperative sentence, terminal | drawn, `󰑑` | U+F0451 U+E0102 U+E01EF |
+| `!` | completes an exclamative sentence, terminal | drawn, `󰑑` | U+F0451 U+E0103 U+E01EF |
+| `^` | at the beginning of a line, indents one level | invisible | U+E0104 |
 | `,` | a pause that does not end the sentence | drawn, `󰑐` | U+F0450 |
-| `«` | opens a quotation of one or more terminated sentences | invisible | U+E015B U+E0141 U+E0142 U+E015D |
-| `»` | closes a quotation opened by `«` | invisible | U+E015B U+E0142 U+E0142 U+E015D |
-| `‹` | opens a quotation nested inside `«` `»`, alternating with them at any depth | invisible | U+E015B U+E0112 U+E0110 U+E0113 U+E0119 U+E015D |
-| `›` | closes a quotation opened by `‹` | invisible | U+E015B U+E0112 U+E0110 U+E0113 U+E0141 U+E015D |
-| `—` | interrupts a sentence, non-terminal, immediately followed by a terminal | invisible | U+E015B U+E0112 U+E0110 U+E0111 U+E0114 U+E015D |
-| `…` | abandons a sentence, non-terminal and immediately followed by a terminal; at a sentence's start, resumes one | invisible | U+E015B U+E0112 U+E0110 U+E0112 U+E0116 U+E015D |
-| `/` | verse line end | invisible | U+E010F |
-| `//` | verse stanza end | invisible | U+E010F U+E010F |
-| `***` | verse canto end | invisible | U+E010A U+E010A U+E010A |
-| `{` | opens a name | invisible | U+E015B U+E0117 U+E0142 U+E015D |
-| `}` | closes a name opened by `{` | invisible | U+E015D |
+| `«` | opens an outer quotation | invisible | U+E0106 |
+| `»` | closes an outer quotation | invisible | U+E0107 |
+| `‹` | opens a nested quotation | invisible | U+E0108 |
+| `›` | closes a nested quotation | invisible | U+E0109 |
+| `—` | interrupts a sentence, non-terminal | invisible | U+E010A |
+| `…` | abandons or resumes a sentence, non-terminal | invisible | U+E010B |
+| `/` | verse line separator | invisible | U+E010C |
+| `{` | opens a name | invisible | U+E0110 |
+| `}` | closes a name | invisible | U+E0111 |
 
 ## Whitespace
 
@@ -60,6 +59,8 @@ In roman, outside `⟦` and `⟧`, any run of spaces, tabs and line breaks is on
 This script spaces its words, so its `separator` is one space, U+0020: a separator writes one space, and decoding writes one space.
 
 The separator is normalized on input, not preserved: `a  b` and `a\n\tb` encode as `a b` does, and decoding writes a single space.
+
+With `--verse` or `encode(..., verse=True)`, a line ending writes the shared verse line control and a blank line writes the stanza control. `--- {.canto}` writes the canto control. See [standard.md](standard.md) for the structural assignments.
 
 A character that no row matches is refused: `encode.py` reports it with its line and column, and writes nothing.
 
@@ -155,10 +156,10 @@ The rows are in the order the file states them. A row here for a standard mark r
 | `9` | `󰑉` | U+F0449 | always |
 | `,` | `󰑐` | U+F0450 | always |
 | `.` | `󰑑` | U+F0451 | always |
-| `?` | `󰑑󠄟󠇯` | U+F0451 U+E011F U+E01EF | always |
-| `!` | `󰑑󠄁󠇯` | U+F0451 U+E0101 U+E01EF | always |
-| `!!` | `󰑑󠄁󠄁󠇯` | U+F0451 U+E0101 U+E0101 U+E01EF | always |
-| `-` | `󠄍` | U+E010D | always |
+| `?` | `󰑑󠄁󠇯` | U+F0451 U+E0101 U+E01EF | always |
+| `‼` | `󰑑󠄂󠇯` | U+F0451 U+E0102 U+E01EF | always |
+| `!` | `󰑑󠄃󠇯` | U+F0451 U+E0103 U+E01EF | always |
+| `-` | `󠅛󠄒󠅄󠅝` | U+E015B U+E0112 U+E0144 U+E015D | always |
 | `'` | `󰐸` | U+F0438 | always |
 | `’` | `󰐸󠅛󠄒󠄐󠄑󠄙󠅝󠇯` | U+F0438 U+E015B U+E0112 U+E0110 U+E0111 U+E0119 U+E015D U+E01EF | always |
 

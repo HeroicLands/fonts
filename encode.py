@@ -31,6 +31,23 @@ An encoding is one JSON file, ``encodings/<name>.json``:
 optional.
 ``fonts`` lists the slugs of the faces the encoding serves.
 
+``groupCase: "initial"`` permits multi-letter alphabetic rows only in lowercase
+or with their first letter capitalized. Other case patterns are refused before
+single-letter fallback, including inside longer words. Literal spans are unaffected.
+
+``--verse`` (or ``encode(..., verse=True)``) reads verse line endings and blank
+lines as the standard line and stanza controls. Prose keeps normal whitespace
+normalization. A line containing ``--- {.canto}`` writes the canto control.
+
+``roundTrip`` defaults to ``"exact"``. An encoding may explicitly choose
+``"canonical"`` when its orthography permits several Roman spellings for one
+output or omits punctuation. In that mode empty outputs and duplicate outputs
+are allowed. Decoding ignores empty outputs and chooses the first authored
+source for an identical output; the word separator takes precedence over rows
+that write the same space. Original spelling and omitted punctuation are not
+recoverable, and re-encoding arbitrary decoded output is not guaranteed to
+reproduce the original code points. Other encodings retain exact round trips.
+
 ``accepts`` declares the characters the encoding accepts as roman: a list of single
 characters and of ranges of three characters such as ``"a-z"``. A caseless script lists
 ``"a-z"`` and its own additions (diacritics, the catch, digits); Semaron and Helonika, the
@@ -77,15 +94,15 @@ character, or draws two alike, the row says so with a mark of non-writing charac
 
 - A mark spells a ``from`` in variation selectors VS17 to VS111, U+E0100 to
   U+E015E, which are invisible and default-ignorable: printable ASCII character ``c`` is
-  U+E0100 + (``c`` - U+0020), so ``-`` is U+E010D and ``a`` U+E0141. Each character of
+  U+E0100 + (``c`` - U+0020), so ``a`` is U+E0141. Reserved low selectors are escaped in generic metadata. Each character of
   ``from`` is spelled as itself when it is printable ASCII other than ``{``, and
   otherwise as ``{``, its code point in lowercase hex, and ``}``: ``á`` is spelled
   ``{e1}``. ``mark`` writes one.
 - A row that draws nothing (a vowel in an abjad, an inherent vowel, a quadrat or word
-  separator) writes the mark of its ``from``: ``-`` writes U+E010D.
+  separator) writes the escaped mark of its ``from``.
 - A row writes its drawing, the mark of its ``from`` and the end mark, VS256 U+E01EF,
   when an earlier row with another ``from`` draws the same, when its drawing is a run of
-  two or more other rows' drawings, or when it draws what the separator writes. After ``.``, ``?`` writes the glyph of ``.``, U+E011F and U+E01EF;
+  two or more other rows' drawings, or when it draws what the separator writes. After ``.``, ``?`` writes the glyph of ``.``, U+E0101 and U+E01EF;
   ``cch``, drawn as ``ch`` twice, writes the two glyphs, its mark and the end mark.
   The first row in authored order to draw a drawing keeps it bare, and so does any
   later row with the same ``from``. ``is_run`` tells a run.
@@ -158,17 +175,17 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 ENCODINGS = os.path.join(HERE, "encodings")
 
 NAME = re.compile(r"^[a-z0-9-]+$")
-CONDITIONS = {"before": ("vowel", "consonant"), "at": ("start", "end")}
+CONDITIONS = {"before": ("vowel", "consonant"), "at": ("start", "end", "line-start")}
 GENERIC_FAMILIES = ("mono", "serif", "sans")
 TOP_KEYS = ("name", "kind", "fonts", "extends", "codage", "accepts", "separator", "vowels", "rows",
-            "faces")
+            "faces", "roundTrip", "groupCase")
 # What a file is: an encoding of a script, or a codage, the notation a script's literal
 # spans are written in.
 KINDS = ("encoding", "codage")
 # The keys a codage takes: its rows draw the script's signs, and it has no roman of its own.
 CODAGE_KEYS = ("name", "kind", "fonts", "rows")
 # The keys of a base file, which an encoding extends.
-BASE_KEYS = ("name", "rows")
+BASE_KEYS = ("name", "rows", "controls")
 # Keys an encoding does not take, with why.
 REFUSED_KEYS = {
     "decode": "decoding reads every output back as its own row's `from`",
@@ -350,7 +367,8 @@ def _readings(rows):
     ``to``, longest ``to`` first."""
     table = {}
     for row in rows:
-        table.setdefault(row.target, row.source)
+        if row.target:
+            table.setdefault(row.target, row.source)
     by_first = {}
     for target, source in table.items():
         by_first.setdefault(target[0], []).append((target, source))
@@ -379,6 +397,9 @@ class Encoding:
     def __init__(self, data, path, base=None, codage=None):
         self.path = path
         self.name = data["name"]
+        self.round_trip = data.get("roundTrip", "exact")
+        self.group_case = data.get("groupCase")
+        self.controls = dict(base.controls) if base is not None else {}
         self.kind = data.get("kind", "encoding")
         self.codage = codage
         self.fonts = list(data["fonts"])
@@ -397,7 +418,9 @@ class Encoding:
             inherited = [
                 Row(r.source, r.target, r.before, r.at, where=r.where)
                 for r in base.rows
-                if r.source not in stated
+                if r.source not in stated or (r.conditioned and not any(
+                    (own.source, own.before, own.at) == (r.source, r.before, r.at)
+                    for own in self.own))
             ]
         self.rows = inherited + self.own
         for n, row in enumerate(self.rows):
@@ -413,7 +436,10 @@ class Encoding:
         else:
             self.accepted = self.accepts | self.standard_chars
         reads = [self.separator_row] if self.separator else []
-        self.shared = Face(self.rows, separator=reads)
+        control_rows = [Row("\n\n", self.controls["verseStanza"])] if "verseStanza" in self.controls else []
+        if "verseCanto" in self.controls:
+            control_rows.append(Row("--- {.canto}", self.controls["verseCanto"]))
+        self.shared = Face(self.rows, separator=reads + control_rows)
         self.faces = {}
         for slug, face in data.get("faces", {}).items():
             at = ("faces", slug, "rows")
@@ -473,6 +499,7 @@ class Base:
     def __init__(self, data, path):
         self.path = path
         self.name = data["name"]
+        self.controls = dict(data.get("controls", {}))
         self.rows = [_read_row(row, n, (path, ("rows", n))) for n, row in enumerate(data["rows"])]
 
     def __repr__(self):
@@ -507,6 +534,8 @@ def _check_outputs(enc):
     """No two rows with different ``from`` write one output, among the rows the encoding
     applies or among a face's rows and those. Each fault is at the later row, in the
     file that states it."""
+    if enc.round_trip == "canonical":
+        return []
     tiers = [enc.rows] + [enc.rows + face.rows for face in enc.faces.values()]
     faults = []
     reported = set()
@@ -547,7 +576,7 @@ def _fault_at(where, message, key=False):
     return EncodingError(message, path, *_line_column(text, offset))
 
 
-def _rows_faults(rows, at, fault, vowels):
+def _rows_faults(rows, at, fault, vowels, allow_empty=False):
     """Every structural fault in a list of rows."""
     if not isinstance(rows, list):
         fault(at, "`rows` is a list of rows")
@@ -563,7 +592,7 @@ def _rows_faults(rows, at, fault, vowels):
                 fault(here, "has an empty `from`; a row matches one or more characters")
             elif any(c in WHITESPACE for c in row[0]):
                 fault(here, WHITESPACE_FROM)
-            elif row[1] == "":
+            elif row[1] == "" and not allow_empty:
                 fault(here + (1,), NOTHING)
             continue
         if not isinstance(row, dict):
@@ -586,7 +615,7 @@ def _rows_faults(rows, at, fault, vowels):
         if not isinstance(row.get("to"), str):
             fault(here + ("to",) if "to" in row else here,
                   "needs `to`, the one or more characters the row writes")
-        elif row["to"] == "":
+        elif row["to"] == "" and not allow_empty:
             fault(here + ("to",), NOTHING)
         for condition, allowed in CONDITIONS.items():
             if condition not in row:
@@ -646,6 +675,14 @@ def _check_base(data, text, path):
         fault((), "needs `rows`")
     else:
         _rows_faults(data["rows"], ("rows",), fault, "")
+    controls = data.get("controls", {})
+    allowed = ("verseStanza", "verseCanto", "wordSeparator", "literalOpen", "literalClose")
+    if not isinstance(controls, dict):
+        fault(("controls",), "`controls` is a map of shared structural marks")
+    else:
+        for key, value in controls.items():
+            if key not in allowed or not isinstance(value, str) or not value:
+                fault(("controls", key), "a shared structural control has a known name and a nonempty string")
     return faults
 
 
@@ -666,6 +703,10 @@ def _check(data, text, path):
                 key=True,
             )
     _check_name(data, path, fault)
+    if "groupCase" in data and data["groupCase"] != "initial":
+        fault(("groupCase",), "`groupCase` is `initial` when stated")
+    if data.get("roundTrip", "exact") not in ("exact", "canonical"):
+        fault(("roundTrip",), "`roundTrip` is `exact` or `canonical`")
     kind = data.get("kind", "encoding")
     if kind not in KINDS:
         fault(("kind",), "`kind` is `encoding` or `codage`")
@@ -713,7 +754,8 @@ def _check(data, text, path):
     if "rows" not in data:
         fault((), "needs `rows`")
     else:
-        _rows_faults(data["rows"], ("rows",), fault, vowels)
+        _rows_faults(data["rows"], ("rows",), fault, vowels,
+                     allow_empty=data.get("roundTrip") == "canonical")
     faces = data.get("faces", {})
     if not isinstance(faces, dict):
         fault(("faces",), "`faces` maps a face's slug to its own rows")
@@ -728,7 +770,8 @@ def _check(data, text, path):
                 if key not in FACE_KEYS:
                     fault(("faces", slug, key), f"`{key}` is not a face key; a face takes `rows`",
                           key=True)
-            _rows_faults(face.get("rows", []), ("faces", slug, "rows"), fault, vowels)
+            _rows_faults(face.get("rows", []), ("faces", slug, "rows"), fault, vowels,
+                         allow_empty=data.get("roundTrip") == "canonical")
     return faults
 
 
@@ -905,6 +948,10 @@ def _holds(row, text, start, end, vowels):
                 return False
         elif vowel or not unicodedata.category(char).startswith("L"):
             return False
+    if row.at == "line-start":
+        prefix = text[max(text.rfind("\n", 0, start), text.rfind("/", 0, start)) + 1:start]
+        if prefix.strip("^"):
+            return False
     if row.at == "start" and start > 0 and not _boundary(text[start - 1]):
         return False
     if row.at == "end" and end < len(text) and not _boundary(text[end]):
@@ -945,6 +992,22 @@ def _span(text, at, opener, closer, source, what):
     """The offset of the ``closer`` that ends the span ``opener`` begins at ``at``. An
     unmatched opener and a nested one are refused."""
     start = at + len(opener)
+    if opener == "\U000E0112":
+        cursor = start
+        while cursor < len(text):
+            # Generic spelling metadata spells hex inside its own brackets.
+            # Digits in that metadata are not literal-span boundaries.
+            if text[cursor] == "\U000E015B":
+                end = text.find("\U000E015D", cursor + 1)
+                if end >= 0:
+                    cursor = end + 1
+                    continue
+            if text.startswith(closer, cursor):
+                return cursor
+            if text.startswith(opener, cursor):
+                raise _error_at(f"{what} opens a literal span inside another", text, cursor, source)
+            cursor += 1
+        raise _error_at(f"{what} opens a literal span that nothing closes", text, at, source)
     close = text.find(closer, start)
     if close < 0:
         raise _error_at(f"{what} opens a literal span that nothing closes", text, at, source)
@@ -1067,7 +1130,7 @@ def _codage_pieces(codage, text, start, end, strict, source):
     return out
 
 
-def pieces(enc, text, face=None, strict=True, source=None):
+def pieces(enc, text, face=None, strict=True, source=None, verse=False):
     """The text as encoded, piece by piece: ``(from, to, row)`` for each matched row.
 
     A character no row matches is refused with an ``EncodingError`` at its line and
@@ -1091,13 +1154,59 @@ def pieces(enc, text, face=None, strict=True, source=None):
             continue
         if text[at] == CLOSE:
             raise _error_at(f"`{CLOSE}` closes no literal span", text, at, source)
+        if "verseCanto" in enc.controls and text.startswith("--- {.canto}", at):
+            line_start = text.rfind("\n", 0, at) + 1
+            if not text[line_start:at].strip():
+                token = "--- {.canto}"
+                out.append((token, enc.controls["verseCanto"], Row(token, enc.controls["verseCanto"])))
+                at += len(token)
+                if verse:
+                    if text.startswith("\r\n", at):
+                        at += 2
+                    elif at < len(text) and text[at] in "\r\n":
+                        at += 1
+                continue
+        if verse and text[at] in "\r\n" and "verseStanza" in enc.controls:
+            end = at
+            while end < len(text) and text[end] in " \t\r\n":
+                end += 1
+            run = text[at:end].replace("\r\n", "\n").replace("\r", "\n")
+            if text.startswith("--- {.canto}", end):
+                at = end
+                continue
+            row = (_row_at(enc, tiers, "/", 0) if run.count("\n") == 1 else
+                   Row("\n\n", enc.controls["verseStanza"]))
+            out.append((text[at:end], row.target, row))
+            at = end
+            continue
         if text[at] in WHITESPACE and enc.separator is not None:
             end = at + 1
             while end < len(text) and text[end] in WHITESPACE:
                 end += 1
-            out.append((text[at:end], enc.separator, enc.separator_row))
+            following = _row_at(enc, tiers, text, end) if end < len(text) else None
+            if ("\n" in text[at:end] or "\r" in text[at:end]) and following is not None and following.at == "line-start":
+                line = _row_at(enc, tiers, "/", 0)
+                out.append((text[at:end], line.target, line))
+            else:
+                out.append((text[at:end], enc.separator, enc.separator_row))
             at = end
             continue
+        if enc.group_case == "initial":
+            invalid = next((text[at:at + len(r.source)]
+                            for tier in tiers for r in tier.rows
+                            if len(r.source) > 1 and r.source.isalpha()
+                            and text[at:at + len(r.source)].lower() == r.source.lower()
+                            and text[at:at + len(r.source)] not in
+                            (r.source.lower(), r.source.lower().capitalize())), None)
+            if invalid is not None:
+                if strict:
+                    lower = invalid.lower()
+                    raise _error_at(
+                        f"`{invalid}` is an illegal group spelling; use `{lower}` or "
+                        f"`{lower.capitalize()}`", text, at, source)
+                out.append((invalid, invalid, None))
+                at += len(invalid)
+                continue
         row = _row_at(enc, tiers, text, at) if text[at] in enc.accepted else None
         if row is not None:
             out.append((row.source, row.target, row))
@@ -1118,10 +1227,10 @@ def pieces(enc, text, face=None, strict=True, source=None):
     return out
 
 
-def encode(enc, text, face=None, source=None):
+def encode(enc, text, face=None, source=None, verse=False):
     """Roman text written in the encoding's code points. A character no row matches is
     refused with an ``EncodingError`` at its line and column."""
-    return "".join(to for _, to, _ in pieces(enc, text, face, source=source))
+    return "".join(to for _, to, _ in pieces(enc, text, face, source=source, verse=verse))
 
 
 _SEPARATORS = re.compile("[" + WHITESPACE + "]+|" + OPEN + "[^" + CLOSE + "]*" + CLOSE)
@@ -1131,8 +1240,17 @@ def canonical(enc, text):
     """The roman a text reads back as: each run of whitespace outside the literal markers
     becomes one space, or nothing for a script whose separator writes nothing."""
     enc = _resolve(enc)
+    if enc.round_trip == "canonical":
+        return decode(enc, encode(enc, text))
     space = "" if enc.separator == "" else " "
-    return _SEPARATORS.sub(lambda m: space if m.group()[0] in WHITESPACE else m.group(), text)
+    def separator(match):
+        if match.group()[0] not in WHITESPACE:
+            return match.group()
+        following = _row_at(enc, enc.tiers(None), text, match.end()) if match.end() < len(text) else None
+        if ("\n" in match.group() or "\r" in match.group()) and following is not None and following.at == "line-start":
+            return "/"
+        return space
+    return _SEPARATORS.sub(separator, text)
 
 
 def _wordy(char):
@@ -1226,14 +1344,29 @@ def mark(source):
     spelled character ``c`` is written as variation selector U+E0100 + (``c`` - U+0020):
     ``a`` is U+E0141, and ``á``, spelled ``{e1}``, is U+E015B U+E0145 U+E0111 U+E015D.
     """
+    if source in _STANDARD_MARKS:
+        return _STANDARD_MARKS[source]
+    # Low selectors are reserved for punctuation and structural controls.
+    # Generic spelling metadata starts with a braced code-point spelling when
+    # its old ASCII form would be mistaken for one of those controls.
+    force_hex = bool(source and " " <= source[0] <= "4")
     out = []
     for char in source:
-        spelled = char if " " <= char <= "~" and char != "{" else "{%x}" % ord(char)
+        spelled = char if not force_hex and " " <= char <= "~" and char != "{" else "{%x}" % ord(char)
         out.extend(chr(MARK_BASE + ord(c) - 0x20) for c in spelled)
     return "".join(out)
 
 
-# The rows of the literal immutable markers: each writes the mark of itself.
+# Read explicit punctuation assignments from the shared standard.
+with open(os.path.join(ENCODINGS, "standard.json"), encoding="utf-8") as _standard_file:
+    _standard_data = json.load(_standard_file)
+_STANDARD_MARKS = {(r[0] if isinstance(r, list) else r["from"]):
+                   (r[1] if isinstance(r, list) else r["to"])
+                   for r in _standard_data["rows"]}
+_STANDARD_MARKS[OPEN] = _standard_data.get("controls", {}).get("literalOpen", "\U000E0112")
+_STANDARD_MARKS[CLOSE] = _standard_data.get("controls", {}).get("literalClose", "\U000E0113")
+
+# Literal markers use the shared structural assignments.
 _OPEN_ROW = Row(OPEN, mark(OPEN))
 _CLOSE_ROW = Row(CLOSE, mark(CLOSE))
 
@@ -1323,6 +1456,7 @@ def main(argv=None):
     parser.add_argument("--codepoints", action="store_true", help="print the result as U+XXXX values")
     parser.add_argument("--list", action="store_true", help="name the encodings and stop")
     parser.add_argument("--file", help="read the text from this file")
+    parser.add_argument("--verse", action="store_true", help="encode verse line and stanza boundaries")
     parser.add_argument("text", nargs="?", help="the text; standard input when absent or `-`")
     args = parser.parse_args(argv)
     try:
@@ -1348,7 +1482,8 @@ def main(argv=None):
         else:
             text = args.text
             source, end = TEXT, "\n"
-        result = (decode if args.decode else encode)(enc, text, args.face, source)
+        result = (decode(enc, text, args.face, source) if args.decode else
+                  encode(enc, text, args.face, source, verse=args.verse))
     except EncodingError as error:
         for fault in error.faults:
             sys.stderr.write(f"{fault}\n")
