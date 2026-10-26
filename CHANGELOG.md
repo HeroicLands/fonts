@@ -1,5 +1,34 @@
 # @heroiclands/fonts
 
+## 1.3.0
+
+### Minor Changes
+
+**Semaron Kuriale**
+
+- Gains letters for ch, sh, kh, gh, dh, zh, ts, ng, ny and q, in both cases, so text that spelled these with two letters now writes one.
+- The aspirate hook on f, th and the new aspirates is bolder and reads at text size.
+
+- **Shared punctuation.** Every encoding follows the same punctuation assignments, including `‼` for an imperative sentence and `!` for an exclamation. Invisible marks preserve sentence types, quotations and name boundaries when a script does not draw them.
+- **Verse and spacing.** Ordinary whitespace becomes one word separator. Verse mode writes distinct line and stanza controls, `--- {.canto}` marks a canto boundary, and `^` supplies indentation.
+- **Script punctuation.** Scripts retain their own visible sentence-end forms while sharing the punctuation meanings. Generic invisible spelling metadata remains distinct from the shared structural controls.
+- **Capitals and keyboards.** Semaron Kuriale and Helónika write capitals as majuscules; other scripts accept lowercase Roman text, while codages retain their capital codes. Their layouts type capitals on Shift, the Semaron comma key types the point, and the caseless layouts leave shifted letter keys empty.
+- **Literal characters.** All encodings accept exact characters between `⟦` and `⟧`, using shared non-printing boundaries and the active encoding's character names or codage. Whitespace separates codes, and a font without a Roman encoding accepts only literal spans.
+- **Input and typing.** Unknown characters are refused at their line and column. All layouts type the literal markers on Option+Shift+W and Option+Shift+L, and HL Vedyakshara types independent vowels on Shift and the vowel key.
+
+### Patch Changes
+
+- Aelwythi has its own Semaron encoding with dedicated consonant assignments and a non-printing stress modifier. Consonant groups accept only lowercase or initial-uppercase forms, and decoding returns a conventional spelling without restoring omitted punctuation.
+- **Chalish Pilam Ceremonial house emblems.** Every Ki'ich'chik house has its emblem, so a name can open with its house's picture, such as `n3*SHAKNAL:la1` for the third of the eagle house. The nineteen new emblems include the golden, silver and serpent seats, the censer, the plumed crown, the ceiba and the conch.
+- **Chalish Pilam Ceremonial.** The carved temple hand of the Ki'ich'chik writing joins the fonts, with its character chart, a specimen page and its encoding. It writes concept glyphs, numbers and syllable signs, and composes them into blocks typed through the `chalish-ceremonial` encoding, such as `n13*TQAN` for the number thirteen beside the day sign.
+- **Encodings.** The package ships an encoding for each script font in `encodings/`, with a page describing each one. `encode.py` turns roman text into a font's characters and reads them back exactly, needing only Python 3.9 or later.
+- **Khelathi Zethu codes.** Every Khelathi Zethu sign has a code naming its sense, such as `SAIL` or `REGNAL_YEAR`. Its encoding is typed with these codes instead of sign numbers.
+- **Keyboards.** In Veldikko, the sh key types two letters, and an accented vowel types the emphasis sign with its vowel.
+- **Helónika Book.** The space after a sentence-end dot closes up, so the dot sits close to the next word.
+- Invisible characters, such as variation selectors, no longer show as the word-divider dot in Pirzath Carved.
+- **Teng Chou codes.** Every Teng Chou character has a code: a character its morpheme in capitals, such as `WONG`, a stage of the tally `TALLY1` to `TALLY5`, and a Jurthati syllable sign its syllable in lowercase, such as `ka`. The `teng-chou` encoding writes them between `⟦` and `⟧`, so `⟦WONG TALLY3 ka⟧` types three characters.
+- Khelathi Zethu Glyphs draws every sign of its inventory, so no sign prints as a box. The new drawings include the seated man and woman, parts of the body, beasts, birds and river fish, plants, tools, vessels and adornment.
+
 ## 1.2.1
 
 ### Patch Changes
