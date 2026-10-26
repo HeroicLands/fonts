@@ -23,7 +23,7 @@ thousandths of the em; the font has 1000 units to the em.
 | Bearing    | 12                  | The white either side of a letter's ink: the hand is set close, like a medieval book hand.      |
 | Space      | 24                  | The word space, about two stems.                                                                |
 
-The vertical metrics are the shared standard of `tools/vertical.py`, Monaspace Neon's,
+The vertical metrics are the shared standard of `tools/vertical.py`,
 with the window metrics enclosing all ink, the catch where it stands on its base included.
 
 ## The method

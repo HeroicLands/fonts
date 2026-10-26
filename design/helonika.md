@@ -201,7 +201,7 @@ in a `flourish`.
 - stroke tests: strokes set together to show how they sit, not letters of the
   script;
 - the skeletons run on as lines at 48, 24 and 18 px;
-- the minuscule skeletons beside Semaron Kuriale and Latin (Monaspace Neon) at
+- the minuscule skeletons beside Semaron Kuriale and Latin (Liberation Mono) at
   one size, on one line, with the line and 0.5135 em ruled;
 - three skeletons drawn over their own centrelines.
 
@@ -340,7 +340,7 @@ alone: the diamond, the lone diagonal, the bracket and the open point.
   the body and, faintly, the ascender, the cap height and the descender, the six
   echoes tagged;
 - each capital beside its minuscule at 72 px, and the digits and points;
-- a Helonic line beside Semaron Kuriale and Latin (Monaspace Neon) at 48 and
+- a Helonic line beside Semaron Kuriale and Latin (Liberation Mono) at 48 and
   24 px, with the line and 0.5135 em ruled across all three;
 - Helonic words from thalorna, large, each with its roman spelling and gloss;
 - the same words run on as text at 48, 24 and 18 px.
@@ -441,4 +441,4 @@ own, Option+Shift+R.
 `tools/helonika/font_sheets.py` renders `specimens/helonika/text.png`: Helonic
 words from thalorna, written by the encoding and shaped by HarfBuzz from the
 built font, at display size and at 48, 24 and 20 px beside their roman spelling in
-Monaspace Neon, with the shared x-height ruled across both.
+Liberation Mono, with the shared x-height ruled across both.

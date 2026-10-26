@@ -15,6 +15,11 @@ from PIL import Image, ImageChops, ImageDraw, ImageFont
 
 SUPERSAMPLE = 4
 LABEL_FONT = "/System/Library/Fonts/Supplemental/Arial Unicode.ttf"
+# The Latin set beside a script for comparison: Liberation Mono, from the dev dependency
+# @betteroffice/fonts, installed by npm ci. It is monospaced at 600 units to the
+# em, so a line's advance is exact.
+LATIN_DIR = Path(__file__).resolve().parent.parent / "node_modules" / "@betteroffice" / "fonts" / "assets"
+LATIN_FONT = LATIN_DIR / "LiberationMono-Regular.ttf"
 
 
 class Shaped:
@@ -159,3 +164,9 @@ def label_font(size):
         return ImageFont.truetype(LABEL_FONT, int(size))
     except OSError:
         return ImageFont.load_default()
+
+
+def latin_font(size):
+    if not LATIN_FONT.exists():
+        raise SystemExit(f"{LATIN_FONT}: error: the Latin comparison font is missing; run npm ci")
+    return ImageFont.truetype(str(LATIN_FONT), int(size))

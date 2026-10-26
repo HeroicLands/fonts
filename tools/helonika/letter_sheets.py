@@ -21,8 +21,9 @@ ROOT = HERE.parent.parent
 sys.path.insert(0, str(HERE))
 import letters as L  # noqa: E402
 import strokes as S  # noqa: E402
-from specimens import (FAINT, GREY, INK, LATIN_FONT, PAPER, RULE, SEMARON_FONT, draw_path,  # noqa: E402
+from specimens import (FAINT, GREY, INK, PAPER, RULE, SEMARON_FONT, draw_path,  # noqa: E402
                        font, guides, semaron)
+from render import latin_font  # noqa: E402
 
 ROSE = (222, 170, 160)
 
@@ -136,7 +137,7 @@ def sheet(out: Path):
     y += 130
 
     # -- beside Semaron and Latin
-    d.text((40, y), "One x-height: Helónika, then Semaron Kuriale, then Latin (Monaspace Neon), at 48 and 24 px; "
+    d.text((40, y), "One x-height: Helónika, then Semaron Kuriale, then Latin (Liberation Mono), at 48 and 24 px; "
            "rose rules at the line and 0.5135 em", fill=INK, font=font(32))
     y += 60
     hel = L.spell("Sothira koum harmodhin. Kosamir;")
@@ -153,7 +154,7 @@ def sheet(out: Path):
             d.text((x, oy), semaron(word), fill=INK, font=font(px, SEMARON_FONT), anchor="ls")
             x += d.textlength(semaron(word), font=font(px, SEMARON_FONT)) + S.SPACE * sc
         x += px
-        d.text((x, oy), LATIN_RUN, fill=INK, font=font(px, LATIN_FONT), anchor="ls")
+        d.text((x, oy), LATIN_RUN, fill=INK, font=latin_font(px), anchor="ls")
         y += int(px * 1.6) + 20
     y += 20
 

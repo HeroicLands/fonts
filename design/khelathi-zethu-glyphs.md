@@ -214,7 +214,7 @@ narrow sign takes a narrow advance in a line. This is the font's spacing rule (s
 62 units, the gutter between two signs: an inscription has no word spaces, so a
 phrase runs on as one line of signs.
 The ascender holds the tallest ink above a full quadrat and the descender
-holds the ink that dips below the baseline; both are Monaspace Neon's.
+holds the ink that dips below the baseline; both are the shared vertical standard's.
 
 ## Numerals and the empty pan
 

@@ -6,9 +6,9 @@
                                                          [--thalorna ~/dev/HeroicLands/thalorna]
 
 The sheet shows every sign large with the roman that writes it; the sixteen digits
-together; every sign at 24 and 48 px after Monaspace Neon's "xhn"; and Khazari words
+together; every sign at 24 and 48 px after Liberation Mono's "xhn"; and Khazari words
 and the sample texts, written through the ``pirzath`` encoding, beside the
-same words in a mixed-case Monaspace Neon line and in Pirzath Carved, all at one font
+same words in a mixed-case Liberation Mono line and in Pirzath Carved, all at one font
 size. The words come from the Khazari language note on thalorna's ``origin/main``.
 """
 
@@ -28,8 +28,8 @@ sys.path.insert(0, str(ROOT / "tools"))
 import letters as L  # noqa: E402
 import strokes as S  # noqa: E402
 from encoded import Encoded  # noqa: E402
-from render import Renderer  # noqa: E402
-from strokes_sheet import BLUE, FAINT, GREY, INK, LATIN_FONT, PAPER, RED, RULE, draw_path, font  # noqa: E402
+from render import Renderer, latin_font  # noqa: E402
+from strokes_sheet import BLUE, FAINT, GREY, INK, PAPER, RED, RULE, draw_path, font  # noqa: E402
 
 CARVED_FONT = ROOT / "fonts/PirzathCarved-Regular.ttf"
 KHAZARI = "assets/content/Skills/Languages/Khazari.md"
@@ -180,7 +180,7 @@ def sheet(out: Path, thalorna: Path):
     y += 30
 
     # -- every sign at 24 and 48 px
-    d.text((40, y), "Every sign at 48 and 24 px to the em, after Monaspace Neon's “xhn” at the same size",
+    d.text((40, y), "Every sign at 48 and 24 px to the em, after Liberation Mono's “xhn” at the same size",
            fill=INK, font=font(32))
     y += 60
     allnames = order + [f"num.{v}" for v in range(16)]
@@ -188,7 +188,7 @@ def sheet(out: Path, thalorna: Path):
         scale = px / 1000
         x = 60
         oy = y + px * 1.2
-        d.text((x, oy), "xhn", fill=BLUE, font=font(px, LATIN_FONT), anchor="ls")
+        d.text((x, oy), "xhn", fill=BLUE, font=latin_font(px), anchor="ls")
         x += px * 2.3
         for name in allnames:
             tr, adv = L.draw(name)
@@ -200,7 +200,7 @@ def sheet(out: Path, thalorna: Path):
         y = oy + px * 1.2 + 30
 
     # -- words and texts
-    d.text((40, y), "Khazari words and texts, written through the pirzath encoding: Monaspace Neon, Pirzath Carved and "
+    d.text((40, y), "Khazari words and texts, written through the pirzath encoding: Liberation Mono, Pirzath Carved and "
            "the hand at one font size", fill=INK, font=font(32))
     y += 60
     px = 40
@@ -209,9 +209,9 @@ def sheet(out: Path, thalorna: Path):
         oy = int(y + px * 1.1)
         for v in (S.LATIN_X, L.B):
             d.line([(40, oy - v * scale), (WIDTH - 40, oy - v * scale)], fill=FAINT)
-        d.text((60, oy), text, fill=BLUE, font=font(px, LATIN_FONT), anchor="ls")
+        d.text((60, oy), text, fill=BLUE, font=latin_font(px), anchor="ls")
         tr, wd = L.write(signs_of(hand.one(text)))
-        x = max(60 + 760, 60 + d.textlength(text, font=font(px, LATIN_FONT)) + 50)
+        x = max(60 + 760, 60 + d.textlength(text, font=latin_font(px)) + 50)
         if x + wd * scale > WIDTH - 20:
             y += px * 1.8
             oy = int(y + px * 1.1)

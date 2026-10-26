@@ -8,7 +8,7 @@
 ``specimens/pirzath-hand/text.png``: Khazari words and the Khazari texts of the
 carved specimens, written through the ``pirzath`` encoding and shaped by HarfBuzz
 from the built font, at display size and at 48, 24 and 20 px, each after its roman
-spelling in Monaspace Neon at the same size, with Neon's x-height and cap height
+spelling in Liberation Mono at the same size, with the shared x-height and cap height
 ruled across both. Nothing here draws from the generator: what is shown is the font.
 """
 
@@ -23,7 +23,7 @@ HERE = Path(__file__).resolve().parent
 ROOT = HERE.parent.parent
 sys.path.insert(0, str(HERE.parent))
 from encoded import Encoded, EncodedRenderer  # noqa: E402
-from render import Renderer  # noqa: E402
+from render import Renderer, latin_font  # noqa: E402
 
 PAPER = (243, 239, 228)
 INK = (28, 34, 40)
@@ -32,7 +32,6 @@ BLUE = (40, 90, 170)
 FAINT = (222, 212, 192)
 X_HEIGHT, CAP_HEIGHT = 0.5135, 0.73
 LABEL_FONT = "/System/Library/Fonts/Supplemental/Arial Unicode.ttf"
-LATIN_FONT = Path.home() / "Library/Fonts/MonaspaceNeon-Regular.otf"
 
 WORDS = ["dalk", "dulák", "dullák", "durákh", "tanv", "bant", "gazn", "narv", "zuvák", "dubáz", "thumár",
          "zummád", "galdod", "thufár", "mardh", "putthák", "ramk-sumád"]
@@ -58,7 +57,7 @@ def sheet(out: Path, r: EncodedRenderer) -> Path:
     d = ImageDraw.Draw(img)
     d.text((40, 30), "Pirzath Hand — the built font", fill=INK, font=font(46))
     d.text((40, 94), "Khazari words and texts, written by the pirzath encoding and shaped by HarfBuzz from "
-           "fonts/PirzathHand-Regular.ttf, after Monaspace Neon at the same size; faint rules: Neon's x-height and "
+           "fonts/PirzathHand-Regular.ttf, after Liberation Mono at the same size; faint rules: the shared x-height and "
            "cap height.", fill=GREY, font=font(22))
     texts = _carved_texts()
     y = 170
@@ -77,7 +76,7 @@ def sheet(out: Path, r: EncodedRenderer) -> Path:
             base = y + px * 1.2
             for h in (X_HEIGHT, CAP_HEIGHT):
                 d.line([(40, base - h * px), (W - 40, base - h * px)], fill=FAINT)
-            latin = font(px, LATIN_FONT)
+            latin = latin_font(px)
             d.text((60, base), t, fill=BLUE, font=latin, anchor="ls")
             x = 60 + d.textlength(t, font=latin) + px
             if x + r.width(t, px, direction="ltr") > W - 40:

@@ -20,8 +20,10 @@ from PIL import Image, ImageChops, ImageDraw, ImageFont
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parent.parent
 sys.path.insert(0, str(HERE))
+sys.path.insert(0, str(ROOT / "tools"))
 import sketches as K  # noqa: E402
 import strokes as S  # noqa: E402
+from render import latin_font  # noqa: E402
 
 PAPER = (243, 239, 228)
 INK = (28, 34, 40)
@@ -33,7 +35,6 @@ BLUE = (40, 90, 170)
 RED = (176, 48, 36)
 SS = 3
 LABEL_FONT = "/System/Library/Fonts/Supplemental/Arial Unicode.ttf"
-LATIN_FONT = Path.home() / "Library/Fonts/MonaspaceNeon-Regular.otf"
 SEMARON_FONT = ROOT / "fonts/SemaronKuriale-Regular.ttf"
 SEMARON_ORDER = "a b d e f g h i j k l m n o p r s t u v w y z".split()
 
@@ -260,7 +261,7 @@ def sheet(out: Path):
 
     # -- part 6: beside Semaron Kuriale and Latin
     y += 20
-    d.text((40, y), "One x-height: Helónika, Semaron Kuriale and Latin (Monaspace Neon) at the same size, on one line",
+    d.text((40, y), "One x-height: Helónika, Semaron Kuriale and Latin (Liberation Mono) at the same size, on one line",
            fill=INK, font=font(32))
     y += 60
     words = ["o", "d", "o", "l", " ", "p", "o", "th", "o", "l", " ", "ō", "p", "o", "d", "·"]
@@ -278,7 +279,7 @@ def sheet(out: Path):
             d.text((x, oy), semaron(word), fill=INK, font=font(px, SEMARON_FONT), anchor="ls")
             x += d.textlength(semaron(word), font=font(px, SEMARON_FONT)) + S.SPACE * sc
         x += 60 * px / 120
-        d.text((x, oy), "the book hand", fill=INK, font=font(px, LATIN_FONT), anchor="ls")
+        d.text((x, oy), "the book hand", fill=INK, font=latin_font(px), anchor="ls")
         y += int(px * 1.3) + 30
     d.text((40, y), "Helónika skeletons, then Semaron Kuriale, then Latin. The rose rules are the line and 0.5135 em.",
            fill=GREY, font=font(18))

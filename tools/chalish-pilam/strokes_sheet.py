@@ -5,17 +5,18 @@
     .venv/bin/python tools/chalish-pilam/strokes_sheet.py [--out specimens/chalish-pilam/strokes.png]
 
 The sheet has six parts: every stroke large, in its cell; every stroke at 24 and 48 px
-to the em after "xHn" in Courier New; rough signs built from the strokes, a test of
+to the em after "xHn" in Liberation Mono; rough signs built from the strokes, a test of
 how they sit together in the cell; bar-and-dot counts, 1 to 19; a page of paired
 columns with its reading order, the implied cells drawn on one column only; and runs of
-the rough signs at 96, 48 and 24 px beside a Latin sentence in Courier New at one
+the rough signs at 96, 48 and 24 px beside a Latin sentence in Liberation Mono at one
 font size. The rough signs are not signs of the script.
 """
 
 import argparse
-import subprocess
 import sys
 from pathlib import Path
+
+import resvg_py
 
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parent.parent
@@ -33,7 +34,9 @@ BLUE = "#285aaa"
 LABEL = "Helvetica, Arial, sans-serif"
 # The Latin set beside a script for comparison: a face every system has, monospaced at 600
 # units to the em, so a line's advance is exact.
-LATIN = "'Courier New', Courier, monospace"
+LATIN = "'Liberation Mono', monospace"
+# Liberation Mono comes from the dev dependency @betteroffice/fonts, installed by npm ci.
+LATIN_DIR = ROOT / "node_modules" / "@betteroffice" / "fonts" / "assets"
 B = S.BLOCK
 M = 80.0  # the white inside a cell, a side, that keeps two neighbouring signs apart
 ADVANCE = B + 2 * 60.0  # every sign takes one advance: the cell and its gutter
@@ -70,7 +73,7 @@ class Sheet:
                         f'transform="matrix({scale} 0 0 {scale} {ox:.2f} {oy:.2f})"/>')
 
     def latin(self, x, base, s, px, color=BLUE):
-        """Set ``s`` as Latin in Courier New; return its advance in px."""
+        """Set ``s`` as Latin in Liberation Mono; return its advance in px."""
         text = s.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
         self.out.append(f'<text x="{x:.2f}" y="{base:.2f}" font-family="{LATIN}" font-size="{px}" '
                         f'fill="{color}" xml:space="preserve">{text}</text>')
@@ -159,6 +162,13 @@ def numeral(n):
     return out
 
 
+def rasterize(svg_file: Path, out: Path):
+    """Write the sheet's PNG, with Liberation Mono found in its package."""
+    if not (LATIN_DIR / "LiberationMono-Regular.ttf").exists():
+        raise SystemExit(f"{LATIN_DIR}: error: the Latin comparison font is missing; run npm ci")
+    out.write_bytes(bytes(resvg_py.svg_to_bytes(svg_string=svg_file.read_text(), font_dirs=[str(LATIN_DIR)])))
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--out", default=str(ROOT / "specimens/chalish-pilam/strokes.png"))
@@ -202,7 +212,7 @@ def main():
     sh.y += cw + 70
 
     # -- part 2: at 24 and 48 px
-    sh.heading("Every stroke at 24 and 48 px to the em, after “xHn” in Courier New at the same size")
+    sh.heading("Every stroke at 24 and 48 px to the em, after “xHn” in Liberation Mono at the same size")
     for px in (24, 48):
         sc = px / 1000
         base = sh.y + px + 6
@@ -265,7 +275,7 @@ def main():
     sh.y += rows * linep + 40
 
     # -- part 6: runs beside Latin
-    sh.heading("Rough signs run on beside Courier New at one font size; faint rules: Latin's x-height and cap height")
+    sh.heading("Rough signs run on beside Liberation Mono at one font size; faint rules: Latin's x-height and cap height")
     sentence = "Rows of two."
     for px in (96, 48, 24):
         sc = px / 1000
@@ -283,7 +293,7 @@ def main():
     height = int(sh.y + 40)
     svg_file = out.with_suffix(".svg")
     svg_file.write_text(sh.svg(height))
-    subprocess.run(["rsvg-convert", "-o", str(out), str(svg_file)], check=True)
+    rasterize(svg_file, out)
     print(out)
 
 

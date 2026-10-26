@@ -5,10 +5,10 @@
     .venv/bin/python tools/pirzath-hand/strokes_sheet.py [--out specimens/pirzath-hand/strokes.png]
 
 The sheet has five parts: every stroke large, with the guides; every stroke at 24
-and 48 px to the em after Monaspace Neon's "xhn"; rough skeletons built from the
+and 48 px to the em after Liberation Mono's "xhn"; rough skeletons built from the
 strokes at display size, one drawn over its own track; the skeletons written with the
 pen at four angles, for comparison; and runs of the worn forms at 96, 48 and 24 px beside
-a mixed-case Latin sentence in Monaspace Neon and the same words in Pirzath Carved,
+a mixed-case Latin sentence in Liberation Mono and the same words in Pirzath Carved,
 all three at one font size. The hand's body stands at Latin's cap height, so the
 three should read as one size of text. The skeletons test how the strokes sit
 together. They are not letters of the script.
@@ -26,7 +26,7 @@ sys.path.insert(0, str(HERE))
 sys.path.insert(0, str(ROOT / "tools"))
 import strokes as S  # noqa: E402
 from encoded import Encoded  # noqa: E402
-from render import Renderer  # noqa: E402
+from render import Renderer, latin_font  # noqa: E402
 
 PAPER = (247, 243, 235)
 INK = (28, 24, 20)
@@ -38,7 +38,6 @@ RED = (176, 48, 36)
 BLUE = (40, 90, 170)
 SS = 3
 LABEL_FONT = "/System/Library/Fonts/Supplemental/Arial Unicode.ttf"
-LATIN_FONT = Path.home() / "Library/Fonts/MonaspaceNeon-Regular.otf"  # the face the shared metrics come from
 CARVED_FONT = ROOT / "fonts/PirzathCarved-Regular.ttf"
 
 
@@ -278,15 +277,15 @@ def sheet(out: Path):
         d.text((cx + 12, cy + cell + 34), f"{st.name} · {st.kind}", fill=GREY, font=font(18))
     y += rows * (cell + 80) + 20
 
-    # -- part 2: every stroke at 24 and 48 px, after Neon's xhn
-    d.text((40, y), "Every stroke at 24 and 48 px to the em, after Monaspace Neon's “xhn” at the same size",
+    # -- part 2: every stroke at 24 and 48 px, after xhn
+    d.text((40, y), "Every stroke at 24 and 48 px to the em, after Liberation Mono's “xhn” at the same size",
            fill=INK, font=font(32))
     y += 60
     for px in (24, 48):
         scale = px / 1000
         oy = y + px * 1.1
         x = 60
-        d.text((x, oy), "xhn", fill=BLUE, font=font(px, LATIN_FONT), anchor="ls")
+        d.text((x, oy), "xhn", fill=BLUE, font=latin_font(px), anchor="ls")
         x += px * 2.4
         for sid in ids:
             of, oyy = origin(sid)
@@ -382,7 +381,7 @@ def sheet(out: Path):
     y = oy + 120
 
     # -- part 5: beside a mixed-case Latin sentence and Pirzath Carved, at one font size
-    d.text((40, y), "Worn forms run on beside Monaspace Neon in a mixed-case sentence and beside Pirzath Carved, all "
+    d.text((40, y), "Worn forms run on beside Liberation Mono in a mixed-case sentence and beside Pirzath Carved, all "
            "three at one font size; faint rules: Latin's x-height and cap height", fill=INK, font=font(32))
     y += 70
     latin = "Gaz Guruz, Tanv-guráz."
@@ -395,8 +394,8 @@ def sheet(out: Path):
             d.line([(40, oy), (WIDTH - 40, oy)], fill=FAINT)
             x = 60
             if row == "latin":
-                d.text((x, oy), latin, fill=BLUE, font=font(px, LATIN_FONT), anchor="ls")
-                x += d.textlength(latin, font=font(px, LATIN_FONT)) + px * 0.6
+                d.text((x, oy), latin, fill=BLUE, font=latin_font(px), anchor="ls")
+                x += d.textlength(latin, font=latin_font(px)) + px * 0.6
             else:
                 cimg, base = carved_line(latin.lower(), px)
                 img.paste(cimg, (int(x - 10), oy - base))

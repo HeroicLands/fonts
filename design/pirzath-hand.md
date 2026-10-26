@@ -82,7 +82,7 @@ This section covers layer 1, the strokes.
 The hand has no capitals and few extenders, so nearly all of its ink stands in
 one band, the body. A line of Latin is read at the size its capitals and
 ascenders give it, not at its x-height, so the body stands at Latin's cap
-height, 0.73 em, Monaspace Neon's cap height and the height of Pirzath
+height, 0.73 em, the shared cap height and the height of Pirzath
 Carved's consonants. Set at one font size, a line of the hand, a mixed-case
 Latin sentence and the carved face read as one size of text. A vowel stands at
 0.46 em, near Latin's x-height, as the carved face scores its vowels small. The
@@ -114,7 +114,7 @@ Units are thousandths of the em, the line at 0. The line metrics are the shared
 standard of `tools/vertical.py`: ascender 945, descender −200, line gap 100.
 The strokes are drawn at the font's own size, so the font takes the outlines
 unscaled. The body is the face's cap height, so the vertical guard measures
-the hand against Neon's cap height.
+the hand against the shared cap height.
 
 | Constant   | Value | What it governs                                                       |
 | ---------- | ----- | --------------------------------------------------------------------- |
@@ -199,7 +199,7 @@ Eleven strokes in three kinds. Lengths are font units; `peak`, `base`,
 
 - every stroke large, against the line, the body and, faint, the vowel height,
   the ascender and the descender, a mark shown on a letter in grey;
-- every stroke at 24 and 48 px to the em, after Monaspace Neon's _xhn_ at the
+- every stroke at 24 and 48 px to the em, after _xhn_ in Liberation Mono at the
   same size;
 - rough skeletons built from the strokes at display size, the heel shown on a
   tent, a point and a roof;
@@ -211,7 +211,7 @@ Eleven strokes in three kinds. Lengths are font units; `peak`, `base`,
 - skeletons written with the tool at 30°, 40°, 50° and 60°, for comparison;
 - the worn forms run on as printed words at 96, 48 and 24 px, a letter's white
   70 units a side and the word space half an em, beside the mixed-case
-  sentence _Gaz Guruz, Tanv-guráz._ in Monaspace Neon and the same words in
+  sentence _Gaz Guruz, Tanv-guráz._ in Liberation Mono and the same words in
   Pirzath Carved, all three at one font size.
 
 The skeletons, the worn forms and the tally test test the strokes. They are not
@@ -319,9 +319,9 @@ or digit.
 
 `specimens/pirzath-hand/letters.png` holds every sign large, with the roman
 that writes it and its number of pen movements; the sixteen digits together at
-display size, 48 and 24 px; every sign at 48 and 24 px after Monaspace Neon's
-_xhn_; the sample texts written through the `pirzath` encoding
-beside the same text in Monaspace Neon and in Pirzath Carved, all at one font
+display size, 48 and 24 px; every sign at 48 and 24 px after _xhn_ in
+Liberation Mono; the sample texts written through the `pirzath` encoding
+beside the same text in Liberation Mono and in Pirzath Carved, all at one font
 size; and the first word forms of the Khazari note at 48 and 24 px.
 
 ## Layer 3: the font
@@ -363,8 +363,8 @@ There is no `ss01`, no joined form and no kerning.
 ### The metrics
 
 - **The body stands at Latin's cap height,** 0.73 em, so `tools/vertical.py`
-  measures the hand's consonants against Monaspace Neon's cap height and its
-  vowels against Neon's x-height. The OS/2 cap height is the median height of
+  measures the hand's consonants against the shared cap height and its
+  vowels against the shared x-height. The OS/2 cap height is the median height of
   the consonants that stand from the line to the body, 730, and the x-height
   that of the vowels _a e i u_, 460.
 - **The line metrics are the shared ones,** ascender 945, descender −200 and
@@ -394,8 +394,8 @@ There is no `ss01`, no joined form and no kerning.
 
 `tools/pirzath-hand/font_sheets.py` renders `specimens/pirzath-hand/text.png`
 from the built font: Khazari words at display size and the Khazari texts at 48,
-24 and 20 px, each after its roman spelling in Monaspace Neon at the same size,
-with Neon's x-height and cap height ruled across both. The chart, the README
+24 and 20 px, each after its roman spelling in Liberation Mono at the same size,
+with the shared x-height and cap height ruled across both. The chart, the README
 sample and the specimen page, `specimens/hl-pirzath-hand.md`, are written by
 the build.
 

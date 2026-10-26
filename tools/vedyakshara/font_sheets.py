@@ -8,7 +8,7 @@
 ``specimens/vedyakshara/text.png``: words and sample phrases from the Vedyari note,
 written through the ``vedyakshara`` encoding and shaped by HarfBuzz from the
 built font, at display size and at 48, 24 and 20 px, each after its roman spelling
-in Monaspace Neon at the same size, with the shared x-height ruled across both.
+in Liberation Mono at the same size, with the shared x-height ruled across both.
 Nothing here draws from the generator: what is shown is the font.
 """
 
@@ -22,7 +22,7 @@ HERE = Path(__file__).resolve().parent
 ROOT = HERE.parent.parent
 sys.path.insert(0, str(HERE.parent))
 from encoded import Encoded, EncodedRenderer  # noqa: E402
-from render import Renderer  # noqa: E402
+from render import Renderer, latin_font  # noqa: E402
 
 PAPER = (243, 239, 228)
 INK = (28, 34, 40)
@@ -31,7 +31,6 @@ BLUE = (40, 90, 170)
 FAINT = (222, 212, 192)
 X_HEIGHT = 0.5135
 LABEL_FONT = "/System/Library/Fonts/Supplemental/Arial Unicode.ttf"
-LATIN_FONT = Path.home() / "Library/Fonts/MonaspaceNeon-Regular.otf"
 
 WORDS = ["vedyara", "dvarna", "suryadvar", "rajepur", "chendra", "karmija", "shroshta", "ikshva", "smiriti",
          "padmavali", "purnakala", "adanshreni", "foshu", "aisu", "ganoka-shalda"]
@@ -69,7 +68,7 @@ def sheet(out: Path, r: EncodedRenderer) -> Path:
         for t in texts:
             base = y + px * 1.2
             d.line([(40, base - X_HEIGHT * px), (W - 40, base - X_HEIGHT * px)], fill=FAINT)
-            latin = font(px, LATIN_FONT)
+            latin = latin_font(px)
             d.text((60, base), t, fill=BLUE, font=latin, anchor="ls")
             x = 60 + d.textlength(t, font=latin) + px
             if x + r.width(t, px, direction="ltr") > W - 40:

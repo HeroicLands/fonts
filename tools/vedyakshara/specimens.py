@@ -7,7 +7,7 @@
 The sheet has four parts: every stroke large, with the guides; every stroke at
 24 and 48 px to the em; rough sign skeletons hanging from a headline at display size,
 one drawn over its own skeleton; and the skeletons run on as words at 48 and
-24 px beside a line of Monaspace Neon at the same size, to check the x-height.
+24 px beside a line of Liberation Mono at the same size, to check the x-height.
 The skeletons test how the strokes sit together. They are not signs of the script.
 """
 
@@ -20,7 +20,9 @@ from PIL import Image, ImageChops, ImageDraw, ImageFont
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parent.parent
 sys.path.insert(0, str(HERE))
+sys.path.insert(0, str(ROOT / "tools"))
 import strokes as S  # noqa: E402
+from render import latin_font  # noqa: E402
 
 PAPER = (243, 239, 228)
 INK = (28, 34, 40)
@@ -32,7 +34,6 @@ RED = (176, 48, 36)
 BLUE = (40, 90, 170)
 SS = 3
 LABEL_FONT = "/System/Library/Fonts/Supplemental/Arial Unicode.ttf"
-LATIN_FONT = Path.home() / "Library/Fonts/MonaspaceNeon-Regular.otf"  # the face the shared metrics come from
 
 
 def font(size, path=LABEL_FONT):
@@ -205,13 +206,13 @@ def sheet(out: Path):
     y += rows * (cell + 80) + 20
 
     # -- part 2: every stroke at 24 px, with its context in ink, as it will meet the eye
-    d.text((40, y), "Every stroke at 24 and 48 px to the em, after Monaspace Neon at the same size", fill=INK, font=font(32))
+    d.text((40, y), "Every stroke at 24 and 48 px to the em, after Liberation Mono at the same size", fill=INK, font=font(32))
     y += 60
     for px in (24, 48):
         scale = px / 1000
         oy = y + px * 1.1
         x = 60
-        d.text((x, oy), "xhn", fill=BLUE, font=font(px, LATIN_FONT), anchor="ls")
+        d.text((x, oy), "xhn", fill=BLUE, font=latin_font(px), anchor="ls")
         x += px * 2.4
         for sid in ids:
             of, oyy = origin(sid)
@@ -252,7 +253,7 @@ def sheet(out: Path):
     y += 760
 
     # -- part 4: words at text size beside Latin
-    d.text((40, y), "The skeletons run on as words at 48 and 24 px, after a line of Monaspace Neon at the same size; "
+    d.text((40, y), "The skeletons run on as words at 48 and 24 px, after a line of Liberation Mono at the same size; "
            "faint rule: the shared x-height", fill=INK, font=font(32))
     y += 70
     latin = "the rope with the words strung beneath it"
@@ -261,8 +262,8 @@ def sheet(out: Path):
         for line in range(2 if px < 40 else 1):
             oy = y + px * 1.2
             d.line([(40, oy - S.X * scale), (W - 40, oy - S.X * scale)], fill=FAINT)
-            d.text((60, oy), latin if line == 0 else "xhn", fill=BLUE, font=font(px, LATIN_FONT), anchor="ls")
-            x = 60 + d.textlength(latin if line == 0 else "xhn", font=font(px, LATIN_FONT)) + px * 0.6
+            d.text((60, oy), latin if line == 0 else "xhn", fill=BLUE, font=latin_font(px), anchor="ls")
+            x = 60 + d.textlength(latin if line == 0 else "xhn", font=latin_font(px)) + px * 0.6
             k = line
             while True:
                 tr, wd = word([SKELETONS[i] for i in WORDS[k % len(WORDS)]])

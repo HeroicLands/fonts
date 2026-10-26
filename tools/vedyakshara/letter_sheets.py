@@ -7,7 +7,7 @@
 The sheet has five parts: every consonant and fused sign large in its four forms
 (full, half, final, r-foot); the independent vowels, the vowel signs on a few
 signs, _fa_ with the soft dot, the digits and the bars; the signs run on at 48
-and 24 px after Monaspace Neon; real Vedyari words and the sample phrases at
+and 24 px after Liberation Mono; real Vedyari words and the sample phrases at
 display size; and the same words at 48, 24 and 20 px after their roman spelling.
 """
 
@@ -22,7 +22,8 @@ ROOT = HERE.parent.parent
 sys.path.insert(0, str(HERE))
 import letters as L  # noqa: E402
 import strokes as S  # noqa: E402
-from specimens import BLUE, FAINT, GREY, INK, LATIN_FONT, PAPER, RED, RULE, draw_path, font  # noqa: E402
+from specimens import BLUE, FAINT, GREY, INK, PAPER, RED, RULE, draw_path, font  # noqa: E402
+from render import latin_font  # noqa: E402
 
 WORDS = ["Vedyara", "dvarna", "Suryadvar", "Rajepur", "chendra", "karmija", "shroshta", "ikshva", "smiriti",
          "Padmavali", "purnakala", "Adanshreni", "foshu", "aisu", "Ganoka-shalda"]
@@ -119,8 +120,8 @@ def sheet(out: Path):
     row("The reed digits 0–9, and the bars: plain, the pause, the end of a sentence",
         [L.digit(c) for c in L.DIGITS] + [L.point(k) for k in (0, 1, 2)], list(L.DIGITS) + ["bar", "pause", "end"])
 
-    # -- part 3: the signs at text size after Neon
-    d.text((40, y), "The signs at 48 and 24 px, after Monaspace Neon at the same size; faint rule: the shared x-height",
+    # -- part 3: the signs at text size after Liberation Mono
+    d.text((40, y), "The signs at 48 and 24 px, after Liberation Mono at the same size; faint rule: the shared x-height",
            fill=INK, font=font(30))
     y += 60
     lines = [("base", [L.sign(n) for n in list(L.CONSONANTS) + list(L.INDEPENDENT)]),
@@ -130,7 +131,7 @@ def sheet(out: Path):
         for _, gl in lines:
             oy = y + px * 1.2
             d.line([(40, oy - S.X * s), (W - 40, oy - S.X * s)], fill=FAINT)
-            d.text((60, oy), "xhn", fill=BLUE, font=font(px, LATIN_FONT), anchor="ls")
+            d.text((60, oy), "xhn", fill=BLUE, font=latin_font(px), anchor="ls")
             x = 60 + px * 2.4
             for g in gl:
                 if x + g.adv * s > W - 40:
@@ -164,7 +165,7 @@ def sheet(out: Path):
         y += 200
 
     # -- part 5: words at text size
-    d.text((40, y), "The same at 48, 24 and 20 px, after the roman spelling in Monaspace Neon", fill=INK, font=font(30))
+    d.text((40, y), "The same at 48, 24 and 20 px, after the roman spelling in Liberation Mono", fill=INK, font=font(30))
     y += 60
     texts = [" ".join(WORDS[:5]), " ".join(WORDS[5:10]), " ".join(WORDS[10:]), PHRASES[0], PHRASES[1]]
     for px in (48, 24, 20):
@@ -172,8 +173,8 @@ def sheet(out: Path):
         for t in texts:
             oy = y + px * 1.2
             d.line([(40, oy - S.X * s), (W - 40, oy - S.X * s)], fill=FAINT)
-            d.text((60, oy), t, fill=BLUE, font=font(px, LATIN_FONT), anchor="ls")
-            x = 60 + d.textlength(t, font=font(px, LATIN_FONT)) + px
+            d.text((60, oy), t, fill=BLUE, font=latin_font(px), anchor="ls")
+            x = 60 + d.textlength(t, font=latin_font(px)) + px
             tr, wd = phrase(t)
             if x + wd * s > W - 40:
                 y += px * 1.6

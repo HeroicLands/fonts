@@ -166,7 +166,7 @@ of the body.
 
 - every stroke large, against the line, the x-height, the headline's top, the
   flag head and the hook foot, a body or mark shown on its rope or stem in grey;
-- every stroke at 24 and 48 px to the em, after Monaspace Neon's _xhn_ at the
+- every stroke at 24 and 48 px to the em, after _xhn_ in Liberation Mono at the
   same size;
 - seven rough sign skeletons hanging from a headline at display size: a bowl
   and stem, an arc and stem with the _i_ flag, a short bowl and stem with the _u_
@@ -174,15 +174,15 @@ of the body.
   with the soft dot, the _o_ hook and the _e_ flag, and an open arc beside a
   stem kicked forward at its foot;
 - one skeleton drawn over its own track, the track a red line under the ink;
-- the skeletons run on as words at 48, 24 and 20 px, after a line of Monaspace
-  Neon at the same size, with the shared x-height ruled across both.
+- the skeletons run on as words at 48, 24 and 20 px, after a line of Liberation
+  Mono at the same size, with the shared x-height ruled across both.
 
 The skeletons test how the strokes sit together. They are not signs of the
 script.
 
 **What the sheet shows.** The rope reads as the heaviest stroke at every size,
 and at 24 and 20 px a run of words reads as a line of rope with forms hanging
-from it. The bodies stand at Neon's x-height, the rope above it, so a Vedyakshara
+from it. The bodies stand at the shared x-height, the rope above it, so a Vedyakshara
 word is as tall as the Latin beside it at the body and taller by the rope. The
 stems hold as continuous lines at 24 px.
 
@@ -316,7 +316,7 @@ strokes reaching back from it, at the head and the middle.
 `specimens/vedyakshara/letters.png` holds every consonant, _fa_ and every fused
 sign in its forms (four, or three for a fused C + r sign); the independent vowels; _ka_ with each vowel sign and
 the vowel signs on other signs; the digits and the bars; every sign at 48 and 24
-px after Monaspace Neon; fifteen words and four sample phrases from the Vedyari
+px after Liberation Mono; fifteen words and four sample phrases from the Vedyari
 note at display size, compounds solid; and the same at 48, 24 and 20 px after
 their roman spelling. The specimen splits the roman spelling itself; the font
 and its rules are layer 3.
@@ -433,7 +433,7 @@ a, r, `'`.
   phrases, and two forms with letters the script does not write.
 - `font_sheets.py` renders `specimens/vedyakshara/text.png`: Vedyari words and
   the sample phrases, shaped by HarfBuzz from the built font, at display size and
-  at 48, 24 and 20 px after their roman spelling in Monaspace Neon.
+  at 48, 24 and 20 px after their roman spelling in Liberation Mono.
 - `tools/prove_guards.py` proves the guard and the font check fail the font
   without GSUB, the font check without GPOS, and the vertical guard with the
   Windows metrics cut to the line box.

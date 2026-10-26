@@ -1,13 +1,13 @@
 # Copyright (c) 2026 Tom Rodriguez ("Toasty") — <toasty@heroiclands.org>
 # SPDX-License-Identifier: OFL-1.1
-"""Confirm that every face shares one vertical standard, Monaspace Neon's.
+"""Confirm that every face shares one vertical standard.
 
     .venv/bin/python tools/vertical.py [font ...]
 
 A page that mixes roman text and a script must show each script as large as the
 roman beside it, and no glyph may reach into the line above or below. Every face
-therefore takes Monaspace Neon's vertical metrics at 1000 units to the em, and is
-scaled so that its typical letters stand as tall as Neon's x-height or cap height. A
+therefore takes the shared vertical metrics at 1000 units to the em, and is
+scaled so that its typical letters stand at the shared x-height or cap height. A
 font fails when
 
 - its hhea or OS/2 typographic ascender, descender or line gap differs from the
@@ -19,7 +19,7 @@ font fails when
 - the ascender and descender of the face's source, ``sources/<Face>.ufo``, differ from
   the table;
 - the median height of its typical letters, measured from the outlines, differs by
-  more than 2% from its target, Neon's x-height (0.5135 em) or cap height (0.73 em);
+  more than 2% from its target, the shared x-height (0.5135 em) or cap height (0.73 em);
 - its OS/2 sxHeight or sCapHeight differs by more than 2 units from the median
   height of its typical x-height letters or capitals;
 - a glyph's ink leaves the band between the ascent and the descent, other than
@@ -70,14 +70,14 @@ from fontTools.ttLib import TTFont
 
 ROOT = Path(__file__).resolve().parent.parent
 
-# Monaspace Neon Regular at 2000 units to the em, halved to 1000.
+# The shared vertical standard, at 1000 units to the em.
 ASCENT, DESCENT, LINE_GAP = 945, -200, 100
 WIN_ASCENT, WIN_DESCENT = 945, 250
 X_HEIGHT, CAP_HEIGHT = 0.5135, 0.73
 TOLERANCE = 0.02
 TYPO_METRICS_BIT = 1 << 7
 
-# The scale each face took: the factor that brings its target height to Neon's.
+# The scale each face took: the factor that brings its target height to the standard's.
 SCALES = {
     "SemaronKuriale": 1.02,
     "PirzathCarved": 1.04,

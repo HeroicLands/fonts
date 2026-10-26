@@ -116,7 +116,7 @@ The glyphs are outlines taken from the font, so a sheet reads without the font i
 
 ## Setting up
 
-The font toolchain runs on **Python 3.13**. Python 3.15 corrupts long drawing runs, so a virtual environment is never built on it. Install the dependencies, which also activates the repository's git hooks:
+The font toolchain runs on **Python 3.13**. Python 3.15 corrupts long drawing runs, so a virtual environment is never built on it. Install the dependencies, which also activates the repository's git hooks and installs Liberation Mono, the Latin face the sheets set beside each script (from `@betteroffice/fonts`):
 
 ```sh
 npm ci

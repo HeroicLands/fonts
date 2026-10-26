@@ -6,12 +6,11 @@
 
 The sheet has four parts: the kit, each recurring part drawn alone in a block; the
 pilot glyphs large; the pilot set as an inscription in paired columns, read A1, B1,
-A2, B2; and the blocks at 48 and 24 px beside Courier New.
+A2, B2; and the blocks at 48 and 24 px beside Liberation Mono.
 """
 
 import argparse
 import zlib
-import subprocess
 import sys
 from pathlib import Path
 
@@ -29,7 +28,7 @@ import places as PL  # noqa: E402
 import core as Z  # noqa: E402
 import compounds as X  # noqa: E402
 import strokes as S  # noqa: E402
-from strokes_sheet import BLUE, FAINT, GREY, INK, RED, Sheet, svg_path  # noqa: E402
+from strokes_sheet import BLUE, FAINT, GREY, INK, RED, Sheet, rasterize, svg_path  # noqa: E402
 
 B = S.BLOCK
 
@@ -257,7 +256,7 @@ def main():
         sh.text(tx, sh.y + 60 + k * 24, line, 16, GREY)
     sh.y += len(rows) * (B * sc + gap) + 50
 
-    sh.heading("Blocks beside Courier New at 48 and 24 px, set as the font sets them: spanning descender to ascender")
+    sh.heading("Blocks beside Liberation Mono at 48 and 24 px, set as the font sets them: spanning descender to ascender")
     for px in (48, 24):
         sc = px / 1000
         gs = sc * R.FONT_SCALE
@@ -274,7 +273,7 @@ def main():
     height = int(sh.y + 40)
     svg_file = out.with_suffix(".svg")
     svg_file.write_text(sh.svg(height))
-    subprocess.run(["rsvg-convert", "-o", str(out), str(svg_file)], check=True)
+    rasterize(svg_file, out)
     print(out)
 
 
