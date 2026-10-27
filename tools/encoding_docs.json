@@ -149,6 +149,12 @@
       "Teng Chou is a logographic script of the Tantsou: one character for each morpheme, with a syllabary of 87 signs for particles, verb endings and island words. Its characters are set directly beside each other, with nothing between them. This encoding accepts no roman letters: Tantsou words are turned into characters by the language-aware encoder, and a character is written by its code between `⟦` and `⟧`, in the notation of the [teng-chou-codes codage](teng-chou-codes.md). Its word separator is empty: whitespace in roman draws nothing and writes nothing, so no output contains U+0020."
     ]
   },
+  "semaron-codes": {
+    "title": "semaron-codes codage",
+    "intro": [
+      "Semaron Kuriale is the Vylarian chancery hand, written left to right with capitals. This codage names each of its glyphs by a code: a letter by its name with `_MAJ` for the majuscule and `_MIN` for the minuscule (`CHEROLA_MIN`), a long vowel with `LONG_` before it (`LONG_ELZA_MAJ`), a digit as `DIGIT_ZERO` to `DIGIT_NINE`, and `POINT`, `CATCH` and `STRESS`. It is reached only between `⟦` and `⟧` of the [semaron](semaron.md) and [aelwythi-semaron](aelwythi-semaron.md) encodings, and encodes no text of its own."
+    ]
+  },
   "teng-chou-codes": {
     "title": "teng-chou-codes codage",
     "intro": [

@@ -4,6 +4,7 @@
         "semaron-kuriale"
     ],
     "extends": "standard",
+    "codage": "semaron-codes",
     "roundTrip": "canonical",
     "accepts": [
         "a-z",

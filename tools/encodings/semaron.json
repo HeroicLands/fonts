@@ -2,6 +2,7 @@
     "name": "semaron",
     "fonts": ["semaron-kuriale"],
     "extends": "standard",
+    "codage": "semaron-codes",
     "accepts": ["a-z", "A-Z", "0-9", "'", "-", "`", "À", "Á", "É", "Ë", "Í", "Ó", "Ú", "Ý", "à", "á", "é", "ë", "í", "ó", "ú", "ý", "’"],
     "separator": " ",
     "vowels": "aeiouëàAEIOUËÀáéíóúÁÉÍÓÚ",
