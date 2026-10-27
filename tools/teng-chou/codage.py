@@ -1,6 +1,6 @@
 # Copyright (c) 2026 Tom Rodriguez ("Toasty") — <toasty@heroiclands.org>
 # SPDX-License-Identifier: OFL-1.1
-"""Write the Teng Chou codage, ``encodings/teng-chou-codes.json``, and the Teng Chou script encoding that states it, ``encodings/teng-chou.json``, from the code point table.
+"""Write the Teng Chou codage, ``tools/encodings/teng-chou-codes.json``, and the Teng Chou script encoding that states it, ``tools/encodings/teng-chou.json``, from the code point table.
 
     .venv/bin/python tools/teng-chou/codage.py           # write the files
     .venv/bin/python tools/teng-chou/codage.py --check   # check them
@@ -12,7 +12,7 @@ sign that shares its spelling, so ``KA`` and ``ka`` write different characters. 
 separated by whitespace, which only separates and writes nothing. The codage is a file of
 kind ``codage``: it extends nothing and is reached only between the literal markers of
 ``teng-chou``. The script encoding extends the standard roman encoding,
-``encodings/standard.json``, and accepts nothing else as roman: Tantsou words are turned into
+``tools/encodings/standard.json``, and accepts nothing else as roman: Tantsou words are turned into
 characters by the language-aware encoder. The script has no spaces, its characters set
 directly beside each other, so its separator is empty and no output holds U+0020. The files
 are generated, so they never drift from the font: run this after a character is added.
@@ -24,8 +24,8 @@ from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parent.parent
-OUT = ROOT / "encodings" / "teng-chou-codes.json"
-SCRIPT = ROOT / "encodings" / "teng-chou.json"
+OUT = ROOT / "tools" / "encodings" / "teng-chou-codes.json"
+SCRIPT = ROOT / "tools" / "encodings" / "teng-chou.json"
 sys.path.insert(0, str(HERE.parent))
 sys.path.insert(0, str(ROOT))
 import codepoint_order  # noqa: E402

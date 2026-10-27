@@ -42,7 +42,7 @@ Choose the font by its name, such as `Pirzath Carved`, in the font box of your w
 - **Thuravark Carved** has an optional form, the OpenType stylistic set `ss01`. Turned on, it binds common pairs of staves onto one stem. In LibreOffice, write the font name as `Thuravark Carved:ss01`.
 - **Teng Chou** is written in columns. Set it as ordinary text on a line, or use your app's vertical text direction for columns.
 - **Chalish Pilam Common** is written left to right and read two glyphs to a row, down a column two glyphs wide. Set it in a column that wide and the line wraps into rows of two by itself.
-- **Chalish Pilam Ceremonial** composes its glyphs into blocks: a main sign with a number or syllable signs set beside it, over it or under it. The font lays out a block from the invisible joiners between its glyphs, so a block is typed through its encoding, [chalish-ceremonial](encodings/chalish-ceremonial.md), in which `n13*TQAN` writes the number thirteen beside the day sign and `la1:SUN` stacks a syllable sign over the sun. Blocks are read in paired columns: across each pair, then down.
+- **Chalish Pilam Ceremonial** composes its glyphs into blocks: a main sign with a number or syllable signs set beside it, over it or under it. The font lays out a block from the invisible joiners between its glyphs, so a block is typed through its encoding, [chalish-pilam-ceremonial](encodings/chalish-pilam-ceremonial.md), in which `⟦n13*TQAN⟧` writes the number thirteen beside the day sign and `⟦la1:SUN⟧` stacks a syllable sign over the sun. Blocks are read in paired columns: across each pair, then down.
 
 ## Type in a script
 
@@ -112,7 +112,7 @@ For Foundry VTT, Typst and the manifest's contents, see [DEVELOPING.md](DEVELOPI
 
 ## Encodings
 
-An encoding turns roman text into the code points of a script's font, and back. A font draws only its own code points, so text typed in the Latin alphabet needs an encoding to become text a font can show. Each encoding is one JSON file in `encodings/`, and `encode.py` applies it in either direction. It needs only Python 3.9 or later and no packages.
+An encoding turns roman text into the code points of a script's font, and back. A font draws only its own code points, so text typed in the Latin alphabet needs an encoding to become text a font can show. Each encoding is one self-contained JSON file in `encodings/`; it carries all its rows and names and needs no neighbouring file. `encode.py` applies it in either direction. It needs only Python 3.9 or later and no packages.
 
 ```sh
 python3 encode.py --encoding pirzath "kitha"
@@ -120,23 +120,24 @@ python3 encode.py --encoding pirzath --decode "<the code points>"
 python3 encode.py --list
 ```
 
-**Encoding and decoding are exact inverses.** Decoding encoded roman gives the roman back unchanged. Encoding decoded text gives the text back unchanged.
+**Encoding and decoding preserve spelling.** Exact encodings return the original roman with each whitespace run normalized to a single space. An encoding explicitly marked `roundTrip: "canonical"` instead returns its conventional spelling, including any omitted punctuation.
 
 **Every encoding shares one punctuation standard.** The [shared specification](encodings/standard.md)
-and `encodings/standard.json` assign sentence, quotation, indentation, verse,
+and the source `tools/encodings/standard.json` assign sentence, quotation, indentation, verse,
 name and literal-span marks. Declarative, interrogative, imperative and
 exclamative sentences end in `.`, `?`, `‼` and `!`. Script encoders supply their
 own visible punctuation forms and retain the shared meanings. Word-separating
-whitespace is normalized; each script declares its printed word separator.
+whitespace is normalized: every Unicode Zs character and U+0009–U+000D counts as a space. Each script declares its printed word separator. U+0085, U+2028 and U+2029 require explicit rules.
 `--verse` interprets line endings and blank lines as verse line and stanza
 boundaries. `--- {.canto}` marks a canto boundary.
 
 **Literal spans use shared boundaries.** `⟦` and `⟧` encode as U+E0112 and
-U+E0113. The active encoding reads the enclosed codes using its declared codage,
-or Unicode character names when it has no codage. Whitespace separates codes;
-decoding uses one space between them. An unmatched or nested boundary is
+U+E0113. Every encoding carries its own `codes` rows and accepts `U+XXXX`
+for any Unicode scalar: `⟦U+00E1⟧` writes `á`. Use four to six uppercase
+hexadecimal digits; surrogates and values above U+10FFFF are refused.
+Whitespace separates codes; decoding uses a defined code or the U+ form. An unmatched or nested boundary is
 refused. Character inventories and codage notation belong to the individual
-encoding definitions.
+encoding definitions. Inside a literal payload, `controls.literalEscape` (U+E0115) quotes an open, close or escape control, so even those code points can be written.
 
 **A character outside the encoding is refused.** `encode.py` stops with `file:line:column: error:` and the character, and exits non-zero, rather than passing it through. Decoding refuses a code point that no row writes in the same way.
 
@@ -154,10 +155,8 @@ or hyphens. Other encodings retain exact round trips by default.
 
 Each encoding has a page that lists its fonts, how it writes each standard mark, its rows and its conditions:
 
-- [standard](encodings/standard.md), the punctuation every encoding extends
+- [standard](encodings/standard.md), the punctuation included in every encoding
 - [aelwythi-semaron](encodings/aelwythi-semaron.md)
-- [chalish-ceremonial](encodings/chalish-ceremonial.md), the Ch'alish ceremonial codage
-- [chalish-common](encodings/chalish-common.md), the Ch'alish codage
 - [chalish-pilam](encodings/chalish-pilam.md)
 - [chalish-pilam-ceremonial](encodings/chalish-pilam-ceremonial.md)
 - [helonika](encodings/helonika.md)

@@ -184,48 +184,6 @@ class Refusal(Case):
         )
 
 
-class Extends(Case):
-    def base(self, rows, name="base"):
-        return self.write({"name": name, "rows": rows})
-
-    def test_the_rows_are_the_base_s_unstated_rows_then_the_encoding_s(self):
-        self.base([[".", E.mark(".")], ["?", E.mark("?")]])
-        enc = self.encoding([["a", "A"], [".", "P"]], extends="base")
-        self.assertEqual([r.source for r in enc.rows], ["?", "a", "."])
-        self.assertEqual(E.encode(enc, "a. a?"), "AP A" + E.mark("?"))
-        self.assertEqual(E.decode(enc, "AP A" + E.mark("?")), "a. a?")
-
-    def test_a_row_of_the_encoding_replaces_every_base_row_of_its_from(self):
-        self.base([["-", E.mark("-")]])
-        enc = self.encoding([{"from": "-", "to": " " + E.mark("-") + E.END_MARK, "at": "end"},
-                             ["-", E.mark("-")]], extends="base")
-        self.assertEqual([r.source for r in enc.rows], ["-", "-"])
-
-    def test_an_inherited_row_reports_at_the_base_file(self):
-        base = self.base([["?", "X"]])
-        path = self.write({"name": "test", "fonts": ["f"], "extends": "base", "rows": [["a", "X"]]})
-        with self.assertRaises(E.EncodingError) as caught:
-            E.load(path)
-        self.assertIn(f"writes what the row at {E._shown(base)} rows.0 writes", str(caught.exception))
-
-    def test_a_missing_base_is_a_fault_at_extends(self):
-        path = self.write({"name": "test", "fonts": ["f"], "extends": "absent", "rows": []})
-        with self.assertRaises(E.EncodingError) as caught:
-            E.load(path)
-        self.assertIn("`absent` is not a base file beside the encoding", str(caught.exception))
-
-    def test_a_base_file_takes_only_name_and_rows(self):
-        self.write({"name": "base", "fonts": ["f"], "rows": []})
-        path = self.write({"name": "test", "fonts": ["f"], "extends": "base", "rows": []})
-        with self.assertRaises(E.EncodingError) as caught:
-            E.load(path)
-        self.assertIn("`fonts` is not a key of a base file", str(caught.exception))
-
-    def test_the_standard_is_not_applied_alone(self):
-        with self.assertRaises(E.EncodingError) as caught:
-            E.load("standard")
-        self.assertIn("is not applied alone", str(caught.exception))
-
 
 class Decoding(Case):
     def test_the_longest_to_is_read_first(self):
@@ -392,7 +350,7 @@ class Loading(Case):
             self.faults(path),
             [
                 f"{shown}:9:5: error: `colour` is not an encoding key; an encoding takes "
-                "`name`, `kind`, `fonts`, `extends`, `codage`, `accepts`, `separator`, `vowels`, `rows`, `faces`, `roundTrip`, `groupCase`",
+                "`name`, `kind`, `fonts`, `codes`, `controls`, `accepts`, `separator`, `vowels`, `rows`, `faces`, `roundTrip`, `groupCase`",
                 f'{shown}:5:44: error: `before` is `vowel` or `consonant`, not "vowl"',
                 f"{shown}:6:9: error: needs `from`, the one or more characters the row matches",
                 f"{shown}:7:9: error: a row written as a list is two strings, `[from, to]`",
@@ -501,9 +459,11 @@ class Whitespace(Case):
     def test_whitespace_in_a_span_is_not_a_separator(self):
         self.assertEqual(E.canonical(self.spaced, "a  \u27e6ONE   TWO\u27e7  a"), "a \u27e6ONE   TWO\u27e7 a")
 
-    def test_only_space_tab_newline_and_return_are_whitespace(self):
-        self.assertEqual(self.position(E.encode, self.spaced, "a\u00a0a"), (1, 2))
-        self.assertEqual(self.position(E.encode, self.spaced, "a\u000ba"), (1, 2))
+    def test_every_space_separator_and_ascii_whitespace_is_normalized(self):
+        for char in E.WHITESPACE:
+            self.assertEqual(E.encode(self.spaced, "a" + char + "a"), "A A")
+        for char in ["\u0085", "\u2028", "\u2029"]:
+            self.assertEqual(self.position(E.encode, self.spaced, "a" + char + "a"), (1, 2))
 
     def test_a_newline_is_only_whitespace_beside_the_verse_marks(self):
         self.assertEqual(E.encode(self.spaced, "a/\na//\n\na"), "A| A|| A")
@@ -532,7 +492,7 @@ class Whitespace(Case):
         self.assertEqual(self.position(E.encode, E.Encoding.names_only("f"), " "), (1, 1))
 
     def test_the_shared_punctuation_assignments(self):
-        std = E.load_base(os.path.join(E.ENCODINGS, "standard.json"))
+        std = E.load_base(os.path.join(ROOT, "tools", "encodings", "standard.json"))
         targets = {r.source: r.target for r in std.rows}
         for source, point in [(".", 0xE0100), ("?", 0xE0101), ("‼", 0xE0102),
                               ("!", 0xE0103), ("^", 0xE0104), (",", 0xE0105),
@@ -571,70 +531,55 @@ class Whitespace(Case):
 
 
 class Literal(Case):
-    """The literal immutable markers."""
-
-    def setUp(self):
-        super().setUp()
-        self.write({"name": "codes", "kind": "codage", "fonts": ["f"], "rows": [
-            ["ONE", "\U000F0001"], ["TWO", "\U000F0002"], ["-", E.mark("-")], ["(", "\U000F0003"], [")", "\U000F0004"],
-        ]})
-        self.write({"name": "script", "fonts": ["f"], "codage": "codes", "rows": [
-            ["a", "A"], ["b", "B"],
-        ]})
-        self.write({"name": "plain", "fonts": ["f"], "rows": [
-            ["a", "A"], ["b", "B"],
-        ]})
-        self.enc = E.load(os.path.join(self.dir, "script.json"))
-        self.codes = self.enc.codage
-        self.plain = E.load(os.path.join(self.dir, "plain.json"))
-        self.open, self.close = E.mark("\u27e6"), E.mark("\u27e7")
-
+    """Inline codage rows and universal scalar forms."""
     def position(self, run, enc, text):
         with self.assertRaises(E.EncodingError) as caught:
             run(enc, text)
         return caught.exception.line, caught.exception.column
 
-    def test_a_stated_codage_encodes_the_span_between_marker_marks(self):
-        self.assertEqual(
-            E.encode(self.enc, "a \u27e6ONE TWO\u27e7 b"),
-            "A " + self.open + "\U000F0001\U000F0002" + self.close + " B",
-        )
-        self.assertEqual(E.decode(self.enc, E.encode(self.enc, "a \u27e6ONE TWO\u27e7 b")),
-                         "a \u27e6ONE TWO\u27e7 b")
+    def setUp(self):
+        super().setUp()
+        self.open, self.close = E.mark(E.OPEN), E.mark(E.CLOSE)
+        self.enc = self.encoding([["a", "A"], ["b", "B"]], codes=[
+            ["ONE", "\U000F0001"], ["TWO", "\U000F0002"], ["-", E.mark("-")]])
 
-    def test_whitespace_in_a_span_only_separates_codes(self):
-        tidy = E.encode(self.enc, "\u27e6ONE TWO\u27e7")
-        for loose in ("\u27e6   ONE      TWO \n\t\u27e7", "\u27e6\nONE\tTWO\u27e7"):
-            self.assertEqual(E.encode(self.enc, loose), tidy)
-            self.assertEqual(E.decode(self.enc, tidy), "\u27e6ONE TWO\u27e7")
-        names = "\u27e6LATIN_SMALL_LETTER_I\n\n LATIN_SMALL_LETTER_I\u27e7"
-        self.assertEqual(E.encode(self.plain, names),
-                         E.encode(self.plain, "\u27e6LATIN_SMALL_LETTER_I LATIN_SMALL_LETTER_I\u27e7"))
-
-    def test_notation_joins_codes_without_spaces_and_decodes_that_way(self):
-        text = "\u27e6ONE-TWO(ONE)\u27e7"
+    def test_inline_codes_and_whitespace(self):
+        text = "a⟦ONE TWO⟧b"
         self.assertEqual(E.decode(self.enc, E.encode(self.enc, text)), text)
-        self.assertEqual(E.decode(self.enc, E.encode(self.enc, "\u27e6ONETWO\u27e7")), "\u27e6ONE TWO\u27e7")
+        self.assertEqual(E.encode(self.enc, "⟦ ONE\u00a0\tTWO ⟧"), E.encode(self.enc, "⟦ONE TWO⟧"))
 
-    def test_a_standard_mark_inside_a_span_is_refused_at_its_position(self):
-        self.assertEqual(self.position(E.encode, self.enc, "\u27e6ONE,TWO\u27e7"), (1, 5))
-        self.assertEqual(self.position(E.encode, self.enc, "a\n\u27e6ONE TWO?\u27e7"), (2, 9))
-        self.assertEqual(self.position(E.encode, self.plain, "\u27e6LATIN_SMALL_LETTER_I.\u27e7"), (1, 22))
+    def test_notation_and_concatenated_codes(self):
+        self.assertEqual(E.decode(self.enc, E.encode(self.enc, "⟦ONE-TWO⟧")), "⟦ONE-TWO⟧")
+        self.assertEqual(E.decode(self.enc, E.encode(self.enc, "⟦ONETWO⟧")), "⟦ONE TWO⟧")
 
-    def test_a_code_outside_the_markers_is_ordinary_roman(self):
-        self.assertEqual(self.position(E.encode, self.enc, "ONE"), (1, 1))
-        self.assertEqual(self.position(E.encode, self.enc, "a ONE"), (1, 3))
+    def test_no_names_outside_inline_codes(self):
+        for value in ["⟦LATIN_SMALL_LETTER_A⟧", "⟦ACCUTE⟧", "⟦one⟧"]:
+            with self.assertRaises(E.EncodingError): E.encode(self.enc, value)
+        self.assertEqual(E.decode(self.enc, E.encode(self.enc, "⟦U+0061⟧")), "⟦U+0061⟧")
 
-    def test_a_codage_is_not_a_whole_text_encoding(self):
-        with self.assertRaises(E.EncodingError) as caught:
-            E.load(os.path.join(self.dir, "codes.json"))
-        self.assertIn("is a codage", caught.exception.message)
+    def test_unmatched_nested_and_punctuation_positions(self):
+        for text,where in [("a⟦",(1,2)), ("ab⟧",(1,3)), ("⟦⟦⟧⟧",(1,2)),
+                           ("⟦ONE,TWO⟧",(1,5)), ("a\n⟦ONE TWO?⟧",(2,9)),
+                           ("a\nb ⟦ONE x⟧",(2,8))]:
+            with self.subTest(text=text), self.assertRaises(E.EncodingError) as caught:
+                E.encode(self.enc,text)
+            self.assertEqual((caught.exception.line,caught.exception.column),where)
+
+    def test_markers_and_pieces(self):
+        self.assertEqual(E.mark(E.OPEN), "\U000E0112")
+        self.assertEqual(E.mark(E.CLOSE), "\U000E0113")
+        for text in ["⟦⟧", "ab⟦ONE⟧ab", "⟦U+10FFFD⟧"]:
+            output=E.encode(self.enc,text)
+            self.assertEqual(E.encode(self.enc,E.decode(self.enc,output)),output)
+            self.assertEqual("".join(piece[0] for piece in E.pieces(self.enc,text)),text)
+
 
     def test_a_character_outside_accepts_is_refused_though_a_row_exists(self):
         path = self.write({"name": "narrow", "fonts": ["f"], "accepts": ["a"], "rows": [["a", "A"], ["b", "B"]]})
         enc = E.load(path)
         self.assertEqual(E.encode(enc, "aa"), "AA")
         self.assertEqual(self.position(E.encode, enc, "ab"), (1, 2))
+
 
     def test_accepts_takes_characters_and_ranges(self):
         path = self.write({"name": "wide", "fonts": ["f"], "accepts": ["a-c", "-"],
@@ -646,71 +591,24 @@ class Literal(Case):
             E.load(bad)
         self.assertEqual(len(caught.exception.faults), 2)
 
+
     def test_accepts_is_required(self):
         path = self.write(None, name="bare", text='{"name": "bare", "fonts": ["f"], "rows": [["a", "A"]]}')
         with self.assertRaises(E.EncodingError) as caught:
             E.load(path)
         self.assertIn("needs `accepts`", caught.exception.message)
 
-    def test_a_font_with_no_encoding_accepts_text_only_between_the_markers(self):
-        enc = E.Encoding.names_only("some-font")
-        self.assertEqual(E.encode(enc, "\u27e6LATIN_SMALL_LETTER_A\u27e7"), self.open + "a" + self.close)
-        self.assertEqual(E.decode(enc, self.open + "a" + self.close), "\u27e6LATIN_SMALL_LETTER_A\u27e7")
-        for text, at in (("a", (1, 1)), (" ", (1, 1)), ("\u27e6LATIN_SMALL_LETTER_A\u27e7.", (1, 23))):
-            self.assertEqual(self.position(E.encode, enc, text), at)
-        self.assertEqual(self.position(E.decode, enc, "a"), (1, 1))
 
-    def test_the_marker_marks_are_the_marks_of_the_markers(self):
-        self.assertEqual(self.open, "\U000E0112")
-        self.assertEqual(self.close, "\U000E0113")
-        for enc in (self.enc, self.plain):
-            self.assertEqual(E.encode(enc, "\u27e6\u27e7"), self.open + self.close)
+    def test_a_row_may_not_state_a_marker(self):
+        for row in (["\u27e6", "X"], {"from": "a\u27e7", "to": "X"}):
+            path = self.write({"name": "bad", "fonts": ["f"], "rows": [row]})
+            with self.assertRaises(E.EncodingError) as caught:
+                E.load(path)
+            self.assertIn("literal immutable marker", caught.exception.message)
 
-    def test_without_a_codage_a_code_is_a_character_name(self):
-        text = "a\u27e6LATIN_SMALL_LETTER_A_WITH_ACUTE LATIN_SMALL_LETTER_I  LATIN_SMALL_LETTER_M\u27e7b"
-        self.assertEqual(E.encode(self.plain, text), "A" + self.open + "\u00e1im" + self.close + "B")
-        self.assertEqual(
-            E.decode(self.plain, E.encode(self.plain, text)),
-            "a\u27e6LATIN_SMALL_LETTER_A_WITH_ACUTE LATIN_SMALL_LETTER_I LATIN_SMALL_LETTER_M\u27e7b",
-        )
-
-    def test_a_name_with_a_space_in_it_is_written_with_underscores(self):
-        self.assertEqual(E.encode(self.plain, "\u27e6SPACE\u27e7"), self.open + " " + self.close)
-        self.assertEqual(E.decode(self.plain, self.open + " " + self.close), "\u27e6SPACE\u27e7")
-
-    def test_the_private_use_characters_are_named_by_the_names_table(self):
-        self.assertEqual(E.encode(self.plain, "\u27e6PIRZATH_LETTER_A\u27e7"), self.open + "\U000F0000" + self.close)
-        self.assertEqual(E.decode(self.plain, self.open + "\U000F0000" + self.close), "\u27e6PIRZATH_LETTER_A\u27e7")
-
-    def test_a_misspelled_or_lowercase_name_is_refused_at_its_position(self):
-        self.assertEqual(
-            self.position(E.encode, self.plain, "a\nb \u27e6LATIN_SMALL_LETTER_I ACCUTE\u27e7"), (2, 25))
-        self.assertEqual(self.position(E.encode, self.plain, "\u27e6latin_small_letter_i\u27e7"), (1, 2))
-        self.assertEqual(self.position(E.encode, self.plain, "\u27e6LATIN_SMALL_LETTER\u27e7"), (1, 2))
-
-    def test_a_character_with_no_name_is_refused_in_decoding(self):
-        self.assertEqual(self.position(E.decode, self.plain, self.open + "\U0010FFFD" + self.close),
-                         (1, len(self.open) + 1))
-
-    def test_spans_round_trip_with_mixed_content(self):
-        for enc, code in ((self.enc, "ONE"), (self.plain, "LATIN_SMALL_LETTER_I")):
-            pieces = "ab "
-            for text in (f"\u27e6{code}\u27e7", "\u27e6\u27e7", f"{pieces}\u27e6{code}\u27e7{pieces}",
-                         f"{pieces}\u27e6{code}\u27e7\u27e6{code}\u27e7 {pieces}",
-                         f"{pieces}\n\u27e6{code}\u27e7\n{pieces}"):
-                unicode = E.encode(enc, text)
-                self.assertEqual(E.decode(enc, unicode), E.canonical(enc, text))
-                self.assertEqual(E.encode(enc, E.decode(enc, unicode)), unicode)
-
-    def test_pieces_cover_the_markers_and_the_codes(self):
-        got = E.pieces(self.enc, "a\u27e6ONE\u27e7")
-        self.assertEqual([f for f, _, _ in got], ["a", "\u27e6", "ONE", "\u27e7"])
-        self.assertEqual("".join(t for _, t, _ in got), E.encode(self.enc, "a\u27e6ONE\u27e7"))
-        got = E.pieces(self.plain, "\u27e6LATIN_SMALL_LETTER_I LATIN_SMALL_LETTER_I\u27e7")
-        self.assertEqual("".join(f for f, _, _ in got), "\u27e6LATIN_SMALL_LETTER_I LATIN_SMALL_LETTER_I\u27e7")
 
     def test_an_unmatched_or_nested_marker_is_refused_where_it_is(self):
-        for enc in (self.enc, self.plain):
+        for enc in (self.enc,):
             self.assertEqual(self.position(E.encode, enc, "a\u27e6"), (1, 2))
             self.assertEqual(self.position(E.encode, enc, "ab\u27e7"), (1, 3))
             self.assertEqual(self.position(E.encode, enc, "\u27e6\u27e6\u27e7\u27e7"), (1, 2))
@@ -720,27 +618,6 @@ class Literal(Case):
                 self.position(E.decode, enc, self.open + self.open + self.close + self.close),
                 (1, len(self.open) + 1),
             )
-
-    def test_a_character_the_stated_codage_refuses_is_placed_in_the_whole_text(self):
-        self.assertEqual(self.position(E.encode, self.enc, "a\nb \u27e6ONE x\u27e7"), (2, 8))
-        self.assertEqual(self.position(E.encode, self.enc, "\u27e6ONE\nx\u27e7"), (2, 1))
-        self.assertEqual(self.position(E.decode, self.enc, self.open + "\U0010FFFD" + self.close),
-                         (1, len(self.open) + 1))
-
-    def test_a_row_may_not_state_a_marker(self):
-        for row in (["\u27e6", "X"], {"from": "a\u27e7", "to": "X"}):
-            path = self.write({"name": "bad", "fonts": ["f"], "rows": [row]})
-            with self.assertRaises(E.EncodingError) as caught:
-                E.load(path)
-            self.assertIn("literal immutable marker", caught.exception.message)
-
-    def test_a_codage_names_an_encoding_beside_it_that_has_none_of_its_own(self):
-        for codage, message in (("missing", "is not a codage beside"), ("script", "is not a codage beside"),
-                                ("standard", "is not a codage beside")):
-            path = self.write({"name": "bad", "fonts": ["f"], "codage": codage, "rows": [["a", "A"]]})
-            with self.assertRaises(E.EncodingError) as caught:
-                E.load(path)
-            self.assertIn(message, caught.exception.message)
 
 
 class Command(Case):
@@ -755,13 +632,11 @@ class Command(Case):
             sys.stdin = old
         return status, out.getvalue(), err.getvalue()
 
-    def test_a_font_with_no_encoding_is_addressed_by_its_slug(self):
-        with mock.patch.object(E, "names", return_value=[]):
-            status, out, _ = self.run_main("--font", "teng-chou", "\u27e6LATIN_SMALL_LETTER_A\u27e7")
-            self.assertEqual((status, out), (0, E.mark("\u27e6") + "a" + E.mark("\u27e7") + "\n"))
-            status, out, err = self.run_main("--font", "teng-chou", "a")
-            self.assertEqual((status, out), (1, ""))
-            self.assertIn("the `teng-chou` font has no encoding", err)
+    def test_a_font_reads_its_published_encoding(self):
+        status, out, err = self.run_main("--font", "teng-chou", "⟦U+0061⟧")
+        self.assertEqual((status, out), (0, E.mark(E.OPEN) + "a" + E.mark(E.CLOSE) + "\n"))
+        status, out, err = self.run_main("--font", "teng-chou", "a")
+        self.assertEqual((status, out), (1, ""))
 
     def test_teng_chou_codes_separate_a_character_from_a_sign_by_case(self):
         enc = E.load("teng-chou")
@@ -777,7 +652,7 @@ class Command(Case):
     def test_the_names_are_encodings_and_the_codages_are_listed_apart(self):
         self.assertIn("zethu", E.names())
         self.assertNotIn("zethu-mdc", E.names())
-        self.assertEqual(E.names(kind="codage"), ["chalish-ceremonial", "chalish-common", "teng-chou-codes", "zethu-mdc"])
+        self.assertEqual(E.names(kind="codage"), [])
         self.assertEqual(E.for_font("khelathi-zethu-glyphs").name, "zethu")
 
     def test_encode_and_decode_by_path(self):

@@ -15,7 +15,7 @@ round-trips exactly. The tables come from the encoding file and the standard alo
 encoding is deterministic and structural, so a page names no setting.
 
 The ``standard.marks`` entry of ``tools/encoding_docs.json`` holds the meaning
-of each punctuation row in ``encodings/standard.json``. The authored standard
+of each punctuation row in ``tools/encodings/standard.json``. The authored standard
 page also describes its structural controls.
 
 ``tools/encoding_docs.json`` holds, for each encoding, a ``title``, an ``intro`` (a list of
@@ -163,14 +163,14 @@ def marks_section(enc, standard, meanings):
     lines = [
         "## Punctuation",
         "",
-        "This encoding extends the [standard roman encoding](standard.md), which every "
+        "This encoding includes the [standard roman punctuation](standard.md), which every "
         "language's roman shares. The table shows how this script writes each standard mark. "
         "A mark the script draws writes its glyph; a mark it does not draw writes the "
         "standard's invisible mark, the same in every encoding, so decoding restores it.",
         "",
     ]
     if enc.round_trip == "canonical":
-        lines[2] = ("This encoding inherits punctuation rows from standard.json, with the replacements "
+        lines[2] = ("This encoding contains its resolved punctuation rows, with the script-specific forms "
                     "listed below. A replacement may omit a mark; decoding then cannot restore it. "
                     "The shared assignments are defined in [standard.md](standard.md).")
     rows = []
@@ -219,8 +219,7 @@ def codage_page(enc, entry, fonts):
     lines.append("")
     lines += [
         "## Using it", "",
-        "A codage is a file of kind `codage`: it extends nothing and takes no text of its own. A script "
-        "encoding states it with `\"codage\": \"" + enc.name + "\"`, and its codes are written between `⟦` "
+        "A codage is a set of named sign rows included in an encoding. Its codes are written between `⟦` "
         "and `⟧`. Whitespace between codes only separates them, and decoding writes single spaces. Inside "
         "the markers only this codage's codes and notation are allowed, so a standard mark such as `,` is "
         "refused at its position. Outside them a code is ordinary roman. Asking for the codage as a "
@@ -238,7 +237,7 @@ def codage_page(enc, entry, fonts):
         lines += row_table(longer) + [""]
     else:
         lines += row_table(enc.own) + [""]
-    lines += [f"This page is written from `encodings/{enc.name}.json` by `tools/encoding_docs.py`.", ""]
+    lines += [f"This page is written from `tools/encodings/{enc.name}.json` by `tools/encoding_docs.py`.", ""]
     return "\n".join(lines)
 
 
@@ -293,20 +292,11 @@ def page(enc, entry, fonts, standard=None, meanings=None):
         lines += accepts_section(enc)
         lines += marks_section(enc, standard, meanings)
 
-    if standard is not None:
-        if enc.codage is None:
-            lines += ["## Literal spans", "",
-                      "`⟦` and `⟧` enclose character names, as the [standard](standard.md) describes: "
-                      "`⟦LATIN_SMALL_LETTER_A_WITH_ACUTE⟧` writes `á`. Whitespace between names only "
-                      "separates them.", ""]
-        else:
-            lines += ["## Literal spans", "",
-                      f"`⟦` and `⟧` enclose codes of the [{enc.codage.name} codage]({enc.codage.name}.md), "
-                      "which encodes and decodes the span, as the [standard](standard.md) describes. "
-                      "Only the codage's codes and its notation are allowed inside, no standard mark, "
-                      "and whitespace between codes only separates them. A code outside the markers is "
-                      "ordinary roman.", ""]
-
+    lines += ["## Literal spans", "",
+              "`⟦` and `⟧` enclose this encoding's own codes or `U+XXXX` code points: "
+              "`⟦U+00E1⟧` writes `á`. A scalar has four to six uppercase hexadecimal digits. "
+              "`controls.literalEscape` quotes literal open, close and escape controls inside the payload. The file's `codes` rows give its named signs and notation; whitespace between "
+              "codes only separates them. Other names and standard punctuation are refused.", ""]
     conditions = {(r.before, r.at) for r in enc.rows if r.conditioned}
     if enc.vowels or conditions:
         lines += ["## Vowels and conditions", ""]
@@ -381,7 +371,7 @@ def pages():
     with open(DATA, encoding="utf-8") as handle:
         data = json.load(handle)
     fonts = families()
-    standard = E.load_base(os.path.join(E.ENCODINGS, f"{E.STANDARD}.json"))
+    standard = E.load_base(os.path.join(ROOT, "tools", "encodings", f"{E.STANDARD}.json"))
     entry = data.get(E.STANDARD)
     if entry is None:
         raise SystemExit(f"{os.path.relpath(DATA)}: error: `{E.STANDARD}` has no entry")
@@ -400,13 +390,14 @@ def pages():
             raise SystemExit(f"{os.path.relpath(DATA)}: error: `{name}` has no entry")
         enc = E.load(name)
         out[os.path.join(E.ENCODINGS, f"{name}.md")] = page(enc, data[name], fonts, standard, meanings)
-    for name in E.names(kind="codage"):
+    for name in E.names(os.path.join(ROOT, "tools", "encodings"), kind="codage"):
         if name not in data:
             raise SystemExit(f"{os.path.relpath(DATA)}: error: `{name}` has no entry")
-        enc = E.load(os.path.join(E.ENCODINGS, f"{name}.json"), _codage=True)
+        source = os.path.join(ROOT, "tools", "encodings", f"{name}.json")
+        enc = E.Encoding(json.load(open(source, encoding="utf-8")), source)
         out[os.path.join(E.ENCODINGS, f"{name}.md")] = codage_page(enc, data[name], fonts)
     for name in data:
-        if name not in E.names() + E.names(kind="codage") and name != E.STANDARD:
+        if name not in E.names() + E.names(os.path.join(ROOT, "tools", "encodings"), kind="codage") and name != E.STANDARD:
             raise SystemExit(f"{os.path.relpath(DATA)}: error: `{name}` is not an encoding")
     return out
 

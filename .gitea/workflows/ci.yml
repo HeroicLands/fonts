@@ -68,7 +68,8 @@ jobs:
                   .venv/bin/pip install -r requirements.txt
             - name: Check the encodings
               run: |
-                  python3.13 -m unittest tools/encode_test.py
+                  python3.13 -m unittest tools/encode_test.py tools/self_contained_test.py
+                  python3.13 tools/publish_encodings.py --check
                   python3.13 tools/encodings_guard.py
                   python3.13 tools/encoding_docs.py --check
                   python3.13 tools/khelathi-zethu-glyphs/encoding_file.py --check

@@ -28,11 +28,11 @@ roman = encode.decode("veldikko", text)
 
 ## Accepted characters
 
-This encoding accepts `a-z`, `-`, `á`, `â`, `é`, `ê`, `ë`, `í`, `î`, `ó`, `ô`, `ú`, `û`, `ý`, `ě`, `ŷ`, `ǎ`, `ǐ`, `ǒ`, `ǔ`, `◌́`, `◌̂`, `◌̈`, `◌̌`, `ấ`, `ế`, `ố`, and the standard's marks and whitespace. Any other character is refused at its line and column.
+This encoding accepts `a-z`, `-`, `á`, `â`, `é`, `ê`, `ë`, `í`, `î`, `ó`, `ô`, `ú`, `û`, `ý`, `ě`, `ŷ`, `ǎ`, `ǐ`, `ǒ`, `ǔ`, `◌́`, `◌̂`, `◌̈`, `◌̌`, `ấ`, `ế`, `ố`, (space), `!`, `,`, `.`, `/`, `?`, `^`, `{`, `}`, `«`, `»`, `—`, `…`, `‹`, `›`, `‼`, and the standard's marks and whitespace. Any other character is refused at its line and column.
 
 ## Punctuation
 
-This encoding extends the [standard roman encoding](standard.md), which every language's roman shares. The table shows how this script writes each standard mark. A mark the script draws writes its glyph; a mark it does not draw writes the standard's invisible mark, the same in every encoding, so decoding restores it.
+This encoding includes the [standard roman punctuation](standard.md), which every language's roman shares. The table shows how this script writes each standard mark. A mark the script draws writes its glyph; a mark it does not draw writes the standard's invisible mark, the same in every encoding, so decoding restores it.
 
 | Mark | Meaning | Written | Code points |
 | --- | --- | --- | --- |
@@ -66,7 +66,7 @@ A character that no row matches is refused: `encode.py` reports it with its line
 
 ## Literal spans
 
-`⟦` and `⟧` enclose character names, as the [standard](standard.md) describes: `⟦LATIN_SMALL_LETTER_A_WITH_ACUTE⟧` writes `á`. Whitespace between names only separates them.
+`⟦` and `⟧` enclose this encoding's own codes or `U+XXXX` code points: `⟦U+00E1⟧` writes `á`. A scalar has four to six uppercase hexadecimal digits. `controls.literalEscape` quotes literal open, close and escape controls inside the payload. The file's `codes` rows give its named signs and notation; whitespace between codes only separates them. Other names and standard punctuation are refused.
 
 ## Vowels and conditions
 
@@ -86,6 +86,21 @@ The rows below are the rows of a single character, then a few longer rows of eac
 
 | Roman | Character | Code points | When |
 | --- | --- | --- | --- |
+| `.` | `󠄀` | U+E0100 | always |
+| `?` | `󠄁` | U+E0101 | always |
+| `‼` | `󠄂` | U+E0102 | always |
+| `!` | `󠄃` | U+E0103 | always |
+| `^` | `󠄄` | U+E0104 | at the beginning of a line |
+| `,` | `󠄅` | U+E0105 | always |
+| `«` | `󠄆` | U+E0106 | always |
+| `»` | `󠄇` | U+E0107 | always |
+| `‹` | `󠄈` | U+E0108 | always |
+| `›` | `󠄉` | U+E0109 | always |
+| `—` | `󠄊` | U+E010A | always |
+| `…` | `󠄋` | U+E010B | always |
+| `/` | `󠄌` | U+E010C | always |
+| `{` | `󠄐` | U+E0110 | always |
+| `}` | `󠄑` | U+E0111 | always |
 | `x` | `𞵘𞵔󠅘󠇯` | U+1ED58 U+1ED54 U+E0158 U+E01EF | always |
 | `p` | `𞵐` | U+1ED50 | always |
 | `v` | `𞵑` | U+1ED51 | always |
@@ -167,6 +182,7 @@ The rows below are the rows of a single character, then a few longer rows of eac
 | `ë` | `𞵶` | U+1ED76 | always |
 | `j` | `𞵝𞵵󠅊󠇯` | U+1ED5D U+1ED75 U+E014A U+E01EF | at the start of a word |
 | `j` | `𞵵󠅊󠇯` | U+1ED75 U+E014A U+E01EF | always |
+| (space) | (space) | U+0020 | always |
 
 ### Longer rows
 

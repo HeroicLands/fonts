@@ -1,6 +1,6 @@
 # Copyright (c) 2026 Tom Rodriguez ("Toasty") — <toasty@heroiclands.org>
 # SPDX-License-Identifier: OFL-1.1
-"""Write the Chalish Common codage, ``encodings/chalish-common.json``, and the Ch'alish script encoding that states it, ``encodings/chalish-pilam.json``, from encoding.json.
+"""Write the Chalish Common codage, ``tools/encodings/chalish-common.json``, and the Ch'alish script encoding that states it, ``tools/encodings/chalish-pilam.json``, from encoding.json.
 
     .venv/bin/python tools/chalish-pilam/codage.py           # write the file
     .venv/bin/python tools/chalish-pilam/codage.py --check   # check it
@@ -10,7 +10,7 @@ Every glyph of Chalish Pilam Common has one code: a concept glyph its name in ca
 separated by whitespace, which only separates and writes nothing. The codage is a file of kind
 ``codage``: it extends nothing and is reached only between the literal markers of
 ``chalish-pilam``. The script encoding extends the standard roman encoding,
-``encodings/standard.json``, and accepts nothing else as roman: the script marks no
+``tools/encodings/standard.json``, and accepts nothing else as roman: the script marks no
 sentences, pauses or speech, so every standard mark keeps the standard's invisible mark, and
 its separator is one space, an empty cell. The files are generated, so they never drift
 from the font: run this after a glyph is added.
@@ -23,8 +23,8 @@ from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parent.parent
-OUT = ROOT / "encodings" / "chalish-common.json"
-SCRIPT = ROOT / "encodings" / "chalish-pilam.json"
+OUT = ROOT / "tools" / "encodings" / "chalish-common.json"
+SCRIPT = ROOT / "tools" / "encodings" / "chalish-pilam.json"
 sys.path.insert(0, str(HERE))
 sys.path.insert(0, str(ROOT))
 import encode as E  # noqa: E402

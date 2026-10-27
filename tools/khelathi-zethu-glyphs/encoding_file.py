@@ -1,6 +1,6 @@
 # Copyright (c) 2026 Tom Rodriguez ("Toasty") — <toasty@heroiclands.org>
 # SPDX-License-Identifier: OFL-1.1
-"""Write the Zethu codage, ``encodings/zethu-mdc.json``, and the Zethu script encoding that states it, ``encodings/zethu.json``, from encoding.json and controls.json.
+"""Write the Zethu codage, ``tools/encodings/zethu-mdc.json``, and the Zethu script encoding that states it, ``tools/encodings/zethu.json``, from encoding.json and controls.json.
 
     python3 tools/khelathi-zethu-glyphs/encoding_file.py           # write the file
     python3 tools/khelathi-zethu-glyphs/encoding_file.py --check   # check it
@@ -13,7 +13,7 @@ the vertical joiner, ``*`` the horizontal joiner, ``[ts]``, ``[bs]``, ``[te]`` a
 and decoding restores it. The codage is a file of kind ``codage``: it extends nothing, allows only
 its codes and its notation, and is reached only between the literal markers of ``zethu``.
 
-The script encoding ``zethu`` extends the standard roman encoding, ``encodings/standard.json``,
+The script encoding ``zethu`` extends the standard roman encoding, ``tools/encodings/standard.json``,
 and accepts nothing else as roman: Khelathi words are written by the language-aware encoder, and
 a code is read only between ``⟦`` and ``⟧``. The script has no spaces, its signs set directly
 beside each other, so its separator is empty: whitespace in the roman writes nothing, and no
@@ -28,8 +28,8 @@ from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parent.parent
-OUT = ROOT / "encodings" / "zethu-mdc.json"
-SCRIPT = ROOT / "encodings" / "zethu.json"
+OUT = ROOT / "tools" / "encodings" / "zethu-mdc.json"
+SCRIPT = ROOT / "tools" / "encodings" / "zethu.json"
 sys.path.insert(0, str(ROOT))
 import encode as E  # noqa: E402
 

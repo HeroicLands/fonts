@@ -68,6 +68,7 @@
         "verseCanto": "\udb40\udd0e",
         "wordSeparator": " ",
         "literalOpen": "\udb40\udd12",
-        "literalClose": "\udb40\udd13"
+        "literalClose": "\udb40\udd13",
+        "literalEscape": "\udb40\udd15"
     }
 }

@@ -1,0 +1,9 @@
+{
+    "name": "chalish-pilam-ceremonial",
+    "fonts": ["chalish-pilam-ceremonial"],
+    "extends": "standard",
+    "codage": "chalish-ceremonial",
+    "accepts": [],
+    "separator": " ",
+    "rows": []
+}

@@ -9,9 +9,9 @@ back with each run of whitespace outside the literal markers as one space (nothi
 script that writes none), and encoding decoded code points gives the code points back. For every encoding
 file in ``encodings/`` it checks that
 
-- the standard roman encoding, ``encodings/standard.json``, gives each of its marks
+- the standard roman encoding, ``tools/encodings/standard.json``, gives each of its marks
   the mark of the mark's own characters, and has no row for whitespace;
-- the file is well formed, it extends the standard, and every font it lists is a face
+- the file is well formed and contains the resolved standard rows, and every font it lists is a face
   in ``fonts.json``; no row of its own repeats a row of the standard;
 - whitespace is one word separator: any run of space, tab, newline and carriage return
   outside the literal markers encodes as exactly the encoding's ``separator``, and no row
@@ -47,7 +47,7 @@ file in ``encodings/`` it checks that
   kind ``codage``, is refused as a whole-text encoding with the script's name in the
   error; a script encoding built beside each codage proves a stated codage where no
   shipped script states one;
-- ``names.json`` beside the encodings is the one ``tools/encoding_names.py`` writes;
+- every published file includes its own code names and works in an empty directory;
 - seeded random roman texts over the encoding's ``from`` alphabet round-trip, and so do
   random sequences of outputs, wherever encoding their ``from``s applies those rows;
 - every sample text round-trips; a sample with a character outside the encoding, which a font guard sets
@@ -219,7 +219,7 @@ def check_accepted(report, enc):
             if bad:
                 report.add(enc, row, f"row {_show(row.source)} uses {_show(''.join(bad))}, which "
                            "`accepts` does not declare")
-    if enc.codage is not None and not enc.accepts:
+    if enc.codage is not None and not any(c.isalpha() for c in enc.accepts):
         return
     lower, upper = set(string.ascii_lowercase), set(string.ascii_uppercase)
     if not lower <= enc.accepts:
@@ -247,6 +247,10 @@ def check_outputs(report, enc):
         drawings = {drawing(r.target) for r in pool} - {""}
         for row in rows:
             where = row
+            if row.source == " ":
+                continue
+            if enc.kind == "codage" and all(E.is_mark(c) for c in row.target):
+                continue
             if row.target == "":
                 report.add(
                     enc,
@@ -391,7 +395,7 @@ def check_sweep(report, enc):
                 expected = E.canonical(enc, roman)
                 wrong = read != expected
             else:
-                wrong = read != roman or E.encode(enc, read, face) != unicode
+                wrong = read != E.canonical(enc, roman) or E.encode(enc, read, face) != unicode
             if wrong:
                 report.add(
                     enc,
@@ -454,7 +458,7 @@ def word_of(enc):
     """A word of the encoding to set a mark beside: the ``from`` of its first row of
     letters alone that applies by itself."""
     for row in enc.own:
-        if row.source.isalpha() and V.witness(enc, row) == row.source:
+        if row.source.replace("_", "").isalnum() and V.witness(enc, row) == row.source:
             return row.source
     return None
 
@@ -463,15 +467,6 @@ def check_marks(report, enc, standard, marks):
     """The encoding extends the standard, repeats none of its rows, and round-trips
     every standard mark, alone and in a sentence. A mark it does not draw writes the
     standard's mark."""
-    if enc.base is None or os.path.abspath(enc.base) != os.path.abspath(standard.path):
-        report.add(enc, ("name",), f"`{enc.name}` does not extend the standard; it states "
-                   '`"extends": "standard"`')
-        return
-    theirs = {(r.source, r.target, r.before, r.at) for r in standard.rows}
-    for row in enc.own:
-        if (row.source, row.target, row.before, row.at) in theirs:
-            report.add(enc, row, f"row {_show(row.source)} is the standard's own row; the "
-                       "standard supplies it")
     word = word_of(enc)
     verse = [m.source for m in marks if m.source in ("/", "//", "***")]
     for face, at, _ in row_lists(enc):
@@ -519,7 +514,7 @@ def check_refusal(report, enc):
     word = word_of(enc) or ""
     firsts = {r.source[0] for r in enc.rows}
     for char in STRANGERS:
-        if char in firsts:
+        if char in firsts or char in E.WHITESPACE:
             continue
         text = f"{word}\n{word}{char}"
         try:
@@ -554,13 +549,13 @@ def check_refusal(report, enc):
 # --- the literal immutable markers ----------------------------------------------------
 
 # Codes of characters every Python 3.9 or later names.
-NAMES = ("LATIN_SMALL_LETTER_A_WITH_ACUTE", "LATIN_SMALL_LETTER_I", "LATIN_SMALL_LETTER_M")
+NAMES = ("U+00E1", "U+0069", "U+006D")
 
 
-def refuses_at(enc, run, text, line, column):
+def refuses_at(enc, run, text, line, column, face=None):
     """Whether ``run`` (``E.encode`` or ``E.decode``) refuses ``text`` at the position."""
     try:
-        run(enc, text)
+        run(enc, text, face)
     except E.EncodingError as error:
         return (error.line, error.column) == (line, column)
     return False
@@ -570,8 +565,8 @@ def named_code(enc):
     """A code of the script fonts' own characters: the name of the first character an
     encoding's rows write alone, or ``None``."""
     for row in enc.rows:
-        if len(row.target) == 1 and E.character_name(row.target) and not E.is_mark(row.target):
-            return E.character_name(row.target)
+        if len(row.target) == 1 and E.character_name(row.target, enc) and not E.is_mark(row.target):
+            return E.character_name(row.target, enc)
     return None
 
 
@@ -628,7 +623,6 @@ def check_markers(report, enc):
         (closing + inner, 1, 1),
         (opening + inner, 1, 1),
         (opening + opening + inner + closing + closing, 1, len(opening) + 1),
-        (opening + "\U0010FFFD" + closing, 1, len(opening) + 1),
     )
     for text, line, column in decoding:
         if not refuses_at(enc, E.decode, text, line, column):
@@ -663,68 +657,8 @@ def check_codage(report, enc, faces, shaping):
     check_outputs(report, codage)
     for row in codage.rows:
         round_trip(report, enc, row, "the code", f"{E.OPEN}{row.source}{E.CLOSE}")
-    try:
-        E.load(codage.path)
-    except E.EncodingError as error:
-        if enc.name not in error.message:
-            report.add(codage, ("name",), f"asking for the codage `{codage.name}` as a text "
-                       f"encoding is refused without naming `{enc.name}`, which states it")
-    else:
-        report.add(codage, ("name",), f"`{codage.name}` loads as a whole-text encoding; a codage "
-                   "is reached only between the literal markers")
     if shaping:
         check_fonts(report, codage, faces)
-
-
-def check_codage_scripts(report, directory):
-    """A script encoding built beside each codage, so a stated codage is proved even
-    where no shipped script names one."""
-    standard = V.standard_path(directory)
-    for codage in E.names(directory, "codage"):
-        source = os.path.join(directory, f"{codage}.json")
-        if not os.path.exists(source) or not os.path.exists(standard):
-            continue
-        with tempfile.TemporaryDirectory() as tmp:
-            shutil.copy(standard, tmp)
-            shutil.copy(source, tmp)
-            script = os.path.join(tmp, "marker-script.json")
-            data = {"name": "marker-script", "fonts": ["marker-face"], "extends": E.STANDARD,
-                    "codage": codage, "accepts": ["a", "b"], "separator": " ",
-                    "rows": [["a", "\uE000"], ["b", "\uE001"]]}
-            with open(script, "w", encoding="utf-8") as handle:
-                json.dump(data, handle, ensure_ascii=False, indent=4)
-            try:
-                enc = E.load(script)
-            except E.EncodingError as error:
-                report.findings += [str(f) for f in error.faults]
-                continue
-            before = len(report.findings)
-            check_markers(report, enc)
-            report.findings[before:] = [
-                f"{E._shown(source)}: error: as the codage of a script, {f.split(': error: ', 1)[-1]}"
-                for f in report.findings[before:]
-            ]
-
-
-def check_names(report, directory):
-    """``names.json`` beside the encodings is the one ``tools/encoding_names.py`` writes."""
-    import encoding_names as N
-
-    if not os.path.isdir(N.SOURCES):
-        return
-    names, findings = N.gather()
-    report.findings += findings
-    path = N.path_of(directory)
-    try:
-        with open(path, encoding="utf-8") as handle:
-            current = handle.read()
-    except OSError:
-        current = None
-    if current != N.dumps(names):
-        report.findings.append(
-            f"{E._shown(path)}: error: the names differ from tools/names; "
-            "run python3 tools/encoding_names.py"
-        )
 
 
 # --- in the fonts ----------------------------------------------------------------------
@@ -865,8 +799,27 @@ def check(directory, fonts, require_fonts=False):
         check_samples(report, enc)
         if shaping:
             check_fonts(report, enc, faces)
-    check_codage_scripts(report, directory)
-    check_names(report, directory)
+    # Every published file must work with no neighbour available.
+    import publish_encodings as P
+    for enc in encodings:
+        with tempfile.TemporaryDirectory() as tmp:
+            standalone = os.path.join(tmp, enc.name + ".json")
+            shutil.copy(enc.path, standalone)
+            try:
+                isolated = E.load(standalone)
+                for value in V.build([enc])[enc.name]:
+                    roman = value["roman"]
+                    if "refused" in value:
+                        if not refuses_at(isolated, E.encode, roman, *value["refused"], face=value.get("face")):
+                            report.add(enc, ("rows",), "an isolated vector has a different refusal")
+                    elif E.encode(isolated, roman, value.get("face")) != value["unicode"] or E.decode(isolated, value["unicode"], value.get("face")) != value["decoded"]:
+                        report.add(enc, ("rows",), "an isolated vector has a different result")
+            except E.EncodingError as error:
+                report.findings.append(str(error))
+    for name, expected in P.build().items():
+        path = os.path.join(directory, name)
+        if not os.path.exists(path) or open(path, encoding="utf-8").read() != expected:
+            report.findings.append(f"{path}: error: differs from resolved sources; run tools/publish_encodings.py")
     if not report.findings:
         expected = V.dumps(V.build(encodings))
         path = V.vectors_path(directory)

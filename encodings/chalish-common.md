@@ -8,7 +8,7 @@ Chalish Pilam Common is a logographic script in which each glyph records a conce
 
 ## Using it
 
-A codage is a file of kind `codage`: it extends nothing and takes no text of its own. A script encoding states it with `"codage": "chalish-common"`, and its codes are written between `⟦` and `⟧`. Whitespace between codes only separates them, and decoding writes single spaces. Inside the markers only this codage's codes and notation are allowed, so a standard mark such as `,` is refused at its position. Outside them a code is ordinary roman. Asking for the codage as a whole-text encoding is an error that names the script encoding to use.
+A codage is a set of named sign rows included in an encoding. Its codes are written between `⟦` and `⟧`. Whitespace between codes only separates them, and decoding writes single spaces. Inside the markers only this codage's codes and notation are allowed, so a standard mark such as `,` is refused at its position. Outside them a code is ordinary roman. Asking for the codage as a whole-text encoding is an error that names the script encoding to use.
 
 ## Rows
 
@@ -110,4 +110,4 @@ A codage is a file of kind `codage`: it extends nothing and takes no text of its
 | `DEER` | `󳁥` | U+F3065 |
 | `MASK` | `󳁦` | U+F3066 |
 
-This page is written from `encodings/chalish-common.json` by `tools/encoding_docs.py`.
+This page is written from `tools/encodings/chalish-common.json` by `tools/encoding_docs.py`.

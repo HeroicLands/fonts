@@ -8,7 +8,7 @@ Teng Chou is a logographic script of the Tantsou. This codage names each charact
 
 ## Using it
 
-A codage is a file of kind `codage`: it extends nothing and takes no text of its own. A script encoding states it with `"codage": "teng-chou-codes"`, and its codes are written between `⟦` and `⟧`. Whitespace between codes only separates them, and decoding writes single spaces. Inside the markers only this codage's codes and notation are allowed, so a standard mark such as `,` is refused at its position. Outside them a code is ordinary roman. Asking for the codage as a whole-text encoding is an error that names the script encoding to use.
+A codage is a set of named sign rows included in an encoding. Its codes are written between `⟦` and `⟧`. Whitespace between codes only separates them, and decoding writes single spaces. Inside the markers only this codage's codes and notation are allowed, so a standard mark such as `,` is refused at its position. Outside them a code is ordinary roman. Asking for the codage as a whole-text encoding is an error that names the script encoding to use.
 
 ## Rows
 
@@ -320,4 +320,4 @@ A codage is a file of kind `codage`: it extends nothing and takes no text of its
 | `wo` | `󲁕` | U+F2055 |
 | `n` | `󲁖` | U+F2056 |
 
-This page is written from `encodings/teng-chou-codes.json` by `tools/encoding_docs.py`.
+This page is written from `tools/encodings/teng-chou-codes.json` by `tools/encoding_docs.py`.

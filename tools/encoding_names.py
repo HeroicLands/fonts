@@ -1,6 +1,6 @@
 # Copyright (c) 2026 Tom Rodriguez ("Toasty") — <toasty@heroiclands.org>
 # SPDX-License-Identifier: OFL-1.1
-"""Write ``encodings/names.json``, the names of the script fonts' characters.
+"""Write ``tools/encodings/names.json``, the names of the script fonts' characters.
 
     python3 tools/encoding_names.py           # write the file
     python3 tools/encoding_names.py --check   # fail where the file differs
@@ -8,7 +8,7 @@
 ``encode.py`` reads a code between the literal immutable markers as a character's name.
 The names of the private-use characters are those of ``tools/names/<script>.json``, which
 the charts and the code point tables read; this file gathers them into one table that
-ships beside the encodings, since ``tools/`` is not shipped. A code point or a name stated
+feeds the publication generator. Each published encoding carries only its own names. A code point or a name stated
 in two scripts is a finding. It runs under any Python 3.9 or later with the standard
 library alone. A finding is ``file:line:column: error: message`` and the exit status is 1.
 """
@@ -52,7 +52,7 @@ def dumps(names):
     return "{\n" + ",\n".join(lines) + "\n}\n"
 
 
-def path_of(directory=E.ENCODINGS):
+def path_of(directory=os.path.join(HERE, "encodings")):
     return os.path.join(directory, E.NAMES + ".json")
 
 

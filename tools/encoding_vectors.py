@@ -145,13 +145,13 @@ def marker_texts(enc):
         )
         bad = "\u2603"
     else:
-        codes = "LATIN_SMALL_LETTER_A_WITH_ACUTE LATIN_SMALL_LETTER_I"
+        codes = "U+00E1 U+0069"
         bad = "ACCUTE"
     if codes is None:
         return []
     word = next((r.source for r in enc.own if r.source.isalpha() and witness(enc, r) == r.source), "")
     span = f"{E.OPEN}{codes}{E.CLOSE}"
-    texts = [span, f"{word} {span} {word}", f"{E.OPEN}{codes}", E.CLOSE,
+    texts = [f"{E.OPEN}U+E0112 U+E0113 U+E0115 U+E015B{E.CLOSE}", f"{E.OPEN}U+E0112{E.CLOSE}", f"{E.OPEN}U+E0113{E.CLOSE}", f"{E.OPEN}U+E0115{E.CLOSE}", f"{E.OPEN}U+E015B{E.CLOSE}", f"{E.OPEN}U+00E1 U+0069{E.CLOSE}", f"{E.OPEN}U+110000{E.CLOSE}", f"{E.OPEN}U+D800{E.CLOSE}", f"{E.OPEN}U+00e1{E.CLOSE}", f"{E.OPEN}LATIN_SMALL_LETTER_A_WITH_ACUTE{E.CLOSE}", "\u2028", span, f"{word} {span} {word}", f"{E.OPEN}{codes}", E.CLOSE,
              f"{E.OPEN}{E.OPEN}{codes}{E.CLOSE}{E.CLOSE}", f"{E.OPEN}{codes} {bad}{E.CLOSE}",
              # whitespace only separates codes, and decoding writes one space
              f"{E.OPEN}  {codes}\n\t  {codes} {E.CLOSE}",
@@ -176,7 +176,7 @@ def whitespace_texts(enc):
         unit = next((r.source for r in enc.own if r.source.isalpha() and witness(enc, r) == r.source), None)
     texts = [" ", "\n", "\t \r\n ", "///", "/***//", "//***/", "***"]
     if unit:
-        texts += [f"{unit} {unit}", f"{unit}      \t\t\n\t   {unit}", f"{unit}\r\n\r\n{unit}",
+        texts += [f"{unit} {unit}", f"{unit}\u00a0\u2003\t\v\f{unit}", f"{unit}      \t\t\n\t   {unit}", f"{unit}\r\n\r\n{unit}",
                   f" {unit} ", f"{unit}***\n{unit}"]
     return texts
 
@@ -227,7 +227,7 @@ def vectors_path(directory):
 
 
 def standard_path(directory):
-    return os.path.join(directory, f"{E.STANDARD}.json")
+    return os.path.join(ROOT, "tools", "encodings", f"{E.STANDARD}.json")
 
 
 def load_all(directory=E.ENCODINGS):

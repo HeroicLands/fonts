@@ -93,3 +93,9 @@ encoded text must retain enough information to distinguish them on decoding.
 An encoding's letter and numeral rows must preserve these punctuation
 meanings. A language's writing conventions may use only a subset of the
 marks; that usage does not change the shared standard.
+
+Literal payloads quote the literal open, literal close and literal escape controls
+with the literal escape control `\U000E0115` before each occurrence. Every
+encoding includes this value as `controls.literalEscape`. The escape draws
+nothing. Decoding removes the escape before reading the payload's codes; a
+trailing escape or one before any other character is an error at the escape.

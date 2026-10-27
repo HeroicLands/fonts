@@ -28,11 +28,11 @@ roman = encode.decode("semaron", text)
 
 ## Accepted characters
 
-This encoding accepts `a-z`, `A-Z`, `0-9`, `'`, `-`, `` ` ``, `À`, `Á`, `É`, `Ë`, `Í`, `Ó`, `Ú`, `Ý`, `à`, `á`, `é`, `ë`, `í`, `ó`, `ú`, `ý`, `’`, and the standard's marks and whitespace. Any other character is refused at its line and column.
+This encoding accepts `a-z`, `A-Z`, `0-9`, `'`, `-`, `` ` ``, `À`, `Á`, `É`, `Ë`, `Í`, `Ó`, `Ú`, `Ý`, `à`, `á`, `é`, `ë`, `í`, `ó`, `ú`, `ý`, `’`, (space), `!`, `,`, `.`, `/`, `?`, `^`, `{`, `}`, `«`, `»`, `—`, `…`, `‹`, `›`, `‼`, and the standard's marks and whitespace. Any other character is refused at its line and column.
 
 ## Punctuation
 
-This encoding extends the [standard roman encoding](standard.md), which every language's roman shares. The table shows how this script writes each standard mark. A mark the script draws writes its glyph; a mark it does not draw writes the standard's invisible mark, the same in every encoding, so decoding restores it.
+This encoding includes the [standard roman punctuation](standard.md), which every language's roman shares. The table shows how this script writes each standard mark. A mark the script draws writes its glyph; a mark it does not draw writes the standard's invisible mark, the same in every encoding, so decoding restores it.
 
 | Mark | Meaning | Written | Code points |
 | --- | --- | --- | --- |
@@ -66,7 +66,7 @@ A character that no row matches is refused: `encode.py` reports it with its line
 
 ## Literal spans
 
-`⟦` and `⟧` enclose character names, as the [standard](standard.md) describes: `⟦LATIN_SMALL_LETTER_A_WITH_ACUTE⟧` writes `á`. Whitespace between names only separates them.
+`⟦` and `⟧` enclose this encoding's own codes or `U+XXXX` code points: `⟦U+00E1⟧` writes `á`. A scalar has four to six uppercase hexadecimal digits. `controls.literalEscape` quotes literal open, close and escape controls inside the payload. The file's `codes` rows give its named signs and notation; whitespace between codes only separates them. Other names and standard punctuation are refused.
 
 ## Vowels and conditions
 
@@ -82,6 +82,16 @@ The rows are in the order the file states them. A row here for a standard mark r
 
 | Roman | Character | Code points | When |
 | --- | --- | --- | --- |
+| `^` | `󠄄` | U+E0104 | at the beginning of a line |
+| `«` | `󠄆` | U+E0106 | always |
+| `»` | `󠄇` | U+E0107 | always |
+| `‹` | `󠄈` | U+E0108 | always |
+| `›` | `󠄉` | U+E0109 | always |
+| `—` | `󠄊` | U+E010A | always |
+| `…` | `󠄋` | U+E010B | always |
+| `/` | `󠄌` | U+E010C | always |
+| `{` | `󠄐` | U+E0110 | always |
+| `}` | `󠄑` | U+E0111 | always |
 | `tà` | `󰉁󰉰󰈰󠅔󠅛󠅅󠄐󠅝󠇯` | U+F0241 U+F0270 U+F0230 U+E0154 U+E015B U+E0145 U+E0110 U+E015D U+E01EF | always |
 | `tÀ` | `󰉁󰉰󰈀󠅔󠅛󠅃󠄐󠅝󠇯` | U+F0241 U+F0270 U+F0200 U+E0154 U+E015B U+E0143 U+E0110 U+E015D U+E01EF | always |
 | `Tà` | `󰈑󰉰󰈰󠄴󠅛󠅅󠄐󠅝󠇯` | U+F0211 U+F0270 U+F0230 U+E0134 U+E015B U+E0145 U+E0110 U+E015D U+E01EF | always |
@@ -229,6 +239,7 @@ The rows are in the order the file states them. A row here for a standard mark r
 | `7` | `󰉟` | U+F025F | always |
 | `8` | `󰉠` | U+F0260 | always |
 | `9` | `󰉡` | U+F0261 | always |
+| (space) | (space) | U+0020 | always |
 
 ## Round trip
 

@@ -1,7 +1,7 @@
 # Copyright (c) 2026 Tom Rodriguez ("Toasty") — <toasty@heroiclands.org>
 # SPDX-License-Identifier: OFL-1.1
-"""Write the Chalish Ceremonial Codage, ``encodings/chalish-ceremonial.json``, the script
-encoding that states it, ``encodings/chalish-pilam-ceremonial.json``, and the rows of
+"""Write the Chalish Ceremonial Codage, ``tools/encodings/chalish-ceremonial.json``, the script
+encoding that states it, ``tools/encodings/chalish-pilam-ceremonial.json``, and the rows of
 thalorna's mapping note, from ceremonial_encoding.json.
 
     .venv/bin/python tools/chalish-pilam/ceremonial_codage.py --write   # write both files
@@ -20,7 +20,7 @@ after a glyph is added, write the encoding, and paste the printed rows into the 
 The codage is a file of kind ``codage``: it extends nothing and is reached only between
 the literal markers of ``chalish-pilam-ceremonial``. In it, ``-`` writes its invisible
 mark (``encode.mark``), so decoding restores it. The script encoding extends the
-standard roman encoding, ``encodings/standard.json``, and accepts nothing else as roman,
+standard roman encoding, ``tools/encodings/standard.json``, and accepts nothing else as roman,
 since the hand writes no sounds; its separator is one space, an empty block. Zero and the places of the count have codes and code points
 but no ceremonial drawing, so they print the box; the encoding keeps their rows, so a
 text written today keeps its code points when they are drawn, and the note's rows say
@@ -34,8 +34,8 @@ from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parent.parent
-OUT = ROOT / "encodings" / "chalish-ceremonial.json"
-SCRIPT = ROOT / "encodings" / "chalish-pilam-ceremonial.json"
+OUT = ROOT / "tools" / "encodings" / "chalish-ceremonial.json"
+SCRIPT = ROOT / "tools" / "encodings" / "chalish-pilam-ceremonial.json"
 sys.path.insert(0, str(ROOT))
 import encode as E  # noqa: E402
 

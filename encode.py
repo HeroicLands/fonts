@@ -9,82 +9,59 @@
     python3 encode.py --font teng-chou "\u27e6SUN MOON\u27e7"
     python3 encode.py --list
 
-An encoding is one JSON file, ``encodings/<name>.json``:
+An encoding is one self-contained JSON file, ``encodings/<name>.json``. It
+contains ``name``, ``fonts`` (face slugs), ``accepts`` (single characters and ranges
+such as ``a-z``), ``separator``, ``rows``, ``codes`` and ``controls``. Optional
+``vowels`` supports ``before`` conditions; ``faces`` gives face-specific rows.
+Readers open only that file: external references, including ``extends`` and a
+``codage`` file name, are refused at their keys.
 
-    {
-        "name": "pirzath",
-        "fonts": ["pirzath-carved", "pirzath-hand"],
-        "extends": "standard",
-        "separator": " ",
-        "vowels": "aeiou",
-        "rows": [
-            ["a", "\\uDB80\\uDE30"],
-            [".", "\\uDB80\\uDC50"],
-            ["?", "\\uDB80\\uDC50\\uDB40\\uDD1F\\uDB40\\uDDEF"],
-            ["-", "\\uDB40\\uDD0D"],
-            {"from": "y", "to": "\\uDB80\\uDE37", "before": "consonant"}
-        ],
-        "faces": {"pirzath-hand": {"rows": [["a", "\\uDB80\\uDE31"]]}}
-    }
+Rows are ``[from, to]`` or ``{from, to, before?, at?}``. Longest ``from`` wins,
+a holding condition beats no condition, and authored order breaks a tie.
+``before`` is ``vowel`` or ``consonant``; ``at`` is ``start``, ``end`` or
+``line-start``. A selected face's rows are tried before shared rows. Decoding
+reads the longest ``to``. ``rows`` includes every shared punctuation assignment
+and a space row, so nothing is inherited at read time.
 
-``name``, ``fonts``, ``accepts``, ``separator`` and ``rows`` are required; the rest are
-optional.
-``fonts`` lists the slugs of the faces the encoding serves.
+``controls`` gives ``verseStanza``, ``verseCanto``, ``wordSeparator``,
+``literalOpen``, ``literalClose`` and ``literalEscape`` as strings. ``--verse`` (or
+``encode(..., verse=True)``) writes line endings as the verse line control,
+blank lines as stanza controls, and ``--- {.canto}`` as the canto control.
+Ordinary prose normalizes whitespace without adding verse structure.
+
+Whitespace outside the literal markers is every Unicode category Zs character
+and U+0009 through U+000D. Every contiguous run becomes one U+0020, written
+as ``separator`` and the file's space row specify. ``separator`` may be one
+space, a script's own space, or an empty string. Decoding restores one space
+for a written separator; scripts with no written space use their codage's
+word boundaries inside literal spans. U+0085, U+2028 and U+2029 are not in
+this class and need an explicit row to be accepted.
+
+``codes`` holds the inline codage rows: named glyphs and the codage's own
+notation. Only these codes and strict ``U+XXXX`` scalar forms are read between
+``⟦`` and ``⟧``. Four to six uppercase hexadecimal digits name U+0000 to
+U+10FFFF, excluding U+D800 to U+DFFF. Unicode database names are not inferred.
+Every encoding accepts U+ forms. Decoding uses a defined code where available
+and ``U+XXXX`` otherwise, so every Unicode scalar can be quoted. Whitespace
+between codes separates them and writes nothing; unmatched or nested markers
+and standard punctuation inside a span are refused at their source position.
+Each marker writes its own ``controls`` value (U+E0112 and U+E0113).
+Within a literal payload, each occurrence of the open, close or escape control
+is quoted by the ``literalEscape`` control (U+E0115) immediately before it.
+Decoding skips quoted controls while locating the closing boundary and unquotes
+the payload before reading codes. An escape followed by any other character,
+or by nothing, is refused at the escape. The escape draws nothing.
 
 ``groupCase: "initial"`` permits multi-letter alphabetic rows only in lowercase
-or with their first letter capitalized. Other case patterns are refused before
-single-letter fallback, including inside longer words. Literal spans are unaffected.
+or with their first letter capitalized; other case patterns are refused before
+single-letter fallback, including within words. Literal spans are unaffected.
 
-``--verse`` (or ``encode(..., verse=True)``) reads verse line endings and blank
-lines as the standard line and stanza controls. Prose keeps normal whitespace
-normalization. A line containing ``--- {.canto}`` writes the canto control.
-
-``roundTrip`` defaults to ``"exact"``. An encoding may explicitly choose
-``"canonical"`` when its orthography permits several Roman spellings for one
-output or omits punctuation. In that mode empty outputs and duplicate outputs
-are allowed. Decoding ignores empty outputs and chooses the first authored
-source for an identical output; the word separator takes precedence over rows
-that write the same space. Original spelling and omitted punctuation are not
-recoverable, and re-encoding arbitrary decoded output is not guaranteed to
-reproduce the original code points. Other encodings retain exact round trips.
-
-``accepts`` declares the characters the encoding accepts as roman: a list of single
-characters and of ranges of three characters such as ``"a-z"``. A caseless script lists
-``"a-z"`` and its own additions (diacritics, the catch, digits); Semaron and Helonika, the
-scripts with case, list ``"a-z"`` and ``"A-Z"``. Besides these the encoding accepts the
-characters of the standard's marks and whitespace. Any other character is refused at its
-line and column, and every row's ``from`` is made of accepted characters.
-
-``separator`` is what the script writes for a word separator, and is the one place whitespace
-is stated. In roman, outside ``\u27e6`` and ``\u27e7``, any run of whitespace (space, tab,
-newline, carriage return) is one word separator: it is not a character of the script, and no
-row matches it. The encoding writes ``separator`` once for each run. A script that spaces its
-words states ``" "``, one U+0020, or the glyph of its own space; a script that sets its
-characters beside each other states ``""`` and writes nothing. Decoding writes a single space
-for a separator written, and nothing is read from ``""``. So the roman's whitespace is
-normalized, and not preserved: ``a  \t\n b`` and ``a b`` encode alike, and decoding gives
-``a b``. A line break is only whitespace; the structure of verse (a line end, a stanza end, a
-canto end) is written by ``/``, ``//`` and ``***``.
-
-``codage`` names a file beside this one, the script's codage: a file with ``"kind":
-"codage"`` that names each sign of the script by a code, such as ``zethu-mdc`` for the
-Zethu script. It sets what the literal immutable markers enclose (see below). A codage
-file takes only ``name``, ``kind``, ``fonts`` and ``rows``, extends nothing and encodes no
-text of its own: it is reached only between the markers of an encoding that states it.
-Asking for one as a whole-text encoding is an error that names the encoding to use.
-
-A font that has no encoding file accepts nothing as roman: ``for_font(slug)``, or
-``--font slug``, gives a names-only encoding, where text is written only as character
-names between the literal markers and anything outside them is refused.
-
-``extends`` names a base file beside the encoding, ``encodings/standard.json`` for
-every encoding here: the standard roman encoding, which holds the roman punctuation
-every language shares. It has no whitespace rows. A base file holds only ``name`` and ``rows``.
-The encoding's rows are the base's rows whose ``from`` no row of the encoding states,
-in the base's order, followed by the encoding's own rows. So an encoding whose script
-draws a standard mark states a row for it, and every other mark keeps the base's row.
-Nothing else is inherited, and once the rows are put together they are the whole
-encoding.
+``roundTrip`` defaults to ``"exact"``. An encoding may explicitly select
+``"canonical"`` where several Roman spellings share an output or punctuation
+is omitted. Empty and duplicate outputs are then allowed. Decoding ignores
+empty outputs and chooses the first authored source for the same output;
+the word separator takes precedence over a row writing the same space.
+Original omitted punctuation and spelling are not recoverable in that mode.
 
 Every encoding round-trips both ways: decoding an encoded roman text gives it back with each
 run of whitespace outside the markers as one space (nothing for a script that writes none),
@@ -110,57 +87,10 @@ character, or draws two alike, the row says so with a mark of non-writing charac
 The marks are written into the rows; reading a file applies no rule of its own. The
 files write the non-writing characters as ``\\u`` escapes, so that they show.
 
-The literal immutable markers, ``\u27e6`` and ``\u27e7``, enclose exact characters, which
-no row of the encoding reinterprets. Every encoding supports them:
-
-- Each marker is written as the mark of itself, ``mark("\u27e6")`` and
-  ``mark("\u27e7")``, the same invisible sequence in every encoding.
-- With no ``codage`` stated, what the markers enclose are character names: each code is a
-  character's name in capitals with its spaces written ``_``, as in
-  ``\u27e6LATIN_SMALL_LETTER_A_WITH_ACUTE LATIN_SMALL_LETTER_I\u27e7``, which writes ``ái``.
-  Codes are separated by whitespace, which writes nothing. A name comes
-  from ``encodings/names.json`` for the characters of the script fonts, and from Python's
-  ``unicodedata`` for every other character. A name that names no character is refused at
-  its position. Decoding names each character between the marker marks, and separates the
-  codes with single spaces.
-- With a ``codage`` stated, the enclosed text is encoded by that codage and decoded
-  through it, so the codes are the codage's own: ``\u27e6WONG_YELLOW\u27e7`` in the Zethu script.
-  Only the codage's codes and its own notation are allowed inside, such as Zethu's ``-``
-  ``:`` ``*`` ``(`` ``)`` ``<`` ``>`` and ``[ts]``: a standard mark such as ``,`` or ``?``
-  is refused at its position, and a code outside the markers is ordinary roman, never read
-  as a code.
-- Whitespace inside the markers only separates codes: any amount of space, newline or tab is
-  a separator and is not saved, so ``\u27e6ONE TWO THREE\u27e7`` and the same codes with runs of spaces, tabs and line breaks
-  between them are the same text. Decoding always writes single spaces between codes.
-- An unmatched ``\u27e6`` or ``\u27e7``, and a marker inside a span, are refused at the
-  offending marker's line and column; decoding refuses the marker marks in the same cases.
-- No row states a marker.
-
-Encoding:
-
-- A row is ``[from, to]`` or ``{"from", "to", "before"?, "at"?}``. ``from`` and ``to``
-  are each one or more characters.
-- The longest ``from`` wins. Among rows of one length, a row with a condition that
-  holds comes before a row with none, and otherwise the earlier row wins. A row whose
-  condition fails is skipped.
-- ``before: vowel`` holds when the next character is one of ``vowels``; ``before:
-  consonant`` when it is any other letter. Neither holds at the end of the text.
-- ``at: start`` holds at the text's first character or after a boundary; ``at: end``
-  at the text's last character or before one. A boundary is whitespace, punctuation
-  or a symbol.
-- A face's own rows (``faces``) apply when text is set in that face, and are tried
-  before the shared rows: a face row that matches wins.
-- A character no row matches is refused: encoding stops with an error that names it
-  and its line and column in the text. Nothing passes through.
-
-Decoding reads the rows backward, by plain longest match: at each point the longest
-``to`` that the code points continue with is read as its row's ``from``. A code point
-that begins no ``to`` there is refused in the same way. Text set in a face reads its
-face's rows and the shared rows together.
-
-Errors are reported as ``file:line:column: error: message`` and exit non-zero. A text
-read with ``--file`` is reported by its path, standard input as ``<stdin>`` and a text
-given on the command line as ``<text>``.
+The literal immutable markers are U+27E6 and U+27E7. Text outside them is
+ordinary roman. Characters unknown to the chosen encoding are refused, with
+1-based line and column counted in Unicode code points. ``for_font`` selects a
+published encoding serving the named font, and refuses an ambiguous choice.
 """
 
 import argparse
@@ -177,7 +107,7 @@ ENCODINGS = os.path.join(HERE, "encodings")
 NAME = re.compile(r"^[a-z0-9-]+$")
 CONDITIONS = {"before": ("vowel", "consonant"), "at": ("start", "end", "line-start")}
 GENERIC_FAMILIES = ("mono", "serif", "sans")
-TOP_KEYS = ("name", "kind", "fonts", "extends", "codage", "accepts", "separator", "vowels", "rows",
+TOP_KEYS = ("name", "kind", "fonts", "codes", "controls", "accepts", "separator", "vowels", "rows",
             "faces", "roundTrip", "groupCase")
 # What a file is: an encoding of a script, or a codage, the notation a script's literal
 # spans are written in.
@@ -200,7 +130,7 @@ NOT_ENCODINGS = ("vectors", "names", STANDARD)
 # The names of the characters of the script fonts, shipped beside the encodings.
 NAMES = "names"
 # The whitespace a roman text is made to separate its words by: one run is one separator.
-WHITESPACE = " \t\n\r"
+WHITESPACE = "\t\n\v\f\r" + "".join(chr(n) for n in range(0x110000) if unicodedata.category(chr(n)) == "Zs")
 # The literal immutable markers.
 OPEN = "\u27e6"
 CLOSE = "\u27e7"
@@ -399,9 +329,11 @@ class Encoding:
         self.name = data["name"]
         self.round_trip = data.get("roundTrip", "exact")
         self.group_case = data.get("groupCase")
-        self.controls = dict(base.controls) if base is not None else {}
+        self.controls = dict(data.get("controls", base.controls if base is not None else {}))
         self.kind = data.get("kind", "encoding")
         self.codage = codage
+        if "codes" in data:
+            self.codage = Encoding({"name": self.name + "-codes", "kind": "codage", "fonts": data["fonts"], "rows": data["codes"]}, path)
         self.fonts = list(data["fonts"])
         self.vowels = frozenset(data.get("vowels", ""))
         # What the script writes for a word separator, or ``None`` where the encoding
@@ -423,6 +355,9 @@ class Encoding:
                     for own in self.own))
             ]
         self.rows = inherited + self.own
+        space_row = next((r for r in self.rows if r.source == " "), None)
+        if space_row is not None:
+            self.separator_row = space_row
         for n, row in enumerate(self.rows):
             row.order = n
         # What the encoding accepts as roman: its declared characters and the characters
@@ -590,9 +525,9 @@ def _rows_faults(rows, at, fault, vowels, allow_empty=False):
                 fault(here, MARKERS)
             elif row[0] == "":
                 fault(here, "has an empty `from`; a row matches one or more characters")
-            elif any(c in WHITESPACE for c in row[0]):
+            elif row[0] != " " and any(c in WHITESPACE for c in row[0]):
                 fault(here, WHITESPACE_FROM)
-            elif row[1] == "" and not allow_empty:
+            elif row[1] == "" and not allow_empty and row[0] != " ":
                 fault(here + (1,), NOTHING)
             continue
         if not isinstance(row, dict):
@@ -610,12 +545,12 @@ def _rows_faults(rows, at, fault, vowels, allow_empty=False):
         if not isinstance(row.get("from"), str) or row.get("from") == "":
             fault(here + ("from",) if "from" in row else here,
                   "needs `from`, the one or more characters the row matches")
-        elif any(c in WHITESPACE for c in row["from"]):
+        elif row["from"] != " " and any(c in WHITESPACE for c in row["from"]):
             fault(here + ("from",), WHITESPACE_FROM)
         if not isinstance(row.get("to"), str):
             fault(here + ("to",) if "to" in row else here,
                   "needs `to`, the one or more characters the row writes")
-        elif row["to"] == "" and not allow_empty:
+        elif row["to"] == "" and not allow_empty and row.get("from") != " ":
             fault(here + ("to",), NOTHING)
         for condition, allowed in CONDITIONS.items():
             if condition not in row:
@@ -676,7 +611,7 @@ def _check_base(data, text, path):
     else:
         _rows_faults(data["rows"], ("rows",), fault, "")
     controls = data.get("controls", {})
-    allowed = ("verseStanza", "verseCanto", "wordSeparator", "literalOpen", "literalClose")
+    allowed = ("verseStanza", "verseCanto", "wordSeparator", "literalOpen", "literalClose", "literalEscape")
     if not isinstance(controls, dict):
         fault(("controls",), "`controls` is a map of shared structural marks")
     else:
@@ -741,12 +676,11 @@ def _check(data, text, path):
                 fault(("fonts", n), f"`{slug}` is a generic family; `fonts` lists the faces drawn")
             elif fonts.index(slug) != n:
                 fault(("fonts", n), f"`{slug}` is listed twice")
-    extends = data.get("extends")
-    if "extends" in data and (not isinstance(extends, str) or not NAME.match(extends)):
-        fault(("extends",), "`extends` is the name of a base file beside the encoding")
-    codage = data.get("codage")
-    if "codage" in data and (not isinstance(codage, str) or not NAME.match(codage)):
-        fault(("codage",), "`codage` is the name of an encoding beside this one")
+    if "codes" in data:
+        _rows_faults(data["codes"], ("codes",), fault, "")
+    controls = data.get("controls", {})
+    if not isinstance(controls, dict) or any(not isinstance(v, str) or not v for v in controls.values()):
+        fault(("controls",), "`controls` maps structural control names to nonempty strings")
     vowels = data.get("vowels", "")
     if not isinstance(vowels, str):
         fault(("vowels",), "`vowels` is a string of the characters `before` reads as vowels")
@@ -811,8 +745,7 @@ def load_base(path):
 
 
 def load(name_or_path, _codage=False):
-    """Read an encoding by its name in ``encodings/``, or from a file anywhere, with the
-    base file it extends.
+    """Read one self-contained encoding by name in ``encodings/`` or a file anywhere.
 
     Raises ``EncodingError`` for a file that does not exist, does not parse, or is
     not well formed; the first fault is raised, and its ``faults`` holds every one.
@@ -837,32 +770,8 @@ def load(name_or_path, _codage=False):
     if faults:
         _raise(faults)
     if data.get("kind") == "codage" and not _codage:
-        users = [n for n in names() if _stated_codage(n) == data["name"]]
-        use = (f"; use `{users[0]}`, the encoding that states it" if len(users) == 1
-               else f"; the encodings that state it are {', '.join(users)}" if users else "")
-        raise EncodingError(
-            f"`{data['name']}` is a codage, the notation of a script's literal spans: it is "
-            f"reached only between `{OPEN}` and `{CLOSE}` of an encoding that states it, "
-            f"and encodes no text of its own{use}",
-            path,
-        )
-    base = None
-    if "extends" in data:
-        base_path = os.path.join(os.path.dirname(os.path.abspath(path)), data["extends"] + ".json")
-        if not os.path.exists(base_path):
-            _raise([_fault_at((path, ("extends",)),
-                              f"`{data['extends']}` is not a base file beside the encoding")])
-        base = load_base(base_path)
-    codage = None
-    if "codage" in data:
-        codage_path = os.path.join(os.path.dirname(os.path.abspath(path)), data["codage"] + ".json")
-        if not os.path.exists(codage_path) or data["codage"] in NOT_ENCODINGS \
-                or _read(codage_path)[1].get("kind") != "codage":
-            _raise([_fault_at((path, ("codage",)),
-                              f"`{data['codage']}` is not a codage beside this encoding; "
-                              'a codage is a file with `"kind": "codage"`')])
-        codage = load(codage_path, _codage=True)
-    enc = Encoding(data, path, base, codage)
+        raise EncodingError("a codage is an inline set of codes, not a whole-text encoding", path)
+    enc = Encoding(data, path)
     faults = _check_outputs(enc)
     if faults:
         _raise(faults)
@@ -876,13 +785,6 @@ def _kind_of(path):
     found = re.search(r'"kind":\s*"(\w+)"', head)
     return found.group(1) if found else "encoding"
 
-
-def _stated_codage(name):
-    """The codage the encoding ``name`` states, or ``None``."""
-    with open(os.path.join(ENCODINGS, name + ".json"), encoding="utf-8") as handle:
-        head = handle.read(600)
-    found = re.search(r'"codage":\s*"([a-z0-9-]+)"', head)
-    return found.group(1) if found else None
 
 
 def names(directory=None, kind="encoding"):
@@ -915,7 +817,9 @@ def for_font(slug):
                 serving.append(name)
     if len(serving) > 1:
         raise EncodingError(f"the font `{slug}` is served by {', '.join(serving)}; name one with --encoding")
-    return load(serving[0]) if serving else Encoding.names_only(slug)
+    if not serving:
+        raise EncodingError(f"no encoding serves the font `{slug}`")
+    return load(serving[0])
 
 
 # --- applying it -------------------------------------------------------------------
@@ -988,20 +892,19 @@ def _error_at(message, text, at, source):
     return EncodingError(message, source or TEXT, line, column)
 
 
-def _span(text, at, opener, closer, source, what):
+def _span(text, at, opener, closer, source, what, escape="\U000E0115"):
     """The offset of the ``closer`` that ends the span ``opener`` begins at ``at``. An
     unmatched opener and a nested one are refused."""
     start = at + len(opener)
     if opener == "\U000E0112":
         cursor = start
         while cursor < len(text):
-            # Generic spelling metadata spells hex inside its own brackets.
-            # Digits in that metadata are not literal-span boundaries.
-            if text[cursor] == "\U000E015B":
-                end = text.find("\U000E015D", cursor + 1)
-                if end >= 0:
-                    cursor = end + 1
-                    continue
+            if text.startswith(escape, cursor):
+                following = cursor + len(escape)
+                if following >= len(text) or text[following] not in (opener, closer, escape):
+                    raise _error_at("a literal escape must quote its open, close or escape control", text, cursor, source)
+                cursor = following + 1
+                continue
             if text.startswith(closer, cursor):
                 return cursor
             if text.startswith(opener, cursor):
@@ -1017,85 +920,62 @@ def _span(text, at, opener, closer, source, what):
     return close
 
 
-_CHARACTERS = {}
+def character_name(char, enc=None):
+    """The encoding's own code for one character, or its Unicode scalar spelling."""
+    if enc is not None and enc.codage is not None:
+        for row in enc.codage.rows:
+            if row.target == char:
+                return row.source
+    return f"U+{ord(char):04X}"
 
 
-def _character_names():
-    """The names of the script fonts' characters, ``(name by character, character by
-    name)``, from ``encodings/names.json``."""
-    if not _CHARACTERS:
-        path = os.path.join(ENCODINGS, NAMES + ".json")
-        try:
-            with open(path, encoding="utf-8") as handle:
-                table = json.load(handle)
-        except OSError as error:
-            raise EncodingError(error.strerror or str(error), path) from None
-        by_char = {chr(int(point[2:], 16)): name for point, name in table.items()}
-        _CHARACTERS["name"] = by_char
-        _CHARACTERS["char"] = {name.replace(" ", "_"): char for char, name in by_char.items()}
-    return _CHARACTERS["name"], _CHARACTERS["char"]
+def character_named(code, enc=None):
+    """The character named by a strict U+ code or this encoding's own code."""
+    if re.fullmatch(r"U\+[0-9A-F]{4,6}", code):
+        point = int(code[2:], 16)
+        return chr(point) if point <= 0x10FFFF and not 0xD800 <= point <= 0xDFFF else None
+    if enc is not None and enc.codage is not None:
+        return next((r.target for r in enc.codage.rows if r.source == code), None)
+    return None
 
 
-def character_name(char):
-    """A character's code: its name with spaces written ``_``, or ``None`` when it has none."""
-    names, _ = _character_names()
-    if char in names:
-        return names[char].replace(" ", "_")
-    try:
-        return unicodedata.name(char).replace(" ", "_")
-    except ValueError:
-        return None
+def _quote_literal(enc, text):
+    """Quote the reserved literal controls while preserving every payload scalar."""
+    escape = enc.controls.get("literalEscape", "\U000E0115")
+    reserved = (_OPEN_ROW.target, _CLOSE_ROW.target, escape)
+    return "".join(escape + char if char in reserved else char for char in text)
 
 
-def character_named(code):
-    """The character a code names, or ``None``."""
-    _, chars = _character_names()
-    if code in chars:
-        return chars[code]
-    try:
-        char = unicodedata.lookup(code.replace("_", " "))
-    except KeyError:
-        return None
-    return char if len(char) == 1 and character_name(char) == code else None
-
-
-def _name_pieces(text, start, end, strict, source):
-    """The pieces of a span of character names: each code is ``(code, character, row)``
-    and the space between codes writes nothing."""
+def _unquote_literal(enc, text, start, end, source):
+    escape = enc.controls.get("literalEscape", "\U000E0115")
+    reserved = (_OPEN_ROW.target, _CLOSE_ROW.target, escape)
     out = []
     at = start
-    for found in re.finditer(r"\S+", text[start:end]):
-        begin = start + found.start()
-        if begin > at:
-            gap = text[at:begin]
-            out.append((gap, "", Row(gap, "")))
-        code = found.group()
-        char = character_named(code)
-        if char is None:
-            if strict:
-                odd = next((i for i, c in enumerate(code) if not (c.isalnum() or c in "_-")), 0)
-                raise _error_at(f"`{code}` is not the name of a character", text, begin + odd, source)
-            out.append((code, code, None))
+    while at < end:
+        if text[at] == escape:
+            if at + 1 >= end or text[at + 1] not in reserved:
+                raise _error_at("a literal escape must quote its open, close or escape control", text, at, source)
+            at += 1
+        out.append(text[at])
+        at += 1
+    return "".join(out)
+
+
+def _decode_codes(enc, text):
+    """Read the encoding's longest codage rows, with U+ for all other scalars."""
+    out = []
+    at = 0
+    readings = enc.codage.shared.readings if enc.codage is not None else {}
+    while at < len(text):
+        for target, code in readings.get(text[at], ()):
+            if text.startswith(target, at):
+                out.append(code)
+                at += len(target)
+                break
         else:
-            out.append((code, char, Row(code, char)))
-        at = begin + len(code)
-    if at < end:
-        gap = text[at:end]
-        out.append((gap, "", Row(gap, "")))
-    return out
-
-
-def _decode_names(text, start, end, source):
-    """The codes of the characters between ``start`` and ``end``, one space apart."""
-    codes = []
-    for at in range(start, end):
-        code = character_name(text[at])
-        if code is None:
-            char = text[at]
-            raise _error_at(f"{json.dumps(char, ensure_ascii=False)} (U+{ord(char):04X}) has no "
-                            "name", text, at, source)
-        codes.append(code)
-    return " ".join(codes)
+            out.append(f"U+{ord(text[at]):04X}")
+            at += 1
+    return _join_codes(out)
 
 
 def _inside(error, text, start, source):
@@ -1108,25 +988,41 @@ def _inside(error, text, start, source):
 
 
 def _codage_pieces(codage, text, start, end, strict, source):
-    """The pieces of a span of a codage's codes. Whitespace only separates codes, so each
-    run of non-whitespace is encoded by the codage on its own and the whitespace between
-    runs writes nothing. Only the codage's own codes and notation are allowed: a standard
-    mark inside the span is refused at its position."""
+    """Resolve only the inline code rows and strict U+ scalar forms."""
     out = []
     at = start
-    for found in re.finditer(r"\S+", text[start:end]):
-        begin = start + found.start()
-        if begin > at:
-            gap = text[at:begin]
+    while at < end:
+        if text[at] in WHITESPACE:
+            begin = at
+            while at < end and text[at] in WHITESPACE:
+                at += 1
+            gap = text[begin:at]
             out.append((gap, "", Row(gap, "")))
-        try:
-            out += pieces(codage, found.group(), None, strict)
-        except EncodingError as error:
-            raise _inside(error, text, begin, source) from None
-        at = begin + len(found.group())
-    if at < end:
-        gap = text[at:end]
-        out.append((gap, "", Row(gap, "")))
+            continue
+        if text.startswith("U+", at):
+            stop = at + 2
+            while stop < end and (text[stop].isalnum() or text[stop] == "+"):
+                stop += 1
+            code = text[at:stop]
+            char = character_named(code)
+            if char is None:
+                raise _error_at(f"`{code}` is not a Unicode scalar code (U+0000 to U+10FFFF)", text, at, source)
+            out.append((code, char, Row(code, char)))
+            at = stop
+            continue
+        row = _row_at(codage, codage.tiers(None), text, at) if codage is not None else None
+        if row is not None:
+            out.append((row.source, row.target, row))
+            at += len(row.source)
+        elif strict:
+            begin = at
+            if text[at].isalnum() or text[at] == "_":
+                while begin > start and (text[begin - 1].isalnum() or text[begin - 1] == "_"):
+                    begin -= 1
+            raise _error_at("this code is not defined by the encoding", text, begin, source)
+        else:
+            out.append((text[at], text[at], None))
+            at += 1
     return out
 
 
@@ -1145,10 +1041,8 @@ def pieces(enc, text, face=None, strict=True, source=None, verse=False):
         if text[at] == OPEN:
             close = _span(text, at, OPEN, CLOSE, source, f"`{OPEN}`")
             out.append((OPEN, _OPEN_ROW.target, _OPEN_ROW))
-            if enc.codage is None:
-                out += _name_pieces(text, at + 1, close, strict, source)
-            else:
-                out += _codage_pieces(enc.codage, text, at + 1, close, strict, source)
+            out += [(roman, _quote_literal(enc, target), row)
+                    for roman, target, row in _codage_pieces(enc.codage, text, at + 1, close, strict, source)]
             out.append((CLOSE, _CLOSE_ROW.target, _CLOSE_ROW))
             at = close + 1
             continue
@@ -1297,15 +1191,9 @@ def decode(enc, text, face=None, source=None):
     while at < len(text):
         if text.startswith(_OPEN_ROW.target, at):
             close = _span(text, at, _OPEN_ROW.target, _CLOSE_ROW.target, source,
-                          "the mark of `\u27e6`")
+                          "the mark of `\u27e6`", enc.controls.get("literalEscape", "\U000E0115"))
             start = at + len(_OPEN_ROW.target)
-            if enc.codage is None:
-                inner = _decode_names(text, start, close, source)
-            else:
-                try:
-                    inner = _join_codes(_read_rows(enc.codage, text[start:close], None))
-                except EncodingError as error:
-                    raise _inside(error, text, start, source) from None
+            inner = _decode_codes(enc, _unquote_literal(enc, text, start, close, source))
             out.append(OPEN + inner + CLOSE)
             at = close + len(_CLOSE_ROW.target)
             continue
@@ -1357,14 +1245,8 @@ def mark(source):
     return "".join(out)
 
 
-# Read explicit punctuation assignments from the shared standard.
-with open(os.path.join(ENCODINGS, "standard.json"), encoding="utf-8") as _standard_file:
-    _standard_data = json.load(_standard_file)
-_STANDARD_MARKS = {(r[0] if isinstance(r, list) else r["from"]):
-                   (r[1] if isinstance(r, list) else r["to"])
-                   for r in _standard_data["rows"]}
-_STANDARD_MARKS[OPEN] = _standard_data.get("controls", {}).get("literalOpen", "\U000E0112")
-_STANDARD_MARKS[CLOSE] = _standard_data.get("controls", {}).get("literalClose", "\U000E0113")
+# Shared punctuation and literal controls are fixed protocol assignments.
+_STANDARD_MARKS = {'.': '󠄀', '?': '󠄁', '‼': '󠄂', '!': '󠄃', '^': '󠄄', ',': '󠄅', '«': '󠄆', '»': '󠄇', '‹': '󠄈', '›': '󠄉', '—': '󠄊', '…': '󠄋', '/': '󠄌', '{': '󠄐', '}': '󠄑', '⟦': '󠄒', '⟧': '󠄓'}
 
 # Literal markers use the shared structural assignments.
 _OPEN_ROW = Row(OPEN, mark(OPEN))
@@ -1408,11 +1290,11 @@ def dumps(data):
         return _escape_marks(json.dumps(value, ensure_ascii=False))
 
     lines = ["{"]
-    keys = [k for k in TOP_KEYS if k in data]
+    keys = list(data)
     for n, key in enumerate(keys):
         comma = "," if n < len(keys) - 1 else ""
         value = data[key]
-        if key == "rows" and value:
+        if key in ("rows", "codes") and value:
             lines.append(f"    {one(key)}: [")
             lines += [f"        {one(r)}," for r in value[:-1]] + [f"        {one(r)}" for r in value[-1:]]
             lines.append(f"    ]{comma}")
