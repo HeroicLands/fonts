@@ -1,0 +1,729 @@
+{
+    "script": "pirzath",
+    "texts": [
+        {
+            "roman": "p",
+            "codes": "PARGH"
+        },
+        {
+            "roman": "b",
+            "codes": "BALG"
+        },
+        {
+            "roman": "f",
+            "codes": "FARZ"
+        },
+        {
+            "roman": "v",
+            "codes": "VAZAL"
+        },
+        {
+            "roman": "m",
+            "codes": "MARP"
+        },
+        {
+            "roman": "t",
+            "codes": "TAMB"
+        },
+        {
+            "roman": "d",
+            "codes": "DALK"
+        },
+        {
+            "roman": "th",
+            "codes": "THARZ"
+        },
+        {
+            "roman": "dh",
+            "codes": "DHALZ"
+        },
+        {
+            "roman": "n",
+            "codes": "NAZAF"
+        },
+        {
+            "roman": "k",
+            "codes": "KAMV"
+        },
+        {
+            "roman": "g",
+            "codes": "GAMTH"
+        },
+        {
+            "roman": "kh",
+            "codes": "KHABAR"
+        },
+        {
+            "roman": "gh",
+            "codes": "GHARM"
+        },
+        {
+            "roman": "h",
+            "codes": "HALB"
+        },
+        {
+            "roman": "s",
+            "codes": "SAKAR"
+        },
+        {
+            "roman": "z",
+            "codes": "ZALD"
+        },
+        {
+            "roman": "l",
+            "codes": "LADHAV"
+        },
+        {
+            "roman": "r",
+            "codes": "RAGHAV"
+        },
+        {
+            "roman": "ȷ",
+            "codes": "U+0237"
+        },
+        {
+            "roman": "a",
+            "codes": "A"
+        },
+        {
+            "roman": "e",
+            "codes": "E"
+        },
+        {
+            "roman": "i",
+            "codes": "I"
+        },
+        {
+            "roman": "o",
+            "codes": "O"
+        },
+        {
+            "roman": "u",
+            "codes": "U"
+        },
+        {
+            "roman": "á",
+            "codes": "A LONG"
+        },
+        {
+            "roman": "é",
+            "codes": "E LONG"
+        },
+        {
+            "roman": "í",
+            "codes": "I LONG"
+        },
+        {
+            "roman": "ó",
+            "codes": "O LONG"
+        },
+        {
+            "roman": "ú",
+            "codes": "U LONG"
+        },
+        {
+            "roman": "-",
+            "codes": "NAME_DASH"
+        },
+        {
+            "roman": ".",
+            "codes": "STOP"
+        },
+        {
+            "roman": ",",
+            "codes": "PAUSE"
+        },
+        {
+            "roman": "!",
+            "codes": "STOP"
+        },
+        {
+            "roman": " ",
+            "codes": "U+0020"
+        },
+        {
+            "roman": "“",
+            "codes": "U+201C"
+        },
+        {
+            "roman": "a”",
+            "codes": "A U+201D"
+        },
+        {
+            "roman": "ll",
+            "codes": "LADHAV LADHAV"
+        },
+        {
+            "roman": "tth",
+            "codes": "THARZ THARZ"
+        },
+        {
+            "roman": "gh”",
+            "codes": "GHARM U+201D"
+        },
+        {
+            "roman": "sh",
+            "codes": "SHA"
+        },
+        {
+            "roman": "zh",
+            "codes": "ZHA"
+        },
+        {
+            "roman": "ch",
+            "codes": "CHA"
+        },
+        {
+            "roman": "j",
+            "codes": "JA"
+        },
+        {
+            "roman": "ts",
+            "codes": "TSA"
+        },
+        {
+            "roman": "q",
+            "codes": "QA"
+        },
+        {
+            "roman": "ng",
+            "codes": "NGA"
+        },
+        {
+            "roman": "ny",
+            "codes": "NYA"
+        },
+        {
+            "roman": "hl",
+            "codes": "HLA"
+        },
+        {
+            "roman": "w",
+            "codes": "WA"
+        },
+        {
+            "roman": "'",
+            "codes": "CATCH"
+        },
+        {
+            "roman": "ya",
+            "codes": "YA A"
+        },
+        {
+            "roman": "ai",
+            "codes": "AI"
+        },
+        {
+            "roman": "au",
+            "codes": "AU"
+        },
+        {
+            "roman": "ei",
+            "codes": "EI"
+        },
+        {
+            "roman": "oi",
+            "codes": "OI"
+        },
+        {
+            "roman": "ou",
+            "codes": "OU"
+        },
+        {
+            "roman": "thiz durákh tanv.",
+            "codes": "THARZ I ZALD U+0020 DALK U RAGHAV A LONG KHABAR U+0020 TAMB A NAZAF VAZAL STOP"
+        },
+        {
+            "roman": "gazn.gazn durákh tanv.",
+            "codes": "GAMTH A ZALD NAZAF STOP GAMTH A ZALD NAZAF U+0020 DALK U RAGHAV A LONG KHABAR U+0020 TAMB A NAZAF VAZAL STOP"
+        },
+        {
+            "roman": "dalk.bant.tanv-guráz.",
+            "codes": "DALK A LADHAV KAMV STOP BALG A NAZAF TAMB STOP TAMB A NAZAF VAZAL NAME_DASH GAMTH U RAGHAV A LONG ZALD STOP"
+        },
+        {
+            "roman": "tanvan ramk-sumád",
+            "codes": "TAMB A NAZAF VAZAL A NAZAF U+0020 RAGHAV A MARP KAMV NAME_DASH SAKAR U MARP A LONG DALK"
+        },
+        {
+            "roman": "vog narv dulák",
+            "codes": "VAZAL O GAMTH U+0020 NAZAF A RAGHAV VAZAL U+0020 DALK U LADHAV A LONG KAMV"
+        },
+        {
+            "roman": "narv zuvák, vog dubáz",
+            "codes": "NAZAF A RAGHAV VAZAL U+0020 ZALD U VAZAL A LONG KAMV PAUSE U+0020 VAZAL O GAMTH U+0020 DALK U BALG A LONG ZALD"
+        },
+        {
+            "roman": "mardh nabít",
+            "codes": "MARP A RAGHAV DHALZ U+0020 NAZAF A BALG I LONG TAMB"
+        },
+        {
+            "roman": "farz sudháv, dalk sudháv.",
+            "codes": "FARZ A RAGHAV ZALD U+0020 SAKAR U DHALZ A LONG VAZAL PAUSE U+0020 DALK A LADHAV KAMV U+0020 SAKAR U DHALZ A LONG VAZAL STOP"
+        },
+        {
+            "roman": "gaz bunát, bant durákh.",
+            "codes": "GAMTH A ZALD U+0020 BALG U NAZAF A LONG TAMB PAUSE U+0020 BALG A NAZAF TAMB U+0020 DALK U RAGHAV A LONG KHABAR STOP"
+        },
+        {
+            "roman": "hiz bant hulágh, galdod thufár mardh.",
+            "codes": "HALB I ZALD U+0020 BALG A NAZAF TAMB U+0020 HALB U LADHAV A LONG GHARM PAUSE U+0020 GAMTH A LADHAV DALK O DALK U+0020 THARZ U FARZ A LONG RAGHAV U+0020 MARP A RAGHAV DHALZ STOP"
+        },
+        {
+            "roman": "dalík bant, maríg bant.",
+            "codes": "DALK A LADHAV I LONG KAMV U+0020 BALG A NAZAF TAMB PAUSE U+0020 MARP A RAGHAV I LONG GAMTH U+0020 BALG A NAZAF TAMB STOP"
+        },
+        {
+            "roman": "galdan gald-vulád",
+            "codes": "GAMTH A LADHAV DALK A NAZAF U+0020 GAMTH A LADHAV DALK NAME_DASH VAZAL U LADHAV A LONG DALK"
+        },
+        {
+            "roman": "kedz savadh zatíg",
+            "codes": "KAMV E DALK ZALD U+0020 SAKAR A VAZAL A DHALZ U+0020 ZALD A TAMB I LONG GAMTH"
+        },
+        {
+            "roman": "gaz bumár, gaz fuvád",
+            "codes": "GAMTH A ZALD U+0020 BALG U MARP A LONG RAGHAV PAUSE U+0020 GAMTH A ZALD U+0020 FARZ U VAZAL A LONG DALK"
+        },
+        {
+            "roman": "bamr bamír.",
+            "codes": "BALG A MARP RAGHAV U+0020 BALG A MARP I LONG RAGHAV STOP"
+        },
+        {
+            "roman": "gatharir tamík.",
+            "codes": "GAMTH A THARZ A RAGHAV I RAGHAV U+0020 TAMB A MARP I LONG KAMV STOP"
+        },
+        {
+            "roman": "gazn gulák nuv gatharir.",
+            "codes": "GAMTH A ZALD NAZAF U+0020 GAMTH U LADHAV A LONG KAMV U+0020 NAZAF U VAZAL U+0020 GAMTH A THARZ A RAGHAV I RAGHAV STOP"
+        },
+        {
+            "roman": "vog dalkir, vog rummák ramk.",
+            "codes": "VAZAL O GAMTH U+0020 DALK A LADHAV KAMV I RAGHAV PAUSE U+0020 VAZAL O GAMTH U+0020 RAGHAV U MARP MARP A LONG KAMV U+0020 RAGHAV A MARP KAMV STOP"
+        },
+        {
+            "roman": "gaz thumár, ves zummád.",
+            "codes": "GAMTH A ZALD U+0020 THARZ U MARP A LONG RAGHAV PAUSE U+0020 VAZAL E SAKAR U+0020 ZALD U MARP MARP A LONG DALK STOP"
+        },
+        {
+            "roman": "dulkun putthák, rinit dullák.",
+            "codes": "DALK U LADHAV KAMV U NAZAF U+0020 PARGH U THARZ THARZ A LONG KAMV PAUSE U+0020 RAGHAV I NAZAF I TAMB U+0020 DALK U LADHAV LADHAV A LONG KAMV STOP"
+        },
+        {
+            "roman": "galdan bunát, “dalík bant, maríg bant”.",
+            "codes": "GAMTH A LADHAV DALK A NAZAF U+0020 BALG U NAZAF A LONG TAMB PAUSE U+0020 U+201C DALK A LADHAV I LONG KAMV U+0020 BALG A NAZAF TAMB PAUSE U+0020 MARP A RAGHAV I LONG GAMTH U+0020 BALG A NAZAF TAMB U+201D STOP"
+        },
+        {
+            "roman": "lukum, “narv zuvák, vog dubáz”.",
+            "codes": "LADHAV U KAMV U MARP PAUSE U+0020 U+201C NAZAF A RAGHAV VAZAL U+0020 ZALD U VAZAL A LONG KAMV PAUSE U+0020 VAZAL O GAMTH U+0020 DALK U BALG A LONG ZALD U+201D STOP"
+        },
+        {
+            "roman": "guruz, “gaz thurágh” gaz munád.",
+            "codes": "GAMTH U RAGHAV U ZALD PAUSE U+0020 U+201C GAMTH A ZALD U+0020 THARZ U RAGHAV A LONG GHARM U+201D U+0020 GAMTH A ZALD U+0020 MARP U NAZAF A LONG DALK STOP"
+        },
+        {
+            "roman": "rinit, “!ves durám”.",
+            "codes": "RAGHAV I NAZAF I TAMB PAUSE U+0020 U+201C STOP VAZAL E SAKAR U+0020 DALK U RAGHAV A LONG MARP U+201D STOP"
+        },
+        {
+            "roman": "!ves durám bep gunádh nuv gaz.",
+            "codes": "STOP VAZAL E SAKAR U+0020 DALK U RAGHAV A LONG MARP U+0020 BALG E PARGH U+0020 GAMTH U NAZAF A LONG DHALZ U+0020 NAZAF U VAZAL U+0020 GAMTH A ZALD STOP"
+        },
+        {
+            "roman": "dalk tasím.",
+            "codes": "DALK A LADHAV KAMV U+0020 TAMB A SAKAR I LONG MARP STOP"
+        },
+        {
+            "roman": "ramk tasím.",
+            "codes": "RAGHAV A MARP KAMV U+0020 TAMB A SAKAR I LONG MARP STOP"
+        },
+        {
+            "roman": "ves mulágh nuv gazn zef.",
+            "codes": "VAZAL E SAKAR U+0020 MARP U LADHAV A LONG GHARM U+0020 NAZAF U VAZAL U+0020 GAMTH A ZALD NAZAF U+0020 ZALD E FARZ STOP"
+        },
+        {
+            "roman": "gaz huváz.",
+            "codes": "GAMTH A ZALD U+0020 HALB U VAZAL A LONG ZALD STOP"
+        },
+        {
+            "roman": "dalk durákh.",
+            "codes": "DALK A LADHAV KAMV U+0020 DALK U RAGHAV A LONG KHABAR STOP"
+        },
+        {
+            "roman": "gaz guruz, tanv-guráz.",
+            "codes": "GAMTH A ZALD U+0020 GAMTH U RAGHAV U ZALD PAUSE U+0020 TAMB A NAZAF VAZAL NAME_DASH GAMTH U RAGHAV A LONG ZALD STOP"
+        },
+        {
+            "roman": "0",
+            "codes": "DIGIT_ZERO"
+        },
+        {
+            "roman": "1",
+            "codes": "DIGIT_ONE"
+        },
+        {
+            "roman": "2",
+            "codes": "DIGIT_TWO"
+        },
+        {
+            "roman": "3",
+            "codes": "DIGIT_THREE"
+        },
+        {
+            "roman": "4",
+            "codes": "DIGIT_FOUR"
+        },
+        {
+            "roman": "5",
+            "codes": "DIGIT_FIVE"
+        },
+        {
+            "roman": "6",
+            "codes": "DIGIT_SIX"
+        },
+        {
+            "roman": "7",
+            "codes": "DIGIT_SEVEN"
+        },
+        {
+            "roman": "8",
+            "codes": "DIGIT_EIGHT"
+        },
+        {
+            "roman": "9",
+            "codes": "DIGIT_NINE"
+        },
+        {
+            "roman": "@",
+            "codes": "DIGIT_TEN"
+        },
+        {
+            "roman": "#",
+            "codes": "DIGIT_ELEVEN"
+        },
+        {
+            "roman": "$",
+            "codes": "DIGIT_TWELVE"
+        },
+        {
+            "roman": "%",
+            "codes": "DIGIT_THIRTEEN"
+        },
+        {
+            "roman": "^",
+            "codes": ""
+        },
+        {
+            "roman": "&",
+            "codes": "DIGIT_FIFTEEN"
+        },
+        {
+            "roman": "1@",
+            "codes": "DIGIT_ONE DIGIT_TEN"
+        },
+        {
+            "roman": "25",
+            "codes": "DIGIT_TWO DIGIT_FIVE"
+        },
+        {
+            "roman": "135",
+            "codes": "DIGIT_ONE DIGIT_THREE DIGIT_FIVE"
+        },
+        {
+            "roman": "girm 10 bep tob 1",
+            "codes": "GAMTH I RAGHAV MARP U+0020 DIGIT_ONE DIGIT_ZERO U+0020 BALG E PARGH U+0020 TAMB O BALG U+0020 DIGIT_ONE"
+        },
+        {
+            "roman": " ",
+            "codes": "U+0020"
+        },
+        {
+            "roman": "dalk",
+            "codes": "DALK A LADHAV KAMV"
+        },
+        {
+            "roman": "dalík",
+            "codes": "DALK A LADHAV I LONG KAMV"
+        },
+        {
+            "roman": "dalkir",
+            "codes": "DALK A LADHAV KAMV I RAGHAV"
+        },
+        {
+            "roman": "dulák",
+            "codes": "DALK U LADHAV A LONG KAMV"
+        },
+        {
+            "roman": "dullák",
+            "codes": "DALK U LADHAV LADHAV A LONG KAMV"
+        },
+        {
+            "roman": "ramk",
+            "codes": "RAGHAV A MARP KAMV"
+        },
+        {
+            "roman": "thamr",
+            "codes": "THARZ A MARP RAGHAV"
+        },
+        {
+            "roman": "bant",
+            "codes": "BALG A NAZAF TAMB"
+        },
+        {
+            "roman": "varn",
+            "codes": "VAZAL A RAGHAV NAZAF"
+        },
+        {
+            "roman": "vald",
+            "codes": "VAZAL A LADHAV DALK"
+        },
+        {
+            "roman": "dank",
+            "codes": "DALK A NAZAF KAMV"
+        },
+        {
+            "roman": "tanv",
+            "codes": "TAMB A NAZAF VAZAL"
+        },
+        {
+            "roman": "narv",
+            "codes": "NAZAF A RAGHAV VAZAL"
+        },
+        {
+            "roman": "madak",
+            "codes": "MARP A DALK A KAMV"
+        },
+        {
+            "roman": "lubáz",
+            "codes": "LADHAV U BALG A LONG ZALD"
+        },
+        {
+            "roman": "magar",
+            "codes": "MARP A GAMTH A RAGHAV"
+        },
+        {
+            "roman": "zagar",
+            "codes": "ZALD A GAMTH A RAGHAV"
+        },
+        {
+            "roman": "gharp",
+            "codes": "GHARM A RAGHAV PARGH"
+        },
+        {
+            "roman": "naghal",
+            "codes": "NAZAF A GHARM A LADHAV"
+        },
+        {
+            "roman": "hutabar",
+            "codes": "HALB U TAMB A BALG A RAGHAV"
+        },
+        {
+            "roman": "khatab",
+            "codes": "KHABAR A TAMB A BALG"
+        },
+        {
+            "roman": "filnath",
+            "codes": "FARZ I LADHAV NAZAF A THARZ"
+        },
+        {
+            "roman": "mazadh",
+            "codes": "MARP A ZALD A DHALZ"
+        },
+        {
+            "roman": "zalm",
+            "codes": "ZALD A LADHAV MARP"
+        },
+        {
+            "roman": "makas",
+            "codes": "MARP A KAMV A SAKAR"
+        },
+        {
+            "roman": "mullán",
+            "codes": "MARP U LADHAV LADHAV A LONG NAZAF"
+        },
+        {
+            "roman": "galdod",
+            "codes": "GAMTH A LADHAV DALK O DALK"
+        },
+        {
+            "roman": "farz",
+            "codes": "FARZ A RAGHAV ZALD"
+        },
+        {
+            "roman": "savadh",
+            "codes": "SAKAR A VAZAL A DHALZ"
+        },
+        {
+            "roman": "halz",
+            "codes": "HALB A LADHAV ZALD"
+        },
+        {
+            "roman": "girm",
+            "codes": "GAMTH I RAGHAV MARP"
+        },
+        {
+            "roman": "bamr",
+            "codes": "BALG A MARP RAGHAV"
+        },
+        {
+            "roman": "gatharir",
+            "codes": "GAMTH A THARZ A RAGHAV I RAGHAV"
+        },
+        {
+            "roman": "huzafal",
+            "codes": "HALB U ZALD A FARZ A LADHAV"
+        },
+        {
+            "roman": "milgath",
+            "codes": "MARP I LADHAV GAMTH A THARZ"
+        },
+        {
+            "roman": "mardh",
+            "codes": "MARP A RAGHAV DHALZ"
+        },
+        {
+            "roman": "nefk",
+            "codes": "NAZAF E FARZ KAMV"
+        },
+        {
+            "roman": "khozm",
+            "codes": "KHABAR O ZALD MARP"
+        },
+        {
+            "roman": "vunth",
+            "codes": "VAZAL U NAZAF THARZ"
+        },
+        {
+            "roman": "thulk",
+            "codes": "THARZ U LADHAV KAMV"
+        },
+        {
+            "roman": "Khazár",
+            "codes": "U+004B HALB A ZALD A LONG RAGHAV"
+        },
+        {
+            "roman": "tob",
+            "codes": "TAMB O BALG"
+        },
+        {
+            "roman": "bozd",
+            "codes": "BALG O ZALD DALK"
+        },
+        {
+            "roman": "Dalk-thumár",
+            "codes": "U+0044 A LADHAV KAMV NAME_DASH THARZ U MARP A LONG RAGHAV"
+        },
+        {
+            "roman": "Khalv-gunáv",
+            "codes": "U+004B HALB A LADHAV VAZAL NAME_DASH GAMTH U NAZAF A LONG VAZAL"
+        },
+        {
+            "roman": "putthák",
+            "codes": "PARGH U THARZ THARZ A LONG KAMV"
+        },
+        {
+            "roman": "gummáth",
+            "codes": "GAMTH U MARP MARP A LONG THARZ"
+        },
+        {
+            "roman": "purráz",
+            "codes": "PARGH U RAGHAV RAGHAV A LONG ZALD"
+        },
+        {
+            "roman": "dunnák",
+            "codes": "DALK U NAZAF NAZAF A LONG KAMV"
+        },
+        {
+            "roman": "dalk dalík dalkir dulák dullák ramk thamr bant varn vald dank",
+            "codes": "DALK A LADHAV KAMV U+0020 DALK A LADHAV I LONG KAMV U+0020 DALK A LADHAV KAMV I RAGHAV U+0020 DALK U LADHAV A LONG KAMV U+0020 DALK U LADHAV LADHAV A LONG KAMV U+0020 RAGHAV A MARP KAMV U+0020 THARZ A MARP RAGHAV U+0020 BALG A NAZAF TAMB U+0020 VAZAL A RAGHAV NAZAF U+0020 VAZAL A LADHAV DALK U+0020 DALK A NAZAF KAMV"
+        },
+        {
+            "roman": "tanv narv madak lubáz magar zagar gharp naghal hutabar khatab",
+            "codes": "TAMB A NAZAF VAZAL U+0020 NAZAF A RAGHAV VAZAL U+0020 MARP A DALK A KAMV U+0020 LADHAV U BALG A LONG ZALD U+0020 MARP A GAMTH A RAGHAV U+0020 ZALD A GAMTH A RAGHAV U+0020 GHARM A RAGHAV PARGH U+0020 NAZAF A GHARM A LADHAV U+0020 HALB U TAMB A BALG A RAGHAV U+0020 KHABAR A TAMB A BALG"
+        },
+        {
+            "roman": "filnath mazadh zalm makas mullán galdod farz savadh halz girm",
+            "codes": "FARZ I LADHAV NAZAF A THARZ U+0020 MARP A ZALD A DHALZ U+0020 ZALD A LADHAV MARP U+0020 MARP A KAMV A SAKAR U+0020 MARP U LADHAV LADHAV A LONG NAZAF U+0020 GAMTH A LADHAV DALK O DALK U+0020 FARZ A RAGHAV ZALD U+0020 SAKAR A VAZAL A DHALZ U+0020 HALB A LADHAV ZALD U+0020 GAMTH I RAGHAV MARP"
+        },
+        {
+            "roman": "bamr gatharir huzafal milgath mardh nefk khozm vunth thulk",
+            "codes": "BALG A MARP RAGHAV U+0020 GAMTH A THARZ A RAGHAV I RAGHAV U+0020 HALB U ZALD A FARZ A LADHAV U+0020 MARP I LADHAV GAMTH A THARZ U+0020 MARP A RAGHAV DHALZ U+0020 NAZAF E FARZ KAMV U+0020 KHABAR O ZALD MARP U+0020 VAZAL U NAZAF THARZ U+0020 THARZ U LADHAV KAMV"
+        },
+        {
+            "roman": "Khazár tob bozd Dalk-thumár Khalv-gunáv putthák gummáth purráz",
+            "codes": "U+004B HALB A ZALD A LONG RAGHAV U+0020 TAMB O BALG U+0020 BALG O ZALD DALK U+0020 U+0044 A LADHAV KAMV NAME_DASH THARZ U MARP A LONG RAGHAV U+0020 U+004B HALB A LADHAV VAZAL NAME_DASH GAMTH U NAZAF A LONG VAZAL U+0020 PARGH U THARZ THARZ A LONG KAMV U+0020 GAMTH U MARP MARP A LONG THARZ U+0020 PARGH U RAGHAV RAGHAV A LONG ZALD"
+        },
+        {
+            "roman": "shalmai",
+            "codes": "SHA A LADHAV MARP AI"
+        },
+        {
+            "roman": "zhoulin",
+            "codes": "ZHA OU LADHAV I NAZAF"
+        },
+        {
+            "roman": "chembai",
+            "codes": "CHA E MARP BALG AI"
+        },
+        {
+            "roman": "jorqen",
+            "codes": "JA O RAGHAV QA E NAZAF"
+        },
+        {
+            "roman": "tsaleik",
+            "codes": "TSA A LADHAV EI KAMV"
+        },
+        {
+            "roman": "ngathu",
+            "codes": "NGA A THARZ U"
+        },
+        {
+            "roman": "nyolwen",
+            "codes": "NYA O LADHAV WA E NAZAF"
+        },
+        {
+            "roman": "hlanoi",
+            "codes": "HLA A NAZAF OI"
+        },
+        {
+            "roman": "ya'ath",
+            "codes": "YA A CATCH A THARZ"
+        },
+        {
+            "roman": "waynor",
+            "codes": "WA AI NAZAF O RAGHAV"
+        },
+        {
+            "roman": "qashur",
+            "codes": "QA A SHA U RAGHAV"
+        },
+        {
+            "roman": "jeinyok",
+            "codes": "JA EI NYA O KAMV"
+        },
+        {
+            "roman": "galdan bunát, \"dalík bant, maríg bant\".",
+            "codes": "GAMTH A LADHAV DALK A NAZAF U+0020 BALG U NAZAF A LONG TAMB PAUSE U+0020 U+0022 DALK A LADHAV I LONG KAMV U+0020 BALG A NAZAF TAMB PAUSE U+0020 MARP A RAGHAV I LONG GAMTH U+0020 BALG A NAZAF TAMB U+0022 STOP"
+        },
+        {
+            "roman": "hrum",
+            "codes": "HALB RAGHAV U MARP"
+        },
+        {
+            "roman": "thulm",
+            "codes": "THARZ U LADHAV MARP"
+        },
+        {
+            "roman": "gnarth",
+            "codes": "GAMTH NAZAF A RAGHAV THARZ"
+        },
+        {
+            "roman": "svelth",
+            "codes": "SAKAR VAZAL E LADHAV THARZ"
+        },
+        {
+            "roman": "hvelm",
+            "codes": "HALB VAZAL E LADHAV MARP"
+        }
+    ]
+}

@@ -16,7 +16,7 @@ from pathlib import Path
 from PIL import Image, ImageDraw
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
-from encoded import Encoded, EncodedRenderer  # noqa: E402
+from codes import Written, WrittenRenderer  # noqa: E402
 from render import Renderer, label_font  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent.parent
@@ -291,7 +291,7 @@ def main():
     args = ap.parse_args()
     out = Path(args.out)
     out.mkdir(parents=True, exist_ok=True)
-    r = EncodedRenderer(Renderer(Path(args.font)), Encoded("pirzath-carved"))
+    r = WrittenRenderer(Renderer(Path(args.font)), Written("pirzath-carved"))
     glyph_chart(r, out / "01-glyph-chart.png")
     texts(r, out / "02-texts-reading.png", 36, "The Khazari texts at reading size")
     texts(r, out / "03-texts-display.png", 96, "The Khazari texts at display size")

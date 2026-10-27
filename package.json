@@ -8,8 +8,6 @@
         "./fonts.css": "./fonts.css",
         "./fonts.json": "./fonts.json",
         "./fonts/*": "./fonts/*",
-        "./encodings/*": "./encodings/*",
-        "./encode.py": "./encode.py",
         "./package.json": "./package.json"
     },
     "files": [
@@ -17,10 +15,7 @@
         "fonts/*.ttf",
         "fonts.css",
         "fonts.json",
-        "keyboards",
         "charts",
-        "encodings",
-        "encode.py",
         "LICENSE",
         "README.md"
     ],

@@ -28,14 +28,14 @@ test("a family without a class rule is a finding", () => {
     assert.equal(check(altered).length, 1);
 });
 
-test("the published encoding specification may be YAML", () => {
+test("a packed file that is not a font, a chart or the manifest is a finding", () => {
     const messages = findings({
-        packed: ["encodings/aelwythi-semaron.yaml"],
+        packed: ["tools/pirzath/guard.py"],
         files: [],
         css,
         fontFiles: [],
         manifest,
         exports: {},
     });
-    assert.ok(!messages.some((message) => message.includes("outside the font package")));
+    assert.ok(messages.some((message) => message.includes("outside the font package")));
 });

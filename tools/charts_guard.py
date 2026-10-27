@@ -7,7 +7,7 @@
 For each family of fonts.json, the files tools/charts.py wrote under ``charts/`` are read
 back. A failure is
 
-- a ``codepoints`` row missing from the sheet's table, in either entity form or without its Code Point cell, or from the
+- a ``codepoints`` row missing from the sheet's table, in either entity form or without its Code Point cell or its Code cell, or from the
   code chart, or without its glyph image, or a chart cell or glyph image for a code point the
   font has no row for;
 - a missing chart page PNG, or a sheet missing from ``charts/index.md``;
@@ -44,6 +44,8 @@ def sheet_problems(entry: dict, md: str, svgs: dict[str, str], glyphs: set[str],
         cells = [c.strip() for line in md.split("\n") if f"U+{hex_}.svg)" in line for c in line.split("|")]
         if row["codepoint"] not in cells:
             out.append(f"{where}: error: {row['codepoint']} has no Code Point cell {row['codepoint']}")
+        if f"`{row.get('code')}`" not in cells:
+            out.append(f"{where}: error: {row['codepoint']} has no Code cell `{row.get('code')}`")
         for form in (f"`&#{cp};`", f"`&#x{hex_};`"):
             if form not in md:
                 out.append(f"{where}: error: {row['codepoint']} has no {form} in the table")

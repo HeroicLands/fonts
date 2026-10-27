@@ -58,7 +58,7 @@ class Renderer:
         glyphs = []
         clusters = []
         pen_x = 0
-        for info, pos in zip(buf.glyph_infos, buf.glyph_positions):
+        for info, pos in zip(buf.glyph_infos or [], buf.glyph_positions or []):
             glyphs.append((info.codepoint, pen_x + pos.x_offset, pos.y_offset, pos.x_advance))
             clusters.append(info.cluster)
             pen_x += pos.x_advance

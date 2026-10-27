@@ -278,7 +278,7 @@ must know which. A glyph may say one thing by its picture and another by its sou
 at once. This is what makes the temple script inscrutable to anyone but the
 priests and scribes trained in it.
 
-The two hands are encoded separately: a ceremonial glyph has no one common glyph
+The two hands have code points of their own: a ceremonial glyph has no one common glyph
 that matches it, and the readings, not the code points, connect them.
 
 Each sign is drawn individually inside its box, by the method of the Khelathi
@@ -347,10 +347,8 @@ name: the jaguar, the house emblem of Ish'bal, with its coefficient, three, and 
 rest of the name in the next block. The font composes each block, and a main sign that
 shares its block takes its compact form.
 
-Each hand's codage is an encoding: `tools/chalish-pilam/codage.py` writes the common
-hand's, `encodings/chalish-common.json`, from `encoding.json`, and
-`tools/chalish-pilam/ceremonial_codage.py` writes the ceremonial hand's,
-`encodings/chalish-ceremonial.json`, from `ceremonial_encoding.json`, and prints its rows
-for thalorna's mapping note, so neither map drifts from its font. In both, a space writes
-its invisible mark, and in the ceremonial hand `-` writes its own, so decoding gives the
-codage back as typed.
+Every glyph of each hand has a glyph code, its codage code: `tools/codes/chalish.json` and
+`tools/codes/chalishceremonial.json` hold them, and the ceremonial joiners are
+`JOINER_BESIDE` and `JOINER_STACK`. As a sequence of glyph codes,
+`n3*la1:JAGUAR-sho1*bi1` is `n3 JOINER_BESIDE la1 JOINER_STACK JAGUAR sho1 JOINER_BESIDE bi1`:
+a block ends where no joiner follows.

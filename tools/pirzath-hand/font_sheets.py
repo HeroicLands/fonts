@@ -3,10 +3,9 @@
 """Render the built Pirzath Hand on real Khazari text.
 
     .venv/bin/python tools/pirzath-hand/font_sheets.py [--font fonts/PirzathHand-Regular.ttf]
-                                                [--encoding FILE]
 
 ``specimens/pirzath-hand/text.png``: Khazari words and the Khazari texts of the
-carved specimens, written through the ``pirzath`` encoding and shaped by HarfBuzz
+carved specimens, their code points stored in ``tools/texts/pirzath-hand.json``, shaped by HarfBuzz
 from the built font, at display size and at 48, 24 and 20 px, each after its roman
 spelling in Liberation Mono at the same size, with the shared x-height and cap height
 ruled across both. Nothing here draws from the generator: what is shown is the font.
@@ -22,7 +21,7 @@ from PIL import Image, ImageDraw, ImageFont
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parent.parent
 sys.path.insert(0, str(HERE.parent))
-from encoded import Encoded, EncodedRenderer  # noqa: E402
+from codes import Written, WrittenRenderer  # noqa: E402
 from render import Renderer, latin_font  # noqa: E402
 
 PAPER = (243, 239, 228)
@@ -51,12 +50,12 @@ def font(size, path=LABEL_FONT):
         return ImageFont.load_default()
 
 
-def sheet(out: Path, r: EncodedRenderer) -> Path:
+def sheet(out: Path, r: WrittenRenderer) -> Path:
     W = 2400
     img = Image.new("RGB", (W, 9000), PAPER)
     d = ImageDraw.Draw(img)
     d.text((40, 30), "Pirzath Hand — the built font", fill=INK, font=font(46))
-    d.text((40, 94), "Khazari words and texts, written by the pirzath encoding and shaped by HarfBuzz from "
+    d.text((40, 94), "Khazari words and texts, written in glyph codes and shaped by HarfBuzz from "
            "fonts/PirzathHand-Regular.ttf, after Liberation Mono at the same size; faint rules: the shared x-height and "
            "cap height.", fill=GREY, font=font(22))
     texts = _carved_texts()
@@ -96,10 +95,9 @@ def sheet(out: Path, r: EncodedRenderer) -> Path:
 def main():
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     ap.add_argument("--font", default=str(ROOT / "fonts" / "PirzathHand-Regular.ttf"))
-    ap.add_argument("--encoding", help="apply this encoding file instead of encodings/pirzath.json")
     ap.add_argument("--out", default=str(ROOT / "specimens" / "pirzath-hand" / "text.png"))
     a = ap.parse_args()
-    print(sheet(Path(a.out), EncodedRenderer(Renderer(Path(a.font)), Encoded("pirzath-hand", a.encoding))))
+    print(sheet(Path(a.out), WrittenRenderer(Renderer(Path(a.font)), Written("pirzath-hand"))))
 
 
 if __name__ == "__main__":

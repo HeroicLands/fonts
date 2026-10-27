@@ -664,8 +664,9 @@ committed: an edit belongs in `tools/teng-chou/`, and the script is run after it
   column top to bottom from these. A TrueType font carries no `VORG`, so a shaper
   reads the origin from each glyph's top side bearing. `tools/vertical.py` checks
   all of it.
-- **Typing.** The characters and signs are typed by code point, or written by a
-  encoding in the consuming build; Teng Chou has no keyboard layout.
+- **Typing.** The characters and signs are inserted by code point from the chart,
+  where each has its glyph code: a character its morpheme in capitals (`HO`), a
+  syllable sign its syllable in lowercase (`ka`).
 
 `tools/teng-chou/text_specimen.py` sets the Tantsou and Jurthati passages of
 `tools/teng-chou/texts.py` from the built font: `text.png` along a line at display

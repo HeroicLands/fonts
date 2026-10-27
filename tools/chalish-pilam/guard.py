@@ -2,10 +2,9 @@
 # SPDX-License-Identifier: OFL-1.1
 """Shape fixtures through Chalish Pilam Common and assert the font sets them.
 
-    .venv/bin/python tools/chalish-pilam/guard.py [--font fonts/ChalishPilamCommon-Regular.ttf] [--fixtures-only]
+    .venv/bin/python tools/chalish-pilam/guard.py [--font fonts/ChalishPilamCommon-Regular.ttf]
 
-The face records meaning, not spelling, so it has no encoding and reads no thalorna
-checkout: the fixtures are its own. They are a night's entry at the sighting stones
+The fixtures are a night's entry at the sighting stones
 (``glyphs.passage_glyphs()``) and every glyph once. Each is written as the code points of
 ``encoding.json`` and shaped by HarfBuzz, and a fixture fails when it does not yield
 exactly its glyphs, one each, or a glyph is ``.notdef`` or the box.
@@ -82,7 +81,6 @@ def run(path: Path) -> list[str]:
 def main():
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     ap.add_argument("--font", default=str(FONT))
-    ap.add_argument("--fixtures-only", action="store_true", help="the only mode; the face reads no thalorna checkout")
     a = ap.parse_args()
     failures = run(Path(a.font))
     for f in failures:

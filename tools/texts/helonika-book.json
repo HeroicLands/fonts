@@ -1,0 +1,233 @@
+{
+    "script": "helonika",
+    "texts": [
+        {
+            "roman": "sothira",
+            "codes": "S_MIN O_MIN TH_MIN I_MIN R_MIN A_MIN"
+        },
+        {
+            "roman": "kosamir",
+            "codes": "K_MIN O_MIN S_MIN A_MIN M_MIN I_MIN R_MIN"
+        },
+        {
+            "roman": "harmodhin",
+            "codes": "H_MIN A_MIN R_MIN M_MIN O_MIN D_MIN H_MIN I_MIN N_MIN"
+        },
+        {
+            "roman": "therin",
+            "codes": "TH_MIN E_MIN R_MIN I_MIN N_MIN"
+        },
+        {
+            "roman": "kléandir",
+            "codes": "K_MIN L_MIN E_MIN A_MIN N_MIN D_MIN I_MIN R_MIN"
+        },
+        {
+            "roman": "kumethos",
+            "codes": "K_MIN U_MIN M_MIN E_MIN TH_MIN O_MIN S_MIN"
+        },
+        {
+            "roman": "agelon",
+            "codes": "A_MIN G_MIN E_MIN L_MIN O_MIN N_MIN"
+        },
+        {
+            "roman": "teikhir",
+            "codes": "T_MIN LONG_E_MIN K_MIN H_MIN I_MIN R_MIN"
+        },
+        {
+            "roman": "koum",
+            "codes": "K_MIN LONG_O_MIN M_MIN"
+        },
+        {
+            "roman": "fótamir",
+            "codes": "F_MIN O_MIN T_MIN A_MIN M_MIN I_MIN R_MIN"
+        },
+        {
+            "roman": "zefaris",
+            "codes": "Z_MIN E_MIN F_MIN A_MIN R_MIN I_MIN S_MIN"
+        },
+        {
+            "roman": "epistémion",
+            "codes": "E_MIN P_MIN I_MIN S_MIN T_MIN E_MIN M_MIN I_MIN O_MIN N_MIN"
+        },
+        {
+            "roman": "dramin",
+            "codes": "D_MIN R_MIN A_MIN M_MIN I_MIN N_MIN"
+        },
+        {
+            "roman": "thásira",
+            "codes": "TH_MIN A_MIN S_MIN I_MIN R_MIN A_MIN"
+        },
+        {
+            "roman": "bulos",
+            "codes": "B_MIN U_MIN L_MIN O_MIN S_MIN"
+        },
+        {
+            "roman": "sothira kosamir harmodhin therin kléandir",
+            "codes": "S_MIN O_MIN TH_MIN I_MIN R_MIN A_MIN U+0020 K_MIN O_MIN S_MIN A_MIN M_MIN I_MIN R_MIN U+0020 H_MIN A_MIN R_MIN M_MIN O_MIN D_MIN H_MIN I_MIN N_MIN U+0020 TH_MIN E_MIN R_MIN I_MIN N_MIN U+0020 K_MIN L_MIN E_MIN A_MIN N_MIN D_MIN I_MIN R_MIN"
+        },
+        {
+            "roman": "kumethos agelon teikhir koum fótamir",
+            "codes": "K_MIN U_MIN M_MIN E_MIN TH_MIN O_MIN S_MIN U+0020 A_MIN G_MIN E_MIN L_MIN O_MIN N_MIN U+0020 T_MIN LONG_E_MIN K_MIN H_MIN I_MIN R_MIN U+0020 K_MIN LONG_O_MIN M_MIN U+0020 F_MIN O_MIN T_MIN A_MIN M_MIN I_MIN R_MIN"
+        },
+        {
+            "roman": "zefaris epistémion dramin thásira bulos",
+            "codes": "Z_MIN E_MIN F_MIN A_MIN R_MIN I_MIN S_MIN U+0020 E_MIN P_MIN I_MIN S_MIN T_MIN E_MIN M_MIN I_MIN O_MIN N_MIN U+0020 D_MIN R_MIN A_MIN M_MIN I_MIN N_MIN U+0020 TH_MIN A_MIN S_MIN I_MIN R_MIN A_MIN U+0020 B_MIN U_MIN L_MIN O_MIN S_MIN"
+        },
+        {
+            "roman": "sothira koum harmodhin.",
+            "codes": "S_MIN O_MIN TH_MIN I_MIN R_MIN A_MIN U+0020 K_MIN LONG_O_MIN M_MIN U+0020 H_MIN A_MIN R_MIN M_MIN O_MIN D_MIN H_MIN I_MIN N_MIN STOP"
+        },
+        {
+            "roman": "kléandir, kumethos, agelon.",
+            "codes": "K_MIN L_MIN E_MIN A_MIN N_MIN D_MIN I_MIN R_MIN U+0020 K_MIN U_MIN M_MIN E_MIN TH_MIN O_MIN S_MIN U+0020 A_MIN G_MIN E_MIN L_MIN O_MIN N_MIN STOP"
+        },
+        {
+            "roman": "teikhir koum fótamir.",
+            "codes": "T_MIN LONG_E_MIN K_MIN H_MIN I_MIN R_MIN U+0020 K_MIN LONG_O_MIN M_MIN U+0020 F_MIN O_MIN T_MIN A_MIN M_MIN I_MIN R_MIN STOP"
+        },
+        {
+            "roman": "bulos vesmor zefaris dramin thásira.",
+            "codes": "B_MIN U_MIN L_MIN O_MIN S_MIN U+0020 V_MIN E_MIN S_MIN M_MIN O_MIN R_MIN U+0020 Z_MIN E_MIN F_MIN A_MIN R_MIN I_MIN S_MIN U+0020 D_MIN R_MIN A_MIN M_MIN I_MIN N_MIN U+0020 TH_MIN A_MIN S_MIN I_MIN R_MIN A_MIN STOP"
+        },
+        {
+            "roman": "epistémion koum therin.",
+            "codes": "E_MIN P_MIN I_MIN S_MIN T_MIN E_MIN M_MIN I_MIN O_MIN N_MIN U+0020 K_MIN LONG_O_MIN M_MIN U+0020 TH_MIN E_MIN R_MIN I_MIN N_MIN STOP"
+        },
+        {
+            "roman": "Sothira.",
+            "codes": "S_MAJ O_MIN TH_MIN I_MIN R_MIN A_MIN STOP"
+        },
+        {
+            "roman": "sothira.",
+            "codes": "S_MIN O_MIN TH_MIN I_MIN R_MIN A_MIN STOP"
+        },
+        {
+            "roman": "kosamir?",
+            "codes": "K_MIN O_MIN S_MIN A_MIN M_MIN I_MIN R_MIN STOP"
+        },
+        {
+            "roman": "thasira",
+            "codes": "TH_MIN A_MIN S_MIN I_MIN R_MIN A_MIN"
+        },
+        {
+            "roman": "Thásira",
+            "codes": "TH_MAJ A_MIN S_MIN I_MIN R_MIN A_MIN"
+        },
+        {
+            "roman": "THASIRA",
+            "codes": "T_MAJ H_MAJ A_MAJ S_MAJ I_MAJ R_MAJ A_MAJ"
+        },
+        {
+            "roman": "Eirene",
+            "codes": "LONG_E_MAJ R_MIN E_MIN N_MIN E_MIN"
+        },
+        {
+            "roman": "Ourin",
+            "codes": "LONG_O_MAJ R_MIN I_MIN N_MIN"
+        },
+        {
+            "roman": "Philon",
+            "codes": "F_MAJ I_MIN L_MIN O_MIN N_MIN"
+        },
+        {
+            "roman": "Chaddul",
+            "codes": "T_MAJ S_MIN H_MIN A_MIN D_MIN D_MIN U_MIN L_MIN"
+        },
+        {
+            "roman": "Wenos",
+            "codes": "U_MAJ E_MIN N_MIN O_MIN S_MIN"
+        },
+        {
+            "roman": "Ozhar",
+            "codes": "O_MAJ Z_MIN H_MIN A_MIN R_MIN"
+        },
+        {
+            "roman": "Zoë",
+            "codes": "Z_MAJ O_MIN E_MIN"
+        },
+        {
+            "roman": "Qeros",
+            "codes": "K_MAJ E_MIN R_MIN O_MIN S_MIN"
+        },
+        {
+            "roman": "Bethuan",
+            "codes": "B_MAJ E_MIN TH_MIN U_MIN A_MIN N_MIN"
+        },
+        {
+            "roman": "eirene",
+            "codes": "LONG_E_MIN R_MIN E_MIN N_MIN E_MIN"
+        },
+        {
+            "roman": "ourin",
+            "codes": "LONG_O_MIN R_MIN I_MIN N_MIN"
+        },
+        {
+            "roman": "kéiros",
+            "codes": "K_MIN LONG_E_MIN R_MIN O_MIN S_MIN"
+        },
+        {
+            "roman": "philon",
+            "codes": "F_MIN I_MIN L_MIN O_MIN N_MIN"
+        },
+        {
+            "roman": "chaddul",
+            "codes": "T_MIN S_MIN H_MIN A_MIN D_MIN D_MIN U_MIN L_MIN"
+        },
+        {
+            "roman": "kyria",
+            "codes": "K_MIN I_MIN R_MIN I_MIN A_MIN"
+        },
+        {
+            "roman": "wenos",
+            "codes": "U_MIN E_MIN N_MIN O_MIN S_MIN"
+        },
+        {
+            "roman": "ozhar",
+            "codes": "O_MIN Z_MIN H_MIN A_MIN R_MIN"
+        },
+        {
+            "roman": "kaar",
+            "codes": "K_MIN A_MIN A_MIN R_MIN"
+        },
+        {
+            "roman": "zoë",
+            "codes": "Z_MIN O_MIN E_MIN"
+        },
+        {
+            "roman": "noë-ira",
+            "codes": "N_MIN O_MIN E_MIN I_MIN R_MIN A_MIN"
+        },
+        {
+            "roman": "dokhazin, therin. agelon. bulos",
+            "codes": "D_MIN O_MIN K_MIN H_MIN A_MIN Z_MIN I_MIN N_MIN U+0020 TH_MIN E_MIN R_MIN I_MIN N_MIN STOP U+0020 A_MIN G_MIN E_MIN L_MIN O_MIN N_MIN STOP U+0020 B_MIN U_MIN L_MIN O_MIN S_MIN"
+        },
+        {
+            "roman": "en-telekas",
+            "codes": "E_MIN N_MIN T_MIN E_MIN L_MIN E_MIN K_MIN A_MIN S_MIN"
+        },
+        {
+            "roman": "vesmor 1066",
+            "codes": "V_MIN E_MIN S_MIN M_MIN O_MIN R_MIN U+0020 DIGIT_ONE DIGIT_ZERO DIGIT_SIX DIGIT_SIX"
+        },
+        {
+            "roman": "qeros",
+            "codes": "K_MIN E_MIN R_MIN O_MIN S_MIN"
+        },
+        {
+            "roman": "jumina",
+            "codes": "J_MIN U_MIN M_MIN I_MIN N_MIN A_MIN"
+        },
+        {
+            "roman": "bethuan",
+            "codes": "B_MIN E_MIN TH_MIN U_MIN A_MIN N_MIN"
+        },
+        {
+            "roman": "rhezin",
+            "codes": "R_MIN H_MIN E_MIN Z_MIN I_MIN N_MIN"
+        },
+        {
+            "roman": "a‼ a! a?",
+            "codes": "A_MIN STOP U+0020 A_MIN STOP U+0020 A_MIN STOP"
+        }
+    ]
+}

@@ -2,7 +2,7 @@
 
 Khazari (dwarven) common hand, the modern script, written left to right.
 
-[Back to the README](../README.md) · [Character chart](../charts/pirzath-hand.md) · Keyboard cheatsheet: [HL Pirzath](../keyboards/pirzath.md)
+[Back to the README](../README.md) · [Character chart](../charts/pirzath-hand.md)
 
 ## The letters
 

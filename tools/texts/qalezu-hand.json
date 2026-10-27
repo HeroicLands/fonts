@@ -1,0 +1,65 @@
+{
+    "script": "qalezu",
+    "texts": [
+        {
+            "roman": "au'khelathu",
+            "codes": "CATCH CATCH KHA LAGUN THELQEN"
+        },
+        {
+            "roman": "khelathu",
+            "codes": "KHA LAGUN THELQEN"
+        },
+        {
+            "roman": "khelathi-zethu",
+            "codes": "KHA LAGUN THELQEN U+0020 ZAGUL THELQEN"
+        },
+        {
+            "roman": "qalezu",
+            "codes": "QENUWA LAGUN ZAGUL"
+        },
+        {
+            "roman": "nelgir",
+            "codes": "NELGIR LAGUN GITHAR RETHU"
+        },
+        {
+            "roman": "halzi",
+            "codes": "HALZI LAGUN ZAGUL"
+        },
+        {
+            "roman": "weth'ur",
+            "codes": "WALIR THELQEN CATCH RETHU"
+        },
+        {
+            "roman": "qe'aret",
+            "codes": "QENUWA CATCH RETHU TULAZ"
+        },
+        {
+            "roman": "uqa'a",
+            "codes": "CATCH QENUWA CATCH"
+        },
+        {
+            "roman": "igelnaru",
+            "codes": "CATCH GITHAR LAGUN NELGIR RETHU"
+        },
+        {
+            "roman": "genzet",
+            "codes": "GITHAR NELGIR ZAGUL TULAZ"
+        },
+        {
+            "roman": "lenni",
+            "codes": "LAGUN NELGIR_DBL"
+        },
+        {
+            "roman": "gar-qethar",
+            "codes": "GITHAR RETHU U+0020 QENUWA THELQEN RETHU"
+        },
+        {
+            "roman": "zel-qar",
+            "codes": "ZAGUL LAGUN U+0020 QENUWA RETHU"
+        },
+        {
+            "roman": "lut-psaqa",
+            "codes": "LAGUN TULAZ U+0020 PA SELQUR QENUWA"
+        }
+    ]
+}

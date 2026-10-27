@@ -63,9 +63,9 @@ specimen table in `tools/thuravark-carved/specimens.py`.
 | the other standard roman marks                   | nothing: invisible marks alone                    |
 | `c x`, a capital and every other punctuation key | the box, a copy of `.notdef`                      |
 
-The table is the Thuravark encoding's. The recension's characters are reached by
-a Tharavarkon encoding, which thalorna writes: `ai`, `au` and `oi` draw their own
-staves, and the crown marks are typed around a name.
+The table is how Nordmal is written in the staves; thalorna states it. The
+recension's characters, `ai`, `au` and `oi`, draw their own staves, and the crown
+marks stand around a name.
 
 ## Numerals
 
@@ -152,13 +152,12 @@ of their branches, and inside a crown it takes a crowned form like any glyph.
 
 ## Checks
 
-`tools/thuravark-carved/guard.py` shapes every Nordmal form on thalorna `origin/main` (words,
-affixes, elements, given and clan names) and a set of fixtures, and asserts the
+`tools/thuravark-carved/guard.py` shapes the fixtures of `fixtures.json`, sequences of
+glyph codes, and asserts the glyphs each gives, and asserts the
 stave design: 31 distinct staves and ten bound runes, each bound rune within the
 binding rule, no horizontal edge in any of them, numerals taller than staves,
-and every pair at least 20 pixels apart at 36 px. The recension's fixtures type
-the font's own code points around a name written through the encoding: the three
-staves, crowned names, an unclosed open and a stray close, a crown of forty-one
+and every pair at least 20 pixels apart at 36 px. The recension's fixtures cover
+the three staves, crowned names, an unclosed open and a stray close, a crown of forty-one
 glyphs, and the bound runes with `ss01` on and the same text unchanged with it
 off; a rendered crowned name's rails are checked for a break.
 `tools/thuravark-carved/check_font.py`

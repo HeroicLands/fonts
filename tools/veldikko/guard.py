@@ -1,21 +1,16 @@
 # Copyright (c) 2026 Tom Rodriguez ("Toasty") — <toasty@heroiclands.org>
 # SPDX-License-Identifier: OFL-1.1
-"""Convert every Sinale lexicon form to the Veldikko and assert the font sets it rightly.
+"""Shape Veldikko's fixtures and assert the font sets each one rightly.
 
     .venv/bin/python tools/veldikko/guard.py [--font fonts/Veldikko-Regular.ttf]
-                                       [--thalorna ~/dev/HeroicLands/thalorna | --note FILE | --fixtures-only]
 
-The forms are the ``words`` forms and every name of the frontmatter of
-``assets/content/Skills/Languages/Sinale.md`` on the thalorna repository's
-``origin/main``, and the fixtures in ``fixtures.json``. Each form is written in the
-Veldikko's code points by ``encode.py`` with ``encodings/veldikko.json``, which
-holds the rules alone. The text is shaped as the encoding writes it, with its
-non-writing marks, which the font ignores.
+Each fixture in ``fixtures.json`` is a sequence of Veldikko's glyph codes
+(``tools/codes/veldikko.json``), with ``U+0020`` for the space: a letter, then the
+doubling bar if the consonant is doubled, then each vowel mark, each followed by its
+signs of length, pitch and emphasis. It is shaped right to left, and the guard asserts
+what the font must do with it:
 
-Each encoded form is shaped right to left, and the guard asserts what the font
-must do with it:
-
-- **the glyphs.** The run is the converted text in visual order, a word's last
+- **the glyphs.** The run is the sequence in visual order, a word's last
   letter first, with neither ``.notdef`` nor the box. Each letter is in the form
   its place gives it: isolated alone, initial first, final last, medial between,
   the initial and medial stretched (``.wide``) when the letter carries a long or
@@ -25,35 +20,28 @@ must do with it:
   form carries in ``sources/Veldikko.ufo``; the two marks of a diphthong
   stand centred on it, the first said to the right; the length bar stands at the
   ``bar`` anchor. Two units of rounding are allowed.
-
-The fixtures name the glyphs a spelling must give, and ``written`` fixtures name the
-exact code points the encoding writes for a spelling it draws by a nearest letter.
 """
 
 from __future__ import annotations
 
 import argparse
 import json
-import subprocess
 import sys
 from pathlib import Path
 
 import ufoLib2
-import yaml
 from fontTools.pens.boundsPen import BoundsPen
 
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parent.parent
 sys.path.insert(0, str(HERE.parent))
-sys.path.insert(0, str(ROOT))
-import encode  # noqa: E402
+import codes  # noqa: E402
 from render import Renderer  # noqa: E402
 
-NOTE = "assets/content/Skills/Languages/Sinale.md"
 ENCODING = HERE / "encoding.json"
 FIXTURE_FILE = HERE / "fixtures.json"
 SOURCE = ROOT / "sources" / "Veldikko.ufo"
-FAMILY = "Veldikko"
+SCRIPT = "veldikko"
 TOLERANCE = 2
 DIPHTHONG_GAP = 15  # the least clear space between the two marks of a diphthong
 DIPHTHONG_SLACK = 40  # how far a diphthong's ink may stand off its letter's mark point, for the slant
@@ -67,30 +55,11 @@ def load_encoding():
 
 
 NAME_OF = load_encoding()
-_fixtures = json.loads(FIXTURE_FILE.read_text(encoding="utf-8"))
-FIXTURES = [(f["latin"], f["glyphs"]) for f in _fixtures["fixtures"]]
-WRITTEN = [(f["latin"], f["codepoints"]) for f in _fixtures["written"]]
-ENCODING_FILE = encode.load("veldikko")
-
-
-def convert_all(words: list[str]) -> list[str | Exception]:
-    """The Veldikko code points of each romanized word, marks included, or the error that
-    refused it."""
-    out = []
-    for w in words:
-        try:
-            out.append(encode.encode(ENCODING_FILE, w))
-        except encode.EncodingError as e:
-            out.append(e)
-    return out
-
-
-def codepoints_of(text: str) -> list[str]:
-    return [f"U+{ord(c):04X}" for c in text]
+FIXTURES = [f["codes"] for f in json.loads(FIXTURE_FILE.read_text(encoding="utf-8"))["fixtures"]]
 
 
 def glyphs_of(text: str) -> list[str]:
-    return ["space" if c == " " else NAME_OF[c]["glyph"] for c in text if not encode.is_mark(c)]
+    return ["space" if c == " " else NAME_OF[c]["glyph"] for c in text]
 
 
 def vowel_name(base: str, mods: set[str]) -> str:
@@ -193,36 +162,6 @@ def placement(names: list[str], shaped, points, ink) -> list[str]:
     return problems
 
 
-def lexicon(thalorna: Path | None, note: Path | None) -> dict:
-    if note:
-        text = note.read_text(encoding="utf-8")
-    else:
-        text = subprocess.run(
-            ["git", "-C", str(thalorna), "show", f"origin/main:{NOTE}"], check=True, capture_output=True, text=True
-        ).stdout
-    return yaml.safe_load(text.split("\n---\n", 1)[0].lstrip("-\n"))["data"]
-
-
-def _strings(node) -> list[str]:
-    if isinstance(node, str):
-        return [node]
-    if isinstance(node, list):
-        return [s for v in node for s in _strings(v)]
-    if isinstance(node, dict):
-        return [s for v in node.values() for s in _strings(v)]
-    return []
-
-
-def lexicon_forms(thalorna: Path | None, note: Path | None) -> list[str]:
-    data = lexicon(thalorna, note)
-    forms = [w["form"] for w in data["words"]]
-    names = data.get("names", {})
-    forms += _strings(names.get("given", {})) + _strings(names.get("lineage", {}))
-    if not forms:
-        raise SystemExit("the lexicon is empty")
-    return forms
-
-
 def check_one(r: Renderer, points, label: str, text: str) -> list[str]:
     want = expected(glyphs_of(text))
     shaped = r.shape(text, direction="rtl")
@@ -239,18 +178,6 @@ class Shaper(Renderer):
         super().__init__(path)
         self._ink = {}
 
-    def shape(self, text, *args, **kwargs):
-        """The shaped run without the placeholders HarfBuzz leaves for default-ignorable
-        characters (the encoding's marks): a placeholder of no advance is dropped, and
-        one with an advance stays, to fail the glyph check."""
-        shaped = super().shape(text, *args, **kwargs)
-        keep = [
-            i
-            for i, ((_, _, _, advance), cluster) in enumerate(zip(shaped.glyphs, shaped.clusters))
-            if not (encode.is_mark(text[cluster]) and advance == 0)
-        ]
-        return type(shaped)([shaped.glyphs[i] for i in keep], shaped.advance, [shaped.clusters[i] for i in keep])
-
     def ink(self, name: str) -> tuple[float, float]:
         if name not in self._ink:
             glyphs = self.tt.getGlyphSet()
@@ -260,51 +187,21 @@ class Shaper(Renderer):
         return self._ink[name]
 
 
-def run(font: Path, forms: list[str]) -> list[str]:
+def run(font: Path) -> list[str]:
     r = Shaper(font)
     points = anchors()
     failures = []
-    fixture_words = [latin for latin, _ in FIXTURES]
-    written_words = [latin for latin, _ in WRITTEN]
-    results = convert_all(forms + fixture_words + written_words)
-    form_results = results[: len(forms)]
-    fixture_results = results[len(forms) : len(forms) + len(fixture_words)]
-    written_results = results[len(forms) + len(fixture_words) :]
-    for form, text in zip(forms, form_results):
-        if isinstance(text, Exception):
-            failures.append(f"{form!r}: refused: {text}")
-            continue
-        failures += check_one(r, points, form, text)
-    for (latin, want), text in zip(FIXTURES, fixture_results):
-        if isinstance(text, Exception):
-            failures.append(f"{latin!r}: refused: {text}")
-            continue
-        if glyphs_of(text) != want:
-            failures.append(f"{latin!r}: encoded to {glyphs_of(text)}, expected {want}")
-        failures += check_one(r, points, repr(latin), text)
-    for (latin, want), text in zip(WRITTEN, written_results):
-        if isinstance(text, Exception):
-            failures.append(f"{latin!r}: refused: {text}")
-            continue
-        if codepoints_of(text) != want:
-            failures.append(f"{latin!r}: encoded to {codepoints_of(text)}, expected {want}")
-        failures += check_one(r, points, repr(latin), text)
-    print(
-        f"{font}: {len(forms)} forms encoded and shaped, {len(FIXTURES)} fixtures, "
-        f"{len(WRITTEN)} written fixtures, {len(failures)} failures"
-    )
+    for sequence in FIXTURES:
+        failures += check_one(r, points, sequence, codes.text(SCRIPT, sequence))
+    print(f"{font}: {len(FIXTURES)} fixtures, {len(failures)} failures")
     return failures
 
 
 def main():
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     ap.add_argument("--font", default=str(ROOT / "fonts" / "Veldikko-Regular.ttf"))
-    ap.add_argument("--thalorna", default=str(Path.home() / "dev/HeroicLands/thalorna"))
-    ap.add_argument("--note", help="read the language note from this file instead of git")
-    ap.add_argument("--fixtures-only", action="store_true", help="shape the fixtures alone, with no lexicon")
     args = ap.parse_args()
-    forms = [] if args.fixtures_only else lexicon_forms(Path(args.thalorna), Path(args.note) if args.note else None)
-    failures = run(Path(args.font), forms)
+    failures = run(Path(args.font))
     for f in failures[:40]:
         print(f"{args.font}: error: {f}")
     if len(failures) > 40:

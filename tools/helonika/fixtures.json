@@ -1,96 +1,625 @@
 {
-  "spaces": [
-    {"latin": "a b", "advances": [200]},
-    {"latin": "a. b", "advances": [0]},
-    {"latin": "a. b c. d e", "advances": [0, 200, 0, 200]},
-    {"latin": "kosamir? a", "advances": [0]},
-    {"latin": "kosamir! a", "advances": [0]},
-    {"latin": "kosamir! a", "advances": [0]},
-    {"latin": "a, b", "advances": [200]}
-  ],
-  "fixtures": [
-    {"latin": "Sothira.", "glyphs": ["S", "o", "th", "i", "r", "a", "raisedDot"]},
-    {"latin": "sothira.", "glyphs": ["s", "o", "th", "i", "r", "a", "raisedDot"]},
-    {"latin": "kosamir?", "glyphs": ["k", "o", "s", "a", "m", "i", "r", "raisedDot"]},
-    {"latin": "teikhir", "glyphs": ["t", "e.long", "k", "h", "i", "r"]},
-    {"latin": "koum", "glyphs": ["k", "o.long", "m"]},
-    {"latin": "thásira", "glyphs": ["th", "a", "s", "i", "r", "a"]},
-    {"latin": "thasira", "glyphs": ["th", "a", "s", "i", "r", "a"]},
-    {"latin": "Thásira", "glyphs": ["TH", "a", "s", "i", "r", "a"]},
-    {"latin": "THASIRA", "glyphs": ["T", "H", "A", "S", "I", "R", "A"]},
-    {"latin": "Eirene", "glyphs": ["E.long", "r", "e", "n", "e"]},
-    {"latin": "Ourin", "glyphs": ["O.long", "r", "i", "n"]},
-    {"latin": "Philon", "glyphs": ["F", "i", "l", "o", "n"]},
-    {"latin": "Chaddul", "glyphs": ["T", "s", "h", "a", "d", "d", "u", "l"]},
-    {"latin": "Wenos", "glyphs": ["U", "e", "n", "o", "s"]},
-    {"latin": "Ozhar", "glyphs": ["O", "z", "h", "a", "r"]},
-    {"latin": "Zoë", "glyphs": ["Z", "o", "e"]},
-    {"latin": "Qeros", "glyphs": ["K", "e", "r", "o", "s"]},
-    {"latin": "Bethuan", "glyphs": ["B", "e", "th", "u", "a", "n"]},
-    {"latin": "eirene", "glyphs": ["e.long", "r", "e", "n", "e"]},
-    {"latin": "ourin", "glyphs": ["o.long", "r", "i", "n"]},
-    {"latin": "kéiros", "glyphs": ["k", "e.long", "r", "o", "s"]},
-    {"latin": "philon", "glyphs": ["f", "i", "l", "o", "n"]},
-    {"latin": "chaddul", "glyphs": ["t", "s", "h", "a", "d", "d", "u", "l"]},
-    {"latin": "kyria", "glyphs": ["k", "i", "r", "i", "a"]},
-    {"latin": "wenos", "glyphs": ["u", "e", "n", "o", "s"]},
-    {"latin": "ozhar", "glyphs": ["o", "z", "h", "a", "r"]},
-    {"latin": "kaar", "glyphs": ["k", "a", "a", "r"]},
-    {"latin": "zoë", "glyphs": ["z", "o", "e"]},
-    {"latin": "noë-ira", "glyphs": ["n", "o", "e", "i", "r", "a"]},
-    {"latin": "dokhazin, therin. agelon. bulos", "glyphs": ["d", "o", "k", "h", "a", "z", "i", "n", "space", "th", "e", "r", "i", "n", "raisedDot", "space", "a", "g", "e", "l", "o", "n", "raisedDot", "space", "b", "u", "l", "o", "s"]},
-    {"latin": "en-telekas", "glyphs": ["e", "n", "t", "e", "l", "e", "k", "a", "s"]},
-    {"latin": "vesmor 1066", "glyphs": ["v", "e", "s", "m", "o", "r", "space", "num.1", "num.0", "num.6", "num.6"]},
-    {"latin": "qeros", "glyphs": ["k", "e", "r", "o", "s"]},
-    {"latin": "jumina", "glyphs": ["j", "u", "m", "i", "n", "a"]},
-    {"latin": "bethuan", "glyphs": ["b", "e", "th", "u", "a", "n"]},
-    {"latin": "rhezin", "glyphs": ["r", "h", "e", "z", "i", "n"]},
-    {"latin": "a‼ a! a?", "glyphs": ["a", "raisedDot", "space", "a", "raisedDot", "space", "a", "raisedDot"]}
-  ],
-  "unencodable": [
-    {"latin": "Xenos", "letter": "X"},
-    {"latin": "Cato", "letter": "C"},
-    {"latin": "kosamir;", "letter": ";"},
-    {"latin": "§ 4", "letter": "§"},
-    {"latin": "moira's", "letter": "'"},
-    {"latin": "a; a", "letter": ";"},
-    {"latin": "a: a", "letter": ":"}
-  ],
-  "bizarian": {
-    "fixtures": [
-      {"latin": "Khalon", "glyphs": ["KH", "a", "l", "o", "n"]},
-      {"latin": "Zhéra", "glyphs": ["ZH", "e", "accent", "r", "a"]},
-      {"latin": "Iisa", "glyphs": ["I.macron", "s", "a"]},
-      {"latin": "khalon", "glyphs": ["kh", "a", "l", "o", "n"]},
-      {"latin": "dokhan", "glyphs": ["d", "o", "kh", "a", "n"]},
-      {"latin": "zhéra", "glyphs": ["zh", "e", "accent", "r", "a"]},
-      {"latin": "ozhar", "glyphs": ["o", "zh", "a", "r"]},
-      {"latin": "kaar", "glyphs": ["k", "a.macron", "r"]},
-      {"latin": "iisa", "glyphs": ["i.macron", "s", "a"]},
-      {"latin": "boum", "glyphs": ["b", "o.long", "m"]},
-      {"latin": "eiros", "glyphs": ["e", "i", "r", "o", "s"]},
-      {"latin": "a. a", "glyphs": ["a", "raisedDot", "space", "a"]}
+    "spaces": [
+        {
+            "codes": "A_MIN U+0020 B_MIN",
+            "advances": [
+                200
+            ]
+        },
+        {
+            "codes": "A_MIN STOP U+0020 B_MIN",
+            "advances": [
+                0
+            ]
+        },
+        {
+            "codes": "A_MIN STOP U+0020 B_MIN U+0020 U+0063 STOP U+0020 D_MIN U+0020 E_MIN",
+            "advances": [
+                0,
+                200,
+                0,
+                200
+            ]
+        },
+        {
+            "codes": "K_MIN O_MIN S_MIN A_MIN M_MIN I_MIN R_MIN STOP U+0020 A_MIN",
+            "advances": [
+                0
+            ]
+        }
     ],
-    "unencodable": [
-      {"latin": "a; a", "letter": ";"},
-      {"latin": "a: a", "letter": ":"}
-    ]
-  },
-  "bethuan": {
     "fixtures": [
-      {"latin": "ukhir", "glyphs": ["u", "kh", "i", "r"]},
-      {"latin": "Khéiron", "glyphs": ["KH", "e.long", "accent", "r", "o", "n"]},
-      {"latin": "Uuná", "glyphs": ["U.macron", "n", "a", "accent"]},
-      {"latin": "khéiron", "glyphs": ["kh", "e.long", "accent", "r", "o", "n"]},
-      {"latin": "kaar", "glyphs": ["k", "a.macron", "r"]},
-      {"latin": "uuná", "glyphs": ["u.macron", "n", "a", "accent"]},
-      {"latin": "zhar", "glyphs": ["z", "h", "a", "r"]},
-      {"latin": "dómissa", "glyphs": ["d", "o", "accent", "m", "i", "s", "s", "a"]},
-      {"latin": "a. a", "glyphs": ["a", "raisedDot", "space", "a"]}
-    ],
-    "unencodable": [
-      {"latin": "a; a", "letter": ";"},
-      {"latin": "a: a", "letter": ":"}
+        {
+            "codes": "S_MAJ O_MIN TH_MIN I_MIN R_MIN A_MIN STOP",
+            "glyphs": [
+                "S",
+                "o",
+                "th",
+                "i",
+                "r",
+                "a",
+                "raisedDot"
+            ]
+        },
+        {
+            "codes": "S_MIN O_MIN TH_MIN I_MIN R_MIN A_MIN STOP",
+            "glyphs": [
+                "s",
+                "o",
+                "th",
+                "i",
+                "r",
+                "a",
+                "raisedDot"
+            ]
+        },
+        {
+            "codes": "K_MIN O_MIN S_MIN A_MIN M_MIN I_MIN R_MIN STOP",
+            "glyphs": [
+                "k",
+                "o",
+                "s",
+                "a",
+                "m",
+                "i",
+                "r",
+                "raisedDot"
+            ]
+        },
+        {
+            "codes": "T_MIN LONG_E_MIN K_MIN H_MIN I_MIN R_MIN",
+            "glyphs": [
+                "t",
+                "e.long",
+                "k",
+                "h",
+                "i",
+                "r"
+            ]
+        },
+        {
+            "codes": "K_MIN LONG_O_MIN M_MIN",
+            "glyphs": [
+                "k",
+                "o.long",
+                "m"
+            ]
+        },
+        {
+            "codes": "TH_MIN A_MIN S_MIN I_MIN R_MIN A_MIN",
+            "glyphs": [
+                "th",
+                "a",
+                "s",
+                "i",
+                "r",
+                "a"
+            ]
+        },
+        {
+            "codes": "TH_MAJ A_MIN S_MIN I_MIN R_MIN A_MIN",
+            "glyphs": [
+                "TH",
+                "a",
+                "s",
+                "i",
+                "r",
+                "a"
+            ]
+        },
+        {
+            "codes": "T_MAJ H_MAJ A_MAJ S_MAJ I_MAJ R_MAJ A_MAJ",
+            "glyphs": [
+                "T",
+                "H",
+                "A",
+                "S",
+                "I",
+                "R",
+                "A"
+            ]
+        },
+        {
+            "codes": "LONG_E_MAJ R_MIN E_MIN N_MIN E_MIN",
+            "glyphs": [
+                "E.long",
+                "r",
+                "e",
+                "n",
+                "e"
+            ]
+        },
+        {
+            "codes": "LONG_O_MAJ R_MIN I_MIN N_MIN",
+            "glyphs": [
+                "O.long",
+                "r",
+                "i",
+                "n"
+            ]
+        },
+        {
+            "codes": "F_MAJ I_MIN L_MIN O_MIN N_MIN",
+            "glyphs": [
+                "F",
+                "i",
+                "l",
+                "o",
+                "n"
+            ]
+        },
+        {
+            "codes": "T_MAJ S_MIN H_MIN A_MIN D_MIN D_MIN U_MIN L_MIN",
+            "glyphs": [
+                "T",
+                "s",
+                "h",
+                "a",
+                "d",
+                "d",
+                "u",
+                "l"
+            ]
+        },
+        {
+            "codes": "U_MAJ E_MIN N_MIN O_MIN S_MIN",
+            "glyphs": [
+                "U",
+                "e",
+                "n",
+                "o",
+                "s"
+            ]
+        },
+        {
+            "codes": "O_MAJ Z_MIN H_MIN A_MIN R_MIN",
+            "glyphs": [
+                "O",
+                "z",
+                "h",
+                "a",
+                "r"
+            ]
+        },
+        {
+            "codes": "Z_MAJ O_MIN E_MIN",
+            "glyphs": [
+                "Z",
+                "o",
+                "e"
+            ]
+        },
+        {
+            "codes": "K_MAJ E_MIN R_MIN O_MIN S_MIN",
+            "glyphs": [
+                "K",
+                "e",
+                "r",
+                "o",
+                "s"
+            ]
+        },
+        {
+            "codes": "B_MAJ E_MIN TH_MIN U_MIN A_MIN N_MIN",
+            "glyphs": [
+                "B",
+                "e",
+                "th",
+                "u",
+                "a",
+                "n"
+            ]
+        },
+        {
+            "codes": "LONG_E_MIN R_MIN E_MIN N_MIN E_MIN",
+            "glyphs": [
+                "e.long",
+                "r",
+                "e",
+                "n",
+                "e"
+            ]
+        },
+        {
+            "codes": "LONG_O_MIN R_MIN I_MIN N_MIN",
+            "glyphs": [
+                "o.long",
+                "r",
+                "i",
+                "n"
+            ]
+        },
+        {
+            "codes": "K_MIN LONG_E_MIN R_MIN O_MIN S_MIN",
+            "glyphs": [
+                "k",
+                "e.long",
+                "r",
+                "o",
+                "s"
+            ]
+        },
+        {
+            "codes": "F_MIN I_MIN L_MIN O_MIN N_MIN",
+            "glyphs": [
+                "f",
+                "i",
+                "l",
+                "o",
+                "n"
+            ]
+        },
+        {
+            "codes": "T_MIN S_MIN H_MIN A_MIN D_MIN D_MIN U_MIN L_MIN",
+            "glyphs": [
+                "t",
+                "s",
+                "h",
+                "a",
+                "d",
+                "d",
+                "u",
+                "l"
+            ]
+        },
+        {
+            "codes": "K_MIN I_MIN R_MIN I_MIN A_MIN",
+            "glyphs": [
+                "k",
+                "i",
+                "r",
+                "i",
+                "a"
+            ]
+        },
+        {
+            "codes": "U_MIN E_MIN N_MIN O_MIN S_MIN",
+            "glyphs": [
+                "u",
+                "e",
+                "n",
+                "o",
+                "s"
+            ]
+        },
+        {
+            "codes": "O_MIN Z_MIN H_MIN A_MIN R_MIN",
+            "glyphs": [
+                "o",
+                "z",
+                "h",
+                "a",
+                "r"
+            ]
+        },
+        {
+            "codes": "K_MIN A_MIN A_MIN R_MIN",
+            "glyphs": [
+                "k",
+                "a",
+                "a",
+                "r"
+            ]
+        },
+        {
+            "codes": "Z_MIN O_MIN E_MIN",
+            "glyphs": [
+                "z",
+                "o",
+                "e"
+            ]
+        },
+        {
+            "codes": "N_MIN O_MIN E_MIN I_MIN R_MIN A_MIN",
+            "glyphs": [
+                "n",
+                "o",
+                "e",
+                "i",
+                "r",
+                "a"
+            ]
+        },
+        {
+            "codes": "D_MIN O_MIN K_MIN H_MIN A_MIN Z_MIN I_MIN N_MIN U+0020 TH_MIN E_MIN R_MIN I_MIN N_MIN STOP U+0020 A_MIN G_MIN E_MIN L_MIN O_MIN N_MIN STOP U+0020 B_MIN U_MIN L_MIN O_MIN S_MIN",
+            "glyphs": [
+                "d",
+                "o",
+                "k",
+                "h",
+                "a",
+                "z",
+                "i",
+                "n",
+                "space",
+                "th",
+                "e",
+                "r",
+                "i",
+                "n",
+                "raisedDot",
+                "space",
+                "a",
+                "g",
+                "e",
+                "l",
+                "o",
+                "n",
+                "raisedDot",
+                "space",
+                "b",
+                "u",
+                "l",
+                "o",
+                "s"
+            ]
+        },
+        {
+            "codes": "E_MIN N_MIN T_MIN E_MIN L_MIN E_MIN K_MIN A_MIN S_MIN",
+            "glyphs": [
+                "e",
+                "n",
+                "t",
+                "e",
+                "l",
+                "e",
+                "k",
+                "a",
+                "s"
+            ]
+        },
+        {
+            "codes": "V_MIN E_MIN S_MIN M_MIN O_MIN R_MIN U+0020 DIGIT_ONE DIGIT_ZERO DIGIT_SIX DIGIT_SIX",
+            "glyphs": [
+                "v",
+                "e",
+                "s",
+                "m",
+                "o",
+                "r",
+                "space",
+                "num.1",
+                "num.0",
+                "num.6",
+                "num.6"
+            ]
+        },
+        {
+            "codes": "K_MIN E_MIN R_MIN O_MIN S_MIN",
+            "glyphs": [
+                "k",
+                "e",
+                "r",
+                "o",
+                "s"
+            ]
+        },
+        {
+            "codes": "J_MIN U_MIN M_MIN I_MIN N_MIN A_MIN",
+            "glyphs": [
+                "j",
+                "u",
+                "m",
+                "i",
+                "n",
+                "a"
+            ]
+        },
+        {
+            "codes": "B_MIN E_MIN TH_MIN U_MIN A_MIN N_MIN",
+            "glyphs": [
+                "b",
+                "e",
+                "th",
+                "u",
+                "a",
+                "n"
+            ]
+        },
+        {
+            "codes": "R_MIN H_MIN E_MIN Z_MIN I_MIN N_MIN",
+            "glyphs": [
+                "r",
+                "h",
+                "e",
+                "z",
+                "i",
+                "n"
+            ]
+        },
+        {
+            "codes": "A_MIN STOP U+0020 A_MIN STOP U+0020 A_MIN STOP",
+            "glyphs": [
+                "a",
+                "raisedDot",
+                "space",
+                "a",
+                "raisedDot",
+                "space",
+                "a",
+                "raisedDot"
+            ]
+        },
+        {
+            "codes": "KH_MAJ A_MIN L_MIN O_MIN N_MIN",
+            "glyphs": [
+                "KH",
+                "a",
+                "l",
+                "o",
+                "n"
+            ]
+        },
+        {
+            "codes": "ZH_MAJ E_MIN ACCENT R_MIN A_MIN",
+            "glyphs": [
+                "ZH",
+                "e",
+                "accent",
+                "r",
+                "a"
+            ]
+        },
+        {
+            "codes": "LONG_I_MAJ S_MIN A_MIN",
+            "glyphs": [
+                "I.macron",
+                "s",
+                "a"
+            ]
+        },
+        {
+            "codes": "KH_MIN A_MIN L_MIN O_MIN N_MIN",
+            "glyphs": [
+                "kh",
+                "a",
+                "l",
+                "o",
+                "n"
+            ]
+        },
+        {
+            "codes": "D_MIN O_MIN KH_MIN A_MIN N_MIN",
+            "glyphs": [
+                "d",
+                "o",
+                "kh",
+                "a",
+                "n"
+            ]
+        },
+        {
+            "codes": "ZH_MIN E_MIN ACCENT R_MIN A_MIN",
+            "glyphs": [
+                "zh",
+                "e",
+                "accent",
+                "r",
+                "a"
+            ]
+        },
+        {
+            "codes": "O_MIN ZH_MIN A_MIN R_MIN",
+            "glyphs": [
+                "o",
+                "zh",
+                "a",
+                "r"
+            ]
+        },
+        {
+            "codes": "K_MIN LONG_A_MIN R_MIN",
+            "glyphs": [
+                "k",
+                "a.macron",
+                "r"
+            ]
+        },
+        {
+            "codes": "LONG_I_MIN S_MIN A_MIN",
+            "glyphs": [
+                "i.macron",
+                "s",
+                "a"
+            ]
+        },
+        {
+            "codes": "B_MIN LONG_O_MIN M_MIN",
+            "glyphs": [
+                "b",
+                "o.long",
+                "m"
+            ]
+        },
+        {
+            "codes": "E_MIN I_MIN R_MIN O_MIN S_MIN",
+            "glyphs": [
+                "e",
+                "i",
+                "r",
+                "o",
+                "s"
+            ]
+        },
+        {
+            "codes": "A_MIN STOP U+0020 A_MIN",
+            "glyphs": [
+                "a",
+                "raisedDot",
+                "space",
+                "a"
+            ]
+        },
+        {
+            "codes": "U_MIN KH_MIN I_MIN R_MIN",
+            "glyphs": [
+                "u",
+                "kh",
+                "i",
+                "r"
+            ]
+        },
+        {
+            "codes": "KH_MAJ LONG_E_MIN ACCENT R_MIN O_MIN N_MIN",
+            "glyphs": [
+                "KH",
+                "e.long",
+                "accent",
+                "r",
+                "o",
+                "n"
+            ]
+        },
+        {
+            "codes": "LONG_U_MAJ N_MIN A_MIN ACCENT",
+            "glyphs": [
+                "U.macron",
+                "n",
+                "a",
+                "accent"
+            ]
+        },
+        {
+            "codes": "KH_MIN LONG_E_MIN ACCENT R_MIN O_MIN N_MIN",
+            "glyphs": [
+                "kh",
+                "e.long",
+                "accent",
+                "r",
+                "o",
+                "n"
+            ]
+        },
+        {
+            "codes": "LONG_U_MIN N_MIN A_MIN ACCENT",
+            "glyphs": [
+                "u.macron",
+                "n",
+                "a",
+                "accent"
+            ]
+        },
+        {
+            "codes": "Z_MIN H_MIN A_MIN R_MIN",
+            "glyphs": [
+                "z",
+                "h",
+                "a",
+                "r"
+            ]
+        },
+        {
+            "codes": "D_MIN O_MIN ACCENT M_MIN I_MIN S_MIN S_MIN A_MIN",
+            "glyphs": [
+                "d",
+                "o",
+                "accent",
+                "m",
+                "i",
+                "s",
+                "s",
+                "a"
+            ]
+        }
     ]
-  }
 }

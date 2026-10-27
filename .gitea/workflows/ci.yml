@@ -3,18 +3,12 @@ name: CI
 # What the repository asserts on every change: the canonical git hooks are
 # present, no TODO or FIXME marker is committed, and the fonts rebuild from the
 # UFO sources and pass the font check, and the npm package holds exactly the
-# fonts, their stylesheet, their manifest, their keyboards and their encodings, every
-# encoding round-trips under the standard library alone and its marks draw nothing
-# in the fonts, and every drawn Khelathi Zethu sign has a paint map whose seeds land
-# in its regions.
+# fonts, their stylesheet, their manifest and their charts, and every drawn
+# Khelathi Zethu sign has a paint map whose seeds land in its regions.
 #
 # The build is reproducible (a fixed head timestamp), so the committed fonts,
 # fonts.css and fonts.json must match a fresh build byte for byte: a file left
 # unrebuilt fails here.
-#
-# The lexicon guards run on their fixtures alone here, written through the
-# encodings. The lexicons are read from a local thalorna checkout, and thalorna
-# is private to this CI.
 
 on:
     push:
@@ -66,16 +60,6 @@ jobs:
               run: |
                   python3.13 -m venv .venv
                   .venv/bin/pip install -r requirements.txt
-            - name: Check the encodings
-              run: |
-                  python3.13 -m unittest tools/encode_test.py tools/self_contained_test.py
-                  python3.13 tools/publish_encodings.py --check
-                  python3.13 tools/encodings_guard.py
-                  python3.13 tools/encoding_docs.py --check
-                  python3.13 tools/khelathi-zethu-glyphs/encoding_file.py --check
-                  .venv/bin/python tools/chalish-pilam/codage.py --check
-                  .venv/bin/python tools/chalish-pilam/ceremonial_codage.py --check
-                  .venv/bin/python tools/teng-chou/codage.py --check
             - name: Build the fonts
               run: PATH="$PWD/.venv/bin:$PATH" ./build.sh
             - name: Check the fonts

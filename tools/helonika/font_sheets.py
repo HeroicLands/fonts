@@ -3,10 +3,9 @@
 """Render the built Helonika Book on real Helonic words.
 
     .venv/bin/python tools/helonika/font_sheets.py [--font fonts/HelonikaBook-Regular.ttf]
-                                            [--encoding FILE]
 
 ``specimens/helonika/text.png``: words and sample lines from the Helonic note,
-written through the ``helonika`` encoding and shaped by HarfBuzz from the
+their code points stored in ``tools/texts/helonika-book.json``, shaped by HarfBuzz from the
 built font, at display size and at 48, 24 and 20 px, each after its roman spelling
 in Liberation Mono at the same size, with the shared x-height ruled across both.
 Nothing here draws from the generator: what is shown is the font.
@@ -21,7 +20,7 @@ from PIL import Image, ImageDraw, ImageFont
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parent.parent
 sys.path.insert(0, str(HERE.parent))
-from encoded import Encoded, EncodedRenderer  # noqa: E402
+from codes import Written, WrittenRenderer  # noqa: E402
 from render import Renderer, latin_font  # noqa: E402
 
 PAPER = (243, 239, 228)
@@ -45,12 +44,12 @@ def font(size, path=LABEL_FONT):
         return ImageFont.load_default()
 
 
-def sheet(out: Path, r: EncodedRenderer) -> Path:
+def sheet(out: Path, r: WrittenRenderer) -> Path:
     W = 2400
     img = Image.new("RGB", (W, 3000), PAPER)
     d = ImageDraw.Draw(img)
     d.text((40, 30), "Helonika Book — the built font", fill=INK, font=font(46))
-    d.text((40, 94), "Helonic words of the Helonic note, written by the helonika encoding "
+    d.text((40, 94), "Helonic words of the Helonic note, written in glyph codes "
            "and shaped by HarfBuzz from fonts/HelonikaBook-Regular.ttf.", fill=GREY, font=font(22))
     texts = [" ".join(WORDS[:5]), " ".join(WORDS[5:10]), " ".join(WORDS[10:])] + PHRASES
     y = 170
@@ -88,10 +87,9 @@ def sheet(out: Path, r: EncodedRenderer) -> Path:
 def main():
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     ap.add_argument("--font", default=str(ROOT / "fonts" / "HelonikaBook-Regular.ttf"))
-    ap.add_argument("--encoding", help="apply this encoding file instead of encodings/helonika.json")
     ap.add_argument("--out", default=str(ROOT / "specimens" / "helonika" / "text.png"))
     a = ap.parse_args()
-    print(sheet(Path(a.out), EncodedRenderer(Renderer(Path(a.font)), Encoded("helonika-book", a.encoding))))
+    print(sheet(Path(a.out), WrittenRenderer(Renderer(Path(a.font)), Written("helonika-book"))))
 
 
 if __name__ == "__main__":

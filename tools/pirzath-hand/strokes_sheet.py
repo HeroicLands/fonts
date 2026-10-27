@@ -25,7 +25,7 @@ ROOT = HERE.parent.parent
 sys.path.insert(0, str(HERE))
 sys.path.insert(0, str(ROOT / "tools"))
 import strokes as S  # noqa: E402
-from encoded import Encoded  # noqa: E402
+from codes import Written  # noqa: E402
 from render import Renderer, latin_font  # noqa: E402
 
 PAPER = (247, 243, 235)
@@ -218,11 +218,11 @@ WORDS = [[0, 5, 2], [3, 6], [10], [1, 2, 7], [4, 5], [8, 0], [6, 5, 2]]
 
 
 def carved_line(text, px):
-    """Pirzath Carved, ``text`` written through the encoding, at ``px`` to the em: returned
+    """Pirzath Carved, ``text`` as its stored code points, at ``px`` to the em: returned
     as an image with its baseline."""
     r = Renderer(CARVED_FONT)
     size = px
-    cps = Encoded("pirzath-carved").one(text)
+    cps = Written("pirzath-carved").one(text)
     w = int(r.width(cps, size)) + 20
     h = int(size * 1.4)
     img = Image.new("RGB", (w, h), PAPER)

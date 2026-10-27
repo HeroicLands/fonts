@@ -3,19 +3,16 @@
 """Render the Pirzath Hand letter sheet from the letters module.
 
     .venv/bin/python tools/pirzath-hand/letter_sheets.py [--out specimens/pirzath-hand/letters.png]
-                                                         [--thalorna ~/dev/HeroicLands/thalorna]
 
 The sheet shows every sign large with the roman that writes it; the sixteen digits
 together; every sign at 24 and 48 px after Liberation Mono's "xhn"; and Khazari words
-and the sample texts, written through the ``pirzath`` encoding, beside the
+and the sample texts, their code points stored in ``tools/texts/``, beside the
 same words in a mixed-case Liberation Mono line and in Pirzath Carved, all at one font
-size. The words come from the Khazari language note on thalorna's ``origin/main``.
+size. The words are the first word forms of the Khazari language note (``WORDS``).
 """
 
 import argparse
 import json
-import re
-import subprocess
 import sys
 from pathlib import Path
 
@@ -27,12 +24,19 @@ sys.path.insert(0, str(HERE))
 sys.path.insert(0, str(ROOT / "tools"))
 import letters as L  # noqa: E402
 import strokes as S  # noqa: E402
-from encoded import Encoded  # noqa: E402
+from codes import Written  # noqa: E402
 from render import Renderer, latin_font  # noqa: E402
 from strokes_sheet import BLUE, FAINT, GREY, INK, PAPER, RED, RULE, draw_path, font  # noqa: E402
 
 CARVED_FONT = ROOT / "fonts/PirzathCarved-Regular.ttf"
-KHAZARI = "assets/content/Skills/Languages/Khazari.md"
+# The first 48 word forms of the Khazari language note.
+WORDS = [
+    "dalk", "dalík", "dalkir", "dulák", "dullák", "datulák", "hudalk", "dilkath", "halb", "halíb", "huhalb",
+    "hilbath", "sakar", "sakír", "sakarir", "sukár", "husakar", "balg", "balgir", "hubalg", "bilgath", "rabad",
+    "rubád", "hurabad", "maltev", "malít", "maltir", "humalt", "talv", "talív", "hutalv", "tharz", "tharíz",
+    "thirzath", "zalf", "zalíf", "huzalf", "pabak", "pabík", "pibakath", "zaghar", "zagharir", "zughár",
+    "huzaghar", "vasp", "vasíp", "vispath", "gamth",
+]
 SAMPLES = [
     "thiz durákh tanv.",
     "gazn.gazn durákh tanv.",
@@ -78,18 +82,6 @@ def signs_of(cps: str):
     return names
 
 
-def lexicon_words(thalorna: Path, n: int):
-    """The first ``n`` distinct word forms of the Khazari note on ``origin/main``."""
-    text = subprocess.run(["git", "-C", str(thalorna), "show", f"origin/main:{KHAZARI}"], capture_output=True,
-                          text=True, check=True).stdout
-    forms = []
-    for m in re.finditer(r"(?:^|\{|\s)form:\s*\"?([^,\"}\n]+)", text):
-        w = m.group(1).strip()
-        if w not in forms:
-            forms.append(w)
-    return forms[:n]
-
-
 def carved_image(r: Renderer, cps: str, px: float):
     w = int(r.width(cps, px)) + 20
     img = Image.new("RGB", (w, int(px * 1.5)), PAPER)
@@ -97,11 +89,11 @@ def carved_image(r: Renderer, cps: str, px: float):
     return img, int(px * 1.1)
 
 
-def sheet(out: Path, thalorna: Path):
+def sheet(out: Path):
     WIDTH = 2400
-    hand = Encoded("pirzath-hand")
-    carved = Encoded("pirzath-carved")
-    words = lexicon_words(thalorna, 48)
+    hand = Written("pirzath-hand")
+    carved = Written("pirzath-carved")
+    words = WORDS
     carved_r = Renderer(CARVED_FONT)
 
     order = (list(L.VOWELS) + list(L.LONG) + list(L.DIPHTHONGS) + list(L.CONSONANTS) + list(L.POINTS)
@@ -200,7 +192,7 @@ def sheet(out: Path, thalorna: Path):
         y = oy + px * 1.2 + 30
 
     # -- words and texts
-    d.text((40, y), "Khazari words and texts, written through the pirzath encoding: Liberation Mono, Pirzath Carved and "
+    d.text((40, y), "Khazari words and texts, written in glyph codes: Liberation Mono, Pirzath Carved and "
            "the hand at one font size", fill=INK, font=font(32))
     y += 60
     px = 40
@@ -250,9 +242,8 @@ def sheet(out: Path, thalorna: Path):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--out", type=Path, default=ROOT / "specimens/pirzath-hand/letters.png")
-    ap.add_argument("--thalorna", type=Path, default=Path.home() / "dev/HeroicLands/thalorna")
     a = ap.parse_args()
-    print(sheet(a.out, a.thalorna))
+    print(sheet(a.out))
 
 
 if __name__ == "__main__":

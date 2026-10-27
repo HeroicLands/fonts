@@ -2,7 +2,7 @@
 
 Khazari (dwarven) runic lapidary, written left to right.
 
-[Back to the README](../README.md) · [Character chart](../charts/pirzath.md) · Keyboard cheatsheet: [HL Pirzath](../keyboards/pirzath.md)
+[Back to the README](../README.md) · [Character chart](../charts/pirzath.md)
 
 ## The letters
 

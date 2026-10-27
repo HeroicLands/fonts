@@ -4,7 +4,6 @@
 
     .venv/bin/python tools/specimen_pages.py            # write the pages, their images and the README cells
     .venv/bin/python tools/specimen_pages.py --check    # fail where any of them is missing or out of date
-    .venv/bin/python tools/specimen_pages.py --write-texts [--thalorna PATH] [--encoding SCRIPT=FILE]
 
 Every family of fonts.json that is its own font file has a page, ``specimens/<class>.md``,
 with its images in ``specimens/pages/``:
@@ -16,24 +15,19 @@ with its images in ``specimens/pages/``:
   right to left for a right-to-left font and in columns for Teng Chou. The page gives
   each line's English with its roman spelling under it.
 
-Chalish Pilam Common has no encoding of spelling, since its glyphs record meaning rather than
-spelling. Its page shows the committed sheets of ``specimens/chalish-pilam/`` (the glyphs
-and the night's entry set through the font) and lists the entry phrase by phrase; its
-``texts.json`` entry is written from ``tools/chalish-pilam/glyphs.py`` by ``--write-texts``.
-Chalish Pilam Ceremonial's page shows the canon sheet of the ceremonial hand and the
-passage that ``tools/chalish-pilam/ceremonial_passage.py`` renders through the font, both
-committed in ``specimens/chalish-pilam/``, with the passage's codage block by block and its
-English; its ``texts.json`` entry is written from that tool by ``--write-texts``.
+Chalish Pilam Common's glyphs record meaning rather than spelling. Its page shows the
+committed sheets of ``specimens/chalish-pilam/`` (the glyphs and the night's entry set
+through the font) and lists the entry phrase by phrase. Chalish Pilam Ceremonial's page
+shows the canon sheet of the ceremonial hand and the passage that
+``tools/chalish-pilam/ceremonial_passage.py`` renders through the font, both committed in
+``specimens/chalish-pilam/``, with the passage's glyph codes block by block and its English.
 
 Khelathi Zethu Glyphs' page also shows the Khelathu banner, ``<class>-banner.webp``,
 with its English text.
 
-The texts are ``specimens/texts.json``: per family its source, and each line's code
-points, roman spelling and English, and each mark sample's code points. ``--write-texts``
-writes it once from a thalorna checkout: each roman line is written in the script by the
-script's encoding (``encodings/<name>.json``, or the file ``--encoding`` names), and every
-roman and English line must stand in its source note as written. Building the pages needs
-no thalorna checkout.
+The texts are ``specimens/texts.json``: per family its source, and each line's glyph
+codes (``tools/codes/<script>.json``, with ``U+0020`` for the space), roman spelling and
+English, and each mark sample's glyph codes.
 
 Every line is shaped by HarfBuzz from the built font. ``--check`` renders every image
 and page afresh in memory and fails where a file is missing, differs from what the
@@ -45,8 +39,6 @@ import argparse
 import hashlib
 import io
 import json
-import re
-import subprocess
 import sys
 from pathlib import Path
 
@@ -54,6 +46,7 @@ import uharfbuzz as hb
 from PIL import Image, ImageChops, ImageDraw, ImageFont
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
+import codes  # noqa: E402
 from charts import FOLDERS, GROUPS  # noqa: E402
 from render import Renderer, Shaped  # noqa: E402
 
@@ -62,7 +55,6 @@ SPECIMENS = ROOT / "specimens"
 PAGES = SPECIMENS / "pages"
 TEXTS = SPECIMENS / "texts.json"
 README = ROOT / "README.md"
-THALORNA = Path.home() / "dev/HeroicLands/thalorna"
 RAW = "https://raw.githubusercontent.com/HeroicLands/fonts/main/specimens/readme"
 
 PAPER = (255, 255, 255)
@@ -75,244 +67,8 @@ LABEL = 18
 MARGIN = 40
 WIDTH = 1400
 
-# What each page writes, by class. ``script`` names the script and ``face`` the face whose
-# encoding writes it; ``tongue`` names the language. A passage's ``lines`` are (roman, English) as the
-# source note writes them. A mark sample is (label, glyph names).
-PASSAGES = {
-    "hl-pirzath-carved": {
-        "script": "pirzath",
-        "face": "pirzath-carved",
-        "tongue": "Khazari",
-        "source": {
-            "note": "assets/content/Skills/Languages/Khazari.md",
-            "title": "Khazari Language",
-            "section": "Sample Phrases",
-        },
-        "lines": [
-            ("Vog dalkir, vog rummák ramk", "He is a mason; he lays the course as a master does"),
-            ("Thamr, dank. Vald, varn.", "The blow, the hammer-fall; the binding, the true line"),
-            ("Dalkir sumág dalk, dalkir khusáp", "The mason listens to the stone; the mason cuts little"),
-            ("Ramk samíd, ramk thamír", "The course is raised; the course is struck"),
-            ("Dalík bant, maríg bant", "Oath of stone, oath of bone"),
-        ],
-        "marks": [
-            ("a with the length mark", ["a", "lengthmark"]),
-            ("i with the length mark", ["i", "lengthmark"]),
-            ("u with the length mark", ["u", "lengthmark"]),
-            ("o with the length mark", ["o", "lengthmark"]),
-        ],
-        "marks_note": "The length mark is typed after its vowel and stands over it.",
-    },
-    "hl-pirzath-hand": {
-        "script": "pirzath",
-        "face": "pirzath-hand",
-        "tongue": "Khazari",
-        "source": {
-            "note": "assets/content/Skills/Languages/Khazari.md",
-            "title": "Khazari Language",
-            "section": "Sample Phrases",
-        },
-        "lines": [
-            ("Vog dalkir, vog rummák ramk", "He is a mason; he lays the course as a master does"),
-            ("Thamr, dank. Vald, varn.", "The blow, the hammer-fall; the binding, the true line"),
-            ("Dalkir sumág dalk, dalkir khusáp", "The mason listens to the stone; the mason cuts little"),
-            ("Ramk samíd, ramk thamír", "The course is raised; the course is struck"),
-            ("Dalík bant, maríg bant", "Oath of stone, oath of bone"),
-        ],
-        "marks": [
-            ("a with the length mark", ["a", "lengthmark"]),
-            ("i with the length mark", ["i", "lengthmark"]),
-            ("u with the length mark", ["u", "lengthmark"]),
-            ("o with the length mark", ["o", "lengthmark"]),
-        ],
-        "marks_note": "The length mark is typed after its vowel and stands over it.",
-    },
-    "hl-thuravark-carved": {
-        "script": "thuravark",
-        "face": "thuravark-carved",
-        "tongue": "Nordmal",
-        "source": {
-            "note": "assets/content/Skills/Languages/Nordmal.md",
-            "title": "Nordmal Language",
-            "section": "Sample Phrases",
-        },
-        "lines": [
-            ("Hersvald kallar tingit.", "The host-wielder calls the assembly."),
-            ("Ver gangum í fridi.", "We come in peace."),
-            ("Thrunvald vakir, ulfar thyrsta!", "The Thunder-Wielder wakes, the wolves thirst!"),
-            ("Tvau skip, ein ferd.", "Two ships, one voyage."),
-            ("Stóraldit lifir í steini ok í minni.", "The saga lives in stone and in memory."),
-        ],
-        "marks": [
-            ("i with the acute", ["i", "acutecomb"]),
-            ("o with the acute", ["o", "acutecomb"]),
-            ("a with the acute", ["a", "acutecomb"]),
-            ("Thrunvald, crowned", ["crown.open", "th", "r", "u", "n", "v", "a", "l", "d", "crown.close"]),
-        ],
-        "marks_note": "A vowel with the acute is cut as its stave twice. The crown open and crown close frame the name of a god between them.",
-    },
-    "hl-semaron-kuriale": {
-        "script": "semaron",
-        "face": "semaron-kuriale",
-        "tongue": "Vylari",
-        "source": {
-            "note": "assets/content/Lore/Cultures/Vylarian/The_Walking_of_the_Line.md",
-            "title": "The Walking of the Line",
-            "section": "lines 1–4",
-        },
-        "lines": [
-            ("Thiruthriman sorimamen,", "The hallowed boundary I sing,"),
-            ("ul alathas kedis alatha valmazor, ul talothoi", "and the one who walked it, and the stones"),
-            ("lendthoi ir yormalis ol selthur malkothoi", "set down in the grass of the six hills"),
-            ("pra kembothos us urkis ol alathoi thalezor.", "before a wall stood on any of them."),
-        ],
-        "marks": [
-            ("a with the catch", ["a", "grave"]),
-            ("o with the catch", ["o", "grave"]),
-            ("e with the catch", ["e", "grave"]),
-            ("u with the catch", ["u", "grave"]),
-        ],
-        "marks_note": "The catch, a glottal stop, is a grave stroke over the letter it follows.",
-    },
-    "hl-helonika-book": {
-        "script": "helonika",
-        "face": "helonika-book",
-        "tongue": "Helonic",
-        "source": {
-            "note": "assets/content/Skills/Languages/Helonic.md",
-            "title": "Helonic Language",
-            "section": "Sample Phrases",
-        },
-        "lines": [
-            ("Sothira ésarin arkhidhin plumon", "Wisdom is the beginning of all things"),
-            ("Ath kéliran théradhin ésarin thásiron", "To behold beauty is divine"),
-            ("Rhéthasin, dhidakhir!", "Speak, teach!"),
-            ("Métharin thoir plumon ésarin ánthimor", "Man is the measure of all things"),
-            ("Olasin kosamir in lékhisir", "The entire cosmos in a single word"),
-        ],
-        "marks": [
-            ("a with the accent", ["a", "accent"]),
-            ("e with the accent", ["e", "accent"]),
-            ("o with the accent", ["o", "accent"]),
-            ("long a, i and u, with the length bar", ["a.macron", "i.macron", "u.macron"]),
-            ("long e and long o", ["e.long", "o.long"]),
-        ],
-        "marks_note": "The accent stands over the vowel before it; the long vowels carry their length bar as letters of their own.",
-    },
-    "hl-vedyakshara-classical": {
-        "script": "vedyakshara",
-        "face": "vedyakshara-classical",
-        "tongue": "Vedyari",
-        "source": {
-            "note": "assets/content/Skills/Languages/Vedyari.md",
-            "title": "Vedyari Language",
-            "section": "Sample Phrases",
-        },
-        "lines": [
-            ("Agarana dulipati, vandikana", "Honored elder, I show respect"),
-            ("Vedyaram tivayu, tarajisum", "I dwell in Vedyaram, by birthright"),
-            ("Bhaktir ushtami dulitara", "I hold devotion as my highest path"),
-            ("Vastuna karmata vanisa?", "May the transaction bring prosperity?"),
-            ("Rituta samarvana ushti", "The observance is offered to the sacred order"),
-        ],
-        "marks": [
-            ("ka", ["ka"]),
-            ("ki", ["ka", "vs.i"]),
-            ("ke", ["ka", "vs.e"]),
-            ("kai", ["ka", "vs.ai"]),
-            ("ku", ["ka", "vs.u"]),
-            ("ko", ["ka", "vs.o"]),
-            ("kau", ["ka", "vs.au"]),
-            ("k, with the cut", ["ka", "cut"]),
-            ("fa, pa with the soft dot", ["pa", "dot"]),
-        ],
-        "marks_note": "A consonant carries the vowel a; a vowel sign gives it another vowel, and the cut takes the vowel away.",
-    },
-    "hl-veldikko": {
-        "script": "veldikko",
-        "face": None,
-        "tongue": "Sinale",
-        "source": {
-            "note": "assets/content/Skills/Languages/Sinale.md",
-            "title": "Sinale Language",
-            "section": "Sample Phrases",
-        },
-        "lines": [
-            ("Luuro nuuva liseriho", "Starlight sings on still water"),
-            ("Li-setty lenti talveho", "The tall grass stands in the low fog, as it always does"),
-            ("Ha-tupe tilvai hyssen", "The seam of light has held the breath"),
-            ("Peheka huoman, peheka nylkin", "Give warmth, give root"),
-            ("Luuro ileva, luuro rivy", "The clear place sings, the turning leaf sings"),
-        ],
-        "marks": [
-            ("ta", ["t", "vowel.a"]),
-            ("to", ["t", "vowel.o"]),
-            ("tuu, with the long sign", ["t", "vowel.u", "long"]),
-            ("le, with the rise", ["l", "vowel.e", "rise"]),
-            ("ni, with the fall", ["n", "vowel.i", "fall"]),
-            ("tty, with the doubling bar", ["t", "bar", "vowel.y"]),
-            ("a on the carrier", ["carrier", "vowel.a"]),
-        ],
-        "marks_note": "Each vowel is a mark floating over its letter, with its signs of length, pitch and emphasis folded into it.",
-    },
-    "hl-qalezu-hand": {
-        "script": "qalezu",
-        "face": "qalezu-hand",
-        "tongue": "Khelathi",
-        "source": {
-            "note": "assets/content/Skills/Languages/Khelathi.md",
-            "title": "Khelathi Language",
-            "section": "Sample Phrases",
-        },
-        "lines": [
-            ("Khelathu elu anlagh", "the Khelathi way upon life"),
-            ("Uqa'a, qamzet ezu gazlet", "Sun-lord, hidden in the sanctuary"),
-            ("Erlem ez luzet", "I am bound to the throne"),
-            ("Zab melet agu khelath", "The lord's goods shall prosper"),
-            ("Shelmu zetem", "Let the followers hear"),
-        ],
-        "marks": [
-            ("q", ["q"]),
-            ("catch before q", ["catch", "q"]),
-            ("r", ["r"]),
-            ("catch before r", ["catch", "r"]),
-            ("doubled l", ["l.dbl"]),
-            ("catch before doubled l", ["catch", "l.dbl"]),
-        ],
-        "marks_note": "A catch before a consonant is drawn as three reed dabs over it; a doubled consonant carries a bar beneath.",
-    },
-    "hl-teng-chou": {
-        "script": "teng-chou",
-        "tongue": "Tantsou",
-        "source": {
-            "note": "assets/content/Skills/Languages/Tantsou.md",
-            "title": "Tantsou Language",
-            "section": "Grammar Notes",
-        },
-        "lines": [
-            ("You cheng.", "The moon rises."),
-            ("Zho teng cheng.", "The dragon ascends the sky."),
-            ("Lei wa.", "The spirit answers."),
-            ("Shou jong.", "The water falls."),
-            ("Dao chen tsou wa.", "The people answer the great emperor."),
-        ],
-    },
-    "hl-khelathi-zethu-glyphs": {
-        "script": "zethu",
-        "tongue": "Khelathi",
-        "source": {
-            "note": "utils/banner-meqes/sign-sequence.md",
-            "title": "the Meqes VI memorial",
-            "section": "The English text",
-            "image": "assets/images/banners/khelathubnr.webp",
-        },
-    },
-}
-
 CHALISH = "hl-chalish-pilam-common"
-CHALISH_IMAGES = {"glyphs": "chalish-pilam/glyphs.png", "text": "chalish-pilam/text.png"}
 CEREMONIAL = "hl-chalish-pilam-ceremonial"
-CEREMONIAL_IMAGES = {"glyphs": "chalish-pilam/ceremonial.png", "text": "chalish-pilam/ceremonial-passage.png"}
 # The families whose pages show committed sheets rather than images this tool renders.
 COMMITTED = {CHALISH, CEREMONIAL}
 
@@ -338,12 +94,9 @@ def char(row: dict) -> str:
     return chr(int(row["codepoint"][2:], 16))
 
 
-def points(text: str) -> str:
-    return " ".join(f"U+{ord(c):04X}" for c in text)
-
-
-def unpoints(text: str) -> str:
-    return "".join(chr(int(p[2:], 16)) for p in text.split())
+def script_of(family: dict) -> str:
+    """The script whose glyph codes name the family's characters."""
+    return codes.SCRIPTS[Path(family["files"]["ttf"]).stem]
 
 
 class Face:
@@ -445,10 +198,19 @@ def cells_image(face: Face, groups: list[tuple[str, list[tuple[str, str]]]], siz
     return img
 
 
+def sign_ids() -> dict[str, str]:
+    """Khelathi Zethu Glyphs' sign ids, ``01-001``, by code point."""
+    enc = json.loads((ROOT / "tools" / "khelathi-zethu-glyphs" / "encoding.json").read_text(encoding="utf-8"))
+    return {s["codepoint"]: s["id"] for s in enc["signs"]}
+
+
+SIGN_IDS = sign_ids()
+
+
 def label_of(row: dict) -> str:
     glyph = row["glyph"]
-    if row.get("key"):
-        return row["key"]
+    if row["kind"] == "sign":
+        return SIGN_IDS[row["codepoint"]]
     for prefix in ("tc.", "js.", "num."):
         if glyph.startswith(prefix):
             return glyph[len(prefix):]
@@ -467,7 +229,7 @@ def letters_groups(face: Face) -> list[tuple[str, list[tuple[str, str]]]]:
         first = {}
         for r in rows:
             if r["kind"] == "sign":
-                first.setdefault(r["key"].split("-")[0], r)
+                first.setdefault(SIGN_IDS[r["codepoint"]].split("-")[0], r)
         return [("The first sign of each group", [(label_of(r), char(r)) for r in first.values()])]
     groups = {}
     for r in rows:
@@ -478,7 +240,8 @@ def letters_groups(face: Face) -> list[tuple[str, list[tuple[str, str]]]]:
 
 
 def marks_groups(face: Face, texts: dict) -> list[tuple[str, list[tuple[str, str]]]]:
-    return [("", [(m["label"], unpoints(m["script"])) for m in texts["marks"]])]
+    script = script_of(face.family)
+    return [("", [(m["label"], codes.text(script, m["codes"])) for m in texts["marks"]])]
 
 
 def passage_image(face: Face, lines: list[str], size: int = SIZE) -> Image.Image:
@@ -555,18 +318,11 @@ def readme_text(families: list[dict]) -> str:
     return "\n".join(out) + "\n"
 
 
-def relink(cell: str) -> str:
-    """A README link cell rewritten for a page one folder down."""
-    return re.sub(r"\]\((?!https?:)([^)]+)\)", r"](../\1)", cell)
-
-
 def page_markdown(family: dict, texts: dict, row: list[str], images: dict[str, str]) -> str:
     name, klass = family["name"], family["class"]
-    what, direction, keyboard = row[1], row[2], row[4]
+    what, direction = row[1], row[2]
     chart = f"../charts/{FOLDERS.get(klass, klass.removeprefix('hl-'))}.md"
-    links = [f"[Back to the README](../README.md)", f"[Character chart]({chart})"]
-    if keyboard.startswith("["):
-        links.append(f"Keyboard cheatsheet: {relink(keyboard)}")
+    links = ["[Back to the README](../README.md)", f"[Character chart]({chart})"]
     src = texts.get("source")
     written = "in columns, top to bottom" if direction.startswith("Vertical") else direction.lower()
     out = [f"# {name}", "", f"{what}, written {written}.", "", " · ".join(links), ""]
@@ -620,21 +376,22 @@ def page_markdown(family: dict, texts: dict, row: list[str], images: dict[str, s
             "## The glyphs",
             "",
             "Each glyph is carved whole, and glyphs are composed into blocks: a main sign with a number, syllable signs "
-            "or both set beside it, over it or under it. A block is written as its codes joined by `*`, which sets two "
-            "items side by side, and `:`, which stacks the first over the second, and the font lays the block out from "
-            f"those joiners. The [chart]({chart}) lists every glyph with its code point.",
+            "or both set beside it, over it or under it. A block is written as its glyphs with a joiner between two of "
+            "them: `JOINER_BESIDE` sets two items side by side and `JOINER_STACK` stacks the first over the second, and "
+            f"the font lays the block out from those joiners. The [chart]({chart}) lists every glyph with its code point "
+            "and code.",
             "",
             f"![The canon sheet of {name}]({texts['images']['glyphs']})",
             "",
             "## A lord's seating",
             "",
-            "Sixteen blocks in paired columns, read across each pair and down: A1, B1, A2, B2. Each block is written "
-            "in the Chalish Ceremonial Codage and set through the font.",
+            "Sixteen blocks in paired columns, read across each pair and down: A1, B1, A2, B2. Each block is listed "
+            "below by its glyph codes and set through the font.",
             "",
             f"![A lord's seating in {name}]({texts['images']['text']})",
             "",
         ]
-        out += [f"{i}. {line['english']}  \n{' ' * len(f'{i}. ')}`{line['codage']}`" for i, line in enumerate(texts["lines"], 1)]
+        out += [f"{i}. {line['english']}  \n{' ' * len(f'{i}. ')}`{line['codes']}`" for i, line in enumerate(texts["lines"], 1)]
         out += ["", texts["english"], ""]
         return "\n".join(out)
     out += ["## The letters", ""]
@@ -677,7 +434,7 @@ def render(families: list[dict], texts: dict, problems: list[str]) -> dict[Path,
         klass = family["class"]
         data = texts["families"].get(klass)
         if data is None:
-            problems.append(f"specimens/texts.json: error: {klass}: no texts; run tools/specimen_pages.py --write-texts")
+            problems.append(f"specimens/texts.json: error: {klass}: no texts")
             continue
         if family["name"] not in rows:
             problems.append(f"README.md: error: the font table has no row for {family['name']}")
@@ -700,7 +457,7 @@ def render(families: list[dict], texts: dict, problems: list[str]) -> dict[Path,
         if data.get("marks"):
             put("marks", cells_image(face, marks_groups(face, data)))
         if data.get("lines"):
-            script = [unpoints(line["script"]) for line in data["lines"]]
+            script = [codes.text(script_of(family), line["codes"]) for line in data["lines"]]
             put("passage", columns_image(face, script) if klass == "hl-teng-chou" else passage_image(face, script))
         if data.get("banner"):
             images["banner"] = (PAGES / f"{klass}-banner.webp").relative_to(SPECIMENS).as_posix()
@@ -747,7 +504,7 @@ def check(families: list[dict], texts: dict) -> list[str]:
         if data.get("banner"):
             banner = PAGES / f"{family['class']}-banner.webp"
             if not banner.exists():
-                problems.append(f"{banner.relative_to(ROOT)}: error: missing; run tools/specimen_pages.py --write-texts")
+                problems.append(f"{banner.relative_to(ROOT)}: error: missing")
             elif hashlib.sha256(banner.read_bytes()).hexdigest() != data["banner"]["sha256"]:
                 problems.append(f"{banner.relative_to(ROOT)}: error: differs from the banner specimens/texts.json records")
     classes = [f["class"] for f in manifest()]
@@ -761,142 +518,10 @@ def check(families: list[dict], texts: dict) -> list[str]:
     return problems
 
 
-# -- writing texts.json from thalorna --------------------------------------------
-
-
-def note_text(thalorna: Path, note: str) -> str:
-    return subprocess.run(
-        ["git", "-C", str(thalorna), "show", f"origin/main:{note}"], capture_output=True, text=True, check=True
-    ).stdout
-
-
-def script_line(records: dict) -> str:
-    """The encoded line with what no row matched dropped, apart from its spaces.
-
-    An encoding writes the marks its script writes; any other punctuation of the
-    roman line passes through unencoded and would print the box, so the script line
-    leaves it out, as the script does.
-    """
-    text = records["text"]
-    for piece in set(records.get("unencoded", [])) - {" "}:
-        if any(c.isalpha() for c in piece):
-            raise SystemExit(f"tools/specimen_pages.py: error: {piece!r} has no row in its encoding")
-        text = text.replace(piece, "")
-    return re.sub(r" {2,}", " ", text).strip()
-
-
-def teng_chou_line(family: dict, roman: str) -> str:
-    cp = {r["glyph"]: char(r) for r in family["codepoints"]}
-    morphemes = re.findall(r"[a-z]+", roman.lower())
-    missing = [m for m in morphemes if f"tc.{m}" not in cp]
-    if missing:
-        raise SystemExit(f"Teng Chou: error: no character for {missing}")
-    return "".join(cp[f"tc.{m}"] for m in morphemes)
-
-
-def chalish_entry(family: dict) -> dict:
-    """The texts.json entry of Chalish Pilam Common: the night's entry, one phrase to a line."""
-    here = str(Path(__file__).resolve().parent / "chalish-pilam")
-    sys.path.insert(0, here)
-    for name in ("build_ufo", "glyphs", "strokes"):
-        sys.modules.pop(name, None)
-    try:
-        import build_ufo
-        import glyphs
-
-        cp = {r["glyph"]: char(r) for r in family["codepoints"]}
-        lines = [
-            {"script": points("".join(cp[build_ufo.glyph_name(g)] for g in gs)), "english": gloss}
-            for gloss, gs in glyphs.PASSAGE
-        ]
-    finally:
-        sys.path.remove(here)
-        for name in ("build_ufo", "glyphs", "strokes"):
-            sys.modules.pop(name, None)
-    return {"tongue": "Ki'ich'chik", "images": CHALISH_IMAGES, "lines": lines}
-
-
-def ceremonial_entry() -> dict:
-    """The texts.json entry of Chalish Pilam Ceremonial: the passage, one block to a line."""
-    here = str(Path(__file__).resolve().parent / "chalish-pilam")
-    sys.path.insert(0, here)
-    for name in ("ceremonial_passage", "strokes_sheet", "strokes"):
-        sys.modules.pop(name, None)
-    try:
-        import ceremonial_passage as P
-
-        lines = [{"codage": code, "english": gloss} for code, gloss in P.PASSAGE]
-        english = P.ENGLISH
-    finally:
-        sys.path.remove(here)
-        for name in ("ceremonial_passage", "strokes_sheet", "strokes"):
-            sys.modules.pop(name, None)
-    return {"tongue": "Ki'ich'chik", "images": CEREMONIAL_IMAGES, "lines": lines, "english": english}
-
-
-def banner_english(md: str) -> list[str]:
-    section = re.search(r"^## The English text\n(.*?)(?=^## )", md, re.M | re.S).group(1)
-    return [m.group(1).strip() for m in re.finditer(r"^\d+\. (.+)$", section, re.M)]
-
-
-def write_texts(thalorna: Path, files: dict[str, str]) -> None:
-    from encoded import Encoded
-
-    families = {f["class"]: f for f in manifest()}
-    doc = {"families": {}}
-    for klass, spec in PASSAGES.items():
-        family = families[klass]
-        src = spec["source"]
-        body = note_text(thalorna, src["note"])
-        entry = {"tongue": spec["tongue"], "source": src}
-        if klass == "hl-khelathi-zethu-glyphs":
-            image = subprocess.run(
-                ["git", "-C", str(thalorna), "show", f"origin/main:{src['image']}"], capture_output=True, check=True
-            ).stdout
-            PAGES.mkdir(parents=True, exist_ok=True)
-            (PAGES / f"{klass}-banner.webp").write_bytes(image)
-            entry["banner"] = {"sha256": hashlib.sha256(image).hexdigest()}
-            entry["english"] = banner_english(body)
-            doc["families"][klass] = entry
-            continue
-        for roman, english in spec["lines"]:
-            for text in (roman, english):
-                if text not in body:
-                    raise SystemExit(f"{src['note']}: error: {text!r} does not stand in the note as written")
-        romans = [r for r, _ in spec["lines"]]
-        if spec["script"] == "teng-chou":
-            scripts = [teng_chou_line(family, r) for r in romans]
-        else:
-            encoded = Encoded(spec["face"], files.get(spec["script"]))
-            scripts = [script_line(rec) for rec in encoded.records(romans)]
-        entry["lines"] = [
-            {"script": points(s), "roman": r, "english": e} for s, (r, e) in zip(scripts, spec["lines"])
-        ]
-        if spec.get("marks"):
-            face = Face(family)
-            entry["marks_note"] = spec["marks_note"]
-            entry["marks"] = [
-                {"label": label, "script": points("".join(face.by_glyph[g] for g in glyphs))}
-                for label, glyphs in spec["marks"]
-            ]
-        doc["families"][klass] = entry
-    doc["families"][CHALISH] = chalish_entry(families[CHALISH])
-    doc["families"][CEREMONIAL] = ceremonial_entry()
-    TEXTS.write_text(json.dumps(doc, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    print(f"{TEXTS.relative_to(ROOT)}: written")
-
-
 def main() -> None:
     ap = argparse.ArgumentParser(description="Write or check the specimen pages.")
     ap.add_argument("--check", action="store_true", help="fail where a page, image or README cell is missing or out of date")
-    ap.add_argument("--write-texts", action="store_true", help="write specimens/texts.json from a thalorna checkout")
-    ap.add_argument("--thalorna", default=str(THALORNA))
-    ap.add_argument("--encoding", action="append", default=[], metavar="SCRIPT=FILE",
-                    help="apply an encoding file for a script instead of encodings/<name>.json, such as vedyakshara=FILE")
     args = ap.parse_args()
-    if args.write_texts:
-        write_texts(Path(args.thalorna), dict(n.split("=", 1) for n in args.encoding))
-        return
     families = manifest()
     texts = json.loads(TEXTS.read_text(encoding="utf-8"))
     if args.check:

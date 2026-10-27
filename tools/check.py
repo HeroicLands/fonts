@@ -47,7 +47,7 @@ FONTS = {
     ],
     "ChalishPilamCommon": [
         "tools/chalish-pilam/check_font.py",
-        "tools/chalish-pilam/guard.py --fixtures-only",  # the night entry and every glyph shape to their own glyphs
+        "tools/chalish-pilam/guard.py",  # the night entry and every glyph shape to their own glyphs
     ],
     "KhelathiZethuGlyphs": [
         "tools/khelathi-zethu-glyphs/check_font.py",
@@ -58,40 +58,40 @@ FONTS = {
     "TengChou": [
         "tools/teng-chou/syllabary_distinct.py",  # the Jurthati signs stay distinct at body size
         "tools/teng-chou/check_font.py",
-        "tools/teng-chou/guard.py --fixtures-only",
+        "tools/teng-chou/guard.py",  # the passages set horizontally and in columns
         "tools/teng-chou/stroke_mix.py",  # every character's body is strokes, dabs a minority
     ],
     "PirzathCarved": [
         "tools/pirzath/check_font.py",
-        "tools/pirzath/guard.py --fixtures-only",
+        "tools/pirzath/guard.py",  # the fixtures, as glyph codes, shape to their glyphs
     ],
     "PirzathHand": [
         "tools/pirzath-hand/check_font.py",
-        "tools/pirzath-hand/guard.py --fixtures-only",
+        "tools/pirzath-hand/guard.py",  # the fixtures, as glyph codes, shape to their glyphs
     ],
     "ThuravarkCarved": [
         "tools/thuravark-carved/check_font.py",
-        "tools/thuravark-carved/guard.py --fixtures-only",
+        "tools/thuravark-carved/guard.py",  # the fixtures, as glyph codes, shape to their glyphs
     ],
     "QalezuHand": [
         "tools/qalezu-hand/check_font.py",
-        "tools/qalezu-hand/guard.py --fixtures-only",
+        "tools/qalezu-hand/guard.py",  # the fixtures, as glyph codes, shape to their glyphs
     ],
     "SemaronKuriale": [
         "tools/semaron-kuriale/check_font.py",
-        "tools/semaron-kuriale/guard.py --fixtures-only",
+        "tools/semaron-kuriale/guard.py",  # the fixtures, as glyph codes, shape to their glyphs
     ],
     "Veldikko": [
         "tools/veldikko/check_font.py",
-        "tools/veldikko/guard.py --fixtures-only",  # the fixtures join and carry their marks
+        "tools/veldikko/guard.py",  # the fixtures join and carry their marks
     ],
     "VedyaksharaClassical": [
         "tools/vedyakshara/check_font.py",
-        "tools/vedyakshara/guard.py --fixtures-only",
+        "tools/vedyakshara/guard.py",  # the fixtures, as glyph codes, shape to their glyphs
     ],
     "HelonikaBook": [
         "tools/helonika/check_font.py",
-        "tools/helonika/guard.py --fixtures-only",
+        "tools/helonika/guard.py",  # the fixtures, as glyph codes, shape to their glyphs
     ],
 }
 
@@ -104,10 +104,8 @@ SHARED = [
     "tools/notdef_box.py",
     "tools/vertical.py",
     "tools/font_names.py",
-    "tools/encodings_guard.py --require-fonts",
-    "tools/keyboards_guard.py",  # the layouts type each sound's output, and nothing else
+    "tools/codes_guard.py",  # every character of every face has exactly one glyph code
     "tools/charts_guard.py",  # every character is on its sheet; unnamed rows are listed
-    "tools/sample_texts.py",
 ]
 
 CHECK_SCRIPTS = ("check_font.py", "check_*_font.py", "guard.py", "*_guard.py", "*_distinct.py")

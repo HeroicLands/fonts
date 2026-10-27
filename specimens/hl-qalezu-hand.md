@@ -2,7 +2,7 @@
 
 Au'Khelathu merchants' script, written right to left.
 
-[Back to the README](../README.md) · [Character chart](../charts/qalezu-hand.md) · Keyboard cheatsheet: [HL Qalezu](../keyboards/qalezu.md)
+[Back to the README](../README.md) · [Character chart](../charts/qalezu-hand.md)
 
 ## The letters
 

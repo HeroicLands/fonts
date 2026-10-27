@@ -5,9 +5,12 @@
     .venv/bin/python tools/chalish-pilam/ceremonial_guard.py [--font fonts/ChalishPilamCeremonial-Regular.ttf]
                                                               [--min-iou 0.98] [--limit N]
 
-Each fixture is a run of blocks in codage. It is converted to characters by the rows of
-``ceremonial_codage.py``, shaped by HarfBuzz through the font, and rasterized from the
-shaped glyphs. The reference is ``blocks.compose`` for the same block, inked,
+Each fixture is a run of blocks in the notation ``blocks.py`` lays blocks out from:
+glyph codes, ``*`` for the joiner that sets two items side by side, ``:`` for the one
+that stacks the first over the second, and ``-`` ending a block. It is written as the
+sequence of the face's glyph codes (``tools/codes/chalishceremonial.json``) that names
+its characters, the joiners ``JOINER_BESIDE`` and ``JOINER_STACK`` among them, shaped by
+HarfBuzz through the font, and rasterized from the shaped glyphs. The reference is ``blocks.compose`` for the same block, inked,
 scaled and shifted as the font sets a block, and rasterized the same way. A fixture
 fails when
 
@@ -25,6 +28,7 @@ glyphs only, with no variant, and are listed as rejected.
 import argparse
 import io
 import os
+import re
 import sys
 from concurrent.futures import ProcessPoolExecutor
 from pathlib import Path
@@ -42,7 +46,7 @@ sys.path.insert(0, str(HERE))
 sys.path.insert(0, str(ROOT / "tools"))
 import blocks as Q  # noqa: E402
 import ceremonial as R  # noqa: E402
-import ceremonial_codage as C  # noqa: E402
+import codes  # noqa: E402
 from render import Renderer, flatten_quadratic  # noqa: E402
 
 FONT = ROOT / "fonts" / "ChalishPilamCeremonial-Regular.ttf"
@@ -75,6 +79,18 @@ def fixtures() -> list[str]:
     for n in range(1, 20):
         out += [f"n{n}", f"n{n}*SUN", f"n3*n{n}*SUN", f"n{n}*la1", f"la1*n{n}", f"n{n}*n3*la1"]
     return list(dict.fromkeys(out))
+
+
+JOINERS = {"*": "JOINER_BESIDE", ":": "JOINER_STACK"}
+
+
+def sequence(codage: str) -> str:
+    """A run of blocks as the sequence of glyph codes that names its characters; ``-`` writes nothing."""
+    return " ".join(JOINERS.get(t, t) for t in re.findall(r"[*:]|[^*:\-\s]+", codage))
+
+
+def to_text(codage: str) -> str:
+    return codes.text("chalishceremonial", sequence(codage))
 
 
 def blocks_of(codage: str) -> list[str]:
@@ -163,7 +179,7 @@ class Shaper:
 
 def check(shaper: Shaper, codage: str, min_iou: float):
     """(problem or None, IoU)."""
-    names, glyphs, advance = shaper.run(C.to_text(codage))
+    names, glyphs, advance = shaper.run(to_text(codage))
     bad = [n for n in names if n in BAD]
     if bad:
         return f"shaped to {names}, which draws {bad[0]}", 0.0
@@ -179,7 +195,7 @@ def check(shaper: Shaper, codage: str, min_iou: float):
 
 def check_rejected(shaper: Shaper, codage: str):
     """A rejected fixture shapes to plain glyphs only: every glyph is a character's own."""
-    names, _, _ = shaper.run(C.to_text(codage))
+    names, _, _ = shaper.run(to_text(codage))
     variants = [n for n in names if "." in n and n not in ("ignorable.sub",)]
     if variants:
         return f"is rejected but shaped to variants {variants}"

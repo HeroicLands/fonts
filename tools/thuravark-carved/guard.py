@@ -1,40 +1,20 @@
 # Copyright (c) 2026 Tom Rodriguez ("Toasty") — <toasty@heroiclands.org>
 # SPDX-License-Identifier: OFL-1.1
-"""Shape every Nordmal form and assert Thuravark Carved renders it rightly.
+"""Shape Thuravark Carved's fixtures and assert the font renders each one rightly.
 
     .venv/bin/python tools/thuravark-carved/guard.py [--font fonts/ThuravarkCarved-Regular.ttf]
-                                            [--thalorna ~/dev/HeroicLands/thalorna | --note FILE]
-                                            [--encoding FILE | --fixtures-only]
 
-The forms come from the frontmatter of ``assets/content/Skills/Languages/Nordmal.md``
-on the thalorna repository's ``origin/main``: the ``words``, ``affixes`` and
-``elements`` forms and every given name and clan name. Roman is lowercase, so each
-form is lowercased, then written in
-Thuravark's code points by the ``thuravark`` encoding (``encodings/thuravark.json``,
-or the file ``--encoding`` names), and the result is shaped. The expected glyph sequence is derived from the spelling by the rules
-below, written here and read neither from the font source nor from the encoding:
-
-- a digraph (th dh kh gh ng hl) is one stave, and ngh is n and gh;
-- an acute vowel is the vowel and the acute mark, which the face draws as the
-  stave again (``a.acute``), and a doubled vowel letter is the stave twice;
-- a doubled consonant is two staves, a doubled digraph two digraph staves;
-- j, and y before a vowel, is the glide; any other y is the vowel i;
-- q is the stave k, and ë is e;
-- the space draws nothing, the hyphen-minus is written as nothing, and every
-  terminal (``.`` ``?`` ``‼`` ``!``) draws the dash;
-- every other punctuation key, c, x and a capital draw the box;
-- nothing is .notdef.
-
-Fixtures, written through the encoding and shaped too, cover the fillers, the
-numerals, the terminals and the empty keys.
-
-The imperial recension's fixtures are typed in the font's code points around a
-name written through the encoding: the three diphthong staves; a crowned name,
-whose every glyph takes its crowned form between the opened and the closed post;
-an open with no close, and a close with no open, which stay bare posts with the
-staves beside them unchanged; a crown longer than the font frames; the bound
-runes with ``ss01`` on, and the same text unchanged with it off. A rendered
-crowned name's rails are checked for a break.
+Each fixture in ``fixtures.json`` is a sequence of Thuravark's glyph codes
+(``tools/codes/thuravark.json``), with ``U+XXXX`` for a character the script has no
+code for, the features it is shaped with, and the glyphs the font must shape it to.
+They cover every stave of the row, the acute mark drawn as the stave again
+(``a.acute``), the numerals, the full stop and the space, and characters the font lacks,
+which print the box. The imperial recension's fixtures cover the three diphthong staves;
+a crowned name, whose every glyph takes its crowned form between the opened and the
+closed post; an open with no close, and a close with no open, which stay bare posts with
+the staves beside them unchanged; a crown longer than the font frames; and the bound
+runes with ``ss01`` on, and the same text unchanged with it off. A rendered crowned
+name's rails are checked for a break.
 
 A geometry section asserts the stave design: 31 distinct staves and ten bound
 runes, each bound rune the two staves' branches on one stem by the rules of
@@ -44,21 +24,22 @@ numerals taller than the staves, and every pair visibly apart at reading size.
 
 import argparse
 import itertools
-import subprocess
+import json
 import sys
 from pathlib import Path
 
-import yaml
 from fontTools.pens.recordingPen import RecordingPen
 from fontTools.ttLib import TTFont
 from PIL import Image
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
-from encoded import Encoded, EncodedRenderer, drawn_names  # noqa: E402
+import codes  # noqa: E402
 from render import Renderer, Shaped  # noqa: E402
 
-ROOT = Path(__file__).resolve().parent.parent.parent
-NOTE = "assets/content/Skills/Languages/Nordmal.md"
+HERE = Path(__file__).resolve().parent
+ROOT = HERE.parent.parent
+SCRIPT = "thuravark"
+
 
 # Each stave's branches, by the design: the side a branch leaves the stem on (F forward,
 # B back), the level it leaves from and the level it ends at (T top, M middle, 0 foot).
@@ -115,234 +96,34 @@ BOUND = {
 ROW = ("a e i o u p b f v t d th dh k g kh gh s z h l r hl m n ng j w").split()
 RECENSION = "ai au oi".split()
 STAVES = ROW + RECENSION
-DIGRAPHS = ("th", "dh", "kh", "gh", "ng", "hl")
-VOWELS = "aeiou"
-ACUTE = {"á": "a", "é": "e", "í": "i", "ó": "o", "ú": "u"}
-NOTHING = {"space"}
 
 FIXTURES = [
-    # Every stave of the row from its typed input.
-    *[(s, [s]) for s in ROW if s not in ("j",)],
-    ("j", ["j"]),
-    ("y", ["i"]),
-    ("ya", ["j", "a"]),
-    ("yu", ["j", "u"]),
-    ("bjarn", ["b", "j", "a", "r", "n"]),
-    ("ey", ["e", "i"]),
-    ("by", ["b", "i"]),
-    ("yy", ["i", "i"]),
-    # Long vowels: the vowel and the acute mark, or the vowel letter doubled.
-    ("á", ["a", "a.acute"]), ("é", ["e", "e.acute"]), ("í", ["i", "i.acute"]), ("ó", ["o", "o.acute"]),
-    ("ú", ["u", "u.acute"]),
-    ("aa", ["a", "a"]), ("ii", ["i", "i"]), ("uu", ["u", "u"]),
-    ("rún", ["r", "u", "u.acute", "n"]),
-    # Doubled consonants: two staves.
-    ("nn", ["n", "n"]), ("ll", ["l", "l"]), ("tt", ["t", "t"]), ("kk", ["k", "k"]),
-    ("rr", ["r", "r"]), ("pp", ["p", "p"]),
-    ("tth", ["th", "th"]), ("hhl", ["hl", "hl"]), ("nng", ["ng", "ng"]),
-    # Digraphs and the cases that look like them.
-    ("ngh", ["n", "gh"]), ("hr", ["h", "r"]), ("hn", ["h", "n"]), ("sh", ["s", "h"]),
-    ("th", ["th"]), ("hlarth", ["hl", "a", "r", "th"]),
-    # Roman is lowercase: a capital draws the box.
-    ("Á", ["notdef.box"]), ("TH", ["notdef.box", "notdef.box"]), ("Hlarth", ["notdef.box", "l", "a", "r", "th"]),
-    # The fillers: staves Nordmal does not write.
-    ("dh", ["dh"]), ("kh", ["kh"]), ("gh", ["gh"]), ("z", ["z"]), ("w", ["w"]),
-    ("ddh", ["dh", "dh"]), ("kkh", ["kh", "kh"]),
-    # The hyphen is written as nothing and breaks a digraph.
-    ("skald-hringr", ["s", "k", "a", "l", "d", "h", "r", "i", "ng", "r"]),
-    ("t-h", ["t", "h"]),
-    ("t‐h", ["t", "notdef.box", "h"]),
-    # Numerals.
-    ("0123456789", [f"num.{i}" for i in range(10)]),
-    ("128", ["num.1", "num.2", "num.8"]),
-    ("0i0", ["num.0", "i", "num.0"]),
-    # Every terminal draws the dash and the space draws nothing; the other standard marks
-    # write invisible marks alone, and any other punctuation draws the box.
-    ("rún.", ["r", "u", "u.acute", "n", "period"]),
-    ("a b", ["a", "space", "b"]),
-    ("a b", ["a", "space", "b"]),
-    (",!?;:", ["period", "period", "notdef.box", "notdef.box"]),
-    ("a, b‼ i? d! e— f… g/ h/", ["a", "space", "b", "period", "space", "i", "period", "space", "d", "period",
-                                    "space", "e", "space", "f", "space", "g", "space", "h"]),
-    ('"\'()', ["notdef.box"] * 4),
-    ("“a”", ["notdef.box", "a", "notdef.box"]),
-    ("a«b»", ["a", "b"]),
-    ("a‹b›", ["a", "b"]),
-    ("{a} b", ["a", "space", "b"]),
-    ("<>[]", ["notdef.box"] * 4),
-    ("@#$%&", ["notdef.box"] * 5),
-    # No stave: the box, never .notdef; q is k and ë is e.
-    ("cqx", ["notdef.box", "k", "notdef.box"]),
-    ("ë", ["e"]),
+    (f["codes"], {tag: True for tag in f.get("features", [])}, f["glyphs"])
+    for f in json.loads((HERE / "fixtures.json").read_text(encoding="utf-8"))["fixtures"]
 ]
-
-# The recension: the diphthong staves, the crown marks and the bound runes, typed in
-# the font's own code points around a roman text written through the encoding. Each
-# fixture is the text before, the roman text, the text after, the features, and the
-# glyphs expected.
-AI, AU, OI = "\U000F0128", "\U000F0129", "\U000F012A"
-OPEN, CLOSE = "\U000F0150", "\U000F0151"
-SS01 = {"ss01": True}
-LONGEST = 40  # the most glyphs a crown holds
+# A crowned name; without its last character, the close, it is an open with no close.
+CROWNED = "CROWN_OPEN THRESK I LA A NELTH DRESK U+0020 THRESK A U RELTH A SVELD CROWN_CLOSE"
 
 
-def crowned(names: list[str]) -> list[str]:
-    return ["crown.open.rail", *[n + ".crown" for n in names], "crown.close.rail"]
-
-
-RECENSION_FIXTURES = [
-    # The three staves, each its own character.
-    (AI, "", "", {}, ["ai"]), (AU, "", "", {}, ["au"]), (OI, "", "", {}, ["oi"]),
-    (AI + AU + OI, "", "", {}, ["ai", "au", "oi"]),
-    # A crowned name: every glyph between the marks takes its crowned form.
-    (OPEN, "thauras", CLOSE, {}, crowned(["th", "a", "u", "r", "a", "s"])),
-    (OPEN, "thiland thauras", CLOSE, {}, crowned(["th", "i", "l", "a", "n", "d", "space", "th", "a", "u", "r", "a", "s"])),
-    (OPEN, "árdavon", CLOSE, {}, crowned(["a", "a.acute", "r", "d", "a", "v", "o", "n"])),
-    (OPEN, "128", CLOSE, {}, crowned(["num.1", "num.2", "num.8"])),
-    (OPEN, "", CLOSE, {}, crowned([])),
-    (OPEN + AI, "", AU + CLOSE, {}, crowned(["ai", "au"])),
-    # An open with no close, and a close with no open: a bare post, the staves unchanged.
-    (OPEN, "thauras", "", {}, ["crown.open", "th", "a", "u", "r", "a", "s"]),
-    ("", "thauras", CLOSE, {}, ["th", "a", "u", "r", "a", "s", "crown.close"]),
-    # A character with no stave breaks the crown: both marks stay bare.
-    (OPEN, "a;b", CLOSE, {}, ["crown.open", "a", "notdef.box", "b", "crown.close"]),
-    # Two crowns in one run, and an open inside a crown, which opens the inner one.
-    (OPEN, "a", CLOSE + OPEN, {}, crowned(["a"]) + ["crown.open"]),
-    (OPEN + AI + OPEN, "", AU + CLOSE, {}, ["crown.open", "ai"] + crowned(["au"])),
-    # The longest crown the font frames, and one glyph more, which it leaves bare.
-    (OPEN + AI * (LONGEST - 1), "", CLOSE, {}, crowned(["ai"] * (LONGEST - 1))),
-    (OPEN + AI * LONGEST, "", CLOSE, {}, ["crown.open"] + ["ai"] * LONGEST + ["crown.close"]),
-    # The bound runes, with ss01 on; the same text with it off is the staves as written.
-    ("", "en el ar al ma za ka ur lm lth", "", SS01,
-     ["e_n", "space", "e_l", "space", "a_r", "space", "a_l", "space", "m_a", "space", "z_a", "space", "k_a", "space",
-      "u_r", "space", "l_m", "space", "l_th"]),
-    ("", "en el ar al ma za ka ur lm lth", "", {},
-     ["e", "n", "space", "e", "l", "space", "a", "r", "space", "a", "l", "space", "m", "a", "space", "z", "a", "space",
-      "k", "a", "space", "u", "r", "space", "l", "m", "space", "l", "th"]),
-    ("", "marendas", "", SS01, ["m_a", "r", "e_n", "d", "a", "s"]),
-    ("", "marendas", "", {}, ["m", "a", "r", "e", "n", "d", "a", "s"]),
-    ("", "thelvaralon", "", SS01, ["th", "e_l", "v", "a_r", "a_l", "o", "n"]),
-    # A bound rune inside a crown takes its crowned form too.
-    (OPEN, "marendas", CLOSE, SS01, crowned(["m_a", "r", "e_n", "d", "a", "s"])),
-]
-
-
-def fixture_texts() -> list[str]:
-    """Every roman text the fixtures write through the encoding."""
-    return [text for text, _ in FIXTURES] + [roman for _, roman, _, _, _ in RECENSION_FIXTURES if roman]
-
-
-def forms_of(front) -> list[str]:
-    d = front["data"]
-    forms = [w["form"] for w in d["words"]]
-    forms += [a["form"] for a in d.get("affixes", [])]
-    forms += [e["form"] for e in d.get("elements", [])]
-    for group in d["names"]["given"].values():
-        forms += group
-    forms += d["names"]["clan"]
-    return [form.lower() for form in forms]
-
-
-def lexicon_forms(thalorna: Path | None, note: Path | None) -> list[str]:
-    if note:
-        text = note.read_text(encoding="utf-8")
-    else:
-        text = subprocess.run(
-            ["git", "-C", str(thalorna), "show", f"origin/main:{NOTE}"],
-            check=True, capture_output=True, text=True,
-        ).stdout
-    front = yaml.safe_load(text.split("\n---\n", 1)[0].lstrip("-\n"))
-    forms = forms_of(front)
-    if not forms:
-        raise SystemExit("the forms list is empty")
-    return forms
-
-
-def expected_glyphs(form: str) -> list[str]:
-    s = form
-    out: list[str] = []
-    i = 0
-    while i < len(s):
-        ch = s[i]
-        if ch in ACUTE:
-            out += [ACUTE[ch], ACUTE[ch] + ".acute"]
-            i += 1
-            continue
-        if ch == "y":
-            out.append("j" if i + 1 < len(s) and s[i + 1] in VOWELS + "áéíóú" else "i")
-            i += 1
-            continue
-        if ch == "-":
-            pass
-        elif ch == " ":
-            out.append("space")
-        elif ch in ".?‼!":
-            out.append("period")
-        elif ch == "q":
-            out.append("k")
-        elif ch == "ë":
-            out.append("e")
-        elif ch in "cx":
-            out.append("notdef.box")
-        elif s[i : i + 3] == "nng":
-            out += ["ng", "ng"]
-            i += 3
-            continue
-        elif s[i : i + 2] == "ng" and s[i : i + 3] != "ngh":
-            out.append("ng")
-            i += 2
-            continue
-        elif s[i : i + 2] in DIGRAPHS and s[i : i + 2] != "ng":
-            out.append(s[i : i + 2])
-            i += 2
-            continue
-        elif ch in "abdefghijklmnoprstuvwz":
-            out.append(ch)
-        else:
-            out.append("notdef.box")
-        i += 1
-    return out
-
-
-def shaping(font: Path, forms: list[str], encoded: Encoded | None = None) -> list[str]:
-    r = EncodedRenderer(Renderer(font), encoded or Encoded("thuravark-carved"))
+def shaping(font: Path) -> list[str]:
+    r = Renderer(font)
     failures = []
-    digraphs = long_vowels = doubled = 0
-    for form in forms:
-        got = r.glyph_names(form)
-        want = expected_glyphs(form)
-        digraphs += sum(1 for g in want if g in DIGRAPHS)
-        long_vowels += sum(1 for a, b in zip(want, want[1:]) if (a == b or b == a + ".acute") and a in VOWELS)
-        doubled += sum(1 for a, b in zip(want, want[1:]) if a == b and a not in VOWELS)
-        if ".notdef" in got or "notdef.box" in got:
-            failures.append(f"{form}: .notdef or the box in {got}")
-        elif got != want:
-            failures.append(f"{form}: shaped {got}, expected {want}")
-    for text, want in FIXTURES:
-        got = r.glyph_names(text)
+    for sequence, features, want in FIXTURES:
+        got = [r.order[g[0]] for g in r.shape(codes.text(SCRIPT, sequence), features).glyphs]
         if got != want:
-            failures.append(f"{text!r}: shaped {got}, expected {want}")
-    for before, roman, after, features, want in RECENSION_FIXTURES:
-        text = before + (r.encoded.one(roman) if roman else "") + after
-        got = drawn_names(r.renderer, text, features=features)
-        if got != want:
-            failures.append(f"{before!r} {roman!r} {after!r} {features}: shaped {got}, expected {want}")
-    failures += frame_problems(r.renderer, r.encoded)
-    print(
-        f"{font}: {len(forms)} forms shaped, {digraphs} digraph staves, {long_vowels} doubled "
-        f"vowels and {doubled} doubled consonants expected, {len(FIXTURES) + len(RECENSION_FIXTURES)} fixtures, "
-        f"{len(failures)} failures"
-    )
+            failures.append(f"{sequence} {features}: shaped {got}, expected {want}")
+    failures += frame_problems(r)
+    print(f"{font}: {len(FIXTURES)} fixtures, {len(failures)} failures")
     return failures
 
 
-def frame_problems(r: Renderer, encoded: Encoded) -> list[str]:
+def frame_problems(r: Renderer) -> list[str]:
     """A rendered crowned name's rails run unbroken from post to post, and an open with
     no close draws nothing but its post."""
     problems = []
     size = 48
-    name = encoded.one("thiland thauras")
-    for label, text, framed in (("crowned", OPEN + name + CLOSE, True), ("unclosed", OPEN + name, False)):
+    crowned = codes.text(SCRIPT, CROWNED)
+    for label, text, framed in (("crowned", crowned, True), ("unclosed", crowned[:-1], False)):
         shaped = r.shape(text)
         width = int(shaped.advance * size / r.upem) + 40
         img = Image.new("RGB", (width, 100), "white")
@@ -485,16 +266,9 @@ def pixel_difference(a, b):
 def main():
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     ap.add_argument("--font", default=str(ROOT / "fonts" / "ThuravarkCarved-Regular.ttf"))
-    ap.add_argument("--thalorna", default=str(Path.home() / "dev/HeroicLands/thalorna"))
-    ap.add_argument("--note", help="read the language note from this file instead of git")
-    ap.add_argument("--encoding", help="apply this encoding file instead of encodings/thuravark.json")
-    ap.add_argument("--fixtures-only", action="store_true",
-                    help="shape the fixtures alone and read no lexicon")
     args = ap.parse_args()
-    forms = [] if args.fixtures_only else lexicon_forms(Path(args.thalorna), Path(args.note) if args.note else None)
-    encoded = Encoded("thuravark-carved", args.encoding)
     font = Path(args.font)
-    failures = shaping(font, forms, encoded) + geometry(font)
+    failures = shaping(font) + geometry(font)
     for f in failures[:40]:
         print(f"{font}: error: {f}")
     if len(failures) > 40:

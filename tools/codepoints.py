@@ -28,12 +28,9 @@ name and kind of every character the face draws. A font fails when
   joined, doubled or fused form, a mark's form, the box for a catch with no letter
   before it or for a Vedyakshara mark with no sign before it, or the empty glyph of an
   ignorable;
-- a sequence of characters that a spelling rule once rewrote does not shape as
+- a sequence of characters that a spelling rule would rewrite does not shape as
   written (``SEQUENCES``);
-- the Pirzath Carved and Pirzath Hand tables differ;
-- a Khelathi Zethu Glyphs sign has no key, its key is not a sign id, or two signs
-  share a key, or one of its format controls carries a key; or a character of a script
-  typed by sound (tools/sound_keys.json) carries a key of its own.
+- the Pirzath Carved and Pirzath Hand tables differ.
 
 Text is shaped with the font's default features, so an optional style such as
 joining stays off. Semaron's catch with no letter before it draws the box, so it is
@@ -50,7 +47,6 @@ from fontTools.ttLib import TTFont
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import codepoint_order  # noqa: E402
-import keyboard_keys  # noqa: E402
 from render import Renderer  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -179,34 +175,6 @@ def is_structural(name: str, listed: set[str]) -> bool:
             if len(parts) == 2 * size and unit == "_".join(parts[size:]):
                 return True
     return False
-
-
-def key_problems(label: str, rows: list[dict]) -> list[str]:
-    """What is wrong with the keys of a family's table. Khelathi Zethu Glyphs is typed by
-    sign id, so every sign carries its id as its key; every other script is typed by
-    sound, so none of its characters carries a key."""
-    problems = []
-    owner: dict[str, str] = {}
-    zethu = label == "Khelathi Zethu Glyphs"
-    for row in rows:
-        glyph, key = row["glyph"], row.get("key")
-        if zethu and row["kind"] == "control":
-            if key is not None:
-                problems.append(f"fonts.json: error: {label}: the control {glyph} has the key {key!r}")
-            continue
-        if not zethu:
-            if key is not None:
-                problems.append(f"fonts.json: error: {label}: {glyph} has the key {key!r}; the script is typed by sound")
-            continue
-        if not isinstance(key, str) or not key:
-            problems.append(f"fonts.json: error: {label}: {glyph} has no key")
-        elif not keyboard_keys.is_zethu(key):
-            problems.append(f"fonts.json: error: {label}: {glyph} has the key {key!r}, which is not a sign id")
-        elif key in owner:
-            problems.append(f"fonts.json: error: {label}: {glyph} and {owner[key]} share the key {key}")
-        else:
-            owner[key] = glyph
-    return problems
 
 
 def cells(table: str) -> str:
@@ -349,7 +317,6 @@ def check(font: Path) -> list[str]:
         if rows is None:
             problems.append(f"fonts.json: error: {label}: no codepoints table")
             continue
-        problems += key_problems(label, rows)
         problems += block_problems(label, rows)
         expected = codepoint_order.table(stem)
         if rows != expected:

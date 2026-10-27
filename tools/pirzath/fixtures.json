@@ -1,0 +1,1239 @@
+{
+    "fixtures": [
+        {
+            "codes": "DIGIT_ZERO DIGIT_ONE DIGIT_TWO DIGIT_THREE DIGIT_FOUR DIGIT_FIVE DIGIT_SIX DIGIT_SEVEN DIGIT_EIGHT DIGIT_NINE",
+            "glyphs": [
+                "num.0",
+                "num.1",
+                "num.2",
+                "num.3",
+                "num.4",
+                "num.5",
+                "num.6",
+                "num.7",
+                "num.8",
+                "num.9"
+            ]
+        },
+        {
+            "codes": "DIGIT_TEN DIGIT_ELEVEN DIGIT_TWELVE DIGIT_THIRTEEN DIGIT_FOURTEEN DIGIT_FIFTEEN",
+            "glyphs": [
+                "num.10",
+                "num.11",
+                "num.12",
+                "num.13",
+                "num.14",
+                "num.15"
+            ]
+        },
+        {
+            "codes": "DIGIT_ONE DIGIT_TEN",
+            "glyphs": [
+                "num.1",
+                "num.10"
+            ]
+        },
+        {
+            "codes": "GAMTH I RAGHAV MARP U+0020 DIGIT_ONE DIGIT_ZERO U+0020 BALG E PARGH U+0020 TAMB O BALG U+0020 DIGIT_ONE",
+            "glyphs": [
+                "g",
+                "i",
+                "r",
+                "m",
+                "space.dot",
+                "num.1",
+                "num.0",
+                "space.dot",
+                "b",
+                "e",
+                "p",
+                "space.dot",
+                "t",
+                "o",
+                "b",
+                "space.dot",
+                "num.1"
+            ]
+        },
+        {
+            "codes": "A BALG U+0063 DALK E FARZ",
+            "glyphs": [
+                "a",
+                "b",
+                "notdef.box",
+                "d",
+                "e",
+                "f"
+            ]
+        },
+        {
+            "codes": "U+0022 DALK A LADHAV KAMV U+0022",
+            "glyphs": [
+                "notdef.box",
+                "d",
+                "a",
+                "l",
+                "k",
+                "notdef.box"
+            ]
+        },
+        {
+            "codes": "GAMTH A ZALD U+0020 U+0022 DALK A LADHAV KAMV U+0022 U+0020 ZALD E FARZ",
+            "glyphs": [
+                "g",
+                "a",
+                "z",
+                "space.dot",
+                "notdef.box",
+                "d",
+                "a",
+                "l",
+                "k",
+                "notdef.box",
+                "space.dot",
+                "z",
+                "e",
+                "f"
+            ]
+        },
+        {
+            "codes": "BALG A NAZAF TAMB STOP U+0022",
+            "glyphs": [
+                "b",
+                "a",
+                "n",
+                "t",
+                "period",
+                "notdef.box"
+            ]
+        },
+        {
+            "codes": "OPEN_QUOTE DALK A LADHAV KAMV CLOSE_QUOTE",
+            "glyphs": [
+                "quote.open",
+                "d",
+                "a",
+                "l",
+                "k",
+                "quote.close"
+            ]
+        },
+        {
+            "codes": "DALK A LADHAV KAMV OPEN_QUOTE",
+            "glyphs": [
+                "d",
+                "a",
+                "l",
+                "k",
+                "quote.open"
+            ]
+        },
+        {
+            "codes": "CLOSE_QUOTE DALK A LADHAV KAMV",
+            "glyphs": [
+                "quote.close",
+                "d",
+                "a",
+                "l",
+                "k"
+            ]
+        },
+        {
+            "codes": "OPEN_QUOTE GAMTH A ZALD U+0020 OPEN_QUOTE DALK A LADHAV KAMV CLOSE_QUOTE U+0020 ZALD E FARZ CLOSE_QUOTE",
+            "glyphs": [
+                "quote.open",
+                "g",
+                "a",
+                "z",
+                "space.dot",
+                "quote.open",
+                "d",
+                "a",
+                "l",
+                "k",
+                "quote.close",
+                "space.dot",
+                "z",
+                "e",
+                "f",
+                "quote.close"
+            ]
+        },
+        {
+            "codes": "U+201C DALK A LADHAV KAMV U+201D",
+            "glyphs": [
+                "notdef.box",
+                "d",
+                "a",
+                "l",
+                "k",
+                "notdef.box"
+            ]
+        },
+        {
+            "codes": "U+005B DALK A LADHAV KAMV U+005D",
+            "glyphs": [
+                "notdef.box",
+                "d",
+                "a",
+                "l",
+                "k",
+                "notdef.box"
+            ]
+        },
+        {
+            "codes": "GAMTH A ZALD U+0020 U+005B GHARM U LADHAV KAMV U+005D",
+            "glyphs": [
+                "g",
+                "a",
+                "z",
+                "space.dot",
+                "notdef.box",
+                "g_h",
+                "u",
+                "l",
+                "k",
+                "notdef.box"
+            ]
+        },
+        {
+            "codes": "U+003C U+003C DALK A LADHAV KAMV U+003E U+003E",
+            "glyphs": [
+                "notdef.box",
+                "notdef.box",
+                "d",
+                "a",
+                "l",
+                "k",
+                "notdef.box",
+                "notdef.box"
+            ]
+        },
+        {
+            "codes": "GAMTH A ZALD U+0020 U+003C U+003C DALK A LADHAV KAMV U+003E U+003E U+0020 ZALD E FARZ",
+            "glyphs": [
+                "g",
+                "a",
+                "z",
+                "space.dot",
+                "notdef.box",
+                "notdef.box",
+                "d",
+                "a",
+                "l",
+                "k",
+                "notdef.box",
+                "notdef.box",
+                "space.dot",
+                "z",
+                "e",
+                "f"
+            ]
+        },
+        {
+            "codes": "U+0022 THARZ U RAGHAV A LONG GHARM U+0022",
+            "glyphs": [
+                "notdef.box",
+                "t_h",
+                "u",
+                "r",
+                "a",
+                "lengthmark",
+                "g_h",
+                "notdef.box"
+            ]
+        },
+        {
+            "codes": "OPEN_QUOTE THARZ U RAGHAV A LONG GHARM CLOSE_QUOTE",
+            "glyphs": [
+                "quote.open",
+                "t_h",
+                "u",
+                "r",
+                "a",
+                "lengthmark",
+                "g_h",
+                "quote.close"
+            ]
+        },
+        {
+            "codes": "U+003C U+003C THARZ U RAGHAV A LONG GHARM U+003E U+003E",
+            "glyphs": [
+                "notdef.box",
+                "notdef.box",
+                "t_h",
+                "u",
+                "r",
+                "a",
+                "lengthmark",
+                "g_h",
+                "notdef.box",
+                "notdef.box"
+            ]
+        },
+        {
+            "codes": "STOP U+003B U+003A",
+            "glyphs": [
+                "period",
+                "notdef.box",
+                "notdef.box"
+            ]
+        },
+        {
+            "codes": "DALK A LADHAV KAMV U+0020 BALG A NAZAF TAMB",
+            "glyphs": [
+                "d",
+                "a",
+                "l",
+                "k",
+                "space.dot",
+                "b",
+                "a",
+                "n",
+                "t"
+            ]
+        },
+        {
+            "codes": "DALK A LADHAV KAMV STOP U+0020 BALG A NAZAF TAMB STOP U+0020 RAGHAV A MARP KAMV U+0020 TAMB A NAZAF VAZAL U+0020 GAMTH A ZALD U+0020 ZALD E FARZ",
+            "glyphs": [
+                "d",
+                "a",
+                "l",
+                "k",
+                "period",
+                "space.dot",
+                "b",
+                "a",
+                "n",
+                "t",
+                "period",
+                "space.dot",
+                "r",
+                "a",
+                "m",
+                "k",
+                "space.dot",
+                "t",
+                "a",
+                "n",
+                "v",
+                "space.dot",
+                "g",
+                "a",
+                "z",
+                "space.dot",
+                "z",
+                "e",
+                "f"
+            ]
+        },
+        {
+            "codes": "U+00A1 VAZAL E SAKAR U+0020 DALK U RAGHAV A LONG MARP STOP",
+            "glyphs": [
+                "notdef.box",
+                "v",
+                "e",
+                "s",
+                "space.dot",
+                "d",
+                "u",
+                "r",
+                "a",
+                "lengthmark",
+                "m",
+                "period"
+            ]
+        },
+        {
+            "codes": "STOP VAZAL E SAKAR U+0020 DALK U RAGHAV A LONG MARP STOP",
+            "glyphs": [
+                "period",
+                "v",
+                "e",
+                "s",
+                "space.dot",
+                "d",
+                "u",
+                "r",
+                "a",
+                "lengthmark",
+                "m",
+                "period"
+            ]
+        },
+        {
+            "codes": "A BALG BALG A",
+            "glyphs": [
+                "a",
+                "b",
+                "doubling",
+                "a"
+            ]
+        },
+        {
+            "codes": "A DALK DALK A",
+            "glyphs": [
+                "a",
+                "d",
+                "doubling",
+                "a"
+            ]
+        },
+        {
+            "codes": "A GAMTH GAMTH A",
+            "glyphs": [
+                "a",
+                "g",
+                "doubling",
+                "a"
+            ]
+        },
+        {
+            "codes": "A KAMV KAMV A",
+            "glyphs": [
+                "a",
+                "k",
+                "doubling",
+                "a"
+            ]
+        },
+        {
+            "codes": "A PARGH PARGH A",
+            "glyphs": [
+                "a",
+                "p",
+                "doubling",
+                "a"
+            ]
+        },
+        {
+            "codes": "A TAMB TAMB A",
+            "glyphs": [
+                "a",
+                "t",
+                "doubling",
+                "a"
+            ]
+        },
+        {
+            "codes": "A VAZAL VAZAL A",
+            "glyphs": [
+                "a",
+                "v",
+                "doubling",
+                "a"
+            ]
+        },
+        {
+            "codes": "A FARZ FARZ A",
+            "glyphs": [
+                "a",
+                "f",
+                "doubling",
+                "a"
+            ]
+        },
+        {
+            "codes": "A ZALD ZALD A",
+            "glyphs": [
+                "a",
+                "z",
+                "doubling",
+                "a"
+            ]
+        },
+        {
+            "codes": "A SAKAR SAKAR A",
+            "glyphs": [
+                "a",
+                "s",
+                "doubling",
+                "a"
+            ]
+        },
+        {
+            "codes": "A HALB HALB A",
+            "glyphs": [
+                "a",
+                "h",
+                "doubling",
+                "a"
+            ]
+        },
+        {
+            "codes": "A MARP MARP A",
+            "glyphs": [
+                "a",
+                "m",
+                "doubling",
+                "a"
+            ]
+        },
+        {
+            "codes": "A NAZAF NAZAF A",
+            "glyphs": [
+                "a",
+                "n",
+                "doubling",
+                "a"
+            ]
+        },
+        {
+            "codes": "A LADHAV LADHAV A",
+            "glyphs": [
+                "a",
+                "l",
+                "doubling",
+                "a"
+            ]
+        },
+        {
+            "codes": "A RAGHAV RAGHAV A",
+            "glyphs": [
+                "a",
+                "r",
+                "doubling",
+                "a"
+            ]
+        },
+        {
+            "codes": "A THARZ THARZ A",
+            "glyphs": [
+                "a",
+                "t_h",
+                "doubling",
+                "a"
+            ]
+        },
+        {
+            "codes": "A DHALZ DHALZ A",
+            "glyphs": [
+                "a",
+                "d_h",
+                "doubling",
+                "a"
+            ]
+        },
+        {
+            "codes": "A GHARM GHARM A",
+            "glyphs": [
+                "a",
+                "g_h",
+                "doubling",
+                "a"
+            ]
+        },
+        {
+            "codes": "A KHABAR KHABAR A",
+            "glyphs": [
+                "a",
+                "k_h",
+                "doubling",
+                "a"
+            ]
+        },
+        {
+            "codes": "DALK U LADHAV LADHAV A LONG KAMV",
+            "glyphs": [
+                "d",
+                "u",
+                "l",
+                "doubling",
+                "a",
+                "lengthmark",
+                "k"
+            ]
+        },
+        {
+            "codes": "PARGH U THARZ THARZ A LONG KAMV",
+            "glyphs": [
+                "p",
+                "u",
+                "t_h",
+                "doubling",
+                "a",
+                "lengthmark",
+                "k"
+            ]
+        },
+        {
+            "codes": "GAMTH U MARP MARP A LONG THARZ",
+            "glyphs": [
+                "g",
+                "u",
+                "m",
+                "doubling",
+                "a",
+                "lengthmark",
+                "t_h"
+            ]
+        },
+        {
+            "codes": "KHABAR U BALG BALG A LONG NAZAF",
+            "glyphs": [
+                "k_h",
+                "u",
+                "b",
+                "doubling",
+                "a",
+                "lengthmark",
+                "n"
+            ]
+        },
+        {
+            "codes": "DALK A LADHAV KAMV STOP BALG A NAZAF TAMB STOP U+0020 RAGHAV A MARP KAMV PAUSE U+0020 TAMB A NAZAF VAZAL STOP",
+            "glyphs": [
+                "d",
+                "a",
+                "l",
+                "k",
+                "period",
+                "b",
+                "a",
+                "n",
+                "t",
+                "period",
+                "space.dot",
+                "r",
+                "a",
+                "m",
+                "k",
+                "comma",
+                "space.dot",
+                "t",
+                "a",
+                "n",
+                "v",
+                "period"
+            ]
+        },
+        {
+            "codes": "SHA A",
+            "glyphs": [
+                "sh",
+                "a"
+            ]
+        },
+        {
+            "codes": "ZHA A",
+            "glyphs": [
+                "zh",
+                "a"
+            ]
+        },
+        {
+            "codes": "CHA A",
+            "glyphs": [
+                "ch",
+                "a"
+            ]
+        },
+        {
+            "codes": "JA A",
+            "glyphs": [
+                "j",
+                "a"
+            ]
+        },
+        {
+            "codes": "TSA A",
+            "glyphs": [
+                "ts",
+                "a"
+            ]
+        },
+        {
+            "codes": "QA A",
+            "glyphs": [
+                "q",
+                "a"
+            ]
+        },
+        {
+            "codes": "NGA A",
+            "glyphs": [
+                "ng",
+                "a"
+            ]
+        },
+        {
+            "codes": "NYA A",
+            "glyphs": [
+                "ny",
+                "a"
+            ]
+        },
+        {
+            "codes": "HLA A",
+            "glyphs": [
+                "hl",
+                "a"
+            ]
+        },
+        {
+            "codes": "WA A",
+            "glyphs": [
+                "w",
+                "a"
+            ]
+        },
+        {
+            "codes": "CATCH A",
+            "glyphs": [
+                "catch",
+                "a"
+            ]
+        },
+        {
+            "codes": "A SHA A",
+            "glyphs": [
+                "a",
+                "sh",
+                "a"
+            ]
+        },
+        {
+            "codes": "A ZHA A",
+            "glyphs": [
+                "a",
+                "zh",
+                "a"
+            ]
+        },
+        {
+            "codes": "A CHA A",
+            "glyphs": [
+                "a",
+                "ch",
+                "a"
+            ]
+        },
+        {
+            "codes": "A JA A",
+            "glyphs": [
+                "a",
+                "j",
+                "a"
+            ]
+        },
+        {
+            "codes": "A TSA A",
+            "glyphs": [
+                "a",
+                "ts",
+                "a"
+            ]
+        },
+        {
+            "codes": "A QA A",
+            "glyphs": [
+                "a",
+                "q",
+                "a"
+            ]
+        },
+        {
+            "codes": "A NGA A",
+            "glyphs": [
+                "a",
+                "ng",
+                "a"
+            ]
+        },
+        {
+            "codes": "A NYA A",
+            "glyphs": [
+                "a",
+                "ny",
+                "a"
+            ]
+        },
+        {
+            "codes": "A HLA A",
+            "glyphs": [
+                "a",
+                "hl",
+                "a"
+            ]
+        },
+        {
+            "codes": "A WA A",
+            "glyphs": [
+                "a",
+                "w",
+                "a"
+            ]
+        },
+        {
+            "codes": "A CATCH A",
+            "glyphs": [
+                "a",
+                "catch",
+                "a"
+            ]
+        },
+        {
+            "codes": "A SHA",
+            "glyphs": [
+                "a",
+                "sh"
+            ]
+        },
+        {
+            "codes": "A ZHA",
+            "glyphs": [
+                "a",
+                "zh"
+            ]
+        },
+        {
+            "codes": "A CHA",
+            "glyphs": [
+                "a",
+                "ch"
+            ]
+        },
+        {
+            "codes": "A JA",
+            "glyphs": [
+                "a",
+                "j"
+            ]
+        },
+        {
+            "codes": "A TSA",
+            "glyphs": [
+                "a",
+                "ts"
+            ]
+        },
+        {
+            "codes": "A QA",
+            "glyphs": [
+                "a",
+                "q"
+            ]
+        },
+        {
+            "codes": "A NGA",
+            "glyphs": [
+                "a",
+                "ng"
+            ]
+        },
+        {
+            "codes": "A NYA",
+            "glyphs": [
+                "a",
+                "ny"
+            ]
+        },
+        {
+            "codes": "A HLA",
+            "glyphs": [
+                "a",
+                "hl"
+            ]
+        },
+        {
+            "codes": "A WA",
+            "glyphs": [
+                "a",
+                "w"
+            ]
+        },
+        {
+            "codes": "A CATCH",
+            "glyphs": [
+                "a",
+                "catch"
+            ]
+        },
+        {
+            "codes": "YA A",
+            "glyphs": [
+                "y",
+                "a"
+            ]
+        },
+        {
+            "codes": "A YA A",
+            "glyphs": [
+                "a",
+                "y",
+                "a"
+            ]
+        },
+        {
+            "codes": "YA U BALG",
+            "glyphs": [
+                "y",
+                "u",
+                "b"
+            ]
+        },
+        {
+            "codes": "KAMV YA E LONG",
+            "glyphs": [
+                "k",
+                "y",
+                "e",
+                "lengthmark"
+            ]
+        },
+        {
+            "codes": "AI BALG",
+            "glyphs": [
+                "ai",
+                "b"
+            ]
+        },
+        {
+            "codes": "AU BALG",
+            "glyphs": [
+                "au",
+                "b"
+            ]
+        },
+        {
+            "codes": "EI BALG",
+            "glyphs": [
+                "ei",
+                "b"
+            ]
+        },
+        {
+            "codes": "OI BALG",
+            "glyphs": [
+                "oi",
+                "b"
+            ]
+        },
+        {
+            "codes": "OU BALG",
+            "glyphs": [
+                "ou",
+                "b"
+            ]
+        },
+        {
+            "codes": "BALG AI BALG",
+            "glyphs": [
+                "b",
+                "ai",
+                "b"
+            ]
+        },
+        {
+            "codes": "BALG AU BALG",
+            "glyphs": [
+                "b",
+                "au",
+                "b"
+            ]
+        },
+        {
+            "codes": "BALG EI BALG",
+            "glyphs": [
+                "b",
+                "ei",
+                "b"
+            ]
+        },
+        {
+            "codes": "BALG OI BALG",
+            "glyphs": [
+                "b",
+                "oi",
+                "b"
+            ]
+        },
+        {
+            "codes": "BALG OU BALG",
+            "glyphs": [
+                "b",
+                "ou",
+                "b"
+            ]
+        },
+        {
+            "codes": "BALG AI",
+            "glyphs": [
+                "b",
+                "ai"
+            ]
+        },
+        {
+            "codes": "BALG AU",
+            "glyphs": [
+                "b",
+                "au"
+            ]
+        },
+        {
+            "codes": "BALG EI",
+            "glyphs": [
+                "b",
+                "ei"
+            ]
+        },
+        {
+            "codes": "BALG OI",
+            "glyphs": [
+                "b",
+                "oi"
+            ]
+        },
+        {
+            "codes": "BALG OU",
+            "glyphs": [
+                "b",
+                "ou"
+            ]
+        },
+        {
+            "codes": "BALG AI LONG",
+            "glyphs": [
+                "b",
+                "ai",
+                "lengthmark"
+            ]
+        },
+        {
+            "codes": "BALG AU LONG",
+            "glyphs": [
+                "b",
+                "au",
+                "lengthmark"
+            ]
+        },
+        {
+            "codes": "BALG EI LONG",
+            "glyphs": [
+                "b",
+                "ei",
+                "lengthmark"
+            ]
+        },
+        {
+            "codes": "BALG OI LONG",
+            "glyphs": [
+                "b",
+                "oi",
+                "lengthmark"
+            ]
+        },
+        {
+            "codes": "BALG OU LONG",
+            "glyphs": [
+                "b",
+                "ou",
+                "lengthmark"
+            ]
+        },
+        {
+            "codes": "ZALD A NAZAF GHARM",
+            "glyphs": [
+                "z",
+                "a",
+                "n",
+                "g_h"
+            ]
+        },
+        {
+            "codes": "HALB U ZALD A NAZAF GHARM",
+            "glyphs": [
+                "h",
+                "u",
+                "z",
+                "a",
+                "n",
+                "g_h"
+            ]
+        },
+        {
+            "codes": "A NAZAF GHARM A BALG",
+            "glyphs": [
+                "a",
+                "n",
+                "g_h",
+                "a",
+                "b"
+            ]
+        },
+        {
+            "codes": "ZALD A NGA A",
+            "glyphs": [
+                "z",
+                "a",
+                "ng",
+                "a"
+            ]
+        },
+        {
+            "codes": "BALG U I",
+            "glyphs": [
+                "b",
+                "u",
+                "i"
+            ]
+        },
+        {
+            "codes": "BALG I",
+            "glyphs": [
+                "b",
+                "i"
+            ]
+        },
+        {
+            "codes": "BALG I BALG",
+            "glyphs": [
+                "b",
+                "i",
+                "b"
+            ]
+        },
+        {
+            "codes": "I",
+            "glyphs": [
+                "i"
+            ]
+        },
+        {
+            "codes": "BALG A YA A BALG",
+            "glyphs": [
+                "b",
+                "a",
+                "y",
+                "a",
+                "b"
+            ]
+        },
+        {
+            "codes": "A JA JA A",
+            "glyphs": [
+                "a",
+                "j",
+                "doubling",
+                "a"
+            ]
+        },
+        {
+            "codes": "A QA QA A",
+            "glyphs": [
+                "a",
+                "q",
+                "doubling",
+                "a"
+            ]
+        },
+        {
+            "codes": "A WA WA A",
+            "glyphs": [
+                "a",
+                "w",
+                "doubling",
+                "a"
+            ]
+        },
+        {
+            "codes": "A CATCH CATCH A",
+            "glyphs": [
+                "a",
+                "catch",
+                "doubling",
+                "a"
+            ]
+        },
+        {
+            "codes": "A SHA SHA A",
+            "glyphs": [
+                "a",
+                "sh",
+                "doubling",
+                "a"
+            ]
+        },
+        {
+            "codes": "A ZHA ZHA A",
+            "glyphs": [
+                "a",
+                "zh",
+                "doubling",
+                "a"
+            ]
+        },
+        {
+            "codes": "A CHA CHA A",
+            "glyphs": [
+                "a",
+                "ch",
+                "doubling",
+                "a"
+            ]
+        },
+        {
+            "codes": "A TSA TSA A",
+            "glyphs": [
+                "a",
+                "ts",
+                "doubling",
+                "a"
+            ]
+        },
+        {
+            "codes": "A NGA NGA A",
+            "glyphs": [
+                "a",
+                "ng",
+                "doubling",
+                "a"
+            ]
+        },
+        {
+            "codes": "A NYA NYA A",
+            "glyphs": [
+                "a",
+                "ny",
+                "doubling",
+                "a"
+            ]
+        },
+        {
+            "codes": "A HLA HLA A",
+            "glyphs": [
+                "a",
+                "hl",
+                "doubling",
+                "a"
+            ]
+        },
+        {
+            "codes": "A NAZAF NAZAF GHARM A BALG",
+            "glyphs": [
+                "a",
+                "n",
+                "doubling",
+                "g_h",
+                "a",
+                "b"
+            ]
+        },
+        {
+            "codes": "U+0059",
+            "glyphs": [
+                "notdef.box"
+            ]
+        },
+        {
+            "codes": "U+0053 HALB A NGA A",
+            "glyphs": [
+                "notdef.box",
+                "h",
+                "a",
+                "ng",
+                "a"
+            ]
+        }
+    ]
+}

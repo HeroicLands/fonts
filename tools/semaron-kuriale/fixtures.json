@@ -1,0 +1,2007 @@
+{
+    "fixtures": [
+        {
+            "codes": "ANKRON_MIN",
+            "glyphs": [
+                "a"
+            ]
+        },
+        {
+            "codes": "DEKAZU_MIN LONG_ANKRON_MIN MEZARA_MIN ELZA_MIN LIZELA_MIN ANKRON_MIN",
+            "glyphs": [
+                "d",
+                "a.long",
+                "m",
+                "e",
+                "l",
+                "a"
+            ]
+        },
+        {
+            "codes": "FUNELA_MIN ANKRON_MIN",
+            "glyphs": [
+                "f",
+                "a"
+            ]
+        },
+        {
+            "codes": "BRUTHEKA_MIN",
+            "glyphs": [
+                "b"
+            ]
+        },
+        {
+            "codes": "DEKAZU_MIN",
+            "glyphs": [
+                "d"
+            ]
+        },
+        {
+            "codes": "ELZA_MIN",
+            "glyphs": [
+                "e"
+            ]
+        },
+        {
+            "codes": "FUNELA_MIN",
+            "glyphs": [
+                "f"
+            ]
+        },
+        {
+            "codes": "GULMOS_MIN",
+            "glyphs": [
+                "g"
+            ]
+        },
+        {
+            "codes": "HARLEN_MIN",
+            "glyphs": [
+                "h"
+            ]
+        },
+        {
+            "codes": "JA_MIN",
+            "glyphs": [
+                "j"
+            ]
+        },
+        {
+            "codes": "KALPEZA_MIN",
+            "glyphs": [
+                "k"
+            ]
+        },
+        {
+            "codes": "LIZELA_MIN",
+            "glyphs": [
+                "l"
+            ]
+        },
+        {
+            "codes": "MEZARA_MIN",
+            "glyphs": [
+                "m"
+            ]
+        },
+        {
+            "codes": "NELAMIS_MIN",
+            "glyphs": [
+                "n"
+            ]
+        },
+        {
+            "codes": "ORNETHE_MIN",
+            "glyphs": [
+                "o"
+            ]
+        },
+        {
+            "codes": "POZERA_MIN",
+            "glyphs": [
+                "p"
+            ]
+        },
+        {
+            "codes": "QORETHA_MIN",
+            "glyphs": [
+                "q"
+            ]
+        },
+        {
+            "codes": "RONETHOS_MIN",
+            "glyphs": [
+                "r"
+            ]
+        },
+        {
+            "codes": "SIRETHA_MIN",
+            "glyphs": [
+                "s"
+            ]
+        },
+        {
+            "codes": "TALOTHOS_MIN",
+            "glyphs": [
+                "t"
+            ]
+        },
+        {
+            "codes": "ULMERA_MIN",
+            "glyphs": [
+                "u"
+            ]
+        },
+        {
+            "codes": "VARTHOS_MIN",
+            "glyphs": [
+                "v"
+            ]
+        },
+        {
+            "codes": "WA_MIN",
+            "glyphs": [
+                "w"
+            ]
+        },
+        {
+            "codes": "ZARGON_MIN",
+            "glyphs": [
+                "z"
+            ]
+        },
+        {
+            "codes": "ANKRON_MAJ",
+            "glyphs": [
+                "A"
+            ]
+        },
+        {
+            "codes": "BRUTHEKA_MAJ",
+            "glyphs": [
+                "B"
+            ]
+        },
+        {
+            "codes": "DEKAZU_MAJ",
+            "glyphs": [
+                "D"
+            ]
+        },
+        {
+            "codes": "ELZA_MAJ",
+            "glyphs": [
+                "E"
+            ]
+        },
+        {
+            "codes": "FUNELA_MAJ",
+            "glyphs": [
+                "F"
+            ]
+        },
+        {
+            "codes": "GULMOS_MAJ",
+            "glyphs": [
+                "G"
+            ]
+        },
+        {
+            "codes": "HARLEN_MAJ",
+            "glyphs": [
+                "H"
+            ]
+        },
+        {
+            "codes": "JA_MAJ",
+            "glyphs": [
+                "J"
+            ]
+        },
+        {
+            "codes": "KALPEZA_MAJ",
+            "glyphs": [
+                "K"
+            ]
+        },
+        {
+            "codes": "LIZELA_MAJ",
+            "glyphs": [
+                "L"
+            ]
+        },
+        {
+            "codes": "MEZARA_MAJ",
+            "glyphs": [
+                "M"
+            ]
+        },
+        {
+            "codes": "NELAMIS_MAJ",
+            "glyphs": [
+                "N"
+            ]
+        },
+        {
+            "codes": "ORNETHE_MAJ",
+            "glyphs": [
+                "O"
+            ]
+        },
+        {
+            "codes": "POZERA_MAJ",
+            "glyphs": [
+                "P"
+            ]
+        },
+        {
+            "codes": "QORETHA_MAJ",
+            "glyphs": [
+                "Q"
+            ]
+        },
+        {
+            "codes": "RONETHOS_MAJ",
+            "glyphs": [
+                "R"
+            ]
+        },
+        {
+            "codes": "SIRETHA_MAJ",
+            "glyphs": [
+                "S"
+            ]
+        },
+        {
+            "codes": "TALOTHOS_MAJ",
+            "glyphs": [
+                "T"
+            ]
+        },
+        {
+            "codes": "ULMERA_MAJ",
+            "glyphs": [
+                "U"
+            ]
+        },
+        {
+            "codes": "VARTHOS_MAJ",
+            "glyphs": [
+                "V"
+            ]
+        },
+        {
+            "codes": "WA_MAJ",
+            "glyphs": [
+                "W"
+            ]
+        },
+        {
+            "codes": "ZARGON_MAJ",
+            "glyphs": [
+                "Z"
+            ]
+        },
+        {
+            "codes": "DEKAZU_MAJ LONG_ANKRON_MIN MEZARA_MIN ELZA_MIN LIZELA_MIN ANKRON_MIN",
+            "glyphs": [
+                "D",
+                "a.long",
+                "m",
+                "e",
+                "l",
+                "a"
+            ]
+        },
+        {
+            "codes": "DEKAZU_MAJ ANKRON_MAJ ANKRON_MAJ MEZARA_MAJ ELZA_MAJ LIZELA_MAJ ANKRON_MAJ",
+            "glyphs": [
+                "D",
+                "A",
+                "A",
+                "M",
+                "E",
+                "L",
+                "A"
+            ]
+        },
+        {
+            "codes": "THOLERA_MAJ",
+            "glyphs": [
+                "TH"
+            ]
+        },
+        {
+            "codes": "TALOTHOS_MAJ HARLEN_MAJ",
+            "glyphs": [
+                "T",
+                "H"
+            ]
+        },
+        {
+            "codes": "TALOTHOS_MIN HARLEN_MAJ",
+            "glyphs": [
+                "t",
+                "H"
+            ]
+        },
+        {
+            "codes": "ANKRON_MAJ THOLERA_MIN ULMERA_MIN",
+            "glyphs": [
+                "A",
+                "th",
+                "u"
+            ]
+        },
+        {
+            "codes": "CHEROLA_MAJ",
+            "glyphs": [
+                "CH"
+            ]
+        },
+        {
+            "codes": "U+0043 HARLEN_MAJ",
+            "glyphs": [
+                "notdef.box",
+                "H"
+            ]
+        },
+        {
+            "codes": "U+0063 HARLEN_MAJ",
+            "glyphs": [
+                "notdef.box",
+                "H"
+            ]
+        },
+        {
+            "codes": "DHANETHE_MAJ",
+            "glyphs": [
+                "DH"
+            ]
+        },
+        {
+            "codes": "KHORVENA_MAJ",
+            "glyphs": [
+                "KH"
+            ]
+        },
+        {
+            "codes": "GHORMAS_MAJ",
+            "glyphs": [
+                "GH"
+            ]
+        },
+        {
+            "codes": "SHELMORA_MAJ",
+            "glyphs": [
+                "SH"
+            ]
+        },
+        {
+            "codes": "ZHAREVA_MAJ",
+            "glyphs": [
+                "ZH"
+            ]
+        },
+        {
+            "codes": "TSALEMA_MAJ",
+            "glyphs": [
+                "TS"
+            ]
+        },
+        {
+            "codes": "ENGARIS_MAJ",
+            "glyphs": [
+                "NG"
+            ]
+        },
+        {
+            "codes": "DEKAZU_MAJ HARLEN_MAJ",
+            "glyphs": [
+                "D",
+                "H"
+            ]
+        },
+        {
+            "codes": "KALPEZA_MAJ HARLEN_MAJ",
+            "glyphs": [
+                "K",
+                "H"
+            ]
+        },
+        {
+            "codes": "GULMOS_MAJ HARLEN_MAJ",
+            "glyphs": [
+                "G",
+                "H"
+            ]
+        },
+        {
+            "codes": "SIRETHA_MAJ HARLEN_MAJ",
+            "glyphs": [
+                "S",
+                "H"
+            ]
+        },
+        {
+            "codes": "ZARGON_MAJ HARLEN_MAJ",
+            "glyphs": [
+                "Z",
+                "H"
+            ]
+        },
+        {
+            "codes": "TALOTHOS_MAJ SIRETHA_MAJ",
+            "glyphs": [
+                "T",
+                "S"
+            ]
+        },
+        {
+            "codes": "NELAMIS_MAJ GULMOS_MAJ",
+            "glyphs": [
+                "N",
+                "G"
+            ]
+        },
+        {
+            "codes": "DEKAZU_MIN HARLEN_MAJ",
+            "glyphs": [
+                "d",
+                "H"
+            ]
+        },
+        {
+            "codes": "SIRETHA_MIN HARLEN_MAJ",
+            "glyphs": [
+                "s",
+                "H"
+            ]
+        },
+        {
+            "codes": "NELAMIS_MIN GULMOS_MAJ",
+            "glyphs": [
+                "n",
+                "G"
+            ]
+        },
+        {
+            "codes": "NELAMIS_MAJ ILTHERA_MIN",
+            "glyphs": [
+                "N",
+                "i"
+            ]
+        },
+        {
+            "codes": "NYELIS_MAJ ANKRON_MIN",
+            "glyphs": [
+                "NY",
+                "a"
+            ]
+        },
+        {
+            "codes": "NYELIS_MAJ LONG_ANKRON_MIN",
+            "glyphs": [
+                "NY",
+                "a.long"
+            ]
+        },
+        {
+            "codes": "NELAMIS_MAJ YALZEMIS_MAJ ANKRON_MIN",
+            "glyphs": [
+                "N",
+                "Y",
+                "a"
+            ]
+        },
+        {
+            "codes": "NELAMIS_MAJ ILTHERA_MAJ",
+            "glyphs": [
+                "N",
+                "I"
+            ]
+        },
+        {
+            "codes": "NELAMIS_MIN ILTHERA_MAJ",
+            "glyphs": [
+                "n",
+                "I"
+            ]
+        },
+        {
+            "codes": "SHELMORA_MAJ ELZA_MIN LIZELA_MIN MEZARA_MIN ORNETHE_MIN RONETHOS_MIN ANKRON_MIN",
+            "glyphs": [
+                "SH",
+                "e",
+                "l",
+                "m",
+                "o",
+                "r",
+                "a"
+            ]
+        },
+        {
+            "codes": "QORETHA_MAJ ORNETHE_MIN RONETHOS_MIN ELZA_MIN THOLERA_MIN ANKRON_MIN",
+            "glyphs": [
+                "Q",
+                "o",
+                "r",
+                "e",
+                "th",
+                "a"
+            ]
+        },
+        {
+            "codes": "LONG_ANKRON_MAJ",
+            "glyphs": [
+                "A.long"
+            ]
+        },
+        {
+            "codes": "ANKRON_MIN ANKRON_MAJ",
+            "glyphs": [
+                "a",
+                "A"
+            ]
+        },
+        {
+            "codes": "LONG_ILTHERA_MAJ",
+            "glyphs": [
+                "I.long"
+            ]
+        },
+        {
+            "codes": "LONG_ULMERA_MAJ",
+            "glyphs": [
+                "U.long"
+            ]
+        },
+        {
+            "codes": "ELZA_MAJ ELZA_MIN",
+            "glyphs": [
+                "E",
+                "e"
+            ]
+        },
+        {
+            "codes": "ORNETHE_MAJ ORNETHE_MIN",
+            "glyphs": [
+                "O",
+                "o"
+            ]
+        },
+        {
+            "codes": "ILTHERA_MAJ",
+            "glyphs": [
+                "I"
+            ]
+        },
+        {
+            "codes": "MEZARA_MAJ ELZA_MIN QORETHA_MIN ELZA_MIN SIRETHA_MIN",
+            "glyphs": [
+                "M",
+                "e",
+                "q",
+                "e",
+                "s"
+            ]
+        },
+        {
+            "codes": "ANKRON_MAJ ANKRON_MAJ",
+            "glyphs": [
+                "A",
+                "A"
+            ]
+        },
+        {
+            "codes": "YALZEMIS_MAJ ANKRON_MIN",
+            "glyphs": [
+                "Y",
+                "a"
+            ]
+        },
+        {
+            "codes": "ILTHERA_MAJ U+0020",
+            "glyphs": [
+                "I",
+                "space"
+            ]
+        },
+        {
+            "codes": "KALPEZA_MAJ CATCH",
+            "glyphs": [
+                "K",
+                "grave"
+            ]
+        },
+        {
+            "codes": "ANKRON_MAJ CATCH",
+            "glyphs": [
+                "A",
+                "grave"
+            ]
+        },
+        {
+            "codes": "KALPEZA_MAJ CATCH ANKRON_MIN",
+            "glyphs": [
+                "K",
+                "grave",
+                "a"
+            ]
+        },
+        {
+            "codes": "KALPEZA_MIN CATCH ANKRON_MAJ",
+            "glyphs": [
+                "k",
+                "grave",
+                "A"
+            ]
+        },
+        {
+            "codes": "KALPEZA_MAJ CATCH ANKRON_MAJ",
+            "glyphs": [
+                "K",
+                "grave",
+                "A"
+            ]
+        },
+        {
+            "codes": "TALOTHOS_MAJ CATCH ANKRON_MAJ",
+            "glyphs": [
+                "T",
+                "grave",
+                "A"
+            ]
+        },
+        {
+            "codes": "YALZEMIS_MAJ ANKRON_MAJ CATCH",
+            "glyphs": [
+                "Y",
+                "A",
+                "grave"
+            ]
+        },
+        {
+            "codes": "ANKRON_MAJ ULMERA_MIN CATCH KHORVENA_MAJ ELZA_MIN LIZELA_MIN ANKRON_MIN THOLERA_MIN ULMERA_MIN",
+            "glyphs": [
+                "A",
+                "u",
+                "grave",
+                "KH",
+                "e",
+                "l",
+                "a",
+                "th",
+                "u"
+            ]
+        },
+        {
+            "codes": "THOLERA_MIN",
+            "glyphs": [
+                "th"
+            ]
+        },
+        {
+            "codes": "THOLERA_MIN HARLEN_MIN",
+            "glyphs": [
+                "th",
+                "h"
+            ]
+        },
+        {
+            "codes": "TALOTHOS_MIN THOLERA_MIN",
+            "glyphs": [
+                "t",
+                "th"
+            ]
+        },
+        {
+            "codes": "ANKRON_MIN THOLERA_MIN ULMERA_MIN",
+            "glyphs": [
+                "a",
+                "th",
+                "u"
+            ]
+        },
+        {
+            "codes": "CHEROLA_MIN",
+            "glyphs": [
+                "ch"
+            ]
+        },
+        {
+            "codes": "TALOTHOS_MIN CHEROLA_MIN",
+            "glyphs": [
+                "t",
+                "ch"
+            ]
+        },
+        {
+            "codes": "CHEROLA_MIN HARLEN_MIN",
+            "glyphs": [
+                "ch",
+                "h"
+            ]
+        },
+        {
+            "codes": "U+0063 THOLERA_MIN",
+            "glyphs": [
+                "notdef.box",
+                "th"
+            ]
+        },
+        {
+            "codes": "DHANETHE_MIN",
+            "glyphs": [
+                "dh"
+            ]
+        },
+        {
+            "codes": "KHORVENA_MIN",
+            "glyphs": [
+                "kh"
+            ]
+        },
+        {
+            "codes": "GHORMAS_MIN",
+            "glyphs": [
+                "gh"
+            ]
+        },
+        {
+            "codes": "SHELMORA_MIN",
+            "glyphs": [
+                "sh"
+            ]
+        },
+        {
+            "codes": "ZHAREVA_MIN",
+            "glyphs": [
+                "zh"
+            ]
+        },
+        {
+            "codes": "TSALEMA_MIN",
+            "glyphs": [
+                "ts"
+            ]
+        },
+        {
+            "codes": "ENGARIS_MIN",
+            "glyphs": [
+                "ng"
+            ]
+        },
+        {
+            "codes": "DHANETHE_MIN HARLEN_MIN",
+            "glyphs": [
+                "dh",
+                "h"
+            ]
+        },
+        {
+            "codes": "TSALEMA_MIN HARLEN_MIN",
+            "glyphs": [
+                "ts",
+                "h"
+            ]
+        },
+        {
+            "codes": "ENGARIS_MIN HARLEN_MIN",
+            "glyphs": [
+                "ng",
+                "h"
+            ]
+        },
+        {
+            "codes": "SHELMORA_MIN HARLEN_MIN",
+            "glyphs": [
+                "sh",
+                "h"
+            ]
+        },
+        {
+            "codes": "KHORVENA_MIN KHORVENA_MIN",
+            "glyphs": [
+                "kh",
+                "kh"
+            ]
+        },
+        {
+            "codes": "TALOTHOS_MIN DHANETHE_MIN",
+            "glyphs": [
+                "t",
+                "dh"
+            ]
+        },
+        {
+            "codes": "SIRETHA_MIN TSALEMA_MIN ANKRON_MIN",
+            "glyphs": [
+                "s",
+                "ts",
+                "a"
+            ]
+        },
+        {
+            "codes": "ENGARIS_MIN GULMOS_MIN",
+            "glyphs": [
+                "ng",
+                "g"
+            ]
+        },
+        {
+            "codes": "ENGARIS_MIN GHORMAS_MIN",
+            "glyphs": [
+                "ng",
+                "gh"
+            ]
+        },
+        {
+            "codes": "SIRETHA_MIN THOLERA_MIN",
+            "glyphs": [
+                "s",
+                "th"
+            ]
+        },
+        {
+            "codes": "ANKRON_MIN ENGARIS_MIN ANKRON_MIN",
+            "glyphs": [
+                "a",
+                "ng",
+                "a"
+            ]
+        },
+        {
+            "codes": "TSALEMA_MIN ANKRON_MIN TSALEMA_MIN ANKRON_MIN",
+            "glyphs": [
+                "ts",
+                "a",
+                "ts",
+                "a"
+            ]
+        },
+        {
+            "codes": "ZHAREVA_MIN ANKRON_MIN RONETHOS_MIN ELZA_MIN VARTHOS_MIN ANKRON_MIN",
+            "glyphs": [
+                "zh",
+                "a",
+                "r",
+                "e",
+                "v",
+                "a"
+            ]
+        },
+        {
+            "codes": "DHANETHE_MIN ANKRON_MIN NELAMIS_MIN ELZA_MIN THOLERA_MIN ELZA_MIN",
+            "glyphs": [
+                "dh",
+                "a",
+                "n",
+                "e",
+                "th",
+                "e"
+            ]
+        },
+        {
+            "codes": "GHORMAS_MIN ORNETHE_MIN RONETHOS_MIN MEZARA_MIN ANKRON_MIN SIRETHA_MIN",
+            "glyphs": [
+                "gh",
+                "o",
+                "r",
+                "m",
+                "a",
+                "s"
+            ]
+        },
+        {
+            "codes": "KHORVENA_MIN ORNETHE_MIN RONETHOS_MIN VARTHOS_MIN ELZA_MIN NELAMIS_MIN ANKRON_MIN",
+            "glyphs": [
+                "kh",
+                "o",
+                "r",
+                "v",
+                "e",
+                "n",
+                "a"
+            ]
+        },
+        {
+            "codes": "CHEROLA_MIN ELZA_MIN RONETHOS_MIN ORNETHE_MIN LIZELA_MIN ANKRON_MIN",
+            "glyphs": [
+                "ch",
+                "e",
+                "r",
+                "o",
+                "l",
+                "a"
+            ]
+        },
+        {
+            "codes": "ELZA_MIN ENGARIS_MIN ANKRON_MIN RONETHOS_MIN ILTHERA_MIN SIRETHA_MIN",
+            "glyphs": [
+                "e",
+                "ng",
+                "a",
+                "r",
+                "i",
+                "s"
+            ]
+        },
+        {
+            "codes": "TSALEMA_MIN ANKRON_MIN LIZELA_MIN ELZA_MIN MEZARA_MIN ANKRON_MIN",
+            "glyphs": [
+                "ts",
+                "a",
+                "l",
+                "e",
+                "m",
+                "a"
+            ]
+        },
+        {
+            "codes": "NYELIS_MIN ELZA_MIN LIZELA_MIN ILTHERA_MIN SIRETHA_MIN",
+            "glyphs": [
+                "ny",
+                "e",
+                "l",
+                "i",
+                "s"
+            ]
+        },
+        {
+            "codes": "NYELIS_MIN ANKRON_MIN",
+            "glyphs": [
+                "ny",
+                "a"
+            ]
+        },
+        {
+            "codes": "NYELIS_MIN LONG_ANKRON_MIN",
+            "glyphs": [
+                "ny",
+                "a.long"
+            ]
+        },
+        {
+            "codes": "NYELIS_MIN ANKRON_MIN CATCH",
+            "glyphs": [
+                "ny",
+                "a",
+                "grave"
+            ]
+        },
+        {
+            "codes": "MEZARA_MIN ANKRON_MIN NELAMIS_MIN ILTHERA_MIN",
+            "glyphs": [
+                "m",
+                "a",
+                "n",
+                "i"
+            ]
+        },
+        {
+            "codes": "NELAMIS_MIN ILTHERA_MIN",
+            "glyphs": [
+                "n",
+                "i"
+            ]
+        },
+        {
+            "codes": "NELAMIS_MIN ILTHERA_MIN TALOTHOS_MIN",
+            "glyphs": [
+                "n",
+                "i",
+                "t"
+            ]
+        },
+        {
+            "codes": "NELAMIS_MIN ILTHERA_MIN U+0020",
+            "glyphs": [
+                "n",
+                "i",
+                "space"
+            ]
+        },
+        {
+            "codes": "NELAMIS_MIN ILTHERA_MIN THOLERA_MIN",
+            "glyphs": [
+                "n",
+                "i",
+                "th"
+            ]
+        },
+        {
+            "codes": "NELAMIS_MIN ILTHERA_MIN NELAMIS_MIN ILTHERA_MIN",
+            "glyphs": [
+                "n",
+                "i",
+                "n",
+                "i"
+            ]
+        },
+        {
+            "codes": "NELAMIS_MIN ILTHERA_MIN YALZEMIS_MIN ORNETHE_MIN",
+            "glyphs": [
+                "n",
+                "i",
+                "y",
+                "o"
+            ]
+        },
+        {
+            "codes": "NELAMIS_MIN ILTHERA_MIN NYELIS_MIN ANKRON_MIN",
+            "glyphs": [
+                "n",
+                "i",
+                "ny",
+                "a"
+            ]
+        },
+        {
+            "codes": "NYELIS_MIN ILTHERA_MIN",
+            "glyphs": [
+                "ny",
+                "i"
+            ]
+        },
+        {
+            "codes": "NYELIS_MIN ELZA_MIN",
+            "glyphs": [
+                "ny",
+                "e"
+            ]
+        },
+        {
+            "codes": "NELAMIS_MIN ILTHERA_MIN ILTHERA_MAJ",
+            "glyphs": [
+                "n",
+                "i",
+                "I"
+            ]
+        },
+        {
+            "codes": "NELAMIS_MIN CATCH YALZEMIS_MIN ANKRON_MIN",
+            "glyphs": [
+                "n",
+                "grave",
+                "y",
+                "a"
+            ]
+        },
+        {
+            "codes": "QORETHA_MIN ANKRON_MIN",
+            "glyphs": [
+                "q",
+                "a"
+            ]
+        },
+        {
+            "codes": "TALOTHOS_MIN QORETHA_MIN",
+            "glyphs": [
+                "t",
+                "q"
+            ]
+        },
+        {
+            "codes": "QORETHA_MIN HARLEN_MIN",
+            "glyphs": [
+                "q",
+                "h"
+            ]
+        },
+        {
+            "codes": "QORETHA_MIN ORNETHE_MIN RONETHOS_MIN ELZA_MIN THOLERA_MIN ANKRON_MIN",
+            "glyphs": [
+                "q",
+                "o",
+                "r",
+                "e",
+                "th",
+                "a"
+            ]
+        },
+        {
+            "codes": "LONG_ANKRON_MIN",
+            "glyphs": [
+                "a.long"
+            ]
+        },
+        {
+            "codes": "LONG_ILTHERA_MIN",
+            "glyphs": [
+                "i.long"
+            ]
+        },
+        {
+            "codes": "LONG_ULMERA_MIN",
+            "glyphs": [
+                "u.long"
+            ]
+        },
+        {
+            "codes": "LONG_ANKRON_MIN ANKRON_MIN",
+            "glyphs": [
+                "a.long",
+                "a"
+            ]
+        },
+        {
+            "codes": "LONG_ANKRON_MIN LONG_ANKRON_MIN",
+            "glyphs": [
+                "a.long",
+                "a.long"
+            ]
+        },
+        {
+            "codes": "ELZA_MIN ELZA_MIN",
+            "glyphs": [
+                "e",
+                "e"
+            ]
+        },
+        {
+            "codes": "ORNETHE_MIN ORNETHE_MIN",
+            "glyphs": [
+                "o",
+                "o"
+            ]
+        },
+        {
+            "codes": "VARTHOS_MIN LONG_ILTHERA_MIN RONETHOS_MIN",
+            "glyphs": [
+                "v",
+                "i.long",
+                "r"
+            ]
+        },
+        {
+            "codes": "KALPEZA_MIN LONG_ULMERA_MIN NELAMIS_MIN",
+            "glyphs": [
+                "k",
+                "u.long",
+                "n"
+            ]
+        },
+        {
+            "codes": "ILTHERA_MIN",
+            "glyphs": [
+                "i"
+            ]
+        },
+        {
+            "codes": "ANKRON_MIN ILTHERA_MIN",
+            "glyphs": [
+                "a",
+                "i"
+            ]
+        },
+        {
+            "codes": "YALZEMIS_MIN ANKRON_MIN",
+            "glyphs": [
+                "y",
+                "a"
+            ]
+        },
+        {
+            "codes": "YALZEMIS_MIN LONG_ANKRON_MIN",
+            "glyphs": [
+                "y",
+                "a.long"
+            ]
+        },
+        {
+            "codes": "YALZEMIS_MIN ILTHERA_MIN",
+            "glyphs": [
+                "y",
+                "i"
+            ]
+        },
+        {
+            "codes": "TALOTHOS_MIN ILTHERA_MIN",
+            "glyphs": [
+                "t",
+                "i"
+            ]
+        },
+        {
+            "codes": "ILTHERA_MIN ILTHERA_MIN",
+            "glyphs": [
+                "i",
+                "i"
+            ]
+        },
+        {
+            "codes": "ILTHERA_MIN YALZEMIS_MIN ANKRON_MIN",
+            "glyphs": [
+                "i",
+                "y",
+                "a"
+            ]
+        },
+        {
+            "codes": "ILTHERA_MIN THOLERA_MIN",
+            "glyphs": [
+                "i",
+                "th"
+            ]
+        },
+        {
+            "codes": "ILTHERA_MIN CATCH",
+            "glyphs": [
+                "i",
+                "grave"
+            ]
+        },
+        {
+            "codes": "ILTHERA_MIN U+0020",
+            "glyphs": [
+                "i",
+                "space"
+            ]
+        },
+        {
+            "codes": "DEKAZU_MIN ANKRON_MIN YALZEMIS_MIN ORNETHE_MIN SIRETHA_MIN",
+            "glyphs": [
+                "d",
+                "a",
+                "y",
+                "o",
+                "s"
+            ]
+        },
+        {
+            "codes": "ANKRON_MIN CATCH",
+            "glyphs": [
+                "a",
+                "grave"
+            ]
+        },
+        {
+            "codes": "LIZELA_MIN CATCH",
+            "glyphs": [
+                "l",
+                "grave"
+            ]
+        },
+        {
+            "codes": "LONG_ANKRON_MIN CATCH",
+            "glyphs": [
+                "a.long",
+                "grave"
+            ]
+        },
+        {
+            "codes": "KALPEZA_MIN CATCH",
+            "glyphs": [
+                "k",
+                "grave"
+            ]
+        },
+        {
+            "codes": "THOLERA_MIN CATCH",
+            "glyphs": [
+                "th",
+                "grave"
+            ]
+        },
+        {
+            "codes": "LONG_ULMERA_MIN CATCH KALPEZA_MIN",
+            "glyphs": [
+                "u.long",
+                "grave",
+                "k"
+            ]
+        },
+        {
+            "codes": "CATCH",
+            "glyphs": [
+                "notdef.box"
+            ]
+        },
+        {
+            "codes": "U+0020 CATCH",
+            "glyphs": [
+                "space",
+                "notdef.box"
+            ]
+        },
+        {
+            "codes": "DIGIT_ONE CATCH",
+            "glyphs": [
+                "num.1",
+                "notdef.box"
+            ]
+        },
+        {
+            "codes": "POINT CATCH",
+            "glyphs": [
+                "point",
+                "notdef.box"
+            ]
+        },
+        {
+            "codes": "ANKRON_MIN CATCH CATCH",
+            "glyphs": [
+                "a",
+                "grave",
+                "notdef.box"
+            ]
+        },
+        {
+            "codes": "U+0063 CATCH",
+            "glyphs": [
+                "notdef.box",
+                "notdef.box"
+            ]
+        },
+        {
+            "codes": "CHEROLA_MIN CATCH",
+            "glyphs": [
+                "ch",
+                "grave"
+            ]
+        },
+        {
+            "codes": "SHELMORA_MIN CATCH",
+            "glyphs": [
+                "sh",
+                "grave"
+            ]
+        },
+        {
+            "codes": "ENGARIS_MIN CATCH",
+            "glyphs": [
+                "ng",
+                "grave"
+            ]
+        },
+        {
+            "codes": "TSALEMA_MIN CATCH",
+            "glyphs": [
+                "ts",
+                "grave"
+            ]
+        },
+        {
+            "codes": "QORETHA_MIN CATCH",
+            "glyphs": [
+                "q",
+                "grave"
+            ]
+        },
+        {
+            "codes": "CHEROLA_MAJ CATCH",
+            "glyphs": [
+                "CH",
+                "grave"
+            ]
+        },
+        {
+            "codes": "DHANETHE_MAJ CATCH",
+            "glyphs": [
+                "DH",
+                "grave"
+            ]
+        },
+        {
+            "codes": "KALPEZA_MIN CATCH ANKRON_MIN RONETHOS_MIN ANKRON_MIN LIZELA_MIN ZARGON_MIN ORNETHE_MIN NELAMIS_MIN",
+            "glyphs": [
+                "k",
+                "grave",
+                "a",
+                "r",
+                "a",
+                "l",
+                "z",
+                "o",
+                "n"
+            ]
+        },
+        {
+            "codes": "KALPEZA_MIN CATCH ANKRON_MIN RONETHOS_MIN THOLERA_MIN ORNETHE_MIN RONETHOS_MIN GULMOS_MIN ILTHERA_MIN LIZELA_MIN ANKRON_MIN",
+            "glyphs": [
+                "k",
+                "grave",
+                "a",
+                "r",
+                "th",
+                "o",
+                "r",
+                "g",
+                "i",
+                "l",
+                "a"
+            ]
+        },
+        {
+            "codes": "KALPEZA_MIN CATCH ANKRON_MIN",
+            "glyphs": [
+                "k",
+                "grave",
+                "a"
+            ]
+        },
+        {
+            "codes": "TALOTHOS_MIN CATCH ANKRON_MIN",
+            "glyphs": [
+                "t",
+                "grave",
+                "a"
+            ]
+        },
+        {
+            "codes": "DEKAZU_MIN CATCH ANKRON_MIN",
+            "glyphs": [
+                "d",
+                "grave",
+                "a"
+            ]
+        },
+        {
+            "codes": "GULMOS_MIN CATCH ANKRON_MIN",
+            "glyphs": [
+                "g",
+                "grave",
+                "a"
+            ]
+        },
+        {
+            "codes": "YALZEMIS_MIN ANKRON_MIN CATCH",
+            "glyphs": [
+                "y",
+                "a",
+                "grave"
+            ]
+        },
+        {
+            "codes": "ANKRON_MIN ULMERA_MIN CATCH KHORVENA_MIN ELZA_MIN LIZELA_MIN ANKRON_MIN THOLERA_MIN ULMERA_MIN",
+            "glyphs": [
+                "a",
+                "u",
+                "grave",
+                "kh",
+                "e",
+                "l",
+                "a",
+                "th",
+                "u"
+            ]
+        },
+        {
+            "codes": "ZARGON_MIN ELZA_MIN GHORMAS_MIN ELZA_MIN TALOTHOS_MIN CATCH NELAMIS_MIN ELZA_MIN LIZELA_MIN GULMOS_MIN ULMERA_MIN",
+            "glyphs": [
+                "z",
+                "e",
+                "gh",
+                "e",
+                "t",
+                "grave",
+                "n",
+                "e",
+                "l",
+                "g",
+                "u"
+            ]
+        },
+        {
+            "codes": "ANKRON_MIN MEZARA_MIN QORETHA_MIN ELZA_MIN LIZELA_MIN CATCH ULMERA_MIN QORETHA_MIN ANKRON_MIN",
+            "glyphs": [
+                "a",
+                "m",
+                "q",
+                "e",
+                "l",
+                "grave",
+                "u",
+                "q",
+                "a"
+            ]
+        },
+        {
+            "codes": "SIRETHA_MIN ELZA_MIN LIZELA_MIN THOLERA_MIN CATCH KALPEZA_MIN ELZA_MIN LIZELA_MIN MEZARA_MIN ELZA_MIN ZARGON_MIN ANKRON_MIN",
+            "glyphs": [
+                "s",
+                "e",
+                "l",
+                "th",
+                "grave",
+                "k",
+                "e",
+                "l",
+                "m",
+                "e",
+                "z",
+                "a"
+            ]
+        },
+        {
+            "codes": "POINT",
+            "glyphs": [
+                "point"
+            ]
+        },
+        {
+            "codes": "ANKRON_MIN POINT ANKRON_MIN",
+            "glyphs": [
+                "a",
+                "point",
+                "a"
+            ]
+        },
+        {
+            "codes": "ANKRON_MIN POINT U+0020 ANKRON_MIN POINT U+0020 ANKRON_MIN POINT",
+            "glyphs": [
+                "a",
+                "point",
+                "space",
+                "a",
+                "point",
+                "space",
+                "a",
+                "point"
+            ]
+        },
+        {
+            "codes": "ANKRON_MIN U+0020 ANKRON_MIN U+0020 ANKRON_MIN U+0020 ANKRON_MIN",
+            "glyphs": [
+                "a",
+                "space",
+                "a",
+                "space",
+                "a",
+                "space",
+                "a"
+            ]
+        },
+        {
+            "codes": "DEKAZU_MIN ANKRON_MIN ILTHERA_MIN MEZARA_MIN ELZA_MIN LIZELA_MIN ANKRON_MIN U+0020 ANKRON_MIN",
+            "glyphs": [
+                "d",
+                "a",
+                "i",
+                "m",
+                "e",
+                "l",
+                "a",
+                "space",
+                "a"
+            ]
+        },
+        {
+            "codes": "U+003B",
+            "glyphs": [
+                "notdef.box"
+            ]
+        },
+        {
+            "codes": "U+003A",
+            "glyphs": [
+                "notdef.box"
+            ]
+        },
+        {
+            "codes": "U+2013",
+            "glyphs": [
+                "notdef.box"
+            ]
+        },
+        {
+            "codes": "DEKAZU_MIN ANKRON_MIN ILTHERA_MIN MEZARA_MIN ELZA_MIN LIZELA_MIN ANKRON_MIN U+0020 VARTHOS_MIN ELZA_MIN THOLERA_MIN ORNETHE_MIN RONETHOS_MIN U+0020 ORNETHE_MIN RONETHOS_MIN FUNELA_MIN ELZA_MIN NELAMIS_MIN ANKRON_MIN MEZARA_MIN ELZA_MIN NELAMIS_MIN POINT U+0020 THOLERA_MIN ELZA_MIN SIRETHA_MIN ORNETHE_MIN NELAMIS_MIN POINT",
+            "glyphs": [
+                "d",
+                "a",
+                "i",
+                "m",
+                "e",
+                "l",
+                "a",
+                "space",
+                "v",
+                "e",
+                "th",
+                "o",
+                "r",
+                "space",
+                "o",
+                "r",
+                "f",
+                "e",
+                "n",
+                "a",
+                "m",
+                "e",
+                "n",
+                "point",
+                "space",
+                "th",
+                "e",
+                "s",
+                "o",
+                "n",
+                "point"
+            ]
+        },
+        {
+            "codes": "U+0022",
+            "glyphs": [
+                "notdef.box"
+            ]
+        },
+        {
+            "codes": "U+201C",
+            "glyphs": [
+                "notdef.box"
+            ]
+        },
+        {
+            "codes": "U+201D",
+            "glyphs": [
+                "notdef.box"
+            ]
+        },
+        {
+            "codes": "U+00A1",
+            "glyphs": [
+                "notdef.box"
+            ]
+        },
+        {
+            "codes": "U+0028",
+            "glyphs": [
+                "notdef.box"
+            ]
+        },
+        {
+            "codes": "U+0029",
+            "glyphs": [
+                "notdef.box"
+            ]
+        },
+        {
+            "codes": "U+005B",
+            "glyphs": [
+                "notdef.box"
+            ]
+        },
+        {
+            "codes": "U+005D",
+            "glyphs": [
+                "notdef.box"
+            ]
+        },
+        {
+            "codes": "U+003C",
+            "glyphs": [
+                "notdef.box"
+            ]
+        },
+        {
+            "codes": "U+003E",
+            "glyphs": [
+                "notdef.box"
+            ]
+        },
+        {
+            "codes": "U+0040",
+            "glyphs": [
+                "notdef.box"
+            ]
+        },
+        {
+            "codes": "U+0023",
+            "glyphs": [
+                "notdef.box"
+            ]
+        },
+        {
+            "codes": "U+0024",
+            "glyphs": [
+                "notdef.box"
+            ]
+        },
+        {
+            "codes": "U+0025",
+            "glyphs": [
+                "notdef.box"
+            ]
+        },
+        {
+            "codes": "U+0026",
+            "glyphs": [
+                "notdef.box"
+            ]
+        },
+        {
+            "codes": "U+002A",
+            "glyphs": [
+                "notdef.box"
+            ]
+        },
+        {
+            "codes": "U+002B",
+            "glyphs": [
+                "notdef.box"
+            ]
+        },
+        {
+            "codes": "U+003D",
+            "glyphs": [
+                "notdef.box"
+            ]
+        },
+        {
+            "codes": "U+005C",
+            "glyphs": [
+                "notdef.box"
+            ]
+        },
+        {
+            "codes": "U+007C",
+            "glyphs": [
+                "notdef.box"
+            ]
+        },
+        {
+            "codes": "U+005F",
+            "glyphs": [
+                "notdef.box"
+            ]
+        },
+        {
+            "codes": "U+007E",
+            "glyphs": [
+                "notdef.box"
+            ]
+        },
+        {
+            "codes": "U+2018",
+            "glyphs": [
+                "notdef.box"
+            ]
+        },
+        {
+            "codes": "U+0063",
+            "glyphs": [
+                "notdef.box"
+            ]
+        },
+        {
+            "codes": "U+0078",
+            "glyphs": [
+                "notdef.box"
+            ]
+        },
+        {
+            "codes": "U+0043",
+            "glyphs": [
+                "notdef.box"
+            ]
+        },
+        {
+            "codes": "U+0058",
+            "glyphs": [
+                "notdef.box"
+            ]
+        },
+        {
+            "codes": "ANKRON_MIN U+2010",
+            "glyphs": [
+                "a",
+                "notdef.box"
+            ]
+        },
+        {
+            "codes": "ANKRON_MIN U+2011",
+            "glyphs": [
+                "a",
+                "notdef.box"
+            ]
+        },
+        {
+            "codes": "MEZARA_MIN ELZA_MIN QORETHA_MIN ELZA_MIN SIRETHA_MIN",
+            "glyphs": [
+                "m",
+                "e",
+                "q",
+                "e",
+                "s"
+            ]
+        },
+        {
+            "codes": "ELZA_MIN ZARGON_MIN ANKRON_MIN U+0020 ANKRON_MIN CATCH U+0020 DEKAZU_MIN ANKRON_MIN ILTHERA_MIN MEZARA_MIN ELZA_MIN LIZELA_MIN ANKRON_MIN U+0020 FUNELA_MIN ANKRON_MIN LIZELA_MIN VARTHOS_MIN ANKRON_MIN TALOTHOS_MIN ORNETHE_MIN RONETHOS_MIN POINT",
+            "glyphs": [
+                "e",
+                "z",
+                "a",
+                "space",
+                "a",
+                "grave",
+                "space",
+                "d",
+                "a",
+                "i",
+                "m",
+                "e",
+                "l",
+                "a",
+                "space",
+                "f",
+                "a",
+                "l",
+                "v",
+                "a",
+                "t",
+                "o",
+                "r",
+                "point"
+            ]
+        },
+        {
+            "codes": "DIGIT_ZERO DIGIT_ONE DIGIT_TWO DIGIT_THREE DIGIT_FOUR DIGIT_FIVE DIGIT_SIX DIGIT_SEVEN DIGIT_EIGHT DIGIT_NINE",
+            "glyphs": [
+                "num.0",
+                "num.1",
+                "num.2",
+                "num.3",
+                "num.4",
+                "num.5",
+                "num.6",
+                "num.7",
+                "num.8",
+                "num.9"
+            ]
+        },
+        {
+            "codes": "DIGIT_TWO DIGIT_ZERO DIGIT_TWO DIGIT_SIX",
+            "glyphs": [
+                "num.2",
+                "num.0",
+                "num.2",
+                "num.6"
+            ]
+        },
+        {
+            "codes": "DEKAZU_MIN LONG_ANKRON_MIN MEZARA_MIN ELZA_MIN LIZELA_MIN ANKRON_MIN POINT U+0020 VARTHOS_MIN LONG_ILTHERA_MIN RONETHOS_MIN POINT U+0020 KALPEZA_MIN LONG_ULMERA_MIN NELAMIS_MIN POINT U+0020 DIGIT_ZERO DIGIT_ONE DIGIT_TWO DIGIT_THREE DIGIT_FOUR DIGIT_FIVE DIGIT_SIX DIGIT_SEVEN DIGIT_EIGHT DIGIT_NINE POINT U+0020 DIGIT_ONE DIGIT_TWO POINT U+0020 DIGIT_TWO DIGIT_ZERO DIGIT_TWO DIGIT_SIX POINT",
+            "glyphs": [
+                "d",
+                "a.long",
+                "m",
+                "e",
+                "l",
+                "a",
+                "point",
+                "space",
+                "v",
+                "i.long",
+                "r",
+                "point",
+                "space",
+                "k",
+                "u.long",
+                "n",
+                "point",
+                "space",
+                "num.0",
+                "num.1",
+                "num.2",
+                "num.3",
+                "num.4",
+                "num.5",
+                "num.6",
+                "num.7",
+                "num.8",
+                "num.9",
+                "point",
+                "space",
+                "num.1",
+                "num.2",
+                "point",
+                "space",
+                "num.2",
+                "num.0",
+                "num.2",
+                "num.6",
+                "point"
+            ]
+        },
+        {
+            "codes": "ANKRON_MIN U+0020 BRUTHEKA_MIN",
+            "glyphs": [
+                "a",
+                "space",
+                "b"
+            ]
+        },
+        {
+            "codes": "DEKAZU_MIN ANKRON_MIN U+200B KALPEZA_MIN",
+            "glyphs": [
+                "d",
+                "a",
+                "k"
+            ]
+        },
+        {
+            "codes": "DEKAZU_MIN ANKRON_MIN U+200D KALPEZA_MIN",
+            "glyphs": [
+                "d",
+                "a",
+                "k"
+            ]
+        },
+        {
+            "codes": "DEKAZU_MIN U+2066 ANKRON_MIN U+2069 KALPEZA_MIN",
+            "glyphs": [
+                "d",
+                "a",
+                "k"
+            ]
+        },
+        {
+            "codes": "U+FEFF DEKAZU_MIN ANKRON_MIN LIZELA_MIN KALPEZA_MIN",
+            "glyphs": [
+                "d",
+                "a",
+                "l",
+                "k"
+            ]
+        }
+    ],
+    "widths": [
+        [
+            "KALPEZA_MIN CATCH ANKRON_MIN RONETHOS_MIN ANKRON_MIN LIZELA_MIN ZARGON_MIN ORNETHE_MIN NELAMIS_MIN",
+            "KALPEZA_MIN ANKRON_MIN RONETHOS_MIN ANKRON_MIN LIZELA_MIN ZARGON_MIN ORNETHE_MIN NELAMIS_MIN"
+        ],
+        [
+            "KALPEZA_MIN CATCH ANKRON_MIN RONETHOS_MIN THOLERA_MIN ORNETHE_MIN RONETHOS_MIN GULMOS_MIN ILTHERA_MIN LIZELA_MIN ANKRON_MIN",
+            "KALPEZA_MIN ANKRON_MIN RONETHOS_MIN THOLERA_MIN ORNETHE_MIN RONETHOS_MIN GULMOS_MIN ILTHERA_MIN LIZELA_MIN ANKRON_MIN"
+        ],
+        [
+            "ANKRON_MIN CATCH",
+            "ANKRON_MIN"
+        ],
+        [
+            "ZARGON_MIN ELZA_MIN GHORMAS_MIN ELZA_MIN TALOTHOS_MIN CATCH NELAMIS_MIN ELZA_MIN LIZELA_MIN GULMOS_MIN ULMERA_MIN",
+            "ZARGON_MIN ELZA_MIN GHORMAS_MIN ELZA_MIN TALOTHOS_MIN NELAMIS_MIN ELZA_MIN LIZELA_MIN GULMOS_MIN ULMERA_MIN"
+        ],
+        [
+            "SIRETHA_MIN ELZA_MIN LIZELA_MIN THOLERA_MIN CATCH KALPEZA_MIN ELZA_MIN LIZELA_MIN MEZARA_MIN ELZA_MIN ZARGON_MIN ANKRON_MIN",
+            "SIRETHA_MIN ELZA_MIN LIZELA_MIN THOLERA_MIN KALPEZA_MIN ELZA_MIN LIZELA_MIN MEZARA_MIN ELZA_MIN ZARGON_MIN ANKRON_MIN"
+        ],
+        [
+            "DEKAZU_MIN LONG_ANKRON_MIN CATCH",
+            "DEKAZU_MIN LONG_ANKRON_MIN"
+        ],
+        [
+            "ANKRON_MIN CATCH LIZELA_MIN CATCH KALPEZA_MIN",
+            "ANKRON_MIN LIZELA_MIN KALPEZA_MIN"
+        ]
+    ],
+    "marks": [
+        "ANKRON_MIN CATCH",
+        "ELZA_MIN CATCH",
+        "ORNETHE_MIN CATCH",
+        "KALPEZA_MIN CATCH",
+        "MEZARA_MIN CATCH",
+        "VARTHOS_MIN CATCH",
+        "LIZELA_MIN CATCH",
+        "HARLEN_MIN CATCH",
+        "TALOTHOS_MIN CATCH",
+        "THOLERA_MIN CATCH",
+        "CHEROLA_MIN CATCH",
+        "SHELMORA_MIN CATCH",
+        "TSALEMA_MIN CATCH",
+        "ENGARIS_MIN CATCH",
+        "QORETHA_MIN CATCH",
+        "CHEROLA_MAJ CATCH",
+        "LONG_ANKRON_MIN CATCH",
+        "LONG_ILTHERA_MIN CATCH",
+        "LONG_ULMERA_MIN CATCH",
+        "KALPEZA_MIN CATCH ANKRON_MIN",
+        "ANKRON_MIN CATCH KALPEZA_MIN",
+        "ANKRON_MIN CATCH",
+        "KALPEZA_MIN CATCH ANKRON_MIN RONETHOS_MIN ANKRON_MIN LIZELA_MIN ZARGON_MIN ORNETHE_MIN NELAMIS_MIN",
+        "KALPEZA_MIN CATCH ANKRON_MIN RONETHOS_MIN THOLERA_MIN ORNETHE_MIN RONETHOS_MIN GULMOS_MIN ILTHERA_MIN LIZELA_MIN ANKRON_MIN",
+        "KALPEZA_MIN CATCH ANKRON_MIN",
+        "TALOTHOS_MIN CATCH ANKRON_MIN"
+    ]
+}

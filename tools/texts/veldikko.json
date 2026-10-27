@@ -1,0 +1,69 @@
+{
+    "script": "veldikko",
+    "texts": [
+        {
+            "roman": "nuuva",
+            "codes": "NUVALLE SIGN_U LONG VELUNNA SIGN_A"
+        },
+        {
+            "roman": "mollu",
+            "codes": "MERINNE SIGN_O LOIMARA DOUBLING_BAR SIGN_U"
+        },
+        {
+            "roman": "molu",
+            "codes": "MERINNE SIGN_O LOIMARA SIGN_U"
+        },
+        {
+            "roman": "kalpi",
+            "codes": "KELANNA SIGN_A LOIMARA PELANNE SIGN_I"
+        },
+        {
+            "roman": "halpi",
+            "codes": "HUOMEL SIGN_A LOIMARA PELANNE SIGN_I"
+        },
+        {
+            "roman": "eilava",
+            "codes": "CARRIER SIGN_E SIGN_I LOIMARA SIGN_A VELUNNA SIGN_A"
+        },
+        {
+            "roman": "aamas",
+            "codes": "CARRIER SIGN_A LONG MERINNE SIGN_A SENNUVI"
+        },
+        {
+            "roman": "rivy",
+            "codes": "RIVENNA SIGN_I VELUNNA SIGN_Y"
+        },
+        {
+            "roman": "ennedhi",
+            "codes": "CARRIER SIGN_E NUVALLE DOUBLING_BAR SIGN_E DHAERIS SIGN_I"
+        },
+        {
+            "roman": "lonku",
+            "codes": "LOIMARA SIGN_O INGELI KELANNA SIGN_U"
+        },
+        {
+            "roman": "leësy",
+            "codes": "LOIMARA SIGN_E_DIAERESIS LONG SENNUVI SIGN_Y"
+        },
+        {
+            "roman": "huoma",
+            "codes": "HUOMEL SIGN_U SIGN_O MERINNE SIGN_A"
+        },
+        {
+            "roman": "luuro nuuva liseriho",
+            "codes": "LOIMARA SIGN_U LONG RIVENNA SIGN_O U+0020 NUVALLE SIGN_U LONG VELUNNA SIGN_A U+0020 LOIMARA SIGN_I SENNUVI SIGN_E RIVENNA SIGN_I HUOMEL SIGN_O"
+        },
+        {
+            "roman": "li-setty lenti talveho",
+            "codes": "LOIMARA SIGN_I U+0020 SENNUVI SIGN_E TESSALIN DOUBLING_BAR SIGN_Y U+0020 LOIMARA SIGN_E NUVALLE TESSALIN SIGN_I U+0020 TESSALIN SIGN_A LOIMARA VELUNNA SIGN_E HUOMEL SIGN_O"
+        },
+        {
+            "roman": "ha-tupe tilvai hyssen",
+            "codes": "HUOMEL SIGN_A U+0020 TESSALIN SIGN_U PELANNE SIGN_E U+0020 TESSALIN SIGN_I LOIMARA VELUNNA SIGN_A SIGN_I U+0020 HUOMEL SIGN_Y SENNUVI DOUBLING_BAR SIGN_E NUVALLE"
+        },
+        {
+            "roman": "veldikko",
+            "codes": "VELUNNA SIGN_E LOIMARA DORELLE SIGN_I KELANNA DOUBLING_BAR SIGN_O"
+        }
+    ]
+}

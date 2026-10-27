@@ -20,7 +20,7 @@ from pathlib import Path
 from PIL import Image
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
-from encoded import Encoded, EncodedRenderer  # noqa: E402
+from codes import Written, WrittenRenderer  # noqa: E402
 from render import Renderer, label_font  # noqa: E402
 from PIL import ImageDraw  # noqa: E402
 
@@ -155,7 +155,7 @@ def main():
     args = ap.parse_args()
     out = Path(args.out)
     out.mkdir(parents=True, exist_ok=True)
-    r = EncodedRenderer(Renderer(Path(args.font)), Encoded("semaron-kuriale"))
+    r = WrittenRenderer(Renderer(Path(args.font)), Written("semaron-kuriale"))
     capitals(r, out)
     glyph_chart(r, out)
     texts(r, out)

@@ -1,0 +1,433 @@
+{
+    "script": "semaron",
+    "texts": [
+        {
+            "roman": "A",
+            "codes": "ANKRON_MAJ"
+        },
+        {
+            "roman": "B",
+            "codes": "BRUTHEKA_MAJ"
+        },
+        {
+            "roman": "D",
+            "codes": "DEKAZU_MAJ"
+        },
+        {
+            "roman": "E",
+            "codes": "ELZA_MAJ"
+        },
+        {
+            "roman": "F",
+            "codes": "FUNELA_MAJ"
+        },
+        {
+            "roman": "G",
+            "codes": "GULMOS_MAJ"
+        },
+        {
+            "roman": "H",
+            "codes": "HARLEN_MAJ"
+        },
+        {
+            "roman": "I",
+            "codes": "ILTHERA_MAJ"
+        },
+        {
+            "roman": "J",
+            "codes": "JA_MAJ"
+        },
+        {
+            "roman": "K",
+            "codes": "KALPEZA_MAJ"
+        },
+        {
+            "roman": "L",
+            "codes": "LIZELA_MAJ"
+        },
+        {
+            "roman": "M",
+            "codes": "MEZARA_MAJ"
+        },
+        {
+            "roman": "N",
+            "codes": "NELAMIS_MAJ"
+        },
+        {
+            "roman": "O",
+            "codes": "ORNETHE_MAJ"
+        },
+        {
+            "roman": "P",
+            "codes": "POZERA_MAJ"
+        },
+        {
+            "roman": "R",
+            "codes": "RONETHOS_MAJ"
+        },
+        {
+            "roman": "S",
+            "codes": "SIRETHA_MAJ"
+        },
+        {
+            "roman": "T",
+            "codes": "TALOTHOS_MAJ"
+        },
+        {
+            "roman": "Th",
+            "codes": "THOLERA_MAJ"
+        },
+        {
+            "roman": "U",
+            "codes": "ULMERA_MAJ"
+        },
+        {
+            "roman": "V",
+            "codes": "VARTHOS_MAJ"
+        },
+        {
+            "roman": "W",
+            "codes": "WA_MAJ"
+        },
+        {
+            "roman": "Ya",
+            "codes": "YALZEMIS_MAJ ANKRON_MIN"
+        },
+        {
+            "roman": "Z",
+            "codes": "ZARGON_MAJ"
+        },
+        {
+            "roman": "Dh",
+            "codes": "DHANETHE_MAJ"
+        },
+        {
+            "roman": "Kh",
+            "codes": "KHORVENA_MAJ"
+        },
+        {
+            "roman": "Gh",
+            "codes": "GHORMAS_MAJ"
+        },
+        {
+            "roman": "Ng",
+            "codes": "ENGARIS_MAJ"
+        },
+        {
+            "roman": "Sh",
+            "codes": "SHELMORA_MAJ"
+        },
+        {
+            "roman": "Zh",
+            "codes": "ZHAREVA_MAJ"
+        },
+        {
+            "roman": "Ts",
+            "codes": "TSALEMA_MAJ"
+        },
+        {
+            "roman": "Ch",
+            "codes": "CHEROLA_MAJ"
+        },
+        {
+            "roman": "Nya",
+            "codes": "NYELIS_MAJ ANKRON_MIN"
+        },
+        {
+            "roman": "Q",
+            "codes": "QORETHA_MAJ"
+        },
+        {
+            "roman": "a",
+            "codes": "ANKRON_MIN"
+        },
+        {
+            "roman": "b",
+            "codes": "BRUTHEKA_MIN"
+        },
+        {
+            "roman": "d",
+            "codes": "DEKAZU_MIN"
+        },
+        {
+            "roman": "e",
+            "codes": "ELZA_MIN"
+        },
+        {
+            "roman": "f",
+            "codes": "FUNELA_MIN"
+        },
+        {
+            "roman": "g",
+            "codes": "GULMOS_MIN"
+        },
+        {
+            "roman": "h",
+            "codes": "HARLEN_MIN"
+        },
+        {
+            "roman": "i",
+            "codes": "ILTHERA_MIN"
+        },
+        {
+            "roman": "j",
+            "codes": "JA_MIN"
+        },
+        {
+            "roman": "k",
+            "codes": "KALPEZA_MIN"
+        },
+        {
+            "roman": "l",
+            "codes": "LIZELA_MIN"
+        },
+        {
+            "roman": "m",
+            "codes": "MEZARA_MIN"
+        },
+        {
+            "roman": "n",
+            "codes": "NELAMIS_MIN"
+        },
+        {
+            "roman": "o",
+            "codes": "ORNETHE_MIN"
+        },
+        {
+            "roman": "p",
+            "codes": "POZERA_MIN"
+        },
+        {
+            "roman": "r",
+            "codes": "RONETHOS_MIN"
+        },
+        {
+            "roman": "s",
+            "codes": "SIRETHA_MIN"
+        },
+        {
+            "roman": "t",
+            "codes": "TALOTHOS_MIN"
+        },
+        {
+            "roman": "th",
+            "codes": "THOLERA_MIN"
+        },
+        {
+            "roman": "u",
+            "codes": "ULMERA_MIN"
+        },
+        {
+            "roman": "v",
+            "codes": "VARTHOS_MIN"
+        },
+        {
+            "roman": "w",
+            "codes": "WA_MIN"
+        },
+        {
+            "roman": "ya",
+            "codes": "YALZEMIS_MIN ANKRON_MIN"
+        },
+        {
+            "roman": "z",
+            "codes": "ZARGON_MIN"
+        },
+        {
+            "roman": "dh",
+            "codes": "DHANETHE_MIN"
+        },
+        {
+            "roman": "kh",
+            "codes": "KHORVENA_MIN"
+        },
+        {
+            "roman": "gh",
+            "codes": "GHORMAS_MIN"
+        },
+        {
+            "roman": "ng",
+            "codes": "ENGARIS_MIN"
+        },
+        {
+            "roman": "sh",
+            "codes": "SHELMORA_MIN"
+        },
+        {
+            "roman": "zh",
+            "codes": "ZHAREVA_MIN"
+        },
+        {
+            "roman": "ts",
+            "codes": "TSALEMA_MIN"
+        },
+        {
+            "roman": "ch",
+            "codes": "CHEROLA_MIN"
+        },
+        {
+            "roman": "nya",
+            "codes": "NYELIS_MIN ANKRON_MIN"
+        },
+        {
+            "roman": "q",
+            "codes": "QORETHA_MIN"
+        },
+        {
+            "roman": "Aa",
+            "codes": "LONG_ANKRON_MAJ"
+        },
+        {
+            "roman": "aa",
+            "codes": "LONG_ANKRON_MIN"
+        },
+        {
+            "roman": "Ii",
+            "codes": "LONG_ILTHERA_MAJ"
+        },
+        {
+            "roman": "ii",
+            "codes": "LONG_ILTHERA_MIN"
+        },
+        {
+            "roman": "Uu",
+            "codes": "LONG_ULMERA_MAJ"
+        },
+        {
+            "roman": "uu",
+            "codes": "LONG_ULMERA_MIN"
+        },
+        {
+            "roman": "0",
+            "codes": "DIGIT_ZERO"
+        },
+        {
+            "roman": "1",
+            "codes": "DIGIT_ONE"
+        },
+        {
+            "roman": "2",
+            "codes": "DIGIT_TWO"
+        },
+        {
+            "roman": "3",
+            "codes": "DIGIT_THREE"
+        },
+        {
+            "roman": "4",
+            "codes": "DIGIT_FOUR"
+        },
+        {
+            "roman": "5",
+            "codes": "DIGIT_FIVE"
+        },
+        {
+            "roman": "6",
+            "codes": "DIGIT_SIX"
+        },
+        {
+            "roman": "7",
+            "codes": "DIGIT_SEVEN"
+        },
+        {
+            "roman": "8",
+            "codes": "DIGIT_EIGHT"
+        },
+        {
+            "roman": "9",
+            "codes": "DIGIT_NINE"
+        },
+        {
+            "roman": ".",
+            "codes": "POINT"
+        },
+        {
+            "roman": "à",
+            "codes": "ANKRON_MIN CATCH"
+        },
+        {
+            "roman": "À",
+            "codes": "ANKRON_MAJ CATCH"
+        },
+        {
+            "roman": "kà",
+            "codes": "KALPEZA_MIN CATCH ANKRON_MIN"
+        },
+        {
+            "roman": "l'",
+            "codes": "LIZELA_MIN CATCH"
+        },
+        {
+            "roman": "Aa'",
+            "codes": "LONG_ANKRON_MAJ CATCH"
+        },
+        {
+            "roman": "th'",
+            "codes": "THOLERA_MIN CATCH"
+        },
+        {
+            "roman": "'",
+            "codes": "CATCH"
+        },
+        {
+            "roman": "x?",
+            "codes": "U+0078 POINT"
+        },
+        {
+            "roman": "ulthandoi okointor denon zaron ul kalmetharen.",
+            "codes": "ULMERA_MIN LIZELA_MIN THOLERA_MIN ANKRON_MIN NELAMIS_MIN DEKAZU_MIN ORNETHE_MIN ILTHERA_MIN U+0020 ORNETHE_MIN KALPEZA_MIN ORNETHE_MIN ILTHERA_MIN NELAMIS_MIN TALOTHOS_MIN ORNETHE_MIN RONETHOS_MIN U+0020 DEKAZU_MIN ELZA_MIN NELAMIS_MIN ORNETHE_MIN NELAMIS_MIN U+0020 ZARGON_MIN ANKRON_MIN RONETHOS_MIN ORNETHE_MIN NELAMIS_MIN U+0020 ULMERA_MIN LIZELA_MIN U+0020 KALPEZA_MIN ANKRON_MIN LIZELA_MIN MEZARA_MIN ELZA_MIN THOLERA_MIN ANKRON_MIN RONETHOS_MIN ELZA_MIN NELAMIS_MIN POINT"
+        },
+        {
+            "roman": "daimela orfenamen.",
+            "codes": "DEKAZU_MIN ANKRON_MIN ILTHERA_MIN MEZARA_MIN ELZA_MIN LIZELA_MIN ANKRON_MIN U+0020 ORNETHE_MIN RONETHOS_MIN FUNELA_MIN ELZA_MIN NELAMIS_MIN ANKRON_MIN MEZARA_MIN ELZA_MIN NELAMIS_MIN POINT"
+        },
+        {
+            "roman": "eza à daimela falvator.",
+            "codes": "ELZA_MIN ZARGON_MIN ANKRON_MIN U+0020 ANKRON_MIN CATCH U+0020 DEKAZU_MIN ANKRON_MIN ILTHERA_MIN MEZARA_MIN ELZA_MIN LIZELA_MIN ANKRON_MIN U+0020 FUNELA_MIN ANKRON_MIN LIZELA_MIN VARTHOS_MIN ANKRON_MIN TALOTHOS_MIN ORNETHE_MIN RONETHOS_MIN POINT"
+        },
+        {
+            "roman": "areza à thelmos lokator.",
+            "codes": "ANKRON_MIN RONETHOS_MIN ELZA_MIN ZARGON_MIN ANKRON_MIN U+0020 ANKRON_MIN CATCH U+0020 THOLERA_MIN ELZA_MIN LIZELA_MIN MEZARA_MIN ORNETHE_MIN SIRETHA_MIN U+0020 LIZELA_MIN ORNETHE_MIN KALPEZA_MIN ANKRON_MIN TALOTHOS_MIN ORNETHE_MIN RONETHOS_MIN POINT"
+        },
+        {
+            "roman": "voza lokathen.",
+            "codes": "VARTHOS_MIN ORNETHE_MIN ZARGON_MIN ANKRON_MIN U+0020 LIZELA_MIN ORNETHE_MIN KALPEZA_MIN ANKRON_MIN THOLERA_MIN ELZA_MIN NELAMIS_MIN POINT"
+        },
+        {
+            "roman": "ar voza lokathen.",
+            "codes": "ANKRON_MIN RONETHOS_MIN U+0020 VARTHOS_MIN ORNETHE_MIN ZARGON_MIN ANKRON_MIN U+0020 LIZELA_MIN ORNETHE_MIN KALPEZA_MIN ANKRON_MIN THOLERA_MIN ELZA_MIN NELAMIS_MIN POINT"
+        },
+        {
+            "roman": "daimela vethor orfenamen.",
+            "codes": "DEKAZU_MIN ANKRON_MIN ILTHERA_MIN MEZARA_MIN ELZA_MIN LIZELA_MIN ANKRON_MIN U+0020 VARTHOS_MIN ELZA_MIN THOLERA_MIN ORNETHE_MIN RONETHOS_MIN U+0020 ORNETHE_MIN RONETHOS_MIN FUNELA_MIN ELZA_MIN NELAMIS_MIN ANKRON_MIN MEZARA_MIN ELZA_MIN NELAMIS_MIN POINT"
+        },
+        {
+            "roman": "aia theson.",
+            "codes": "ANKRON_MIN ILTHERA_MIN ANKRON_MIN U+0020 THOLERA_MIN ELZA_MIN SIRETHA_MIN ORNETHE_MIN NELAMIS_MIN POINT"
+        },
+        {
+            "roman": "eltheza solterates. kalmethis. hiltheris. tholmarar.",
+            "codes": "ELZA_MIN LIZELA_MIN THOLERA_MIN ELZA_MIN ZARGON_MIN ANKRON_MIN U+0020 SIRETHA_MIN ORNETHE_MIN LIZELA_MIN TALOTHOS_MIN ELZA_MIN RONETHOS_MIN ANKRON_MIN TALOTHOS_MIN ELZA_MIN SIRETHA_MIN POINT U+0020 KALPEZA_MIN ANKRON_MIN LIZELA_MIN MEZARA_MIN ELZA_MIN THOLERA_MIN ILTHERA_MIN SIRETHA_MIN POINT U+0020 HARLEN_MIN ILTHERA_MIN LIZELA_MIN THOLERA_MIN ELZA_MIN RONETHOS_MIN ILTHERA_MIN SIRETHA_MIN POINT U+0020 THOLERA_MIN ORNETHE_MIN LIZELA_MIN MEZARA_MIN ANKRON_MIN RONETHOS_MIN ANKRON_MIN RONETHOS_MIN POINT"
+        },
+        {
+            "roman": "shelmora khorvena ghormas dhanethe zhareva tsalema cherola engaris nyelis qoretha.",
+            "codes": "SHELMORA_MIN ELZA_MIN LIZELA_MIN MEZARA_MIN ORNETHE_MIN RONETHOS_MIN ANKRON_MIN U+0020 KHORVENA_MIN ORNETHE_MIN RONETHOS_MIN VARTHOS_MIN ELZA_MIN NELAMIS_MIN ANKRON_MIN U+0020 GHORMAS_MIN ORNETHE_MIN RONETHOS_MIN MEZARA_MIN ANKRON_MIN SIRETHA_MIN U+0020 DHANETHE_MIN ANKRON_MIN NELAMIS_MIN ELZA_MIN THOLERA_MIN ELZA_MIN U+0020 ZHAREVA_MIN ANKRON_MIN RONETHOS_MIN ELZA_MIN VARTHOS_MIN ANKRON_MIN U+0020 TSALEMA_MIN ANKRON_MIN LIZELA_MIN ELZA_MIN MEZARA_MIN ANKRON_MIN U+0020 CHEROLA_MIN ELZA_MIN RONETHOS_MIN ORNETHE_MIN LIZELA_MIN ANKRON_MIN U+0020 ELZA_MIN ENGARIS_MIN ANKRON_MIN RONETHOS_MIN ILTHERA_MIN SIRETHA_MIN U+0020 NYELIS_MIN ELZA_MIN LIZELA_MIN ILTHERA_MIN SIRETHA_MIN U+0020 QORETHA_MIN ORNETHE_MIN RONETHOS_MIN ELZA_MIN THOLERA_MIN ANKRON_MIN POINT"
+        },
+        {
+            "roman": "daamela. viir. kuun. 0123456789. 12. 2026.",
+            "codes": "DEKAZU_MIN LONG_ANKRON_MIN MEZARA_MIN ELZA_MIN LIZELA_MIN ANKRON_MIN POINT U+0020 VARTHOS_MIN LONG_ILTHERA_MIN RONETHOS_MIN POINT U+0020 KALPEZA_MIN LONG_ULMERA_MIN NELAMIS_MIN POINT U+0020 DIGIT_ZERO DIGIT_ONE DIGIT_TWO DIGIT_THREE DIGIT_FOUR DIGIT_FIVE DIGIT_SIX DIGIT_SEVEN DIGIT_EIGHT DIGIT_NINE POINT U+0020 DIGIT_ONE DIGIT_TWO POINT U+0020 DIGIT_TWO DIGIT_ZERO DIGIT_TWO DIGIT_SIX POINT"
+        },
+        {
+            "roman": "daimela vethor orfenamen. theson.",
+            "codes": "DEKAZU_MIN ANKRON_MIN ILTHERA_MIN MEZARA_MIN ELZA_MIN LIZELA_MIN ANKRON_MIN U+0020 VARTHOS_MIN ELZA_MIN THOLERA_MIN ORNETHE_MIN RONETHOS_MIN U+0020 ORNETHE_MIN RONETHOS_MIN FUNELA_MIN ELZA_MIN NELAMIS_MIN ANKRON_MIN MEZARA_MIN ELZA_MIN NELAMIS_MIN POINT U+0020 THOLERA_MIN ELZA_MIN SIRETHA_MIN ORNETHE_MIN NELAMIS_MIN POINT"
+        },
+        {
+            "roman": "kàralzon. kàrthorgila. à.",
+            "codes": "KALPEZA_MIN CATCH ANKRON_MIN RONETHOS_MIN ANKRON_MIN LIZELA_MIN ZARGON_MIN ORNETHE_MIN NELAMIS_MIN POINT U+0020 KALPEZA_MIN CATCH ANKRON_MIN RONETHOS_MIN THOLERA_MIN ORNETHE_MIN RONETHOS_MIN GULMOS_MIN ILTHERA_MIN LIZELA_MIN ANKRON_MIN POINT U+0020 ANKRON_MIN CATCH POINT"
+        },
+        {
+            "roman": "au'khelathu. zeghet'nelgu. amqel'uqa. selth-kelmeza.",
+            "codes": "ANKRON_MIN ULMERA_MIN CATCH KHORVENA_MIN ELZA_MIN LIZELA_MIN ANKRON_MIN THOLERA_MIN ULMERA_MIN POINT U+0020 ZARGON_MIN ELZA_MIN GHORMAS_MIN ELZA_MIN TALOTHOS_MIN CATCH NELAMIS_MIN ELZA_MIN LIZELA_MIN GULMOS_MIN ULMERA_MIN POINT U+0020 ANKRON_MIN MEZARA_MIN QORETHA_MIN ELZA_MIN LIZELA_MIN CATCH ULMERA_MIN QORETHA_MIN ANKRON_MIN POINT U+0020 SIRETHA_MIN ELZA_MIN LIZELA_MIN THOLERA_MIN CATCH KALPEZA_MIN ELZA_MIN LIZELA_MIN MEZARA_MIN ELZA_MIN ZARGON_MIN ANKRON_MIN POINT"
+        }
+    ]
+}

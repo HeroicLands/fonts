@@ -218,20 +218,14 @@ reads the `!` and sets the sign there.
   maps to the box, checks the name table and opens the `.woff2`. `tools/codepoints.py`
   checks that the face draws its own code points and nothing else, and that no
   substitution turns one character into another.
-- `tools/pirzath/guard.py` writes every form in the `words` list of the Khazari
-  language note on thalorna's `origin/main` through the `pirzath` encoding,
-  shapes it, and asserts the shaped glyph sequence is the one the spelling demands:
-  no `.notdef`, each digraph one glyph, each acute vowel its vowel followed by the
-  length mark, each doubled consonant or digraph the letter once with the doubling
-  mark. A set of fixtures, written through the encoding too, covers the numerals, a
-  number beside words, the letters a to f, the quotation marks opening and closing
-  from every input with gh right before the closing mark, the four marks between
-  words, the keys that print the box, every consonant and every digraph doubled,
-  and four doubled lexicon words. A second set of fixtures writes the seventeen
-  lost letters initial, medial and final where each can occur, with _zangh_,
-  _huzangh_, `ay`, `ey` and `oy`, `y` before a vowel and between consonants, both
-  apostrophes, the pairs with an acute on either vowel and the doubled lost
-  consonants. `tools/prove_guards.py` removes the GSUB table from the built font,
+- `tools/pirzath/guard.py` shapes the fixtures of `tools/pirzath/fixtures.json`,
+  sequences of glyph codes, and asserts the glyphs each gives: the numerals, a
+  number beside words, the quotation marks opening and closing, nested ones too, with
+  gh right before the closing mark, the marks between words, every consonant and
+  every digraph written twice and drawn once with the doubling mark, the seventeen
+  lost letters initial, medial and final where each can occur, the diphthongs with
+  the length mark, and characters the font lacks, which print the box.
+  `tools/prove_guards.py` removes the GSUB table from the built font,
   which drops the doubling, and the guard fails on it.
 
 ## Source
@@ -249,7 +243,7 @@ PATH=.venv/bin:$PATH ./build.sh      # fonts/PirzathCarved-Regular.ttf and .woff
 .venv/bin/python tools/pirzath/specimens.py    # specimens/pirzath/*.png
 .venv/bin/python tools/pirzath/check_font.py
 .venv/bin/python tools/prove_guards.py
-.venv/bin/python tools/pirzath/guard.py        # needs ~/dev/HeroicLands/thalorna, or --note FILE
+.venv/bin/python tools/pirzath/guard.py
 ```
 
 ## Showing the script

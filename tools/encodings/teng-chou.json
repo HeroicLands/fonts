@@ -1,9 +1,0 @@
-{
-    "name": "teng-chou",
-    "fonts": ["teng-chou"],
-    "extends": "standard",
-    "codage": "teng-chou-codes",
-    "accepts": [],
-    "separator": "",
-    "rows": []
-}

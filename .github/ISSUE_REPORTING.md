@@ -88,7 +88,7 @@ creates a label here; a gap in the set is raised in `HeroicLands/.github`.
 - `area/content` — the letters, ligatures, marks and specimens themselves.
 - `flag/tech-debt` — restructuring or cleanup of working code; refactors.
 - `flag/regression` — something that worked and stopped; pairs with type **bug**.
-- `flag/breaking-change` — alters a font's file name, family name, code points or the encoding from spelling to letters.
+- `flag/breaking-change` — alters a font's file name, family name, code points or glyph codes.
 - `status/blocked` — cannot proceed until an external dependency or another issue clears.
 - `resolution/duplicate`, `resolution/wontfix`, `status/question` — as their names say.
 
@@ -162,7 +162,9 @@ half-finished diagnosis.
 - `python tools/semaron-kuriale/check_font.py` — checks the built Semaron Kuriale font and the catch on its base
 - `python tools/notdef_box.py` — checks that every character a font does not use maps to the box
 - `python tools/font_names.py` — checks that every font carries its family name on both name platforms and declares no Latin support
-- `python tools/pirzath/guard.py`, `python tools/pirzath-hand/guard.py`, `python tools/thuravark-carved/guard.py`, `python tools/qalezu-hand/guard.py` and `python tools/semaron-kuriale/guard.py` — shape every lexicon form against a local thalorna checkout
+- `python tools/<font>/guard.py` — shapes each font's fixtures, sequences of its glyph codes, and asserts the glyphs they give
+- `python tools/codes_guard.py` — checks that every character of every font has exactly one glyph code
+- `python tools/check.py` — runs every check at once, as CI does
 
 A change to a font commits the rebuilt files in `fonts/` with it, and a change to
 the design updates `design/pirzath.md`, `design/pirzath-hand.md`,
@@ -172,12 +174,12 @@ the design updates `design/pirzath.md`, `design/pirzath-hand.md`,
 
 File where the diff will land, not where the symptom shows.
 
-| The change is to…                                                     | File it in                        |
-| --------------------------------------------------------------------- | --------------------------------- |
-| A glyph, ligature, mark, kerning, a specimen, the build or its checks | **here**                          |
-| A script's letter inventory, its canon, or the text of a note         | `HeroicLands/thalorna`            |
-| The shared build, the site theme or the way a site loads a font       | `HeroicLands/package-build`       |
-| System code, sheets, rules automation                                 | `Song-of-Heroic-Lands-FoundryVTT` |
+| The change is to…                                                                              | File it in                        |
+| ---------------------------------------------------------------------------------------------- | --------------------------------- |
+| A glyph, ligature, mark, kerning, a specimen, the build or its checks                          | **here**                          |
+| A script's letter inventory, its canon, how a language is written in it, or the text of a note | `HeroicLands/thalorna`            |
+| The shared build, the site theme or the way a site loads a font                                | `HeroicLands/package-build`       |
+| System code, sheets, rules automation                                                          | `Song-of-Heroic-Lands-FoundryVTT` |
 
 A letter drawn wrongly is **here**; a letter that is missing from the script, or
 a word spelled wrongly, is thalorna.

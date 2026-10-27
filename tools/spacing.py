@@ -29,20 +29,18 @@ in its block's advance.
 
 The sample lines are the texts of each face's specimens: the Khazari texts for
 the Pirzath faces, the Nordmal lines for Thuravark Carved and the Vylari texts for
-Semaron Kuriale, each written in the face's code points by its encoding; Qalezu Hand's fixtures, written in the
+Semaron Kuriale, each as the code points stored for it in ``tools/texts/``; Qalezu Hand's fixtures, written in the
 signs the fixtures name, a catch-before form as the catch and its sign; the sample inscriptions of Khelathi Zethu Glyphs, set as one
 strip of signs; Teng Chou's Tantsou and Jurthati passages, each line one run
-of characters; Chalish Pilam Common's night entry, each phrase one word; the codes of Chalish Pilam
-Ceremonial's passage, each glyph in its plain form, set as one strip; and Veldikko's fixtures, written in the letters
-and marks the fixtures name; and Vedyakshara Classical's and Helonika Book's guard
-fixtures, written by their encodings. A joined face (Veldikko
-Sinale) meets its neighbours at the join, and Vedyakshara's signs meet in one headline,
-so their gaps are at most zero. None needs a thalorna checkout.
+of characters; Chalish Pilam Common's night entry, each phrase one word; the glyphs of Chalish Pilam
+Ceremonial's passage, each in its plain form, set as one strip; and the guard fixtures of
+Veldikko, Vedyakshara Classical and Helonika Book, each a sequence of glyph codes. A joined face (Veldikko)
+meets its neighbours at the join, and Vedyakshara's signs meet in one headline,
+so their gaps are at most zero.
 """
 
 import importlib.util
 import json
-import re
 import statistics
 import sys
 from pathlib import Path
@@ -54,6 +52,7 @@ from fontTools.ttLib import TTFont
 ROOT = Path(__file__).resolve().parent.parent
 TOOLS = ROOT / "tools"
 sys.path.insert(0, str(TOOLS))
+import codes  # noqa: E402
 import respace  # noqa: E402
 
 MAX_BLANK = 0.14
@@ -95,10 +94,15 @@ def _semaron_texts() -> list[str]:
 
 
 def _written(face: str, texts: list[str]) -> list[str]:
-    """The roman sample lines in the face's code points."""
-    from encoded import Encoded
+    """The roman sample lines as the code points stored for them in ``tools/texts/<face>.json``."""
+    return codes.Written(face).write(texts)
 
-    return Encoded(face).write(texts)
+
+def _fixture_lines(folder: str, script: str, per_line: int) -> list[str]:
+    """The code sequences of a face's guard fixtures, ``per_line`` words to a line."""
+    fixtures = json.loads((TOOLS / folder / "fixtures.json").read_text(encoding="utf-8"))["fixtures"]
+    words = [codes.text(script, f["codes"]) for f in fixtures]
+    return [" ".join(words[i:i + per_line]) for i in range(0, len(words), per_line)]
 
 
 def _pirzath_lines(face: str = "pirzath-carved") -> list[str]:
@@ -133,32 +137,15 @@ def _zethu_lines() -> list[str]:
 
 
 def _veldikko_lines() -> list[str]:
-    enc = json.loads((TOOLS / "veldikko" / "encoding.json").read_text(encoding="utf-8"))
-    point = {g["glyph"]: chr(int(g["codepoint"][2:], 16)) for g in enc["glyphs"]}
-    point["space"] = " "
-    fixtures = json.loads((TOOLS / "veldikko" / "fixtures.json").read_text(encoding="utf-8"))["fixtures"]
-    words = ["".join(point[g] for g in f["glyphs"]) for f in fixtures]
-    return [" ".join(words[i:i + 6]) for i in range(0, len(words), 6)]
-
-
-def _vedyakshara_texts() -> list[str]:
-    fixtures = json.loads((TOOLS / "vedyakshara" / "fixtures.json").read_text(encoding="utf-8"))["fixtures"]
-    return [f["latin"] for f in fixtures]
+    return _fixture_lines("veldikko", "veldikko", 6)
 
 
 def _vedyakshara_lines() -> list[str]:
-    words = _written("vedyakshara-classical", _vedyakshara_texts())
-    return [" ".join(words[i:i + 6]) for i in range(0, len(words), 6)]
-
-
-def _helonika_texts() -> list[str]:
-    fixtures = json.loads((TOOLS / "helonika" / "fixtures.json").read_text(encoding="utf-8"))["fixtures"]
-    return [f["latin"] for f in fixtures]
+    return _fixture_lines("vedyakshara", "vedyakshara", 6)
 
 
 def _helonika_lines() -> list[str]:
-    words = _written("helonika-book", _helonika_texts())
-    return [" ".join(words[i:i + 6]) for i in range(0, len(words), 6)]
+    return _fixture_lines("helonika", "helonika", 6)
 
 
 def _teng_chou_lines() -> list[str]:
@@ -185,17 +172,13 @@ def _chalish_lines() -> list[str]:
 
 
 def _ceremonial_lines() -> list[str]:
-    """The codes of the passage of tools/chalish-pilam/ceremonial_passage.py, written by its
-    script encoding as one literal span with no joiner, so each glyph stands in its own plain form, set as one strip
-    as an inscription runs on. A composed block sets its affixes with no advance of their
-    own, so the strip measures the signs themselves."""
-    sys.path.insert(0, str(ROOT))
-    import encode
-
+    """The glyphs of the passage of tools/chalish-pilam/ceremonial_passage.py with no joiner,
+    so each glyph stands in its own plain form, set as one strip as an inscription runs on.
+    A composed block sets its affixes with no advance of their own, so the strip measures
+    the signs themselves."""
     passage = _load("ceremonial_passage", TOOLS / "chalish-pilam" / "ceremonial_passage.py")
-    codes = re.split(r"[*: ]", passage.codage())
-    script = str(ROOT / "encodings" / "chalish-pilam-ceremonial.json")
-    return [encode.encode(script, "⟦" + " ".join(c for c in codes if c) + "⟧")]
+    glyphs = [t for block, _ in passage.PASSAGE for t in block.split() if not t.startswith("JOINER_")]
+    return [codes.text("chalishceremonial", " ".join(glyphs))]
 
 
 # Each face: its sample lines, its direction and the features its class turns on.

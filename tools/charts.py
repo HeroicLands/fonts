@@ -16,7 +16,8 @@ font's OpenType ``features``, so no font has to be installed to view a sheet.
   pages of ``COLUMNS`` columns, and columns with no character are left out.
 - ``charts/<face folder>/glyphs/U+XXXX.svg``: one glyph, for the table.
 - ``charts/<face folder>.md``: the chart pages and then the table of Character Name,
-  Character, Code Point, Entity and Hex Entity, grouped by kind.
+  Code, Character, Code Point, Entity and Hex Entity, grouped by kind. The code is the
+  glyph code of tools/codes/<script>.json.
 - ``charts/index.md``: a link to every sheet.
 
 The PNGs are rasterized from the SVGs with ``resvg-py``, pinned in ``requirements.txt``.
@@ -219,7 +220,7 @@ def chart_svg(face: Face, table: list[dict], columns: list[int], page: int, coun
                 continue
             path = place(face, face.shape(row), CELL_W, GLYPH_H, EM, mark)
             o.append(f'<g class="drawn" id="cp-{cp:04X}" transform="translate({x} {y})">')
-            o.append(f'<title>{row.get("name", "")} U+{cp:04X}</title>')
+            o.append(f'<title>{row.get("name", "")} {row["code"]} U+{cp:04X}</title>')
             o.append(f'<g fill="{INK}">{path or ""}</g>')
             o.append(
                 f'<text x="{CELL_W / 2}" y="{CELL_H - 9}" text-anchor="middle" font-family="{SANS}" '
@@ -263,11 +264,11 @@ def sheet_markdown(entry: dict, folder: str, table: list[dict], npages: int) -> 
     for row in table:
         kinds.setdefault(row["kind"], []).append(row)
     for kind, rows in kinds.items():
-        out += [f"### {GROUPS[kind]}", "", "| Character Name | Character | Code Point | Entity | Hex Entity |", "| --- | --- | --- | --- | --- |"]
+        out += [f"### {GROUPS[kind]}", "", "| Character Name | Code | Character | Code Point | Entity | Hex Entity |", "| --- | --- | --- | --- | --- | --- |"]
         for row in rows:
             cp = code(row)
             image = f"![U+{cp:04X}]({folder}/glyphs/U+{cp:04X}.svg)"
-            out.append(f"| {row.get('name', '')} | {image} | {row["codepoint"]} | `&#{cp};` | `&#x{cp:04X};` |")
+            out.append(f"| {row.get('name', '')} | `{row['code']}` | {image} | {row["codepoint"]} | `&#{cp};` | `&#x{cp:04X};` |")
         out.append("")
     return "\n".join(out)
 
@@ -276,7 +277,7 @@ def main() -> None:
     manifest = json.loads((ROOT / "fonts.json").read_text(encoding="utf-8"))
     OUT.mkdir(exist_ok=True)
     written = []
-    index = ["# Cheatsheets", "", "Each font has a sheet of every character it draws: a code chart laid out like Unicode's, and a table of each character's name, glyph and code point.", ""]
+    index = ["# Cheatsheets", "", "Each font has a sheet of every character it draws: a code chart laid out like Unicode's, and a table of each character's name, code, glyph and code point.", ""]
     for entry in manifest["families"]:
         folder = FOLDERS[entry["class"]]
         table = sorted(entry["codepoints"], key=code)

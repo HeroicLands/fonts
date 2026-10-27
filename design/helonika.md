@@ -342,7 +342,7 @@ alone: the diamond, the lone diagonal, the bracket and the open point.
 - each capital beside its minuscule at 72 px, and the digits and points;
 - a Helonic line beside Semaron Kuriale and Latin (Liberation Mono) at 48 and
   24 px, with the line and 0.5135 em ruled across all three;
-- Helonic words from thalorna, large, each with its roman spelling and gloss;
+- Helonic words of the setting, large, each with its roman spelling and gloss;
 - the same words run on as text at 48, 24 and 18 px.
 
 `L.spell` writes the specimens' Helonic by the Helonic spelling: _th_ is one
@@ -410,28 +410,23 @@ line metrics are the shared ones, 945, −200 and 100, with USE_TYPO_METRICS set
 tails of _f_, _g_ and _j_ turn back just below the descent, and the Windows descent
 of 250 holds them.
 
-### Writing and typing
+### Writing
 
-the `helonika` encoding (`encodings/helonika.json`) writes
-Helonic's roman spelling in these characters, and Valtari's where it is written in
-the Helónika. The Helónika has case, so the three encodings write a lowercase letter as its minuscule and a capital as its majuscule, with no mark for case; a pair such as _Th_ or _Ch_ is its first letter's majuscule, and an all-capital pair draws the two letters' majuscules. Every terminal, `.`, `?`, `!` and `!!`, draws the raised dot,
-each after the first adding invisible marks so that decoding tells them apart. Helonic writes _kh_, _sh_ and _zh_ as two letters, no accent and no
-length, so the _kh_ and _zh_ letters, the long vowels, the accent and the
-register-mark are drawn for the recensions of Bizarian and Bethuan and reached from
-their code points.
-
-HL Helónika types by sound through the same note. The register-mark has a key of its
-own, Option+Shift+R.
+The Helónika has case: each letter has a minuscule and a majuscule on code points of
+their own, and a pair such as _th_ is one letter in both cases. The raised dot ends a
+sentence. Helonic writes _kh_, _sh_ and _zh_ as two letters, no accent and no length,
+so the _kh_ and _zh_ letters, the long vowels, the accent and the register-mark are
+drawn for the recensions of Bizarian and Bethuan. Every character has a glyph code,
+`A_MIN` and `A_MAJ`, `LONG_E_MIN`, `STOP`, `REGISTER` and `ACCENT` among them, in
+`tools/codes/helonika.json`.
 
 ### Checks
 
 - `tools/helonika/check_font.py` confirms the character map, the outlines, the
   accent over every vowel and the box after anything else, the ignorables, the name
   table and the `.woff2`.
-- `tools/helonika/guard.py` writes every Helonic, Valtari, Bizarian and Bethuan lexicon
-  form through its encoding, shapes it, and asserts the glyphs, with no notdef or
-  box; `--note` takes language note files, so a pull request's own notes are checked;
-  `tools/helonika/fixtures.json` holds a fixture for each spelling rule.
+- `tools/helonika/guard.py` shapes the fixtures of `tools/helonika/fixtures.json`,
+  sequences of glyph codes, and asserts the glyphs, and the advance of each space.
 - `tools/prove_guards.py` proves the guard fails the font with the small letter _th_
   removed, and the font check fails it with its GSUB removed and with its GPOS
   removed.
@@ -439,6 +434,7 @@ own, Option+Shift+R.
 ### The specimen
 
 `tools/helonika/font_sheets.py` renders `specimens/helonika/text.png`: Helonic
-words from thalorna, written by the encoding and shaped by HarfBuzz from the
+words of the setting, their code points stored in `tools/texts/helonika-book.json`,
+shaped by HarfBuzz from the
 built font, at display size and at 48, 24 and 20 px beside their roman spelling in
 Liberation Mono, with the shared x-height ruled across both.

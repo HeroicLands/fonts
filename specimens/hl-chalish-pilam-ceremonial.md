@@ -6,26 +6,26 @@ Ki'ich'chik carved logographic hand, glyphs and syllable signs composed into blo
 
 ## The glyphs
 
-Each glyph is carved whole, and glyphs are composed into blocks: a main sign with a number, syllable signs or both set beside it, over it or under it. A block is written as its codes joined by `*`, which sets two items side by side, and `:`, which stacks the first over the second, and the font lays the block out from those joiners. The [chart](../charts/chalish-pilam-ceremonial.md) lists every glyph with its code point.
+Each glyph is carved whole, and glyphs are composed into blocks: a main sign with a number, syllable signs or both set beside it, over it or under it. A block is written as its glyphs with a joiner between two of them: `JOINER_BESIDE` sets two items side by side and `JOINER_STACK` stacks the first over the second, and the font lays the block out from those joiners. The [chart](../charts/chalish-pilam-ceremonial.md) lists every glyph with its code point and code.
 
 ![The canon sheet of Chalish Pilam Ceremonial](chalish-pilam/ceremonial.png)
 
 ## A lord's seating
 
-Sixteen blocks in paired columns, read across each pair and down: A1, B1, A2, B2. Each block is written in the Chalish Ceremonial Codage and set through the font.
+Sixteen blocks in paired columns, read across each pair and down: A1, B1, A2, B2. Each block is listed below by its glyph codes and set through the font.
 
 ![A lord's seating in Chalish Pilam Ceremonial](chalish-pilam/ceremonial-passage.png)
 
 1. on 13 [day]  
-   `n13*TQAN`
+   `n13 JOINER_BESIDE TQAN`
 2. at dawn  
    `DAWN`
 3. Ish'bal Ts'o-  
-   `n3*JAGUAR:tso1`
+   `n3 JOINER_BESIDE JAGUAR JOINER_STACK tso1`
 4. -malil  
-   `ma1*li1`
+   `ma1 JOINER_BESIDE li1`
 5. K'ini  
-   `ki1*ni1`
+   `ki1 JOINER_BESIDE ni1`
 6. a lord  
    `LORD`
 7. was seated  

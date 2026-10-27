@@ -3,11 +3,9 @@
 """Render the specimen sheets to PNG.
 
     .venv/bin/python tools/qalezu-hand/specimens.py [--font fonts/QalezuHand-Regular.ttf] [--out specimens/qalezu-hand]
-                                            [--thalorna ~/dev/HeroicLands/thalorna | --note FILE]
-                                            [--encoding FILE]
 
-Four sheets: the glyph chart, a dozen Khelathi words and names written through
-the ``qalezu`` encoding and shaped right to left beside their Latin
+Four sheets: the glyph chart, a dozen Khelathi words and names, their code points
+stored in ``tools/texts/qalezu-hand.json``, shaped right to left beside their Latin
 and gloss, an English sentence with
 a Qalezu name followed by a right-aligned block of Qalezu lines, and the
 plain, voiced and catch-before form of each sign at large and small sizes, the
@@ -25,7 +23,7 @@ from PIL import Image, ImageDraw
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from encoded import Encoded  # noqa: E402
+from codes import Written  # noqa: E402
 from render import Renderer, label_font  # noqa: E402
 import guard  # noqa: E402
 
@@ -37,22 +35,18 @@ GREY = (120, 112, 104)
 RULE = (205, 198, 186)
 
 
-ENCODED = Encoded(guard.FACE)
+WRITTEN = Written("qalezu-hand")
 
 
 def convert(text: str) -> str:
-    """The Qalezu code points of a roman word, through the qalezu encoding."""
-    (record,) = ENCODED.records([text])
-    unencoded = [c for c in record.get("unencoded", []) if c != " "]
-    if unencoded:
-        raise SystemExit(f"{text!r}: the qalezu encoding does not write {unencoded}")
-    return record["text"]
+    """The Qalezu code points stored for a roman word."""
+    return WRITTEN.one(text)
 
 WORDS = [
     "au'khelathu", "khelathu", "khelathi-zethu", "qalezu", "nelgir", "halzi",
     "weth'ur", "qe'aret", "uqa'a", "igelnaru", "genzet", "lenni",
 ]
-NAMES = {"lenni": "a given name, with the n doubled"}
+GLOSSES = {"nelgir": "god", "halzi": "heart", "lenni": "a given name, with the n doubled"}
 BLOCK = ["gar-qethar", "zel-qar", "lut-psaqa"]
 # Each row: the sign, its voiced partner if it has one, and the Latin that types them.
 TRIPLES = [("t", "d"), ("s", "z"), ("k", "g"), ("kh", "gh"), ("p", "b"), ("l", None), ("r", None),
@@ -97,19 +91,8 @@ def glyph_chart(r: Renderer, out: Path):
     img.save(out)
 
 
-def gloss_of(data: dict) -> dict[str, str]:
-    out = {}
-    for w in data["words"]:
-        g = w["gloss"]
-        g = g[0] if isinstance(g, list) else g
-        for sep in (", ", "; ", " —", "—"):
-            g = g.split(sep, 1)[0]
-        out[w["form"]] = g
-    return out
-
-
-def words(r: Renderer, data: dict, out: Path):
-    gloss = {**gloss_of(data), **NAMES}
+def words(r: Renderer, out: Path):
+    gloss = GLOSSES
     width, margin, row_h = 1500, 40, 190
     img, d = page(width, margin * 2 + 60 + len(WORDS) * row_h)
     d.text((margin, 18), "Khelathi words and names in Qalezu, written right to left", fill=GREY,
@@ -182,18 +165,12 @@ def main():
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     ap.add_argument("--font", default=str(ROOT / "fonts" / "QalezuHand-Regular.ttf"))
     ap.add_argument("--out", default=str(ROOT / "specimens" / "qalezu-hand"))
-    ap.add_argument("--thalorna", default=str(Path.home() / "dev/HeroicLands/thalorna"))
-    ap.add_argument("--note", help="read the language note from this file instead of git")
-    ap.add_argument("--encoding", help="apply this encoding file instead of encodings/qalezu.json")
     args = ap.parse_args()
-    global ENCODED
-    ENCODED = Encoded(guard.FACE, args.encoding)
     out = Path(args.out)
     out.mkdir(parents=True, exist_ok=True)
     r = Renderer(Path(args.font))
-    data = guard.lexicon(Path(args.thalorna), Path(args.note) if args.note else None)
     glyph_chart(r, out / "01-glyph-chart.png")
-    words(r, data, out / "02-words.png")
+    words(r, out / "02-words.png")
     mixed(r, out / "03-mixed.png")
     confusables(r, out / "04-confusables.png")
 

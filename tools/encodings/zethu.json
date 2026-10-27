@@ -1,9 +1,0 @@
-{
-    "name": "zethu",
-    "fonts": ["khelathi-zethu-glyphs"],
-    "extends": "standard",
-    "codage": "zethu-mdc",
-    "accepts": [],
-    "separator": "",
-    "rows": []
-}

@@ -2,7 +2,7 @@
 
 Vylarian (human) chancery hand, written left to right.
 
-[Back to the README](../README.md) · [Character chart](../charts/semaron-kuriale.md) · Keyboard cheatsheet: [HL Semaron](../keyboards/semaron.md)
+[Back to the README](../README.md) · [Character chart](../charts/semaron-kuriale.md)
 
 ## The letters
 

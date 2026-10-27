@@ -24,12 +24,12 @@
 <text x="40" y="1619.0" text-anchor="end" font-family="Helvetica, Arial, sans-serif" font-size="15" font-weight="bold" fill="#161412">E</text>
 <text x="40" y="1723.0" text-anchor="end" font-family="Helvetica, Arial, sans-serif" font-size="15" font-weight="bold" fill="#161412">F</text>
 <g class="drawn" id="cp-F4FF0" transform="translate(50 106)">
-<title>CHALISH CEREMONIAL JOINER BESIDE U+F4FF0</title>
+<title>CHALISH CEREMONIAL JOINER BESIDE JOINER_BESIDE U+F4FF0</title>
 <g fill="#161412"></g>
 <text x="44.0" y="95" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#6b665f">F4FF0</text>
 </g>
 <g class="drawn" id="cp-F4FF1" transform="translate(50 210)">
-<title>CHALISH CEREMONIAL JOINER STACK U+F4FF1</title>
+<title>CHALISH CEREMONIAL JOINER STACK JOINER_STACK U+F4FF1</title>
 <g fill="#161412"></g>
 <text x="44.0" y="95" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#6b665f">F4FF1</text>
 </g>

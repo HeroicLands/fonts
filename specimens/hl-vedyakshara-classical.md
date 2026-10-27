@@ -2,7 +2,7 @@
 
 Vedyari (human) temple syllabary, hung from a headline, written left to right.
 
-[Back to the README](../README.md) · [Character chart](../charts/vedyakshara-classical.md) · Keyboard cheatsheet: [HL Vedyakshara](../keyboards/vedyakshara.md)
+[Back to the README](../README.md) · [Character chart](../charts/vedyakshara-classical.md)
 
 ## The letters
 

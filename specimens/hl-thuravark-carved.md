@@ -2,7 +2,7 @@
 
 Proto-Pelwar (human) runic lapidary, derived from Pirzath, with the Tharavarkon recension, written left to right.
 
-[Back to the README](../README.md) · [Character chart](../charts/thuravark-carved.md) · Keyboard cheatsheet: [HL Thuravark](../keyboards/thuravark.md)
+[Back to the README](../README.md) · [Character chart](../charts/thuravark-carved.md)
 
 ## The letters
 

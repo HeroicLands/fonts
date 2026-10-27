@@ -19,7 +19,7 @@ from pathlib import Path
 from PIL import Image, ImageDraw
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
-from encoded import Encoded, EncodedRenderer  # noqa: E402
+from codes import Written, WrittenRenderer  # noqa: E402
 from render import Renderer, label_font  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent.parent
@@ -64,8 +64,7 @@ STAVE_TABLE = [
     ('oi', 'oi', 'oi (Tharavarkon)', 'oi'),
 ]
 
-# The recension's characters have no row in the Thuravark encoding, so the sheets type
-# them in the font's own code points.
+# The recension's characters, typed in the font's own code points.
 RAW = {"ai": "\U000F0128", "au": "\U000F0129", "oi": "\U000F012A"}
 OPEN, CLOSE = "\U000F0150", "\U000F0151"
 SS01 = {"ss01": True}
@@ -256,13 +255,13 @@ def recension(r: Renderer, out: Path):
     y += 40
     for roman, note in CROWNED:
         baseline = y + 40 + int(size * 0.98)
-        text = OPEN + r.encoded.one(roman) + CLOSE
+        text = OPEN + r.written.one(roman) + CLOSE
         w = r.renderer.text(img, 60, baseline, text, size, INK)
         d.text((60, baseline + 30), f"{roman}   {note}", fill=INK, font=lab)
         y += int(size * 1.5) + 40
     # An open with no close.
     baseline = y + 40 + int(size * 0.98)
-    r.renderer.text(img, 60, baseline, OPEN + r.encoded.one("thauras"), size, INK)
+    r.renderer.text(img, 60, baseline, OPEN + r.written.one("thauras"), size, INK)
     d.text((60, baseline + 30), "The name thauras with the open mark and no close: a bare post, no frame", fill=GREY, font=lab)
     y += int(size * 1.5) + 60
     # The bound runes.
@@ -297,8 +296,8 @@ def main():
     args = ap.parse_args()
     out = Path(args.out)
     out.mkdir(parents=True, exist_ok=True)
-    r = EncodedRenderer(Renderer(Path(args.font)), Encoded("thuravark-carved"))
-    p = EncodedRenderer(Renderer(Path(args.pirzath)), Encoded("pirzath-carved"))
+    r = WrittenRenderer(Renderer(Path(args.font)), Written("thuravark-carved"))
+    p = WrittenRenderer(Renderer(Path(args.pirzath)), Written("pirzath-carved"))
     glyph_chart(r, out / "01-glyph-chart.png")
     texts(r, out / "02-nordmal.png")
     numerals(r, out / "03-numerals.png")

@@ -1,0 +1,349 @@
+{
+    "script": "thuravark",
+    "texts": [
+        {
+            "roman": "a",
+            "codes": "A"
+        },
+        {
+            "roman": "e",
+            "codes": "E"
+        },
+        {
+            "roman": "i",
+            "codes": "I"
+        },
+        {
+            "roman": "o",
+            "codes": "ODEL"
+        },
+        {
+            "roman": "u",
+            "codes": "U"
+        },
+        {
+            "roman": "p",
+            "codes": "PA"
+        },
+        {
+            "roman": "b",
+            "codes": "BRELD"
+        },
+        {
+            "roman": "f",
+            "codes": "FOSK"
+        },
+        {
+            "roman": "v",
+            "codes": "VULD"
+        },
+        {
+            "roman": "t",
+            "codes": "TING"
+        },
+        {
+            "roman": "d",
+            "codes": "DRESK"
+        },
+        {
+            "roman": "th",
+            "codes": "THRESK"
+        },
+        {
+            "roman": "dh",
+            "codes": "DHA"
+        },
+        {
+            "roman": "k",
+            "codes": "KNERV"
+        },
+        {
+            "roman": "g",
+            "codes": "GELDRA"
+        },
+        {
+            "roman": "kh",
+            "codes": "KHA"
+        },
+        {
+            "roman": "gh",
+            "codes": "GHA"
+        },
+        {
+            "roman": "s",
+            "codes": "SVELD"
+        },
+        {
+            "roman": "z",
+            "codes": "ZA"
+        },
+        {
+            "roman": "h",
+            "codes": "HVELM"
+        },
+        {
+            "roman": "l",
+            "codes": "LA"
+        },
+        {
+            "roman": "r",
+            "codes": "RELTH"
+        },
+        {
+            "roman": "hl",
+            "codes": "HLA"
+        },
+        {
+            "roman": "m",
+            "codes": "MERV"
+        },
+        {
+            "roman": "n",
+            "codes": "NELTH"
+        },
+        {
+            "roman": "ng",
+            "codes": "NGA"
+        },
+        {
+            "roman": "j",
+            "codes": "JA"
+        },
+        {
+            "roman": "w",
+            "codes": "WA"
+        },
+        {
+            "roman": ".",
+            "codes": "STOP"
+        },
+        {
+            "roman": "aa",
+            "codes": "A A"
+        },
+        {
+            "roman": "á",
+            "codes": "A ACUTE"
+        },
+        {
+            "roman": "nn",
+            "codes": "NELTH NELTH"
+        },
+        {
+            "roman": "tth",
+            "codes": "THRESK THRESK"
+        },
+        {
+            "roman": "c",
+            "codes": "U+0063"
+        },
+        {
+            "roman": "a-r",
+            "codes": "A RELTH"
+        },
+        {
+            "roman": "storald geldra hnura",
+            "codes": "SVELD TING ODEL RELTH A LA DRESK U+0020 GELDRA E LA DRESK RELTH A U+0020 HVELM NELTH U RELTH A"
+        },
+        {
+            "roman": "hringsveld hofudsveld tingsveld",
+            "codes": "HVELM RELTH I NGA SVELD VULD E LA DRESK U+0020 HVELM ODEL FOSK U DRESK SVELD VULD E LA DRESK U+0020 TING I NGA SVELD VULD E LA DRESK"
+        },
+        {
+            "roman": "hlarthrinna hvalgselda dvarnthira druskinda",
+            "codes": "HLA A RELTH THRESK RELTH I NELTH NELTH A U+0020 HVELM VULD A LA GELDRA SVELD E LA DRESK A U+0020 DRESK VULD A RELTH NELTH THRESK I RELTH A U+0020 DRESK RELTH U SVELD KNERV I NELTH DRESK A"
+        },
+        {
+            "roman": "dvalgmil braldvir draskmil bruldthann",
+            "codes": "DRESK VULD A LA GELDRA MERV I LA U+0020 BRELD RELTH A LA DRESK VULD I RELTH U+0020 DRESK RELTH A SVELD KNERV MERV I LA U+0020 BRELD RELTH U LA DRESK THRESK A NELTH NELTH"
+        },
+        {
+            "roman": "althendik braldaruk druskidrok dvulgumak",
+            "codes": "A LA THRESK E NELTH DRESK I KNERV U+0020 BRELD RELTH A LA DRESK A RELTH U KNERV U+0020 DRESK RELTH U SVELD KNERV I DRESK RELTH ODEL KNERV U+0020 DRESK VULD U LA GELDRA U MERV A KNERV"
+        },
+        {
+            "roman": "hvelm dvon skelfr dvonvangr",
+            "codes": "HVELM VULD E LA MERV U+0020 DRESK VULD ODEL NELTH U+0020 SVELD KNERV E LA FOSK RELTH U+0020 DRESK VULD ODEL NELTH VULD A NGA RELTH"
+        },
+        {
+            "roman": "svelth dulm eldsdulm skipsdulm",
+            "codes": "SVELD VULD E LA THRESK U+0020 DRESK U LA MERV U+0020 E LA DRESK SVELD DRESK U LA MERV U+0020 SVELD KNERV I PA SVELD DRESK U LA MERV"
+        },
+        {
+            "roman": "bjarn bjart jel járn skjálf hrúmverdir nágengir",
+            "codes": "BRELD JA A RELTH NELTH U+0020 BRELD JA A RELTH TING U+0020 JA E LA U+0020 JA A ACUTE RELTH NELTH U+0020 SVELD KNERV JA A ACUTE LA FOSK U+0020 HVELM RELTH U ACUTE MERV VULD E RELTH DRESK I RELTH U+0020 NELTH A ACUTE GELDRA E NGA I RELTH"
+        },
+        {
+            "roman": "0",
+            "codes": "DIGIT_ZERO"
+        },
+        {
+            "roman": "1",
+            "codes": "DIGIT_ONE"
+        },
+        {
+            "roman": "2",
+            "codes": "DIGIT_TWO"
+        },
+        {
+            "roman": "3",
+            "codes": "DIGIT_THREE"
+        },
+        {
+            "roman": "4",
+            "codes": "DIGIT_FOUR"
+        },
+        {
+            "roman": "5",
+            "codes": "DIGIT_FIVE"
+        },
+        {
+            "roman": "6",
+            "codes": "DIGIT_SIX"
+        },
+        {
+            "roman": "7",
+            "codes": "DIGIT_SEVEN"
+        },
+        {
+            "roman": "8",
+            "codes": "DIGIT_EIGHT"
+        },
+        {
+            "roman": "9",
+            "codes": "DIGIT_NINE"
+        },
+        {
+            "roman": "10",
+            "codes": "DIGIT_ONE DIGIT_ZERO"
+        },
+        {
+            "roman": "26",
+            "codes": "DIGIT_TWO DIGIT_SIX"
+        },
+        {
+            "roman": "128",
+            "codes": "DIGIT_ONE DIGIT_TWO DIGIT_EIGHT"
+        },
+        {
+            "roman": "905",
+            "codes": "DIGIT_NINE DIGIT_ZERO DIGIT_FIVE"
+        },
+        {
+            "roman": "2026",
+            "codes": "DIGIT_TWO DIGIT_ZERO DIGIT_TWO DIGIT_SIX"
+        },
+        {
+            "roman": "0i0",
+            "codes": "DIGIT_ZERO I DIGIT_ZERO"
+        },
+        {
+            "roman": "i0i 1i2i 3a4u 5i6i 7a8u9",
+            "codes": "I DIGIT_ZERO I U+0020 DIGIT_ONE I DIGIT_TWO I U+0020 DIGIT_THREE A DIGIT_FOUR U U+0020 DIGIT_FIVE I DIGIT_SIX I U+0020 DIGIT_SEVEN A DIGIT_EIGHT U DIGIT_NINE"
+        },
+        {
+            "roman": "dalk",
+            "codes": "DRESK A LA KNERV"
+        },
+        {
+            "roman": "hrum",
+            "codes": "HVELM RELTH U MERV"
+        },
+        {
+            "roman": "bant",
+            "codes": "BRELD A NELTH TING"
+        },
+        {
+            "roman": "narv",
+            "codes": "NELTH A RELTH VULD"
+        },
+        {
+            "roman": "thulm",
+            "codes": "THRESK U LA MERV"
+        },
+        {
+            "roman": "gnarth",
+            "codes": "GELDRA NELTH A RELTH THRESK"
+        },
+        {
+            "roman": "svelth",
+            "codes": "SVELD VULD E LA THRESK"
+        },
+        {
+            "roman": "hvelm",
+            "codes": "HVELM VULD E LA MERV"
+        },
+        {
+            "roman": "ai",
+            "codes": "A I"
+        },
+        {
+            "roman": "au",
+            "codes": "A U"
+        },
+        {
+            "roman": "oi",
+            "codes": "ODEL I"
+        },
+        {
+            "roman": "thauras",
+            "codes": "THRESK A U RELTH A SVELD"
+        },
+        {
+            "roman": "marendas",
+            "codes": "MERV A RELTH E NELTH DRESK A SVELD"
+        },
+        {
+            "roman": "thiland thauras",
+            "codes": "THRESK I LA A NELTH DRESK U+0020 THRESK A U RELTH A SVELD"
+        },
+        {
+            "roman": "árdavon",
+            "codes": "A ACUTE RELTH DRESK A VULD ODEL NELTH"
+        },
+        {
+            "roman": "en",
+            "codes": "E NELTH"
+        },
+        {
+            "roman": "el",
+            "codes": "E LA"
+        },
+        {
+            "roman": "ar",
+            "codes": "A RELTH"
+        },
+        {
+            "roman": "al",
+            "codes": "A LA"
+        },
+        {
+            "roman": "ma",
+            "codes": "MERV A"
+        },
+        {
+            "roman": "za",
+            "codes": "ZA A"
+        },
+        {
+            "roman": "ka",
+            "codes": "KNERV A"
+        },
+        {
+            "roman": "ur",
+            "codes": "U RELTH"
+        },
+        {
+            "roman": "lm",
+            "codes": "LA MERV"
+        },
+        {
+            "roman": "lth",
+            "codes": "LA THRESK"
+        },
+        {
+            "roman": "thelvaralon marendas kalmethar",
+            "codes": "THRESK E LA VULD A RELTH A LA ODEL NELTH U+0020 MERV A RELTH E NELTH DRESK A SVELD U+0020 KNERV A LA MERV E THRESK A RELTH"
+        }
+    ]
+}

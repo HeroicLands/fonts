@@ -33,8 +33,7 @@ HERE = Path(__file__).resolve().parent
 ROOT = HERE.parent.parent
 sys.path.insert(0, str(HERE.parent))
 sys.path.insert(1, str(HERE))
-sys.path.insert(2, str(ROOT))
-import encode  # noqa: E402
+from codes import Written  # noqa: E402
 from render import Renderer, label_font  # noqa: E402
 
 PAPER = (243, 239, 228)
@@ -47,7 +46,7 @@ BY_LETTER = {r["letter"]: chr(int(r["codepoint"][2:], 16)) for r in ENC["glyphs"
 BY_GLYPH = {r["glyph"]: chr(int(r["codepoint"][2:], 16)) for r in ENC["glyphs"]}
 VOWEL = {r["vowel"]: chr(int(r["codepoint"][2:], 16)) for r in ENC["glyphs"] if r["kind"] == "vowel"}
 SIGN = {":": BY_GLYPH["long"], "/": BY_GLYPH["rise"], "\\": BY_GLYPH["fall"], "!": BY_GLYPH["emph"]}
-ENCODING = encode.load("veldikko")
+WRITTEN = Written("veldikko")
 SPELLING = {"aelendi": {"dh": "dhA"}}
 
 
@@ -71,8 +70,9 @@ def spelled(spelling: str, tongue: str = "sinale") -> str:
 
 
 def convert(words: list[str]) -> list[str]:
-    """The code points of each word; the script is caseless, so the roman is lowercase."""
-    return [encode.encode(ENCODING, w.lower()) for w in words]
+    """The code points stored for each word in ``tools/texts/veldikko.json``; the script is
+    caseless, so the roman is lowercase."""
+    return WRITTEN.write([w.lower() for w in words])
 
 
 def put(r: Renderer, img, text, size, right, baseline, features=None, color=INK):

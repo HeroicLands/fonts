@@ -1,7 +1,7 @@
 {
     "fixtures": [
         {
-            "latin": "lrt.",
+            "codes": "LAGUN RETHU TULAZ STOP",
             "signs": [
                 "l",
                 "r",
@@ -10,7 +10,7 @@
             ]
         },
         {
-            "latin": "lrt, lrt/",
+            "codes": "LAGUN RETHU TULAZ PAUSE U+0020 LAGUN RETHU TULAZ VERSE",
             "signs": [
                 "l",
                 "r",
@@ -24,14 +24,14 @@
             ]
         },
         {
-            "latin": "l?",
+            "codes": "LAGUN STOP",
             "signs": [
                 "l",
                 "period"
             ]
         },
         {
-            "latin": "l‼ l! l/",
+            "codes": "LAGUN STOP U+0020 LAGUN STOP U+0020 LAGUN VERSE",
             "signs": [
                 "l",
                 "period",
@@ -44,7 +44,7 @@
             ]
         },
         {
-            "latin": "anlagh",
+            "codes": "CATCH NELGIR LAGUN GHA",
             "signs": [
                 "n.catch",
                 "l",
@@ -52,7 +52,7 @@
             ]
         },
         {
-            "latin": "qe'aret",
+            "codes": "QENUWA CATCH RETHU TULAZ",
             "signs": [
                 "q",
                 "r.catch",
@@ -60,7 +60,7 @@
             ]
         },
         {
-            "latin": "au'khelathu",
+            "codes": "CATCH CATCH KHA LAGUN THELQEN",
             "signs": [
                 "catch",
                 "kh.catch",
@@ -69,14 +69,14 @@
             ]
         },
         {
-            "latin": "uqa'a",
+            "codes": "CATCH QENUWA CATCH",
             "signs": [
                 "q.catch",
                 "catch"
             ]
         },
         {
-            "latin": "lem'",
+            "codes": "LAGUN MELNU CATCH",
             "signs": [
                 "l",
                 "m",
@@ -84,26 +84,26 @@
             ]
         },
         {
-            "latin": "au",
+            "codes": "CATCH",
             "signs": [
                 "catch"
             ]
         },
         {
-            "latin": "a'nna",
+            "codes": "CATCH CATCH NELGIR_DBL",
             "signs": [
                 "catch",
                 "n.dbl.catch"
             ]
         },
         {
-            "latin": "'nna",
+            "codes": "CATCH NELGIR_DBL",
             "signs": [
                 "n.dbl.catch"
             ]
         },
         {
-            "latin": "gar-anlagh",
+            "codes": "GITHAR RETHU U+0020 CATCH NELGIR LAGUN GHA",
             "signs": [
                 "g",
                 "r",
@@ -114,7 +114,7 @@
             ]
         },
         {
-            "latin": "gith’el",
+            "codes": "GITHAR THELQEN CATCH LAGUN",
             "signs": [
                 "g",
                 "th",
@@ -122,14 +122,14 @@
             ]
         },
         {
-            "latin": "a'",
+            "codes": "CATCH CATCH",
             "signs": [
                 "catch",
                 "catch"
             ]
         },
         {
-            "latin": "a b",
+            "codes": "CATCH U+0020 BA",
             "signs": [
                 "catch",
                 "space",
@@ -137,35 +137,14 @@
             ]
         },
         {
-            "latin": "'",
-            "signs": [
-                "catch"
-            ]
-        },
-        {
-            "latin": "''",
-            "signs": [
-                "catch",
-                "catch"
-            ]
-        },
-        {
-            "latin": "a'tj",
+            "codes": "CATCH CATCH TJA",
             "signs": [
                 "catch",
                 "tj.catch"
             ]
         },
         {
-            "latin": "a-b",
-            "signs": [
-                "catch",
-                "space",
-                "b"
-            ]
-        },
-        {
-            "latin": "gar-qethar",
+            "codes": "GITHAR RETHU U+0020 QENUWA THELQEN RETHU",
             "signs": [
                 "g",
                 "r",
@@ -176,7 +155,7 @@
             ]
         },
         {
-            "latin": "khelathi-zethu",
+            "codes": "KHA LAGUN THELQEN U+0020 ZAGUL THELQEN",
             "signs": [
                 "kh",
                 "l",
@@ -187,7 +166,7 @@
             ]
         },
         {
-            "latin": "gar-au",
+            "codes": "GITHAR RETHU U+0020 CATCH",
             "signs": [
                 "g",
                 "r",
@@ -196,96 +175,83 @@
             ]
         },
         {
-            "latin": "gar-",
+            "codes": "GITHAR RETHU",
             "signs": [
                 "g",
                 "r"
             ]
         },
         {
-            "latin": "lut-",
+            "codes": "LAGUN TULAZ",
             "signs": [
                 "l",
                 "t"
             ]
         },
         {
-            "latin": "a-",
-            "signs": [
-                "catch"
-            ]
-        },
-        {
-            "latin": "kala",
+            "codes": "KA LAGUN",
             "signs": [
                 "k",
                 "l"
             ]
         },
         {
-            "latin": "ku",
+            "codes": "KA",
             "signs": [
                 "k"
             ]
         },
         {
-            "latin": "thal",
+            "codes": "THELQEN LAGUN",
             "signs": [
                 "th",
                 "l"
             ]
         },
         {
-            "latin": "shal",
+            "codes": "SHENULET LAGUN",
             "signs": [
                 "sh",
                 "l"
             ]
         },
         {
-            "latin": "khal",
+            "codes": "KHA LAGUN",
             "signs": [
                 "kh",
                 "l"
             ]
         },
         {
-            "latin": "ghal",
+            "codes": "GHA LAGUN",
             "signs": [
                 "gh",
                 "l"
             ]
         },
         {
-            "latin": "chal",
+            "codes": "TJA LAGUN",
             "signs": [
                 "tj",
                 "l"
             ]
         },
         {
-            "latin": "tjal",
-            "signs": [
-                "tj",
-                "l"
-            ]
-        },
-        {
-            "latin": "lenni",
+            "codes": "LAGUN NELGIR_DBL",
             "signs": [
                 "l",
                 "n.dbl"
             ]
         },
         {
-            "latin": "gerra",
+            "codes": "GITHAR RETHU_DBL",
             "signs": [
                 "g",
                 "r.dbl"
             ]
         },
         {
-            "latin": "lanal",
+            "codes": "LAGUN NELGIR LAGUN",
             "signs": [
                 "l",
                 "n",
@@ -293,58 +259,46 @@
             ]
         },
         {
-            "latin": "tthal",
+            "codes": "THELQEN_DBL LAGUN",
             "signs": [
                 "th.dbl",
                 "l"
             ]
         },
         {
-            "latin": "thth",
+            "codes": "THELQEN_DBL",
             "signs": [
                 "th.dbl"
             ]
         },
         {
-            "latin": "sshal",
+            "codes": "SHENULET_DBL LAGUN",
             "signs": [
                 "sh.dbl",
                 "l"
             ]
         },
         {
-            "latin": "ll",
+            "codes": "LAGUN_DBL",
             "signs": [
                 "l.dbl"
             ]
         },
         {
-            "latin": "kkhal",
+            "codes": "KHA_DBL LAGUN",
             "signs": [
                 "kh.dbl",
                 "l"
             ]
         },
         {
-            "latin": "tjtj",
+            "codes": "TJA_DBL",
             "signs": [
                 "tj.dbl"
             ]
         },
         {
-            "latin": "chch",
-            "signs": [
-                "tj.dbl"
-            ]
-        },
-        {
-            "latin": "ttj",
-            "signs": [
-                "tj.dbl"
-            ]
-        },
-        {
-            "latin": "linnuseret",
+            "codes": "LAGUN NELGIR_DBL SELQUR RETHU TULAZ",
             "signs": [
                 "l",
                 "n.dbl",
@@ -354,14 +308,14 @@
             ]
         },
         {
-            "latin": "lll",
+            "codes": "LAGUN_DBL LAGUN",
             "signs": [
                 "l.dbl",
                 "l"
             ]
         },
         {
-            "latin": "zel ez qar",
+            "codes": "ZAGUL LAGUN U+0020 CATCH ZAGUL U+0020 QENUWA RETHU",
             "signs": [
                 "z",
                 "l",
@@ -373,7 +327,7 @@
             ]
         },
         {
-            "latin": "1234567890",
+            "codes": "DIGIT_ONE DIGIT_TWO DIGIT_THREE DIGIT_FOUR DIGIT_FIVE DIGIT_SIX DIGIT_SEVEN DIGIT_EIGHT DIGIT_NINE DIGIT_ZERO",
             "signs": [
                 "one",
                 "two",
@@ -388,7 +342,7 @@
             ]
         },
         {
-            "latin": "zeret 305, 14.",
+            "codes": "ZAGUL RETHU TULAZ U+0020 DIGIT_THREE DIGIT_ZERO DIGIT_FIVE PAUSE U+0020 DIGIT_ONE DIGIT_FOUR STOP",
             "signs": [
                 "z",
                 "r",
@@ -405,40 +359,11 @@
             ]
         },
         {
-            "latin": "jal",
-            "signs": [
-                "tj",
-                "l"
-            ]
-        },
-        {
-            "latin": "val",
+            "codes": "FA LAGUN",
             "signs": [
                 "f",
                 "l"
             ]
-        }
-    ],
-    "unencodable": [
-        {
-            "latin": "c",
-            "letter": "c"
-        },
-        {
-            "latin": "cal",
-            "letter": "c"
-        },
-        {
-            "latin": "xal",
-            "letter": "x"
-        },
-        {
-            "latin": "l;",
-            "letter": ";"
-        },
-        {
-            "latin": "Anlagh",
-            "letter": "A"
         }
     ]
 }

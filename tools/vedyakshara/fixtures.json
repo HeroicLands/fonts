@@ -1,7 +1,7 @@
 {
     "fixtures": [
         {
-            "latin": "vedyara",
+            "codes": "VA SIGN_E DA CUT YA RA",
             "glyphs": [
                 "va",
                 "vs.e",
@@ -10,7 +10,7 @@
             ]
         },
         {
-            "latin": "dvarna",
+            "codes": "DA CUT VA RA CUT NA",
             "glyphs": [
                 "da.half",
                 "va",
@@ -18,7 +18,7 @@
             ]
         },
         {
-            "latin": "rajepur",
+            "codes": "RA JA SIGN_E PA SIGN_U RA CUT",
             "glyphs": [
                 "ra",
                 "ja",
@@ -29,7 +29,7 @@
             ]
         },
         {
-            "latin": "aisu",
+            "codes": "AI SA SIGN_U",
             "glyphs": [
                 "ai",
                 "sa",
@@ -37,7 +37,7 @@
             ]
         },
         {
-            "latin": "ganoka-shalda",
+            "codes": "GA NA SIGN_O KA SHA LA CUT DA",
             "glyphs": [
                 "ga",
                 "na",
@@ -49,7 +49,7 @@
             ]
         },
         {
-            "latin": "foshu",
+            "codes": "PA SOFT_DOT SIGN_O SHA SIGN_U",
             "glyphs": [
                 "fa",
                 "hook.o",
@@ -58,7 +58,7 @@
             ]
         },
         {
-            "latin": "smiriti",
+            "codes": "SA CUT MA SIGN_I RA SIGN_I TA SIGN_I",
             "glyphs": [
                 "sa.half",
                 "ma",
@@ -70,7 +70,7 @@
             ]
         },
         {
-            "latin": "chendra",
+            "codes": "CHA SIGN_E NA CUT DA CUT RA",
             "glyphs": [
                 "cha",
                 "vs.e",
@@ -78,7 +78,7 @@
             ]
         },
         {
-            "latin": "ikshva",
+            "codes": "I KA CUT SHA CUT VA",
             "glyphs": [
                 "i",
                 "ksha.half",
@@ -86,7 +86,7 @@
             ]
         },
         {
-            "latin": "suryadvar",
+            "codes": "SA SIGN_U RA CUT YA DA CUT VA RA CUT",
             "glyphs": [
                 "sa",
                 "hook.u",
@@ -98,7 +98,7 @@
             ]
         },
         {
-            "latin": "karmija",
+            "codes": "KA RA CUT MA SIGN_I JA",
             "glyphs": [
                 "ka",
                 "rma",
@@ -107,7 +107,7 @@
             ]
         },
         {
-            "latin": "ushti",
+            "codes": "U SHA CUT TA SIGN_I",
             "glyphs": [
                 "u",
                 "shta",
@@ -115,7 +115,7 @@
             ]
         },
         {
-            "latin": "kau",
+            "codes": "KA SIGN_AU",
             "glyphs": [
                 "ka",
                 "hook.o",
@@ -123,7 +123,7 @@
             ]
         },
         {
-            "latin": "vastuna karmata vanisa?",
+            "codes": "VA SA CUT TA SIGN_U NA U+0020 KA RA CUT MA TA U+0020 VA NA SIGN_I SA STOP",
             "glyphs": [
                 "va",
                 "sta",
@@ -142,7 +142,7 @@
             ]
         },
         {
-            "latin": "agarana dulipati, vandikana",
+            "codes": "A GA RA NA U+0020 DA SIGN_U LA SIGN_I PA TA SIGN_I PAUSE U+0020 VA NA CUT DA SIGN_I KA NA",
             "glyphs": [
                 "a",
                 "ga",
@@ -166,7 +166,7 @@
             ]
         },
         {
-            "latin": "teska 10.",
+            "codes": "TA SIGN_E SA CUT KA U+0020 DIGIT_ONE DIGIT_ZERO STOP",
             "glyphs": [
                 "ta",
                 "vs.e",
@@ -179,14 +179,14 @@
             ]
         },
         {
-            "latin": "lam",
+            "codes": "LA MA CUT",
             "glyphs": [
                 "la",
                 "ma.final"
             ]
         },
         {
-            "latin": "tesk‼ tesk! tesk?",
+            "codes": "TA SIGN_E SA CUT KA CUT STOP U+0020 TA SIGN_E SA CUT KA CUT STOP U+0020 TA SIGN_E SA CUT KA CUT STOP",
             "glyphs": [
                 "ta",
                 "vs.e",
@@ -206,20 +206,6 @@
                 "ka.final",
                 "stop"
             ]
-        }
-    ],
-    "unencodable": [
-        {
-            "latin": "Zaron",
-            "letter": "Z"
-        },
-        {
-            "latin": "wexa",
-            "letter": "w"
-        },
-        {
-            "latin": "Vedyara",
-            "letter": "V"
         }
     ]
 }

@@ -583,13 +583,10 @@ A word is typed as it is said: a letter, then the bar if its consonant is double
 then each vowel mark in the order said, each followed by its signs. _mollu_ is
 _m_, _o_, _l_, bar, _u_; _nuuva_ is _n_, _u_, long, _v_, _a_.
 
-`encode.py` writes romanized Sinale in code points by `encodings/veldikko.json`, and
-the guard and the specimens use it. A doubled consonant is the letter and the bar;
-_n_ before _k_ is _ng_; a doubled vowel is one mark with the long sign, and
-_eë_ is the long _ë_, so _leësy_ is _l_, _ë_, long, _s_, _y_; a diphthong of the
-language is two marks; a vowel at a word's start, and any other vowel sounded
-apart from the one before it, rides on the carrier. The romanization writes no pitch or emphasis, so the encoding writes
-neither, and it writes Sinale only: Áelendi wants its own convention.
+Every character has a glyph code in `tools/codes/veldikko.json`: each letter a name
+of its own in Sinale's shape (`PELANNE`, `NUVALLE`), each vowel mark `SIGN_A` and the
+like, and the signs `LONG`, `RISE`, `FALL`, `EMPHASIS` and `DOUBLING_BAR`. How Sinale and
+Áelendi are written in these characters belongs to thalorna.
 
 ### The font
 
@@ -641,16 +638,15 @@ The word space is 400 units.
 
 ```sh
 .venv/bin/python tools/veldikko/build_ufo.py      # sources/Veldikko.ufo and tools/names/veldikko.json
-PATH=.venv/bin:$PATH ./build.sh                   # the fonts, fonts.css, fonts.json, keyboards and charts
+PATH=.venv/bin:$PATH ./build.sh                   # the fonts, fonts.css, fonts.json and charts
 .venv/bin/python tools/veldikko/check_font.py     # the cmap, the forms and the features reaching them
-.venv/bin/python tools/veldikko/guard.py          # every Sinale lexicon form, joined, with its marks placed
+.venv/bin/python tools/veldikko/guard.py          # the fixtures, joined, with their marks placed
 .venv/bin/python tools/veldikko/font_sheets.py    # the layer 3 sheets, through the built font
 ```
 
-`tools/veldikko/guard.py` encodes every word and name of the Sinale note, and its
-fixtures (`tools/veldikko/fixtures.json`), shapes each right to left, and asserts
-each letter's form, each folded mark, and where each mark and bar stands.
-`--fixtures-only` needs no thalorna checkout, and CI runs it.
+`tools/veldikko/guard.py` shapes its fixtures (`tools/veldikko/fixtures.json`),
+sequences of glyph codes, right to left, and asserts each letter's form, each folded
+mark, and where each mark and bar stands. CI runs it.
 
 ### The specimens
 
@@ -658,8 +654,8 @@ each letter's form, each folded mark, and where each mark and bar stands.
   stretched forms, with each advance ruled beneath, then the nasals' hooks and
   long tails;
 - `specimens/veldikko/joined.png`: the words of `words.png`, joined, set by the
-  font at display size and at 48 px, the Sinale words encoded from their
-  romanization and the Áelendi words from their spelling;
+  font at display size and at 48 px, the Sinale words as their stored code points
+  and the Áelendi words from their spelling;
 - `specimens/veldikko/verse.png`: the Sinale sample phrases as a right-aligned
   block at a line height of 2.4 em, the same lines with the pitch the
   romanization drops, and Veldikko words inside an English paragraph at its own

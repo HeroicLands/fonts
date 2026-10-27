@@ -1,0 +1,121 @@
+{
+    "script": "vedyakshara",
+    "texts": [
+        {
+            "roman": "vedyara",
+            "codes": "VA SIGN_E DA CUT YA RA"
+        },
+        {
+            "roman": "dvarna",
+            "codes": "DA CUT VA RA CUT NA"
+        },
+        {
+            "roman": "suryadvar",
+            "codes": "SA SIGN_U RA CUT YA DA CUT VA RA CUT"
+        },
+        {
+            "roman": "rajepur",
+            "codes": "RA JA SIGN_E PA SIGN_U RA CUT"
+        },
+        {
+            "roman": "chendra",
+            "codes": "CHA SIGN_E NA CUT DA CUT RA"
+        },
+        {
+            "roman": "karmija",
+            "codes": "KA RA CUT MA SIGN_I JA"
+        },
+        {
+            "roman": "shroshta",
+            "codes": "SHA CUT RA SIGN_O SHA CUT TA"
+        },
+        {
+            "roman": "ikshva",
+            "codes": "I KA CUT SHA CUT VA"
+        },
+        {
+            "roman": "smiriti",
+            "codes": "SA CUT MA SIGN_I RA SIGN_I TA SIGN_I"
+        },
+        {
+            "roman": "padmavali",
+            "codes": "PA DA CUT MA VA LA SIGN_I"
+        },
+        {
+            "roman": "purnakala",
+            "codes": "PA SIGN_U RA CUT NA KA LA"
+        },
+        {
+            "roman": "adanshreni",
+            "codes": "A DA NA CUT SHA CUT RA SIGN_E NA SIGN_I"
+        },
+        {
+            "roman": "foshu",
+            "codes": "PA SOFT_DOT SIGN_O SHA SIGN_U"
+        },
+        {
+            "roman": "aisu",
+            "codes": "AI SA SIGN_U"
+        },
+        {
+            "roman": "ganoka-shalda",
+            "codes": "GA NA SIGN_O KA SHA LA CUT DA"
+        },
+        {
+            "roman": "vedyara dvarna suryadvar rajepur chendra",
+            "codes": "VA SIGN_E DA CUT YA RA U+0020 DA CUT VA RA CUT NA U+0020 SA SIGN_U RA CUT YA DA CUT VA RA CUT U+0020 RA JA SIGN_E PA SIGN_U RA CUT U+0020 CHA SIGN_E NA CUT DA CUT RA"
+        },
+        {
+            "roman": "karmija shroshta ikshva smiriti padmavali",
+            "codes": "KA RA CUT MA SIGN_I JA U+0020 SHA CUT RA SIGN_O SHA CUT TA U+0020 I KA CUT SHA CUT VA U+0020 SA CUT MA SIGN_I RA SIGN_I TA SIGN_I U+0020 PA DA CUT MA VA LA SIGN_I"
+        },
+        {
+            "roman": "purnakala adanshreni foshu aisu ganoka-shalda",
+            "codes": "PA SIGN_U RA CUT NA KA LA U+0020 A DA NA CUT SHA CUT RA SIGN_E NA SIGN_I U+0020 PA SOFT_DOT SIGN_O SHA SIGN_U U+0020 AI SA SIGN_U U+0020 GA NA SIGN_O KA SHA LA CUT DA"
+        },
+        {
+            "roman": "agarana dulipati, vandikana.",
+            "codes": "A GA RA NA U+0020 DA SIGN_U LA SIGN_I PA TA SIGN_I PAUSE U+0020 VA NA CUT DA SIGN_I KA NA STOP"
+        },
+        {
+            "roman": "vedyaram tivayu, tarajisum.",
+            "codes": "VA SIGN_E DA CUT YA RA MA CUT U+0020 TA SIGN_I VA YA SIGN_U PAUSE U+0020 TA RA JA SIGN_I SA SIGN_U MA CUT STOP"
+        },
+        {
+            "roman": "vastuna karmata vanisa?",
+            "codes": "VA SA CUT TA SIGN_U NA U+0020 KA RA CUT MA TA U+0020 VA NA SIGN_I SA STOP"
+        },
+        {
+            "roman": "rituta samarvana ushti.",
+            "codes": "RA SIGN_I TA SIGN_U TA U+0020 SA MA RA CUT VA NA U+0020 U SHA CUT TA SIGN_I STOP"
+        },
+        {
+            "roman": "bhaktir ushtami dulitara.",
+            "codes": "BHA KA CUT TA SIGN_I RA CUT U+0020 U SHA CUT TA MA SIGN_I U+0020 DA SIGN_U LA SIGN_I TA RA STOP"
+        },
+        {
+            "roman": "ushti",
+            "codes": "U SHA CUT TA SIGN_I"
+        },
+        {
+            "roman": "kau",
+            "codes": "KA SIGN_AU"
+        },
+        {
+            "roman": "agarana dulipati, vandikana",
+            "codes": "A GA RA NA U+0020 DA SIGN_U LA SIGN_I PA TA SIGN_I PAUSE U+0020 VA NA CUT DA SIGN_I KA NA"
+        },
+        {
+            "roman": "teska 10.",
+            "codes": "TA SIGN_E SA CUT KA U+0020 DIGIT_ONE DIGIT_ZERO STOP"
+        },
+        {
+            "roman": "lam",
+            "codes": "LA MA CUT"
+        },
+        {
+            "roman": "tesk‼ tesk! tesk?",
+            "codes": "TA SIGN_E SA CUT KA CUT STOP U+0020 TA SIGN_E SA CUT KA CUT STOP U+0020 TA SIGN_E SA CUT KA CUT STOP"
+        }
+    ]
+}

@@ -27,13 +27,12 @@ capitals, the capital additions and long vowels, small letters, the small additi
 and long vowels, numerals, points and the accent. The space stays U+0020.
 
 A row also carries a ``name``, in Unicode's style, read from the script's name table in
-``tools/names/<script>.json`` (see ``names``). A row the table does not name has no ``name``.
+``tools/names/<script>.json`` (see ``names``), and a ``code``, read from its code table
+in ``tools/codes/<script>.json`` (see tools/codes.py). A row the name table does not
+name has no ``name``; every row has a code, which tools/codes_guard.py checks.
 
 The Qalezu Hand, Khelathi Zethu Glyphs and Veldikko tables are read from their
 encoding.json.
-A Khelathi Zethu Glyphs row also carries its sign id as the ``key`` that types it in
-its Emacs input method. The other scripts are typed by sound (tools/sound_keys.json),
-so a character of theirs has no key of its own.
 """
 
 import json
@@ -41,6 +40,7 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
+import codes  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
 
@@ -377,11 +377,10 @@ def zethu_controls() -> list[dict]:
 
 def zethu_table() -> list[dict]:
     """Khelathi Zethu Glyphs' table: each drawn sign's default form, then each format
-    control at its own code point in the font's block and at its Unicode code point.
-    A control has no key: the Emacs input method types signs by id."""
+    control at its own code point in the font's block and at its Unicode code point."""
     enc = json.loads((ROOT / "tools" / "khelathi-zethu-glyphs" / "encoding.json").read_text(encoding="utf-8"))
     rows = [
-        {"codepoint": e["codepoint"], "glyph": e["glyph"], "kind": "sign", "key": e["id"]}
+        {"codepoint": e["codepoint"], "glyph": e["glyph"], "kind": "sign"}
         for e in enc["signs"]
         if e["drawn"]
     ]
@@ -391,21 +390,8 @@ def zethu_table() -> list[dict]:
     return rows
 
 
-# Font file stem -> script, the key of its name table.
-SCRIPTS = {
-    "SemaronKuriale-Regular": "semaron",
-    "PirzathCarved-Regular": "pirzath",
-    "PirzathHand-Regular": "pirzath",
-    "ThuravarkCarved-Regular": "thuravark",
-    "QalezuHand-Regular": "qalezu",
-    "KhelathiZethuGlyphs-Regular": "zethu",
-    "TengChou-Regular": "tengchou",
-    "ChalishPilamCommon-Regular": "chalish",
-    "ChalishPilamCeremonial-Regular": "chalishceremonial",
-    "Veldikko-Regular": "veldikko",
-    "VedyaksharaClassical-Regular": "vedyakshara",
-    "HelonikaBook-Regular": "helonika",
-}
+# Font file stem -> script, the key of its name table and its code table.
+SCRIPTS = codes.SCRIPTS
 
 
 def names(script: str) -> dict[str, str]:
@@ -420,13 +406,17 @@ def names(script: str) -> dict[str, str]:
 
 
 def named(stem: str, rows: list[dict]) -> list[dict]:
-    """The rows with a ``name`` after the code point wherever the script's table names it."""
+    """The rows with a ``name`` after the code point wherever the script's name table names
+    it, and then the ``code`` its code table gives it."""
     table_names = names(SCRIPTS[stem])
+    table_codes = codes.table(SCRIPTS[stem])
     out = []
     for row in rows:
         new = {"codepoint": row["codepoint"]}
         if row["codepoint"] in table_names:
             new["name"] = table_names[row["codepoint"]]
+        if row["codepoint"] in table_codes:
+            new["code"] = table_codes[row["codepoint"]]
         new.update({k: v for k, v in row.items() if k != "codepoint"})
         out.append(new)
     return out

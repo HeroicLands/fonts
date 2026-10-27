@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: OFL-1.1
 """Prove that each guard passes a built font and fails the same font broken.
 
-    .venv/bin/python tools/prove_guards.py [--encoding SCRIPT=FILE] [--font FONT | --shared]
+    .venv/bin/python tools/prove_guards.py [--font FONT | --shared]
 
 ``--font FONT`` proves only the guards broken on that built font, and ``--shared`` only
 the proofs that break no font, so that the two together, over every font, are the whole
@@ -24,7 +24,7 @@ quadrat guard (tools/khelathi-zethu-glyphs/quadrats.py) is proved four times: wi
 lookup that sums a row's widths taken out of the features, with the GPOS table removed,
 with the vertical joiner in the font's own block unmapped, and with the lookup that lays
 the cord along a cartouche taken out.
-Teng Chou is broken three times: its lexicon guard (tools/teng-chou/guard.py) and its font
+Teng Chou is broken three times: its guard (tools/teng-chou/guard.py) and its font
 check (tools/teng-chou/check_font.py) on the font with the character for teng removed from
 its cmap, and the font check on the font without its vertical metrics; and the vertical
 guard is proved on its columns with one character's vertical advance off the em, and with
@@ -50,7 +50,7 @@ with the GSUB table removed and with the GPOS table removed, so that no vowel si
 stands on its anchor; and the vertical guard is proved on it with its Windows ascent and
 descent cut to the shared line box, so that its hooks would be clipped. Helonika Book's
 guard (tools/helonika/guard.py) is proved with the small letter th removed from the cmap, and again
-with the small letter kh removed, which Bizarian and Bethuan fixtures write, and its font check (tools/helonika/check_font.py) with the GSUB table removed, so that a
+with the small letter kh removed, and its font check (tools/helonika/check_font.py) with the GSUB table removed, so that a
 stray accent is not the box, and with the GPOS table removed, so that the accent does
 not stand over its vowel. The box guard (tools/notdef_box.py) is proved on every font twice: with the question
 mark removed from the cmap, and with it pointed at glyph 0. The name guard
@@ -59,24 +59,19 @@ removed, and with the Basic Latin range declared. The vertical guard (tools/vert
 with USE_TYPO_METRICS cleared, and with one glyph lifted out of the band. The code-point guard (tools/codepoints.py)
 is proved on every font with the first code point of its fonts.json table removed from the cmap, with the Latin a mapped
 to its first character, and with a ligature that writes its third character from its first two, a spelling rule; and on
-every left-to-right font with an entry in the Basic Multilingual Plane's Private Use Area. Its key rules are proved
-on altered fonts.json tables: a Khelathi Zethu Glyphs sign without a key, two signs on one key, and a key on a character of a script
-typed by sound. Its block registry is proved on a code point outside its family's blocks, two overlapping blocks and a DEVELOPING.md table that
+every left-to-right font with an entry in the Basic Multilingual Plane's Private Use Area. Its block registry is proved on a code point outside its family's blocks, two overlapping blocks and a DEVELOPING.md table that
 differs from the registry. The spacing guard (tools/spacing.py) is proved on every font with every advance widened by 120 units,
 half on each side of the ink, and on Khelathi Zethu Glyphs and Qalezu Hand with the space widened by 100 units. The default-ignorable check of the box guard is proved on every font with the glyph of the ignorables drawing the box, and on
-Pirzath Carved without GSUB and with its space glyph drawing the dot. The keyboard guard (tools/keyboards_guard.py) is proved on a key map with
-two sounds on one key, with a sound removed, with a sound spelled with a capital, with a quote off Shift+, and Shift+., with a markup character missing and with a
-markup character on a key that carries a sound; on layouts with a macOS output cut short, a Linux key
-line removed, an Emacs rule removed and a Windows key typing a roman letter, and with a key of markup typing
-nothing on each platform; and on a sounds.json
-that the encodings no longer spell. The cheatsheet guard (tools/charts_guard.py) is proved on a sheet with a table row removed, with a wrong Code Point cell, with a chart cell removed, with a glyph image removed, with a
+Pirzath Carved without GSUB and with its space glyph drawing the dot. The code guard (tools/codes_guard.py) is proved on
+a fonts.json with one character's code removed, with a code that is not the code table's, with a code outside
+``[A-Za-z0-9_]``, and with two characters of a face on one code, and on code tables with two code points on one code, with a
+code point no face draws, and with a Zethu sign's code differing from the font's build table; and it passes Teng Chou's
+``KA`` and ``ka``, two codes that differ in case alone. The cheatsheet guard (tools/charts_guard.py) is proved on a sheet with a table row removed, with a wrong Code Point cell, with a wrong Code cell, with a chart cell removed, with a glyph image removed, with a
 lowercase name and with a Zethu name that is not its code point's position. The paint guard
 (tools/khelathi-zethu-glyphs/paint_guard.py) is proved on a map without the 11-001 sign's entry and on a
 map with a seed of 01-008 moved onto its outline, on a map with one region of the oxen 05-004
-left without a seed, and on a map without the closing segments of the river 10-001. The guards run on their
-fixtures alone, written through the encodings, so the proof needs no lexicon
-and no thalorna checkout. The specimen-page check (tools/specimen_pages.py --check) is proved on
-Qalezu Hand's page with a line's roman spelling changed, with a line's code points changed, on a family
+left without a seed, and on a map without the closing segments of the river 10-001. The specimen-page check (tools/specimen_pages.py --check) is proved on
+Qalezu Hand's page with a line's roman spelling changed, with a line's glyph codes changed, on a family
 with no page, and with its README sample cell an unlinked relative image.
 """
 
@@ -240,14 +235,6 @@ def off_block(font: Path, out: Path) -> Path:
     return out
 
 
-def without_th(font: Path, out: Path) -> Path:
-    f = TTFont(str(font))
-    for table in f["cmap"].tables:
-        table.cmap.pop(0x1EA09, None)
-    f.save(str(out))
-    return out
-
-
 def without_codepoint(font: Path, out: Path) -> Path:
     first = next(f for f in json.loads((ROOT / "fonts.json").read_text(encoding="utf-8"))["families"]
                  if Path(f["files"]["ttf"]).name == font.name)["codepoints"][0]["codepoint"]
@@ -331,7 +318,8 @@ def without_teng(font: Path, out: Path) -> Path:
 
 
 def without_th(font: Path, out: Path) -> Path:
-    """Helonika Book's small letter th removed from the cmap, so a word with it prints the box."""
+    """The glyph th removed from the cmap: Helonika Book's small letter th or Qalezu Hand's sign th,
+    so a word with it prints the box."""
     f = TTFont(str(font))
     for table in f["cmap"].tables:
         for code in [c for c, g in table.cmap.items() if g == "th"]:
@@ -459,47 +447,6 @@ def latin_declared(font: Path, out: Path) -> Path:
     return out
 
 
-def prove_keys(codepoints) -> int:
-    """Prove the key rules of the code-point guard on altered copies of fonts.json."""
-    original = codepoints.manifest
-    base = original()
-
-    def entry(manifest, name):
-        return next(f for f in manifest["families"] if f["name"] == name)
-
-    def lose_key(manifest):
-        del entry(manifest, "Khelathi Zethu Glyphs")["codepoints"][0]["key"]
-
-    def share_key(manifest):
-        rows = entry(manifest, "Khelathi Zethu Glyphs")["codepoints"]
-        rows[1]["key"] = rows[0]["key"]
-
-    def sound_script_key(manifest):
-        entry(manifest, "Semaron Kuriale")["codepoints"][0]["key"] = "a"
-
-    cases = [
-        ("Khelathi Zethu Glyphs", "KhelathiZethuGlyphs-Regular.ttf", lose_key, "with a sign without a key", "has no key"),
-        ("Khelathi Zethu Glyphs", "KhelathiZethuGlyphs-Regular.ttf", share_key, "with two signs on one key", "share the key"),
-        ("Semaron Kuriale", "SemaronKuriale-Regular.ttf", sound_script_key, "with a key on a character typed by sound", "typed by sound"),
-    ]
-    status = 0
-    for label, name, mutate, how, expect in cases:
-        font = ROOT / "fonts" / name
-        good = [p for p in codepoints.check(font) if "key" in p]
-        altered = copy.deepcopy(base)
-        mutate(altered)
-        codepoints.manifest = lambda altered=altered: altered
-        try:
-            bad = [p for p in codepoints.check(font) if expect in p]
-        finally:
-            codepoints.manifest = original
-        print(f"{label}: {len(good)} key failures on the table, {len(bad)} on the table {how}")
-        if good or not bad:
-            print(f"{font}: error: the key guard must pass the table and fail the altered table")
-            status = 1
-    return status
-
-
 def prove_registry(codepoints) -> int:
     """Prove the block registry rules of the code-point guard."""
     order = codepoints.codepoint_order
@@ -536,161 +483,71 @@ def prove_registry(codepoints) -> int:
     return status
 
 
-def prove_keyboards(files: dict[str, str] | None = None) -> int:
-    """Prove that the keyboard guard fails a broken key map, a layout that types the wrong
-    thing or a roman letter, and a sounds.json that differs from the encodings."""
-    guard = load("keyboards_guard", ROOT / "tools" / "keyboards_guard.py")
-    keymap = guard.kk.load()["sounds"]
-    committed = guard.committed_sounds()
-    sounds = committed["sounds"]
-    script = "semaron"
-    layouts = guard.read_layouts(script)
+def prove_codes() -> int:
+    """Prove that the code guard fails a fonts.json or a code table that breaks a rule, and passes
+    codes that differ in case alone."""
+    guard = load("codes_guard", ROOT / "tools" / "codes_guard.py")
+    doc, tables, stated = guard.manifest(), guard.tables(), guard.build_codes()
 
-    def on_layouts(texts):
-        return len(guard.layout_problems(script, keymap, sounds, texts))
+    def family(manifest, name):
+        return next(f for f in manifest["families"] if f["name"] == name)
 
-    def on_keymap(altered):
-        return len(guard.keymap_problems(altered, sounds))
-
-    kk = guard.kk
-    real_load = kk.load
-
-    def on_markup(change):
-        """Problems of the key map with its markup list altered."""
-        data = real_load()
-        change(data["markup"])
-        kk.load = lambda: data
-        try:
-            return on_keymap(keymap)
-        finally:
-            kk.load = real_load
-
-    def on_signs(change):
-        """Problems of the key map with its signs altered."""
-        data = real_load()
-        data["signs"] = copy.deepcopy(data["signs"])
-        change(data["signs"])
-        kk.load = lambda: data
-        try:
-            return on_keymap(keymap)
-        finally:
-            kk.load = real_load
-
-    def keymap_with(change):
-        altered = copy.deepcopy(keymap)
+    def on_manifest(change):
+        altered = copy.deepcopy(doc)
         change(altered)
-        return altered
+        return len(guard.problems(altered, tables, stated))
 
-    def entry(rows, sound):
-        return next(e for e in rows if e["sound"] == sound)
+    def on_tables(change):
+        altered = copy.deepcopy(tables)
+        change(altered)
+        return len(guard.problems(doc, altered, stated))
 
-    def share(rows):
-        entry(rows, "th")["key"] = entry(rows, "ch")["key"]
+    def lose(m):
+        del family(m, "Pirzath Carved")["codepoints"][0]["code"]
 
-    def drop(rows):
-        rows.remove(entry(rows, "th"))
+    def other(m):
+        family(m, "Pirzath Carved")["codepoints"][0]["code"] = "OTHER"
 
-    def capital(rows):
-        entry(rows, "th")["spelling"] = "Th"
+    def badly_written(m):
+        family(m, "Qalezu Hand")["codepoints"][0]["code"] = "LA-GUN"
 
-    def on_capital():
-        """Problems of a key map, and the sounds.json beside it, that spell a sound with a capital."""
-        spelled = copy.deepcopy(sounds)
-        next(s for s in spelled if s["sound"] == "th")["spelling"] = "Th"
-        return len(guard.keymap_problems(keymap_with(capital), spelled))
+    def shared(m):
+        rows = family(m, "Helonika Book")["codepoints"]
+        rows[1]["code"] = rows[0]["code"]
 
-    ai = "&#xF0230;&#xF0237;"
-    macos = layouts["macos"].replace(ai, "&#xF0230;", 1)
-    assert macos != layouts["macos"]
-    linux = "\n".join(line for line in layouts["linux"].split("\n") if "<AC03>" not in line)
-    emacs = "\n".join(line for line in layouts["emacs"].split("\n") if not line.startswith(' ("q" '))
-    windows = layouts["windows"].decode("utf-16").replace("\r\n2e\tC\t\t0\t-1", "\r\n2e\tC\t\t0\t0063")
-    windows = b"\xff\xfe" + windows.encode("utf-16-le")
-    def quotes_old(rows):
-        entry(rows, "open quote")["key"] = "["
-        entry(rows, "close quote")["key"] = "]"
+    def shared_table(t):
+        first = next(iter(t["veldikko"]))
+        second = list(t["veldikko"])[1]
+        t["veldikko"][second] = t["veldikko"][first]
 
-    star = layouts["macos"].replace('<key code="28" output="&#x002A;"/>', "", 1)
-    underscore = layouts["linux"].replace("underscore", "VoidSymbol", 1)
-    equal = layouts["emacs"].replace("(quail-define-rules\n", '(quail-define-rules\n ("=" [""])\n', 1)
-    colon = layouts["windows"].decode("utf-16").replace("\r\n27\tOEM_1\t\t0\t-1\t003a", "\r\n27\tOEM_1\t\t0\t-1\t-1")
-    colon = b"\xff\xfe" + colon.encode("utf-16-le")
-    veldikko = guard.read_layouts("veldikko")
+    def undrawn(t):
+        t["thuravark"]["U+F01FF"] = "UNDRAWN"
 
-    def on_veldikko(texts):
-        return len(guard.layout_problems("veldikko", keymap, sounds, texts))
+    def unstated():
+        altered = copy.deepcopy(stated)
+        point = next(iter(altered["zethu"]))
+        altered["zethu"][point] = "OTHER"
+        return len(guard.problems(doc, tables, altered))
 
-    carrier = veldikko["macos"].replace('<key code="7" output="&#x1ED5D;"/>', "", 1)
-    assert carrier != veldikko["macos"]
-    bar = veldikko["linux"].replace("U1ED7C", "VoidSymbol", 1)
-    assert bar != veldikko["linux"]
-    foreign = layouts["emacs"].replace('\n ("x" [""])', '\n ("x" #x1ED5D)', 1)
-    assert foreign != layouts["emacs"]
-
-    def sign_on_sound(rows):
-        next(r for r in rows if r["sign"] == "bar")["key"] = "option+t"
-
-    def sign_on_sign(rows):
-        next(r for r in rows if r["sign"] == "bar")["key"] = "x"
-
-    def sign_on_markup(rows):
-        next(r for r in rows if r["sign"] == "bar")["key"] = "shift+8"
-
-    def sign_without_script(rows):
-        next(r for r in rows if r["sign"] == "bar")["script"] = "zethu"
-
-    def sign_undrawn(rows):
-        next(r for r in rows if r["sign"] == "bar")["codepoint"] = "U+0041"
-
-    sheet, svg = guard.read_cheatsheet(script)
-
-    def on_sheet(text, picture=svg):
-        return len(guard.cheatsheet_problems(script, keymap, sounds, text, picture))
-
-    lines = sheet.split("\n")
-    no_row = "\n".join(line for line in lines if not line.startswith("| `option+t` | ![") )
-    wrong_row = sheet.replace("U+F0250 |", "U+F0251 |", 1)
-    no_key = svg.replace('data-key="option+t"', 'data-key="option+t-gone"', 1)
-    assert no_row != sheet and wrong_row != sheet and no_key != svg
-
-    good = on_layouts(layouts) + on_keymap(keymap) + on_veldikko(veldikko) + on_sheet(sheet)
+    teng_chou = set(tables["tengchou"].values())
+    good = len(guard.problems(doc, tables, stated))
     cases = [
-        ("with a key missing from the cheatsheet table", on_sheet(no_row)),
-        ("with a cheatsheet row that lists other code points", on_sheet(wrong_row)),
-        ("with a key missing from the printable keyboard", on_sheet(sheet, no_key)),
-        ("with a sign on the key of a sound", on_signs(sign_on_sound)),
-        ("with two signs on one key", on_signs(sign_on_sign)),
-        ("with a sign on a key of markup", on_signs(sign_on_markup)),
-        ("with a sign of a script with no layout", on_signs(sign_without_script)),
-        ("with a sign of a code point its face does not draw", on_signs(sign_undrawn)),
-        ("with the carrier missing from the HL Veldikko macOS layout", on_veldikko({**veldikko, "macos": carrier})),
-        ("with the bar missing from the HL Veldikko Linux layout", on_veldikko({**veldikko, "linux": bar})),
-        ("with a sign typed in another layout", on_layouts({**layouts, "emacs": foreign})),
-        ("with two sounds on one key", on_keymap(keymap_with(share))),
-        ("with a sound without a key", on_keymap(keymap_with(drop))),
-        ("with a sound spelled with a capital", on_capital()),
-        ("with the quotes back on [ and ]", on_keymap(keymap_with(quotes_old))),
-        ("with a markup character missing", on_markup(lambda m: m.remove("*"))),
-        ("with # listed as markup, on Shift+3, the key of eleven", on_markup(lambda m: m.append("#"))),
-        ("with a markup character no key types", on_markup(lambda m: m.append("é"))),
-        ("with a macOS key of markup typing nothing", on_layouts({**layouts, "macos": star})),
-        ("with a Linux key of markup typing nothing", on_layouts({**layouts, "linux": underscore})),
-        ("with an Emacs key of markup given an empty rule", on_layouts({**layouts, "emacs": equal})),
-        ("with a Windows key of markup typing nothing", on_layouts({**layouts, "windows": colon})),
-        ("with a macOS output cut short", on_layouts({**layouts, "macos": macos})),
-        ("with a Linux key line removed", on_layouts({**layouts, "linux": linux})),
-        ("with an Emacs rule removed, so the key types itself", on_layouts({**layouts, "emacs": emacs})),
-        ("with a Windows key typing a roman letter", on_layouts({**layouts, "windows": windows})),
+        ("with one character's code removed", on_manifest(lose)),
+        ("with a code that is not the code table's", on_manifest(other)),
+        ("with a code outside [A-Za-z0-9_]", on_manifest(badly_written)),
+        ("with two characters of a face on one code", on_manifest(shared)),
+        ("with two code points of a table on one code", on_tables(shared_table)),
+        ("with a code point no face draws", on_tables(undrawn)),
+        ("with a Zethu sign's code differing from the build table", unstated()),
     ]
-    stale = copy.deepcopy(committed)
-    entry(stale["sounds"], "th")["scripts"][script] = {"codepoints": "U+F0241 U+F0236"}
-    good += len(guard.encoding_problems(committed, files))
-    cases.append(("with a sounds.json that the encodings no longer spell", len(guard.encoding_problems(stale, files))))
     status = 0
+    if not {"KA", "ka"} <= teng_chou:
+        print("tools/codes/tengchou.json: error: the proof needs Teng Chou's KA and ka, two codes that differ in case alone")
+        status = 1
     for how, bad in cases:
-        print(f"keyboards: {good} failures on the layouts, {bad} on the layouts {how}")
+        print(f"glyph codes: {good} failures on the tables, {bad} on the tables {how}")
         if good or not bad:
-            print("tools/keyboards_guard.py: error: the keyboard guard must pass the layouts and fail the altered ones")
+            print("tools/codes_guard.py: error: the code guard must pass the tables and fail the altered ones")
             status = 1
     return status
 
@@ -721,6 +578,7 @@ def prove_charts() -> int:
     cases = [
         ("with a table row removed", count(md.replace(f"`&#{cp};`", ""), svgs, glyphs, pngs)),
         ("with a Code Point cell wrong", count(md.replace(f"| {first['codepoint']} |", "| U+0000 |"), svgs, glyphs, pngs)),
+        ("with a Code cell wrong", count(md.replace(f"| `{first['code']}` |", "| `OTHER` |"), svgs, glyphs, pngs)),
         ("with a chart cell removed", count(md, {k: v.replace(f'id="cp-{hex_}"', 'id="cp-0"') for k, v in svgs.items()}, glyphs, pngs)),
         ("with a glyph image removed", count(md, svgs, glyphs - {f"U+{hex_}.svg"}, pngs)),
         ("with a lowercase name", named(first["name"].lower())),
@@ -827,10 +685,10 @@ def prove_specimen_pages() -> int:
         altered["families"]["hl-qalezu-hand"]["lines"][0]["roman"] = "Shelmu zetem"
         return count([family], altered)
 
-    def script_changed():
+    def codes_changed():
         altered = copy.deepcopy(texts)
         line = altered["families"]["hl-qalezu-hand"]["lines"][0]
-        line["script"] = altered["families"]["hl-qalezu-hand"]["lines"][1]["script"]
+        line["codes"] = altered["families"]["hl-qalezu-hand"]["lines"][1]["codes"]
         return count([family], altered)
 
     def no_page():
@@ -852,7 +710,7 @@ def prove_specimen_pages() -> int:
     status = 0
     for how, bad in (
         ("with a line's roman spelling changed", roman_changed()),
-        ("with a line's code points changed", script_changed()),
+        ("with a line's glyph codes changed", codes_changed()),
         ("with a family that has no page", no_page()),
         ("with a README sample cell by relative path, unlinked", relative_cell()),
     ):
@@ -902,14 +760,14 @@ def main():
         (
             "Pirzath Carved",
             ROOT / "fonts" / "PirzathCarved-Regular.ttf",
-            lambda p: pirzath.run(p, []),
+            pirzath.run,
             stripped,
             "without GSUB",
         ),
         (
             "Pirzath Hand",
             ROOT / "fonts" / "PirzathHand-Regular.ttf",
-            lambda p: hand.run(p, []),
+            hand.run,
             stripped,
             "without GSUB",
         ),
@@ -923,28 +781,28 @@ def main():
         (
             "Thuravark Carved",
             ROOT / "fonts" / "ThuravarkCarved-Regular.ttf",
-            lambda p: thuravark.shaping(p, []),
+            thuravark.shaping,
             stripped,
             "without GSUB",
         ),
         (
             "Thuravark Carved",
             ROOT / "fonts" / "ThuravarkCarved-Regular.ttf",
-            lambda p: thuravark.shaping(p, []),
+            thuravark.shaping,
             without_lookup("crown.open"),
             "without the lookup that frames a crowned name",
         ),
         (
             "Thuravark Carved",
             ROOT / "fonts" / "ThuravarkCarved-Regular.ttf",
-            lambda p: thuravark.shaping(p, []),
+            thuravark.shaping,
             without_feature("ss01"),
             "without the bound runes",
         ),
         (
             "Thuravark Carved",
             ROOT / "fonts" / "ThuravarkCarved-Regular.ttf",
-            lambda p: thuravark.shaping(p, []),
+            thuravark.shaping,
             always_on("ss01"),
             "with the bound runes on in plain text",
         ),
@@ -958,14 +816,14 @@ def main():
         (
             "Qalezu Hand",
             ROOT / "fonts" / "QalezuHand-Regular.ttf",
-            lambda p: qalezu.run(p, []),
+            qalezu.run,
             without_th,
             "without the th sign",
         ),
         (
             "Qalezu Hand",
             ROOT / "fonts" / "QalezuHand-Regular.ttf",
-            lambda p: qalezu.run(p, []),
+            qalezu.run,
             stripped,
             "without GSUB, so that no catch fuses with its sign",
         ),
@@ -979,34 +837,34 @@ def main():
         (
             "Semaron Kuriale",
             ROOT / "fonts" / "SemaronKuriale-Regular.ttf",
-            lambda p: semaron.run(p, []),
+            semaron.run,
             stripped,
             "without GSUB",
         ),
         (
             "Semaron Kuriale",
             ROOT / "fonts" / "SemaronKuriale-Regular.ttf",
-            lambda p: semaron.run(p, []),
+            semaron.run,
             without_gpos,
             "without GPOS",
         ),
-        ("Veldikko", veldikko_font, lambda p: veldikko.run(p, []), stripped, "without GSUB"),
-        ("Veldikko", veldikko_font, lambda p: veldikko.run(p, []), without_gpos, "without GPOS"),
+        ("Veldikko", veldikko_font, veldikko.run, stripped, "without GSUB"),
+        ("Veldikko", veldikko_font, veldikko.run, without_gpos, "without GPOS"),
         ("Veldikko", veldikko_font, veldikko_check.check, stripped, "without GSUB"),
         ("Veldikko", veldikko_font, veldikko_check.check, without_gpos, "without GPOS"),
         ("Veldikko", veldikko_font, load("vertical_win", ROOT / "tools" / "vertical.py").check, win_to_line_box,
          "with its Windows ascent and descent cut to the shared line box, inside its risers and tails"),
-        ("Vedyakshara Classical", vedyakshara_font, lambda p: vedyakshara.run(p, []), stripped, "without GSUB"),
+        ("Vedyakshara Classical", vedyakshara_font, vedyakshara.run, stripped, "without GSUB"),
         ("Vedyakshara Classical", vedyakshara_font, vedyakshara_check.check, stripped, "without GSUB"),
         ("Vedyakshara Classical", vedyakshara_font, vedyakshara_check.check, without_gpos, "without GPOS"),
         ("Vedyakshara Classical", vedyakshara_font, load("vertical_ved", ROOT / "tools" / "vertical.py").check,
          win_to_line_box, "with its Windows ascent and descent cut to the shared line box, inside its hooks"),
-        ("Helonika Book", helonika_font, lambda p: helonika.run(p, {}), without_th, "without the small letter th"),
-        ("Helonika Book", helonika_font, lambda p: helonika.run(p, {}), without_kh, "without the small letter kh, which Bizarian and Bethuan write"),
-        ("Helonika Book", helonika_font, lambda p: helonika.run(p, {}), without_gpos, "without GPOS, so a space after the raised dot keeps its advance"),
+        ("Helonika Book", helonika_font, helonika.run, without_th, "without the small letter th"),
+        ("Helonika Book", helonika_font, helonika.run, without_kh, "without the small letter kh"),
+        ("Helonika Book", helonika_font, helonika.run, without_gpos, "without GPOS, so a space after the raised dot keeps its advance"),
         ("Helonika Book", helonika_font, helonika_check.check, stripped, "without GSUB"),
         ("Helonika Book", helonika_font, helonika_check.check, without_gpos, "without GPOS"),
-        ("Teng Chou", teng_chou_font, lambda p: teng_chou.run(p, []), without_teng, "without the character teng"),
+        ("Teng Chou", teng_chou_font, teng_chou.run, without_teng, "without the character teng"),
         ("Teng Chou", teng_chou_font, teng_chou_check.check, without_teng, "without the character teng"),
         ("Teng Chou", teng_chou_font, teng_chou_check.check, without_vmtx, "without vertical metrics"),
         ("Teng Chou columns", teng_chou_font, load("vertical_columns", ROOT / "tools" / "vertical.py").check, off_column,
@@ -1073,15 +931,8 @@ def main():
                 status = 1
     if only is not None:
         sys.exit(status)
-    bare = helonika.encoding_files(["helonika.json", "bizarian=helonika-bizarian.json"])
-    if bare != {"helonika": "helonika.json", "bizarian": "helonika-bizarian.json"}:
-        print(f"{ROOT / 'tools' / 'helonika' / 'guard.py'}: error: a bare --encoding FILE must name the helonika encoding, got {bare}")
-        status = 1
-    status |= prove_keys(codepoints)
     status |= prove_registry(codepoints)
-    # --encoding SCRIPT=FILE applies a script's encoding from a file, as the keyboard guard does
-    files = dict(sys.argv[i + 1].split("=", 1) for i, arg in enumerate(sys.argv[:-1]) if arg == "--encoding")
-    status |= prove_keyboards(files)
+    status |= prove_codes()
     status |= prove_charts()
     status |= prove_paint()
     status |= prove_stroke_mix()

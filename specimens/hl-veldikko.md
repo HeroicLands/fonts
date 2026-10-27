@@ -2,7 +2,7 @@
 
 Sinale (elvish) joined calligraphic hand, written right to left.
 
-[Back to the README](../README.md) · [Character chart](../charts/veldikko.md) · Keyboard cheatsheet: [HL Veldikko](../keyboards/veldikko.md)
+[Back to the README](../README.md) · [Character chart](../charts/veldikko.md)
 
 ## The letters
 

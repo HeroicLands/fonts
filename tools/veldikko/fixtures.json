@@ -1,34 +1,88 @@
 {
-  "fixtures": [
-    {"latin": "nuuva", "glyphs": ["n", "vowel.u", "long", "v", "vowel.a"]},
-    {"latin": "mollu", "glyphs": ["m", "vowel.o", "l", "bar", "vowel.u"]},
-    {"latin": "molu", "glyphs": ["m", "vowel.o", "l", "vowel.u"]},
-    {"latin": "kalpi", "glyphs": ["k", "vowel.a", "l", "p", "vowel.i"]},
-    {"latin": "halpi", "glyphs": ["h", "vowel.a", "l", "p", "vowel.i"]},
-    {"latin": "eilava", "glyphs": ["carrier", "vowel.e", "vowel.i", "l", "vowel.a", "v", "vowel.a"]},
-    {"latin": "aamas", "glyphs": ["carrier", "vowel.a", "long", "m", "vowel.a", "s"]},
-    {"latin": "rivy", "glyphs": ["r", "vowel.i", "v", "vowel.y"]},
-    {"latin": "ennedhi", "glyphs": ["carrier", "vowel.e", "n", "bar", "vowel.e", "dh", "vowel.i"]},
-    {"latin": "lonku", "glyphs": ["l", "vowel.o", "ng", "k", "vowel.u"]},
-    {"latin": "leësy", "glyphs": ["l", "vowel.edieresis", "long", "s", "vowel.y"]},
-    {"latin": "huoma", "glyphs": ["h", "vowel.u", "vowel.o", "m", "vowel.a"]},
-    {"latin": "kalpitti", "glyphs": ["k", "vowel.a", "l", "p", "vowel.i", "t", "bar", "vowel.i"]},
-    {"latin": "seëlis", "glyphs": ["s", "vowel.edieresis", "long", "l", "vowel.i", "s"]},
-    {"latin": "eëvi", "glyphs": ["carrier", "vowel.edieresis", "long", "v", "vowel.i"]},
-    {"latin": "aulira", "glyphs": ["carrier", "vowel.a", "vowel.u", "l", "vowel.i", "r", "vowel.a"]},
-    {"latin": "sinalo", "glyphs": ["s", "vowel.i", "n", "vowel.a", "l", "vowel.o"]},
-    {"latin": "naë", "glyphs": ["n", "vowel.a", "carrier", "vowel.edieresis"]},
-    {"latin": "olde", "glyphs": ["carrier", "vowel.o", "l", "d", "vowel.e"]},
-    {"latin": "luuro nuuva", "glyphs": ["l", "vowel.u", "long", "r", "vowel.o", "space", "n", "vowel.u", "long", "v", "vowel.a"]},
-    {"latin": "nuuva-nu", "glyphs": ["n", "vowel.u", "long", "v", "vowel.a", "space", "n", "vowel.u"]},
-    {"latin": "-sto", "glyphs": ["s", "t", "vowel.o"]},
-    {"latin": "a", "glyphs": ["carrier", "vowel.a"]}
-  ],
-  "written": [
-    {"latin": "beth", "codepoints": ["U+1ED50", "U+E0142", "U+E01EF", "U+1ED73", "U+1ED53", "U+1ED59"]},
-    {"latin": "gora", "codepoints": ["U+1ED58", "U+E0147", "U+E01EF", "U+1ED71", "U+1ED5C", "U+1ED70"]},
-    {"latin": "fëa", "codepoints": ["U+1ED51", "U+E0146", "U+E01EF", "U+1ED76", "U+1ED5D", "U+1ED70", "U+E015B", "U+E0145", "U+E0142", "U+E015D", "U+E0141", "U+E01EF"]},
-    {"latin": "táli", "codepoints": ["U+1ED53", "U+1ED70", "U+1ED7B", "U+E015B", "U+E0145", "U+E0111", "U+E015D", "U+E01EF", "U+1ED5B", "U+1ED74"]},
-    {"latin": "luuro.", "codepoints": ["U+1ED5B", "U+1ED72", "U+1ED78", "U+1ED5C", "U+1ED71", "U+E0100"]}
-  ]
+    "fixtures": [
+        {
+            "codes": "NUVALLE SIGN_U LONG VELUNNA SIGN_A"
+        },
+        {
+            "codes": "MERINNE SIGN_O LOIMARA DOUBLING_BAR SIGN_U"
+        },
+        {
+            "codes": "MERINNE SIGN_O LOIMARA SIGN_U"
+        },
+        {
+            "codes": "KELANNA SIGN_A LOIMARA PELANNE SIGN_I"
+        },
+        {
+            "codes": "HUOMEL SIGN_A LOIMARA PELANNE SIGN_I"
+        },
+        {
+            "codes": "CARRIER SIGN_E SIGN_I LOIMARA SIGN_A VELUNNA SIGN_A"
+        },
+        {
+            "codes": "CARRIER SIGN_A LONG MERINNE SIGN_A SENNUVI"
+        },
+        {
+            "codes": "RIVENNA SIGN_I VELUNNA SIGN_Y"
+        },
+        {
+            "codes": "CARRIER SIGN_E NUVALLE DOUBLING_BAR SIGN_E DHAERIS SIGN_I"
+        },
+        {
+            "codes": "LOIMARA SIGN_O INGELI KELANNA SIGN_U"
+        },
+        {
+            "codes": "LOIMARA SIGN_E_DIAERESIS LONG SENNUVI SIGN_Y"
+        },
+        {
+            "codes": "HUOMEL SIGN_U SIGN_O MERINNE SIGN_A"
+        },
+        {
+            "codes": "KELANNA SIGN_A LOIMARA PELANNE SIGN_I TESSALIN DOUBLING_BAR SIGN_I"
+        },
+        {
+            "codes": "SENNUVI SIGN_E_DIAERESIS LONG LOIMARA SIGN_I SENNUVI"
+        },
+        {
+            "codes": "CARRIER SIGN_E_DIAERESIS LONG VELUNNA SIGN_I"
+        },
+        {
+            "codes": "CARRIER SIGN_A SIGN_U LOIMARA SIGN_I RIVENNA SIGN_A"
+        },
+        {
+            "codes": "SENNUVI SIGN_I NUVALLE SIGN_A LOIMARA SIGN_O"
+        },
+        {
+            "codes": "NUVALLE SIGN_A CARRIER SIGN_E_DIAERESIS"
+        },
+        {
+            "codes": "CARRIER SIGN_O LOIMARA DORELLE SIGN_E"
+        },
+        {
+            "codes": "LOIMARA SIGN_U LONG RIVENNA SIGN_O U+0020 NUVALLE SIGN_U LONG VELUNNA SIGN_A"
+        },
+        {
+            "codes": "NUVALLE SIGN_U LONG VELUNNA SIGN_A U+0020 NUVALLE SIGN_U"
+        },
+        {
+            "codes": "SENNUVI TESSALIN SIGN_O"
+        },
+        {
+            "codes": "CARRIER SIGN_A"
+        },
+        {
+            "codes": "PELANNE SIGN_E TESSALIN HUOMEL"
+        },
+        {
+            "codes": "KELANNA SIGN_O RIVENNA SIGN_A"
+        },
+        {
+            "codes": "VELUNNA SIGN_E_DIAERESIS CARRIER SIGN_A"
+        },
+        {
+            "codes": "TESSALIN SIGN_A EMPHASIS LOIMARA SIGN_I"
+        },
+        {
+            "codes": "LOIMARA SIGN_U LONG RIVENNA SIGN_O"
+        }
+    ]
 }

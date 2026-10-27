@@ -1,70 +1,55 @@
 # Copyright (c) 2026 Tom Rodriguez ("Toasty") — <toasty@heroiclands.org>
 # SPDX-License-Identifier: OFL-1.1
-"""Write every Khelathi lexicon form in Qalezu and assert the font shapes it rightly.
+"""Shape Qalezu Hand's fixtures and assert the font draws each one rightly.
 
     .venv/bin/python tools/qalezu-hand/guard.py [--font fonts/QalezuHand-Regular.ttf]
-                                         [--thalorna ~/dev/HeroicLands/thalorna | --note FILE]
-                                         [--encoding FILE | --fixtures-only]
-
-The forms come from the ``words`` forms and the ``names`` of the frontmatter of
-``assets/content/Skills/Languages/Khelathi.md`` on the thalorna repository's
-``origin/main``. Roman is lowercase, so each form is lowercased, then written in
-Qalezu's code points by the ``qalezu`` encoding
-(``encodings/qalezu.json``, or the file ``--encoding`` names), and the result is
-shaped right to left.
 
 The font draws each code point as its sign, with one contextual form: a catch
 followed by a consonant sign or a doubled sign is drawn as that sign's
 catch-before form (``<sign>.catch``, three reed dabs in a triangle over the
 sign), which has no code point of its own. Two identical consonant signs stay
-two signs; a doubled consonant is its own character, which the encoding writes.
-So the glyphs a form must shape to follow from the code points the encoding
-wrote, with each catch and the sign after it fused, in reverse order for the
-visual run, and none ``.notdef`` or the box.
+two signs; a doubled consonant is its own character. So the glyphs a sequence must
+shape to follow from its code points (``drawn``), with each catch and the sign after
+it fused, in reverse order for the visual run, and none ``.notdef`` or the box.
 
-The fixtures in ``fixtures.json`` give a roman spelling and the signs it is
-drawn with, in reading order, and are written through the encoding and shaped
-too, so the guard checks the encoding and the face together. A character the
-encoding has no row for (``c`` outside ``ch``, ``x``, a capital, or a mark the script lacks)
-passes through it and prints the box: the guard lists the forms that hold one,
-and its ``unencodable`` fixtures assert both. Targets come from ``encoding.json``.
+Each fixture in ``fixtures.json`` is a sequence of Qalezu's glyph codes
+(``tools/codes/qalezu.json``), with ``U+0020`` for the space, and the signs it is drawn
+with, in reading order. The guard asserts that ``drawn`` gives those signs and that the
+font, shaping the sequence right to left, gives them too. Targets come from
+``encoding.json``, the table of the font's code points.
 """
 
 import argparse
 import json
-import subprocess
 import sys
 from pathlib import Path
 
-import yaml
-
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
-from encoded import Encoded, drawn_names, visible  # noqa: E402
+import codes  # noqa: E402
 from render import Renderer  # noqa: E402
 
-ROOT = Path(__file__).resolve().parent.parent.parent
-NOTE = "assets/content/Skills/Languages/Khelathi.md"
-ENCODING = Path(__file__).resolve().parent / "encoding.json"
-FIXTURE_FILE = Path(__file__).resolve().parent / "fixtures.json"
-FACE = "qalezu-hand"
+HERE = Path(__file__).resolve().parent
+ROOT = HERE.parent.parent
+ENCODING = HERE / "encoding.json"
+FIXTURE_FILE = HERE / "fixtures.json"
+SCRIPT = "qalezu"
 BOX = "notdef.box"
+SPACE = " "
 
 
 def load_encoding():
     enc = json.loads(ENCODING.read_text(encoding="utf-8"))
     name_of = {chr(int(g["codepoint"][2:], 16)): g["glyph"] for g in enc["glyphs"]}
     fused = {f["base"]: f["glyph"] for f in enc["forms"]}
-    catch = next(g["glyph"] for g in enc["glyphs"] if "'" in g.get("typing", []))
-    return name_of, fused, catch
+    return name_of, fused, name_of[codes.characters(SCRIPT)["CATCH"]]
 
 
 NAME_OF, FUSED, CATCH = load_encoding()
-SPACE = " "
 
 
 def drawn(text: str) -> list[str]:
     """The glyphs, in reading order, that the face draws for a string of code points."""
-    names = ["space" if c == SPACE else NAME_OF.get(c, BOX) for c in visible(text)]
+    names = ["space" if c == SPACE else NAME_OF.get(c, BOX) for c in text]
     out: list[str] = []
     for name in names:
         if out and out[-1] == CATCH and name in FUSED:
@@ -74,105 +59,29 @@ def drawn(text: str) -> list[str]:
     return out
 
 
-# Each fixture: the roman spelling and the signs it is drawn with, in reading order.
-_fixtures = json.loads(FIXTURE_FILE.read_text(encoding="utf-8"))
-FIXTURES = [(f["latin"], f["signs"]) for f in _fixtures["fixtures"]]
-UNENCODABLE = [(f["latin"], f["letter"]) for f in _fixtures["unencodable"]]
+# Each fixture: a sequence of codes and the signs it is drawn with, in reading order.
+FIXTURES = [(f["codes"], f["signs"]) for f in json.loads(FIXTURE_FILE.read_text(encoding="utf-8"))["fixtures"]]
 
 
-def fixture_texts() -> list[str]:
-    """Every roman text the fixtures write through the encoding."""
-    return [t for t, _ in FIXTURES] + [t for t, _ in UNENCODABLE]
-
-
-def lexicon(thalorna: Path | None, note: Path | None) -> dict:
-    """The ``data`` of the Khelathi note's frontmatter."""
-    if note:
-        text = note.read_text(encoding="utf-8")
-    else:
-        text = subprocess.run(
-            ["git", "-C", str(thalorna), "show", f"origin/main:{NOTE}"],
-            check=True,
-            capture_output=True,
-            text=True,
-        ).stdout
-    return yaml.safe_load(text.split("\n---\n", 1)[0].lstrip("-\n"))["data"]
-
-
-def lexicon_forms(thalorna: Path | None, note: Path | None) -> list[str]:
-    data = lexicon(thalorna, note)
-    forms = [w["form"] for w in data["words"]]
-    names = data["names"]
-    for group in names["given"].values():
-        forms += group
-    forms += names["house"] + names["place"]
-    if not forms:
-        raise SystemExit("the lexicon is empty")
-    return [form.lower() for form in forms]
-
-
-def run(font: Path, forms: list[str], encoded: Encoded | None = None) -> list[str]:
+def run(font: Path) -> list[str]:
     r = Renderer(font)
-    m = encoded or Encoded(FACE)
-    records = m.records(forms + fixture_texts())
-    # The space has no row: it passes through, and the face draws it.
-    for rec in records:
-        if rec.get("unencoded"):
-            rec["unencoded"] = [c for c in rec["unencoded"] if c != SPACE]
-    written = dict(zip(forms + fixture_texts(), records))
     failures = []
-    shaped, signs, unencoded = 0, 0, []
-    for form in forms:
-        rec = written[form]
-        if rec.get("unencoded"):
-            unencoded.append((form, rec["unencoded"]))
-            continue
-        want = drawn(rec["text"])
-        got = drawn_names(r, rec["text"], direction="rtl")
-        shaped += 1
-        signs += len(want)
-        if ".notdef" in got or BOX in got:
-            failures.append(f"{form}: .notdef or the box in {got}")
-        elif got != want[::-1]:
-            failures.append(f"{form}: shaped {got}, expected {want[::-1]}")
-    for latin, want in FIXTURES:
-        rec = written[latin]
-        if rec.get("unencoded"):
-            failures.append(f"{latin!r}: the encoding has no row for {rec['unencoded']}, expected {want}")
-            continue
-        if drawn(rec["text"]) != want:
-            failures.append(f"{latin!r}: written as {drawn(rec['text'])}, expected {want}")
-        got = drawn_names(r, rec["text"], direction="rtl")
+    for sequence, want in FIXTURES:
+        text = codes.text(SCRIPT, sequence)
+        if drawn(text) != want:
+            failures.append(f"{sequence}: drawn as {drawn(text)}, expected {want}")
+        got = r.glyph_names(text, direction="rtl")
         if got != want[::-1]:
-            failures.append(f"{latin!r}: shaped {got}, expected {want[::-1]}")
-    for latin, letter in UNENCODABLE:
-        rec = written[latin]
-        if letter not in rec.get("unencoded", []):
-            failures.append(f"{latin!r}: written as {drawn(rec['text'])}, expected no row for {letter!r}")
-        elif BOX not in drawn_names(r, rec["text"], direction="rtl"):
-            failures.append(f"{latin!r}: {letter!r} does not print the box")
-    for form, letters in unencoded:
-        print(f"{NOTE}: warning: the form {form!r} has {', '.join(map(repr, letters))}, which the qalezu encoding does not write")
-    print(
-        f"{font}: {len(forms)} forms, {shaped} written and shaped with {signs} signs, "
-        f"{len(unencoded)} with a character the encoding does not write, {len(FIXTURES) + len(UNENCODABLE)} fixtures, "
-        f"{len(failures)} failures"
-    )
+            failures.append(f"{sequence}: shaped {got}, expected {want[::-1]}")
+    print(f"{font}: {len(FIXTURES)} fixtures, {len(failures)} failures")
     return failures
 
 
 def main():
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     ap.add_argument("--font", default=str(ROOT / "fonts" / "QalezuHand-Regular.ttf"))
-    ap.add_argument("--thalorna", default=str(Path.home() / "dev/HeroicLands/thalorna"))
-    ap.add_argument("--note", help="read the language note from this file instead of git")
-    ap.add_argument("--encoding", help="apply this encoding file instead of encodings/qalezu.json")
-    ap.add_argument("--fixtures-only", action="store_true",
-                    help="shape the fixtures alone and read no lexicon")
     args = ap.parse_args()
-    forms = [] if args.fixtures_only else lexicon_forms(Path(args.thalorna), Path(args.note) if args.note else None)
-    encoded = Encoded(FACE, args.encoding)
-    failures = run(Path(args.font), forms, encoded)
+    failures = run(Path(args.font))
     for f in failures[:40]:
         print(f"{args.font}: error: {f}")
     if len(failures) > 40:

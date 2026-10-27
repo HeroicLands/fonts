@@ -1,0 +1,939 @@
+{
+    "fixtures": [
+        {
+            "codes": "A",
+            "glyphs": [
+                "a"
+            ]
+        },
+        {
+            "codes": "E",
+            "glyphs": [
+                "e"
+            ]
+        },
+        {
+            "codes": "I",
+            "glyphs": [
+                "i"
+            ]
+        },
+        {
+            "codes": "ODEL",
+            "glyphs": [
+                "o"
+            ]
+        },
+        {
+            "codes": "U",
+            "glyphs": [
+                "u"
+            ]
+        },
+        {
+            "codes": "PA",
+            "glyphs": [
+                "p"
+            ]
+        },
+        {
+            "codes": "BRELD",
+            "glyphs": [
+                "b"
+            ]
+        },
+        {
+            "codes": "FOSK",
+            "glyphs": [
+                "f"
+            ]
+        },
+        {
+            "codes": "VULD",
+            "glyphs": [
+                "v"
+            ]
+        },
+        {
+            "codes": "TING",
+            "glyphs": [
+                "t"
+            ]
+        },
+        {
+            "codes": "DRESK",
+            "glyphs": [
+                "d"
+            ]
+        },
+        {
+            "codes": "THRESK",
+            "glyphs": [
+                "th"
+            ]
+        },
+        {
+            "codes": "DHA",
+            "glyphs": [
+                "dh"
+            ]
+        },
+        {
+            "codes": "KNERV",
+            "glyphs": [
+                "k"
+            ]
+        },
+        {
+            "codes": "GELDRA",
+            "glyphs": [
+                "g"
+            ]
+        },
+        {
+            "codes": "KHA",
+            "glyphs": [
+                "kh"
+            ]
+        },
+        {
+            "codes": "GHA",
+            "glyphs": [
+                "gh"
+            ]
+        },
+        {
+            "codes": "SVELD",
+            "glyphs": [
+                "s"
+            ]
+        },
+        {
+            "codes": "ZA",
+            "glyphs": [
+                "z"
+            ]
+        },
+        {
+            "codes": "HVELM",
+            "glyphs": [
+                "h"
+            ]
+        },
+        {
+            "codes": "LA",
+            "glyphs": [
+                "l"
+            ]
+        },
+        {
+            "codes": "RELTH",
+            "glyphs": [
+                "r"
+            ]
+        },
+        {
+            "codes": "HLA",
+            "glyphs": [
+                "hl"
+            ]
+        },
+        {
+            "codes": "MERV",
+            "glyphs": [
+                "m"
+            ]
+        },
+        {
+            "codes": "NELTH",
+            "glyphs": [
+                "n"
+            ]
+        },
+        {
+            "codes": "NGA",
+            "glyphs": [
+                "ng"
+            ]
+        },
+        {
+            "codes": "WA",
+            "glyphs": [
+                "w"
+            ]
+        },
+        {
+            "codes": "JA",
+            "glyphs": [
+                "j"
+            ]
+        },
+        {
+            "codes": "JA A",
+            "glyphs": [
+                "j",
+                "a"
+            ]
+        },
+        {
+            "codes": "JA U",
+            "glyphs": [
+                "j",
+                "u"
+            ]
+        },
+        {
+            "codes": "BRELD JA A RELTH NELTH",
+            "glyphs": [
+                "b",
+                "j",
+                "a",
+                "r",
+                "n"
+            ]
+        },
+        {
+            "codes": "E I",
+            "glyphs": [
+                "e",
+                "i"
+            ]
+        },
+        {
+            "codes": "BRELD I",
+            "glyphs": [
+                "b",
+                "i"
+            ]
+        },
+        {
+            "codes": "I I",
+            "glyphs": [
+                "i",
+                "i"
+            ]
+        },
+        {
+            "codes": "A ACUTE",
+            "glyphs": [
+                "a",
+                "a.acute"
+            ]
+        },
+        {
+            "codes": "E ACUTE",
+            "glyphs": [
+                "e",
+                "e.acute"
+            ]
+        },
+        {
+            "codes": "I ACUTE",
+            "glyphs": [
+                "i",
+                "i.acute"
+            ]
+        },
+        {
+            "codes": "ODEL ACUTE",
+            "glyphs": [
+                "o",
+                "o.acute"
+            ]
+        },
+        {
+            "codes": "U ACUTE",
+            "glyphs": [
+                "u",
+                "u.acute"
+            ]
+        },
+        {
+            "codes": "A A",
+            "glyphs": [
+                "a",
+                "a"
+            ]
+        },
+        {
+            "codes": "U U",
+            "glyphs": [
+                "u",
+                "u"
+            ]
+        },
+        {
+            "codes": "RELTH U ACUTE NELTH",
+            "glyphs": [
+                "r",
+                "u",
+                "u.acute",
+                "n"
+            ]
+        },
+        {
+            "codes": "NELTH NELTH",
+            "glyphs": [
+                "n",
+                "n"
+            ]
+        },
+        {
+            "codes": "LA LA",
+            "glyphs": [
+                "l",
+                "l"
+            ]
+        },
+        {
+            "codes": "TING TING",
+            "glyphs": [
+                "t",
+                "t"
+            ]
+        },
+        {
+            "codes": "KNERV KNERV",
+            "glyphs": [
+                "k",
+                "k"
+            ]
+        },
+        {
+            "codes": "RELTH RELTH",
+            "glyphs": [
+                "r",
+                "r"
+            ]
+        },
+        {
+            "codes": "PA PA",
+            "glyphs": [
+                "p",
+                "p"
+            ]
+        },
+        {
+            "codes": "THRESK THRESK",
+            "glyphs": [
+                "th",
+                "th"
+            ]
+        },
+        {
+            "codes": "HLA HLA",
+            "glyphs": [
+                "hl",
+                "hl"
+            ]
+        },
+        {
+            "codes": "NGA NGA",
+            "glyphs": [
+                "ng",
+                "ng"
+            ]
+        },
+        {
+            "codes": "NELTH GHA",
+            "glyphs": [
+                "n",
+                "gh"
+            ]
+        },
+        {
+            "codes": "HVELM RELTH",
+            "glyphs": [
+                "h",
+                "r"
+            ]
+        },
+        {
+            "codes": "HVELM NELTH",
+            "glyphs": [
+                "h",
+                "n"
+            ]
+        },
+        {
+            "codes": "SVELD HVELM",
+            "glyphs": [
+                "s",
+                "h"
+            ]
+        },
+        {
+            "codes": "HLA A RELTH THRESK",
+            "glyphs": [
+                "hl",
+                "a",
+                "r",
+                "th"
+            ]
+        },
+        {
+            "codes": "U+00C1",
+            "glyphs": [
+                "notdef.box"
+            ]
+        },
+        {
+            "codes": "U+0054 U+0048",
+            "glyphs": [
+                "notdef.box",
+                "notdef.box"
+            ]
+        },
+        {
+            "codes": "U+0048 LA A RELTH THRESK",
+            "glyphs": [
+                "notdef.box",
+                "l",
+                "a",
+                "r",
+                "th"
+            ]
+        },
+        {
+            "codes": "DHA DHA",
+            "glyphs": [
+                "dh",
+                "dh"
+            ]
+        },
+        {
+            "codes": "KHA KHA",
+            "glyphs": [
+                "kh",
+                "kh"
+            ]
+        },
+        {
+            "codes": "SVELD KNERV A LA DRESK HVELM RELTH I NGA RELTH",
+            "glyphs": [
+                "s",
+                "k",
+                "a",
+                "l",
+                "d",
+                "h",
+                "r",
+                "i",
+                "ng",
+                "r"
+            ]
+        },
+        {
+            "codes": "TING HVELM",
+            "glyphs": [
+                "t",
+                "h"
+            ]
+        },
+        {
+            "codes": "TING U+2010 HVELM",
+            "glyphs": [
+                "t",
+                "notdef.box",
+                "h"
+            ]
+        },
+        {
+            "codes": "DIGIT_ZERO DIGIT_ONE DIGIT_TWO DIGIT_THREE DIGIT_FOUR DIGIT_FIVE DIGIT_SIX DIGIT_SEVEN DIGIT_EIGHT DIGIT_NINE",
+            "glyphs": [
+                "num.0",
+                "num.1",
+                "num.2",
+                "num.3",
+                "num.4",
+                "num.5",
+                "num.6",
+                "num.7",
+                "num.8",
+                "num.9"
+            ]
+        },
+        {
+            "codes": "DIGIT_ONE DIGIT_TWO DIGIT_EIGHT",
+            "glyphs": [
+                "num.1",
+                "num.2",
+                "num.8"
+            ]
+        },
+        {
+            "codes": "DIGIT_ZERO I DIGIT_ZERO",
+            "glyphs": [
+                "num.0",
+                "i",
+                "num.0"
+            ]
+        },
+        {
+            "codes": "RELTH U ACUTE NELTH STOP",
+            "glyphs": [
+                "r",
+                "u",
+                "u.acute",
+                "n",
+                "period"
+            ]
+        },
+        {
+            "codes": "A U+0020 BRELD",
+            "glyphs": [
+                "a",
+                "space",
+                "b"
+            ]
+        },
+        {
+            "codes": "STOP STOP U+003B U+003A",
+            "glyphs": [
+                "period",
+                "period",
+                "notdef.box",
+                "notdef.box"
+            ]
+        },
+        {
+            "codes": "A U+0020 BRELD STOP U+0020 I STOP U+0020 DRESK STOP U+0020 E U+0020 FOSK U+0020 GELDRA U+0020 HVELM",
+            "glyphs": [
+                "a",
+                "space",
+                "b",
+                "period",
+                "space",
+                "i",
+                "period",
+                "space",
+                "d",
+                "period",
+                "space",
+                "e",
+                "space",
+                "f",
+                "space",
+                "g",
+                "space",
+                "h"
+            ]
+        },
+        {
+            "codes": "U+0022 U+0027 U+0028 U+0029",
+            "glyphs": [
+                "notdef.box",
+                "notdef.box",
+                "notdef.box",
+                "notdef.box"
+            ]
+        },
+        {
+            "codes": "U+201C A U+201D",
+            "glyphs": [
+                "notdef.box",
+                "a",
+                "notdef.box"
+            ]
+        },
+        {
+            "codes": "A BRELD",
+            "glyphs": [
+                "a",
+                "b"
+            ]
+        },
+        {
+            "codes": "U+003C U+003E U+005B U+005D",
+            "glyphs": [
+                "notdef.box",
+                "notdef.box",
+                "notdef.box",
+                "notdef.box"
+            ]
+        },
+        {
+            "codes": "U+0040 U+0023 U+0024 U+0025 U+0026",
+            "glyphs": [
+                "notdef.box",
+                "notdef.box",
+                "notdef.box",
+                "notdef.box",
+                "notdef.box"
+            ]
+        },
+        {
+            "codes": "U+0063 KNERV U+0078",
+            "glyphs": [
+                "notdef.box",
+                "k",
+                "notdef.box"
+            ]
+        },
+        {
+            "codes": "AI",
+            "glyphs": [
+                "ai"
+            ]
+        },
+        {
+            "codes": "AU",
+            "glyphs": [
+                "au"
+            ]
+        },
+        {
+            "codes": "OI",
+            "glyphs": [
+                "oi"
+            ]
+        },
+        {
+            "codes": "AI AU OI",
+            "glyphs": [
+                "ai",
+                "au",
+                "oi"
+            ]
+        },
+        {
+            "codes": "CROWN_OPEN THRESK A U RELTH A SVELD CROWN_CLOSE",
+            "glyphs": [
+                "crown.open.rail",
+                "th.crown",
+                "a.crown",
+                "u.crown",
+                "r.crown",
+                "a.crown",
+                "s.crown",
+                "crown.close.rail"
+            ]
+        },
+        {
+            "codes": "CROWN_OPEN THRESK I LA A NELTH DRESK U+0020 THRESK A U RELTH A SVELD CROWN_CLOSE",
+            "glyphs": [
+                "crown.open.rail",
+                "th.crown",
+                "i.crown",
+                "l.crown",
+                "a.crown",
+                "n.crown",
+                "d.crown",
+                "space.crown",
+                "th.crown",
+                "a.crown",
+                "u.crown",
+                "r.crown",
+                "a.crown",
+                "s.crown",
+                "crown.close.rail"
+            ]
+        },
+        {
+            "codes": "CROWN_OPEN A ACUTE RELTH DRESK A VULD ODEL NELTH CROWN_CLOSE",
+            "glyphs": [
+                "crown.open.rail",
+                "a.crown",
+                "a.acute.crown",
+                "r.crown",
+                "d.crown",
+                "a.crown",
+                "v.crown",
+                "o.crown",
+                "n.crown",
+                "crown.close.rail"
+            ]
+        },
+        {
+            "codes": "CROWN_OPEN DIGIT_ONE DIGIT_TWO DIGIT_EIGHT CROWN_CLOSE",
+            "glyphs": [
+                "crown.open.rail",
+                "num.1.crown",
+                "num.2.crown",
+                "num.8.crown",
+                "crown.close.rail"
+            ]
+        },
+        {
+            "codes": "CROWN_OPEN CROWN_CLOSE",
+            "glyphs": [
+                "crown.open.rail",
+                "crown.close.rail"
+            ]
+        },
+        {
+            "codes": "CROWN_OPEN AI AU CROWN_CLOSE",
+            "glyphs": [
+                "crown.open.rail",
+                "ai.crown",
+                "au.crown",
+                "crown.close.rail"
+            ]
+        },
+        {
+            "codes": "CROWN_OPEN THRESK A U RELTH A SVELD",
+            "glyphs": [
+                "crown.open",
+                "th",
+                "a",
+                "u",
+                "r",
+                "a",
+                "s"
+            ]
+        },
+        {
+            "codes": "THRESK A U RELTH A SVELD CROWN_CLOSE",
+            "glyphs": [
+                "th",
+                "a",
+                "u",
+                "r",
+                "a",
+                "s",
+                "crown.close"
+            ]
+        },
+        {
+            "codes": "CROWN_OPEN A U+003B BRELD CROWN_CLOSE",
+            "glyphs": [
+                "crown.open",
+                "a",
+                "notdef.box",
+                "b",
+                "crown.close"
+            ]
+        },
+        {
+            "codes": "CROWN_OPEN A CROWN_CLOSE CROWN_OPEN",
+            "glyphs": [
+                "crown.open.rail",
+                "a.crown",
+                "crown.close.rail",
+                "crown.open"
+            ]
+        },
+        {
+            "codes": "CROWN_OPEN AI CROWN_OPEN AU CROWN_CLOSE",
+            "glyphs": [
+                "crown.open",
+                "ai",
+                "crown.open.rail",
+                "au.crown",
+                "crown.close.rail"
+            ]
+        },
+        {
+            "codes": "CROWN_OPEN AI AI AI AI AI AI AI AI AI AI AI AI AI AI AI AI AI AI AI AI AI AI AI AI AI AI AI AI AI AI AI AI AI AI AI AI AI AI AI CROWN_CLOSE",
+            "glyphs": [
+                "crown.open.rail",
+                "ai.crown",
+                "ai.crown",
+                "ai.crown",
+                "ai.crown",
+                "ai.crown",
+                "ai.crown",
+                "ai.crown",
+                "ai.crown",
+                "ai.crown",
+                "ai.crown",
+                "ai.crown",
+                "ai.crown",
+                "ai.crown",
+                "ai.crown",
+                "ai.crown",
+                "ai.crown",
+                "ai.crown",
+                "ai.crown",
+                "ai.crown",
+                "ai.crown",
+                "ai.crown",
+                "ai.crown",
+                "ai.crown",
+                "ai.crown",
+                "ai.crown",
+                "ai.crown",
+                "ai.crown",
+                "ai.crown",
+                "ai.crown",
+                "ai.crown",
+                "ai.crown",
+                "ai.crown",
+                "ai.crown",
+                "ai.crown",
+                "ai.crown",
+                "ai.crown",
+                "ai.crown",
+                "ai.crown",
+                "ai.crown",
+                "crown.close.rail"
+            ]
+        },
+        {
+            "codes": "CROWN_OPEN AI AI AI AI AI AI AI AI AI AI AI AI AI AI AI AI AI AI AI AI AI AI AI AI AI AI AI AI AI AI AI AI AI AI AI AI AI AI AI AI CROWN_CLOSE",
+            "glyphs": [
+                "crown.open",
+                "ai",
+                "ai",
+                "ai",
+                "ai",
+                "ai",
+                "ai",
+                "ai",
+                "ai",
+                "ai",
+                "ai",
+                "ai",
+                "ai",
+                "ai",
+                "ai",
+                "ai",
+                "ai",
+                "ai",
+                "ai",
+                "ai",
+                "ai",
+                "ai",
+                "ai",
+                "ai",
+                "ai",
+                "ai",
+                "ai",
+                "ai",
+                "ai",
+                "ai",
+                "ai",
+                "ai",
+                "ai",
+                "ai",
+                "ai",
+                "ai",
+                "ai",
+                "ai",
+                "ai",
+                "ai",
+                "ai",
+                "crown.close"
+            ]
+        },
+        {
+            "codes": "E NELTH U+0020 E LA U+0020 A RELTH U+0020 A LA U+0020 MERV A U+0020 ZA A U+0020 KNERV A U+0020 U RELTH U+0020 LA MERV U+0020 LA THRESK",
+            "glyphs": [
+                "e_n",
+                "space",
+                "e_l",
+                "space",
+                "a_r",
+                "space",
+                "a_l",
+                "space",
+                "m_a",
+                "space",
+                "z_a",
+                "space",
+                "k_a",
+                "space",
+                "u_r",
+                "space",
+                "l_m",
+                "space",
+                "l_th"
+            ],
+            "features": [
+                "ss01"
+            ]
+        },
+        {
+            "codes": "E NELTH U+0020 E LA U+0020 A RELTH U+0020 A LA U+0020 MERV A U+0020 ZA A U+0020 KNERV A U+0020 U RELTH U+0020 LA MERV U+0020 LA THRESK",
+            "glyphs": [
+                "e",
+                "n",
+                "space",
+                "e",
+                "l",
+                "space",
+                "a",
+                "r",
+                "space",
+                "a",
+                "l",
+                "space",
+                "m",
+                "a",
+                "space",
+                "z",
+                "a",
+                "space",
+                "k",
+                "a",
+                "space",
+                "u",
+                "r",
+                "space",
+                "l",
+                "m",
+                "space",
+                "l",
+                "th"
+            ]
+        },
+        {
+            "codes": "MERV A RELTH E NELTH DRESK A SVELD",
+            "glyphs": [
+                "m_a",
+                "r",
+                "e_n",
+                "d",
+                "a",
+                "s"
+            ],
+            "features": [
+                "ss01"
+            ]
+        },
+        {
+            "codes": "MERV A RELTH E NELTH DRESK A SVELD",
+            "glyphs": [
+                "m",
+                "a",
+                "r",
+                "e",
+                "n",
+                "d",
+                "a",
+                "s"
+            ]
+        },
+        {
+            "codes": "THRESK E LA VULD A RELTH A LA ODEL NELTH",
+            "glyphs": [
+                "th",
+                "e_l",
+                "v",
+                "a_r",
+                "a_l",
+                "o",
+                "n"
+            ],
+            "features": [
+                "ss01"
+            ]
+        },
+        {
+            "codes": "CROWN_OPEN MERV A RELTH E NELTH DRESK A SVELD CROWN_CLOSE",
+            "glyphs": [
+                "crown.open.rail",
+                "m_a.crown",
+                "r.crown",
+                "e_n.crown",
+                "d.crown",
+                "a.crown",
+                "s.crown",
+                "crown.close.rail"
+            ],
+            "features": [
+                "ss01"
+            ]
+        }
+    ]
+}

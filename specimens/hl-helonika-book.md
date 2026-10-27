@@ -2,7 +2,7 @@
 
 Helonic (human) book hand, geometric capitals over a round minuscule, written left to right.
 
-[Back to the README](../README.md) · [Character chart](../charts/helonika-book.md) · Keyboard cheatsheet: [HL Helónika](../keyboards/helonika.md)
+[Back to the README](../README.md) · [Character chart](../charts/helonika-book.md)
 
 ## The letters
 

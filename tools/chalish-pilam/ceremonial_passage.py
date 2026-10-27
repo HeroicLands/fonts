@@ -4,11 +4,11 @@
 
     .venv/bin/python tools/chalish-pilam/ceremonial_passage.py [--out specimens/chalish-pilam/ceremonial-passage.png]
 
-The passage is a lord's seating and his deeds, sixteen blocks written in codage
-(``PASSAGE``). Each block is written in code points by the Chalish Ceremonial Codage,
-``encodings/chalish-pilam-ceremonial.json`` as one literal span, shaped by HarfBuzz through
-``fonts/ChalishPilamCeremonial-Regular.ttf`` and drawn from the font's own outlines, so
-the font lays out every block from its joiners. The blocks stand in paired columns, read
+The passage is a lord's seating and his deeds, sixteen blocks (``PASSAGE``), each a
+sequence of the face's glyph codes (``tools/codes/chalishceremonial.json``) with the
+joiners ``JOINER_BESIDE`` and ``JOINER_STACK`` between its glyphs. Each block is shaped
+by HarfBuzz through ``fonts/ChalishPilamCeremonial-Regular.ttf`` and drawn from the
+font's own outlines, so the font lays out every block from its joiners. The blocks stand in paired columns, read
 A1, B1, A2, B2, each over its place and its meaning. Shaping fails the run if any glyph
 comes back as the box or ``.notdef``.
 """
@@ -26,21 +26,20 @@ from fontTools.ttLib import TTFont
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parent.parent
 sys.path.insert(0, str(HERE))
-sys.path.insert(0, str(ROOT))
-import encode as E  # noqa: E402
+sys.path.append(str(ROOT / "tools"))
+import codes  # noqa: E402
 
 FONT = ROOT / "fonts" / "ChalishPilamCeremonial-Regular.ttf"
-ENCODING = ROOT / "encodings" / "chalish-pilam-ceremonial.json"
 BAD = {".notdef", "notdef.box"}
 
-# The passage, block by block in reading order (A1, B1, A2, B2, ...), each block's codage
-# with its meaning.
+# The passage, block by block in reading order (A1, B1, A2, B2, ...), each block's glyph
+# codes with its meaning.
 PASSAGE = [
-    ("n13*TQAN", "on 13 [day]"),
+    ("n13 JOINER_BESIDE TQAN", "on 13 [day]"),
     ("DAWN", "at dawn"),
-    ("n3*JAGUAR:tso1", "Ish'bal Ts'o-"),
-    ("ma1*li1", "-malil"),
-    ("ki1*ni1", "K'ini"),
+    ("n3 JOINER_BESIDE JAGUAR JOINER_STACK tso1", "Ish'bal Ts'o-"),
+    ("ma1 JOINER_BESIDE li1", "-malil"),
+    ("ki1 JOINER_BESIDE ni1", "K'ini"),
     ("LORD", "a lord"),
     ("SEATING", "was seated"),
     ("KANKUL", "at K'ankul"),
@@ -64,11 +63,6 @@ ENGLISH = (
 PX = 140  # px to the em
 COLUMN = 280  # the width of each column, in px
 LABEL_GAP = 34  # from a block's descent to its label
-
-
-def codage() -> str:
-    """The passage as one codage string, its blocks separated by spaces."""
-    return " ".join(code for code, _ in PASSAGE)
 
 
 class Face:
@@ -137,12 +131,7 @@ def main():
     out.parent.mkdir(parents=True, exist_ok=True)
 
     face = Face(FONT)
-    encoding = E.load(str(ENCODING))
-    literal = f"⟦{codage()}⟧"
-    whole = E.encode(encoding, literal)
-    if E.decode(encoding, whole) != literal:
-        raise SystemExit(f"{ENCODING.relative_to(ROOT)}: error: the passage does not read back as written")
-    face.shape(whole)
+    face.shape("".join(codes.text("chalishceremonial", block) for block, _ in PASSAGE))
 
     sc = PX / face.upem
     row_h = (face.ascent - face.descent) * sc + LABEL_GAP + 50
@@ -151,7 +140,7 @@ def main():
     sh = Sheet(width)
     for i, (code, gloss) in enumerate(PASSAGE):
         row, col = divmod(i, 2)
-        shaped = face.shape(E.encode(encoding, f"⟦{code}⟧"))
+        shaped = face.shape(codes.text("chalishceremonial", code))
         left, right = face.ink(shaped)
         x0 = margin + col * COLUMN
         base = margin + row * row_h + face.ascent * sc

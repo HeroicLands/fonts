@@ -9,27 +9,27 @@
             },
             "lines": [
                 {
-                    "script": "U+F0008 U+F0003 U+F000E U+0020 U+F000B U+F0000 U+F0012 U+F000D U+F0002 U+F0013 U+F0051 U+0020 U+F0008 U+F0003 U+F000E U+0020 U+F0013 U+F0004 U+F0009 U+F0009 U+F0000 U+F0060 U+F000D U+0020 U+F0013 U+F0000 U+F0009 U+F000D",
+                    "codes": "VAZAL O GAMTH U+0020 DALK A LADHAV KAMV I RAGHAV PAUSE U+0020 VAZAL O GAMTH U+0020 RAGHAV U MARP MARP A LONG KAMV U+0020 RAGHAV A MARP KAMV",
                     "roman": "Vog dalkir, vog rummák ramk",
                     "english": "He is a mason; he lays the course as a master does"
                 },
                 {
-                    "script": "U+F0020 U+F0000 U+F0009 U+F0013 U+F0051 U+0020 U+F000B U+F0000 U+F000C U+F000D U+F0050 U+0020 U+F0008 U+F0000 U+F0012 U+F000B U+F0051 U+0020 U+F0008 U+F0000 U+F0013 U+F000C U+F0050",
+                    "codes": "THARZ A MARP RAGHAV PAUSE U+0020 DALK A NAZAF KAMV STOP U+0020 VAZAL A LADHAV DALK PAUSE U+0020 VAZAL A RAGHAV NAZAF STOP",
                     "roman": "Thamr, dank. Vald, varn.",
                     "english": "The blow, the hammer-fall; the binding, the true line"
                 },
                 {
-                    "script": "U+F000B U+F0000 U+F0012 U+F000D U+F0002 U+F0013 U+0020 U+F000F U+F0004 U+F0009 U+F0000 U+F0060 U+F000E U+0020 U+F000B U+F0000 U+F0012 U+F000D U+F0051 U+0020 U+F000B U+F0000 U+F0012 U+F000D U+F0002 U+F0013 U+0020 U+F0022 U+F0004 U+F000F U+F0000 U+F0060 U+F0005",
+                    "codes": "DALK A LADHAV KAMV I RAGHAV U+0020 SAKAR U MARP A LONG GAMTH U+0020 DALK A LADHAV KAMV PAUSE U+0020 DALK A LADHAV KAMV I RAGHAV U+0020 KHABAR U SAKAR A LONG PARGH",
                     "roman": "Dalkir sumág dalk, dalkir khusáp",
                     "english": "The mason listens to the stone; the mason cuts little"
                 },
                 {
-                    "script": "U+F0013 U+F0000 U+F0009 U+F000D U+0020 U+F000F U+F0000 U+F0009 U+F0002 U+F0060 U+F000B U+F0051 U+0020 U+F0013 U+F0000 U+F0009 U+F000D U+0020 U+F0020 U+F0000 U+F0009 U+F0002 U+F0060 U+F0013",
+                    "codes": "RAGHAV A MARP KAMV U+0020 SAKAR A MARP I LONG DALK PAUSE U+0020 RAGHAV A MARP KAMV U+0020 THARZ A MARP I LONG RAGHAV",
                     "roman": "Ramk samíd, ramk thamír",
                     "english": "The course is raised; the course is struck"
                 },
                 {
-                    "script": "U+F000B U+F0000 U+F0012 U+F0002 U+F0060 U+F000D U+0020 U+F0006 U+F0000 U+F000C U+F000A U+F0051 U+0020 U+F0009 U+F0000 U+F0013 U+F0002 U+F0060 U+F000E U+0020 U+F0006 U+F0000 U+F000C U+F000A",
+                    "codes": "DALK A LADHAV I LONG KAMV U+0020 BALG A NAZAF TAMB PAUSE U+0020 MARP A RAGHAV I LONG GAMTH U+0020 BALG A NAZAF TAMB",
                     "roman": "Dalík bant, maríg bant",
                     "english": "Oath of stone, oath of bone"
                 }
@@ -38,19 +38,19 @@
             "marks": [
                 {
                     "label": "a with the length mark",
-                    "script": "U+F0000 U+F0060"
+                    "codes": "A LONG"
                 },
                 {
                     "label": "i with the length mark",
-                    "script": "U+F0002 U+F0060"
+                    "codes": "I LONG"
                 },
                 {
                     "label": "u with the length mark",
-                    "script": "U+F0004 U+F0060"
+                    "codes": "U LONG"
                 },
                 {
                     "label": "o with the length mark",
-                    "script": "U+F0003 U+F0060"
+                    "codes": "O LONG"
                 }
             ]
         },
@@ -63,27 +63,27 @@
             },
             "lines": [
                 {
-                    "script": "U+F0008 U+F0003 U+F000E U+0020 U+F000B U+F0000 U+F0012 U+F000D U+F0002 U+F0013 U+F0051 U+0020 U+F0008 U+F0003 U+F000E U+0020 U+F0013 U+F0004 U+F0009 U+F0009 U+F0000 U+F0060 U+F000D U+0020 U+F0013 U+F0000 U+F0009 U+F000D",
+                    "codes": "VAZAL O GAMTH U+0020 DALK A LADHAV KAMV I RAGHAV PAUSE U+0020 VAZAL O GAMTH U+0020 RAGHAV U MARP MARP A LONG KAMV U+0020 RAGHAV A MARP KAMV",
                     "roman": "Vog dalkir, vog rummák ramk",
                     "english": "He is a mason; he lays the course as a master does"
                 },
                 {
-                    "script": "U+F0020 U+F0000 U+F0009 U+F0013 U+F0051 U+0020 U+F000B U+F0000 U+F000C U+F000D U+F0050 U+0020 U+F0008 U+F0000 U+F0012 U+F000B U+F0051 U+0020 U+F0008 U+F0000 U+F0013 U+F000C U+F0050",
+                    "codes": "THARZ A MARP RAGHAV PAUSE U+0020 DALK A NAZAF KAMV STOP U+0020 VAZAL A LADHAV DALK PAUSE U+0020 VAZAL A RAGHAV NAZAF STOP",
                     "roman": "Thamr, dank. Vald, varn.",
                     "english": "The blow, the hammer-fall; the binding, the true line"
                 },
                 {
-                    "script": "U+F000B U+F0000 U+F0012 U+F000D U+F0002 U+F0013 U+0020 U+F000F U+F0004 U+F0009 U+F0000 U+F0060 U+F000E U+0020 U+F000B U+F0000 U+F0012 U+F000D U+F0051 U+0020 U+F000B U+F0000 U+F0012 U+F000D U+F0002 U+F0013 U+0020 U+F0022 U+F0004 U+F000F U+F0000 U+F0060 U+F0005",
+                    "codes": "DALK A LADHAV KAMV I RAGHAV U+0020 SAKAR U MARP A LONG GAMTH U+0020 DALK A LADHAV KAMV PAUSE U+0020 DALK A LADHAV KAMV I RAGHAV U+0020 KHABAR U SAKAR A LONG PARGH",
                     "roman": "Dalkir sumág dalk, dalkir khusáp",
                     "english": "The mason listens to the stone; the mason cuts little"
                 },
                 {
-                    "script": "U+F0013 U+F0000 U+F0009 U+F000D U+0020 U+F000F U+F0000 U+F0009 U+F0002 U+F0060 U+F000B U+F0051 U+0020 U+F0013 U+F0000 U+F0009 U+F000D U+0020 U+F0020 U+F0000 U+F0009 U+F0002 U+F0060 U+F0013",
+                    "codes": "RAGHAV A MARP KAMV U+0020 SAKAR A MARP I LONG DALK PAUSE U+0020 RAGHAV A MARP KAMV U+0020 THARZ A MARP I LONG RAGHAV",
                     "roman": "Ramk samíd, ramk thamír",
                     "english": "The course is raised; the course is struck"
                 },
                 {
-                    "script": "U+F000B U+F0000 U+F0012 U+F0002 U+F0060 U+F000D U+0020 U+F0006 U+F0000 U+F000C U+F000A U+F0051 U+0020 U+F0009 U+F0000 U+F0013 U+F0002 U+F0060 U+F000E U+0020 U+F0006 U+F0000 U+F000C U+F000A",
+                    "codes": "DALK A LADHAV I LONG KAMV U+0020 BALG A NAZAF TAMB PAUSE U+0020 MARP A RAGHAV I LONG GAMTH U+0020 BALG A NAZAF TAMB",
                     "roman": "Dalík bant, maríg bant",
                     "english": "Oath of stone, oath of bone"
                 }
@@ -92,19 +92,19 @@
             "marks": [
                 {
                     "label": "a with the length mark",
-                    "script": "U+F0000 U+F0060"
+                    "codes": "A LONG"
                 },
                 {
                     "label": "i with the length mark",
-                    "script": "U+F0002 U+F0060"
+                    "codes": "I LONG"
                 },
                 {
                     "label": "u with the length mark",
-                    "script": "U+F0004 U+F0060"
+                    "codes": "U LONG"
                 },
                 {
                     "label": "o with the length mark",
-                    "script": "U+F0003 U+F0060"
+                    "codes": "O LONG"
                 }
             ]
         },
@@ -117,27 +117,27 @@
             },
             "lines": [
                 {
-                    "script": "U+F0109 U+F0101 U+F0110 U+F0111 U+F0113 U+F0100 U+F010C U+F0106 U+0020 U+F010B U+F0100 U+F010C U+F010C U+F0100 U+F0110 U+0020 U+F0112 U+F0102 U+F0125 U+F0102 U+F0112 U+F0140",
+                    "codes": "HVELM E RELTH SVELD VULD A LA DRESK U+0020 KNERV A LA LA A RELTH U+0020 TING I NGA I TING STOP",
                     "roman": "Hersvald kallar tingit.",
                     "english": "The host-wielder calls the assembly."
                 },
                 {
-                    "script": "U+F0113 U+F0101 U+F0110 U+0020 U+F0108 U+F0100 U+F0125 U+F0104 U+F010D U+0020 U+F0102 U+F0148 U+0020 U+F0107 U+F0110 U+F0102 U+F0106 U+F0102 U+F0140",
+                    "codes": "VULD E RELTH U+0020 GELDRA A NGA U MERV U+0020 I ACUTE U+0020 FOSK RELTH I DRESK I STOP",
                     "roman": "Ver gangum í fridi.",
                     "english": "We come in peace."
                 },
                 {
-                    "script": "U+F0120 U+F0110 U+F0104 U+F010E U+F0113 U+F0100 U+F010C U+F0106 U+0020 U+F0113 U+F0100 U+F010B U+F0102 U+F0110 U+0020 U+F0104 U+F010C U+F0107 U+F0100 U+F0110 U+0020 U+F0120 U+F0102 U+F0110 U+F0111 U+F0112 U+F0100",
+                    "codes": "THRESK RELTH U NELTH VULD A LA DRESK U+0020 VULD A KNERV I RELTH U+0020 U LA FOSK A RELTH U+0020 THRESK I RELTH SVELD TING A",
                     "roman": "Thrunvald vakir, ulfar thyrsta!",
                     "english": "The Thunder-Wielder wakes, the wolves thirst!"
                 },
                 {
-                    "script": "U+F0112 U+F0113 U+F0100 U+F0104 U+0020 U+F0111 U+F010B U+F0102 U+F010F U+0020 U+F0101 U+F0102 U+F010E U+0020 U+F0107 U+F0101 U+F0110 U+F0106 U+F0140",
+                    "codes": "TING VULD A U U+0020 SVELD KNERV I PA U+0020 E I NELTH U+0020 FOSK E RELTH DRESK STOP",
                     "roman": "Tvau skip, ein ferd.",
                     "english": "Two ships, one voyage."
                 },
                 {
-                    "script": "U+F0111 U+F0112 U+F0103 U+F0148 U+F0110 U+F0100 U+F010C U+F0106 U+F0102 U+F0112 U+0020 U+F010C U+F0102 U+F0107 U+F0102 U+F0110 U+0020 U+F0102 U+F0148 U+0020 U+F0111 U+F0112 U+F0101 U+F0102 U+F010E U+F0102 U+0020 U+F0103 U+F010B U+0020 U+F0102 U+F0148 U+0020 U+F010D U+F0102 U+F010E U+F010E U+F0102 U+F0140",
+                    "codes": "SVELD TING ODEL ACUTE RELTH A LA DRESK I TING U+0020 LA I FOSK I RELTH U+0020 I ACUTE U+0020 SVELD TING E I NELTH I U+0020 ODEL KNERV U+0020 I ACUTE U+0020 MERV I NELTH NELTH I STOP",
                     "roman": "Stóraldit lifir í steini ok í minni.",
                     "english": "The saga lives in stone and in memory."
                 }
@@ -146,19 +146,19 @@
             "marks": [
                 {
                     "label": "i with the acute",
-                    "script": "U+F0102 U+F0148"
+                    "codes": "I ACUTE"
                 },
                 {
                     "label": "o with the acute",
-                    "script": "U+F0103 U+F0148"
+                    "codes": "ODEL ACUTE"
                 },
                 {
                     "label": "a with the acute",
-                    "script": "U+F0100 U+F0148"
+                    "codes": "A ACUTE"
                 },
                 {
                     "label": "Thrunvald, crowned",
-                    "script": "U+F0150 U+F0120 U+F0110 U+F0104 U+F010E U+F0113 U+F0100 U+F010C U+F0106 U+F0151"
+                    "codes": "CROWN_OPEN THRESK RELTH U NELTH VULD A LA DRESK CROWN_CLOSE"
                 }
             ]
         },
@@ -171,22 +171,22 @@
             },
             "lines": [
                 {
-                    "script": "U+F0251 U+F0237 U+F023F U+F0242 U+F0250 U+F023F U+F0237 U+F023B U+F0230 U+F023C U+0020 U+F0240 U+F023D U+F023F U+F0237 U+F023B U+F0230 U+F023B U+F0233 U+F023C U+F0268",
+                    "codes": "THOLERA_MAJ ILTHERA_MIN RONETHOS_MIN ULMERA_MIN THOLERA_MIN RONETHOS_MIN ILTHERA_MIN MEZARA_MIN ANKRON_MIN NELAMIS_MIN U+0020 SIRETHA_MIN ORNETHE_MIN RONETHOS_MIN ILTHERA_MIN MEZARA_MIN ANKRON_MIN MEZARA_MIN ELZA_MIN NELAMIS_MIN POINT",
                     "roman": "Thiruthriman sorimamen,",
                     "english": "The hallowed boundary I sing,"
                 },
                 {
-                    "script": "U+F0242 U+F023A U+0020 U+F0230 U+F023A U+F0230 U+F0250 U+F0230 U+F0240 U+0020 U+F0239 U+F0233 U+F0232 U+F0237 U+F0240 U+0020 U+F0230 U+F023A U+F0230 U+F0250 U+F0230 U+0020 U+F0243 U+F0230 U+F023A U+F023B U+F0230 U+F0246 U+F023D U+F023F U+F0268 U+0020 U+F0242 U+F023A U+0020 U+F0241 U+F0230 U+F023A U+F023D U+F0250 U+F023D U+F0237",
+                    "codes": "ULMERA_MIN LIZELA_MIN U+0020 ANKRON_MIN LIZELA_MIN ANKRON_MIN THOLERA_MIN ANKRON_MIN SIRETHA_MIN U+0020 KALPEZA_MIN ELZA_MIN DEKAZU_MIN ILTHERA_MIN SIRETHA_MIN U+0020 ANKRON_MIN LIZELA_MIN ANKRON_MIN THOLERA_MIN ANKRON_MIN U+0020 VARTHOS_MIN ANKRON_MIN LIZELA_MIN MEZARA_MIN ANKRON_MIN ZARGON_MIN ORNETHE_MIN RONETHOS_MIN POINT U+0020 ULMERA_MIN LIZELA_MIN U+0020 TALOTHOS_MIN ANKRON_MIN LIZELA_MIN ORNETHE_MIN THOLERA_MIN ORNETHE_MIN ILTHERA_MIN",
                     "roman": "ul alathas kedis alatha valmazor, ul talothoi",
                     "english": "and the one who walked it, and the stones"
                 },
                 {
-                    "script": "U+F023A U+F0233 U+F023C U+F0232 U+F0250 U+F023D U+F0237 U+0020 U+F0237 U+F023F U+0020 U+F0245 U+F023D U+F023F U+F023B U+F0230 U+F023A U+F0237 U+F0240 U+0020 U+F023D U+F023A U+0020 U+F0240 U+F0233 U+F023A U+F0250 U+F0242 U+F023F U+0020 U+F023B U+F0230 U+F023A U+F0239 U+F023D U+F0250 U+F023D U+F0237",
+                    "codes": "LIZELA_MIN ELZA_MIN NELAMIS_MIN DEKAZU_MIN THOLERA_MIN ORNETHE_MIN ILTHERA_MIN U+0020 ILTHERA_MIN RONETHOS_MIN U+0020 YALZEMIS_MIN ORNETHE_MIN RONETHOS_MIN MEZARA_MIN ANKRON_MIN LIZELA_MIN ILTHERA_MIN SIRETHA_MIN U+0020 ORNETHE_MIN LIZELA_MIN U+0020 SIRETHA_MIN ELZA_MIN LIZELA_MIN THOLERA_MIN ULMERA_MIN RONETHOS_MIN U+0020 MEZARA_MIN ANKRON_MIN LIZELA_MIN KALPEZA_MIN ORNETHE_MIN THOLERA_MIN ORNETHE_MIN ILTHERA_MIN",
                     "roman": "lendthoi ir yormalis ol selthur malkothoi",
                     "english": "set down in the grass of the six hills"
                 },
                 {
-                    "script": "U+F023E U+F023F U+F0230 U+0020 U+F0239 U+F0233 U+F023B U+F0231 U+F023D U+F0250 U+F023D U+F0240 U+0020 U+F0242 U+F0240 U+0020 U+F0242 U+F023F U+F0239 U+F0237 U+F0240 U+0020 U+F023D U+F023A U+0020 U+F0230 U+F023A U+F0230 U+F0250 U+F023D U+F0237 U+0020 U+F0250 U+F0230 U+F023A U+F0233 U+F0246 U+F023D U+F023F U+F0268",
+                    "codes": "POZERA_MIN RONETHOS_MIN ANKRON_MIN U+0020 KALPEZA_MIN ELZA_MIN MEZARA_MIN BRUTHEKA_MIN ORNETHE_MIN THOLERA_MIN ORNETHE_MIN SIRETHA_MIN U+0020 ULMERA_MIN SIRETHA_MIN U+0020 ULMERA_MIN RONETHOS_MIN KALPEZA_MIN ILTHERA_MIN SIRETHA_MIN U+0020 ORNETHE_MIN LIZELA_MIN U+0020 ANKRON_MIN LIZELA_MIN ANKRON_MIN THOLERA_MIN ORNETHE_MIN ILTHERA_MIN U+0020 THOLERA_MIN ANKRON_MIN LIZELA_MIN ELZA_MIN ZARGON_MIN ORNETHE_MIN RONETHOS_MIN POINT",
                     "roman": "pra kembothos us urkis ol alathoi thalezor.",
                     "english": "before a wall stood on any of them."
                 }
@@ -195,19 +195,19 @@
             "marks": [
                 {
                     "label": "a with the catch",
-                    "script": "U+F0230 U+F0270"
+                    "codes": "ANKRON_MIN CATCH"
                 },
                 {
                     "label": "o with the catch",
-                    "script": "U+F023D U+F0270"
+                    "codes": "ORNETHE_MIN CATCH"
                 },
                 {
                     "label": "e with the catch",
-                    "script": "U+F0233 U+F0270"
+                    "codes": "ELZA_MIN CATCH"
                 },
                 {
                     "label": "u with the catch",
-                    "script": "U+F0242 U+F0270"
+                    "codes": "ULMERA_MIN CATCH"
                 }
             ]
         },
@@ -220,27 +220,27 @@
             },
             "lines": [
                 {
-                    "script": "U+F0312 U+F033E U+F0344 U+F0338 U+F0341 U+F0330 U+0020 U+F0333 U+F0342 U+F0330 U+F0341 U+F0338 U+F033D U+0020 U+F0330 U+F0341 U+F033A U+F0337 U+F0338 U+F0332 U+F0337 U+F0338 U+F033D U+0020 U+F0340 U+F033B U+F0345 U+F033C U+F033E U+F033D",
+                    "codes": "S_MAJ O_MIN TH_MIN I_MIN R_MIN A_MIN U+0020 E_MIN S_MIN A_MIN R_MIN I_MIN N_MIN U+0020 A_MIN R_MIN K_MIN H_MIN I_MIN D_MIN H_MIN I_MIN N_MIN U+0020 P_MIN L_MIN U_MIN M_MIN O_MIN N_MIN",
                     "roman": "Sothira ésarin arkhidhin plumon",
                     "english": "Wisdom is the beginning of all things"
                 },
                 {
-                    "script": "U+F0300 U+F0344 U+0020 U+F033A U+F0333 U+F033B U+F0338 U+F0341 U+F0330 U+F033D U+0020 U+F0344 U+F0333 U+F0341 U+F0330 U+F0332 U+F0337 U+F0338 U+F033D U+0020 U+F0333 U+F0342 U+F0330 U+F0341 U+F0338 U+F033D U+0020 U+F0344 U+F0330 U+F0342 U+F0338 U+F0341 U+F033E U+F033D",
+                    "codes": "A_MAJ TH_MIN U+0020 K_MIN E_MIN L_MIN I_MIN R_MIN A_MIN N_MIN U+0020 TH_MIN E_MIN R_MIN A_MIN D_MIN H_MIN I_MIN N_MIN U+0020 E_MIN S_MIN A_MIN R_MIN I_MIN N_MIN U+0020 TH_MIN A_MIN S_MIN I_MIN R_MIN O_MIN N_MIN",
                     "roman": "Ath kéliran théradhin ésarin thásiron",
                     "english": "To behold beauty is divine"
                 },
                 {
-                    "script": "U+F0311 U+F0337 U+F0333 U+F0344 U+F0330 U+F0342 U+F0338 U+F033D U+0020 U+F0332 U+F0337 U+F0338 U+F0332 U+F0330 U+F033A U+F0337 U+F0338 U+F0341",
+                    "codes": "R_MAJ H_MIN E_MIN TH_MIN A_MIN S_MIN I_MIN N_MIN U+0020 D_MIN H_MIN I_MIN D_MIN A_MIN K_MIN H_MIN I_MIN R_MIN",
                     "roman": "Rhéthasin, dhidakhir!",
                     "english": "Speak, teach!"
                 },
                 {
-                    "script": "U+F030C U+F0333 U+F0344 U+F0330 U+F0341 U+F0338 U+F033D U+0020 U+F0344 U+F033E U+F0338 U+F0341 U+0020 U+F0340 U+F033B U+F0345 U+F033C U+F033E U+F033D U+0020 U+F0333 U+F0342 U+F0330 U+F0341 U+F0338 U+F033D U+0020 U+F0330 U+F033D U+F0344 U+F0338 U+F033C U+F033E U+F0341",
+                    "codes": "M_MAJ E_MIN TH_MIN A_MIN R_MIN I_MIN N_MIN U+0020 TH_MIN O_MIN I_MIN R_MIN U+0020 P_MIN L_MIN U_MIN M_MIN O_MIN N_MIN U+0020 E_MIN S_MIN A_MIN R_MIN I_MIN N_MIN U+0020 A_MIN N_MIN TH_MIN I_MIN M_MIN O_MIN R_MIN",
                     "roman": "Métharin thoir plumon ésarin ánthimor",
                     "english": "Man is the measure of all things"
                 },
                 {
-                    "script": "U+F030E U+F033B U+F0330 U+F0342 U+F0338 U+F033D U+0020 U+F033A U+F033E U+F0342 U+F0330 U+F033C U+F0338 U+F0341 U+0020 U+F0338 U+F033D U+0020 U+F033B U+F0333 U+F033A U+F0337 U+F0338 U+F0342 U+F0338 U+F0341",
+                    "codes": "O_MAJ L_MIN A_MIN S_MIN I_MIN N_MIN U+0020 K_MIN O_MIN S_MIN A_MIN M_MIN I_MIN R_MIN U+0020 I_MIN N_MIN U+0020 L_MIN E_MIN K_MIN H_MIN I_MIN S_MIN I_MIN R_MIN",
                     "roman": "Olasin kosamir in lékhisir",
                     "english": "The entire cosmos in a single word"
                 }
@@ -249,23 +249,23 @@
             "marks": [
                 {
                     "label": "a with the accent",
-                    "script": "U+F0330 U+F0378"
+                    "codes": "A_MIN ACCENT"
                 },
                 {
                     "label": "e with the accent",
-                    "script": "U+F0333 U+F0378"
+                    "codes": "E_MIN ACCENT"
                 },
                 {
                     "label": "o with the accent",
-                    "script": "U+F033E U+F0378"
+                    "codes": "O_MIN ACCENT"
                 },
                 {
                     "label": "long a, i and u, with the length bar",
-                    "script": "U+F0350 U+F0351 U+F0352"
+                    "codes": "LONG_A_MIN LONG_I_MIN LONG_U_MIN"
                 },
                 {
                     "label": "long e and long o",
-                    "script": "U+F0334 U+F033F"
+                    "codes": "LONG_E_MIN LONG_O_MIN"
                 }
             ]
         },
@@ -278,27 +278,27 @@
             },
             "lines": [
                 {
-                    "script": "U+F0420 U+F0402 U+F0410 U+F040A U+0020 U+F0409 U+F0433 U+F0411 U+F0430 U+F040B U+F0408 U+F0430 U+F0450 U+0020 U+F0412 U+F040A U+F0438 U+F0409 U+F0430 U+F0400 U+F040A",
+                    "codes": "A GA RA NA U+0020 DA SIGN_U LA SIGN_I PA TA SIGN_I PAUSE U+0020 VA NA CUT DA SIGN_I KA NA",
                     "roman": "Agarana dulipati, vandikana",
                     "english": "Honored elder, I show respect"
                 },
                 {
-                    "script": "U+F0412 U+F0431 U+F0409 U+F0438 U+F040F U+F0410 U+F040E U+F0438 U+0020 U+F0408 U+F0430 U+F0412 U+F040F U+F0433 U+F0450 U+0020 U+F0408 U+F0410 U+F0406 U+F0430 U+F0414 U+F0433 U+F040E U+F0438",
+                    "codes": "VA SIGN_E DA CUT YA RA MA CUT U+0020 TA SIGN_I VA YA SIGN_U PAUSE U+0020 TA RA JA SIGN_I SA SIGN_U MA CUT",
                     "roman": "Vedyaram tivayu, tarajisum",
                     "english": "I dwell in Vedyaram, by birthright"
                 },
                 {
-                    "script": "U+F040D U+F0400 U+F0438 U+F0408 U+F0430 U+F0410 U+F0438 U+0020 U+F0422 U+F0413 U+F0438 U+F0408 U+F040E U+F0430 U+0020 U+F0409 U+F0433 U+F0411 U+F0430 U+F0408 U+F0410",
+                    "codes": "BHA KA CUT TA SIGN_I RA CUT U+0020 U SHA CUT TA MA SIGN_I U+0020 DA SIGN_U LA SIGN_I TA RA",
                     "roman": "Bhaktir ushtami dulitara",
                     "english": "I hold devotion as my highest path"
                 },
                 {
-                    "script": "U+F0412 U+F0414 U+F0438 U+F0408 U+F0433 U+F040A U+0020 U+F0400 U+F0410 U+F0438 U+F040E U+F0408 U+0020 U+F0412 U+F040A U+F0430 U+F0414",
+                    "codes": "VA SA CUT TA SIGN_U NA U+0020 KA RA CUT MA TA U+0020 VA NA SIGN_I SA",
                     "roman": "Vastuna karmata vanisa?",
                     "english": "May the transaction bring prosperity?"
                 },
                 {
-                    "script": "U+F0410 U+F0430 U+F0408 U+F0433 U+F0408 U+0020 U+F0414 U+F040E U+F0410 U+F0438 U+F0412 U+F040A U+0020 U+F0422 U+F0413 U+F0438 U+F0408 U+F0430",
+                    "codes": "RA SIGN_I TA SIGN_U TA U+0020 SA MA RA CUT VA NA U+0020 U SHA CUT TA SIGN_I",
                     "roman": "Rituta samarvana ushti",
                     "english": "The observance is offered to the sacred order"
                 }
@@ -307,39 +307,39 @@
             "marks": [
                 {
                     "label": "ka",
-                    "script": "U+F0400"
+                    "codes": "KA"
                 },
                 {
                     "label": "ki",
-                    "script": "U+F0400 U+F0430"
+                    "codes": "KA SIGN_I"
                 },
                 {
                     "label": "ke",
-                    "script": "U+F0400 U+F0431"
+                    "codes": "KA SIGN_E"
                 },
                 {
                     "label": "kai",
-                    "script": "U+F0400 U+F0432"
+                    "codes": "KA SIGN_AI"
                 },
                 {
                     "label": "ku",
-                    "script": "U+F0400 U+F0433"
+                    "codes": "KA SIGN_U"
                 },
                 {
                     "label": "ko",
-                    "script": "U+F0400 U+F0434"
+                    "codes": "KA SIGN_O"
                 },
                 {
                     "label": "kau",
-                    "script": "U+F0400 U+F0435"
+                    "codes": "KA SIGN_AU"
                 },
                 {
                     "label": "k, with the cut",
-                    "script": "U+F0400 U+F0438"
+                    "codes": "KA CUT"
                 },
                 {
                     "label": "fa, pa with the soft dot",
-                    "script": "U+F040B U+F0439"
+                    "codes": "PA SOFT_DOT"
                 }
             ]
         },
@@ -352,27 +352,27 @@
             },
             "lines": [
                 {
-                    "script": "U+1ED5B U+1ED72 U+1ED78 U+1ED5C U+1ED71 U+0020 U+1ED55 U+1ED72 U+1ED78 U+1ED51 U+1ED70 U+0020 U+1ED5B U+1ED74 U+1ED54 U+1ED73 U+1ED5C U+1ED74 U+1ED59 U+1ED71",
+                    "codes": "LOIMARA SIGN_U LONG RIVENNA SIGN_O U+0020 NUVALLE SIGN_U LONG VELUNNA SIGN_A U+0020 LOIMARA SIGN_I SENNUVI SIGN_E RIVENNA SIGN_I HUOMEL SIGN_O",
                     "roman": "Luuro nuuva liseriho",
                     "english": "Starlight sings on still water"
                 },
                 {
-                    "script": "U+1ED5B U+1ED74 U+0020 U+1ED54 U+1ED73 U+1ED53 U+1ED7C U+1ED75 U+0020 U+1ED5B U+1ED73 U+1ED55 U+1ED53 U+1ED74 U+0020 U+1ED53 U+1ED70 U+1ED5B U+1ED51 U+1ED73 U+1ED59 U+1ED71",
+                    "codes": "LOIMARA SIGN_I U+0020 SENNUVI SIGN_E TESSALIN DOUBLING_BAR SIGN_Y U+0020 LOIMARA SIGN_E NUVALLE TESSALIN SIGN_I U+0020 TESSALIN SIGN_A LOIMARA VELUNNA SIGN_E HUOMEL SIGN_O",
                     "roman": "Li-setty lenti talveho",
                     "english": "The tall grass stands in the low fog, as it always does"
                 },
                 {
-                    "script": "U+1ED59 U+1ED70 U+0020 U+1ED53 U+1ED72 U+1ED50 U+1ED73 U+0020 U+1ED53 U+1ED74 U+1ED5B U+1ED51 U+1ED70 U+1ED74 U+0020 U+1ED59 U+1ED75 U+1ED54 U+1ED7C U+1ED73 U+1ED55",
+                    "codes": "HUOMEL SIGN_A U+0020 TESSALIN SIGN_U PELANNE SIGN_E U+0020 TESSALIN SIGN_I LOIMARA VELUNNA SIGN_A SIGN_I U+0020 HUOMEL SIGN_Y SENNUVI DOUBLING_BAR SIGN_E NUVALLE",
                     "roman": "Ha-tupe tilvai hyssen",
                     "english": "The seam of light has held the breath"
                 },
                 {
-                    "script": "U+1ED50 U+1ED73 U+1ED59 U+1ED73 U+1ED58 U+1ED70 U+0020 U+1ED59 U+1ED72 U+1ED71 U+1ED52 U+1ED70 U+1ED55 U+0020 U+1ED50 U+1ED73 U+1ED59 U+1ED73 U+1ED58 U+1ED70 U+0020 U+1ED55 U+1ED75 U+1ED5B U+1ED58 U+1ED74 U+1ED55",
+                    "codes": "PELANNE SIGN_E HUOMEL SIGN_E KELANNA SIGN_A U+0020 HUOMEL SIGN_U SIGN_O MERINNE SIGN_A NUVALLE U+0020 PELANNE SIGN_E HUOMEL SIGN_E KELANNA SIGN_A U+0020 NUVALLE SIGN_Y LOIMARA KELANNA SIGN_I NUVALLE",
                     "roman": "Peheka huoman, peheka nylkin",
                     "english": "Give warmth, give root"
                 },
                 {
-                    "script": "U+1ED5B U+1ED72 U+1ED78 U+1ED5C U+1ED71 U+0020 U+1ED5D U+1ED74 U+1ED5B U+1ED73 U+1ED51 U+1ED70 U+0020 U+1ED5B U+1ED72 U+1ED78 U+1ED5C U+1ED71 U+0020 U+1ED5C U+1ED74 U+1ED51 U+1ED75",
+                    "codes": "LOIMARA SIGN_U LONG RIVENNA SIGN_O U+0020 CARRIER SIGN_I LOIMARA SIGN_E VELUNNA SIGN_A U+0020 LOIMARA SIGN_U LONG RIVENNA SIGN_O U+0020 RIVENNA SIGN_I VELUNNA SIGN_Y",
                     "roman": "Luuro ileva, luuro rivy",
                     "english": "The clear place sings, the turning leaf sings"
                 }
@@ -381,31 +381,31 @@
             "marks": [
                 {
                     "label": "ta",
-                    "script": "U+1ED53 U+1ED70"
+                    "codes": "TESSALIN SIGN_A"
                 },
                 {
                     "label": "to",
-                    "script": "U+1ED53 U+1ED71"
+                    "codes": "TESSALIN SIGN_O"
                 },
                 {
                     "label": "tuu, with the long sign",
-                    "script": "U+1ED53 U+1ED72 U+1ED78"
+                    "codes": "TESSALIN SIGN_U LONG"
                 },
                 {
                     "label": "le, with the rise",
-                    "script": "U+1ED5B U+1ED73 U+1ED79"
+                    "codes": "LOIMARA SIGN_E RISE"
                 },
                 {
                     "label": "ni, with the fall",
-                    "script": "U+1ED55 U+1ED74 U+1ED7A"
+                    "codes": "NUVALLE SIGN_I FALL"
                 },
                 {
                     "label": "tty, with the doubling bar",
-                    "script": "U+1ED53 U+1ED7C U+1ED75"
+                    "codes": "TESSALIN DOUBLING_BAR SIGN_Y"
                 },
                 {
                     "label": "a on the carrier",
-                    "script": "U+1ED5D U+1ED70"
+                    "codes": "CARRIER SIGN_A"
                 }
             ]
         },
@@ -418,27 +418,27 @@
             },
             "lines": [
                 {
-                    "script": "U+1EA0C U+1EA00 U+1EA09 U+0020 U+1EA15 U+1EA00 U+0020 U+1EA15 U+1EA08 U+1EA00 U+1EA0D",
+                    "codes": "KHA LAGUN THELQEN U+0020 CATCH LAGUN U+0020 CATCH NELGIR LAGUN GHA",
                     "roman": "Khelathu elu anlagh",
                     "english": "the Khelathi way upon life"
                 },
                 {
-                    "script": "U+1EA15 U+1EA0B U+1EA15 U+1EA38 U+0020 U+1EA0B U+1EA0A U+1EA04 U+1EA02 U+0020 U+1EA15 U+1EA04 U+0020 U+1EA06 U+1EA04 U+1EA00 U+1EA02",
+                    "codes": "CATCH QENUWA CATCH PAUSE U+0020 QENUWA MELNU ZAGUL TULAZ U+0020 CATCH ZAGUL U+0020 GITHAR ZAGUL LAGUN TULAZ",
                     "roman": "Uqa'a, qamzet ezu gazlet",
                     "english": "Sun-lord, hidden in the sanctuary"
                 },
                 {
-                    "script": "U+1EA15 U+1EA01 U+1EA00 U+1EA0A U+0020 U+1EA15 U+1EA04 U+0020 U+1EA00 U+1EA04 U+1EA02",
+                    "codes": "CATCH RETHU LAGUN MELNU U+0020 CATCH ZAGUL U+0020 LAGUN ZAGUL TULAZ",
                     "roman": "Erlem ez luzet",
                     "english": "I am bound to the throne"
                 },
                 {
-                    "script": "U+1EA04 U+1EA11 U+0020 U+1EA0A U+1EA00 U+1EA02 U+0020 U+1EA15 U+1EA06 U+0020 U+1EA0C U+1EA00 U+1EA09",
+                    "codes": "ZAGUL BA U+0020 MELNU LAGUN TULAZ U+0020 CATCH GITHAR U+0020 KHA LAGUN THELQEN",
                     "roman": "Zab melet agu khelath",
                     "english": "The lord's goods shall prosper"
                 },
                 {
-                    "script": "U+1EA0F U+1EA00 U+1EA0A U+0020 U+1EA04 U+1EA02 U+1EA0A",
+                    "codes": "SHENULET LAGUN MELNU U+0020 ZAGUL TULAZ MELNU",
                     "roman": "Shelmu zetem",
                     "english": "Let the followers hear"
                 }
@@ -447,27 +447,27 @@
             "marks": [
                 {
                     "label": "q",
-                    "script": "U+1EA0B"
+                    "codes": "QENUWA"
                 },
                 {
                     "label": "catch before q",
-                    "script": "U+1EA15 U+1EA0B"
+                    "codes": "CATCH QENUWA"
                 },
                 {
                     "label": "r",
-                    "script": "U+1EA01"
+                    "codes": "RETHU"
                 },
                 {
                     "label": "catch before r",
-                    "script": "U+1EA15 U+1EA01"
+                    "codes": "CATCH RETHU"
                 },
                 {
                     "label": "doubled l",
-                    "script": "U+1EA17"
+                    "codes": "LAGUN_DBL"
                 },
                 {
                     "label": "catch before doubled l",
-                    "script": "U+1EA15 U+1EA17"
+                    "codes": "CATCH LAGUN_DBL"
                 }
             ]
         },
@@ -480,27 +480,27 @@
             },
             "lines": [
                 {
-                    "script": "U+F1009 U+F1050",
+                    "codes": "YOU CHENG",
                     "roman": "You cheng.",
                     "english": "The moon rises."
                 },
                 {
-                    "script": "U+F1046 U+F1013 U+F1050",
+                    "codes": "ZHO TENG CHENG",
                     "roman": "Zho teng cheng.",
                     "english": "The dragon ascends the sky."
                 },
                 {
-                    "script": "U+F1033 U+F1053",
+                    "codes": "LEI WA",
                     "roman": "Lei wa.",
                     "english": "The spirit answers."
                 },
                 {
-                    "script": "U+F1003 U+F1051",
+                    "codes": "SHOU JONG",
                     "roman": "Shou jong.",
                     "english": "The water falls."
                 },
                 {
-                    "script": "U+F1054 U+F101F U+F102A U+F1053",
+                    "codes": "DAO CHEN TSOU WA",
                     "roman": "Dao chen tsou wa.",
                     "english": "The people answer the great emperor."
                 }
@@ -534,71 +534,71 @@
             },
             "lines": [
                 {
-                    "script": "U+F3021 U+F300D",
+                    "codes": "MOON n13",
                     "english": "night, the thirteenth"
                 },
                 {
-                    "script": "U+F3028 U+F3037 U+F3022 U+F3023",
+                    "codes": "MAN MOUTH SKY STAR",
                     "english": "the star-priest"
                 },
                 {
-                    "script": "U+F3000 U+F3056 U+F3048",
+                    "codes": "n0 JADE LORD",
                     "english": "Ts'alam, by sound: tsa-la-m(a)"
                 },
                 {
-                    "script": "U+F3027 U+F3036",
+                    "codes": "STONE EYE",
                     "english": "at the sighting stones"
                 },
                 {
-                    "script": "U+F3021 U+F302C",
+                    "codes": "MOON EAST",
                     "english": "the moon rises"
                 },
                 {
-                    "script": "U+F3030 U+F3027",
+                    "codes": "HIGH STONE",
                     "english": "over the mountain"
                 },
                 {
-                    "script": "U+F3023 U+F3041 U+F3021",
+                    "codes": "STAR BESIDE MOON",
                     "english": "a star beside the moon"
                 },
                 {
-                    "script": "U+F3028 U+F3037 U+F3022 U+F3036 U+F3033",
+                    "codes": "MAN MOUTH SKY EYE OUTSIDE",
                     "english": "the priest observes"
                 },
                 {
-                    "script": "U+F3000",
+                    "codes": "n0",
                     "english": "nothing happens"
                 },
                 {
-                    "script": "U+F3028 U+F3037 U+F3022 U+F3035 U+F3036",
+                    "codes": "MAN MOUTH SKY HAND EYE",
                     "english": "the priest writes"
                 },
                 {
-                    "script": "U+F303F U+F3035 U+F3036",
+                    "codes": "BLOOD HAND EYE",
                     "english": "blood on the writing"
                 },
                 {
-                    "script": "U+F3021 U+F300E",
+                    "codes": "MOON n14",
                     "english": "night, the fourteenth"
                 },
                 {
-                    "script": "U+F3028 U+F3037 U+F3022 U+F3023",
+                    "codes": "MAN MOUTH SKY STAR",
                     "english": "the star-priest"
                 },
                 {
-                    "script": "U+F3027 U+F3036",
+                    "codes": "STONE EYE",
                     "english": "at the sighting stones"
                 },
                 {
-                    "script": "U+F3021 U+F302C",
+                    "codes": "MOON EAST",
                     "english": "the moon rises"
                 },
                 {
-                    "script": "U+F3000",
+                    "codes": "n0",
                     "english": "nothing happens"
                 },
                 {
-                    "script": "U+F3028 U+F3037 U+F3022 U+F3035 U+F3036",
+                    "codes": "MAN MOUTH SKY HAND EYE",
                     "english": "the priest writes"
                 }
             ]
@@ -611,67 +611,67 @@
             },
             "lines": [
                 {
-                    "codage": "n13*TQAN",
+                    "codes": "n13 JOINER_BESIDE TQAN",
                     "english": "on 13 [day]"
                 },
                 {
-                    "codage": "DAWN",
+                    "codes": "DAWN",
                     "english": "at dawn"
                 },
                 {
-                    "codage": "n3*JAGUAR:tso1",
+                    "codes": "n3 JOINER_BESIDE JAGUAR JOINER_STACK tso1",
                     "english": "Ish'bal Ts'o-"
                 },
                 {
-                    "codage": "ma1*li1",
+                    "codes": "ma1 JOINER_BESIDE li1",
                     "english": "-malil"
                 },
                 {
-                    "codage": "ki1*ni1",
+                    "codes": "ki1 JOINER_BESIDE ni1",
                     "english": "K'ini"
                 },
                 {
-                    "codage": "LORD",
+                    "codes": "LORD",
                     "english": "a lord"
                 },
                 {
-                    "codage": "SEATING",
+                    "codes": "SEATING",
                     "english": "was seated"
                 },
                 {
-                    "codage": "KANKUL",
+                    "codes": "KANKUL",
                     "english": "at K'ankul"
                 },
                 {
-                    "codage": "WAR",
+                    "codes": "WAR",
                     "english": "made war"
                 },
                 {
-                    "codage": "CAPTURE",
+                    "codes": "CAPTURE",
                     "english": "took captives"
                 },
                 {
-                    "codage": "TRIBUTE",
+                    "codes": "TRIBUTE",
                     "english": "tribute brought"
                 },
                 {
-                    "codage": "PRIEST",
+                    "codes": "PRIEST",
                     "english": "the priest"
                 },
                 {
-                    "codage": "OFFERING",
+                    "codes": "OFFERING",
                     "english": "made the offering"
                 },
                 {
-                    "codage": "SUN_PRIEST",
+                    "codes": "SUN_PRIEST",
                     "english": "the sun priest"
                 },
                 {
-                    "codage": "SOLAR_COUNT",
+                    "codes": "SOLAR_COUNT",
                     "english": "kept the count"
                 },
                 {
-                    "codage": "ERA_BEGINS",
+                    "codes": "ERA_BEGINS",
                     "english": "an era begins"
                 }
             ],
