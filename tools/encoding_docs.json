@@ -31,8 +31,7 @@
     "intro": [
       "Aelwythi has its own encoding in the Semaron Kuriale hand. Coined words use the fixed Aelwythi letter groups: ch, sh, th, dh, kh, gh, zh, ts and ng have dedicated signs, and ny takes its dedicated sign before a vowel. A group is lowercase, as in ch, or initial-uppercase, as in Ch; CH and cH are illegal. The letter q has its own sign, and y is always a consonant. There are no automatic c or x substitutions.",
       "An acute vowel writes its ordinary vowel sign followed by the non-printing stress modifier U+E0114. Stress does not change vowel sound or length. Coined words use no diaeresis or grave accent. Doubled vowels remain two written signs.",
-      "Only a period draws the pause point. Quotation marks and apostrophes draw nothing, and a hyphen writes a space. Decoding returns a conventional Roman spelling: omitted punctuation is not restored, and a hyphen reads back as a word space. Other Semaron encodings keep their own rules.",
-      "The twenty newly assigned consonant glyph designs are pending. Their code-point assignments are reserved, and native rendering remains blocked until the drawings are supplied."
+      "Only a period draws the pause point. Quotation marks and apostrophes draw nothing, and a hyphen writes a space. Decoding returns a conventional Roman spelling: omitted punctuation is not restored, and a hyphen reads back as a word space. Other Semaron encodings keep their own rules."
     ]
   },
   "pirzath": {

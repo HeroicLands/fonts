@@ -6,8 +6,6 @@ An acute vowel writes its ordinary vowel sign followed by the non-printing stres
 
 Only a period draws the pause point. Quotation marks and apostrophes draw nothing, and a hyphen writes a space. Decoding returns a conventional Roman spelling: omitted punctuation is not restored, and a hyphen reads back as a word space. Other Semaron encodings keep their own rules.
 
-The twenty newly assigned consonant glyph designs are pending. Their code-point assignments are reserved, and native rendering remains blocked until the drawings are supplied.
-
 ## Fonts
 
 - Semaron Kuriale (`semaron-kuriale`), written left to right.

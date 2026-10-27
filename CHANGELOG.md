@@ -1,5 +1,50 @@
 # @heroiclands/fonts
 
+## 1.3.0
+
+### Minor Changes
+
+**Semaron Kuriale**
+
+- Has letters for ch, sh, kh, gh, dh, zh, ts, ng, ny and q, in small and capital forms, so text that spelled these with two letters writes one.
+- The aspirate hook on f, th and the new aspirates is bolder and reads at text size.
+- HL Semaron types q on its own key and each new pair on Option and its first letter, with _ts_ on Option+X and _ny_ on Option+Y; capitals add Shift.
+
+**Encodings**
+
+- Every encoding follows one standard set of punctuation marks, so a sentence ending, pause, quotation, name or verse break means the same in every script.
+- Where a script does not draw a mark, the encoding keeps its meaning in invisible characters, so decoding restores the text exactly.
+- Verse lines, stanzas and cantos are written with `/`, a blank line and `--- {.canto}`, and `^` at the start of a line indents it.
+- Between `⟦` and `⟧`, any encoding takes exact characters by name or code, and a font with no roman encoding takes only these.
+- Characters an encoding does not accept are refused with their line and column.
+
+### Patch Changes
+
+**New fonts**
+
+- Chalish Pilam Ceremonial, the carved temple hand of the Ki'ich'chik writing, joins the fonts with a character chart, a specimen page and an encoding.
+- It writes concept glyphs, numbers and syllable signs, and composes them into blocks, such as `⟦n13*TQAN⟧` for the number thirteen beside the day sign.
+- Every Ki'ich'chik house has an emblem, so a name can open with its house's picture, as in `⟦n3*SHAKNAL:la1⟧`.
+
+**Encodings**
+
+- The package ships an encoding for each script font in `encodings/`, and `encode.py` turns roman text into a font's characters and reads them back exactly.
+- Aelwythi has its own Semaron encoding, with its own signs for its consonant groups and a non-printing stress mark on acute vowels.
+- Teng Chou characters are typed by name between `⟦` and `⟧`: `WONG` for a morpheme, `TALLY1` to `TALLY5` for the tally, `ka` for a syllable sign.
+- Khelathi Zethu signs are typed by code, such as `SAIL` or `REGNAL_YEAR`, instead of sign number.
+
+**Keyboards**
+
+- Every layout types `⟦` and `⟧` on Option+Shift+W and Option+Shift+L.
+- HL Vedyakshara types an independent vowel on Shift and the vowel key.
+- In HL Veldikko, the sh key types both letters, and an accented vowel types the emphasis sign with its vowel.
+
+**Fixes**
+
+- Khelathi Zethu Glyphs draws every sign of its inventory, so no sign prints as a box.
+- In Helónika Book the dot that ends a sentence sits close to the next word.
+- Invisible characters, such as variation selectors, do not show as the word-divider dot in Pirzath Carved.
+
 ## 1.2.1
 
 ### Patch Changes
