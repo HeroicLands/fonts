@@ -8,7 +8,7 @@
 
 - Has letters for ch, sh, kh, gh, dh, zh, ts, ng, ny and q, in small and capital forms, so text that spelled these with two letters writes one.
 - The aspirate hook on f, th and the new aspirates is bolder and reads at text size.
-- HL Semaron types the new letters on Option keys, with the capitals on Option+Shift.
+- HL Semaron types q on its own key and each new pair on Option and its first letter, with _ts_ on Option+X and _ny_ on Option+Y; capitals add Shift.
 
 **Encodings**
 
