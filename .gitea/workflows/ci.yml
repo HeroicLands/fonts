@@ -53,7 +53,8 @@ jobs:
 
     fonts:
         name: Fonts build and pass the font check
-        runs-on: ubuntu-latest
+        # The build runner's 60-minute limit; the general runner's 30 is too short under load.
+        runs-on: build
         steps:
             - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
             - name: Create the virtual environment
