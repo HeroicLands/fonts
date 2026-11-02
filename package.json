@@ -22,7 +22,7 @@
     "devDependencies": {
         "@betteroffice/fonts": "^0.4.0",
         "@changesets/cli": "^3.0.3",
-        "@heroiclands/package-build": "^25.2.0"
+        "@heroiclands/package-build": "^25.5.5"
     },
     "scripts": {
         "test": "node --test tools/package_check.test.mjs",
@@ -53,5 +53,10 @@
     "homepage": "https://github.com/HeroicLands/fonts#readme",
     "bugs": {
         "url": "https://github.com/HeroicLands/fonts/issues"
+    },
+    "overrides": {
+        "@heroiclands/package-build": {
+            "minimatch": "^11.0.3"
+        }
     }
 }
