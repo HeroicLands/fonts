@@ -170,5 +170,7 @@ The Aelwythi encoding reserves code points for q and the consonant groups dh,
 kh, gh, sh, zh, ts, ch, ng and ny in both cases. The font draws these signs as dedicated letters, shared by the Semaron
 encoders. Aelwythi retains its own spelling and pronunciation rules.
 
-The stress modifier U+E0114 is declared as a non-printing control. It maps to
-an empty glyph with zero advance.
+The stress modifier U+E0114 and the short-vowel mark U+E0116 are declared as
+non-printing controls. Each maps to an empty glyph with zero advance. The short
+mark lets an encoding keep a grave vowel's spelling, since the script draws no
+short vowels.

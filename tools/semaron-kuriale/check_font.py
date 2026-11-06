@@ -79,8 +79,9 @@ def check(path: Path) -> list[str]:
     for cp in IGNORABLES:
         if cmap.get(cp) != "ignorable":
             problems.append(f"U+{cp:04X} must map to the empty glyph 'ignorable'")
-    if cmap.get(0xE0114) != "ignorable":
-        problems.append("the stress modifier U+E0114 must map to the empty glyph ignorable")
+    for cp, what in ((0xE0114, "stress"), (0xE0116, "short")):
+        if cmap.get(cp) != "ignorable":
+            problems.append(f"the {what} modifier U+{cp:04X} must map to the empty glyph ignorable")
     for name in EMPTY - {"space"}:
         if name not in order or glyf[name].numberOfContours != 0 or hmtx[name][0] != 0:
             problems.append(f"{name} must be in the font, empty and without advance")

@@ -338,6 +338,7 @@ def ltr_table(stem: str) -> list[dict]:
             rows.append({"codepoint": f"U+{start + offset:04X}", "glyph": glyph, "kind": kind})
     if stem == "SemaronKuriale-Regular":
         rows.append({"codepoint": "U+E0114", "glyph": "ignorable", "kind": "control"})
+        rows.append({"codepoint": "U+E0116", "glyph": "ignorable", "kind": "control"})
     return rows
 
 

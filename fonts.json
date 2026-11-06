@@ -8866,6 +8866,13 @@
                     "code": "STRESS",
                     "glyph": "ignorable",
                     "kind": "control"
+                },
+                {
+                    "codepoint": "U+E0116",
+                    "name": "VARIATION SELECTOR-39",
+                    "code": "SHORT",
+                    "glyph": "ignorable",
+                    "kind": "control"
                 }
             ]
         },

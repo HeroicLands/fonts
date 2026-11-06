@@ -33,7 +33,11 @@
 <text x="44.0" y="95" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#6b665f">E0114</text>
 </g>
 <rect class="undrawn" x="50" y="626" width="88" height="104" fill="url(#hatch)"/>
-<rect class="undrawn" x="50" y="730" width="88" height="104" fill="url(#hatch)"/>
+<g class="drawn" id="cp-E0116" transform="translate(50 730)">
+<title>VARIATION SELECTOR-39 SHORT U+E0116</title>
+<g fill="#161412"></g>
+<text x="44.0" y="95" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#6b665f">E0116</text>
+</g>
 <rect class="undrawn" x="50" y="834" width="88" height="104" fill="url(#hatch)"/>
 <rect class="undrawn" x="50" y="938" width="88" height="104" fill="url(#hatch)"/>
 <rect class="undrawn" x="50" y="1042" width="88" height="104" fill="url(#hatch)"/>
