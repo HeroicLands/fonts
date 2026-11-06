@@ -50,22 +50,42 @@ jobs:
             - run: npm run format:check
             - run: npm run check:package
             - run: npm test
+            - name: Check WIP workflow gating
+              if: ${{ !cancelled() }}
+              run: node --test tools/wip-workflows.test.mjs
 
     fonts:
         name: Fonts build and pass the font check
+        if: ${{ !cancelled() }}
         # The build runner's 60-minute limit; the general runner's 30 is too short under load.
         runs-on: build
         steps:
+            - name: Require a ready pull request
+              id: ready
+              env:
+                  PR_TITLE: ${{ github.event.pull_request.title }}
+              run: |
+                  case "${PR_TITLE-}" in
+                      [Ww][Ii][Pp]:*)
+                          echo "WIP pull request: the long checks have not run. Remove WIP with earl pr ready." >&2
+                          exit 1
+                          ;;
+                  esac
             - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+              if: ${{ !startsWith(github.event.pull_request.title, 'WIP:') && steps.ready.outcome == 'success' && (success()) }}
             - name: Create the virtual environment
               run: |
                   python3.13 -m venv .venv
                   .venv/bin/pip install -r requirements.txt
+              if: ${{ !startsWith(github.event.pull_request.title, 'WIP:') && steps.ready.outcome == 'success' && (success()) }}
             - name: Build the fonts
               run: PATH="$PWD/.venv/bin:$PATH" ./build.sh
+              if: ${{ !startsWith(github.event.pull_request.title, 'WIP:') && steps.ready.outcome == 'success' && (success()) }}
             - name: Check the fonts
               run: .venv/bin/python tools/check.py
+              if: ${{ !startsWith(github.event.pull_request.title, 'WIP:') && steps.ready.outcome == 'success' && (success()) }}
             - name: Committed fonts, stylesheet, manifest and specimen pages match the build
               run: |
                   git diff --exit-code -- fonts/ fonts.css fonts.json specimens/pages/ specimens/*.md README.md
                   test -z "$(git ls-files --others --exclude-standard -- fonts.css fonts.json specimens/pages/ specimens/)"
+              if: ${{ !startsWith(github.event.pull_request.title, 'WIP:') && steps.ready.outcome == 'success' && (success()) }}

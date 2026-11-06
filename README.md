@@ -83,3 +83,13 @@ The fonts are licensed under the SIL Open Font License 1.1; see `LICENSE`. Under
 ## Developing
 
 To build the fonts, run the checks or add a font, see [DEVELOPING.md](DEVELOPING.md).
+
+## Pull request checks
+
+A pull request whose title starts with `WIP:` runs the light checks. An existing
+required check runs a short guard and fails, blocking merges while the expensive
+steps stay skipped. Remove the prefix with `earl pr ready`; it starts fresh
+required checks before scheduling a merge. Changing the title by hand does not
+start those checks. Main, release and manual runs keep their existing checks.
+
+Check the workflow gating locally with `node --test tools/wip-workflows.test.mjs`.
