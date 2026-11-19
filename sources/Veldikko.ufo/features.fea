@@ -1,10 +1,12 @@
 languagesystem DFLT dflt;
+@SHARED_RETAINED_MARKS = [bar emph fall long rise vowel.a vowel.a.emph vowel.a.fall vowel.a.fall.emph vowel.a.long vowel.a.long.emph vowel.a.long.fall vowel.a.long.fall.emph vowel.a.long.rise vowel.a.long.rise.emph vowel.a.rise vowel.a.rise.emph vowel.e vowel.e.emph vowel.e.fall vowel.e.fall.emph vowel.e.long vowel.e.long.emph vowel.e.long.fall vowel.e.long.fall.emph vowel.e.long.rise vowel.e.long.rise.emph vowel.e.rise vowel.e.rise.emph vowel.edieresis vowel.edieresis.emph vowel.edieresis.fall vowel.edieresis.fall.emph vowel.edieresis.long vowel.edieresis.long.emph vowel.edieresis.long.fall vowel.edieresis.long.fall.emph vowel.edieresis.long.rise vowel.edieresis.long.rise.emph vowel.edieresis.rise vowel.edieresis.rise.emph vowel.i vowel.i.emph vowel.i.fall vowel.i.fall.emph vowel.i.long vowel.i.long.emph vowel.i.long.fall vowel.i.long.fall.emph vowel.i.long.rise vowel.i.long.rise.emph vowel.i.rise vowel.i.rise.emph vowel.o vowel.o.emph vowel.o.fall vowel.o.fall.emph vowel.o.long vowel.o.long.emph vowel.o.long.fall vowel.o.long.fall.emph vowel.o.long.rise vowel.o.long.rise.emph vowel.o.rise vowel.o.rise.emph vowel.u vowel.u.emph vowel.u.fall vowel.u.fall.emph vowel.u.long vowel.u.long.emph vowel.u.long.fall vowel.u.long.fall.emph vowel.u.long.rise vowel.u.long.rise.emph vowel.u.rise vowel.u.rise.emph vowel.y vowel.y.emph vowel.y.fall vowel.y.fall.emph vowel.y.long vowel.y.long.emph vowel.y.long.fall vowel.y.long.fall.emph vowel.y.long.rise vowel.y.long.rise.emph vowel.y.rise vowel.y.rise.emph];
 
 # HarfBuzz replaces a default-ignorable character the font maps directly with
 # the space glyph. A glyph that a lookup substitutes is left alone, so each
 # ignorable is substituted once, to a second empty glyph.
 feature ccmp {
   sub ignorable by ignorable.sub;
+  sub shared.invisible by shared.invisible.sub;
 } ccmp;
 
 @LET = [p v m t s n d dh k h ng l r carrier g th dhasp kh gh tej dej kej gej];
@@ -19,6 +21,7 @@ feature ccmp {
 @BAR = [bar];
 
 lookup vowels {
+  lookupflag UseMarkFilteringSet @SHARED_RETAINED_MARKS;
   sub emph rise long vowel.a by vowel.a.long.rise.emph;
   sub rise emph long vowel.a by vowel.a.long.rise.emph;
   sub emph long rise vowel.a by vowel.a.long.rise.emph;

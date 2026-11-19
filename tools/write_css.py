@@ -31,65 +31,77 @@ ROOT = Path(__file__).resolve().parent.parent
 WIDTH = 80
 
 # The facts about each font that its file does not state, by file stem. ``features``
-# are the OpenType features a run turns on.
+# are the OpenType features a run turns on. ``scriptKind`` is private coverage metadata.
 # Each entry can have multiple variants (with different names, features, etc.) that share the same TTF file.
 FAMILIES = {
     "KhelathiZethuGlyphs-Regular": {
+        "scriptKind": "logographic",
         "slug": "khelathi-zethu-glyphs",
         "direction": "rtl",
         "features": [],
     },
     "PirzathCarved-Regular": {
+        "scriptKind": "sound",
         "slug": "pirzath-carved",
         "direction": "ltr",
         "features": [],
     },
     "PirzathHand-Regular": {
+        "scriptKind": "sound",
         "slug": "pirzath-hand",
         "direction": "ltr",
         "features": [],
     },
     "QalezuHand-Regular": {
+        "scriptKind": "sound",
         "slug": "qalezu-hand",
         "direction": "rtl",
         "features": [],
     },
     "SemaronKuriale-Regular": {
+        "scriptKind": "sound",
         "slug": "semaron-kuriale",
         "direction": "ltr",
         "features": [],
     },
     "TengChou-Regular": {
+        "scriptKind": "logographic",
         "slug": "teng-chou",
         "direction": "ltr",
         "features": [],
     },
     "ChalishPilamCommon-Regular": {
+        "scriptKind": "logographic",
         "slug": "chalish-pilam-common",
         "direction": "ltr",
         "features": [],
     },
     "ChalishPilamCeremonial-Regular": {
+        "scriptKind": "logographic",
         "slug": "chalish-pilam-ceremonial",
         "direction": "ltr",
         "features": [],
     },
     "VedyaksharaClassical-Regular": {
+        "scriptKind": "sound",
         "slug": "vedyakshara-classical",
         "direction": "ltr",
         "features": [],
     },
     "HelonikaBook-Regular": {
+        "scriptKind": "sound",
         "slug": "helonika-book",
         "direction": "ltr",
         "features": [],
     },
     "Veldikko-Regular": {
+        "scriptKind": "sound",
         "slug": "veldikko",
         "direction": "rtl",
         "features": [],
     },
     "ThuravarkCarved-Regular": {
+        "scriptKind": "sound",
         "slug": "thuravark-carved",
         "direction": "ltr",
         "features": [],

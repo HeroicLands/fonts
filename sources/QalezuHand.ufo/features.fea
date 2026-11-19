@@ -1,16 +1,19 @@
 languagesystem DFLT dflt;
+@SHARED_RETAINED_MARKS = [catchdots dab doubling];
 
 # HarfBuzz replaces a default-ignorable character the font maps directly with
 # the space glyph. A glyph that a lookup substitutes is left alone, so each
 # ignorable is substituted once, to a second empty glyph.
 feature ccmp {
   sub ignorable by ignorable.sub;
+  sub shared.invisible by shared.invisible.sub;
 } ccmp;
 
 # A catch before a sign, or before a doubled sign, is drawn as one form: three
 # reed dabs over the sign. HarfBuzz shapes these code points in visual order,
 # because they belong to no script, so the catch stands after its sign in the run.
 feature rlig {
+  lookupflag UseMarkFilteringSet @SHARED_RETAINED_MARKS;
   sub l catch by l.catch;
   sub r catch by r.catch;
   sub t catch by t.catch;

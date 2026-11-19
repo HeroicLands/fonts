@@ -73,6 +73,7 @@ sys.path.insert(1, str(HERE.parent))
 import joining as J  # noqa: E402
 import letters as L  # noqa: E402
 import notdef_box  # noqa: E402
+import shared_invisibles  # noqa: E402
 import strokes as S  # noqa: E402
 
 _spec = importlib.util.spec_from_file_location("teng_chou_fit", HERE.parent / "teng-chou" / "fit.py")
@@ -259,6 +260,7 @@ def build(out: Path) -> tuple[Path, dict]:
     for name in ("ignorable", "ignorable.sub"):
         font.newGlyph(name).width = 0
     font["ignorable"].unicodes = [int(c[2:], 16) for c in enc["ignorables"]["codepoints"]]
+    font["ignorable"].unicodes = sorted(set(font["ignorable"].unicodes) | shared_invisibles.codepoints())
     taken = set(font["space"].unicodes) | set(font["ignorable"].unicodes)
     font[notdef_box.BOX].unicodes = [c for c in notdef_box.codepoints() if c not in taken]
 
@@ -310,6 +312,7 @@ def build(out: Path) -> tuple[Path, dict]:
     font.lib["public.openTypeCategories"] = {n: c for n, c in sorted(categories.items()) if c != "unassigned"}
     widths = {n: f_width(t) * k for n, t in marks.items() if n.startswith("vowel.") or n in MODIFIERS}
     font.features.text = features(letters, forms, widths, k)
+    shared_invisibles.prepare(font, "Veldikko")
     top, bottom = compiled_extent(font)
     info.openTypeOS2WinAscent = max(WIN_ASCENT, top)
     info.openTypeOS2WinDescent = max(WIN_DESCENT, -bottom)

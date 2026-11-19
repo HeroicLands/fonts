@@ -33,9 +33,10 @@ HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE.parent))
 import font_names  # noqa: E402
 import notdef_box  # noqa: E402
+import shared_invisibles  # noqa: E402
 
 ENCODING = HERE / "encoding.json"
-EMPTY_BY_DESIGN = {"space", "ignorable", "ignorable.sub"}
+EMPTY_BY_DESIGN = {"space", "ignorable", "ignorable.sub", "shared.invisible", "shared.invisible.sub"}
 FORMS = ("init", "medi", "fina", "init.wide", "medi.wide")
 NASALS = ("m", "n", "ng")
 TAILS = {"sweep": "ss01", "ezh": "ss02"}
@@ -47,6 +48,7 @@ def expected_cmap(enc) -> dict[int, str]:
     cmap[0x20] = cmap[0xA0] = enc["space"]["glyph"]
     for cp in enc["ignorables"]["codepoints"]:
         cmap[int(cp[2:], 16)] = enc["ignorables"]["glyph"]
+    cmap.update({cp: "shared.invisible" for cp in shared_invisibles.codepoints()})
     for cp in notdef_box.codepoints():
         cmap.setdefault(cp, notdef_box.BOX)
     return cmap

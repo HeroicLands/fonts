@@ -385,7 +385,10 @@ word space is `SPACE`.
 
 ### The features
 
-- **`ccmp`** empties the default-ignorables.
+- **`ccmp`** substitutes separate empty output glyphs for default-ignorables and
+  shared sound, stress, compound and tone metadata. Only the shared metadata
+  output is a GDEF mark. The stray-accent and kerning lookups exclude that output
+  while retaining the visible accent.
 - **`rclt`** draws the accent as the box wherever it follows anything that is not a
   vowel: a consonant, a digit, a point, a space or another accent. Standing first in
   a run, with nothing before it, it is drawn as itself.

@@ -1,15 +1,18 @@
 languagesystem DFLT dflt;
 languagesystem latn dflt;
+@SHARED_RETAINED_MARKS = [lengthmark];
 
 # HarfBuzz replaces a default-ignorable character the font maps directly with
 # the space glyph. A glyph that a lookup substitutes is left alone, so each
 # ignorable is substituted once, to a second empty glyph.
 feature ccmp {
   sub ignorable by ignorable.sub;
+  sub shared.invisible by shared.invisible.sub;
 } ccmp;
 
 # A vowel and the length mark after it are drawn as the long vowel.
 feature liga {
+  lookupflag UseMarkFilteringSet @SHARED_RETAINED_MARKS;
   sub a lengthmark by aacute;
   sub e lengthmark by eacute;
   sub i lengthmark by iacute;
@@ -19,6 +22,7 @@ feature liga {
 
 # A consonant written twice is the doubled sign.
 feature rlig {
+  lookupflag UseMarkFilteringSet @SHARED_RETAINED_MARKS;
   sub p p by p_p;
   sub b b by b_b;
   sub f f by f_f;

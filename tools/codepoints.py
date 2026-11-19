@@ -47,6 +47,8 @@ from fontTools.ttLib import TTFont
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import codepoint_order  # noqa: E402
+import shared_invisibles  # noqa: E402
+from write_css import FAMILIES  # noqa: E402
 from render import Renderer  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -160,7 +162,7 @@ BMP_PRIVATE = (0xE000, 0xF8FF)
 
 # Glyphs of every left-to-right face that are not characters. space.dot is the dot
 # Pirzath Carved substitutes for its empty space glyph.
-STRUCTURAL = {".notdef", "notdef.box", "ignorable", "ignorable.sub", "space", "space.dot"}
+STRUCTURAL = {".notdef", "notdef.box", "ignorable", "ignorable.sub", "shared.invisible", "shared.invisible.sub", "space", "space.dot"}
 JOINED_SUFFIXES = (".init", ".medi", ".fina")
 
 
@@ -240,6 +242,7 @@ def shape(renderer: Renderer, text: str, family: dict) -> list[str]:
 def cmap_problems(font: Path, cmap: dict[int, str], listed: dict[int, str]) -> list[str]:
     """Every cmap entry is a listed character, a space, an ignorable or the box."""
     space = cmap.get(0x20)
+    shared = shared_invisibles.codepoints() if FAMILIES[font.stem]["scriptKind"] == "sound" else set()
     ignorable = {cmap[c] for c in IGNORABLES if c in cmap}
     problems = []
     for code, glyph in sorted(cmap.items()):
@@ -247,6 +250,8 @@ def cmap_problems(font: Path, cmap: dict[int, str], listed: dict[int, str]) -> l
             continue
         if code in SPACES:
             ok = glyph == space
+        elif code in shared:
+            ok = glyph == "shared.invisible"
         elif code in IGNORABLES:
             ok = glyph in ignorable and glyph != BOX
         else:

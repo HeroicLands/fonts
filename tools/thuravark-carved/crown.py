@@ -175,6 +175,7 @@ def features(order: list[str]) -> str:
         "} crown_close;",
         "feature rclt {",
         "  lookup crown {",
+        "    lookupflag IgnoreMarks;",
     ]
     for k in range(LONGEST):
         ahead = " ".join(["@CROWN_IN"] * k + [CLOSE])

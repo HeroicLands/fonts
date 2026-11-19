@@ -29,12 +29,23 @@ export SOURCE_DATE_EPOCH="${SOURCE_DATE_EPOCH:-1767225600}"
 build() {
     ufo="$1"
     out="$2"
-    fontmake -u "$ufo" -o ttf --keep-overlaps --no-production-names --output-path "$out"
+    if [ -n "${HL_LAYOUT_EVIDENCE_DIR:-}" ]; then
+        family=$(basename "$out" .ttf)
+        python tools/layout_evidence.py --out "$HL_LAYOUT_EVIDENCE_DIR/$family/fontmake" --module fontmake -- \
+            -u "$ufo" -o ttf --keep-overlaps --no-production-names --output-path "$out"
+    else
+        fontmake -u "$ufo" -o ttf --keep-overlaps --no-production-names --output-path "$out"
+    fi
     if [ "$ufo" = sources/KhelathiZethuGlyphs.ufo ]; then
         python tools/khelathi-zethu-glyphs/layout.py "$out"
     fi
     if [ "$ufo" = sources/ThuravarkCarved.ufo ]; then
-        python tools/thuravark-carved/crown.py "$out"
+        if [ -n "${HL_LAYOUT_EVIDENCE_DIR:-}" ]; then
+            python tools/layout_evidence.py --out "$HL_LAYOUT_EVIDENCE_DIR/$family/crown" \
+                --script tools/thuravark-carved/crown.py -- "$out"
+        else
+            python tools/thuravark-carved/crown.py "$out"
+        fi
     fi
     python tools/add_mac_names.py "$out"
     fonttools ttLib.woff2 compress -o "${out%.ttf}.woff2" "$out"

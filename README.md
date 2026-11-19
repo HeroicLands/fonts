@@ -19,6 +19,13 @@ Open-source fonts for invented writing systems, free to use in your own campaign
 
 Each font draws only its own characters, on code points of its own, so ordinary English text typed in one shows empty boxes. You insert characters by code point from the font's chart, which lists every character with its code point, its name and its code, a short name such as `PARGH` or `DIGIT_ZERO`.
 
+The sound-script fonts also carry shared invisible characters for sounds, stress,
+compound boundaries and tone. These characters preserve encoded text without
+adding ink or width, and do not interrupt the script's normal shaping. They are
+intentionally absent from the visible character charts and the `fonts.json`
+character lists. Their code points come from the shared encoding registry in
+`@heroiclands/package-build`; they are not characters to type from a chart.
+
 ## Download
 
 Every font is a TrueType file (`.ttf`, for documents and desktop apps) and a WOFF2 file (`.woff2`, for websites). Download them from the [latest release](https://github.com/HeroicLands/fonts/releases/latest), which also holds `charts.zip` (the character charts). Programs can take everything from npm instead; see [For programs](#for-programs).
@@ -56,7 +63,7 @@ Set the character's font to the matching font, or it shows as an empty box. To t
 
 ## For programs
 
-The fonts are on npm as `@heroiclands/fonts`, with the font files, `fonts.css`, the `fonts.json` manifest and the charts. The manifest lists every character of every font with its code point, name and code:
+The fonts are on npm as `@heroiclands/fonts`, with the font files, `fonts.css`, the `fonts.json` manifest and the charts. The manifest lists each font’s chart characters with their code points, names and codes; shared invisible metadata uses the encoding registry described above:
 
 ```sh
 npm install @heroiclands/fonts

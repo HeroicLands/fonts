@@ -66,6 +66,7 @@ sys.path.insert(0, str(HERE))
 sys.path.insert(1, str(HERE.parent))
 import letters as L  # noqa: E402
 import notdef_box  # noqa: E402
+import shared_invisibles  # noqa: E402
 import strokes as S  # noqa: E402
 
 _spec = importlib.util.spec_from_file_location("teng_chou_fit", HERE.parent / "teng-chou" / "fit.py")
@@ -266,6 +267,7 @@ def build(out: Path) -> Path:
     for name in ("ignorable", "ignorable.sub"):
         font.newGlyph(name).width = 0
     font["ignorable"].unicodes = [int(c[2:], 16) for c in enc["ignorables"]["codepoints"]]
+    font["ignorable"].unicodes = sorted(set(font["ignorable"].unicodes) | shared_invisibles.codepoints())
     taken = set(font["space"].unicodes) | set(font["ignorable"].unicodes)
     font[notdef_box.BOX].unicodes = [c for c in notdef_box.codepoints() if c not in taken]
     categories = {}
@@ -320,6 +322,7 @@ def build(out: Path) -> Path:
     font.lib["public.glyphOrder"] = order
     font.lib["public.openTypeCategories"] = dict(sorted(categories.items()))
     font.features.text = features(enc, places)
+    shared_invisibles.prepare(font, "VedyaksharaClassical")
     top, bottom = compiled_extent(font)
     info.openTypeOS2WinAscent = max(WIN_ASCENT, top)
     info.openTypeOS2WinDescent = max(WIN_DESCENT, -bottom)

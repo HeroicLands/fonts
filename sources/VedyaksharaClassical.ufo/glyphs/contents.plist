@@ -340,6 +340,10 @@
     <string>sha.final.glif</string>
     <key>sha.half</key>
     <string>sha.half.glif</string>
+    <key>shared.invisible</key>
+    <string>shared.invisible.glif</string>
+    <key>shared.invisible.sub</key>
+    <string>shared.invisible.sub.glif</string>
     <key>shra</key>
     <string>shra.glif</string>
     <key>shra.final</key>

@@ -8864,7 +8864,7 @@
                     "codepoint": "U+E0114",
                     "name": "VARIATION SELECTOR-37",
                     "code": "STRESS",
-                    "glyph": "ignorable",
+                    "glyph": "shared.invisible",
                     "kind": "control"
                 },
                 {

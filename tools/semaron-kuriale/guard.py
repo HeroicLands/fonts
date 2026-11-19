@@ -35,7 +35,7 @@ SCRIPT = "semaron"
 
 BOX = "notdef.box"
 BOX_GLYPHS = {BOX}
-EMPTY = {"ignorable", "ignorable.sub"}
+EMPTY = {"ignorable", "ignorable.sub", "shared.invisible", "shared.invisible.sub"}
 
 _fixtures = json.loads((HERE / "fixtures.json").read_text(encoding="utf-8"))
 FIXTURES = [(f["codes"], f["glyphs"]) for f in _fixtures["fixtures"]]

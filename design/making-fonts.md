@@ -271,6 +271,8 @@ Latin forced right to left with the bidi override characters works, but HarfBuzz
 - **The guard.** `tools/notdef_box.py` walks the ranges on a built font and fails when a code point is unmapped, maps to glyph 0 or maps to anything but the box without being a used code point. A used code point is one whose cmap entry reaches another glyph that draws, or the glyph of the space, the hyphen-minus or the default-ignorables. Each `check_font.py` runs it.
 
 - **Default-ignorables draw nothing.** Map U+200B–200F, U+202A–202E, U+2066–2069 and U+FEFF to an empty glyph, and add a `ccmp` single substitution to a second empty glyph. A cmap entry alone fails, because HarfBuzz swaps an ignorable for the `space` glyph, and Pirzath's space is a visible dot.
+- **Shared sound metadata draws nothing.** The `@heroiclands/package-build` encoding-standard registry owns the shared sound, stress, compound-boundary and tone code points. Every sound-script font maps them to `shared.invisible`, an empty, zero-advance glyph, and substitutes it with the equally empty `shared.invisible.sub` in `ccmp`. Default-ignorables and other existing controls retain their `ignorable` / `ignorable.sub` pair. Semaron maps stress U+E0114 to the shared pair and SHORT U+E0116 to the existing pair.
+- **Metadata stays transparent to shaping.** Of the metadata pair, classify only `shared.invisible.sub` as a GDEF mark. Filter it from the adjacency lookups that need it while retaining the existing marks in those lookups; leave other lookups and the existing control glyph classes unchanged. Generated sound UFOs use `shared_invisibles.prepare` after defining their glyph categories and features. Static UFOs carry the corresponding glyphs, cmap, categories and scoped feature rules directly. Thuravark's feature source includes the metadata mark in GDEF, and its crown context filters it when `tools/thuravark-carved/crown.py` recompiles the features.
 - **Glyph codes.** Every character gets its code in `tools/codes/<script>.json` when it is drawn: a letter its name, a digit `DIGIT_<n>`, a mark or a point what it does. `tools/codes_guard.py` fails a character with no code, and two characters of a face on one code.
 
 ## Checks and gates
@@ -281,14 +283,80 @@ Latin forced right to left with the bidi override characters works, but HarfBuzz
 | `tools/<font>/check_font.py`              | The cmap matches the encoding; the name table carries the OFL; every glyph has outlines; marks have zero advance; features reach every variant; every unused character maps to the box. Runs in CI.                                                                                                                                                                                                                                                                                |
 | `tools/vertical.py`                       | Every face has the shared vertical metrics with USE_TYPO_METRICS set, its typical letters stand within 2% of the standard's x-height or cap height, its sxHeight and sCapHeight match them, and no ink leaves the band between the ascent and the descent except the accepted overshoot. A face written in columns (Teng Chou) also carries `vhea` and `vmtx`, every character on a vertical advance of exactly one em and one vertical origin, centred on its horizontal advance. |
 | `tools/spacing.py`                        | Every face sets its text at a natural spacing: the median blank share of its advances is at most 14%, and in its sample lines the mean gap between the inks of neighbouring signs is at most 0.08 em and the largest at most 0.22 em; the word space of Qalezu Hand and Khelathi Zethu Glyphs is the one in `SPACING`. Runs in CI.                                                                                                                                                 |
-| `tools/codepoints.py`                     | Each face, shaped from its own code points, yields exactly the glyphs `fonts.json` lists; its cmap maps nothing else but the space, the default-ignorables and the box; and no substitution writes a character it did not read, so the font states no spelling. Runs in CI.                                                                                                                                                                                                        |
+| `tools/codepoints.py`                     | Each face, shaped from its own code points, yields exactly the glyphs `fonts.json` lists; its cmap maps nothing else but the space, the default-ignorables, shared sound metadata and the box; and no substitution writes a character it did not read, so the font states no spelling. Runs in CI.                                                                                                                                                                                 |
 | `tools/notdef_box.py`                     | Every code point of the Latin and punctuation ranges is mapped, and every one the face does not draw is on `notdef.box`, never glyph 0. Runs in CI.                                                                                                                                                                                                                                                                                                                                |
 | `tools/khelathi-zethu-glyphs/quadrats.py` | Shapes Khelathi Zethu Glyphs' quadrat and cartouche fixtures, its samples written with joiners, runs of quadrats and a seeded sweep of random ones, and asserts each sign's scale and place against the layout computed in Python, and the cord round each cartouche. Reads no lexicon.                                                                                                                                                                                            |
 | `tools/<font>/guard.py`                   | Shapes the font's fixtures, sequences of its glyph codes, or every sample inscription, through the built font with uharfbuzz and asserts the right glyphs and neither `.notdef` nor the box. Runs in CI.                                                                                                                                                                                                                                                                           |
 | `tools/codes_guard.py`                    | Every character of every face has exactly one glyph code, well formed and unique within its face, the one its script's code table gives it. Runs in CI.                                                                                                                                                                                                                                                                                                                            |
+| `tools/sound_coverage.py`                 | Checks sound-script font files against the shared sound registry and each face’s declared visible characters. Run `.venv/bin/python tools/sound_coverage.py <guide>` with a pronunciation guide containing `data.sounds` frontmatter. `--help` lists the argument and options.                                                                                                                                                                                                     |
 | `tools/prove_guards.py`                   | Each guard fails a deliberately broken font: a sign removed from the cmap, GSUB stripped, the box guard's question mark unmapped or put on glyph 0, or every advance widened. A guard that cannot fail proves nothing.                                                                                                                                                                                                                                                             |
 | `tools/<font>/specimens.py`               | Renders the sheets in `specimens/<font>/`. Look at every page.                                                                                                                                                                                                                                                                                                                                                                                                                     |
 | CI (`.gitea/workflows/ci.yml`)            | Builds every font, runs each `check_font.py`, and fails if the committed fonts, `fonts.css` or `fonts.json` differ from the build. Also checks the formatting and the npm package. Also runs the hooks, the attribution check and the TODO check.                                                                                                                                                                                                                                  |
+
+### Shared metadata evidence
+
+The font CI job runs the permanent metadata proof on the current build.
+`HL_LAYOUT_EVIDENCE_DIR` enables `tools/layout_evidence.py` around the existing
+fontmake and crown compilations. The pinned FontTools builder supplies each
+compiled lookup's source location and name. Its parsed feature blocks and
+normalized compiled tables are retained beside that mapping, without adding a
+debugging table to a font.
+
+`tools/shared_metadata_proof.py` requires those captures to match the built TTF
+and decoded WOFF2. Every shared code point maps to the dedicated empty input,
+and no other code point maps to either metadata glyph. Only the output is a
+GDEF mark. Each selected source block must have a compiled lookup whose filter
+excludes metadata and retains every current visible mark. References to metadata
+are limited to its substitution and the declared crown handling. The proof
+checks the glyphs for ink and advance independently of their classification.
+
+The proof inserts each registry metadata character at every internal boundary
+of the glyph-code fixtures, using each face's direction and each fixture's
+features. It compares glyph names, advances and offsets, removes only the
+empty metadata output, and checks its zero advance separately. Coverage includes
+right-to-left joining, bound style, crown handling and Semaron stress between a
+vowel and its catch. TTF and WOFF2 must agree on mapping, geometry, layout and
+shaping, including legacy-control insertions. These are HarfBuzz checks; they
+are not evidence of identical results in other shaping engines.
+
+A proof invocation against an existing build and its captures is:
+
+```sh
+.venv/bin/python tools/shared_metadata_proof.py \
+  --built fonts --layout build/evidence/layout --out build/evidence/shaping
+```
+
+The normal report has `mode: "metadata"`. It does not compare ordinary glyphs or
+lookups with a fixed release. Font-specific guards in `tools/check.py` and the
+committed-output comparison remain required for all font changes, including
+logographic fonts. An ordinary new glyph, advance, outline or lookup is not a
+metadata regression; changing its effect on metadata transparency is.
+
+For a transition acceptance comparison, add `--baseline build/baseline/fonts`.
+That explicit mode is strict: `tools/shared-metadata/baseline.json` identifies
+the source commit and checksums of the pre-metadata fonts, and
+`build/baseline/source-sha.txt` must name that source. A baseline with the shared
+pair is rejected. The proof additionally matches lookup rules, routing and
+filters, preserves existing cmap entries, outlines and metrics, compares native
+and legacy-control shaping, and requires byte-identical logographic fonts. Its
+report has `mode: "transition"`; it does not substitute for the permanent checks,
+which also run in this mode. A transition report applies only to its recorded
+source and font hashes. The fixed manifest is not an update target for ordinary
+font development.
+
+The coverage guard reads the actual guide file pinned by commit and checksum in
+CI. Its mutation tests receive that same file through `SOUND_COVERAGE_GUIDE` and
+must reject missing mappings, ink, advance, missing visible glyphs and inventory
+drift. Missing guide input fails the tests; no substitute inventory is used.
+
+The `rebuilt-fonts` artifact includes source provenance, compiler mappings,
+proof mode, counts and failure records, guide coverage and mutation results,
+and native passage previews. CI retains it for 30 days. Evidence collection runs
+after a successful build even when a later comparison fails; the failed check
+remains a failure. Acceptance requires successful coverage and proof results,
+matching checksums and source identity, full font/package gates, and inspection
+of the passage images. Preserve accepted evidence separately when it must remain
+available beyond artifact retention.
 
 ## Delivering the fonts
 

@@ -1,6 +1,10 @@
 languagesystem DFLT dflt;
 languagesystem latn dflt;
 
+table GDEF {
+  GlyphClassDef , , [shared.invisible.sub], ;
+} GDEF;
+
 # The face draws each character from its own code point. HarfBuzz replaces a
 # default-ignorable character the font maps directly with the space glyph. A
 # glyph that a lookup substitutes is left alone, so each ignorable is substituted
@@ -9,8 +13,10 @@ languagesystem latn dflt;
 feature ccmp {
   lookup ccmp_ignorable {
     sub ignorable by ignorable.sub;
+    sub shared.invisible by shared.invisible.sub;
   } ccmp_ignorable;
   lookup ccmp_acute {
+    lookupflag IgnoreMarks;
     sub a acutecomb' by a.acute;
     sub e acutecomb' by e.acute;
     sub i acutecomb' by i.acute;
@@ -25,6 +31,7 @@ feature ss01 {
   featureNames {
     name "Bound runes";
   };
+  lookupflag IgnoreMarks;
   sub e n by e_n;
   sub e l by e_l;
   sub a r by a_r;

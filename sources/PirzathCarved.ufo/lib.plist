@@ -75,6 +75,8 @@
       <string>comma</string>
       <string>quote.open</string>
       <string>quote.close</string>
+      <string>shared.invisible</string>
+      <string>shared.invisible.sub</string>
     </array>
     <key>public.openTypeCategories</key>
     <dict>
@@ -198,6 +200,10 @@
       <string>base</string>
       <key>sh</key>
       <string>base</string>
+      <key>shared.invisible</key>
+      <string>base</string>
+      <key>shared.invisible.sub</key>
+      <string>mark</string>
       <key>space</key>
       <string>base</string>
       <key>space.dot</key>

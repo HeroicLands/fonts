@@ -109,6 +109,8 @@
       <string>q_q</string>
       <string>w_w</string>
       <string>y_y</string>
+      <string>shared.invisible</string>
+      <string>shared.invisible.sub</string>
     </array>
     <key>public.openTypeCategories</key>
     <dict>
@@ -280,6 +282,10 @@
       <string>base</string>
       <key>sh_sh</key>
       <string>base</string>
+      <key>shared.invisible</key>
+      <string>base</string>
+      <key>shared.invisible.sub</key>
+      <string>mark</string>
       <key>t</key>
       <string>base</string>
       <key>t_h</key>

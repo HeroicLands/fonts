@@ -162,6 +162,10 @@
     <string>sh.dbl.glif</string>
     <key>sh.dbl.catch</key>
     <string>sh.dbl.catch.glif</string>
+    <key>shared.invisible</key>
+    <string>shared.invisible.glif</string>
+    <key>shared.invisible.sub</key>
+    <string>shared.invisible.sub.glif</string>
     <key>six</key>
     <string>six.glif</string>
     <key>space</key>

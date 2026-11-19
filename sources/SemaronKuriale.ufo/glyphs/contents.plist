@@ -170,6 +170,10 @@
     <string>s.glif</string>
     <key>sh</key>
     <string>sh.glif</string>
+    <key>shared.invisible</key>
+    <string>shared.invisible.glif</string>
+    <key>shared.invisible.sub</key>
+    <string>shared.invisible.sub.glif</string>
     <key>space</key>
     <string>space.glif</string>
     <key>t</key>

@@ -30,10 +30,11 @@ from fontTools.ttLib import TTFont
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 import font_names  # noqa: E402
 import notdef_box  # noqa: E402
+import shared_invisibles  # noqa: E402
 
 ENCODING = Path(__file__).resolve().parent / "encoding.json"
 COMPONENTS = {"doubling", "dab", "catchdots"}
-EMPTY_BY_DESIGN = {"space", "ignorable", "ignorable.sub"}
+EMPTY_BY_DESIGN = {"space", "ignorable", "ignorable.sub", "shared.invisible", "shared.invisible.sub"}
 
 
 def expected_cmap() -> dict[int, str]:
@@ -43,6 +44,7 @@ def expected_cmap() -> dict[int, str]:
     ign = enc["ignorables"]
     for cp in ign["codepoints"]:
         cmap[int(cp[2:], 16)] = ign["glyph"]
+    cmap.update({cp: "shared.invisible" for cp in shared_invisibles.codepoints()})
     for cp in notdef_box.codepoints():
         cmap.setdefault(cp, notdef_box.BOX)
     return cmap

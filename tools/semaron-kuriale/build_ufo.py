@@ -33,6 +33,7 @@ sys.path.insert(0, str(ROOT / "tools"))
 import apply_notdef_box  # noqa: E402
 import codepoint_order  # noqa: E402
 import kit as K  # noqa: E402
+import shared_invisibles  # noqa: E402
 import vertical  # noqa: E402
 
 STEM = "SemaronKuriale"
@@ -167,7 +168,7 @@ def build(out: Path) -> Path:
     for row in codepoint_order.ltr_table(f"{STEM}-Regular"):
         unis.setdefault(row["glyph"], []).append(int(row["codepoint"][2:], 16))
     unis["space"] = [0x20, 0xA0]
-    unis["ignorable"] = IGNORABLES
+    unis["ignorable"] = sorted(set(IGNORABLES) | shared_invisibles.codepoints())
 
     shapes, widths, anchors = {}, {}, {}
     for name in ORDER:
@@ -195,6 +196,7 @@ def build(out: Path) -> Path:
     font.lib["public.openTypeCategories"] = dict(sorted(
         {nm: ("mark" if nm == "grave" else "base") for nm in ORDER}.items()))
     font.features.text = features(anchors)
+    shared_invisibles.prepare(font, "SemaronKuriale")
 
     def median_height(names):
         hs = []

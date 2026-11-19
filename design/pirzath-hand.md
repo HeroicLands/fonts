@@ -27,6 +27,9 @@ its characters is contextual:
 - The default-ignorable characters draw nothing: they map to an empty glyph,
   and a `ccmp` substitution turns that into a second empty glyph, so the
   shaper does not replace them with the space.
+- Shared sound, stress, compound and tone metadata uses its own empty input and
+  output pair. Only its output is a GDEF mark; the length and doubling lookups
+  ignore that output while retaining the visible length mark.
 
 The sentence end stands with no space on either side; the next sentence begins
 straight after it. That is how Pirzath is written, not a rule of the font: a
@@ -351,12 +354,12 @@ of the default-ignorables; `.notdef`, the hand's plain cross; and
 
 ### The features
 
-| Feature | What it does                                                         |
-| ------- | -------------------------------------------------------------------- |
-| `ccmp`  | Turns the default-ignorables' empty glyph into a second one.         |
-| `liga`  | Draws a vowel and the length mark after it as the long vowel.        |
-| `rlig`  | Draws a consonant written twice as its doubled sign.                 |
-| `mark`  | Sets a length mark left on a vowel pair over the middle of the pair. |
+| Feature | What it does                                                                         |
+| ------- | ------------------------------------------------------------------------------------ |
+| `ccmp`  | Substitutes separate empty output glyphs for default-ignorables and shared metadata. |
+| `liga`  | Draws a vowel and the length mark after it as the long vowel.                        |
+| `rlig`  | Draws a consonant written twice as its doubled sign.                                 |
+| `mark`  | Sets a length mark left on a vowel pair over the middle of the pair.                 |
 
 There is no `ss01`, no joined form and no kerning.
 

@@ -80,6 +80,8 @@
       <string>raisedDot</string>
       <string>registerMark</string>
       <string>accent</string>
+      <string>shared.invisible</string>
+      <string>shared.invisible.sub</string>
     </array>
     <key>public.openTypeCategories</key>
     <dict>
@@ -215,6 +217,10 @@
       <string>base</string>
       <key>s</key>
       <string>base</string>
+      <key>shared.invisible</key>
+      <string>base</string>
+      <key>shared.invisible.sub</key>
+      <string>mark</string>
       <key>t</key>
       <string>base</string>
       <key>th</key>

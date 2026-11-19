@@ -248,6 +248,8 @@
       <string>fall</string>
       <string>emph</string>
       <string>bar</string>
+      <string>shared.invisible</string>
+      <string>shared.invisible.sub</string>
     </array>
     <key>public.openTypeCategories</key>
     <dict>
@@ -517,6 +519,10 @@
       <string>base</string>
       <key>s.medi.wide</key>
       <string>base</string>
+      <key>shared.invisible</key>
+      <string>base</string>
+      <key>shared.invisible.sub</key>
+      <string>mark</string>
       <key>t</key>
       <string>base</string>
       <key>t.fina</key>

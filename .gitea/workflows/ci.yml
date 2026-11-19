@@ -1,19 +1,15 @@
 name: CI
 
-# What the repository asserts on every change: the canonical git hooks are
-# present, no TODO or FIXME marker is committed, and the fonts rebuild from the
-# UFO sources and pass the font check, and the npm package holds exactly the
-# fonts, their stylesheet, their manifest and their charts, and every drawn
-# Khelathi Zethu sign has a paint map whose seeds land in its regions.
-#
-# The build is reproducible (a fixed head timestamp), so the committed fonts,
-# fonts.css and fonts.json must match a fresh build byte for byte: a file left
-# unrebuilt fails here.
+# CI checks hooks, source hygiene, package contents and font-specific guards.
+# Rebuilt fonts, stylesheet, manifest and specimen pages must match committed outputs.
+# Shared metadata coverage, mutation checks and HarfBuzz transparency run against
+# the pinned guide and current fonts; transition comparisons are explicit proofs.
 
 on:
     push:
         branches: [main]
     pull_request:
+    # A dispatch runs this workflow on its selected branch without a PR title.
     workflow_dispatch:
 
 permissions:
@@ -73,13 +69,26 @@ jobs:
                   esac
             - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
               if: ${{ !startsWith(github.event.pull_request.title, 'WIP:') && steps.ready.outcome == 'success' && (success()) }}
+            - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7
+              with:
+                  node-version: ${{ vars.CI_NODE_VERSION || '24' }}
+                  cache: npm
+              if: ${{ !startsWith(github.event.pull_request.title, 'WIP:') && steps.ready.outcome == 'success' && (success()) }}
+            - run: npm ci
+              if: ${{ !startsWith(github.event.pull_request.title, 'WIP:') && steps.ready.outcome == 'success' && (success()) }}
             - name: Create the virtual environment
               run: |
                   python3.13 -m venv .venv
                   .venv/bin/pip install -r requirements.txt
               if: ${{ !startsWith(github.event.pull_request.title, 'WIP:') && steps.ready.outcome == 'success' && (success()) }}
+            - name: Check the lookup proof's rejection cases
+              if: ${{ !startsWith(github.event.pull_request.title, 'WIP:') && steps.ready.outcome == 'success' && (success()) }}
+              run: .venv/bin/python -m unittest discover -s tools -p shared_metadata_proof_test.py
             - name: Build the fonts
-              run: PATH="$PWD/.venv/bin:$PATH" ./build.sh
+              id: build
+              env:
+                  SOURCE_DATE_EPOCH: 1767225600
+              run: HL_LAYOUT_EVIDENCE_DIR="$RUNNER_TEMP/rebuilt-fonts/layout" PATH="$PWD/.venv/bin:$PATH" ./build.sh
               if: ${{ !startsWith(github.event.pull_request.title, 'WIP:') && steps.ready.outcome == 'success' && (success()) }}
             - name: Check the fonts
               run: .venv/bin/python tools/check.py
@@ -89,3 +98,75 @@ jobs:
                   git diff --exit-code -- fonts/ fonts.css fonts.json specimens/pages/ specimens/*.md README.md
                   test -z "$(git ls-files --others --exclude-standard -- fonts.css fonts.json specimens/pages/ specimens/)"
               if: ${{ !startsWith(github.event.pull_request.title, 'WIP:') && steps.ready.outcome == 'success' && (success()) }}
+
+            - name: Check shared sound coverage against the pronunciation guide
+              if: ${{ !cancelled() && !startsWith(github.event.pull_request.title, 'WIP:') && steps.ready.outcome == 'success' && steps.build.outcome == 'success' }}
+              run: |
+                  set -u
+                  artifact="$RUNNER_TEMP/rebuilt-fonts"
+                  mkdir -p "$artifact/coverage"
+                  guide="$artifact/coverage/Pronouncing_Thalorna.md"
+                  if (
+                      curl --fail --silent --show-error --location --max-time 60 \
+                          'https://raw.githubusercontent.com/HeroicLands/thalorna/95513c8cf84d574b1cb5a6ab7df323317090b52b/assets/content/Lore/Pronouncing_Thalorna.md' -o "$guide" &&
+                      printf '%s  %s\n' '8ccf40fd0667ca2516f49d27affe270a493cad6a3bd8d646e78f6cba1970b182' "$guide" | sha256sum -c - &&
+                      .venv/bin/python tools/sound_coverage.py "$guide" &&
+                      SOUND_COVERAGE_GUIDE="$guide" .venv/bin/python -m unittest discover -s tools -p sound_coverage_test.py
+                  ) > "$artifact/coverage/report.txt" 2>&1; then
+                      cat "$artifact/coverage/report.txt"
+                  else
+                      status=$?
+                      cat "$artifact/coverage/report.txt"
+                      exit "$status"
+                  fi
+
+            - name: Prove shared metadata shaping and compiled lookup scope
+              if: ${{ !cancelled() && !startsWith(github.event.pull_request.title, 'WIP:') && steps.ready.outcome == 'success' && steps.build.outcome == 'success' }}
+              run: |
+                  set -u
+                  artifact="$RUNNER_TEMP/rebuilt-fonts"
+                  mkdir -p "$artifact/shaping"
+                  if .venv/bin/python tools/shared_metadata_proof.py \
+                      --built fonts \
+                      --layout "$artifact/layout" --out "$artifact/shaping" \
+                      > "$artifact/shaping/output.txt" 2>&1; then
+                      cat "$artifact/shaping/output.txt"
+                  else
+                      status=$?
+                      cat "$artifact/shaping/output.txt"
+                      exit "$status"
+                  fi
+
+            # Download the run's rebuilt-fonts artifact from Gitea Actions. Check
+            # source-sha.txt against the intended commit and run shasum -a 256 -c
+            # SHA256SUMS inside the extracted directory before copying generated outputs.
+            - name: Record rebuilt font provenance
+              id: font_artifact
+              if: ${{ !cancelled() && !startsWith(github.event.pull_request.title, 'WIP:') && steps.ready.outcome == 'success' && steps.build.outcome == 'success' }}
+              env:
+                  SOURCE_DATE_EPOCH: 1767225600
+              run: |
+                  set -eu
+                  artifact="$RUNNER_TEMP/rebuilt-fonts"
+                  mkdir -p "$artifact/fonts" "$artifact/passages"
+                  cp fonts/*.ttf fonts/*.woff2 "$artifact/fonts/"
+                  cp fonts.css fonts.json "$artifact/"
+                  for family in helonika-book pirzath-carved pirzath-hand qalezu-hand semaron-kuriale thuravark-carved vedyakshara-classical veldikko; do
+                      cp "specimens/pages/hl-$family-passage.png" "$artifact/passages/"
+                  done
+                  git rev-parse HEAD > "$artifact/source-sha.txt"
+                  node --version > "$artifact/node-version.txt"
+                  .venv/bin/python --version > "$artifact/python-version.txt"
+                  .venv/bin/pip freeze > "$artifact/python-packages.txt"
+                  printf '%s\n' "$SOURCE_DATE_EPOCH" > "$artifact/source-date-epoch.txt"
+                  sha256sum package-lock.json requirements.txt > "$artifact/input-SHA256SUMS"
+                  (cd "$artifact" && find . -type f ! -path ./SHA256SUMS -print0 | sort -z | xargs -0 sha256sum > SHA256SUMS)
+
+            - name: Retain rebuilt fonts for acceptance
+              if: ${{ !cancelled() && !startsWith(github.event.pull_request.title, 'WIP:') && steps.ready.outcome == 'success' && steps.build.outcome == 'success' && steps.font_artifact.outcome == 'success' }}
+              uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
+              with:
+                  name: rebuilt-fonts
+                  path: ${{ runner.temp }}/rebuilt-fonts/
+                  if-no-files-found: error
+                  retention-days: 30

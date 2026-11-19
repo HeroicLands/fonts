@@ -27,7 +27,7 @@ import crown  # noqa: E402
 import font_names  # noqa: E402
 import notdef_box  # noqa: E402
 
-EMPTY_BY_DESIGN = {"space", "acutecomb", "ignorable", "ignorable.sub"}
+EMPTY_BY_DESIGN = {"space", "acutecomb", "ignorable", "ignorable.sub", "shared.invisible", "shared.invisible.sub"}
 IGNORABLES = [*range(0x200B, 0x2010), *range(0x202A, 0x202F), *range(0x2066, 0x206A), 0xFEFF]
 
 # Latin text is not the face's: every Latin letter, digit and mark draws the box,

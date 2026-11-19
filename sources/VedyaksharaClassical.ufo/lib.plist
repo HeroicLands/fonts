@@ -213,6 +213,8 @@
       <string>hook.o.270</string>
       <string>hook.u.300</string>
       <string>hook.o.300</string>
+      <string>shared.invisible</string>
+      <string>shared.invisible.sub</string>
     </array>
     <key>public.openTypeCategories</key>
     <dict>
@@ -550,6 +552,10 @@
       <string>base</string>
       <key>sha.half</key>
       <string>base</string>
+      <key>shared.invisible</key>
+      <string>base</string>
+      <key>shared.invisible.sub</key>
+      <string>mark</string>
       <key>shra</key>
       <string>base</string>
       <key>shra.final</key>

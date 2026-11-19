@@ -35,7 +35,7 @@ from render import Renderer  # noqa: E402
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parent.parent
 SCRIPT = "pirzath"
-EMPTY = {"ignorable", "ignorable.sub"}
+EMPTY = {"ignorable", "ignorable.sub", "shared.invisible", "shared.invisible.sub"}
 
 _fixtures = json.loads((HERE / "fixtures.json").read_text(encoding="utf-8"))
 FIXTURES = [(f["codes"], f["glyphs"]) for f in _fixtures["fixtures"]]

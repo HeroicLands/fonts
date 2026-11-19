@@ -42,7 +42,7 @@ DRAWN = LETTERS + LONGS + NUMERALS + ["point", "grave", ".notdef"]
 BASES = LETTERS + LONGS
 # These assigned signs remain blocked until their glyph designs are supplied.
 AELWYTHI_REQUIRED = [0xF0217, 0xF0247, *range(0xF0280, 0xF0292)]
-EMPTY = {"ignorable", "ignorable.sub", "space"}
+EMPTY = {"ignorable", "ignorable.sub", "shared.invisible", "shared.invisible.sub", "space"}
 IGNORABLES = [*range(0x200B, 0x2010), *range(0x202A, 0x202F), *range(0x2066, 0x206A), 0xFEFF]
 
 # Latin text, which must print the box: the face draws its own code points alone.
@@ -79,9 +79,9 @@ def check(path: Path) -> list[str]:
     for cp in IGNORABLES:
         if cmap.get(cp) != "ignorable":
             problems.append(f"U+{cp:04X} must map to the empty glyph 'ignorable'")
-    for cp, what in ((0xE0114, "stress"), (0xE0116, "short")):
-        if cmap.get(cp) != "ignorable":
-            problems.append(f"the {what} modifier U+{cp:04X} must map to the empty glyph ignorable")
+    for cp, what, glyph in ((0xE0114, "stress", "shared.invisible"), (0xE0116, "short", "ignorable")):
+        if cmap.get(cp) != glyph:
+            problems.append(f"the {what} modifier U+{cp:04X} must map to the empty glyph {glyph}")
     for name in EMPTY - {"space"}:
         if name not in order or glyf[name].numberOfContours != 0 or hmtx[name][0] != 0:
             problems.append(f"{name} must be in the font, empty and without advance")

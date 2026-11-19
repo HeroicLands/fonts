@@ -112,6 +112,10 @@
     <string>r.glif</string>
     <key>s</key>
     <string>s.glif</string>
+    <key>shared.invisible</key>
+    <string>shared.invisible.glif</string>
+    <key>shared.invisible.sub</key>
+    <string>shared.invisible.sub.glif</string>
     <key>space</key>
     <string>space.glif</string>
     <key>t</key>

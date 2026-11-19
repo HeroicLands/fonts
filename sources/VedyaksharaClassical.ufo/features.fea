@@ -1,10 +1,12 @@
 languagesystem DFLT dflt;
+@SHARED_RETAINED_MARKS = [cut dot flag.e flag.i hook.o.0 hook.o.10 hook.o.100 hook.o.110 hook.o.20 hook.o.220 hook.o.230 hook.o.250 hook.o.270 hook.o.300 hook.o.40 hook.u.0 hook.u.10 hook.u.100 hook.u.110 hook.u.20 hook.u.220 hook.u.230 hook.u.250 hook.u.270 hook.u.300 hook.u.40 vs.ai vs.au vs.e vs.i vs.o vs.u];
 
 # HarfBuzz replaces a default-ignorable character the font maps directly with
 # the space glyph. A glyph that a lookup substitutes is left alone, so each
 # ignorable is substituted once, to a second empty glyph.
 feature ccmp {
   sub ignorable by ignorable.sub;
+  sub shared.invisible by shared.invisible.sub;
 } ccmp;
 
 @NEXT = [ka kha ga gha nga cha ja nya ta da na pa ba bha ma ya ra la va sha sa ha fa nda dra tra ksha pra rta rsha vra sta rna gra dya shta mra nta shra rma tka rka ka.rfoot kha.rfoot gha.rfoot nga.rfoot cha.rfoot ja.rfoot nya.rfoot na.rfoot ba.rfoot bha.rfoot ya.rfoot la.rfoot sa.rfoot ha.rfoot fa.rfoot nda.rfoot ksha.rfoot rta.rfoot rsha.rfoot sta.rfoot rna.rfoot dya.rfoot shta.rfoot nta.rfoot rma.rfoot tka.rfoot rka.rfoot ra.half ra.final];
@@ -12,10 +14,12 @@ feature ccmp {
 @VSIGN = [vs.i vs.e vs.ai vs.u vs.o vs.au];
 
 lookup softdot {
+  lookupflag UseMarkFilteringSet @SHARED_RETAINED_MARKS;
   sub pa dot by fa;
 } softdot;
 
 lookup fused {
+  lookupflag UseMarkFilteringSet @SHARED_RETAINED_MARKS;
   sub na cut da by nda;
   sub da cut ra by dra;
   sub ta cut ra by tra;
@@ -38,14 +42,17 @@ lookup fused {
 } fused;
 
 lookup rhalf {
+  lookupflag UseMarkFilteringSet @SHARED_RETAINED_MARKS;
   sub ra' cut' @NEXT by ra.half;
 } rhalf;
 
 lookup rfinal {
+  lookupflag UseMarkFilteringSet @SHARED_RETAINED_MARKS;
   sub ra cut by ra.final;
 } rfinal;
 
 lookup rfoot {
+  lookupflag UseMarkFilteringSet @SHARED_RETAINED_MARKS;
   sub ka cut ra by ka.rfoot;
   sub kha cut ra by kha.rfoot;
   sub gha cut ra by gha.rfoot;
@@ -76,6 +83,7 @@ lookup rfoot {
 } rfoot;
 
 lookup half {
+  lookupflag UseMarkFilteringSet @SHARED_RETAINED_MARKS;
   sub ka' cut' @NEXT by ka.half;
   sub kha' cut' @NEXT by kha.half;
   sub ga' cut' @NEXT by ga.half;
@@ -120,6 +128,7 @@ lookup half {
 } half;
 
 lookup final {
+  lookupflag UseMarkFilteringSet @SHARED_RETAINED_MARKS;
   sub ka cut by ka.final;
   sub kha cut by kha.final;
   sub ga cut by ga.final;
@@ -164,6 +173,7 @@ lookup final {
 } final;
 
 lookup vowels {
+  lookupflag UseMarkFilteringSet @SHARED_RETAINED_MARKS;
   sub @VBASE vs.ai' by flag.e flag.i;
   sub [ka ka.rfoot kha kha.rfoot ga gha gha.rfoot nga nga.rfoot ta ma ya ya.rfoot sha sa sa.rfoot nda nda.rfoot ksha ksha.rfoot rta rta.rfoot rsha rsha.rfoot sta sta.rfoot dya dya.rfoot shta shta.rfoot nta nta.rfoot rma rma.rfoot tka tka.rfoot rka rka.rfoot] vs.au' by hook.o.0 hook.u.0;
   sub [la la.rfoot] vs.au' by hook.o.0 hook.u.20;
@@ -193,6 +203,7 @@ lookup vowels {
 } vowels;
 
 lookup strays {
+  lookupflag UseMarkFilteringSet @SHARED_RETAINED_MARKS;
   ignore sub @VBASE @VSIGN';
   ignore sub pa dot';
   sub [space ka kha ga gha nga cha ja nya ta da na pa ba bha ma ya ra la va sha sa ha a i u e o ai au num.0 num.1 num.2 num.3 num.4 num.5 num.6 num.7 num.8 num.9 pause stop fa nda dra tra ksha pra rta rsha vra sta rna gra dya shta mra nta shra rma tka rka ka.half ka.final kha.half kha.final ga.half ga.final gha.half gha.final nga.half nga.final cha.half cha.final ja.half ja.final nya.half nya.final ta.half ta.final da.half da.final na.half na.final pa.half pa.final ba.half ba.final bha.half bha.final ma.half ma.final ya.half ya.final ra.half ra.final la.half la.final va.half va.final sha.half sha.final sa.half sa.final ha.half ha.final fa.half fa.final nda.half nda.final dra.half dra.final tra.half tra.final ksha.half ksha.final pra.half pra.final rta.half rta.final rsha.half rsha.final vra.half vra.final sta.half sta.final rna.half rna.final gra.half gra.final dya.half dya.final shta.half shta.final mra.half mra.final nta.half nta.final shra.half shra.final rma.half rma.final tka.half tka.final rka.half rka.final ka.rfoot kha.rfoot gha.rfoot nga.rfoot cha.rfoot ja.rfoot nya.rfoot na.rfoot ba.rfoot bha.rfoot ya.rfoot la.rfoot sa.rfoot ha.rfoot fa.rfoot nda.rfoot ksha.rfoot rta.rfoot rsha.rfoot sta.rfoot rna.rfoot dya.rfoot shta.rfoot nta.rfoot rma.rfoot tka.rfoot rka.rfoot vs.i vs.e vs.ai vs.u vs.o vs.au cut dot flag.i flag.e hook.u.0 hook.u.10 hook.u.20 hook.u.40 hook.u.100 hook.u.110 hook.u.220 hook.u.230 hook.u.250 hook.u.270 hook.u.300 hook.o.0 hook.o.10 hook.o.20 hook.o.40 hook.o.100 hook.o.110 hook.o.220 hook.o.230 hook.o.250 hook.o.270 hook.o.300] [@VSIGN cut dot]' by notdef.box;
