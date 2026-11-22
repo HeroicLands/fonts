@@ -22,7 +22,7 @@
     "devDependencies": {
         "@betteroffice/fonts": "^0.4.0",
         "@changesets/cli": "^3.0.3",
-        "@heroiclands/package-build": "^25.8.2"
+        "@heroiclands/package-build": "^25.11.1"
     },
     "scripts": {
         "test": "node --test tools/package_check.test.mjs",
