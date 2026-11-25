@@ -84,6 +84,9 @@ jobs:
             - name: Check the lookup proof's rejection cases
               if: ${{ !startsWith(github.event.pull_request.title, 'WIP:') && steps.ready.outcome == 'success' && (success()) }}
               run: .venv/bin/python -m unittest discover -s tools -p shared_metadata_proof_test.py
+            - name: Check the Teng Chou code points and formulas
+              if: ${{ !startsWith(github.event.pull_request.title, 'WIP:') && steps.ready.outcome == 'success' && (success()) }}
+              run: PATH="$PWD/.venv/bin:$PATH" npm run test:python
             - name: Build the fonts
               id: build
               env:

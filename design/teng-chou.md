@@ -590,8 +590,11 @@ Two characters are set by their data rather than by an override:
 and 17 roots that exist to write foreign names. By kind, 25 are pictographs, 22
 meaning compounds and 166 a meaning component with a sound component. A
 character carries 2 to 15 strokes, 9 at the median. `tools/teng-chou/guard.py`
-writes every form of the Tantsou lexicon, compounds included, one character per
-morpheme, and fails a form it cannot write.
+sets the passages of `tools/teng-chou/texts.py` through the built font, horizontally
+and in columns, and fails a character with no code point or a line that does not
+shape to exactly its characters. No two characters share a formula, and
+`tools/teng-chou/character_distinct.py` fails two characters whose forms are alike
+at body size.
 
 `tools/teng-chou/character_specimens.py` writes `specimens/teng-chou/characters.png`,
 every character large with its morpheme, gloss, formula and stroke count.
@@ -646,9 +649,11 @@ committed: an edit belongs in `tools/teng-chou/`, and the script is run after it
   point every few units. `tools/teng-chou/fit.py` cuts each contour at its corners
   and fits each run between them with as few cubic curves as keep every point
   within 1.2 units, about a fifth of the points the polygon had.
-- **Code points.** Characters from U+F1000, the five stages of the tally after
-  them, and the syllabary from U+F2000, each in the order of its data file, so a
-  new character or sign is added at the end and none is renumbered. Glyphs are
+- **Code points.** The first 213 characters stand at U+F1000 to U+F10D4, the five
+  stages of the tally at U+F10D5 to U+F10D9, and every later character from
+  U+F10DA; the syllabary starts at U+F2000. Each follows the order of its data
+  file, so a new character or sign is added at the end of its file and none is
+  renumbered. Glyphs are
   `tc.<morpheme>`, `tc.tally1` to `tc.tally5` and `js.<syllable>`; names are
   `TENG CHOU CHARACTER SHOU`, `TENG CHOU TALLY ONE` and `TENG CHOU SYLLABLE KA`.
 - **Size.** The square is scaled so the characters' median ink height is the cap

@@ -11,13 +11,17 @@ A row is ``(morpheme, gloss, formula)``, with ``translit=True`` for a root that
 exists to write foreign names, and ``overrides`` where the formula alone does not
 fit the character well (see ``layout.py``: ``split``, ``first``, ``second``,
 ``inner``, ``scale``). The order is the order of the code points, so a new
-character is added at the end and no character is renumbered. The glosses are the
+character is added at the end and no character is renumbered: the first
+characters take U+F1000 upward, the five tally stages stand at U+F10D5 through
+U+F10D9 (``codepoint_order``), and every later character takes a code point from
+U+F10DA. Two characters never share a formula. The glosses are the
 Tantsou lexicon's.
 """
 
 from __future__ import annotations
 
 from dataclasses import dataclass, field
+from pathlib import Path
 
 import layout
 
@@ -110,7 +114,7 @@ ROWS = [
     ('chou', 'knowledge, lore, record', '⿰{speech}‹you›'),
     ('duo', 'sorcery, magic', '⿱{spirit}‹dou›'),
     ('rui', 'ritual, ceremony, dance', '⿰{sacred}‹shui›'),
-    ('jui', 'festival', '⿰{sun}‹shui›'),
+    ('jui', 'festival', '⿰{food}‹shui›'),
     ('tsei', 'self, own', '⿱‹tsi›{heart}'),
     ('wan', 'account, reckoning, tally', '⿰{count}‹yan›'),
     ('nie', 'year', '⿱{grain}{person}'),
@@ -168,7 +172,7 @@ ROWS = [
     ('lo', 'skin, hide', '⿰‹ho›{skin}'),
     ('ko', 'bone', '⿰{bone}‹ho›'),
     ('chui', 'blood', '⿱‹shui›{vessel}'),
-    ('muen', 'flesh, meat', '⿰{flesh}‹zhuen›'),
+    ('muen', 'flesh, meat', '⿰{flesh}‹wen›'),
     ('mi', 'woman; female', '{woman}'),
     ('chan', 'man; male', '⿰‹yan›{strength}'),
     ('sho', 'to eat', '⿰{food}‹zho›'),
@@ -214,7 +218,7 @@ ROWS = [
     ('dong', 'brother', '⿰{person}‹dou›'),
     ('nin', 'sister', '⿰{woman}‹rin›'),
     ('dei', 'to be', '⿰{mouth}‹dai›'),
-    ('kai', 'to have', '⿰{hand}‹wai›'),
+    ('kai', 'to have', '⿰{hand}‹chai›'),
     ('rou', 'to go', '⿺{motion}‹nou›'),
     ('nao', 'to come', '⿺{motion}‹rao›'),
     ('zhan', 'to give', '⿰{hand}‹yan›'),
@@ -235,7 +239,7 @@ ROWS = [
     ('gwen', 'to hold', '⿰{hand}‹wen›'),
     ('hai', 'to bring, to carry', '⿺{motion}‹mai›'),
     ('ra', 'to put, to set down', '⿰{hand}‹zha›'),
-    ('zhing', 'to find', '⿰{eye}‹jing›'),
+    ('zhing', 'to find', '⿰{eye}‹ching›'),
     ('shin', 'to lose', '⿰{step}‹rin›'),
     ('ka', 'to open', '⿵{door}‹ha›'),
     ('seng', 'to close, to shut', '⿵{door}‹leng›'),
@@ -256,7 +260,7 @@ ROWS = [
     ('ba', 'plum', '⿰{wood}‹ja›', True),
     ('li', 'silk', '⿰{thread}‹tsi›', True),
     ('no', 'honey', '⿰{food}‹nong›', True),
-    ('ran', 'lacquer', '⿰{wood}‹tan›', True),
+    ('ran', 'lacquer', '⿰{wood}‹yan›', True),
     ('shi', 'comb', '⿰{wood}‹mi›', True),]
 
 # Hand-tuned overrides, by morpheme: where the formula's default fit is not good enough.
@@ -272,10 +276,25 @@ OVERRIDES: dict[str, dict] = {
 }
 
 
+def row_line(morpheme: str) -> int:
+    """The line in this file where the morpheme's row stands, for a diagnostic."""
+    marker = f"    ({morpheme!r},"
+    for number, text in enumerate(Path(__file__).read_text(encoding="utf-8").splitlines(), 1):
+        if text.startswith(marker):
+            return number
+    return 1
+
+
 def _build():
     out = []
+    seen: dict[str, str] = {}
     for row in ROWS:
         morpheme, gloss, formula, *rest = row
+        if formula in seen:
+            raise ValueError(
+                f"tools/teng-chou/characters.py:{row_line(morpheme)}:1: error: the morphemes {seen[formula]} and {morpheme} share the formula {formula}"
+            )
+        seen[formula] = morpheme
         out.append(Character(morpheme, gloss, formula, bool(rest and rest[0]), OVERRIDES.get(morpheme, {})))
     return out
 

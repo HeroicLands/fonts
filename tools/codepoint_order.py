@@ -205,21 +205,35 @@ THURAVARK = (
     ],
 )
 
+TENGCHOU_TALLY_START = 0xF10D5
+
+
 def _teng_chou():
-    """Teng Chou's characters from U+F1000, in the order of tools/teng-chou/characters.py
-    and then the five stages of the tally (tools/teng-chou/tally.py), and the Jurthati
-    signs from U+F2000, in the order of tools/teng-chou/syllabary.py. A character or sign
+    """Teng Chou's characters from U+F1000, in the order of tools/teng-chou/characters.py,
+    and the Jurthati signs from U+F2000, in the order of tools/teng-chou/syllabary.py.
+
+    The five stages of the tally (tools/teng-chou/tally.py) are pinned at U+F10D5 through
+    U+F10D9, so the characters that fill U+F1000 up to U+F10D4 are the first of the list
+    and every later character takes the next code point from U+F10DA. A character or sign
     is added at the end of its list, so none is renumbered."""
     sys.path.insert(0, str(ROOT / "tools" / "teng-chou"))
     import characters  # noqa: E402
     import syllabary  # noqa: E402
     import tally  # noqa: E402
 
+    glyphs = [c.glyph for c in characters.CHARACTERS]
+    stages = [s.glyph for s in tally.STAGES.values()]
+    below = TENGCHOU_TALLY_START - 0xF1000
+    after = TENGCHOU_TALLY_START + len(stages)
+    if len(glyphs) < below:
+        raise ValueError(f"tools/teng-chou/characters.py:{characters.row_line(characters.CHARACTERS[-1].morpheme) if characters.CHARACTERS else 1}:1: error: {len(glyphs)} characters leave a gap before the tally at U+{TENGCHOU_TALLY_START:X}")
     return (
         0xF1000,
         0xF20FF,
         [
-            ("character", 0xF1000, [c.glyph for c in characters.CHARACTERS] + [s.glyph for s in tally.STAGES.values()]),
+            ("character", 0xF1000, glyphs[:below]),
+            ("character", TENGCHOU_TALLY_START, stages),
+            ("character", after, glyphs[below:]),
             ("syllable", 0xF2000, [s.glyph for s in syllabary.SIGNS]),
         ],
     )

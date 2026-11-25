@@ -57,6 +57,7 @@ FONTS = {
     ],
     "TengChou": [
         "tools/teng-chou/syllabary_distinct.py",  # the Jurthati signs stay distinct at body size
+        "tools/teng-chou/character_distinct.py",  # no two characters look alike at body size
         "tools/teng-chou/check_font.py",
         "tools/teng-chou/guard.py",  # the passages set horizontally and in columns
         "tools/teng-chou/stroke_mix.py",  # every character's body is strokes, dabs a minority

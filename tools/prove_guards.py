@@ -30,7 +30,9 @@ its cmap, and the font check on the font without its vertical metrics; and the v
 guard is proved on its columns with one character's vertical advance off the em, and with
 every vertical advance 825 units, even but not one em. Its
 stroke-mix guard (tools/teng-chou/stroke_mix.py) is proved on its data with water written in
-six dabs, and with the syllabary sign ka kept to one stroke.
+six dabs, and with the syllabary sign ka kept to one stroke. Its
+character-distinctness guard (tools/teng-chou/character_distinct.py) is proved on its data
+with the character jui drawn from the formula of bui.
 Chalish Pilam Common is broken three times: its guard (tools/chalish-pilam/guard.py) and its
 font check (tools/chalish-pilam/check_font.py) on the font with the glyph for the sun removed
 from its cmap, and the font check on the font with one glyph's advance off the cell.
@@ -669,6 +671,37 @@ def prove_stroke_mix() -> int:
     return 0
 
 
+CHARACTER_DISTINCT_PROOF = """
+import sys
+sys.path.insert(0, "tools/teng-chou")
+import character_distinct, characters
+good = len(character_distinct.alike()[1])
+characters.BY_MORPHEME["jui"].formula = characters.BY_MORPHEME["bui"].formula
+twin = len(character_distinct.alike()[1])
+print(good, twin)
+"""
+
+
+def prove_character_distinct() -> int:
+    """The character-distinctness guard passes the data and fails a character drawn from
+    another's formula. It runs in its own interpreter, since the Teng Chou modules share
+    names with other faces' tools."""
+    import subprocess
+
+    result = subprocess.run([sys.executable, "-c", CHARACTER_DISTINCT_PROOF], cwd=ROOT, capture_output=True, text=True)
+    try:
+        good, twin = map(int, result.stdout.split())
+    except ValueError:
+        print(result.stderr)
+        print("tools/teng-chou/character_distinct.py: error: the proof did not run")
+        return 1
+    print(f"Teng Chou character distinctness: {good} pairs alike on the data, {twin} with jui drawn from the formula of bui")
+    if good or not twin:
+        print("tools/teng-chou/character_distinct.py: error: the guard must pass the data and fail the altered data")
+        return 1
+    return 0
+
+
 def prove_specimen_pages() -> int:
     """Prove that the specimen-page check fails a page or image out of date with its texts,
     a family with no page, and a README sample cell that is not the absolute URL linked to its page."""
@@ -936,6 +969,7 @@ def main():
     status |= prove_charts()
     status |= prove_paint()
     status |= prove_stroke_mix()
+    status |= prove_character_distinct()
     status |= prove_specimen_pages()
     pirzath_font = ROOT / "fonts" / "PirzathCarved-Regular.ttf"
     with tempfile.TemporaryDirectory() as tmp:
