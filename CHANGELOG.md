@@ -1,5 +1,11 @@
 # @heroiclands/fonts
 
+## 1.4.2
+
+- Five Teng Chou characters that were drawn exactly like another character (festival, to have, to find, flesh and lacquer) now have forms of their own.
+- Preserve invisible sound, stress, compound and tone information without changing the appearance or spacing of script text.
+- Keep the catch attached to its vowel in Semaron text containing an invisible stress character.
+
 ## 1.4.1
 
 - Semaron Kuriale has an invisible short-vowel mark, `SHORT`, that encodings can use to keep a grave vowel's spelling.
